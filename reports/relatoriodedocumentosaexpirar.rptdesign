@@ -1,0 +1,1802 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.23" id="1">
+    <property name="author">Carla Tonon</property>
+    <property name="createdBy">Eclipse BIRT Designer Version 4.4.2.v201410272105 Build &lt;4.4.2.v20150217-1805></property>
+    <list-property name="propertyBindings">
+        <structure>
+            <property name="name">queryText</property>
+            <property name="id">8</property>
+        </structure>
+        <structure>
+            <property name="name">queryTimeOut</property>
+            <property name="id">8</property>
+        </structure>
+        <structure>
+            <property name="name">rowFetchSize</property>
+            <property name="id">8</property>
+        </structure>
+    </list-property>
+    <property name="units">in</property>
+    <property name="iconFile">/templates/blank_report.gif</property>
+    <property name="layoutPreference">auto layout</property>
+    <property name="bidiLayoutOrientation">ltr</property>
+    <property name="imageDPI">96</property>
+    <data-sources>
+        <oda-data-source extensionID="org.eclipse.birt.report.data.oda.jdbc" name="Data Source" id="7">
+            <list-property name="privateDriverProperties">
+                <ex-property>
+                    <name>metadataBidiFormatStr</name>
+                    <value>ILYNN</value>
+                </ex-property>
+                <ex-property>
+                    <name>disabledMetadataBidiFormatStr</name>
+                </ex-property>
+                <ex-property>
+                    <name>contentBidiFormatStr</name>
+                    <value>ILYNN</value>
+                </ex-property>
+                <ex-property>
+                    <name>disabledContentBidiFormatStr</name>
+                </ex-property>
+            </list-property>
+            <property name="odaDriverClass">com.mysql.jdbc.Driver</property>
+            <property name="odaURL">jdbc:mysql://172.16.1.36:3306/byyouecm</property>
+            <property name="odaUser">root</property>
+            <encrypted-property name="odaPassword" encryptionID="base64">amFndWFyMTIzIUAj</encrypted-property>
+        </oda-data-source>
+    </data-sources>
+    <data-sets>
+        <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.JdbcSelectDataSet" name="Data Set" id="8">
+            <property name="nullsOrdering">nulls lowest</property>
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">NUM_PROCES</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">NUM_PROCES</text-property>
+                    <text-property name="heading">NUM_PROCES</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">NR_DOCUMENTO</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">NR_DOCUMENTO</text-property>
+                    <text-property name="heading">NR_DOCUMENTO</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">NR_VERSAO</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">NR_VERSAO</text-property>
+                    <text-property name="heading">NR_VERSAO</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">COD_CAMPO</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">COD_CAMPO</text-property>
+                    <text-property name="heading">COD_CAMPO</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">COD_VALOR</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">COD_VALOR</text-property>
+                    <text-property name="heading">COD_VALOR</text-property>
+                </structure>
+            </list-property>
+            <list-property name="parameters"/>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">NUM_PROCES</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">NR_DOCUMENTO</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">NR_VERSAO</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">4</property>
+                        <property name="name">COD_CAMPO</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">5</property>
+                        <property name="name">COD_VALOR</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <property name="dataSource">Data Source</property>
+            <list-property name="resultSet">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">NUM_PROCES</property>
+                    <property name="nativeName">NUM_PROCES</property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">NR_DOCUMENTO</property>
+                    <property name="nativeName">NR_DOCUMENTO</property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
+                </structure>
+                <structure>
+                    <property name="position">3</property>
+                    <property name="name">NR_VERSAO</property>
+                    <property name="nativeName">NR_VERSAO</property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
+                </structure>
+                <structure>
+                    <property name="position">4</property>
+                    <property name="name">COD_CAMPO</property>
+                    <property name="nativeName">COD_CAMPO</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">5</property>
+                    <property name="name">COD_VALOR</property>
+                    <property name="nativeName">COD_VALOR</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+            </list-property>
+            <xml-property name="queryText"><![CDATA[select PROCES_WORKFLOW.NUM_PROCES, DOCUMENTO.NR_DOCUMENTO, DOCUMENTO.NR_VERSAO, FICHA.COD_CAMPO, FICHA.COD_VALOR 
+	from PROCES_WORKFLOW, ANEXO_PROCES, DOCUMENTO, FICHA
+	where 	
+			(PROCES_WORKFLOW.COD_EMPRESA = PROCES_WORKFLOW.COD_EMPRESA
+				AND PROCES_WORKFLOW.NUM_PROCES = PROCES_WORKFLOW.NUM_PROCES
+				AND PROCES_WORKFLOW.COD_MATR_REQUISIT = PROCES_WORKFLOW.COD_MATR_REQUISIT
+				AND PROCES_WORKFLOW.LOG_ATIV = 1 
+				AND PROCES_WORKFLOW.COD_DEF_PROCES = 27)
+		and
+			(ANEXO_PROCES.COD_EMPRESA = PROCES_WORKFLOW.COD_EMPRESA
+				AND ANEXO_PROCES.NUM_PROCES = PROCES_WORKFLOW.NUM_PROCES
+				AND ANEXO_PROCES.NUM_SEQ_ANEXO = ANEXO_PROCES.NUM_SEQ_ANEXO)
+		AND 
+			(DOCUMENTO.COD_EMPRESA = PROCES_WORKFLOW.COD_EMPRESA
+				 AND DOCUMENTO.NR_DOCUMENTO = ANEXO_PROCES.NR_DOCUMENTO 
+				 AND DOCUMENTO.NR_VERSAO = ANEXO_PROCES.NR_VERSAO
+				 AND DOCUMENTO.VERSAO_ATIVA = 1)
+		AND
+			(FICHA.COD_EMPRESA = PROCES_WORKFLOW.COD_EMPRESA
+				AND FICHA.NR_FICHA = DOCUMENTO.NR_DOCUMENTO
+				AND FICHA.NR_VERSAO = DOCUMENTO.NR_VERSAO
+				AND FICHA.COD_TABELA = FICHA.COD_TABELA
+				AND FICHA.COD_CAMPO = FICHA.COD_CAMPO)
+ORDER BY PROCES_WORKFLOW.NUM_PROCES DESC;]]></xml-property>
+            <xml-property name="designerValues"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<model:DesignValues xmlns:design="http://www.eclipse.org/datatools/connectivity/oda/design" xmlns:model="http://www.eclipse.org/birt/report/model/adapter/odaModel">
+  <Version>2.0</Version>
+  <design:ResultSets derivedMetaData="true">
+    <design:resultSetDefinitions>
+      <design:resultSetColumns>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>COD_EMPRESA</design:name>
+              <design:position>1</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>10</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>NotNullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>COD_EMPRESA</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>COD_EMPRESA</design:label>
+            <design:formattingHints>
+              <design:displaySize>11</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>NR_DOCUMENTO</design:name>
+              <design:position>2</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>10</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>NotNullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>NR_DOCUMENTO</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>NR_DOCUMENTO</design:label>
+            <design:formattingHints>
+              <design:displaySize>11</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>NR_VERSAO</design:name>
+              <design:position>3</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>10</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>NotNullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>NR_VERSAO</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>NR_VERSAO</design:label>
+            <design:formattingHints>
+              <design:displaySize>11</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>COD_UUID</design:name>
+              <design:position>4</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>36</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>COD_UUID</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>COD_UUID</design:label>
+            <design:formattingHints>
+              <design:displaySize>36</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>NR_ACESSOS</design:name>
+              <design:position>5</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>10</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>NR_ACESSOS</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>NR_ACESSOS</design:label>
+            <design:formattingHints>
+              <design:displaySize>11</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>VERSAO_ATIVA</design:name>
+              <design:position>6</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>-6</design:nativeDataTypeCode>
+            <design:precision>3</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>VERSAO_ATIVA</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>VERSAO_ATIVA</design:label>
+            <design:formattingHints>
+              <design:displaySize>4</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>DS_COMENTARIO_ADICIONAL</design:name>
+              <design:position>7</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>2005</design:nativeDataTypeCode>
+            <design:precision>2147483647</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>DS_COMENTARIO_ADICIONAL</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>DS_COMENTARIO_ADICIONAL</design:label>
+            <design:formattingHints>
+              <design:displaySize>2147483647</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>APROV_E_OU</design:name>
+              <design:position>8</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>-6</design:nativeDataTypeCode>
+            <design:precision>3</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>APROV_E_OU</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>APROV_E_OU</design:label>
+            <design:formattingHints>
+              <design:displaySize>4</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>LOG_APROVADO</design:name>
+              <design:position>9</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>-6</design:nativeDataTypeCode>
+            <design:precision>3</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>LOG_APROVADO</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>LOG_APROVADO</design:label>
+            <design:formattingHints>
+              <design:displaySize>4</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>DT_APROVACAO</design:name>
+              <design:position>10</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>93</design:nativeDataTypeCode>
+            <design:precision>23</design:precision>
+            <design:scale>3</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>DT_APROVACAO</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>DT_APROVACAO</design:label>
+            <design:formattingHints>
+              <design:displaySize>23</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>CD_ATUALIZACAO</design:name>
+              <design:position>11</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>10</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>CD_ATUALIZACAO</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>CD_ATUALIZACAO</design:label>
+            <design:formattingHints>
+              <design:displaySize>11</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>DES_PRINC_FICHA</design:name>
+              <design:position>12</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>255</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>DES_PRINC_FICHA</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>DES_PRINC_FICHA</design:label>
+            <design:formattingHints>
+              <design:displaySize>255</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>LOG_PASTA_CHECKOUT</design:name>
+              <design:position>13</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>-6</design:nativeDataTypeCode>
+            <design:precision>3</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>LOG_PASTA_CHECKOUT</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>LOG_PASTA_CHECKOUT</design:label>
+            <design:formattingHints>
+              <design:displaySize>4</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>CD_MATRICULA</design:name>
+              <design:position>14</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>255</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>CD_MATRICULA</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>CD_MATRICULA</design:label>
+            <design:formattingHints>
+              <design:displaySize>255</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>IDI_TIP_ARMAZ_LP</design:name>
+              <design:position>15</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>10</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>IDI_TIP_ARMAZ_LP</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>IDI_TIP_ARMAZ_LP</design:label>
+            <design:formattingHints>
+              <design:displaySize>11</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>NUM_CRC</design:name>
+              <design:position>16</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>2</design:nativeDataTypeCode>
+            <design:precision>19</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>NUM_CRC</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>NUM_CRC</design:label>
+            <design:formattingHints>
+              <design:displaySize>20</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>DT_CRIACAO</design:name>
+              <design:position>17</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>93</design:nativeDataTypeCode>
+            <design:precision>23</design:precision>
+            <design:scale>3</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>DT_CRIACAO</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>DT_CRIACAO</design:label>
+            <design:formattingHints>
+              <design:displaySize>23</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>NM_DATASET</design:name>
+              <design:position>18</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>255</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>NM_DATASET</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>NM_DATASET</design:label>
+            <design:formattingHints>
+              <design:displaySize>255</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>LOG_DELETE</design:name>
+              <design:position>19</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>-6</design:nativeDataTypeCode>
+            <design:precision>3</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>LOG_DELETE</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>LOG_DELETE</design:label>
+            <design:formattingHints>
+              <design:displaySize>4</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>DS_PRINCIPAL_DOCUMENTO</design:name>
+              <design:position>20</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>4000</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>DS_PRINCIPAL_DOCUMENTO</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>DS_PRINCIPAL_DOCUMENTO</design:label>
+            <design:formattingHints>
+              <design:displaySize>4000</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>NUM_DOCTO_PROPRIED</design:name>
+              <design:position>21</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>10</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>NUM_DOCTO_PROPRIED</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>NUM_DOCTO_PROPRIED</design:label>
+            <design:formattingHints>
+              <design:displaySize>11</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>NUM_VERS_PROPRIED</design:name>
+              <design:position>22</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>10</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>NUM_VERS_PROPRIED</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>NUM_VERS_PROPRIED</design:label>
+            <design:formattingHints>
+              <design:displaySize>11</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>TP_DOCUMENTO</design:name>
+              <design:position>23</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>255</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>NotNullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>TP_DOCUMENTO</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>TP_DOCUMENTO</design:label>
+            <design:formattingHints>
+              <design:displaySize>255</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>CD_TIPO_DOC</design:name>
+              <design:position>24</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>255</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>CD_TIPO_DOC</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>CD_TIPO_DOC</design:label>
+            <design:formattingHints>
+              <design:displaySize>255</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>LOG_PERMITE_DOWNLOAD</design:name>
+              <design:position>25</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>-6</design:nativeDataTypeCode>
+            <design:precision>3</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>LOG_PERMITE_DOWNLOAD</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>LOG_PERMITE_DOWNLOAD</design:label>
+            <design:formattingHints>
+              <design:displaySize>4</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>LOG_RASCUNHO</design:name>
+              <design:position>26</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>-6</design:nativeDataTypeCode>
+            <design:precision>3</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>LOG_RASCUNHO</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>LOG_RASCUNHO</design:label>
+            <design:formattingHints>
+              <design:displaySize>4</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>DT_EXPIRACAO</design:name>
+              <design:position>27</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>93</design:nativeDataTypeCode>
+            <design:precision>23</design:precision>
+            <design:scale>3</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>DT_EXPIRACAO</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>DT_EXPIRACAO</design:label>
+            <design:formattingHints>
+              <design:displaySize>23</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>LOG_DOCTO_EXPIRA</design:name>
+              <design:position>28</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>-6</design:nativeDataTypeCode>
+            <design:precision>3</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>LOG_DOCTO_EXPIRA</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>LOG_DOCTO_EXPIRA</design:label>
+            <design:formattingHints>
+              <design:displaySize>4</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>CD_DOCUMENTO_EXT</design:name>
+              <design:position>29</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>255</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>CD_DOCUMENTO_EXT</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>CD_DOCUMENTO_EXT</design:label>
+            <design:formattingHints>
+              <design:displaySize>255</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>NR_ICONE</design:name>
+              <design:position>30</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>10</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>NR_ICONE</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>NR_ICONE</design:label>
+            <design:formattingHints>
+              <design:displaySize>11</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>LOG_NAO_ALTERA</design:name>
+              <design:position>31</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>-6</design:nativeDataTypeCode>
+            <design:precision>3</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>LOG_NAO_ALTERA</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>LOG_NAO_ALTERA</design:label>
+            <design:formattingHints>
+              <design:displaySize>4</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>LOG_INDEXAD</design:name>
+              <design:position>32</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>-6</design:nativeDataTypeCode>
+            <design:precision>3</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>LOG_INDEXAD</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>LOG_INDEXAD</design:label>
+            <design:formattingHints>
+              <design:displaySize>4</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>LOG_HERDA_APROV</design:name>
+              <design:position>33</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>-6</design:nativeDataTypeCode>
+            <design:precision>3</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>LOG_HERDA_APROV</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>LOG_HERDA_APROV</design:label>
+            <design:formattingHints>
+              <design:displaySize>4</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>LOG_HERDA_SEGUR</design:name>
+              <design:position>34</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>-6</design:nativeDataTypeCode>
+            <design:precision>3</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>NotNullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>LOG_HERDA_SEGUR</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>LOG_HERDA_SEGUR</design:label>
+            <design:formattingHints>
+              <design:displaySize>4</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>LOG_USA_VISUALIZ</design:name>
+              <design:position>35</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>-6</design:nativeDataTypeCode>
+            <design:precision>3</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>LOG_USA_VISUALIZ</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>LOG_USA_VISUALIZ</design:label>
+            <design:formattingHints>
+              <design:displaySize>4</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>DS_PALAVRA_CHAVE</design:name>
+              <design:position>36</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>2005</design:nativeDataTypeCode>
+            <design:precision>2147483647</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>DS_PALAVRA_CHAVE</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>DS_PALAVRA_CHAVE</design:label>
+            <design:formattingHints>
+              <design:displaySize>2147483647</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>CD_IDIOMA</design:name>
+              <design:position>37</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>255</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>CD_IDIOMA</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>CD_IDIOMA</design:label>
+            <design:formattingHints>
+              <design:displaySize>255</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>DT_ATUALIZACAO</design:name>
+              <design:position>38</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>93</design:nativeDataTypeCode>
+            <design:precision>23</design:precision>
+            <design:scale>3</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>DT_ATUALIZACAO</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>DT_ATUALIZACAO</design:label>
+            <design:formattingHints>
+              <design:displaySize>23</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>HRA_ATUALIZ</design:name>
+              <design:position>39</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>255</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>HRA_ATUALIZ</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>HRA_ATUALIZ</design:label>
+            <design:formattingHints>
+              <design:displaySize>255</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>NR_DOCUMENTO_PAI</design:name>
+              <design:position>40</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>10</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>NR_DOCUMENTO_PAI</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>NR_DOCUMENTO_PAI</design:label>
+            <design:formattingHints>
+              <design:displaySize>11</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>IDI_STATUS_CONV_PDF</design:name>
+              <design:position>41</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>10</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>IDI_STATUS_CONV_PDF</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>IDI_STATUS_CONV_PDF</design:label>
+            <design:formattingHints>
+              <design:displaySize>11</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>COD_TIP_VISUALIZ</design:name>
+              <design:position>42</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>255</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>COD_TIP_VISUALIZ</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>COD_TIP_VISUALIZ</design:label>
+            <design:formattingHints>
+              <design:displaySize>255</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>IDI_TIP_PERMIS</design:name>
+              <design:position>43</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>10</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>IDI_TIP_PERMIS</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>IDI_TIP_PERMIS</design:label>
+            <design:formattingHints>
+              <design:displaySize>11</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>NM_ARQUIVO_FISICO</design:name>
+              <design:position>44</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>255</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>NM_ARQUIVO_FISICO</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>NM_ARQUIVO_FISICO</design:label>
+            <design:formattingHints>
+              <design:displaySize>255</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>NUM_PRIORID</design:name>
+              <design:position>45</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>10</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>NUM_PRIORID</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>NUM_PRIORID</design:label>
+            <design:formattingHints>
+              <design:displaySize>11</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>COD_MATR_PARTIC</design:name>
+              <design:position>46</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>255</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>COD_MATR_PARTIC</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>COD_MATR_PARTIC</design:label>
+            <design:formattingHints>
+              <design:displaySize>255</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>LOG_DOCTO_PARTIC</design:name>
+              <design:position>47</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>-6</design:nativeDataTypeCode>
+            <design:precision>3</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>LOG_DOCTO_PARTIC</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>LOG_DOCTO_PARTIC</design:label>
+            <design:formattingHints>
+              <design:displaySize>4</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>CD_PUBLICADOR</design:name>
+              <design:position>48</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>255</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>CD_PUBLICADOR</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>CD_PUBLICADOR</design:label>
+            <design:formattingHints>
+              <design:displaySize>255</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>NM_ARQUIVOS_RELACIONADOS</design:name>
+              <design:position>49</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>2005</design:nativeDataTypeCode>
+            <design:precision>2147483647</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>NM_ARQUIVOS_RELACIONADOS</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>NM_ARQUIVOS_RELACIONADOS</design:label>
+            <design:formattingHints>
+              <design:displaySize>2147483647</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>IDI_TIP_RESTRIC</design:name>
+              <design:position>50</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>10</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>IDI_TIP_RESTRIC</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>IDI_TIP_RESTRIC</design:label>
+            <design:formattingHints>
+              <design:displaySize>11</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>NUM_TAM_ARQ_FISIC</design:name>
+              <design:position>51</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>8</design:nativeDataTypeCode>
+            <design:precision>15</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>NUM_TAM_ARQ_FISIC</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>NUM_TAM_ARQ_FISIC</design:label>
+            <design:formattingHints>
+              <design:displaySize>24</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>IDI_STATUS_ARMAZ_LP</design:name>
+              <design:position>52</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>10</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>IDI_STATUS_ARMAZ_LP</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>IDI_STATUS_ARMAZ_LP</design:label>
+            <design:formattingHints>
+              <design:displaySize>11</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>CD_ASSUNTO</design:name>
+              <design:position>53</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>10</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>CD_ASSUNTO</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>CD_ASSUNTO</design:label>
+            <design:formattingHints>
+              <design:displaySize>11</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>LOG_TRADUZIR</design:name>
+              <design:position>54</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>-6</design:nativeDataTypeCode>
+            <design:precision>3</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>NotNullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>LOG_TRADUZIR</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>LOG_TRADUZIR</design:label>
+            <design:formattingHints>
+              <design:displaySize>4</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>LOG_ATUALIZ_PROPRIED_ISO</design:name>
+              <design:position>55</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>-6</design:nativeDataTypeCode>
+            <design:precision>3</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>NotNullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>LOG_ATUALIZ_PROPRIED_ISO</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>LOG_ATUALIZ_PROPRIED_ISO</design:label>
+            <design:formattingHints>
+              <design:displaySize>4</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>LOG_NOTIFICA_USUAR</design:name>
+              <design:position>56</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>-6</design:nativeDataTypeCode>
+            <design:precision>3</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>LOG_NOTIFICA_USUAR</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>LOG_NOTIFICA_USUAR</design:label>
+            <design:formattingHints>
+              <design:displaySize>4</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>DT_INI_VALIDADE</design:name>
+              <design:position>57</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>93</design:nativeDataTypeCode>
+            <design:precision>23</design:precision>
+            <design:scale>3</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>DT_INI_VALIDADE</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>DT_INI_VALIDADE</design:label>
+            <design:formattingHints>
+              <design:displaySize>23</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>DS_VERSAO</design:name>
+              <design:position>58</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>4000</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>DS_VERSAO</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>DS_VERSAO</design:label>
+            <design:formattingHints>
+              <design:displaySize>4000</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>CD_VISAO</design:name>
+              <design:position>59</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>255</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>CD_VISAO</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>CD_VISAO</design:label>
+            <design:formattingHints>
+              <design:displaySize>255</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>COD_VOL_FISIC</design:name>
+              <design:position>60</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>255</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>COD_VOL_FISIC</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>COD_VOL_FISIC</design:label>
+            <design:formattingHints>
+              <design:displaySize>255</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+      </design:resultSetColumns>
+      <design:criteria/>
+    </design:resultSetDefinitions>
+  </design:ResultSets>
+</model:DesignValues>]]></xml-property>
+        </oda-data-set>
+    </data-sets>
+    <styles>
+        <style name="report" id="4">
+            <property name="fontFamily">sans-serif</property>
+            <property name="fontSize">10pt</property>
+            <structure name="dateTimeFormat">
+                <property name="category">Medium Date</property>
+                <property name="pattern">Medium Date</property>
+            </structure>
+        </style>
+        <style name="crosstab-cell" id="5">
+            <property name="borderBottomColor">#CCCCCC</property>
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderBottomWidth">1pt</property>
+            <property name="borderLeftColor">#CCCCCC</property>
+            <property name="borderLeftStyle">solid</property>
+            <property name="borderLeftWidth">1pt</property>
+            <property name="borderRightColor">#CCCCCC</property>
+            <property name="borderRightStyle">solid</property>
+            <property name="borderRightWidth">1pt</property>
+            <property name="borderTopColor">#CCCCCC</property>
+            <property name="borderTopStyle">solid</property>
+            <property name="borderTopWidth">1pt</property>
+        </style>
+        <style name="crosstab" id="6">
+            <property name="borderBottomColor">#CCCCCC</property>
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderBottomWidth">1pt</property>
+            <property name="borderLeftColor">#CCCCCC</property>
+            <property name="borderLeftStyle">solid</property>
+            <property name="borderLeftWidth">1pt</property>
+            <property name="borderRightColor">#CCCCCC</property>
+            <property name="borderRightStyle">solid</property>
+            <property name="borderRightWidth">1pt</property>
+            <property name="borderTopColor">#CCCCCC</property>
+            <property name="borderTopStyle">solid</property>
+            <property name="borderTopWidth">1pt</property>
+        </style>
+    </styles>
+    <page-setup>
+        <simple-master-page name="Simple MasterPage" id="2">
+            <property name="orientation">landscape</property>
+            <page-header>
+                <grid id="188">
+                    <column id="189">
+                        <property name="width">0.7916666666666666in</property>
+                    </column>
+                    <column id="190">
+                        <property name="width">5.802083333333333in</property>
+                    </column>
+                    <column id="191">
+                        <property name="width">1.1666666666666667in</property>
+                    </column>
+                    <row id="193">
+                        <property name="fontFamily">"Arial"</property>
+                        <property name="fontSize">14pt</property>
+                        <property name="fontWeight">bold</property>
+                        <cell id="194">
+                            <image id="261">
+                                <property name="height">51px</property>
+                                <property name="width">92px</property>
+                                <property name="source">embed</property>
+                                <property name="imageName">Logo PPC SANTANA (e-mail).jpg</property>
+                            </image>
+                        </cell>
+                        <cell id="195">
+                            <property name="textAlign">center</property>
+                            <property name="verticalAlign">middle</property>
+                            <grid id="209">
+                                <property name="width">5.135416666666667in</property>
+                                <column id="210">
+                                    <property name="width">2.6979166666666665in</property>
+                                </column>
+                                <column id="211">
+                                    <property name="width">1.0729166666666667in</property>
+                                </column>
+                                <column id="212">
+                                    <property name="width">0.2916666666666667in</property>
+                                </column>
+                                <column id="213">
+                                    <property name="width">1.0729166666666667in</property>
+                                </column>
+                                <row id="214">
+                                    <cell id="215">
+                                        <label id="219">
+                                            <text-property name="text">Documentos a expirar de:</text-property>
+                                        </label>
+                                    </cell>
+                                    <cell id="216"/>
+                                    <cell id="217">
+                                        <label id="220">
+                                            <text-property name="text">à:</text-property>
+                                        </label>
+                                    </cell>
+                                    <cell id="218"/>
+                                </row>
+                            </grid>
+                        </cell>
+                        <cell id="196"/>
+                    </row>
+                    <row id="223">
+                        <property name="fontFamily">"Arial"</property>
+                        <property name="fontSize">14pt</property>
+                        <property name="fontWeight">bold</property>
+                        <cell id="224">
+                            <label id="260"/>
+                        </cell>
+                        <cell id="225">
+                            <property name="textAlign">center</property>
+                        </cell>
+                        <cell id="226"/>
+                    </row>
+                </grid>
+            </page-header>
+            <page-footer>
+                <grid id="238">
+                    <column id="239"/>
+                    <column id="240"/>
+                    <column id="241">
+                        <property name="textAlign">right</property>
+                    </column>
+                    <row id="242">
+                        <cell id="243"/>
+                        <cell id="244"/>
+                        <cell id="245">
+                            <grid id="246">
+                                <property name="width">1.3541666666666667in</property>
+                                <column id="258">
+                                    <property name="width">0.625in</property>
+                                </column>
+                                <column id="247">
+                                    <property name="width">0.625in</property>
+                                </column>
+                                <column id="248">
+                                    <property name="width">0.22916666666666666in</property>
+                                </column>
+                                <column id="249">
+                                    <property name="width">0.5in</property>
+                                </column>
+                                <row id="250">
+                                    <cell id="257">
+                                        <label id="259">
+                                            <text-property name="text">Página:</text-property>
+                                        </label>
+                                    </cell>
+                                    <cell id="251">
+                                        <auto-text id="252">
+                                            <property name="type">page-number</property>
+                                        </auto-text>
+                                    </cell>
+                                    <cell id="253">
+                                        <text id="254">
+                                            <property name="contentType">plain</property>
+                                            <text-property name="content"><![CDATA[/]]></text-property>
+                                        </text>
+                                    </cell>
+                                    <cell id="255">
+                                        <auto-text id="256">
+                                            <property name="type">total-page</property>
+                                        </auto-text>
+                                    </cell>
+                                </row>
+                            </grid>
+                        </cell>
+                    </row>
+                </grid>
+            </page-footer>
+        </simple-master-page>
+    </page-setup>
+    <body>
+        <table id="153">
+            <property name="dataSet">Data Set</property>
+            <list-property name="boundDataColumns">
+                <structure>
+                    <property name="name">NR_DOCUMENTO</property>
+                    <text-property name="displayName">NR_DOCUMENTO</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["NR_DOCUMENTO"]</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="name">NR_VERSAO</property>
+                    <text-property name="displayName">NR_VERSAO</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["NR_VERSAO"]</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="name">COD_CAMPO</property>
+                    <text-property name="displayName">COD_CAMPO</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["COD_CAMPO"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">COD_VALOR</property>
+                    <text-property name="displayName">COD_VALOR</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["COD_VALOR"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">NUM_PROCES</property>
+                    <text-property name="displayName">NUM_PROCES</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["NUM_PROCES"]</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+            </list-property>
+            <column id="172">
+                <property name="textAlign">center</property>
+                <property name="width">1.3229166666666667in</property>
+            </column>
+            <column id="173">
+                <property name="textAlign">center</property>
+                <property name="width">1.0208333333333333in</property>
+            </column>
+            <column id="174">
+                <property name="textAlign">left</property>
+                <property name="width">1.3541666666666667in</property>
+            </column>
+            <column id="175">
+                <property name="textAlign">center</property>
+                <property name="width">1.3229166666666667in</property>
+            </column>
+            <column id="176">
+                <property name="textAlign">center</property>
+                <property name="width">5.427083333333333in</property>
+            </column>
+            <header>
+                <row id="154">
+                    <cell id="155">
+                        <label id="177">
+                            <text-property name="text">Documento:</text-property>
+                        </label>
+                    </cell>
+                    <cell id="156">
+                        <label id="179">
+                            <text-property name="text">Revisão:</text-property>
+                        </label>
+                    </cell>
+                    <cell id="157">
+                        <label id="181">
+                            <text-property name="text">Processo:</text-property>
+                        </label>
+                    </cell>
+                    <cell id="158">
+                        <label id="183">
+                            <text-property name="text">Campo:</text-property>
+                        </label>
+                    </cell>
+                    <cell id="159">
+                        <label id="185">
+                            <text-property name="text">Conteudo:</text-property>
+                        </label>
+                    </cell>
+                </row>
+            </header>
+            <detail>
+                <row id="160">
+                    <cell id="161">
+                        <data id="263">
+                            <property name="resultSetColumn">NR_DOCUMENTO</property>
+                        </data>
+                    </cell>
+                    <cell id="162">
+                        <data id="264">
+                            <property name="resultSetColumn">NR_VERSAO</property>
+                        </data>
+                    </cell>
+                    <cell id="163">
+                        <data id="267">
+                            <property name="resultSetColumn">NUM_PROCES</property>
+                        </data>
+                    </cell>
+                    <cell id="164">
+                        <data id="265">
+                            <property name="resultSetColumn">COD_CAMPO</property>
+                        </data>
+                    </cell>
+                    <cell id="165">
+                        <data id="266">
+                            <property name="resultSetColumn">COD_VALOR</property>
+                        </data>
+                    </cell>
+                </row>
+            </detail>
+            <footer>
+                <row id="166">
+                    <cell id="167"/>
+                    <cell id="168"/>
+                    <cell id="169"/>
+                    <cell id="170"/>
+                    <cell id="171"/>
+                </row>
+            </footer>
+        </table>
+    </body>
+    <list-property name="images">
+        <structure>
+            <property name="name">Logo PPC SANTANA (e-mail).jpg</property>
+            <property name="data">
+                /9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAoHBwgHBgoICAgLCgoLDhgQDg0NDh0VFhEYIx8lJCIfIiEm
+                KzcvJik0KSEiMEExNDk7Pj4+JS5ESUM8SDc9Pjv/2wBDAQoLCw4NDhwQEBw7KCIoOzs7Ozs7Ozs7Ozs7
+                Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozv/wAARCABnALkDASIAAhEBAxEB/8QA
+                HwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIh
+                MUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVW
+                V1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXG
+                x8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQF
+                BgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAV
+                YnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOE
+                hYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq
+                8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDW+H/iHWtb8X3SXGoyvaBJJvIfBAy2FA7gDP6UvxP8U3iX0ega
+                dM8fyhrgxHDMW+6mR7c++RWBqdnrvw/8TT3tjGywSM4hmKbo3QnO0+44/KrngXQtR8R+KP7f1JHaCKTz
+                mldcCWTsB7Dr+AFek4wUva6WsYXduUzPJ8UeALy0vpt8CzHPliXckgHVWHrivb7S5S8s4bqP7k0ayL9C
+                M1518YrnNrptosbsd7SFgpwOMAZ98n8q7zQ7Z7PQbC2k4eK2jRvqFGa56z54Rm9y4qzaL9FFFcpoFFFF
+                ABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAY9h4p0PV799Os71J7hA26PYwxg4PUYqxJrmk
+                wakulyX0CXjEBYC2GOenFeV/D+eG3+IN5JPKkSYnG52Cj7/vVnWbm3f4yWlws8TQiSHMgcbR8vrXW6C5
+                3HyuZqelz0PxD4k0rw7DC2qs4SckIFjL5I6/zrUt50ubeK4iJKSoHUkY4IyK8z+L13bXNnpgt7iKYrJJ
+                ny3DY4HpXoejf8gSw/69o/8A0EVlKCVOMurKTu2i7RRRWJQUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAU
+                UUUAFFFFABRRRQB5Jd/CTWbi7nmF9Y7ZJWcA7+AST6VF/wAKe1rGPt9hj0+f/Ctea+8TaHdSsTcpD5jb
+                RKu9MZ/StSw+ISnC6hZ49ZIDkfkf8a9RrEJXi00ebHF0W7TTi/M5P/hT2tAHF/YDP+//AIV6zYW7WmnW
+                1s5BaGJEJHQkACq1hr2l6kB9lvI2Y/wMdrfka0a4qtSpLSZ3Q5GrxdwooorA0Ciiquoahb6Zam5uiwjD
+                BflUsSScDgU0m3ZCbSV2WqKyo/EemSW1zOJXX7Ku+ZHjZXUeu0jNSWGvWGo3H2eF5Em27xHLE0bFfUZH
+                NU6c1rYhVabaSa1NGisk+JNPNwYYvPn2vsaSGBnRT6FgMVevb2DT7Y3FyxWMMqkgZ5JAH6mk4STSa3Gq
+                kGm09ixRVJdWsm1dtK83F2qeZsIPI9jTJdbsIYrqWSYqtrIIpPlOd5AwAO55HSjkl2D2kO5oUVmrrtp9
+                gkvZEuIIomCsJoWRskgDgjnqKtXV7BZeT57FfOlWJMDOWPSjkktLApxavcsUVXt72C6muIomJe2fy5AR
+                jBwD/I1HqGq2elrE15L5YmkEacE5J/p70crbtbUbnFLmb0LlFZupa9Z6S5F2twAF3F0gZlA9yBihNesW
+                spbyRpbeGEgM08TJnPTAIyfwp+zna9ifawva+ppUVmWfiCxvLlbYedBNIMxpcQtGZB/s5HNRz+J9Ltrm
+                WGV5l8h9kknkuUQ+7AYHWn7Od7WF7ana/MjXorOvdcsrGZIXMssrpvCQRNIQv9446Crn2hPRv++TUuMk
+                r2LU4ttJjLq9tLNC11cRRL/tsBXHazq/hKctixNzL/fgXy/14qmvgrV7+9llm8uBHkYhpG3NjPoK3bHw
+                Hplvhrp5Lph2J2r+Q/xrtjGjS1cm35HnSliK+igkvP8Ar9DgpFjubnbYW0wB+7Hu8xvzAr12xVl0+3Vw
+                QwiUMD1BwKW1srWyj2WtvHCvoigVPWWIxHtbJLY2wuFdC7bu2FFFFcp2hWF4u3/2NH5ZUP8Aaodpbpne
+                MZrdqOaCK4QJNGsighgGGRkcg1cJcslIipDng49zl9Z0y7j0vVtT1G4ikuHszCqQIVRVznuSSc1YOkap
+                dRi9urmBpoLSRLWO3QrhnXGSSc+ldDLDHPE0U0ayRuMMrDIIpwAUAAYA6CtPbytYx+rx5r9DG8NXtgdA
+                tI4ZY4zDGI5I2YBkccMCPXOaPF3/ACL8n/XaH/0YtXZtG0y4uRczWFvJMDnzGjBbP1qzNBFcRmOaNZEJ
+                B2sMjIORS54qoprvcfs5Ok6bttY5e8spbrxDq01rj7ZaJbzQH1IDZX6MMj8aj0tLTxBZ6pI07WyyXyyx
+                SZCtG4Vcde4PGK6xYIkmeZY1EkgAdwOWA6ZNQPpenyQyQvZQNHK++RDGMM3qferVbS3p+hm8O739fxv/
+                AJnMX19eXWgavZ3Ukd0+nvETcQrgSLkMcjsQBzitLXLu3u5NHit5kleS9jkUIwOVAJJ+lbNvZ2tpB5Ft
+                bxwxf3EUAflUdrpWnWMrTWtjBBI3Vo4wCaXtY9v6sP2M7Wb33+Tb/WxmaNcQxatrYkmjQm7GAzAfwLVG
+                /lbVdYvV/s64vbWCFrRWhK4Dty5+YjkfKPwNb02i6XczNPPp1tJKxyXeIEn8atQwQ26FIYkjUksQowCT
+                1NHtYp8yWo/Yya5W9LnKXV9JefD68W5BW6tk8idW6h1IHP1GD+NaHiQrFJpFzcf8ekN2rTE9FypCsfYH
+                FbDWNo6zK9tEwnIMoKD58evrUrxpJGY5EV0YYKsMgj6Uvaq90ur/ABD2Mmmm+iX3NmB4knguTpttbSJJ
+                dteRvEEIJUA5ZuO2M1j3cd8YtfkjnH2Jbwi5gWP94ybV3lW7ce3auutNK0+wdns7KCBm6tHGATUy20CC
+                ULCgExJkwo+ckY59aqNZQVkv6uKeHlN3k7enoc9q0cVhENc0y+iilgtVBikYFJ4hyoPcH0IpP+Exk/6A
+                13+VbT6NpkjxO9hbs0ACxkxg7AOgFXaXtIWSauP2VS7cZW/E8/8ACPjbVtb8W3Gl3a24gjEpBRCG+VsD
+                nNXNQ8a3tp4/g8OJaQNbyvGplJO8bhk+1ec6J4hHhjxZd6ibU3Pzyx7A+3q3XOD6Ut74tF543h8SfYig
+                iZG8jzMk7Rj72P6V1PDpybS0t+Jpz6HofxJ8S6p4ctrB9MmSJpncPujDZAAx1+tdbpsz3Ol2k8pBklhR
+                2IGMkqCa8V8aeNl8WwWsYsDa/ZmZsmXfuyB7D0r2bRv+QJYf9e0f/oIrmq0+SnG611Li7yZdooormLCi
+                iigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKAMA+DPCtxJI/wDZFnI5YlyBk7s85qK58H+D
+                rO3a4utKsYYkGWeT5QPxJrgvhiTeeOLu4nkYSeVLLt3EbmLAHI79TTviVq1xrfieHQLJi8cDLH5anh5m
+                9fpkD25rt9nP2nJzMy5la9jrtO0b4favI0Vha6ZcSAcoh5x9K66KJIYkiiUKiKFVR0AHQV4h4j8JX/gZ
+                rDUYr9ZZGfh41KmNxzj3Fe0aZd/2hpdreYx9ohSTHpkA1nWjZKSldFRfSxaooormLCiiigAooooAKKKK
+                ACiiigAooooAKKKKACiiigAooooAKKKKAPIfFPgjWdF1ibV9EkP2eWRnUxSiN4S3UckZHJ6Vf+Hvgi9i
+                1Ndd1hQuzLQIXDszH+MkZ9/xoorqdebp2+RnyrmLvxXsdS1C2sY7S18y3iZnkk3qMMcADBOfWu30q0+w
+                aTaWZ6wQJGfwAFFFZSk3TivUpLVst0UUVkUFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUU
+                UUAf/9k=
+</property>
+        </structure>
+    </list-property>
+</report>
