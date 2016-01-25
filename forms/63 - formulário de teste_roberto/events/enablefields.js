@@ -1,1 +1,0 @@
-function enableFields(form) {		var activity = getValue('WKNumState');if (activity == 3) {form.setEnabled('textbox0', false);form.setEnabled('data1', false);form.setEnabled('combo2', false);}}

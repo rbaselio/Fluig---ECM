@@ -28,9 +28,10 @@ function displayFields(form, customHTML) {
 		form.setValue('ramal', ramal);
 		form.setValue('data_sol', today);
 		form.setValue('chamado_num', getValue("WKNumProces"));
-		setEnabledConponent('btZoomColab', true);
 		setEnabledConponent('busca_tipo', true);
-
+		
+		if (validarGrupo(matricula, "TI")){setEnabledConponent('btZoomColab', true);}
+		else {setEnabledConponent('btZoomColab', false);}
 	}
 
 	if (numAtividade == 2) {
@@ -39,12 +40,10 @@ function displayFields(form, customHTML) {
 		form.setValue('chamado_num', getValue("WKNumProces"));
 		setEnabledConponent('bt_add_interacao', true);
 		hideTableColumn("tb_interacao", 1, true);
-
 	}
 
 	if (numAtividade == 3) {
 		form.setValue('chamado_num', getValue("WKNumProces"));
-
 	}
 
 	if (numAtividade == 4) {
@@ -52,28 +51,34 @@ function displayFields(form, customHTML) {
 		form.setValue('matricula_aceite', matricula);
 		form.setValue('user_aceite', colaborador);
 		form.setValue('dt_final', today);
-
 	}
 
 	function setEnabledConponent(componente, lEnable) {
 		customHTML.append("<script>");
-		customHTML.append("$('#" + componente + "').attr('disabled', "
-				+ !lEnable + ");");
+		customHTML.append("$('#" + componente + "').attr('disabled', " + !lEnable + ");");
 		customHTML.append("</script>");
 	}
 
 	function hideTableColumn(tabela, coluna, lEnable) {
 		customHTML.append("<script>");
 		if (lEnable == false) {
-			customHTML.append("$('table#" + tabela
-					+ " tbody tr').children('td:nth-child(" + coluna
-					+ ")').hide();");
+			customHTML.append("$('table#" + tabela + " tbody tr').children('td:nth-child(" + coluna + ")').hide();");
 		} else {
-			customHTML.append("$('table#" + tabela
-					+ " tbody tr').children('td:nth-child(" + coluna
-					+ ")').show();");
+			customHTML.append("$('table#" + tabela + " tbody tr').children('td:nth-child(" + coluna + ")').show();");
 		}
 		customHTML.append("</script>");
+	}
+	
+	function validarGrupo(user, grupo) {
+		var c1 = DatasetFactory.createConstraint("colleagueGroupPK.colleagueId", user, user, ConstraintType.MUST);                   
+		var constraints = new Array(c1);                   
+		var datasetPrincipal = DatasetFactory.getDataset("colleagueGroup", null, constraints, null);
+		for (var j = 0; j < datasetPrincipal.rowsCount; j++) {
+			 if (datasetPrincipal.getValue(j, "colleagueGroupPK.groupId") == grupo){
+				return true;
+			 }
+		}
+		return false;
 	}
 }
 

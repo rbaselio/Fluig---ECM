@@ -21,3 +21,10 @@ function displayFields(form,customHTML){
 		throw "Não é posivel gerar novas fichas desse formulário."
 	}
 }
+ 
+
+
+	 
+               
+
+
