@@ -1,0 +1,356 @@
+<html>
+<head>
+
+<link type="text/css" rel="stylesheet" href="/portal/resources/style-guide/css/fluig-style-guide.min.css" />
+<script type="text/javascript" src="/portal/resources/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+<script type="text/javascript" src="/portal/resources/js/mustache/mustache.min.js"></script>
+
+<script type="text/javascript" src="solicitacaoDeVeiculo.js" charset="utf-8"></script>
+
+<link rel="stylesheet" href="http://portal.jaguar.ind.br/suplements/ecm/css/font-awesome.min.css">
+<link rel="stylesheet" href="http://portal.jaguar.ind.br/suplements/ecm/css/flaty.css">
+<link rel="stylesheet" href="http://portal.jaguar.ind.br/suplements/ecm/css/flaty-responsive.css">
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script>
+	window.jQuery || document.write('<script src="http://portal.jaguar.ind.br/suplements/bootstrap-3.1.1/js/jquery.min.js"><\/script>')
+</script>
+<script src="http://portal.jaguar.ind.br/suplements/bootstrap-3.1.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="http://portal.jaguar.ind.br/celular/js/jquery.validate.min.js"></script>
+<script src="http://portal.jaguar.ind.br/suplements/bootstrap-3.1.1/js/jquery.slimscroll.min.js"></script>
+<script src="http://portal.jaguar.ind.br/suplements/bootstrap-3.1.1/js/jquery.cookie.js"></script>
+<script src="http://portal.jaguar.ind.br/suplements/bootstrap-3.1.1/js/jquery.flot.js"></script>
+<script src="http://portal.jaguar.ind.br/suplements/bootstrap-3.1.1/js/flaty.js"></script>
+
+</head>
+<body>
+	<div class="fluig-style-guide">
+
+
+		<form name="form" id="validation-form" method="POST" class="form-horizontal form-bordered form-row-stripped">
+			<div class="">
+				<div class="col-xs-12">
+					<div class="box-content">
+						<div class="row">
+							<div class="col-sm-0 col-xs-12">
+
+								<div class="box box-black">
+									<div class="box-title">
+										<h3>
+											<i class="fa  fa-users glyphicon glyphicon-unchecked"></i>Reserva do Ve&iacute;culo
+										</h3>
+										<div class="box-tool">
+											<a data-action="collapse" href="#"> Minimizar <i class="glyphicon glyphicon-align-right"></i></a>
+											<div class="col-xs-1"></div>
+										</div>
+									</div>
+
+									<div class="box-content">
+										<div class="row">
+											<div class="col-xs-12" id="div_reserva" name="div_reserva">
+												<div class="form-group">
+													<label for="labelnome" class="col-sm-2 col-xs-2 control-label">Solicitante:</label>
+													<div class="col-sm-5 col-xs-5 controls">
+														<input type="text" name="solic" id="solic" class="form-control" readonly>
+													</div>
+													<label for="labelmat" class="col-sm-2 col-xs-2 control-label">Matr&iacute;cula:</label>
+													<div class="col-sm-3 col-xs-3 controls">
+														<input type="text" name="puni_matricula" id="puni_matricula" class="form-control" readonly>
+													</div>
+												</div>
+
+												<div class="form-group">
+													<label for="labeldata" class="col-sm-2 col-xs-2 control-label">Unidade Funcional:</label>
+													<div class="col-sm-4 col-xs-4 controls">
+														<select id="puni_dpto" name="puni_dpto" data-rule-required="true" onChange="copiacampo();" class="form-control">
+															<option value="0">Selecione</option>
+															<option value="1">ADMINISTRACAO DE PESSOAL</option>
+															<option value="2">ADMINISTRACAO INDUSTRIAL</option>
+															<option value="3">ALMOXARIFADO FABRICA</option>
+															<option value="4">ANALISE DE CREDITO</option>
+															<option value="5">APOIO GERAL FABRICACAO</option>
+															<option value="6">AUTOMACAO</option>
+															<option value="7">BERLIM APONT MOV PRODUCAO</option>
+															<option value="8">CD NASSIF ARM MOV SEMI ACABADO</option>
+															<option value="9">CD NASSIF EXPEDICAO</option>
+															<option value="10">CD NASSIF RECEBIMENTO</option>
+															<option value="11">CD ROSEIRA MATERIA PRIMA REVEN</option>
+															<option value="12">CD SP340 EXPEDICAO</option>
+															<option value="13">CD SP340 RECEBIMENTO</option>
+															<option value="14">COMERCIAL</option>
+															<option value="12">COMPRAS</option>
+															<option value="16">CONSERVACAO PREDIAL</option>
+															<option value="17">CONTROLADORIA</option>
+															<option value="18">CONTROLE DA QUALIDADE</option>
+															<option value="19">DESENVOLV PRODUTOS INDUSTRIAIS</option>
+															<option value="20">DIRECAO OPER E ADMINISTRATIVO</option>
+															<option value="21">ENGENHARIA DE PROCESSOS</option>
+															<option value="22">ESCRIT CONTABIL SOCIETARIA</option>
+															<option value="23">ESCRIT FISCAL PLANJ TRIBUTARIO</option>
+															<option value="24">FABRICA BERLIM EXPEDICAO</option>
+															<option value="25">FERRAMENTARIA FABRICACAO MOLDE</option>
+															<option value="26">FINANCEIRO</option>
+															<option value="27">INJECAO CONVENCIONAL</option>
+															<option value="28">INJECAO NOVA SALA LIMPA</option>
+															<option value="29">INJECAO SALA LIMPA</option>
+															<option value="30">INJECAO TAMPAS</option>
+															<option value="31">LIMPEZA GERAL</option>
+															<option value="32">LOJA DE FABRICA</option>
+															<option value="33">MANUTENCAO FERRAMENTAS</option>
+															<option value="34">MANUTENCAO INDUSTRIAL</option>
+															<option value="35">MARKETING</option>
+															<option value="36">MENOR APRENDIZ - SENAI</option>
+															<option value="37">MOINHOS</option>
+															<option value="38">MONTAGEM DE TAMPA</option>
+															<option value="39">MONTAGEM E EMBALAGEM</option>
+															<option value="40">NEGOCIOS INTERNACIONAIS</option>
+															<option value="41">PLANEJ CONTROLE DISTRIB TRANSP</option>
+															<option value="42">PLANEJ PROGR CONTROLE PRODUCAO</option>
+															<option value="43">PLANEJAMENTO E CONTROLE</option>
+															<option value="44">RECURSOS HUMANOS</option>
+															<option value="45">SEGURANCA PATRIMONIAL</option>
+															<option value="46">SERIGRAFIA</option>
+															<option value="47">SERVICOS ADMINISTRATIVOS</option>
+															<option value="48">SESMT</option>
+															<option value="49">SISTEMA DE GESTAO INTEGRADA</option>
+															<option value="50">TECNOLOGIA DA INFORMACAO</option>
+															<option value="51">TRANSPORTE COM FRETE PROPRIO</option>
+															<option value="52">TRANSPORTE INTERNO</option>
+															<option value="53">VENDAS INDUSTRIAL</option>
+															<option value="54">VENDAS MATERIA-PRIMA</option>
+															<option value="55">VENDAS PROJETOS DEDICADOS</option>
+															<option value="56">VENDAS UD</option>
+														</select>
+													</div>
+													<label for="labelmat" class="col-sm-2 col-xs-2 control-label">Ve&iacute;culo:</label>
+													<div class="col-sm-4 col-xs-4 controls">
+														<select id="res_veiculo" name="res_veiculo" class="form-control">
+															<option value="S">Selecione</option>c
+															<option value="C">Caminh&atilde;o</option>
+															<option value="CA">Carro</option>
+															<option value="M">Moto</option>
+														</select>
+													</div>
+												</div>
+
+												<div class="form-group">
+													<label for="labelnome" class="col-sm-2 col-xs-2 control-label">Data prevista:</label>
+													<div class="col-sm-4 col-xs-4 controls">
+														<input type="date" name="data_1" id="data_1" class="form-control">
+													</div>
+													<label for="labelmat" class="col-sm-2 col-xs-2 control-label">Hor&aacute;rio previsto:</label>
+													<div class="col-sm-4 col-xs-4 controls">
+														<input type="time" name="h_ini1" id="h_ini1" class="form-control">
+													</div>
+												</div>
+
+												<div class="form-group">
+													<label for="labelmat" class="col-sm-2 col-xs-2 control-label">Destino:</label>
+													<div class="col-sm-10 col-xs-10 controls">
+														<textarea name="res_destino" id="res_destino" rows="5" cols="70" class="form-control"></textarea>
+													</div>
+												</div>
+
+												<div class="form-group">
+													<label for="labelmat" class="col-sm-2 col-xs-2 control-label">Necessita de motorista</label>
+													<div class="col-sm-10 col-xs-10 controls">
+														<label><input type="radio" name="radio" id="rd_sim" style="cursor: pointer" value="sim" /> Sim </label><br> <label><input type="radio" name="radio" id="rd_nao" style="cursor: pointer" value="nao" /> N&atilde;o - Portanto, declaro para devidos fins, que estou apto e habilitado devidamente a conduzir o ve&iacute;culo da empresa.</label>
+													</div>
+												</div>
+
+												<div class="form-group">
+													<label for="labelmat" class="col-sm-2 col-xs-2 control-label">Observa&ccedil;&otilde;es:</label>
+													<div class="col-sm-10 col-xs-10 controls">
+														<textarea name="res_obs1" id="res_obs1" rows="5" cols="70" class="form-control"></textarea>
+													</div>
+												</div>
+
+
+
+
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="box-content" id="div_dadosvei" name="div_dadosvei">
+									<div class="row">
+										<div class="col-sm-0 col-xs-12">
+											<div class="box box-black">
+												<div class="box-title">
+													<h3>
+														<i class="fa  fa-users glyphicon glyphicon-unchecked"></i>Aprova&ccedil;&atilde;o de reserva
+													</h3>
+													<div class="box-tool">
+														<a data-action="collapse" href="#"> Minimizar <i class="glyphicon glyphicon-align-right"></i></a>
+														<div class="col-xs-1"></div>
+													</div>
+												</div>
+
+												<div class="box-content">
+													<div class="row">
+														<div class="col-xs-12">
+
+															<div class="form-group">
+																<label for="labelmat" class="col-sm-2 col-xs-2 control-label">Placa</label>
+																<div class="col-sm-4 col-xs-4 controls">
+																	<div class="input-group">
+																		<input class="form-control input-sm" type="text" name="res_placa" id="res_placa" readonly="readonly">
+																		<div class="input-group-addon" style="cursor: pointer;" onclick="javascript:zoomVeiculo()">
+																			<span class="fluigicon fluigicon-zoom-in fluigicon-sm"></span>
+																		</div>
+																	</div>
+
+
+																</div>
+																<label for="labelmat" class="col-sm-2 col-xs-2 control-label">ve&iacute;culo:</label>
+																<div class="col-sm-4 col-xs-4 controls">
+																	<input type="text" name="desc_veiculo" id="desc_veiculo" readonly="readonly" class="form-control" />
+																</div>
+															</div>
+
+															<div class="form-group">
+																<label for="labelmat" class="col-sm-2 col-xs-2 control-label">Usu&aacute;rio: </label>
+																<div class="col-sm-4 col-xs-4 controls">
+																	<input type="text" name="desc_usuario" id="desc_usuario" readonly="readonly" class="form-control" />
+																</div>
+																<label for="labelmat" class="col-sm-2 col-xs-2 control-label">Motorista: </label>
+																<div class="col-sm-4 col-xs-4 controls">
+																	<input type="text" name="res_motorista" id="res_motorista" class="form-control" />
+																</div>
+															</div>
+
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="box-content" id="div_saida" name="div_saida">
+									<div class="row">
+										<div class="col-sm-0 col-xs-12">
+											<div class="box box-black">
+												<div class="box-title">
+													<h3>
+														<i class="fa  fa-users glyphicon glyphicon-unchecked"></i>Sa&iacute;da do ve&iacute;culo
+													</h3>
+													<div class="box-tool">
+														<a data-action="collapse" href="#"> Minimizar <i class="glyphicon glyphicon-align-right"></i></a>
+														<div class="col-xs-1"></div>
+													</div>
+												</div>
+
+												<div class="box-content">
+													<div class="row">
+														<div class="col-xs-12">
+															<div class="form-group">
+
+																<label for="labelmat" class="col-sm-2 col-xs-2 control-label">Respons&aacute;vel pela Libera&ccedil;&atilde;o:</label>
+																<div class="col-sm-5 col-xs-5 controls">
+																	<input type="text" name="res_responsa" id="res_responsa" class="form-control" />
+																</div>
+																<label for="labelmat" class="col-sm-2 col-xs-2 control-label">Data sa&iacute;da:</label>
+																<div class="col-sm-3 col-xs-3 controls">
+																	<input type="date" name="data_2" id="data_2" class="form-control" />
+																</div>
+															</div>
+
+															<div class="form-group">
+																<label for="labelmat" class="col-sm-2 col-xs-2 control-label">KM sa&iacute;da:</label>
+																<div class="col-sm-4 col-xs-4 controls">
+																	<input type="text" name="km_saida" id="km_saida" class="form-control" />
+																</div>
+																<label for="labelmat" class="col-sm-2 col-xs-2 control-label"> Hora sa&iacute;da:</label>
+																<div class="col-sm-4 col-xs-4 controls">
+																	<input type="time" name="hora_saida" id="hora_saida" class="form-control" />
+																</div>
+															</div>
+
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="box-content" id="div_retorno" name="div_retorno">
+									<div class="row">
+										<div class="col-sm-0 col-xs-12">
+											<div class="box box-black">
+												<div class="box-title">
+													<h3>
+														<i class="fa  fa-users glyphicon glyphicon-unchecked"></i>Retorno do ve&iacute;culo
+													</h3>
+													<div class="box-tool">
+														<a data-action="collapse" href="#"> Minimizar <i class="glyphicon glyphicon-align-right"></i></a>
+														<div class="col-xs-1"></div>
+													</div>
+												</div>
+
+												<div class="box-content">
+													<div class="row">
+														<div class="col-xs-12">
+															<div class="form-group">
+																<label for="labelmat" class="col-sm-2 col-xs-2 control-label">Data retorno:</label>
+																<div class="col-sm-4 col-xs-4 controls">
+																	<input type="date" name="data_3" id="data_3" class="form-control" />
+																</div>
+																<label for="labelmat" class="col-sm-2 col-xs-2 control-label"> Hora retorno:</label>
+																<div class="col-sm-4 col-xs-4 controls">
+																	<input type="time" name="hora_retorno" id="hora_retorno" class="form-control" />
+																</div>
+															</div>
+
+															<div class="form-group">
+																<label for="labelmat" class="col-sm-2 col-xs-2 control-label">KM retorno:</label>
+																<div class="col-sm-4 col-xs-4 controls">
+																	<input type="text" name="km_retorno" id="km_retorno" class="form-control" onBlur="calculakm(this.values)" />
+																</div>
+																<label for="labelmat" class="col-sm-2 col-xs-2 control-label">KM percurso:</label>
+																<div class="col-sm-4 col-xs-4 controls">
+																	<input type="text" name="km_rodado" id="km_rodado" class="form-control" />
+																</div>
+															</div>
+
+
+															<div class="form-group">
+																<label for="labelmat" class="col-sm-2 col-xs-2 control-label">Observa&ccedil;&otilde;es</label>
+																<div class="col-sm-10 col-xs-10 controls">
+																	<textarea name="res_obs" id="res_obs" rows="5" cols="70" class="form-control"></textarea>
+																</div>
+															</div>
+
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+
+
+
+
+
+
+
+
+
+
+
+
+	</div>
+</body>
+</html>

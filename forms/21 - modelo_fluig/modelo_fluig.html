@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+        <link type="text/css" rel="stylesheet" href="/portal/resources/style-guide/css/fluig-style-guide.min.css"/>
+        <script type="text/javascript" src="/portal/resources/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+        <script type="text/javascript" src="modelo_fluig.js" charset="utf-8"></script>
+        <link type="text/css" rel="stylesheet" href="modelo_fluig.css"/>
+        <script src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+        <script src="jMask.js"></script>
+        <link href="/portal/resources/merged/wcm_global.css" type="text/css" rel="stylesheet">
+        <script src="../vcXMLRPC.js"></script>
+
+    </head>
+    <body>
+        <div class="fluig-style-guide">
+            <form class="form-horizontal" name="form" role="form"> 
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><strong>NOME DO FORMULARIO</strong></h3>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">DADOS DO SOLICITANTE</h3>
+                    </div>
+                    <div class="panel-body obgSolic">
+                        <div class="col-md-3">
+                            <label class="control-label">Data da Solicitação</label>
+                            <input type="text" id="dt_solic" name="dt_solic" class="form-control" readonly="readonly">
+                            <input type="hidden" name="nm_user" id="nm_user">
+                        </div>
+                        <div class="col-md-3">
+                            <label class="control-label">Hora da Solicitação</label>
+                            <input value="" type="text" id="nm_hora" name="nm_hora" class="form-control" readonly="readonly">
+                        </div>
+                        <div class="col-md-3">
+                            <label class="control-label">Solicitante</label>
+                            <input type="hidden" id="nm_solic" name="nm_solic">
+                            <input type="text" id="nm_nome" name="nm_nome" class="form-control" readonly="readonly">
+                        </div>
+                        <div class="col-md-3">  
+                            <label class="control-label">Tipo</label>
+                            <select class="form-control" id="cb_tipo" name="cb_tipo">
+                                <option value="TESTE">TESTE</option>
+                                <option value="TESTE2">TESTE2</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="panel panel-default obgGest">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">DADOS GESTOR</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="col-md-3">  
+                            <label class="control-label">Status Aprovação</label>
+                            <select class="form-control" id="cb_gest_aprov" name="cb_gest_aprov">
+                                <option value="sel">Selecione</option>
+                                <option value="AP">Aprovado</option>
+                                <option value="RP">Reprovado</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                
+            </form>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,268 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta content="pt-br" http-equiv="Content-Language" />
+		<meta content="text/html; charset=ISO-8859-1" http-equiv="Content-Type" />
+		<title>adhoc_activity</title>
+		<style type="text/css">
+					
+		
+					body {
+						font: normal 10px/1.1em Arial,Sans-Serif;
+					    background-color: #dee1e4; /* Background color */
+					    color: #222;            /* Foreground color used for text */
+					    margin: 0;              /* Amount of negative space around the outside of the body */
+					    padding: 0;             /* Amount of negative space around the inside of the body */	
+						min-width:300px;
+					}
+		
+					.tagAdHoc {
+						background-color: #ed265b;
+						color: #fff;
+						display: inline-block;
+						padding: 10px;
+						-moz-border-radius: 4px;
+						-webkit-border-radius: 4px;
+						border-radius: 4px;
+					}
+		
+		
+					h1 {
+					    margin: 0;
+					    padding: 0;
+					    background-color: #ccc;
+					    border-bottom: 0px solid #666;
+					    color: #222;
+					    display: block;
+					    font-size: 20px;
+					    font-weight: bold;
+					    padding: 10px 0;
+					    text-align: center;
+					    text-decoration: none;    
+					    text-shadow: 0px 1px 0px #fff;
+					    background-image: -webkit-gradient(linear, left top, left bottom, from(#ccc), to(#999));    
+					}
+		
+					ul {
+					    list-style: none;
+					    margin: 10px;
+					    padding: 0;
+					}
+		
+					ul li {
+					    background-color: #FFFFFF;
+					    border: 0px solid #999999;
+					    color: #222222;
+					    display: block;
+					    font-size: 17px;
+					    font-weight: bold;
+					    margin-bottom: -1px;
+					    padding: 12px 10px;
+					    text-decoration: none;
+					}
+		
+					ul li:first-child {
+					    -webkit-border-top-left-radius: 8px;
+					    -webkit-border-top-right-radius: 8px;
+					}
+					ul li:last-child {
+					    -webkit-border-bottom-left-radius: 8px;
+					    -webkit-border-bottom-right-radius: 8px;
+					    position:relative;
+					}
+					.mylabel {
+						width: 100%;
+						overflow: hidden;
+						text-overflow: ellipsis;
+						-o-text-overflow: ellipsis;
+						white-space: nowrap;
+						display:inline-block;
+						position:relative;
+						float:left;
+						line-height:32px;
+					}
+					.input-selection {
+						width: 100%;
+						float: left;
+						margin-top: 5px;
+					}
+					.input-textarea {
+						width: 100%;
+						height: 50px;
+					}
+					
+					.input-textareaAdHoc{
+					    width: 100%;
+						height: 50px;
+						border: 0px !important;
+						background: transparent !important;
+					}
+					 
+					ul li span {
+						width: 100%; 
+						overflow: hidden;
+						text-overflow: ellipsis;
+						-o-text-overflow: ellipsis;
+						white-space: nowrap;
+						display:inline-block;
+						position:relative;
+						float:left;
+						line-height:32px;
+						background: #e6e6e6;
+						border: 1px solid #cccccc;
+						padding-right: 3px;
+						padding-left: 3px;
+					}
+		
+					/* Form Structure */
+					.formee {margin:0;padding:0;}
+					.formee fieldset {
+						border: 1px solid #d4d4d4;
+						position: relative;
+						height:100%;
+						padding: 1.2em 0;
+						margin: 0 0 4em;
+					}
+		
+					.formee .formee-txt, .formee input[type="text"], .formee input[type="password"], .formee input[type="file"], .formee textarea, .formee select{
+						vertical-align: middle;
+						line-height: 1.1em;
+						width: 100%;
+						padding:10px;
+						border-style: solid;
+						border-width: 1px;
+						box-sizing: border-box;
+						-moz-box-sizing: border-box;
+						-ms-box-sizing: border-box;
+						-webkit-box-sizing: border-box;
+					/*ie7*/
+					*width: 99%;
+					}
+					.formee textarea {height: 10em; border: 0px !important; background: transparent !important;}
+					.formee select {padding:9px;height:2.7em;}
+				 	.formee input{border: 0px !important; background: transparent !important;}
+					.formee-list .formee-lbl, .formee-list label {
+						display: inline;
+						height: auto;
+						margin: 0.5em 0 0.8em 2px;
+					}
+		
+					.formee fieldset {
+						background:#fff;
+						/*corner*/
+						-moz-border-radius: 4px;
+						-webkit-border-radius: 4px;
+						border-radius: 4px;
+					}
+		
+					/* Form legend and titles */
+		
+					.formee {font: normal 10px/1.1em Arial,Sans-Serif;}
+					.formee legend{
+						font-size:2em;
+						line-height:1.2em;
+						letter-spacing: -.035em;
+					}
+		
+					.formee .formee-txt, .formee input[type="text"], .formee input[type="password"], .formee input[type="file"], .formee textarea, .formee select {
+						border-color:#c6c6c6 #dadada #eaeaea;
+						background: #fafafa;
+						color:#999;
+						font-size:1.4em;
+						font-family:inherit;
+						/*corner*/
+						-moz-border-radius: 4px;
+						-webkit-border-radius: 4px;
+						border-radius: 4px;
+					}
+					.formee select {
+						border-color:#c6c6c6;
+						background: #fff;
+						color:#999;
+					}
+					.formee .formee-txt:hover, .formee input[type="text"]:hover, .formee input[type="password"]:hover, .formee input[type="file"]:hover, .formee textarea:hover, .formee select:hover {
+						color:#666;
+						background: #fff none;
+						border-color:#c6c6c6;
+					}
+					form .formee-txt:focus, .formee input[type="text"]:focus, .formee input[type="password"]:focus, .formee input[type="file"]:focus, .formee textarea:focus, .formee select:focus  {
+						color:#333;
+						background: #fff none;
+						border-color:#659ec9 #70aedd #a8cfec;
+						outline: 0;
+					}
+	
+		</style>
+		<script>
+			var resize = function() {
+				var field = document.getElementById("activity");
+				field.style.height = "5px";
+				field.style.height = (field.scrollHeight + 2) + "px";
+			};
+		</script>
+	</head>
+	
+	<body onload="resize()">
+		<form  class="formee" method="post" action="">
+			<ul>
+				<li>
+				    <div class='tagAdHoc'>i18n.translate("adhoc.form.process")</div>				
+					<div style='clear:both; line-height: 1px'>&nbsp;</div>
+				</li>
+				<li>
+				    <textarea id='activity' name='activity' type='text' readonly="readonly"></textarea>
+				    <div style='clear:both; line-height: 1px'>&nbsp;</div>
+				</li>
+				<li>
+				    <div class='mylabel'>i18n.translate("adhoc.form.request")</div>
+				    <input name='request' type='text' readonly="readonly"/>
+				    <div style='clear:both; line-height: 1px'>&nbsp;</div>
+				</li>
+				<li>
+				    <div class='mylabel'>i18n.translate("adhoc.formMobile.requestDescription")</div>
+				    <input name='requestDescription' type='text' readonly="readonly"/>
+				    <div style='clear:both; line-height: 1px'>&nbsp;</div>
+				</li>
+				<li>
+				    <div class='mylabel'>i18n.translate("adhoc.form.adhocname")</div>
+				    <input name='adHocProcess' type='text' readonly="readonly"/>
+				    <div style='clear:both; line-height: 1px'>&nbsp;</div>
+				</li>
+				<li>
+				    <div class='mylabel'>i18n.translate("adhoc.formMobile.adhocdescription")</div>
+				    <textarea name='adHocDescription' type='text' class='input-textareaAdHoc' readonly="readonly"></textarea>
+				    <div style='clear:both; line-height: 1px'>&nbsp;</div>
+				</li>
+				<li>
+				    <div class='mylabel'>i18n.translate("adhoc.form.requestor")</div>
+				    <input name='requester' type='text' readonly="readonly"/>
+				    <div style='clear:both; line-height: 1px'>&nbsp;</div>
+				</li>
+				<li>
+				    <div class='mylabel'>i18n.translate("adhoc.form.date")</div>
+				    <input name='opening' type='text' readonly="readonly"/>
+				    <div style='clear:both; line-height: 1px'>&nbsp;</div>
+				</li>
+				<li>
+				     <div class='mylabel'>i18n.translate("adhoc.form.deadline")</div>
+				     <input name='deadline' type='text' readonly="readonly"/>
+				     <div style='clear:both; line-height: 1px'>&nbsp;</div>
+				</li>
+				<li>
+				     <div class='mylabel'>i18n.translate("adhoc.form.status")</div>
+				     <select name='taskStatus' class='input-selection'>
+				        <option value='1'>i18n.translate("adhoc.form.completedTask")</option>
+				        <option value='2'>i18n.translate("adhoc.form.declinedTask")</option>
+				     </select>
+				     <div style='clear:both; line-height: 1px'>&nbsp;</div>
+				</li>
+				<li>
+				     <div class='mylabel'>i18n.translate("adhoc.form.observation")</div>
+				     <textarea name='observation' type='text' placeholder='i18n.translate("adhoc.form.observation")' class='input-textarea'></textarea>
+				     <div style='clear:both; line-height: 1px'>&nbsp;</div>
+				</li>
+			</ul>
+		</form>
+	</body>
+</html>

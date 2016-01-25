@@ -1,0 +1,84 @@
+<html>
+<head>
+<script>
+	var resize = function() {
+		var field = $("#activity");
+		field.css("height", "5px");
+		field.css("height", (field.prop('scrollHeight') + 2) + "px");
+	};
+</script>
+</head>
+<body class="background" onload="resize()">
+	<form class="form" name="formAdhoc" id="formAdHoc">
+	   <div class="container" style="display:none" >
+	      <div >	  
+			<div class="canvas">
+				<img src="FLUIGADHOCPROCESS1.png"/>
+				<p>i18n.translate("adhoc.form.process")</p>			
+			</div>
+	
+	        <div class="adHocTitle grid-12-12 clear">
+				<textarea style="font-size: 22px; height: 5px" name="activity" id="activity" readonly="readonly">
+				</textarea>
+				
+				<h3 class="adHocSubtitle">i18n.translate("adhoc.form.additionalInformation")</h3>
+			</div>
+	
+			<div class="grid-6-12 clear NoBorder">
+			     <label for="request">i18n.translate("adhoc.form.request")</label>
+				 <input class="number" name="request" id="request" type="text" readonly="readonly">
+				 <input class="request" name="requestDescription" id="requestDescription" type="text" readonly="readonly">
+	        </div>
+	
+			<div class="grid-3-12 NoBorder">
+				<label>i18n.translate("adhoc.form.date")</label>
+				<input name="opening" id="opening" type="text" readonly="readonly">
+			</div> 
+	
+	        <div class="grid-3-12 NoBorder">
+				<label>i18n.translate("adhoc.form.deadline")</label>
+				<input class="fields" name="deadline" id="deadline" type="text" readonly="readonly">
+			</div>
+	     
+		    <div class="grid-6-12 clear NoBorder">
+		   		<label>i18n.translate("adhoc.form.adhocname")</label>
+			    <input name="adHocProcess" id="adHocProcess" type="text" readonly="readonly">
+	    	</div>
+	
+	        <div class="grid-6-12">
+				<label>i18n.translate("adhoc.form.status")</label>
+				<select name="taskStatus" id="taskStatus">
+	                <option value="1">i18n.translate("adhoc.form.completedTask")</option>
+	                <option value="2">i18n.translate("adhoc.form.declinedTask")</option>
+	            </select> 
+			</div>
+	
+			 <div class="grid-6-12 clear NoBorder">
+				<label>i18n.translate("adhoc.form.description")</label>
+				<textarea class="description"  name="adHocDescription" id="adHocDescription"
+					type="textarea" rows="5" readonly></textarea>
+			</div>
+	
+			<div class="grid-6-12">
+				<label for="observation">i18n.translate("adhoc.form.observation")</label>
+				<textarea  name="observation" id="observation" rows="7"></textarea>
+			</div> 
+	
+		    <div class="grid-6-12 clear NoBorder">
+				<label>i18n.translate("adhoc.form.requestor")</label>
+				<input name="requester" id="requester" type="text" readonly="readonly">
+			</div>
+		 </div>
+	   </div>  		
+	</form>
+
+	<script src="/portal/resources/js/jquery/jquery.js"></script>
+	<script src="FLUIGADHOCPROCESS_formee.js"></script>
+	<script src="FLUIGADHOCPROCESS.js"></script>
+	
+	<link type="text/css" rel="stylesheet" href="/portal/resources/merged/wcm_global.css">
+	<link href="FLUIGADHOCPROCESS.css" type="text/css" rel="stylesheet" />
+	<link href="FLUIGADHOCPROCESS_form-structure.css" type="text/css" rel="stylesheet" />
+	<link href="FLUIGADHOCPROCESS_form-style.css" type="text/css" rel="stylesheet" />
+</body>
+</html>

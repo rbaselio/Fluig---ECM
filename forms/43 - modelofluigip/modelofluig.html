@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <link href="/portal/resources/style-guide/css/fluig-style-guide.min.css" rel="stylesheet">
+        <link href="jquery-ui.min.css" rel="stylesheet">
+        <link href="totvsip.css" rel="stylesheet">
+        <script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+        <script src="jMask.js"></script>
+        <script src="modelo.js"></script>
+        <script type="text/javascript" src="jquery-ui.min.js" charset="utf-8"></script>
+        <script type="text/javascript" src="/portal/resources/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+    </head>
+    <body>
+        <div class="fluig-style-guide">
+            <div class="panel panel-default">
+                <div class="panel-div-title panel-heading" style="">
+                    <div class="painel-div-main col-md-12">
+                        <div class="panel-title-alt fLeft">
+                            <strong>AJUSTE DE PONTO</strong>
+                        </div>
+                        <div class="fRight">
+                            <img width="100%" height="100%" src="imagem-final.png">
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div>
+                    <ul id="tabs" class="nav nav-tabs navbar-totvsip" data-tabs="tabs">
+                        <li class="liFirst">&nbsp;</li>
+                        <li class="active" ><a href="#tab1" data-toggle="tab">Dados Basicos</a></li>
+                        <li><a href="#tab2" data-toggle="tab">Informações da Ficha</a></li>
+                        <li><a href="#tab3" data-toggle="tab">Complemento</a></li>
+                    </ul>  
+                </div> 
+                <div class="panel-body">
+                    <form class="form-horizontal">
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="tab1">
+                                <fieldset>
+                                    <legend>Dados Básicos</legend>
+                                    <div class="row">
+                                        <div class="col-md-12">  
+                                            <label class="control-label">Campo 1<span class="span-obrig">*</span>:</label>
+                                            <input class="form-control input-sm" name="campo1" type="text">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6 col-xs-6">  
+                                            <label class="control-label">Campo 2:</label>
+                                            <input class="form-control input-sm" type="text" name="campo2" id="campo2">
+                                        </div> 
+                                        <div class="col-md-6">
+                                            <label class="control-label">Campo 3:</label>
+                                            <div class="input-group">
+                                                <input class="form-control input-sm" type="text" name="campo3">
+                                                <div class="input-group-addon" style="cursor:pointer;"><span class="fluigicon fluigicon-zoom-in fluigicon-sm" onclick="javascript:zoomCustomer()"></span></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">  
+                                            <label class="control-label">Campo 4<span class="span-obrig">*</span>:</label>
+                                            <input class="form-control input-sm" name="campo4" type="text">
+                                        </div>
+                                        <div class="col-md-6">  
+                                            <label class="control-label">Campo 5:</label>
+                                            <textarea class="form-control" name="campo5"></textarea>
+                                        </div> 
+                                    </div>
+                                </fieldset>
+                            </div>
+                            <!--<br><br>-->
+                            <div class="tab-pane" id="tab2">
+                                <fieldset>
+                                    <legend>Informações da Ficha</legend>
+                                    <div class="row">
+                                        <div class="col-md-6">  
+                                            <label class="control-label">Campo 6:</label>
+                                            <select class="form-control input-sm" name="campo6">
+                                                <option value="01">TESTE01</option>
+                                                <option value="02">TESTE02</option>
+                                                <option value="03">TESTE03</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6">  
+                                            <label class="control-label">Campo 7:</label>
+                                            <input class="form-control input-sm" type="text" name="campo7">
+                                        </div> 
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">  
+                                            <label class="control-label">Campo 8:</label>
+                                            <select class="form-control input-sm" name="campo8">
+                                                <option value="01">TESTE01</option>
+                                                <option value="02">TESTE02</option>
+                                                <option value="03">TESTE03</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6">  
+                                            <label class="control-label">Campo 9:</label>
+                                            <input class="form-control input-sm" type="text" name="campo9">
+                                        </div> 
+                                    </div>
+                                </fieldset>
+                            </div>
+                            <!--<br><br>-->
+                            <div class="tab-pane" id="tab3">
+                                <fieldset>
+                                    <legend>Complemento</legend>
+                                    <div class="row">
+                                        <div class="col-md-12" style="overflow:auto;">  
+                                            <table class="table table-bordered" tablename="complemento" width="150%">
+                                                <colgroup>
+                                                    <col style="width: 3%">
+                                                    <col style="width: 20%">
+                                                    <col style="width: 25%">
+                                                    <col style="width: 12%">
+                                                    <col style="width: 20%">
+                                                    <col style="width: 20%">
+                                                    <col style="width: 20%">
+                                                    <col style="width: 20%">
+                                                </colgroup>
+                                                <thead>
+                                                    <tr>
+                                                        <td><label class="control-label">Grupo</label></td>
+                                                        <td><label class="control-label">Cliente/Loja</label></td>
+                                                        <td><label class="control-label">Data</label></td>
+                                                        <td><label class="control-label">Oportunidade</label></td>
+                                                        <td><label class="control-label">Contato</label></td>
+                                                        <td><label class="control-label">Data</label></td>
+                                                        <td><label class="control-label">Oportunidade</label></td>
+                                                        <td><label class="control-label">Contato</label></td>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td><input class="form-control input-sm" name="coluna1" type="text"></td>
+                                                        <td><input class="form-control input-sm" name="coluna2" type="text"></td>
+                                                        <td><input class="form-control input-sm datePicker" name="coluna3" type="text"></td>
+                                                        <td><input class="form-control input-sm" name="coluna4" type="text"></td>
+                                                        <td><input class="form-control input-sm" name="coluna5" type="text"></td>
+                                                        <td><input class="form-control input-sm datePicker" name="coluna6" type="text"></td>
+                                                        <td><input class="form-control input-sm" name="coluna7" type="text"></td>
+                                                        <td><input class="form-control input-sm" name="coluna8" type="text"></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+

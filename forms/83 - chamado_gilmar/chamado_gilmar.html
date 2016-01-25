@@ -1,0 +1,120 @@
+<html>
+<head>
+<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+<link type="text/css" rel="stylesheet" href="/portal/resources/style-guide/css/fluig-style-guide.min.css" />
+<script type="text/javascript" src="/portal/resources/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="chamado_gilmar.js" charset="utf-8"></script>
+<script type="text/javascript" src="gd_lib.js" charset="utf-8"></script>
+<script src="../vcXMLRPC.js"></script>
+</head>
+<body>
+	<div class="fluig-style-guide">
+		<form class="form-horizontal" name="form" role="form">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">
+						<strong>Chamados T.I</strong>
+					</h3>
+				</div>
+			</div>
+			
+			<div class="panel panel-default solicitante">
+				<div class="panel-heading">
+					<h3 class="panel-title">
+						<strong>Informações do Chamado</strong>
+					</h3>
+				</div>
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-md-3">
+							<label class="control-label">Solicitação</label>
+							<input type="text" class="form-control" name="nm_solicitacao" id="nm_solicitacao" readonly>
+						</div>
+						<div class="col-md-3">
+							<label class="control-label">Data</label>
+							<input type="text" class="form-control" name="dt_data" id="dt_data" readonly>
+						</div>
+						<div class="col-md-6">
+							<label class="control-label">Solicitante</label>
+							<input type="text" class="form-control" name="nm_solicitante" id="nm_solicitante" readonly>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">
+                            <label class="control-label">Produto</label>
+                            <div class="input-group">
+                                <input class="form-control obgSolic" type="text" name="nm_produto" id="nm_produto" readonly>
+                                <div class="input-group-addon" style="cursor:pointer;" onclick="javascript:zoomProduto()"><span class="fluigicon fluigicon-zoom-in fluigicon-sm" ></span></div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="control-label">Tipo da Ocorrência</label>
+                            <input type="hidden" name="nm_aprova_gestor" id="nm_aprova_gestor">
+                            <input type="hidden" name="nm_criticidade" id="nm_criticidade">
+                            <div class="input-group">
+                                <input class="form-control obgSolic" type="text" name="nm_tipo_ocorrencia" id="nm_tipo_ocorrencia" readonly>
+                                <div class="input-group-addon" style="cursor:pointer;" onclick="javascript:zoomOcorrencia()">
+                                	<span class="fluigicon fluigicon-zoom-in fluigicon-sm" ></span>
+                                </div>
+                            </div>
+                        </div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<label class="control-label">Ocorrência</label>
+							<textarea class="form-control" rows="3" name="nm_ocorrencia" id="nm_ocorrencia"></textarea>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="panel panel-default ti">
+				<div class="panel-heading">
+					<h3 class="panel-title">
+						<strong>T.I</strong>
+					</h3>
+				</div>
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-md-6">
+							<label class="control-label">Atendido Por</label>
+							<input type="text" class="form-control" name="nm_atendido_por" id="nm_atendido_por" readonly>
+						</div>
+						<div class="col-md-3">
+							<label class="control-label">Data de Inicio</label>
+							<input type="date" class="form-control" name="dt_data_inicio" id="dt_data_inicio">
+						</div>
+						<div class="col-md-3">
+							<label class="control-label">Hora de Inicio</label>
+							<input type="time" class="form-control" name="nm_hora_inicio" id="nm_hora_inicio">
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<label class="control-label">Causa</label>
+							<textarea class="form-control" rows="3" name="nm_causa" id="nm_causa"></textarea>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<label class="control-label">Solução</label>
+							<textarea class="form-control" rows="3" name="nm_solucao" id="nm_solucao"></textarea>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-3">
+							<label class="control-label">Data de Conclusão</label>
+							<input type="date" class="form-control" name="dt_data_conclusao" id="dt_data_conclusao">
+						</div>
+						<div class="col-md-3">
+							<label class="control-label">Hora de Conclusão</label>
+							<input type="time" class="form-control" name="nm_hora_conclusao" id="nm_hora_conclusao">
+						</div>
+					</div>
+				</div>
+			</div>
+			
+		</form>
+	</div>
+</body>
+</html>

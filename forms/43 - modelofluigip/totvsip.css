@@ -1,0 +1,141 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 09/02/2015, 10:03:43
+    Author     : Gilmar
+*/
+
+
+.fluig-style-guide .panel-default .panel-div-title{
+    background-color:#10A1BE !important;
+    background-image: linear-gradient(to right, #10A1BE, white) !important;
+    color: white !important;
+    padding-left: 0px !important;
+}
+.fieldset{
+    padding-left: 15px !important;
+}
+
+.fluig-style-guide .panel-default {
+    border-color:#10A1BE !important;
+}
+
+.fluig-style-guide .form-control {
+    border: 1px solid #10A1BE !important;
+}
+.fluig-style-guide{
+    font-family: arial !important;
+}
+.painel-div-main{
+    height: 43px !important;
+}
+.panel-title-alt{
+    height: 43px !important;
+    line-height:50px !important;
+    font-size: 22px !important;
+}
+.clear{
+    clear: both !important;
+}
+.fRight{
+    float: right !important;
+}
+.fLeft{
+    float:left !important;
+}
+.fluig-style-guide legend {
+   color: #595959 !important;
+   border-color: -moz-use-text-color -moz-use-text-color #10A1BE !important;
+}
+
+.fluig-style-guide .table-bordered {
+    border: 1px solid #10A1BE !important;
+}
+
+.fluig-style-guide .table-bordered > thead > tr > th, .fluig-style-guide .table-bordered > tbody > tr > th, .fluig-style-guide .table-bordered > tfoot > tr > th, .fluig-style-guide .table-bordered > thead > tr > td, .fluig-style-guide .table-bordered > tbody > tr > td, .fluig-style-guide .table-bordered > tfoot > tr > td {
+    border: 1px solid #10A1BE !important;
+}
+
+.fluig-style-guide table{
+   width: 100% !important;
+}
+
+.table thead tr td{
+    color: #595959 !important;
+}
+
+.fluig-style-guide .form-padding{
+    width: 95% !important;
+}
+
+.span-obrig{
+    color:red !important;
+}
+
+.fluig-style-guide .img-zoom{
+   display:block !important; 
+   margin: 0 auto !important;
+}
+
+.fluig-style-guide .navbar-totvsip{
+    border-bottom: 1px solid #10A1BE !important;
+}
+
+.fluig-style-guide .nav-tabs > li > a {
+    border-color: #10A1BE !important;
+}
+
+.fluig-style-guide .nav-tabs > li > a:hover {
+    background-color: #10A1BE !important;
+}
+
+.fluig-style-guide .nav-tabs > li.active > a{
+  background-color: #fff !important;
+  border-color: #10A1BE #10A1BE transparent !important;
+}
+
+.fluig-style-guide .liFirst{
+    margin-left: 28px !important;
+}
+
+.fluig-style-guide .input-group-addon{
+    background-color: white !important;
+    border: 1px solid #10A1BE !important;
+    padding: 5px 12px !important;
+}
+
+.fluig-style-guide span.form-control{
+    height:100% !important;
+    display: block !important;
+    width: 100% !important;
+    word-wrap: break-word;
+}
+
+@media .fluig-style-guide .input-group {
+	display: block !important;
+}
+
+.fluig-style-guide .input-group {
+	display: block !important;
+}
+
+div.ui-datepicker{
+    font-size:12px !important;
+}
+
+.ui-datepicker .ui-datepicker-header, .ui-accordion .ui-accordion-header {
+    background: none repeat scroll 0 0 #10A1BE !important;
+}
+
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default{
+    background: url("images/ui-bg_glass_75_e6e6e6_1x400.png") repeat-x scroll 50% 50% #10A1BE !important;  
+    font-weight: bold !important;
+    color:white !important;
+}
+
+.ui-datepicker .ui-datepicker-prev:hover, .ui-datepicker .ui-datepicker-next:hover{
+    background-color: white !important;
+}

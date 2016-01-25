@@ -1,0 +1,75 @@
+<html>
+<head>
+<link type="text/css" rel="stylesheet" href="http://style.fluig.com/css/fluig-style-guide.min.css" />
+<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+<script type="text/javascript" src="/portal/resources/js/mustache/mustache.min.js"></script>
+<script type="text/javascript" src="http://style.fluig.com/js/fluig-style-guide.min.js" charset="utf-8"></script>
+</head>
+<body>
+	<div class="fluig-style-guide">
+		<form name="form" role="form">
+
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">
+						<strong>Solicitante</strong>
+					</h3>
+				</div>
+				<div class="panel-body">
+				
+					<div class="form-group">  
+						<label for="usuario" class="col-sm-1 col-xs-1 control-label"><strong>Alterador por:</strong></label>
+						<div class="col-sm-4 col-xs-4 controls"> 
+							<input type="text"  readonly name="usuario" id="usuario" class="form-control">	 														
+						</div>
+						<label for="textbox" class="col-sm-1 col-xs-1 control-label"><strong>Data:</strong></label>
+						<div class="col-sm-2 col-xs-2 controls">
+							<input type="text" readonly name="textbox" id="textbox" class="form-control">
+						</div>
+					</div> 				
+
+					<div class="form-group">
+						<div class="col-sm-15 col-xs-15 controls">
+							<table border="0" tablename="tb_criticidade" id="tb_criticidade" noaddbutton=true class="table" style="font-size: 12px">
+								<thead>
+									<tr>
+										<td><b>Tipo Ocorrência</b></td>
+										<td><b>Criticidade</b></td>
+										<td><b>Aprovação Gestor</b></td>
+
+									</tr>
+								</thead>
+								<tr>
+									<td width=40%><input type="text" name="tx_ocorrencia" id="tx_ocorrencia" class="form-control"></td>
+									<td width=25%>
+										<select id="sl_criticidade" name="sl_criticidade" data-rule-required="true" class="form-control">
+											<option value="Baixa">Baixa</option>
+											<option value="Media">Média</option>
+											<option value="Alta">Alta</option>
+										</select>
+									</td>
+									<td width=30%>
+										<input type="radio" name="rd_aprov_gestor" id="rd_aprov_gestor" value="Sim">Sim<br> 
+										<input type="radio" name="rd_aprov_gestor" id="rd_aprov_gestor" value="Nao">N&atilde;o
+									</td>
+
+								</tr>
+							</table>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div class="col-sm-10 col-xs-10 controls"></div>
+						<div class="col-sm-2 col-xs-2 controls">
+							<input type="button" id="bt_add_item" class="form-control" onclick="wdkAddChild('tb_criticidade')" value='Adicionar Item'>
+						</div>
+					</div>
+
+				</div>
+			</div>
+
+		</form>
+	</div>
+</body>
+</html>

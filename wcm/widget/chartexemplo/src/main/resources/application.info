@@ -1,0 +1,14 @@
+application.type=widget
+application.code=chartExemplo
+application.title=Gilmar
+application.description=Paes
+application.category=SYSTEM
+application.renderer=freemarker
+developer.code=AlbertWesker
+developer.name=Gilmar
+developer.url=http://www.fluig.com
+application.uiwidget=true
+view.file=view.ftl
+edit.file=edit.ftl
+application.resource.js.1=/resources/js/chartExemplo.js
+application.resource.js.2=/resources/js/highcharts.js

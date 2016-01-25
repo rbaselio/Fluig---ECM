@@ -1,0 +1,43 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 12/05/2015, 15:49:52
+    Author     : Gilmar
+*/
+
+.fRight{
+    float: right !important;
+}
+.fLeft{
+   float: left !important; 
+}
+.clear{
+    clear: both !important;
+}
+
+.span-obrig{
+    color: red !important;
+}
+table{
+    width: 100% !important;
+}
+.datePicker{
+    cursor: pointer !important;
+    background-color: white !important;
+}
+div.ui-datepicker{
+    font-size:12px !important;
+}
+
+.table .form-control{
+	max-width: 300px;	
+	min-width: 100px;
+}
+
+.table .inputLarge{
+	max-width: 300px;	
+	min-width: 150px;
+}	

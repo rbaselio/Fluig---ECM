@@ -1,0 +1,106 @@
+#printBt, #printBtView { display:none; }
+
+.hidden>div {display: none;}
+.visible>div {display: block;}
+
+.adHocWidget { padding:15px; }
+.NoBorder input{border: none !important;} 
+
+.background {
+	background-repeat: no-repeat;
+	background-image: url(FLUIGADHOCPROCESS2.png);
+}
+
+.adHocTitle input {
+	font-weight: bold; 
+	margin-left: 10px;
+	border: 0px !important; 
+	/*width: 890px;*/}
+	
+.adHocTitle h3.adHocSubtitle { 
+   border-left:7px solid #ED145A; 
+   padding-left:10px; 
+   font-weight: bold;
+   margin-left: 10px;
+ }
+
+.canvas {
+	background-color: #ED145A;
+	margin: 20px;
+	border-radius: 5px;
+	margin-left: 10px;
+	width: 150px;
+	height: 25px;
+}
+
+.canvas img{
+	margin-left: 10px;
+	vertical-align: text-bottom;
+}
+
+.canvas p{
+    font-size: 12px;
+	color: white;
+	font-weight: bold;
+	display: inline-block;
+	margin-left: 5px;
+}
+
+.clear { clear:both; }
+.taskForm {
+	float:left;
+	margin-left:20px;
+    display:inline-block;
+}
+
+.formField select {
+   vertical-align: super;
+ }
+ 
+.formField p {display:inline-block; margin-top:10px;}
+
+.informationForm {float:left;}
+
+/*.formField label {
+	width:120px;
+	text-align:rigth;
+	margin-right:6px;
+	margin-left:10px;
+	vertical-align:top;
+	display:inline-block;
+	font-weight: bold;
+}*/
+ 
+/*.formField p.atributo {
+	width:120px;
+	/*text-align:rigth;*/
+	/*margin-right:6px;*/
+	/*margin-left:10px;*/
+	/*display:inline-block;*/
+	/*font-weight: bold;
+}*/
+
+/*.formField textarea {
+	padding:10px;
+	width:300px;
+}*/
+
+.grid-6-12 input.number{width: 20%;}
+.grid-6-12 input.request{width: 79%;}
+.grid-6-12 label{font-weight: bold;}
+.grid-6-12 textarea.description {
+   border: none !important;
+   border-color: lightgrey;
+   display:inline-block;   
+   background-color: transparent;
+} 
+
+input {
+   /*border: none;*/
+   /*border-color: transparent;*/
+   background-color: transparent;
+   display:inline-block;
+}
+
+/*#adhoc-info { padding: 20px; border-radius: 4px; color: #31708f; background-color: #d9edf7; border: 1px solid #bce8f1; margin:20px; }*/
+/*#adhoc-info p { margin:0 !important; }*/

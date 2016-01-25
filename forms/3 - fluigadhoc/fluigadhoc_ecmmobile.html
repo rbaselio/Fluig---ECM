@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta content="pt-br" http-equiv="Content-Language" />
+		<meta content="text/html; charset=ISO-8859-1" http-equiv="Content-Type" />
+		<title>FLUIGADHOC</title>
+		<style type="text/css">
+			body {
+				font-family: Verdana, Geneva, Tahoma, sans-serif;	
+			    background-color: #ddd; /* Background color */
+			    color: #222;            /* Foreground color used for text */
+			    font-family: Helvetica; 
+			    font-size: 14px;
+			    margin: 0;              /* Amount of negative space around the outside of the body */
+			    padding: 0;             /* Amount of negative space around the inside of the body */	
+				min-width:300px;
+			}
+			h1 {
+			    margin: 0;
+			    padding: 0;
+			    background-color: #ccc;
+			    border-bottom: 1px solid #666;
+			    color: #222;
+			    display: block;
+			    font-size: 20px;
+			    font-weight: bold;
+			    padding: 10px 0;
+			    text-align: center;
+			    text-decoration: none;    
+			    text-shadow: 0px 1px 0px #fff;
+			    background-image: -webkit-gradient(linear, left top, left bottom, from(#ccc), to(#999));    
+			}
+			ul {
+			    list-style: none;
+			    margin: 10px;
+			    padding: 0;
+			}
+			ul li {
+			    background-color: #FFFFFF;
+			    border: 1px solid #999999;
+			    color: #222222;
+			    display: block;
+			    font-size: 17px;
+			    font-weight: bold;
+			    margin-bottom: -1px;
+			    padding: 12px 10px;
+			    text-decoration: none;
+			}
+			ul li:first-child {
+			    -webkit-border-top-left-radius: 8px;
+			    -webkit-border-top-right-radius: 8px;
+			}
+			ul li:last-child {
+			    -webkit-border-bottom-left-radius: 8px;
+			    -webkit-border-bottom-right-radius: 8px;
+			    position:relative;
+			}
+			.mylabel {
+				width: 100%;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				-o-text-overflow: ellipsis;
+				white-space: nowrap;
+				display:inline-block;
+				position:relative;
+				float:left;
+				line-height:32px;
+			}
+			.input-selection {
+				width: 100%;
+				float: left;
+				margin-top: 5px;
+			}
+			.input-textarea {
+				width: 100%;
+				height: 50px;
+			}
+			input[type=text] { 
+				width: 100%; 
+				font-family: Verdana, Geneva, Tahoma, sans-serif;	
+				font-size: 18px;
+				background-color: #E8E8E8;
+				position:relative;
+				float:left;
+			} 
+			ul li span {
+				width: 100%; 
+				overflow: hidden;
+				text-overflow: ellipsis;
+				-o-text-overflow: ellipsis;
+				white-space: nowrap;
+				display:inline-block;
+				position:relative;
+				float:left;
+				line-height:32px;
+				background: #e6e6e6;
+				border: 1px solid #cccccc;
+				padding-right: 3px;
+				padding-left: 3px;
+			}
+		</style>
+	</head>
+	
+	<body>
+		<form  method="post" action="">
+			<h1>FLUIGADHOC</h1>
+			<ul>
+				<li><div class='mylabel'>i18n.translate("adhoc.form.meeting")</div><input name='meeting' type='text' placeholder='i18n.translate("adhoc.form.meeting")' /><div style='clear:both; line-height: 1px'>&nbsp;</div></li><li><div class='mylabel'>i18n.translate("adhoc.form.detail")</div><textarea name='detail' type='text' placeholder='i18n.translate("adhoc.form.detail")' class='input-textarea'></textarea><div style='clear:both; line-height: 1px'>&nbsp;</div></li><li><div class='mylabel'>i18n.translate("adhoc.form.meetingDate")</div><input name='meetingDate' type='text' placeholder='i18n.translate("adhoc.form.meetingDate")' /><div style='clear:both; line-height: 1px'>&nbsp;</div></li>
+			</ul>
+		</form>
+	</body>
+</html>
