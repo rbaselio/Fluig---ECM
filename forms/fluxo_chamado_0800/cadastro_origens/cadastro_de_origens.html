@@ -1,0 +1,84 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="iE=edge,chrome=1">
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="bootstrap.css">
+<script src="bootstrap.js"></script>
+</head>
+<body>
+	<form name="form" id="validation-form" method="POST" class="form-horizontal form-bordered form-row-stripped">
+		<table width="99%" border="0" align="center" cellpadding="0" cellspacing="0" class="tabelaGeral">
+			<tbody>
+				<tr>
+					<td rowspan="3"><img src="logocasp.gif" width="204" height="79"></td>
+					<td rowspan="3"><div align="center">
+							<b>FORMUL&Aacute;RIO DE CADASTRO DE ORIGENS DE RECLAMA&Ccedil;&Atilde;O</b></td>
+				</tr>
+				<tr>
+					<td align="right"><label for="user" class="control-label">Usu&aacute;rio Modifica&ccedil;&atilde;o:&nbsp;&nbsp;&nbsp;&nbsp;</label></td>
+					<td width="150"><input type="text" name="user" id="user" class="form-control" readonly="readonly" /></td>
+				</tr>
+				<tr>
+					<td align=right><label for="data_mod" class="control-label">Ultima Modifica&ccedil;&atilde;o:&nbsp;&nbsp;&nbsp;&nbsp;</label></td>
+					<td width="150"><input type="text" name="data_mod" id="data_mod" class="form-control" size="15" readonly="readonly" /></td>
+				</tr>
+			</tbody>
+		</table>
+		<div class="row">
+			<div class="col-xs-36">
+				<div class="box-content">
+					<div class="row">
+						<div class="box-content">
+							<div class="row">
+								<div class="col-sm-0 col-xs-36">
+									<div class="box box-black">
+										<div class="box-title col-xs-36">
+											<h3>
+												<i class="fa  fa-users glyphicon glyphicon-unchecked"></i>Atendimento
+											</h3>
+											<div class="box-tool">
+												<a data-action="collapse" href="#"> Minimizar <i><i class="glyphicon glyphicon-align-right"></i></i></a>
+												<div class="col-xs-1"></div>
+											</div>
+										</div>
+										<div class="box-content">
+											<div class="row">
+												<div class="col-xs-36 " id="div_controladoria" name="div_controladoria">
+													<div class="form-group">
+														<label for="labelmat" class="col-sm-5 col-xs-5 control-label">Classifica&ccedil;&otilde;es:</label>
+														<div class="col-sm-31 col-xs-31 controls">
+															<table border="0" tablename="tb_origem" id="tb_origem" noaddbutton=true class="table">
+																<thead>
+																	<tr>
+																		<td></td>
+																	</tr>
+																</thead>
+																<tr>
+																	<td>
+																		<div class="col-sm-15 col-xs-15 controls">
+																			<input type="text" name="origem" id="origem" placeholder="Origem" class="form-control" />
+																		</div>
+																	</td>
+																</tr>
+															</table>
+															<div class="col-sm-7 col-xs-7 controls">
+																<input type="button" class="form-control" id="bt_add_origem" name="bt_add_interacao" onclick="wdkAddChild('tb_origem')" value="Adicionar Origem">
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+</body>
+</html>
