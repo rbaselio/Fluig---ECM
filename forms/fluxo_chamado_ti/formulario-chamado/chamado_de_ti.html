@@ -8,9 +8,6 @@
 <script src="bootstrap.js"></script>
 <script src="jquery.mask.min.js"></script>
 <script src="utils.js"></script>
-
-
-
 </head>
 <body>
 	<form name="form" id="validation-form" method="POST" class="form-horizontal form-bordered form-row-stripped">
@@ -74,7 +71,7 @@
 												<div class="col-sm-5 col-xs-5 controls">
 													<input type="text" class="form-control" placeholder="Classe" name="classe" id="classe" readonly="readonly" />
 												</div>
-												<div class="col-sm-13 col-xs-13 controls">
+												<div class="col-sm-10 col-xs-10 controls">
 													<div class="input-group ">
 														<input type="text" class="form-control" placeholder="Tipo" name="tipo" id="tipo" readonly="readonly" />
 														<input type="hidden" name="responsavel" id="responsavel" />
@@ -85,11 +82,16 @@
 														</span>
 													</div>
 												</div>
+												<label for="classe" class="col-sm-5 col-xs-5 control-label">Classifica&ccedil;&atilde;o:</label>
+												<div class="col-sm-7 col-xs-7 controls">
+													<select name="criticidade" id="criticidade" dataset="criticidade" datasetkey="Prazo" datasetvalue="Criticidade" addBlankLine="true" class="form-control"></select> 
+													<input type="hidden" name="prazo" id="prazo" />
+												</div>
 											</div>
 											<div class="form-group">
 												<label for="desc_chamado" class="col-sm-5 col-xs-5 control-label">Descri&ccedil;&atilde;o do Chamado:</label>
 												<div class="col-sm-31 col-xs-31 controls">
-													<textarea name="desc_chamado" id="desc_chamado" rows="3" class="form-control" ></textarea>
+													<textarea name="desc_chamado" id="desc_chamado" rows="3" class="form-control"></textarea>
 												</div>
 											</div>
 										</div>
@@ -123,7 +125,6 @@
 														</div>
 													</div>
 													<div class="form-group">
-														
 														<div class="col-sm-36 col-xs-36 controls">
 															<table border="0" tablename="tb_interacao" name="tb_interacao" id="tb_interacao" noaddbutton=true class="table">
 																<thead>
@@ -150,7 +151,7 @@
 																			</div>
 																			<label for="desc_interacao" class="col-sm-5 col-xs-5 control-label">Aceite do solicitante:</label>
 																			<div class="col-sm-21 col-xs-21 controls">
-																				<textarea name="desc_aceite" id="desc_aceite" rows="3" class="form-control" style="resize: none;"></textarea>
+																				<textarea name="desc_aceite" id="desc_aceite" rows="3" class="form-control desc_aceite" style="resize: none;"></textarea>
 																			</div>
 																		</div>
 																	</td>
@@ -182,7 +183,6 @@
 										<div class="box-content">
 											<div class="row">
 												<div class="col-xs-36 " id="div_aprovacao" name="div_aprovacao">
-													
 													<div class="form-group">
 														<label for="nota" class="col-sm-5 col-xs-5 control-label">Nota pelo atendimento:</label>
 														<div class="col-sm-5 col-md-5 controls">
@@ -215,11 +215,16 @@
 														<div class="col-sm-13 col-xs-13 controls">
 															<input type="text" class="form-control" placeholder="Usuario" name="user_aceite" id="user_aceite" readonly="readonly" />
 														</div>
+														<label for="dt_final" class="col-sm-5 col-xs-5 control-label">Data:</label>
+														<div class="col-sm-5 col-xs-5 controls">
+															<input type="date" class="form-control" placeholder="Usuario" name="dt_final" id="dt_final" readonly="readonly" />
+														</div>
 													</div>
 												</div>
 											</div>
 										</div>
 									</div>
+									
 								</div>
 							</div>
 						</div>
@@ -231,6 +236,16 @@
 </body>
 <script>
 
+
+	$('#criticidade').on('change', function() {
+		$('#prazo').val($(this).val());		
+	});
+	
+	$(".desc_aceite").click(function() {
+		row = $(this).closest('tr').index();
+		$("#dt_aceite___" + row).val(getData());
+	});
+
 	$('#ramal').mask('9999');
 
 	function add_interacao(tabela) {
@@ -240,11 +255,14 @@
 	}
 
 	function zoomColaborador() {
-		zoomECM("colleague", "colleagueId,Matr%c3%adcula,colleagueName,Colaborador", "colleagueId,colleagueName,extensionNr", "Zoom Colaborador");
+		zoomECM("colleague",
+				"colleagueId,Matr%c3%adcula,colleagueName,Colaborador",
+				"colleagueId,colleagueName,extensionNr", "Zoom Colaborador");
 	}
 
 	function zoomTipo() {
-		zoomECM("TipoDeChamado", "Classe,Classe,Tipo,Tipo", "Classe,Tipo,Matricula", "Zoom Tipo de Chamado");
+		zoomECM("TipoDeChamado", "Classe,Classe,Tipo,Tipo",
+				"Classe,Tipo,Matricula", "Zoom Tipo de Chamado");
 	}
 
 	function setSelectedZoomItem(selectedItem) {
@@ -259,6 +277,5 @@
 			$("#responsavel").val(selectedItem['Matricula']);
 		}
 	}
-
 </script>
 </html>
