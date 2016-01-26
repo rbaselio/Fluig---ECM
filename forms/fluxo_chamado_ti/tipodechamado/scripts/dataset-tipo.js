@@ -4,6 +4,7 @@ function createDataset(fields, constraints, sortFields) {
 	var dataset = DatasetBuilder.newDataset();
 	dataset.addColumn("Classe");
 	dataset.addColumn("Tipo");
+	dataset.addColumn("Texto");
 	dataset.addColumn("Matricula");
 	dataset.addColumn("Responsável");
 
@@ -38,6 +39,7 @@ function createDataset(fields, constraints, sortFields) {
 				new Array(
 					datasetFilhos.getValue(j, "classe"),
 					datasetFilhos.getValue(j, "tipo"), 
+					datasetFilhos.getValue(j, "sugestao"), 
 					datasetFilhos.getValue(j, "matricula_user"),
 					datasetFilhos.getValue(j, "responsavel")
 				)

@@ -4,11 +4,11 @@
 	<meta http-equiv="X-UA-Compatible" content="iE=edge,chrome=1">
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="bootstrap.css">
-	<script src="bootstrap.js"></script>
-	<script src="jquery.mask.min.js"></script>
-	<script src="utils.js"></script>
+	<link rel="stylesheet" href="http://10.10.1.15:8080/webdesk/customresources?resourceName=bootstrap/css/bootstrap.css">
 
+	<script src="http://10.10.1.15:8080/webdesk/customresources?resourceName=bootstrap/js/bootstrap.js"></script>
+	<script src="http://10.10.1.15:8080/webdesk/customresources?resourceName=bootstrap/js/utils.js"></script>
+	<script src="http://10.10.1.15:8080/webdesk/customresources?resourceName=bootstrap/js/jquery.mask.min.js"></script>
 	</head>
 	<body>
 		<form name="form" id="validation-form" method="POST" class="form-horizontal form-bordered form-row-stripped">
@@ -17,7 +17,7 @@
 					<table width="99%" border="0" align="center" cellpadding="0" cellspacing="0" class="tabelaGeral">
 						<tbody>
 							<tr>
-								<td rowspan="3" width="20%"><img src="logocasp.gif" width="204" height="79"></td>
+								<td rowspan="3" width="20%"><img src="http://10.10.1.15:8080/webdesk/customresources?resourceName=logo_casp/logocasp.gif" width="204" height="79"></td>
 								<td rowspan="3"><div align="center"><b>FORMUL&Aacute;RIO DE CADASTRO SAC</b></div></td>
 								<td align="right"><label for="chamado_num" class="control-label">N&uacute;mero:&nbsp;&nbsp;&nbsp;&nbsp;</label></td>
 								<td width="15%"><input type="text" name="chamado_num" id="chamado_num" placeholder="N&uacute;mero chamado" class="form-control" readonly="readonly" /></td>
@@ -58,7 +58,7 @@
 															<input type="text" class="form-control" placeholder="Solicitante" name="solicitante" id="solicitante" readonly="readonly" />
 													</div>
 													<label for="ramal" class="col-sm-5 col-xs-5 control-label">Ramal:</label>
-													<div class="col-sm-5 col-xs-5 controls">
+													<div class="col-sm-5 col-xs-5 controls ramal">
 														<input type="text" class="form-control" placeholder="Ramal" name="ramal" id="ramal" readonly="readonly" />
 													</div>
 												</div>
@@ -179,7 +179,7 @@
 														</div>
 													</div>
 													<label for="ramal_resp" class="col-sm-5 col-xs-5 control-label">Ramal:</label>
-													<div class="col-sm-5 col-xs-5 controls">
+													<div class="col-sm-5 col-xs-5 controls ramal">
 														<input type="text" class="form-control" placeholder="Ramal" name="ramal_resp" id="ramal_resp" />
 													</div>
 												</div>
@@ -355,10 +355,12 @@
 	$(document).ready(function(){
 		
 		
+		$('#ramal').mask("9999");
+		$('#ramal_resp').mask("9999");
 		
-
 		$('#tel_empresa').mask("(99) 9999-9999");
 		$('#cel_empresa').mask("(99) 99999-9999");
+		
 		$('.rd_tipo_recla').click(function(){
 			if($(this).val() == 'produto') {
 				$('#produto').attr('readonly', false);
