@@ -9,18 +9,17 @@ function displayFields(form, customHTML) {
 	hideTableColumn("tb_interacao", 1, false);
 
 	var numAtividade = getValue("WKNumState");
+	
 	var matricula = getValue("WKUser");
-
+	
 	var filter = new java.util.HashMap();
-	filter.put("colleaguePK.colleagueId", getValue("WKUser"));
+	filter.put("colleaguePK.colleagueId", matricula);
 
-	var dadosusuario = getDatasetValues('colleague', filter);
-	var colaborador = dadosusuario.get(0).get("colleagueName");
-	var ramal = dadosusuario.get(0).get("extensionNr");
+	var dadosusuario = getDatasetValues('colleague', filter).get(0);
+	var colaborador = dadosusuario.get("colleagueName");
+	var ramal = dadosusuario.get("extensionNr");
 
-	var dtNow = new java.util.Date();
-	var sdf = new java.text.SimpleDateFormat("yyyy-MM-dd");
-	var today = sdf.format(dtNow);
+	var today = new java.text.SimpleDateFormat("yyyy-MM-dd").format(new java.util.Date());
 
 	if (numAtividade == 0 || numAtividade == 1) {
 		form.setValue('matricula_user', matricula);
@@ -29,9 +28,8 @@ function displayFields(form, customHTML) {
 		form.setValue('data_sol', today);
 		form.setValue('chamado_num', getValue("WKNumProces"));
 		setEnabledConponent('busca_tipo', true);
+		setEnabledConponent('btZoomColab', validarGrupo(matricula, "TI"));
 		
-		if (validarGrupo(matricula, "TI")){setEnabledConponent('btZoomColab', true);}
-		else {setEnabledConponent('btZoomColab', false);}
 	}
 
 	if (numAtividade == 2) {
@@ -68,15 +66,16 @@ function displayFields(form, customHTML) {
 		}
 		customHTML.append("</script>");
 	}
-	
+
 	function validarGrupo(user, grupo) {
-		var c1 = DatasetFactory.createConstraint("colleagueGroupPK.colleagueId", user, user, ConstraintType.MUST);                   
-		var constraints = new Array(c1);                   
+		var c1 = DatasetFactory.createConstraint("colleagueGroupPK.colleagueId", user, user, ConstraintType.MUST);
+		var c2 = DatasetFactory.createConstraint("colleagueGroupPK.groupId", grupo, grupo, ConstraintType.MUST);
+		var constraints = new Array(c1, c2);
 		var datasetPrincipal = DatasetFactory.getDataset("colleagueGroup", null, constraints, null);
 		for (var j = 0; j < datasetPrincipal.rowsCount; j++) {
-			 if (datasetPrincipal.getValue(j, "colleagueGroupPK.groupId") == grupo){
+			if (datasetPrincipal.getValue(j, "colleagueGroupPK.groupId") == grupo) {
 				return true;
-			 }
+			}
 		}
 		return false;
 	}
@@ -105,13 +104,11 @@ function enableFields(form) {
 	if (numAtividade == 3) {
 		form.setEnabled('desc_aceite', true);
 		form.setEnabled('dt_aceite', true);
-
 	}
 
 	if (numAtividade == 4) {
 		form.setEnabled('comentarios', true);
 		form.setEnabled('nota', true);
-
 	}
 
 	function setEnabled(form, lEnable) {
@@ -139,6 +136,14 @@ function validateForm(form) {
 		}
 		if (form.getValue("desc_chamado") == "") {
 			erros += " - [Descrição do chamado];\n";
+		}
+	}
+
+	if (numAtividade == 4) {
+		if (form.getValue("comentarios") == "") {
+			if (form.getValue("nota") == "3" || form.getValue("nota") == "4") {
+				erros += " - [Comente o motivo da sua nota];\n";
+			}
 		}
 	}
 

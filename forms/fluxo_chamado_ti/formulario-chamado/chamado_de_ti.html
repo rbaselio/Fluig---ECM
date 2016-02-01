@@ -11,14 +11,19 @@
 </head>
 <body>
 	<form name="form" id="validation-form" method="POST" class="form-horizontal form-bordered form-row-stripped">
+	
 		<div class="row">
 			<div class="col-xs-36">
 				<table width="99%" border="0" align="center" cellpadding="0" cellspacing="0" class="tabelaGeral">
 					<tbody>
 						<tr>
 							<td rowspan="3"><img src="http://10.10.1.15:8080/webdesk/customresources?resourceName=logo_casp/logocasp.gif" width="204" height="79"></td>
-							<td rowspan="3"><div align="center">
-									<b>FORMUL&Aacute;RIO DE CADASTRO DE TIPO DE CHAMADOS</b></td>
+							<td rowspan="3">
+								<div align="center">
+									<b>FORMUL&Aacute;RIO DE CADASTRO DE TIPO DE CHAMADOS</b>
+								</div>
+							</td>
+								
 						</tr>
 						<tr>
 							<td align="right"><label for="chamado_num" class="control-label">N&uacute;mero:&nbsp;&nbsp;&nbsp;&nbsp;</label></td>
@@ -42,7 +47,7 @@
 										<a data-action="collapse" href="#"> Minimizar <i><i class="glyphicon glyphicon-align-right"></i></i></a>
 										<div class="col-xs-1"></div>
 									</div>
-								</div>
+								</div>								
 								<div class="box-content">
 									<div class="row">
 										<div class="col-xs-36" id="div_inicio" name="div_inicio">
@@ -185,7 +190,7 @@
 												<div class="col-xs-36 " id="div_aprovacao" name="div_aprovacao">
 													<div class="form-group">
 														<label for="nota" class="col-sm-5 col-xs-5 control-label">Nota pelo atendimento:</label>
-														<div class="col-sm-5 col-md-5 controls">
+														<div class="col-sm-6 col-md-6 controls">
 															<input type="radio" name="nota" id="nota" style="cursor: pointer" value="1" checked="checked" />
 															<label>Totalmente Satisfeito</label>
 															</input>
@@ -203,7 +208,7 @@
 															</input>
 														</div>
 														<label for="comentarios" class="col-sm-5 col-xs-5 control-label">Coment&aacute;rios:</label>
-														<div class="col-sm-21 col-xs-21 controls">
+														<div class="col-sm-20 col-xs-20 controls">
 															<textarea name="comentarios" id="comentarios" rows="3" class="form-control" style="resize: none;"></textarea>
 														</div>
 													</div>
@@ -240,8 +245,9 @@
 	$('#criticidade').on('change', function() {
 		$('#prazo').val($(this).val());		
 	});
+		
 	
-	$(".desc_aceite").click(function() {
+	$(".desc_aceite").keypress(function(e) {
 		row = $(this).closest('tr').index();
 		$("#dt_aceite___" + row).val(getData());
 	});

@@ -58,8 +58,8 @@
 															<input type="text" class="form-control" placeholder="Solicitante" name="solicitante" id="solicitante" readonly="readonly" />
 													</div>
 													<label for="ramal" class="col-sm-5 col-xs-5 control-label">Ramal:</label>
-													<div class="col-sm-5 col-xs-5 controls ramal">
-														<input type="text" class="form-control" placeholder="Ramal" name="ramal" id="ramal" readonly="readonly" />
+													<div class="col-sm-5 col-xs-5 controls">
+														<input type="text" class="form-control ramal" placeholder="Ramal" name="ramal" id="ramal" readonly="readonly" />
 													</div>
 												</div>
 
@@ -179,8 +179,8 @@
 														</div>
 													</div>
 													<label for="ramal_resp" class="col-sm-5 col-xs-5 control-label">Ramal:</label>
-													<div class="col-sm-5 col-xs-5 controls ramal">
-														<input type="text" class="form-control" placeholder="Ramal" name="ramal_resp" id="ramal_resp" />
+													<div class="col-sm-5 col-xs-5 controls">
+														<input type="text" class="form-control ramal" placeholder="Ramal" name="ramal_resp" id="ramal_resp" />
 													</div>
 												</div>
 
@@ -355,8 +355,7 @@
 	$(document).ready(function(){
 		
 		
-		$('#ramal').mask("9999");
-		$('#ramal_resp').mask("9999");
+		$('.ramal').mask("9999");		
 		
 		$('#tel_empresa').mask("(99) 9999-9999");
 		$('#cel_empresa').mask("(99) 99999-9999");
@@ -375,11 +374,11 @@
 		});
 	});
 	
-	function zoomColaborador() {
-		zoomECM("colleague", "colleagueId,Matr%c3%adcula,colleagueName,Colaborador", "colleagueId,colleagueName,extensionNr", "Zoom Colaborador");
+	var zoomColaborador = function () {
+		zoomECM("colleague", "colleagueId,Matricula,colleagueName,Colaborador", "colleagueId,colleagueName,extensionNr", "Zoom Colaborador");
 	}	
 
-	function setSelectedZoomItem(selectedItem) {	
+	var setSelectedZoomItem = function(selectedItem) {	
 		if (selectedItem['type'] == "colleague") {			
 			$("#matricula_resp2").val(selectedItem['colleagueId']);
 			$("#user_resp").val(selectedItem['colleagueName']);
