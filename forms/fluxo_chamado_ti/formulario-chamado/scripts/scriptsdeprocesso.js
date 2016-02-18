@@ -16,14 +16,18 @@ function afterStateEntry(sequenceId) {
 	log.info("--------------------numAtividade: " + numAtividade);
 	log.info("---------------------colleagueId: " + colleagueId);
 
-	if (numAtividade == 2) { // seta prazo para o atendimento
+	if (numAtividade == 2 || numAtividade == 6) { // seta prazo para o atendimento
 		
-		log.info("----------------------PRAZO DE ATEDNIMENTO-------------------------------");
+		log.info("----------------------PRAZO DE ATENDIMENTO-------------------------------");
 
 		var colleagueId = "Pool:Group:TI";
+		if (numAtividade == 6) {
+			colleagueId = hAPI.getCardValue("matricula_atend");
+		}
 		log.info("---------------------colleagueId: " + colleagueId);		
 
 		var data = new Date();
+		log.info("-----------------------DATA ATUAL: " + data);
 		//var dt_planejada = new java.lang.String(hAPI.getCardValue("data_sol")).split("-");
 		//log.info("----------------------ANO: " + dt_planejada[2]);
 		//log.info("----------------------MES: " + (dt_planejada[1] - 1));
@@ -38,7 +42,11 @@ function afterStateEntry(sequenceId) {
 		//data.setFullYear(dt_planejada[0]);
 
 		try {
-			var obj = hAPI.calculateDeadLineHours(data, 28800, horas, "TI");
+			
+			var elapsed = (data.getHours() * 60 * 60) + (data.getMinutes() * 60) + data.getSeconds();
+			log.info("-----SEGUNDOS APOS A MEIA NOITE: " + elapsed);
+			
+			var obj = hAPI.calculateDeadLineHours(data, elapsed, horas, "TI");
 			var dt = obj[0];
 			var segundos = obj[1];
 			log.info("-----------------------NOVA DATA: " + dt);
@@ -80,13 +88,16 @@ function beforeStateLeave(sequenceId){
 	
 	
 		
-	if(numAtividade == 0 || numAtividade == 1){ 
+	if(numAtividade == 0 || numAtividade == 1 || nrProxAtividade == 6){ 
 		log.info("----------------------COMENTARIO DA ABERTURA DO CHAMADO-------------------------------");
 		log.info("numAtividade: " + numAtividade);
 		log.info("setTaskComments: " + hAPI.getCardValue("desc_chamado"));
 		
+		var commentActual =  getValue("WKUserComment");
+		if (commentActual != "" ) {commentActual = commentActual + "<br/>"}
+		
 		var newComment = new String(hAPI.getCardValue("desc_chamado")).replace(new RegExp("\r?\n","g"), "<br/>");
-		newComment = getValue("WKUserComment") + "<br/>" + newComment;
+		newComment =  commentActual + newComment;
 		
 		try{
 			hAPI.setTaskComments(colleagueId, numProcesso,  numThread,  newComment);
@@ -103,12 +114,12 @@ function beforeStateLeave(sequenceId){
 			var parametros = new java.util.HashMap();				
 			
 			log.info("-------Setando titulo do e-mail: ");				
-			parametros.put("subject", "Abertura de chamado técnico para a área de TI");				
+			parametros.put("subject", "Chamado técnico para a área de TI");				
 			
 			log.info("----------Preechendo o template: ");				
 			parametros.put("processo", "" + numProcesso );	
 			parametros.put("descricao", newComment);
-			parametros.put("tempo", hAPI.getCardValue("prazo"));
+			parametros.put("tempo", hAPI.getCardValue("prazo"));			
 			parametros.put("WDK_CompanyId", numEmpresa);			
 			
 			log.info("---Monta lista de destinatários: ");				
@@ -117,7 +128,7 @@ function beforeStateLeave(sequenceId){
 			destinatarios.add(usuario_form);								
 			
 			log.info("--------------------Enviando e-mail: ");				
-			notifier.notify(getValue("WKUser"), "abert-chamado", parametros, destinatarios, "text/html");
+			notifier.notify(colleagueId, "abert-chamado", parametros, destinatarios, "text/html");
 			log.info("---------------------E-mail enviado: ");
 			
 		} catch(e){	

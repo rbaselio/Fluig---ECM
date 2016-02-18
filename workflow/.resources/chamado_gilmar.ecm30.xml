@@ -22,7 +22,7 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>chamado_gilmar</processId>
-      <version>25</version>
+      <version>26</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
     <formId>83</formId>
@@ -69,7 +69,7 @@
       <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>100</positionX>
+      <positionX>85</positionX>
       <positionY>76</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
@@ -119,7 +119,7 @@
       <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>70</positionX>
+      <positionX>50</positionX>
       <positionY>380</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
@@ -169,8 +169,8 @@
       <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>390</positionX>
-      <positionY>203</positionY>
+      <positionX>440</positionX>
+      <positionY>204</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -219,8 +219,8 @@
       <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>510</positionX>
-      <positionY>203</positionY>
+      <positionX>560</positionX>
+      <positionY>204</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -269,8 +269,8 @@
       <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>630</positionX>
-      <positionY>203</positionY>
+      <positionX>680</positionX>
+      <positionY>204</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -319,7 +319,7 @@
       <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>500</positionX>
+      <positionX>560</positionX>
       <positionY>66</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
@@ -355,8 +355,8 @@
       <subProcessId></subProcessId>
       <formFolder>0</formFolder>
       <automatic>true</automatic>
-      <positionX>90</positionX>
-      <positionY>220</positionY>
+      <positionX>73</positionX>
+      <positionY>202</positionY>
       <inhibitTransfer>false</inhibitTransfer>
       <stateType>1</stateType>
       <bpmnType>120</bpmnType>
@@ -380,8 +380,8 @@
       <subProcessId></subProcessId>
       <formFolder>0</formFolder>
       <automatic>true</automatic>
-      <positionX>160</positionX>
-      <positionY>170</positionY>
+      <positionX>197</positionX>
+      <positionY>202</positionY>
       <inhibitTransfer>false</inhibitTransfer>
       <stateType>1</stateType>
       <bpmnType>120</bpmnType>
@@ -405,8 +405,8 @@
       <subProcessId></subProcessId>
       <formFolder>0</formFolder>
       <automatic>true</automatic>
-      <positionX>260</positionX>
-      <positionY>201</positionY>
+      <positionX>300</positionX>
+      <positionY>202</positionY>
       <inhibitTransfer>false</inhibitTransfer>
       <stateType>1</stateType>
       <bpmnType>120</bpmnType>
@@ -444,7 +444,7 @@
       <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>190</positionX>
+      <positionX>210</positionX>
       <positionY>76</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
@@ -491,7 +491,7 @@
       <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>230</positionX>
+      <positionX>210</positionX>
       <positionY>390</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
@@ -538,7 +538,7 @@
       <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>670</positionX>
+      <positionX>450</positionX>
       <positionY>76</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
@@ -563,7 +563,7 @@
         <companyId>1</companyId>
         <processId>Chamado_gilmar</processId>
         <expressionOrder>1</expressionOrder>
-        <version>25</version>
+        <version>26</version>
         <sequence>7</sequence>
       </conditionProcessStatePK>
       <condition>true</condition>
@@ -576,7 +576,7 @@
         <companyId>1</companyId>
         <processId>Chamado_gilmar</processId>
         <expressionOrder>1</expressionOrder>
-        <version>25</version>
+        <version>26</version>
         <sequence>13</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;nm_aprova_gestor&quot;) == &quot;Sim&quot;</condition>
@@ -587,7 +587,7 @@
         <companyId>1</companyId>
         <processId>Chamado_gilmar</processId>
         <expressionOrder>2</expressionOrder>
-        <version>25</version>
+        <version>26</version>
         <sequence>13</sequence>
       </conditionProcessStatePK>
       <condition>true</condition>
@@ -598,7 +598,7 @@
         <companyId>1</companyId>
         <processId>Chamado_gilmar</processId>
         <expressionOrder>1</expressionOrder>
-        <version>25</version>
+        <version>26</version>
         <sequence>16</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;nm_criticidade&quot;) == &quot;Baixa&quot;</condition>
@@ -609,7 +609,7 @@
         <companyId>1</companyId>
         <processId>Chamado_gilmar</processId>
         <expressionOrder>2</expressionOrder>
-        <version>25</version>
+        <version>26</version>
         <sequence>16</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;nm_criticidade&quot;) == &quot;Media&quot;</condition>
@@ -620,7 +620,7 @@
         <companyId>1</companyId>
         <processId>Chamado_gilmar</processId>
         <expressionOrder>3</expressionOrder>
-        <version>25</version>
+        <version>26</version>
         <sequence>16</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;nm_criticidade&quot;) == &quot;Alta&quot;</condition>
@@ -890,21 +890,7 @@
     <WorkflowProcessEvent>
       <workflowProcessEventPK>
         <companyId>1</companyId>
-        <eventId>afterTaskComplete</eventId>
-        <processId>Chamado_gilmar</processId>
-        <version>1</version>
-      </workflowProcessEventPK>
-      <eventDescription>function afterTaskComplete(colleagueId,nextSequenceId,userList){
-	var process = getValue(&quot;WKNumProces&quot;);
-	if (nextSequenceId == 13 || nextSequenceId == 5){
-		hAPI.setCardValue(&quot;nm_solicitacao&quot;,process);
-	}
-}</eventDescription>
-    </WorkflowProcessEvent>
-    <WorkflowProcessEvent>
-      <workflowProcessEventPK>
-        <companyId>1</companyId>
-        <eventId>beforeTaskSave</eventId>
+        <eventId>beforetasksave</eventId>
         <processId>Chamado_gilmar</processId>
         <version>1</version>
       </workflowProcessEventPK>
@@ -921,16 +907,18 @@
 	&#xd;
 	log.info(&apos;docs.size() = &apos; +  docs.size());&#xd;
 	for (var i = 0; i &lt; docs.size(); i++) {&#xd;
-		&#xd;
 		doc = docs.get(i);&#xd;
    	 	name = String(new java.lang.String(doc.getPhisicalFile()));&#xd;
+   	 	&#xd;
+   	 	log.info(&quot;-------------VALIDANDO ARQUIVO &quot; + name + &quot;----------------&quot;);&#xd;
+   	 	&#xd;
    	 	array_extension = name.split(&quot;.&quot;);&#xd;
    	 	extencao = array_extension[array_extension.length - 1];&#xd;
    		permite = false;&#xd;
    		log.info(&apos;name = &apos; +  name);&#xd;
    		log.info(&apos;extencao = &apos; +  extencao);&#xd;
    	 &#xd;
-		log.info(&quot;-----------------CONSULTANDO DATASET----------------------&quot;);&#xd;
+		log.info(&quot;-----------------CONSULTANDO DATASET = consulta_extencao----------------------&quot;);&#xd;
 		var dataset = DatasetFactory.getDataset(&quot;consulta_extencao&quot;, null, null, null);&#xd;
 		if (dataset.rowsCount &gt; 0){&#xd;
 			for(var j = 0; j &lt; dataset.rowsCount; j++) {&#xd;
@@ -945,7 +933,7 @@
 		&#xd;
 		log.info(&apos;permite = &apos; +  permite);&#xd;
 		if (permite == false){&#xd;
-			log.info(&quot;Arquivos com a extensão &quot; + extencao + &quot; não são permitidos&quot;);&#xd;
+			log.error(&quot;Arquivos com a extensão &quot; + extencao + &quot; não são permitidos&quot;);&#xd;
 		    throw &quot;Arquivos com a extensão &quot; + extencao + &quot; não são permitidos&quot; ;&#xd;
 		}&#xd;
 &#xd;
@@ -954,6 +942,20 @@
 }&#xd;
 &#xd;
 </eventDescription>
+    </WorkflowProcessEvent>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>aftertaskcomplete</eventId>
+        <processId>Chamado_gilmar</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>function afterTaskComplete(colleagueId,nextSequenceId,userList){
+	var process = getValue(&quot;WKNumProces&quot;);
+	if (nextSequenceId == 13 || nextSequenceId == 5){
+		hAPI.setCardValue(&quot;nm_solicitacao&quot;,process);
+	}
+}</eventDescription>
     </WorkflowProcessEvent>
   </list>
   <list/>
@@ -995,7 +997,7 @@
       <height>145</height>
       <width>781</width>
       <positionX>20</positionX>
-      <positionY>164</positionY>
+      <positionY>165</positionY>
       <stateName>T.I</stateName>
       <type>2</type>
       <parentSequence>0</parentSequence>
@@ -1014,45 +1016,45 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Chamado_gilmar</processId>
-        <version>25</version>
+        <version>26</version>
         <linkSequence>29</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
-      <positionX>386</positionX>
+      <positionX>329</positionX>
       <positionY>301</positionY>
     </ProcessLinkBend>
     <ProcessLinkBend>
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Chamado_gilmar</processId>
-        <version>25</version>
+        <version>26</version>
         <linkSequence>29</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
-      <positionX>684</positionX>
+      <positionX>707</positionX>
       <positionY>301</positionY>
     </ProcessLinkBend>
     <ProcessLinkBend>
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Chamado_gilmar</processId>
-        <version>25</version>
+        <version>26</version>
         <linkSequence>30</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
-      <positionX>403</positionX>
-      <positionY>288</positionY>
+      <positionX>352</positionX>
+      <positionY>289</positionY>
     </ProcessLinkBend>
     <ProcessLinkBend>
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Chamado_gilmar</processId>
-        <version>25</version>
+        <version>26</version>
         <linkSequence>30</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
-      <positionX>564</positionX>
-      <positionY>288</positionY>
+      <positionX>611</positionX>
+      <positionY>289</positionY>
     </ProcessLinkBend>
   </list>
   <list/>

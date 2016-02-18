@@ -3,15 +3,13 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="iE=edge,chrome=1">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<link rel="stylesheet" href="http://10.10.1.15:8080/webdesk/customresources?resourceName=bootstrap/css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="http://10.10.1.15:8080/webdesk/customresources?resourceName=bootstrap/css/bootstrap.css">
 <script src="http://10.10.1.15:8080/webdesk/customresources?resourceName=bootstrap/js/bootstrap.js"></script>
 <script src="http://10.10.1.15:8080/webdesk/customresources?resourceName=bootstrap/js/utils.js"></script>
 <script src="http://10.10.1.15:8080/webdesk/customresources?resourceName=bootstrap/js/jquery.mask.min.js"></script>
 </head>
 <body>
 	<form name="form" id="validation-form" method="POST" class="form-horizontal form-bordered form-row-stripped">
-	
 		<div class="row">
 			<div class="col-xs-36">
 				<table width="99%" border="0" align="center" cellpadding="0" cellspacing="0" class="tabelaGeral">
@@ -23,7 +21,6 @@
 									<b>FORMUL&Aacute;RIO DE CADASTRO DE TIPO DE CHAMADOS</b>
 								</div>
 							</td>
-								
 						</tr>
 						<tr>
 							<td align="right"><label for="chamado_num" class="control-label">N&uacute;mero:&nbsp;&nbsp;&nbsp;&nbsp;</label></td>
@@ -36,200 +33,191 @@
 					</tbody>
 				</table>
 				<div class="box-content">
-					<div class="row">
-						<div class="col-sm-0 col-xs-36">
-							<div class="box box-black">
-								<div class="box-title col-xs-36">
-									<h3>
-										<i class="fa  fa-users glyphicon glyphicon-unchecked"></i>Abertura do Chamado
-									</h3>
-									<div class="box-tool">
-										<a data-action="collapse" href="#"> Minimizar <i><i class="glyphicon glyphicon-align-right"></i></i></a>
-										<div class="col-xs-1"></div>
+					<div class="box-content">
+						<div class="box box-black">
+							<div class="box-title col-xs-36">
+								<h3>
+									<i class="fa  fa-users glyphicon glyphicon-unchecked"></i>Abertura do Chamado
+								</h3>
+								<div class="box-tool">
+									<a data-action="collapse" href="#"> Minimizar <i><i class="glyphicon glyphicon-align-right"></i></i></a>
+									<div class="col-xs-1"></div>
+								</div>
+							</div>
+							<div class="box-content">
+								<div class="col-xs-36" id="div_inicio" name="div_inicio">
+									<div class="form-group">
+										<label for="matricula_user" class="col-sm-5 col-xs-5 control-label">Solicitante:</label>
+										<div class="col-sm-5 col-xs-5 controls">
+											<input type="text" class="form-control" placeholder="Matr&iacute;cula" name="matricula_user" id="matricula_user" readonly="readonly" />
+										</div>
+										<div class="col-sm-13 col-xs-13 controls">
+											<div class="input-group ">
+												<input type="text" class="form-control" placeholder="Solicitante" name="solicitante" id="solicitante" readonly="readonly" />
+												<span class="input-group-btn">
+													<button class="btn btn-default btn-xs" type="button" onclick='zoomColaborador();' id="btZoomColab" name="btZoomColab">
+														<i id="iconeZoomColab" class="glyphicon glyphicon-zoom-in glyphicon-"></i>
+													</button>
+												</span>
+											</div>
+										</div>
+										<label for="ramal" class="col-sm-5 col-xs-5 control-label">Ramal:</label>
+										<div class="col-sm-5 col-xs-5 controls">
+											<input type="text" class="form-control" placeholder="Ramal" name="ramal" id="ramal" />
+										</div>
 									</div>
-								</div>								
-								<div class="box-content">
-									<div class="row">
-										<div class="col-xs-36" id="div_inicio" name="div_inicio">
-											<div class="form-group">
-												<label for="matricula_user" class="col-sm-5 col-xs-5 control-label">Solicitante:</label>
-												<div class="col-sm-5 col-xs-5 controls">
-													<input type="text" class="form-control" placeholder="Matr&iacute;cula" name="matricula_user" id="matricula_user" readonly="readonly" />
-												</div>
-												<div class="col-sm-13 col-xs-13 controls">
-													<div class="input-group ">
-														<input type="text" class="form-control" placeholder="Solicitante" name="solicitante" id="solicitante" readonly="readonly" />
-														<span class="input-group-btn">
-															<button class="btn btn-default btn-xs" type="button" onclick='zoomColaborador();' id="btZoomColab" name="btZoomColab">
-																<i class="glyphicon glyphicon-zoom-in glyphicon-"></i>
-															</button>
-														</span>
-													</div>
-												</div>
-												<label for="ramal" class="col-sm-5 col-xs-5 control-label">Ramal:</label>
-												<div class="col-sm-5 col-xs-5 controls">
-													<input type="text" class="form-control" placeholder="Ramal" name="ramal" id="ramal" />
-												</div>
+									<div class="form-group">
+										<label for="classe" class="col-sm-5 col-xs-5 control-label">Tipo:</label>
+										<div class="col-sm-7 col-xs-7 controls">
+											<input type="text" class="form-control" placeholder="Classe" name="classe" id="classe" readonly="readonly" />
+										</div>
+										<div class="col-sm-11 col-xs-11 controls">
+											<div class="input-group ">
+												<input type="text" class="form-control" placeholder="Tipo" name="tipo" id="tipo" readonly="readonly" />
+												<input type="hidden" name="responsavel" id="responsavel" />
+												<span class="input-group-btn">
+													<button class="btn btn-default btn-xs" type="button" onclick='zoomTipo();' name="busca_tipo" id="busca_tipo">
+														<i class="glyphicon glyphicon-zoom-in glyphicon-"></i>
+													</button>
+												</span>
 											</div>
-											<div class="form-group">
-												<label for="classe" class="col-sm-5 col-xs-5 control-label">Tipo:</label>
-												<div class="col-sm-5 col-xs-5 controls">
-													<input type="text" class="form-control" placeholder="Classe" name="classe" id="classe" readonly="readonly" />
-												</div>
-												<div class="col-sm-10 col-xs-10 controls">
-													<div class="input-group ">
-														<input type="text" class="form-control" placeholder="Tipo" name="tipo" id="tipo" readonly="readonly" />
-														<input type="hidden" name="responsavel" id="responsavel" />
-														<span class="input-group-btn">
-															<button class="btn btn-default btn-xs" type="button" onclick='zoomTipo();' name="busca_tipo" id="busca_tipo">
-																<i class="glyphicon glyphicon-zoom-in glyphicon-"></i>
-															</button>
-														</span>
-													</div>
-												</div>
-												<label for="classe" class="col-sm-5 col-xs-5 control-label">Classifica&ccedil;&atilde;o:</label>
-												<div class="col-sm-7 col-xs-7 controls">
-													<select name="criticidade" id="criticidade" dataset="criticidade" datasetkey="Prazo" datasetvalue="Criticidade" addBlankLine="true" class="form-control"></select> 
-													<input type="hidden" name="prazo" id="prazo" />
-												</div>
-											</div>
-											<div class="form-group">
-												<label for="desc_chamado" class="col-sm-5 col-xs-5 control-label">Descri&ccedil;&atilde;o do Chamado:</label>
-												<div class="col-sm-31 col-xs-31 controls">
-													<textarea name="desc_chamado" id="desc_chamado" rows="3" class="form-control"></textarea>
-												</div>
-											</div>
+										</div>
+										<label for="classe" class="col-sm-5 col-xs-5 control-label">Classifica&ccedil;&atilde;o:</label>
+										<div class="col-sm-8 col-xs-8 controls">
+											<select name="criticidade" id="criticidade" dataset="criticidade" datasetkey="Prazo" datasetvalue="Criticidade" addBlankLine="true" class="form-control"></select>
+											<input type="hidden" name="prazo" id="prazo" />
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="desc_chamado" class="col-sm-5 col-xs-5 control-label">Descri&ccedil;&atilde;o do Chamado:</label>
+										<div class="col-sm-31 col-xs-31 controls">
+											<textarea name="desc_chamado" id="desc_chamado" rows="3" class="form-control" placeholder="Informe a descri&ccedil;&atilde;o do atendimento!"></textarea>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
-						<div class="box-content">
-							<div class="row">
-								<div class="col-sm-0 col-xs-36">
-									<div class="box box-black">
-										<div class="box-title col-xs-36">
-											<h3>
-												<i class="fa  fa-users glyphicon glyphicon-unchecked"></i>Atendimento
-											</h3>
-											<div class="box-tool">
-												<a data-action="collapse" href="#"> Minimizar <i><i class="glyphicon glyphicon-align-right"></i></i></a>
-												<div class="col-xs-1"></div>
-											</div>
-										</div>
-										<div class="box-content">
-											<div class="row">
-												<div class="col-xs-36 " id="div_controladoria" name="div_controladoria">
-													<div class="form-group">
-														<label for="matricula_user" class="col-sm-5 col-xs-5 control-label">Atendente:</label>
-														<div class="col-sm-5 col-xs-5 controls">
-															<input type="text" class="form-control" placeholder="Matr&iacute;cula" name="matricula_atend" id="matricula_atend" readonly="readonly" />
-														</div>
-														<div class="col-sm-13 col-xs-13 controls">
-															<input type="text" class="form-control" placeholder="Atendente" name="atendente" id="atendente" readonly="readonly" />
-														</div>
-													</div>
-													<div class="form-group">
-														<div class="col-sm-36 col-xs-36 controls">
-															<table border="0" tablename="tb_interacao" name="tb_interacao" id="tb_interacao" noaddbutton=true class="table">
-																<thead>
-																	<tr>
-																		<td></td>
-																	</tr>
-																</thead>
-																<tr>
-																	<td>
-																		<div class="form-group">
-																			<label for="dt_intera" class="col-sm-4 col-xs-4 control-label">Data:</label>
-																			<div class="col-sm-6 col-xs-6 controls">
-																				<input type="date" name="dt_intera" id="dt_intera" class="form-control" readonly="readonly" />
-																			</div>
-																			<label for="desc_interacao" class="col-sm-5 col-xs-5 control-label">Descri&ccedil;&atilde;o do atendimento:</label>
-																			<div class="col-sm-21 col-xs-21 controls">
-																				<textarea name="desc_interacao" id="desc_interacao" rows="3" class="form-control " style="resize: none;"></textarea>
-																			</div>
-																		</div>
-																		<div class="form-group">
-																			<label for="dt_intera" class="col-sm-4 col-xs-4 control-label">Data:</label>
-																			<div class="col-sm-6 col-xs-6 controls">
-																				<input type="date" name="dt_aceite" id="dt_aceite" placeholder="Numero chamado" class="form-control" readonly="readonly" />
-																			</div>
-																			<label for="desc_interacao" class="col-sm-5 col-xs-5 control-label">Aceite do solicitante:</label>
-																			<div class="col-sm-21 col-xs-21 controls">
-																				<textarea name="desc_aceite" id="desc_aceite" rows="3" class="form-control desc_aceite" style="resize: none;"></textarea>
-																			</div>
-																		</div>
-																	</td>
-																</tr>
-															</table>
-															<input type="button" class="form-control" id="bt_add_interacao" name="bt_add_interacao" onclick="add_interacao('tb_interacao');" value="Adicionar intera&ccedil;&atilde;o">
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
+					</div>
+					<div class="box-content">
+						<div class="box box-black">
+							<div class="box-title col-xs-36">
+								<h3>
+									<i class="fa  fa-users glyphicon glyphicon-unchecked"></i>Atendimento
+								</h3>
+								<div class="box-tool">
+									<a data-action="collapse" href="#"> Minimizar <i><i class="glyphicon glyphicon-align-right"></i></i></a>
+									<div class="col-xs-1"></div>
 								</div>
 							</div>
-						</div>
-						<div class="box-content">
-							<div class="row">
-								<div class="col-sm-0 col-xs-36">
-									<div class="box box-black">
-										<div class="box-title col-xs-36">
-											<h3>
-												<i class="fa  fa-users glyphicon glyphicon-unchecked"></i>Aceite do chamado
-											</h3>
-											<div class="box-tool">
-												<a data-action="collapse" href="#"> Minimizar <i><i class="glyphicon glyphicon-align-right"></i></i></a>
-												<div class="col-xs-1"></div>
-											</div>
+							<div class="box-content">
+								<div class="col-xs-36" id="div_inicio" name="div_inicio">
+									<div class="form-group">
+										<label for="matricula_user" class="col-sm-5 col-xs-5 control-label">Atendente:</label>
+										<div class="col-sm-5 col-xs-5 controls">
+											<input type="text" class="form-control" placeholder="Matr&iacute;cula" name="matricula_atend" id="matricula_atend" readonly="readonly" />
 										</div>
-										<div class="box-content">
-											<div class="row">
-												<div class="col-xs-36 " id="div_aprovacao" name="div_aprovacao">
-													<div class="form-group">
-														<label for="nota" class="col-sm-5 col-xs-5 control-label">Nota pelo atendimento:</label>
-														<div class="col-sm-6 col-md-6 controls">
-															<input type="radio" name="nota" id="nota" style="cursor: pointer" value="1" checked="checked" />
-															<label>Totalmente Satisfeito</label>
-															</input>
-															<br>
-															<input type="radio" name="nota" id="nota" style="cursor: pointer" value="2" />
-															<label>Parcialmente Satisfeito</label>
-															</input>
-															<br>
-															<input type="radio" name="nota" id="nota" style="cursor: pointer" value="3" />
-															<label>Parcialmente insatisfeito</label>
-															</input>
-															<br>
-															<input type="radio" name="nota" id="nota" style="cursor: pointer" value="4" />
-															<label>Totalmente insatisfeito</label>
-															</input>
-														</div>
-														<label for="comentarios" class="col-sm-5 col-xs-5 control-label">Coment&aacute;rios:</label>
-														<div class="col-sm-20 col-xs-20 controls">
-															<textarea name="comentarios" id="comentarios" rows="3" class="form-control" style="resize: none;"></textarea>
-														</div>
-													</div>
-													<div class="form-group">
-														<label for="matricula_user" class="col-sm-5 col-xs-5 control-label">Usu&aacute;rio:</label>
-														<div class="col-sm-5 col-xs-5 controls">
-															<input type="text" class="form-control" placeholder="Matr&iacute;cula" name="matricula_aceite" id="matricula_aceite" readonly="readonly" />
-														</div>
-														<div class="col-sm-13 col-xs-13 controls">
-															<input type="text" class="form-control" placeholder="Usuario" name="user_aceite" id="user_aceite" readonly="readonly" />
-														</div>
-														<label for="dt_final" class="col-sm-5 col-xs-5 control-label">Data:</label>
-														<div class="col-sm-5 col-xs-5 controls">
-															<input type="date" class="form-control" placeholder="Usuario" name="dt_final" id="dt_final" readonly="readonly" />
-														</div>
-													</div>
-												</div>
-											</div>
+										<div class="col-sm-13 col-xs-13 controls">
+											<input type="text" class="form-control" placeholder="Atendente" name="atendente" id="atendente" readonly="readonly" />
 										</div>
+									</div>
+									<div class="form-group">
+										<label for="classe" class="col-sm-5 col-xs-5 control-label">Reclassifica&ccedil;&atilde;o:</label>
+										<div class="col-sm-5 col-xs-5 controls">
+											<input type="text" class="form-control" placeholder="Classe" name="re_classe" id="re_classe" readonly="readonly" />
+										</div>
+										<div class="col-sm-13 col-xs-13 controls">
+											<div class="input-group ">
+												<input type="text" class="form-control" placeholder="Tipo" name="re_tipo" id="re_tipo" readonly="readonly" />
+												<span class="input-group-btn">
+													<button class="btn btn-default btn-xs" type="button" onclick='zoomReclassificacao();' name="re_busca_tipo" id="re_busca_tipo">
+														<i class="glyphicon glyphicon-zoom-in glyphicon-"></i>
+													</button>
+												</span>
+											</div>
+										</div>										
 									</div>
 									
+									<div class="form-group">
+										<div class="col-sm-36 col-xs-36 controls">
+											<table border="0" tablename="tb_interacao" name="tb_interacao" id="tb_interacao" noaddbutton=true class="table">
+												<thead>
+													<tr>
+														<td></td>
+													</tr>
+												</thead>
+												<tr>
+													<td>
+														<div class="form-group">
+															<label for="dt_intera" class="col-sm-4 col-xs-4 control-label">Data:</label>
+															<div class="col-sm-6 col-xs-6 controls">
+																<input type="date" name="dt_intera" id="dt_intera" class="form-control" readonly="readonly" />
+															</div>
+															<label for="desc_interacao" class="col-sm-5 col-xs-5 control-label">Descri&ccedil;&atilde;o do atendimento:</label>
+															<div class="col-sm-21 col-xs-21 controls">
+																<textarea name="desc_interacao" id="desc_interacao" rows="3" class="form-control " style="resize: none;" placeholder="Informe a atendimento prestado!"></textarea>
+															</div>
+														</div>
+														<div class="form-group">
+															<label for="dt_intera" class="col-sm-4 col-xs-4 control-label">Data:</label>
+															<div class="col-sm-6 col-xs-6 controls">
+																<input type="date" name="dt_aceite" id="dt_aceite" placeholder="Numero chamado" class="form-control" readonly="readonly" />
+															</div>
+															<label for="desc_interacao" class="col-sm-5 col-xs-5 control-label">Aceite do solicitante:</label>
+															<div class="col-sm-21 col-xs-21 controls">
+																<textarea name="desc_aceite" id="desc_aceite" rows="3" class="form-control desc_aceite" style="resize: none;" placeholder="Informe a atendimento recebido!"></textarea>
+															</div>
+														</div>
+													</td>
+												</tr>
+											</table>
+											<input type="button" class="form-control" id="bt_add_interacao" name="bt_add_interacao" onclick="add_interacao('tb_interacao');" value="Adicionar intera&ccedil;&atilde;o">
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="box-content">
+						<div class="box box-black">
+							<div class="box-title col-xs-36">
+								<h3>
+									<i class="fa  fa-users glyphicon glyphicon-unchecked"></i>Avalia&ccedil;&atilde;o do atendimento
+								</h3>
+								<div class="box-tool">
+									<a data-action="collapse" href="#"> Minimizar <i><i class="glyphicon glyphicon-align-right"></i></i></a>
+									<div class="col-xs-1"></div>
+								</div>
+							</div>
+							<div class="box-content">
+								<div class="col-xs-36" id="div_inicio" name="div_inicio">
+									<div class="form-group">
+										<label for="nota" class="col-sm-5 col-xs-5 control-label">Avali&ccedil;&atilde;o do atendimento:</label>
+										<div class="col-sm-6 col-md-6 controls">
+											<input type="radio" name="nota" id="nota" style="cursor: pointer" value="1" checked="checked" />Atendido</input>
+											<br>
+											<input type="radio" name="nota" id="nota" style="cursor: pointer" value="2" >Parcialmente Atendido</input>
+											<br>
+											<input type="radio" name="nota" id="nota" style="cursor: pointer" value="3" />N&atilde;o Atendido</input>
+											<br>
+										</div>
+										<label for="comentarios" class="col-sm-5 col-xs-5 control-label">Coment&aacute;rios:</label>
+										<div class="col-sm-20 col-xs-20 controls">
+											<textarea name="comentarios" id="comentarios" rows="3" class="form-control" placeholder="Informe os comentarios sobre o atendimento!" style="resize: none;"></textarea>
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="matricula_user" class="col-sm-5 col-xs-5 control-label">Usu&aacute;rio:</label>
+										<div class="col-sm-5 col-xs-5 controls">
+											<input type="text" class="form-control" placeholder="Matr&iacute;cula" name="matricula_aceite" id="matricula_aceite" readonly="readonly" />
+										</div>
+										<div class="col-sm-13 col-xs-13 controls">
+											<input type="text" class="form-control" placeholder="Usuario" name="user_aceite" id="user_aceite" readonly="readonly" />
+										</div>
+										<label for="dt_final" class="col-sm-5 col-xs-5 control-label">Data:</label>
+										<div class="col-sm-5 col-xs-5 controls">
+											<input type="date" class="form-control" placeholder="Usuario" name="dt_final" id="dt_final" readonly="readonly" />
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -237,16 +225,15 @@
 				</div>
 			</div>
 		</div>
+		
 	</form>
 </body>
 <script>
-
-
-	$('#criticidade').on('change', function() {
-		$('#prazo').val($(this).val());		
-	});
 		
-	
+	$('#criticidade').on('change', function() {
+		$('#prazo').val($(this).val());
+	});
+
 	$(".desc_aceite").keypress(function(e) {
 		row = $(this).closest('tr').index();
 		$("#dt_aceite___" + row).val(getData());
@@ -259,30 +246,50 @@
 		$("#dt_intera___" + rows).val(getData());
 		$("#desc_aceite___" + rows).attr('readonly', true);
 	}
-
+	
+	
+	//setar solicitante
 	function zoomColaborador() {
-		zoomECM("colleague",
-				"colleagueId,Matr%c3%adcula,colleagueName,Colaborador",
-				"colleagueId,colleagueName,extensionNr", "Zoom Colaborador");
+		zoomEcmTipo("colleague", "colleagueId,Matricula,colleagueName,Colaborador",
+				"colleagueId,colleagueName,extensionNr", "Zoom Colaborador", "setColaborador");
+	}
+	
+	function setColaborador(selectedItem){
+		$("#matricula_user").val(selectedItem['colleagueId']);
+		$("#solicitante").val(selectedItem['colleagueName']);
+		$("#ramal").val(selectedItem['extensionNr']);
 	}
 
+	//setar tipo do chamado
 	function zoomTipo() {
-		zoomECM("TipoDeChamado", "Classe,Classe,Tipo,Tipo",
-				"Classe,Tipo,Matricula,Texto", "Zoom Tipo de Chamado");
+		zoomEcmTipo("TipoDeChamado", "Classe,Classe,Tipo,Tipo",
+				"Classe,Tipo,Matricula,Texto", "Zoom Tipo de Chamado", "setTipoDeChamado");
 	}
-
-	function setSelectedZoomItem(selectedItem) {
-		if (selectedItem['type'] == "colleague") {
-			$("#matricula_user").val(selectedItem['colleagueId']);
-			$("#solicitante").val(selectedItem['colleagueName']);
-			$("#ramal").val(selectedItem['extensionNr']);
-		}
-		if (selectedItem['type'] == "TipoDeChamado") {
-			$("#classe").val(selectedItem['Classe']);
-			$("#tipo").val(selectedItem['Tipo']);
-			$("#responsavel").val(selectedItem['Matricula']);
-			$("#desc_chamado").val(selectedItem['Texto']);
-		}
+	
+	function setTipoDeChamado(selectedItem){
+		$("#classe").val(selectedItem['Classe']);
+		$("#tipo").val(selectedItem['Tipo']);
+		$("#responsavel").val(selectedItem['Matricula']);
+		$("#desc_chamado").val(selectedItem['Texto']);
+		$("#re_classe").val(selectedItem['Classe']);
+		$("#re_tipo").val(selectedItem['Tipo']);
+		
+		$("#desc_chamado").focus().select();		
+		lines = $("#desc_chamado").val().replace(/ |^\s+|\s+$/g,'').split('\n');
+		if (lines.length >= 3 ) $("#desc_chamado").css('height', lines.length * 21.67);
+		else $("#desc_chamado").css('height', 65);	
 	}
+	
+	//reclassificação do chamado	
+	function zoomReclassificacao(){
+		zoomEcmTipo("TipoDeChamado", "Classe,Classe,Tipo,Tipo",
+				"Classe,Tipo", "Zoom Tipo de Chamado", "setReclassificacao");			
+	}	
+	
+	function setReclassificacao(selectedItem){
+		$("#re_classe").val(selectedItem['Classe']);
+		$("#re_tipo").val(selectedItem['Tipo']);
+	}	
+	
 </script>
 </html>

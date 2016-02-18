@@ -1,21 +1,22 @@
 function displayFields(form, customHTML) {
-
+	customHTML.append("<script>");
+	
 	form.setShowDisabledFields(true);
 	form.setHidePrintLink(false);
 
 	setEnabledConponent('btZoomColab', false);
 	setEnabledConponent('busca_tipo', false);
+	setEnabledConponent('re_busca_tipo', false);
 	setEnabledConponent('bt_add_interacao', false);
 	hideTableColumn("tb_interacao", 1, false);
 
-	var numAtividade = getValue("WKNumState");
-	
+	var numAtividade = getValue("WKNumState");	
 	var matricula = getValue("WKUser");
 	
 	var filter = new java.util.HashMap();
 	filter.put("colleaguePK.colleagueId", matricula);
-
 	var dadosusuario = getDatasetValues('colleague', filter).get(0);
+	
 	var colaborador = dadosusuario.get("colleagueName");
 	var ramal = dadosusuario.get("extensionNr");
 
@@ -27,15 +28,17 @@ function displayFields(form, customHTML) {
 		form.setValue('ramal', ramal);
 		form.setValue('data_sol', today);
 		form.setValue('chamado_num', getValue("WKNumProces"));
-		setEnabledConponent('busca_tipo', true);
-		setEnabledConponent('btZoomColab', validarGrupo(matricula, "TI"));
 		
+		setEnabledConponent('busca_tipo', true);
+		setEnabledConponent('btZoomColab', validarGrupo(matricula, "TI"));		
 	}
 
-	if (numAtividade == 2) {
+	if (numAtividade == 2 || numAtividade == 6) {
 		form.setValue('matricula_atend', matricula);
 		form.setValue('atendente', colaborador);
 		form.setValue('chamado_num', getValue("WKNumProces"));
+		
+		setEnabledConponent('re_busca_tipo', true);
 		setEnabledConponent('bt_add_interacao', true);
 		hideTableColumn("tb_interacao", 1, true);
 	}
@@ -51,20 +54,21 @@ function displayFields(form, customHTML) {
 		form.setValue('dt_final', today);
 	}
 
-	function setEnabledConponent(componente, lEnable) {
-		customHTML.append("<script>");
-		customHTML.append("$('#" + componente + "').attr('disabled', " + !lEnable + ");");
-		customHTML.append("</script>");
+	function setEnabledConponent(componente, lEnable) {		
+		customHTML.append("$('#" + componente + "').attr('disabled', " + !lEnable + "); ");	
+		if (lEnable == false) {
+			customHTML.append("$('#" + componente + "').children('i').hide(); ");	
+		} else {
+			customHTML.append("$('#" + componente + "').children('i').show(); ");
+		}		
 	}
 
-	function hideTableColumn(tabela, coluna, lEnable) {
-		customHTML.append("<script>");
+	function hideTableColumn(tabela, coluna, lEnable) {		
 		if (lEnable == false) {
-			customHTML.append("$('table#" + tabela + " tbody tr').children('td:nth-child(" + coluna + ")').hide();");
+			customHTML.append("$('table#" + tabela + " tbody tr').children('td:nth-child(" + coluna + ")').hide(); ");
 		} else {
-			customHTML.append("$('table#" + tabela + " tbody tr').children('td:nth-child(" + coluna + ")').show();");
-		}
-		customHTML.append("</script>");
+			customHTML.append("$('table#" + tabela + " tbody tr').children('td:nth-child(" + coluna + ")').show(); ");
+		}		
 	}
 
 	function validarGrupo(user, grupo) {
@@ -79,7 +83,9 @@ function displayFields(form, customHTML) {
 		}
 		return false;
 	}
+	customHTML.append("</script>");
 }
+
 
 function enableFields(form) {
 
@@ -96,7 +102,10 @@ function enableFields(form) {
 		form.setEnabled('desc_chamado', true);
 	}
 
-	if (numAtividade == 2) {
+	if ((numAtividade == 2 || numAtividade == 6)) {
+		form.setEnabled('re_classe', true);
+		form.setEnabled('re_tipo', true);
+		
 		form.setEnabled('desc_interacao', true);
 		form.setEnabled('dt_intera', true);
 	}
@@ -128,6 +137,10 @@ function validateForm(form) {
 	var erros = "";
 
 	if (numAtividade == 0 || numAtividade == 1) {
+
+		if (form.getValue("ramal") == "") {
+			erros += " - [Informe o ramal do solicitante];\n";
+		}		
 		if (form.getValue("classe") == "") {
 			erros += " - [Tipo / Classe do chamado];\n";
 		}
@@ -138,13 +151,19 @@ function validateForm(form) {
 			erros += " - [Descrição do chamado];\n";
 		}
 	}
-
+	
+	if ((numAtividade == 2 || numAtividade == 6)) {
+		if (form.getValue("re_classe") == "") {
+			erros += " - [Reclassificar Tipo / Classe do chamado];\n";
+		}		
+	}
+	
 	if (numAtividade == 4) {
 		if (form.getValue("comentarios") == "") {
-			if (form.getValue("nota") == "3" || form.getValue("nota") == "4") {
-				erros += " - [Comente o motivo da sua nota];\n";
+			if (form.getValue("nota") == "2" || form.getValue("nota") == "3") {
+				erros += " - [Comente o motivo do não atendimento ou atendimento parcial];\n";
 			}
-		}
+		}		
 	}
 
 	if (erros != "") {

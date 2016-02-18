@@ -2,20 +2,6 @@
 <report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.23" id="1">
     <property name="author">Carla Tonon</property>
     <property name="createdBy">Eclipse BIRT Designer Version 4.5.0.v201506092134 Build &lt;@BUILD@></property>
-    <list-property name="propertyBindings">
-        <structure>
-            <property name="name">queryText</property>
-            <property name="id">8</property>
-        </structure>
-        <structure>
-            <property name="name">queryTimeOut</property>
-            <property name="id">8</property>
-        </structure>
-        <structure>
-            <property name="name">rowFetchSize</property>
-            <property name="id">8</property>
-        </structure>
-    </list-property>
     <property name="units">in</property>
     <property name="iconFile">/templates/blank_report.gif</property>
     <property name="layoutPreference">auto layout</property>
@@ -44,6 +30,70 @@
             <property name="controlType">radio-button</property>
             <property name="fixedOrder">true</property>
             <structure name="format"/>
+        </scalar-parameter>
+        <scalar-parameter name="processoMaiorQue" id="389">
+            <text-property name="promptText">Maiores que:</text-property>
+            <property name="valueType">static</property>
+            <property name="isRequired">true</property>
+            <property name="dataType">integer</property>
+            <property name="distinct">true</property>
+            <simple-property-list name="defaultValue">
+                <value type="constant">0</value>
+            </simple-property-list>
+            <list-property name="selectionList"/>
+            <property name="paramType">simple</property>
+            <property name="controlType">text-box</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+        <scalar-parameter name="processoMenoresQue" id="390">
+            <text-property name="promptText">Menores que:</text-property>
+            <property name="valueType">static</property>
+            <property name="isRequired">true</property>
+            <property name="dataType">integer</property>
+            <property name="distinct">true</property>
+            <simple-property-list name="defaultValue">
+                <value type="constant">99999</value>
+            </simple-property-list>
+            <list-property name="selectionList"/>
+            <property name="paramType">simple</property>
+            <property name="controlType">text-box</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+        <scalar-parameter name="DataInicial" id="406">
+            <text-property name="promptText">Data Inicial</text-property>
+            <property name="valueType">static</property>
+            <property name="isRequired">true</property>
+            <property name="dataType">string</property>
+            <property name="distinct">true</property>
+            <simple-property-list name="defaultValue">
+                <value type="constant">01/01/1900</value>
+            </simple-property-list>
+            <list-property name="selectionList"/>
+            <property name="paramType">simple</property>
+            <property name="controlType">text-box</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+        <scalar-parameter name="DataFinal" id="407">
+            <text-property name="promptText">Data Final</text-property>
+            <property name="valueType">static</property>
+            <property name="isRequired">true</property>
+            <property name="dataType">string</property>
+            <property name="distinct">true</property>
+            <simple-property-list name="defaultValue">
+                <value type="constant">01/01/9999</value>
+            </simple-property-list>
+            <list-property name="selectionList"/>
+            <property name="paramType">simple</property>
+            <property name="controlType">text-box</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
         </scalar-parameter>
     </parameters>
     <data-sources>
@@ -78,109 +128,135 @@
                     <property name="columnName">NUM_PROCES</property>
                     <property name="analysis">measure</property>
                     <text-property name="displayName">NUM_PROCES</text-property>
-                    <property name="onColumnLayout">false</property>
                     <text-property name="heading">NUM_PROCES</text-property>
                 </structure>
                 <structure>
-                    <property name="columnName">NUMERO</property>
+                    <property name="columnName">DATAAUXILIAR</property>
                     <property name="analysis">dimension</property>
-                    <text-property name="displayName">NUMERO</text-property>
-                    <property name="onColumnLayout">false</property>
-                    <text-property name="heading">NUMERO</text-property>
+                    <text-property name="displayName">DATAAUXILIAR</text-property>
+                    <text-property name="heading">DATAAUXILIAR</text-property>
                 </structure>
                 <structure>
                     <property name="columnName">DATA_rnc</property>
                     <property name="analysis">dimension</property>
                     <text-property name="displayName">DATA_rnc</text-property>
-                    <property name="onColumnLayout">false</property>
                     <text-property name="heading">DATA_rnc</text-property>
                 </structure>
                 <structure>
                     <property name="columnName">TIPO_DOC</property>
                     <property name="analysis">dimension</property>
                     <text-property name="displayName">TIPO_DOC</text-property>
-                    <property name="onColumnLayout">false</property>
                     <text-property name="heading">TIPO_DOC</text-property>
                 </structure>
                 <structure>
                     <property name="columnName">ORIGEM</property>
                     <property name="analysis">dimension</property>
                     <text-property name="displayName">ORIGEM</text-property>
-                    <property name="onColumnLayout">false</property>
                     <text-property name="heading">ORIGEM</text-property>
                 </structure>
                 <structure>
                     <property name="columnName">UN_NEGOCIO</property>
                     <property name="analysis">dimension</property>
                     <text-property name="displayName">UN_NEGOCIO</text-property>
-                    <property name="onColumnLayout">false</property>
                     <text-property name="heading">UN_NEGOCIO</text-property>
                 </structure>
                 <structure>
                     <property name="columnName">TIPO</property>
                     <property name="analysis">dimension</property>
                     <text-property name="displayName">TIPO</text-property>
-                    <property name="onColumnLayout">false</property>
                     <text-property name="heading">TIPO</text-property>
                 </structure>
                 <structure>
                     <property name="columnName">CODIGO_PRODUTO</property>
                     <property name="analysis">dimension</property>
                     <text-property name="displayName">CODIGO_PRODUTO</text-property>
-                    <property name="onColumnLayout">false</property>
                     <text-property name="heading">CODIGO_PRODUTO</text-property>
                 </structure>
                 <structure>
                     <property name="columnName">NOME_PRODUTO</property>
                     <property name="analysis">dimension</property>
                     <text-property name="displayName">NOME_PRODUTO</text-property>
-                    <property name="onColumnLayout">false</property>
                     <text-property name="heading">NOME_PRODUTO</text-property>
                 </structure>
                 <structure>
                     <property name="columnName">PROCESSO</property>
                     <property name="analysis">dimension</property>
                     <text-property name="displayName">PROCESSO</text-property>
-                    <property name="onColumnLayout">false</property>
                     <text-property name="heading">PROCESSO</text-property>
                 </structure>
                 <structure>
                     <property name="columnName">DESCRICAO_NC</property>
                     <property name="analysis">dimension</property>
                     <text-property name="displayName">DESCRICAO_NC</text-property>
-                    <property name="onColumnLayout">false</property>
                     <text-property name="heading">DESCRICAO_NC</text-property>
                 </structure>
                 <structure>
                     <property name="columnName">ACAO</property>
                     <property name="analysis">dimension</property>
                     <text-property name="displayName">ACAO</text-property>
-                    <property name="onColumnLayout">false</property>
                     <text-property name="heading">ACAO</text-property>
                 </structure>
                 <structure>
                     <property name="columnName">QUANT</property>
                     <property name="analysis">dimension</property>
                     <text-property name="displayName">QUANT</text-property>
-                    <property name="onColumnLayout">false</property>
                     <text-property name="heading">QUANT</text-property>
                 </structure>
                 <structure>
                     <property name="columnName">DESCRICAO</property>
                     <property name="analysis">dimension</property>
                     <text-property name="displayName">DESCRICAO</text-property>
-                    <property name="onColumnLayout">false</property>
                     <text-property name="heading">DESCRICAO</text-property>
                 </structure>
             </list-property>
             <list-property name="parameters">
+                <structure>
+                    <property name="name">MaiorQue</property>
+                    <property name="paramName">processoMaiorQue</property>
+                    <property name="nativeName"></property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">-1</property>
+                    <property name="position">1</property>
+                    <property name="isInput">true</property>
+                    <property name="isOutput">false</property>
+                </structure>
+                <structure>
+                    <property name="name">ManoresQue</property>
+                    <property name="paramName">processoMenoresQue</property>
+                    <property name="nativeName"></property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">-1</property>
+                    <property name="position">2</property>
+                    <property name="isInput">true</property>
+                    <property name="isOutput">false</property>
+                </structure>
                 <structure>
                     <property name="name">status</property>
                     <property name="paramName">status</property>
                     <property name="nativeName"></property>
                     <property name="dataType">boolean</property>
                     <property name="nativeDataType">-1</property>
-                    <property name="position">1</property>
+                    <property name="position">3</property>
+                    <property name="isInput">true</property>
+                    <property name="isOutput">false</property>
+                </structure>
+                <structure>
+                    <property name="name">datainicio</property>
+                    <property name="paramName">DataInicial</property>
+                    <property name="nativeName"></property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">-1</property>
+                    <property name="position">4</property>
+                    <property name="isInput">true</property>
+                    <property name="isOutput">false</property>
+                </structure>
+                <structure>
+                    <property name="name">datafinal</property>
+                    <property name="paramName">DataFinal</property>
+                    <property name="nativeName"></property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">-1</property>
+                    <property name="position">5</property>
                     <property name="isInput">true</property>
                     <property name="isOutput">false</property>
                 </structure>
@@ -194,7 +270,7 @@
                     </structure>
                     <structure>
                         <property name="position">2</property>
-                        <property name="name">NUMERO</property>
+                        <property name="name">DATAAUXILIAR</property>
                         <property name="dataType">string</property>
                     </structure>
                     <structure>
@@ -270,8 +346,8 @@
                 </structure>
                 <structure>
                     <property name="position">2</property>
-                    <property name="name">NUMERO</property>
-                    <property name="nativeName">NUMERO</property>
+                    <property name="name">DATAAUXILIAR</property>
+                    <property name="nativeName">DATAAUXILIAR</property>
                     <property name="dataType">string</property>
                     <property name="nativeDataType">12</property>
                 </structure>
@@ -360,23 +436,19 @@
                     <property name="nativeDataType">12</property>
                 </structure>
             </list-property>
-            <xml-property name="queryText"><![CDATA[Select PROCES_WORKFLOW.NUM_PROCES,  
-	(select FICHA.COD_VALOR
+            <xml-property name="queryText"><![CDATA[select * from (
+
+Select distinct (PROCES_WORKFLOW.NUM_PROCES),	
+	@atrib := (select FICHA.COD_VALOR
 			from FICHA 
-			where (FICHA.COD_EMPRESA = ANEXO_PROCES.COD_EMPRESA AND
+			where FICHA.COD_EMPRESA = ANEXO_PROCES.COD_EMPRESA AND
 				FICHA.NR_FICHA = ANEXO_PROCES.NR_DOCUMENTO and
 				FICHA.NR_VERSAO = ANEXO_PROCES.NR_VERSAO AND
+                FICHA.COD_VALOR is not null and
 				FICHA.COD_TABELA = "principal" AND
-				FICHA.COD_CAMPO = "inicNr")) AS NUMERO, 
+				FICHA.COD_CAMPO = "inicData") as DATAAUXILIAR,
     
-   (select FICHA.COD_VALOR
-			from FICHA 
-			where (FICHA.COD_EMPRESA = ANEXO_PROCES.COD_EMPRESA AND
-				FICHA.NR_FICHA = ANEXO_PROCES.NR_DOCUMENTO and
-				FICHA.NR_VERSAO = ANEXO_PROCES.NR_VERSAO AND
-				FICHA.COD_TABELA = "principal" AND
-				FICHA.COD_CAMPO = "inicData")) AS DATA_rnc, 
-    
+    IF( @atrib = '', DATE_FORMAT(DOCUMENTO.DT_CRIACAO, '%d/%m/%Y'),  @atrib) AS DATA_rnc,   
 	
     (select FICHA.COD_VALOR
 			from FICHA 
@@ -384,9 +456,7 @@
 				FICHA.NR_FICHA = ANEXO_PROCES.NR_DOCUMENTO and
 				FICHA.NR_VERSAO = ANEXO_PROCES.NR_VERSAO AND
 				FICHA.COD_TABELA = "principal" AND
-				FICHA.COD_CAMPO = "inicTipo")) AS TIPO_DOC, 
-	
-    
+				FICHA.COD_CAMPO = "inicTipo")) AS TIPO_DOC,     
     
     (select FICHA.COD_VALOR
 			from FICHA 
@@ -468,11 +538,10 @@
 				FICHA.COD_TABELA = "principal" AND
 				FICHA.COD_CAMPO = "at2Descricao")) AS DESCRICAO
 
-
-
- FROM PROCES_WORKFLOW, ANEXO_PROCES
+ FROM PROCES_WORKFLOW, ANEXO_PROCES,FICHA, DOCUMENTO
 WHERE (PROCES_WORKFLOW.COD_EMPRESA = PROCES_WORKFLOW.COD_EMPRESA AND
-	   PROCES_WORKFLOW.COD_DEF_PROCES = 'RNC' AND
+		PROCES_WORKFLOW.NUM_PROCES >= ? and PROCES_WORKFLOW.NUM_PROCES <= ? and
+	    PROCES_WORKFLOW.COD_DEF_PROCES = 'RNC' AND
 		PROCES_WORKFLOW.LOG_ATIV = ?)
 	AND
 	  (ANEXO_PROCES.COD_EMPRESA = PROCES_WORKFLOW.COD_EMPRESA AND
@@ -482,11 +551,87 @@ WHERE (PROCES_WORKFLOW.COD_EMPRESA = PROCES_WORKFLOW.COD_EMPRESA AND
 								  WHERE ANEXO_PROCES.COD_EMPRESA = PROCES_WORKFLOW.COD_EMPRESA AND
 										ANEXO_PROCES.NUM_PROCES = PROCES_WORKFLOW.NUM_PROCES)
 	  )
-  
-	  ]]></xml-property>
+      
+  and
+		(DOCUMENTO.COD_EMPRESA = ANEXO_PROCES.COD_EMPRESA AND
+		 DOCUMENTO.NR_DOCUMENTO = ANEXO_PROCES.NR_DOCUMENTO and
+		 DOCUMENTO.NR_VERSAO = ANEXO_PROCES.NR_VERSAO)
+      
+      
+	and
+		(FICHA.COD_EMPRESA = ANEXO_PROCES.COD_EMPRESA AND
+		 FICHA.NR_FICHA = ANEXO_PROCES.NR_DOCUMENTO and
+		 FICHA.NR_VERSAO = ANEXO_PROCES.NR_VERSAO AND
+		 FICHA.COD_TABELA = "principal" AND
+		 FICHA.COD_CAMPO = "inicNr") 
+         
+ ) AS TABELA where STR_TO_DATE(DATA_rnc,'%d/%m/%Y') >= STR_TO_DATE(?, '%d/%m/%Y') and 
+				   STR_TO_DATE(DATA_rnc, '%d/%m/%Y') <= STR_TO_DATE(?, '%d/%m/%Y')]]></xml-property>
             <xml-property name="designerValues"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
 <model:DesignValues xmlns:design="http://www.eclipse.org/datatools/connectivity/oda/design" xmlns:model="http://www.eclipse.org/birt/report/model/adapter/odaModel">
   <Version>2.0</Version>
+  <DataSetParameters>
+    <parameter>
+      <design:ParameterDefinition>
+        <design:inOutMode>In</design:inOutMode>
+        <design:attributes>
+          <design:identifier>
+            <design:name></design:name>
+            <design:position>2</design:position>
+          </design:identifier>
+          <design:nativeDataTypeCode>-1</design:nativeDataTypeCode>
+          <design:precision>0</design:precision>
+          <design:scale>0</design:scale>
+          <design:nullability>Unknown</design:nullability>
+        </design:attributes>
+      </design:ParameterDefinition>
+    </parameter>
+    <parameter>
+      <design:ParameterDefinition>
+        <design:inOutMode>In</design:inOutMode>
+        <design:attributes>
+          <design:identifier>
+            <design:name></design:name>
+            <design:position>3</design:position>
+          </design:identifier>
+          <design:nativeDataTypeCode>-1</design:nativeDataTypeCode>
+          <design:precision>0</design:precision>
+          <design:scale>0</design:scale>
+          <design:nullability>Unknown</design:nullability>
+        </design:attributes>
+      </design:ParameterDefinition>
+    </parameter>
+    <parameter>
+      <design:ParameterDefinition>
+        <design:inOutMode>In</design:inOutMode>
+        <design:attributes>
+          <design:identifier>
+            <design:name></design:name>
+            <design:position>4</design:position>
+          </design:identifier>
+          <design:nativeDataTypeCode>-1</design:nativeDataTypeCode>
+          <design:precision>0</design:precision>
+          <design:scale>0</design:scale>
+          <design:nullability>Unknown</design:nullability>
+        </design:attributes>
+      </design:ParameterDefinition>
+    </parameter>
+    <parameter>
+      <design:ParameterDefinition>
+        <design:inOutMode>In</design:inOutMode>
+        <design:attributes>
+          <design:identifier>
+            <design:name></design:name>
+            <design:position>5</design:position>
+          </design:identifier>
+          <design:nativeDataTypeCode>-1</design:nativeDataTypeCode>
+          <design:precision>0</design:precision>
+          <design:scale>0</design:scale>
+          <design:nullability>Unknown</design:nullability>
+        </design:attributes>
+      </design:ParameterDefinition>
+    </parameter>
+  </DataSetParameters>
   <design:ResultSets derivedMetaData="true">
     <design:resultSetDefinitions>
       <design:resultSetColumns>
@@ -1852,15 +1997,14 @@ else "Relatório de RNCs em Aberto"</expression>
             <list-property name="boundDataColumns">
                 <structure>
                     <property name="name">NUM_PROCES</property>
-                    <text-property name="displayName">processo</text-property>
+                    <text-property name="displayName">NUM_PROCES</text-property>
                     <expression name="expression" type="javascript">dataSetRow["NUM_PROCES"]</expression>
                     <property name="dataType">integer</property>
-                    <property name="allowExport">true</property>
                 </structure>
                 <structure>
-                    <property name="name">NUMERO</property>
-                    <text-property name="displayName">NUMERO</text-property>
-                    <expression name="expression" type="javascript">dataSetRow["NUMERO"]</expression>
+                    <property name="name">DATAAUXILIAR</property>
+                    <text-property name="displayName">DATAAUXILIAR</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["DATAAUXILIAR"]</expression>
                     <property name="dataType">string</property>
                 </structure>
                 <structure>
@@ -1870,9 +2014,9 @@ else "Relatório de RNCs em Aberto"</expression>
                     <property name="dataType">string</property>
                 </structure>
                 <structure>
-                    <property name="name">TIPO</property>
-                    <text-property name="displayName">TIPO</text-property>
-                    <expression name="expression" type="javascript">dataSetRow["TIPO"]</expression>
+                    <property name="name">TIPO_DOC</property>
+                    <text-property name="displayName">TIPO_DOC</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["TIPO_DOC"]</expression>
                     <property name="dataType">string</property>
                 </structure>
                 <structure>
@@ -1885,6 +2029,12 @@ else "Relatório de RNCs em Aberto"</expression>
                     <property name="name">UN_NEGOCIO</property>
                     <text-property name="displayName">UN_NEGOCIO</text-property>
                     <expression name="expression" type="javascript">dataSetRow["UN_NEGOCIO"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">TIPO</property>
+                    <text-property name="displayName">TIPO</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["TIPO"]</expression>
                     <property name="dataType">string</property>
                 </structure>
                 <structure>
@@ -1930,10 +2080,10 @@ else "Relatório de RNCs em Aberto"</expression>
                     <property name="dataType">string</property>
                 </structure>
                 <structure>
-                    <property name="name">TIPO_DOC</property>
-                    <text-property name="displayName">TIPO_DOC</text-property>
-                    <expression name="expression" type="javascript">dataSetRow["TIPO_DOC"]</expression>
-                    <property name="dataType">string</property>
+                    <property name="name">DATA_rnc_1</property>
+                    <text-property name="displayName">DATA_rnc</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["DATA_rnc"]</expression>
+                    <property name="dataType">date</property>
                 </structure>
             </list-property>
             <column id="314">
@@ -2158,7 +2308,7 @@ else "Relatório de RNCs em Aberto"</expression>
                         <property name="borderTopStyle">solid</property>
                         <property name="borderTopWidth">thin</property>
                         <label id="352">
-                            <text-property name="text">DESCRICAO</text-property>
+                            <text-property name="text">Descrição</text-property>
                         </label>
                     </cell>
                 </row>
@@ -2187,7 +2337,7 @@ else "Relatório de RNCs em Aberto"</expression>
                         <property name="borderRightWidth">thin</property>
                         <property name="borderTopStyle">dotted</property>
                         <property name="borderTopWidth">thin</property>
-                        <data id="387">
+                        <data id="414">
                             <property name="resultSetColumn">NUM_PROCES</property>
                             <list-property name="action">
                                 <structure>
@@ -2207,7 +2357,7 @@ else "Relatório de RNCs em Aberto"</expression>
                         <property name="borderRightWidth">thin</property>
                         <property name="borderTopStyle">dotted</property>
                         <property name="borderTopWidth">thin</property>
-                        <data id="375">
+                        <data id="415">
                             <property name="resultSetColumn">DATA_rnc</property>
                         </data>
                     </cell>
@@ -2220,7 +2370,7 @@ else "Relatório de RNCs em Aberto"</expression>
                         <property name="borderRightWidth">thin</property>
                         <property name="borderTopStyle">dotted</property>
                         <property name="borderTopWidth">thin</property>
-                        <data id="377">
+                        <data id="427">
                             <property name="resultSetColumn">TIPO_DOC</property>
                         </data>
                     </cell>
@@ -2233,7 +2383,7 @@ else "Relatório de RNCs em Aberto"</expression>
                         <property name="borderRightWidth">thin</property>
                         <property name="borderTopStyle">dotted</property>
                         <property name="borderTopWidth">thin</property>
-                        <data id="378">
+                        <data id="417">
                             <property name="resultSetColumn">ORIGEM</property>
                         </data>
                     </cell>
@@ -2246,7 +2396,7 @@ else "Relatório de RNCs em Aberto"</expression>
                         <property name="borderRightWidth">thin</property>
                         <property name="borderTopStyle">dotted</property>
                         <property name="borderTopWidth">thin</property>
-                        <data id="379">
+                        <data id="418">
                             <property name="resultSetColumn">UN_NEGOCIO</property>
                         </data>
                     </cell>
@@ -2259,7 +2409,7 @@ else "Relatório de RNCs em Aberto"</expression>
                         <property name="borderRightWidth">thin</property>
                         <property name="borderTopStyle">dotted</property>
                         <property name="borderTopWidth">thin</property>
-                        <data id="376">
+                        <data id="419">
                             <property name="resultSetColumn">TIPO</property>
                         </data>
                     </cell>
@@ -2272,7 +2422,7 @@ else "Relatório de RNCs em Aberto"</expression>
                         <property name="borderRightWidth">thin</property>
                         <property name="borderTopStyle">dotted</property>
                         <property name="borderTopWidth">thin</property>
-                        <data id="380">
+                        <data id="420">
                             <property name="resultSetColumn">CODIGO_PRODUTO</property>
                         </data>
                     </cell>
@@ -2285,7 +2435,7 @@ else "Relatório de RNCs em Aberto"</expression>
                         <property name="borderRightWidth">thin</property>
                         <property name="borderTopStyle">dotted</property>
                         <property name="borderTopWidth">thin</property>
-                        <data id="381">
+                        <data id="421">
                             <property name="resultSetColumn">NOME_PRODUTO</property>
                         </data>
                     </cell>
@@ -2298,7 +2448,7 @@ else "Relatório de RNCs em Aberto"</expression>
                         <property name="borderRightWidth">thin</property>
                         <property name="borderTopStyle">dotted</property>
                         <property name="borderTopWidth">thin</property>
-                        <data id="382">
+                        <data id="422">
                             <property name="resultSetColumn">PROCESSO</property>
                         </data>
                     </cell>
@@ -2311,7 +2461,7 @@ else "Relatório de RNCs em Aberto"</expression>
                         <property name="borderRightWidth">thin</property>
                         <property name="borderTopStyle">dotted</property>
                         <property name="borderTopWidth">thin</property>
-                        <data id="383">
+                        <data id="424">
                             <property name="resultSetColumn">DESCRICAO_NC</property>
                         </data>
                     </cell>
@@ -2324,7 +2474,7 @@ else "Relatório de RNCs em Aberto"</expression>
                         <property name="borderRightWidth">thin</property>
                         <property name="borderTopStyle">dotted</property>
                         <property name="borderTopWidth">thin</property>
-                        <data id="384">
+                        <data id="425">
                             <property name="resultSetColumn">ACAO</property>
                         </data>
                     </cell>
@@ -2337,7 +2487,7 @@ else "Relatório de RNCs em Aberto"</expression>
                         <property name="borderRightWidth">thin</property>
                         <property name="borderTopStyle">dotted</property>
                         <property name="borderTopWidth">thin</property>
-                        <data id="385">
+                        <data id="426">
                             <property name="resultSetColumn">QUANT</property>
                         </data>
                     </cell>
@@ -2350,7 +2500,7 @@ else "Relatório de RNCs em Aberto"</expression>
                         <property name="borderRightWidth">thin</property>
                         <property name="borderTopStyle">dotted</property>
                         <property name="borderTopWidth">thin</property>
-                        <data id="386">
+                        <data id="423">
                             <property name="resultSetColumn">DESCRICAO</property>
                         </data>
                     </cell>

@@ -1,0 +1,234 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="iE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="http://10.10.1.15:8080/webdesk/customresources?resourceName=bootstrap/css/bootstrap.css">
+<script src="http://10.10.1.15:8080/webdesk/customresources?resourceName=bootstrap/js/bootstrap.js"></script>
+<script src="http://10.10.1.15:8080/webdesk/customresources?resourceName=bootstrap/js/jquery.mask.min.js"></script>
+<script src="http://10.10.1.15:8080/webdesk/customresources?resourceName=bootstrap/js/utils.js"></script>
+<script src="http://10.10.1.15:8080/webdesk/customresources?resourceName=bootstrap/js/validacoes.js"></script>
+</head>
+<body>
+	<form name="form" id="validation-form" method="POST" class="form-horizontal form-bordered form-row-stripped">
+		<table style="width: 99% align:center cellpadding:0 cellspacing:0 border:0">
+			<tbody>
+				<tr>
+					<td style="width: 10%" rowspan="3"><img src="http://10.10.1.15:8080/webdesk/customresources?resourceName=logo_casp/logocasp.gif" style="width: 204" height="79"></td>
+					<td rowspan="3">
+						<div align="center">
+							<b>SOLICITA&Ccedil;&Atilde;O DE AUTORIZA&Ccedil;&Atilde;O DE SA&Iacute;DA DE VE&Iacute;CULOS</b>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td style="width: 7%" align="right"><label for="chamado_num" class="control-label">N&uacute;mero:&nbsp;&nbsp;&nbsp;&nbsp;</label></td>
+					<td style="width: 10%"><input type="text" name="chamado_num" id="chamado_num" placeholder="N&uacute;mero chamado" class="form-control" readonly="readonly" /></td>
+				</tr>
+				<tr>
+					<td style="width: 7%" align=right><label for="data_sol" class="control-label">Data:&nbsp;&nbsp;&nbsp;&nbsp;</label></td>
+					<td style="width: 10%"><input type="date" name="data_sol" id="data_sol" class="form-control" size="15" readonly="readonly" /></td>
+				</tr>
+			</tbody>
+		</table>
+		<div class="box-content">
+			<div class="box-content">
+				<div class="box box-black">
+					<div class="box-title col-xs-36">
+						<h3>
+							<i class="fa  fa-users glyphicon glyphicon-unchecked"></i>Solicita&ccedil;&atilde;o de Veiculo
+						</h3>
+						<div class="box-tool">
+							<a data-action="collapse" href="#"> Minimizar <i><i class="glyphicon glyphicon-align-right"></i></i></a>
+							<div class="col-xs-1"></div>
+						</div>
+					</div>
+					<div class="box-content">
+						<div class="col-xs-36" id="div_inicio" name="div_inicio">
+							<div class="form-group">
+								<label for="matricula_user" class="col-sm-4 col-xs-4 control-label">Solicitante:</label>
+								<div class="col-sm-5 col-xs-5 controls">
+									<input type="text" class="form-control" placeholder="Matr&iacute;cula" name="matricula_user" id="matricula_user" readonly="readonly" />
+								</div>
+								<div class="col-sm-13 col-xs-13 controls">
+									<input type="text" class="form-control" placeholder="Solicitante" name="solicitante" id="solicitante" readonly="readonly" />
+								</div>
+								<label for="ramal" class="col-sm-4 col-xs-4 control-label">Ramal:</label>
+								<div class="col-sm-5 col-xs-5 controls">
+									<input type="text" class="form-control  ramal" placeholder="Ramal" name="ramal" id="ramal" />
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="placa" class="col-sm-4 col-xs-4 control-label">Placa:</label>
+								<div class="col-sm-4 col-xs-4 controls">
+									<select name="placa" id="placa" addBlankLine="true" class="form-control">
+										<option value=1>Carro 1</option>
+										<option value=2>Carro 2</option>
+									</select>
+								</div>
+								<label for="veiculo" class="col-sm-4 col-xs-4 control-label">Veiculo:</label>
+								<div class="col-sm-7 col-xs-7 controls">
+									<input type="text" class="form-control" placeholder="Ve&iacute;culo" name="veiculo" id="veiculo" readonly="readonly" />
+								</div>
+								<label for="matricula_user" class="col-sm-4 col-xs-4 control-label">Destino:</label>
+								<div class="col-sm-13 col-xs-13 controls">
+									<input type="text" class="form-control" placeholder="Destino" name="destino" id="destino" />
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-sm-36 col-xs-36 alert alert-info" align="center">
+									<h4><strong>ATEN&Ccedil;&Atilde;O!!!</strong>
+									PARADA OBRIGAT&Oacute;RIA NA PORTARIA PARA INSPEÇÃO DO VEICULO  
+									INFORME QUALQUER PROBLEMA</h4>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="box-content">
+				<div class="box box-black">
+					<div class="box-title col-xs-36">
+						<h3>
+							<i class="fa  fa-users glyphicon glyphicon-unchecked"></i>Autoriza&ccedil;&atilde;o do gestor:
+						</h3>
+						<div class="box-tool">
+							<a data-action="collapse" href="#"> Minimizar <i><i class="glyphicon glyphicon-align-right"></i></i></a>
+						</div>
+					</div>
+					<div class="box-content">
+						<div class="col-xs-36 " id="div_aprova" name="div_aprova">
+							<div class="form-group">
+								<label for="labelmat" class="col-sm-4 col-xs-4 control-label">Observa&ccedil;&otilde;es:</label>
+								<div class="col-sm-32 col-xs-32 controls">
+									<textarea name="obs_entrega" id="obs_entrega" rows="3" cols="70" class="form-control animated"></textarea>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="matricula_user" class="col-sm-4 col-xs-4 control-label">Executor:</label>
+								<div class="col-sm-5 col-xs-5 controls">
+									<input type="text" class="form-control" placeholder="Matr&iacute;cula" name="matricula_aprova" id="matricula_aprova" readonly="readonly" />
+								</div>
+								<div class="col-sm-13 col-xs-13 controls">
+									<input type="text" class="form-control" placeholder="Solicitante" name="nome_aprova" id="nome_aprova" readonly="readonly" />
+								</div>
+								<label for="ramal" class="col-sm-4 col-xs-4 control-label">Data:</label>
+								<div class="col-sm-5 col-xs-5 controls">
+									<input type="date" class="form-control" name="data_aprova" id="data_aprova" readonly="readonly" />
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="box-content">
+				<div class="box box-black">
+					<div class="box-title col-xs-36">
+						<h3>
+							<i class="fa  fa-users glyphicon glyphicon-unchecked"></i>Sa&iacute;da e Chegada do Ve&iacute;culo
+						</h3>
+						<div class="box-tool">
+							<a data-action="collapse" href="#"> Minimizar <i><i class="glyphicon glyphicon-align-right"></i></i></a>
+						</div>
+					</div>
+					<div class="box-content">
+						<div class="col-xs-36 " id="div_entrega" name="div_entrega">
+							<div class="form-group">
+								<label for="dt_saida" class="col-sm-4 col-xs-4 control-label">Data sa&iacute;da:</label>
+								<div class="col-sm-6 col-xs-6 controls">
+									<input type="date" class="form-control" name="dt_saida" id="dt_saida" />
+								</div>
+								<label for="hr_saida" class="col-sm-4 col-xs-4 control-label">Hora:</label>
+								<div class="col-sm-4 col-xs-4 controls">
+									<input type="time" class="form-control" name="hr_saida" id="hr_saida" />
+								</div>
+								<label for="km_saida" class="col-sm-4 col-xs-4 control-label">Kilometragem:</label>
+								<div class="col-sm-5 col-xs-5 controls">
+									<input type="text" class="form-control km" name="km_saida" id="km_saida" />
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="dt_chegada" class="col-sm-4 col-xs-4 control-label">Data chegada:</label>
+								<div class="col-sm-6 col-xs-6 controls">
+									<input type="date" class="form-control" name="dt_chegada" id="dt_chegada" />
+								</div>
+								<label for="hr_chegada" class="col-sm-4 col-xs-4 control-label">Hora:</label>
+								<div class="col-sm-4 col-xs-4 controls">
+									<input type="time" class="form-control" name="hr_chegada" id="hr_chegada" />
+								</div>
+								<label for="km_chegada" class="col-sm-4 col-xs-4 control-label">Kilometragem:</label>
+								<div class="col-sm-5 col-xs-5 controls">
+									<input type="text" class="form-control km" name="km_chegada" id="km_chegada" />
+								</div>
+								<label for="km_chegada" class="col-sm-4 col-xs-4 control-label">Dist&acirc;ncia:</label>
+								<div class="col-sm-5 col-xs-5 controls">
+									<input type="text" class="form-control km" name="km_total" id="km_total" readonly="readonly" />
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="labelmat" class="col-sm-4 col-xs-4 control-label">Observa&ccedil;&otilde;es:</label>
+								<div class="col-sm-32 col-xs-32 controls">
+									<textarea name="obs_entrega" id="obs_entrega" rows="3" cols="70" class="form-control animated"></textarea>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="matricula_user" class="col-sm-4 col-xs-4 control-label">Executor:</label>
+								<div class="col-sm-5 col-xs-5 controls">
+									<input type="text" class="form-control" placeholder="Matr&iacute;cula" name="matricula_entrega" id="matricula_entrega" readonly="readonly" />
+								</div>
+								<div class="col-sm-13 col-xs-13 controls">
+									<input type="text" class="form-control" placeholder="Solicitante" name="nome_entrega" id="nome_entrega" readonly="readonly" />
+								</div>
+								<label for="ramal" class="col-sm-4 col-xs-4 control-label">Data:</label>
+								<div class="col-sm-5 col-xs-5 controls">
+									<input type="date" class="form-control" name="data_entrega" id="data_entrega" readonly="readonly" />
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+</body>
+<script type="text/javascript">
+
+
+	function alerta() {
+		alert("teste");
+	}
+
+
+	var str = "alerta()";
+
+	eval(str);
+
+
+	$(function() {
+
+		$('.km').mask('000.000', {
+			reverse : true
+			}).keyup(
+					function(e) {
+						var dif = getValor($('#km_chegada').val())
+								- getValor($('#km_saida').val());
+						$('#km_total').val(setValor(dif));
+			});
+
+		
+		var getValor = function(valor) {
+			var aux = parseFloat(valor.replace(/\./g, '').replace(/\,/g, '.'));
+			if (!isNaN(aux)) {
+				return aux;
+			} else
+				return 0;
+		}
+
+		var setValor = function(valor) {
+			return valor.toFixed(0).replace(".", ",").replace(
+					/(\d)(?=(\d{3})+(?!\d))/g, "$1.");
+		}
+
+	});
+</script>
+</html>
