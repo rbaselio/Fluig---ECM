@@ -4,6 +4,7 @@
 <meta http-equiv="X-UA-Compatible" content="iE=edge,chrome=1">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" type="text/css" href="http://10.10.1.15:8080/webdesk/customresources?resourceName=bootstrap/css/bootstrap.css">
+
 <script src="http://10.10.1.15:8080/webdesk/customresources?resourceName=bootstrap/js/bootstrap.js"></script>
 <script src="http://10.10.1.15:8080/webdesk/customresources?resourceName=bootstrap/js/utils.js"></script>
 <script src="http://10.10.1.15:8080/webdesk/customresources?resourceName=bootstrap/js/jquery.mask.min.js"></script>
@@ -134,9 +135,8 @@
 													</button>
 												</span>
 											</div>
-										</div>										
+										</div>
 									</div>
-									
 									<div class="form-group">
 										<div class="col-sm-36 col-xs-36 controls">
 											<table border="0" tablename="tb_interacao" name="tb_interacao" id="tb_interacao" noaddbutton=true class="table">
@@ -160,7 +160,7 @@
 														<div class="form-group">
 															<label for="dt_intera" class="col-sm-4 col-xs-4 control-label">Data:</label>
 															<div class="col-sm-6 col-xs-6 controls">
-																<input type="date" name="dt_aceite" id="dt_aceite" placeholder="Numero chamado" class="form-control" readonly="readonly" />
+																<input type="date" name="dt_aceite" id="dt_aceite" placeholder="Numero chamado" class="form-control"  readonly="readonly"/>
 															</div>
 															<label for="desc_interacao" class="col-sm-5 col-xs-5 control-label">Aceite do solicitante:</label>
 															<div class="col-sm-21 col-xs-21 controls">
@@ -193,11 +193,17 @@
 									<div class="form-group">
 										<label for="nota" class="col-sm-5 col-xs-5 control-label">Avali&ccedil;&atilde;o do atendimento:</label>
 										<div class="col-sm-6 col-md-6 controls">
-											<input type="radio" name="nota" id="nota" style="cursor: pointer" value="1" checked="checked" />Atendido</input>
+											<input type="radio" name="nota" id="nota" style="cursor: pointer" value="1" checked="checked" />
+											Atendido
+											</input>
 											<br>
-											<input type="radio" name="nota" id="nota" style="cursor: pointer" value="2" >Parcialmente Atendido</input>
+											<input type="radio" name="nota" id="nota" style="cursor: pointer" value="2">
+											Parcialmente Atendido
+											</input>
 											<br>
-											<input type="radio" name="nota" id="nota" style="cursor: pointer" value="3" />N&atilde;o Atendido</input>
+											<input type="radio" name="nota" id="nota" style="cursor: pointer" value="3" />
+											N&atilde;o Atendido
+											</input>
 											<br>
 										</div>
 										<label for="comentarios" class="col-sm-5 col-xs-5 control-label">Coment&aacute;rios:</label>
@@ -225,11 +231,10 @@
 				</div>
 			</div>
 		</div>
-		
 	</form>
 </body>
-<script>
-		
+<script>	
+	
 	$('#criticidade').on('change', function() {
 		$('#prazo').val($(this).val());
 	});
@@ -246,15 +251,16 @@
 		$("#dt_intera___" + rows).val(getData());
 		$("#desc_aceite___" + rows).attr('readonly', true);
 	}
-	
-	
+
 	//setar solicitante
 	function zoomColaborador() {
-		zoomEcmTipo("colleague", "colleagueId,Matricula,colleagueName,Colaborador",
-				"colleagueId,colleagueName,extensionNr", "Zoom Colaborador", "setColaborador");
+		zoomEcmTipo("colleague",
+				"colleagueId,Matricula,colleagueName,Colaborador",
+				"colleagueId,colleagueName,extensionNr", "Zoom Colaborador",
+				"setColaborador");
 	}
-	
-	function setColaborador(selectedItem){
+
+	function setColaborador(selectedItem) {
 		$("#matricula_user").val(selectedItem['colleagueId']);
 		$("#solicitante").val(selectedItem['colleagueName']);
 		$("#ramal").val(selectedItem['extensionNr']);
@@ -263,33 +269,36 @@
 	//setar tipo do chamado
 	function zoomTipo() {
 		zoomEcmTipo("TipoDeChamado", "Classe,Classe,Tipo,Tipo",
-				"Classe,Tipo,Matricula,Texto", "Zoom Tipo de Chamado", "setTipoDeChamado");
+				"Classe,Tipo,Matricula,Texto", "Zoom Tipo de Chamado",
+				"setTipoDeChamado");
 	}
-	
-	function setTipoDeChamado(selectedItem){
+
+	function setTipoDeChamado(selectedItem) {
 		$("#classe").val(selectedItem['Classe']);
 		$("#tipo").val(selectedItem['Tipo']);
 		$("#responsavel").val(selectedItem['Matricula']);
+
+		$("#re_classe").val(selectedItem['Classe']);
+		$("#re_tipo").val(selectedItem['Tipo']);
+
 		$("#desc_chamado").val(selectedItem['Texto']);
-		$("#re_classe").val(selectedItem['Classe']);
-		$("#re_tipo").val(selectedItem['Tipo']);
-		
-		$("#desc_chamado").focus().select();		
-		lines = $("#desc_chamado").val().replace(/ |^\s+|\s+$/g,'').split('\n');
-		if (lines.length >= 3 ) $("#desc_chamado").css('height', lines.length * 21.67);
-		else $("#desc_chamado").css('height', 65);	
+		$("#desc_chamado").focus().select();
+		lines = $("#desc_chamado").val().replace(/ |^\s+|\s+$/g, '').split('\n');
+		if (lines.length > 3)
+			$("#desc_chamado").css('height', lines.length * 21.67);
+		else
+			$("#desc_chamado").css('height', 65);
 	}
-	
+
 	//reclassificação do chamado	
-	function zoomReclassificacao(){
-		zoomEcmTipo("TipoDeChamado", "Classe,Classe,Tipo,Tipo",
-				"Classe,Tipo", "Zoom Tipo de Chamado", "setReclassificacao");			
-	}	
-	
-	function setReclassificacao(selectedItem){
+	function zoomReclassificacao() {
+		zoomEcmTipo("TipoDeChamado", "Classe,Classe,Tipo,Tipo", "Classe,Tipo",
+				"Zoom Tipo de Chamado", "setReclassificacao");
+	}
+
+	function setReclassificacao(selectedItem) {
 		$("#re_classe").val(selectedItem['Classe']);
 		$("#re_tipo").val(selectedItem['Tipo']);
-	}	
-	
+	}
 </script>
 </html>

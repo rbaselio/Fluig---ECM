@@ -361,32 +361,33 @@
 		$('.rd_tipo_recla').click(function() {
 			if ($(this).val() == 'produto') {
 				$('#produto').attr('readonly', false);
+				$('#produto').attr('disabled', false);
 				$("#servico").prop("selectedIndex", 0);
 				$('#servico').attr('readonly', true);
+				$('#servico').attr('disabled', true);
 			}
 			if ($(this).val() == 'servico') {
 				$("#produto").prop("selectedIndex", 0);
 				$('#produto').attr('readonly', true);
+				$('#produto').attr('disabled', true);
 				$('#servico').attr('readonly', false);
+				$('#servico').attr('disabled', false);
 			}
 		});
 	});
-
 	
 	//setColaborador responsavel
 	function zoomColaborador() {
 		zoomECM("colleague", "colleagueId,Matricula,colleagueName,Colaborador",
 				"colleagueId,colleagueName,extensionNr", "Zoom Colaborador",
-				"setColaborador");
+				"setColaborador"); 
 	}
 
 	function setColaborador(selectedItem) {
 		$("#matricula_resp2").val(selectedItem['colleagueId']);
 		$("#user_resp").val(selectedItem['colleagueName']);
 		$("#ramal_resp").val(selectedItem['extensionNr']);
-	}
-	
-	
+	}	
 	
 </script>
 </html>

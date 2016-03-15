@@ -104,7 +104,7 @@
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
       <engineAllocationId>Associado</engineAllocationId>
-      <engineAllocationConfiguration>&lt;AssociatedController ConditionAssociated=&quot;AND&quot;&gt;&lt;ControlXML TypeAssociated=&quot;Grupos Colaborador&quot;&gt;&lt;AssignmentController&gt;&lt;GroupsOf&gt;1&lt;/GroupsOf&gt;&lt;OnlyWorkGroup&gt;ON&lt;/OnlyWorkGroup&gt;&lt;/AssignmentController&gt;&lt;/ControlXML&gt;&lt;ControlXML TypeAssociated=&quot;Grupo&quot;&gt;&lt;AssignmentController&gt;&lt;Group&gt;grupo_teste&lt;/Group&gt;&lt;/AssignmentController&gt;&lt;/ControlXML&gt;&lt;/AssociatedController&gt;</engineAllocationConfiguration>
+      <engineAllocationConfiguration>&lt;AssociatedController ConditionAssociated=&quot;AND&quot;&gt;&lt;ControlXML TypeAssociated=&quot;Grupos Colaborador&quot;&gt;&lt;AssignmentController&gt;&lt;GroupsOf&gt;1&lt;/GroupsOf&gt;&lt;OnlyWorkGroup&gt;ON&lt;/OnlyWorkGroup&gt;&lt;IncludeCommunityGroups&gt;OFF&lt;/IncludeCommunityGroups&gt;&lt;/AssignmentController&gt;&lt;/ControlXML&gt;&lt;ControlXML TypeAssociated=&quot;Grupo&quot;&gt;&lt;AssignmentController&gt;&lt;Group&gt;grupo_teste&lt;/Group&gt;&lt;/AssignmentController&gt;&lt;/ControlXML&gt;&lt;/AssociatedController&gt;</engineAllocationConfiguration>
       <selectColleague>1</selectColleague>
       <initialState>false</initialState>
       <notifyAuthorityDelay>true</notifyAuthorityDelay>
