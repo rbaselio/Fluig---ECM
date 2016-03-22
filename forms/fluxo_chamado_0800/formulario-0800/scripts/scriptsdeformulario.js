@@ -3,8 +3,7 @@ function displayFields(form,customHTML){
 	form.setShowDisabledFields(true);
 	form.setHidePrintLink(false);
 	
-	var numAtividade = getValue("WKNumState");
-	
+	var numAtividade = getValue("WKNumState");	
 	var matricula = getValue("WKUser");
 	
 	var filter = new java.util.HashMap();
@@ -21,7 +20,7 @@ function displayFields(form,customHTML){
 	var sdf = new java.text.SimpleDateFormat("HH:mm");
 	var now = sdf.format(dtNow);
 	
-	setEnabledConponent('btZoomColab', true);
+	setEnabledConponent('btZoomColab', false);
 
 	if(numAtividade == 0 || numAtividade == 1){ //abertura do atendimento
 		
@@ -38,7 +37,7 @@ function displayFields(form,customHTML){
 		form.setValue('matricula_resp', matricula);
 		form.setValue('responsavel', colaborador);
 		form.setValue('data_resp', today);
-		setEnabledConponent('btZoomColab', false);
+		setEnabledConponent('btZoomColab', true);
 	}
 	
 	if(numAtividade == 3){ //notificar cliente
@@ -64,7 +63,7 @@ function displayFields(form,customHTML){
 	
 	function setEnabledConponent(componente, lEnable) {
 		customHTML.append("<script>");
-		customHTML.append("$('#" + componente+ "').attr('disabled', " + lEnable + ");");
+		customHTML.append("$('#" + componente+ "').attr('disabled', " + !lEnable + ");");
 		customHTML.append("</script>");
 	}
 }
@@ -182,8 +181,7 @@ function validateForm(form){
 		if(form.getValue("obs_encer") == ""){
 			erros += " - [Observações];\n";
 		}
-	}
-	
+	}	
 	
 	if(erros != ""){
 		throw "\nOs campos abaixo são de preenchimento obrigatório:\n" + erros;
