@@ -23,7 +23,7 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>Atendimento Técnico da Área de TI</processId>
-      <version>6</version>
+      <version>17</version>
     </processDefinitionVersionPK>
     <versionDescription>Nova Versão.</versionDescription>
     <formId>14</formId>
@@ -70,8 +70,8 @@
       <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>434</positionX>
-      <positionY>91</positionY>
+      <positionX>20</positionX>
+      <positionY>52</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -120,8 +120,8 @@
       <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>399</positionX>
-      <positionY>181</positionY>
+      <positionX>110</positionX>
+      <positionY>35</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -154,8 +154,8 @@
       <deadlineTime>0</deadlineTime>
       <joint>true</joint>
       <agreementPercentage>100</agreementPercentage>
-      <engineAllocationId>Executor Atividade</engineAllocationId>
-      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;BaseActivity&gt;1&lt;/BaseActivity&gt;&lt;Returns&gt;First&lt;/Returns&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <engineAllocationId>Campo Formulário</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;FormField&gt;matricula_user&lt;/FormField&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
       <selectColleague>2</selectColleague>
       <initialState>false</initialState>
       <notifyAuthorityDelay>true</notifyAuthorityDelay>
@@ -170,8 +170,8 @@
       <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>560</positionX>
-      <positionY>182</positionY>
+      <positionX>251</positionX>
+      <positionY>36</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -220,8 +220,8 @@
       <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>480</positionX>
-      <positionY>270</positionY>
+      <positionX>251</positionX>
+      <positionY>125</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -270,8 +270,8 @@
       <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>560</positionX>
-      <positionY>81</positionY>
+      <positionX>410</positionX>
+      <positionY>36</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -320,8 +320,8 @@
       <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>515</positionX>
-      <positionY>370</positionY>
+      <positionX>445</positionX>
+      <positionY>150</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -352,7 +352,7 @@
       <returnPermited>false</returnPermited>
       <initialStateSequence>1</initialStateSequence>
       <finalStateSequence>2</finalStateSequence>
-      <returnLabel> </returnLabel>
+      <returnLabel></returnLabel>
       <name></name>
       <automaticLink>false</automaticLink>
       <type>0</type>
@@ -364,11 +364,11 @@
         <version>1</version>
         <linkSequence>2</linkSequence>
       </processLinkPK>
-      <actionLabel>Aceite da Solução</actionLabel>
+      <actionLabel>Retorno ao Solicitante</actionLabel>
       <returnPermited>false</returnPermited>
       <initialStateSequence>2</initialStateSequence>
       <finalStateSequence>3</finalStateSequence>
-      <returnLabel> </returnLabel>
+      <returnLabel></returnLabel>
       <name></name>
       <automaticLink>false</automaticLink>
       <type>0</type>
@@ -413,11 +413,11 @@
         <version>1</version>
         <linkSequence>5</linkSequence>
       </processLinkPK>
-      <actionLabel>Devolver para atendimento</actionLabel>
+      <actionLabel>Devolver para o Atendente</actionLabel>
       <returnPermited>false</returnPermited>
       <initialStateSequence>3</initialStateSequence>
       <finalStateSequence>6</finalStateSequence>
-      <returnLabel> </returnLabel>
+      <returnLabel></returnLabel>
       <name></name>
       <automaticLink>false</automaticLink>
       <type>0</type>
@@ -429,11 +429,11 @@
         <version>1</version>
         <linkSequence>6</linkSequence>
       </processLinkPK>
-      <actionLabel>Aceite da Solução</actionLabel>
+      <actionLabel>Retorno ao Solicitante</actionLabel>
       <returnPermited>false</returnPermited>
       <initialStateSequence>6</initialStateSequence>
       <finalStateSequence>3</finalStateSequence>
-      <returnLabel> </returnLabel>
+      <returnLabel></returnLabel>
       <name></name>
       <automaticLink>false</automaticLink>
       <type>0</type>
@@ -445,11 +445,11 @@
         <version>1</version>
         <linkSequence>7</linkSequence>
       </processLinkPK>
-      <actionLabel>Solicitação Improcedente</actionLabel>
+      <actionLabel>Reprovar Solicitação</actionLabel>
       <returnPermited>false</returnPermited>
       <initialStateSequence>2</initialStateSequence>
       <finalStateSequence>4</finalStateSequence>
-      <returnLabel> </returnLabel>
+      <returnLabel></returnLabel>
       <name></name>
       <automaticLink>false</automaticLink>
       <type>0</type>
@@ -457,6 +457,17 @@
   </list>
   <list/>
   <list>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>complexgateway16</eventId>
+        <processId>SOL-TI</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>function complexgateway16() {
+
+}</eventDescription>
+    </WorkflowProcessEvent>
     <WorkflowProcessEvent>
       <workflowProcessEventPK>
         <companyId>1</companyId>
@@ -593,7 +604,8 @@
 			parametros.put(&quot;processo&quot;, &quot;&quot; + numProcesso );	&#xd;
 			parametros.put(&quot;descricao&quot;, newComment);&#xd;
 			parametros.put(&quot;tempo&quot;, hAPI.getCardValue(&quot;prazo&quot;));			&#xd;
-			parametros.put(&quot;WDK_CompanyId&quot;, numEmpresa);			&#xd;
+			parametros.put(&quot;WDK_CompanyId&quot;, numEmpresa);&#xd;
+			parametros.put(&quot;WDK_TaskLink&quot;, hAPI.getUserTaskLink(sequenceId));	&#xd;
 			&#xd;
 			log.info(&quot;---Monta lista de destinatários: &quot;);				&#xd;
 			var destinatarios = new java.util.ArrayList();				&#xd;
@@ -625,23 +637,34 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SOL-TI</processId>
-        <version>6</version>
-        <linkSequence>3</linkSequence>
+        <version>17</version>
+        <linkSequence>5</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
-      <positionX>612</positionX>
-      <positionY>306</positionY>
+      <positionX>377</positionX>
+      <positionY>85</positionY>
     </ProcessLinkBend>
     <ProcessLinkBend>
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SOL-TI</processId>
-        <version>6</version>
+        <version>17</version>
+        <linkSequence>6</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>376</positionX>
+      <positionY>58</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>SOL-TI</processId>
+        <version>17</version>
         <linkSequence>7</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
-      <positionX>451</positionX>
-      <positionY>307</positionY>
+      <positionX>163</positionX>
+      <positionY>167</positionY>
     </ProcessLinkBend>
   </list>
   <list/>
@@ -651,19 +674,10 @@
       <processFormFieldPK>
         <companyId>1</companyId>
         <processId>SOL-TI</processId>
-        <fieldId>classe</fieldId>
+        <fieldId>desc_aceite</fieldId>
       </processFormFieldPK>
-      <fieldDescription>classe</fieldDescription>
+      <fieldDescription>desc_aceite</fieldDescription>
       <slotId>1</slotId>
-    </ProcessFormField>
-    <ProcessFormField>
-      <processFormFieldPK>
-        <companyId>1</companyId>
-        <processId>SOL-TI</processId>
-        <fieldId>tipo</fieldId>
-      </processFormFieldPK>
-      <fieldDescription>tipo</fieldDescription>
-      <slotId>2</slotId>
     </ProcessFormField>
   </list>
 </list>

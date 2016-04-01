@@ -1,14 +1,15 @@
 function displayFields(form, customHTML) {
+	
 	customHTML.append("<script>");
 	
 	form.setShowDisabledFields(true);
-	form.setHidePrintLink(false);
-
-	setEnabledConponent('btZoomColab', false);
-	setEnabledConponent('busca_tipo', false);
-	setEnabledConponent('re_busca_tipo', false);
-	setEnabledConponent('bt_add_interacao', false);
-	hideTableColumn("tb_interacao", 1, false);
+	form.setHidePrintLink(true);	
+	form.setVisibleById('bt_add_interacao', false);
+	form.setHideDeleteButton(false);
+	
+	setVisibleById('btZoomColab', false);
+	setVisibleById('busca_tipo', false);
+	setVisibleById('re_busca_tipo', false);
 
 	var numAtividade = getValue("WKNumState");	
 	var matricula = getValue("WKUser");
@@ -19,18 +20,18 @@ function displayFields(form, customHTML) {
 	
 	var colaborador = dadosusuario.get("colleagueName");
 	var ramal = dadosusuario.get("extensionNr");
-
 	var today = new java.text.SimpleDateFormat("yyyy-MM-dd").format(new java.util.Date());
 
 	if (numAtividade == 0 || numAtividade == 1) {
-		form.setValue('matricula_user', matricula);
+		
+		form.setValue('matricula_user', matricula);		
 		form.setValue('solicitante', colaborador);
 		form.setValue('ramal', ramal);
 		form.setValue('data_sol', today);
 		form.setValue('chamado_num', getValue("WKNumProces"));
 		
-		setEnabledConponent('busca_tipo', true);
-		setEnabledConponent('btZoomColab', validarGrupo(matricula, "TI"));		
+		setVisibleById('busca_tipo', true);
+		setVisibleById('btZoomColab', validarGrupo(matricula, "TI"));		
 	}
 
 	if (numAtividade == 2 || numAtividade == 6) {
@@ -38,9 +39,10 @@ function displayFields(form, customHTML) {
 		form.setValue('atendente', colaborador);
 		form.setValue('chamado_num', getValue("WKNumProces"));
 		
-		setEnabledConponent('re_busca_tipo', true);
-		setEnabledConponent('bt_add_interacao', true);
-		hideTableColumn("tb_interacao", 1, true);
+		form.setVisibleById('re_busca_tipo', true);
+		form.setVisibleById('bt_add_interacao', true);
+		
+		form.setHideDeleteButton(false);
 	}
 
 	if (numAtividade == 3) {
@@ -54,22 +56,14 @@ function displayFields(form, customHTML) {
 		form.setValue('dt_final', today);
 	}
 
-	function setEnabledConponent(componente, lEnable) {		
+	function setVisibleById(componente, lEnable) {		
 		customHTML.append("$('#" + componente + "').attr('disabled', " + !lEnable + "); ");	
 		if (lEnable == false) {
 			customHTML.append("$('#" + componente + "').children('i').hide(); ");	
 		} else {
 			customHTML.append("$('#" + componente + "').children('i').show(); ");
 		}		
-	}
-
-	function hideTableColumn(tabela, coluna, lEnable) {		
-		if (lEnable == false) {
-			customHTML.append("$('table#" + tabela + " tbody tr').children('td:nth-child(" + coluna + ")').hide(); ");
-		} else {
-			customHTML.append("$('table#" + tabela + " tbody tr').children('td:nth-child(" + coluna + ")').show(); ");
-		}		
-	}
+	}	
 
 	function validarGrupo(user, grupo) {
 		var c1 = DatasetFactory.createConstraint("colleagueGroupPK.colleagueId", user, user, ConstraintType.MUST);

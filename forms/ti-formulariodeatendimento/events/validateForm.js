@@ -11,7 +11,7 @@ function validateForm(form) {
 			erros += " - [Tipo / Classe do chamado];\n";
 		}
 		if (form.getValue("criticidade") == "") {
-			erros += " - [Criticidade do chamado];\n";
+			erros += " - [Impacto do chamado];\n";
 		}
 		if (form.getValue("desc_chamado") == "") {
 			erros += " - [Descrição do chamado];\n";

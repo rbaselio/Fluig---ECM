@@ -50,7 +50,8 @@ function beforeStateLeave(sequenceId){
 			parametros.put("processo", "" + numProcesso );	
 			parametros.put("descricao", newComment);
 			parametros.put("tempo", hAPI.getCardValue("prazo"));			
-			parametros.put("WDK_CompanyId", numEmpresa);			
+			parametros.put("WDK_CompanyId", numEmpresa);
+			parametros.put("WDK_TaskLink", hAPI.getUserTaskLink(sequenceId));	
 			
 			log.info("---Monta lista de destinatários: ");				
 			var destinatarios = new java.util.ArrayList();				

@@ -5,8 +5,10 @@
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link rel="stylesheet" href="http://10.10.1.15:8080/webdesk/customresources?resourceName=bootstrap/css/bootstrap.css">
-<script src="http://10.10.1.15:8080/webdesk/customresources?resourceName=bootstrap/js/bootstrap.js"></script>
+<link rel="stylesheet" type="text/css" href="/resources/bootstrap/css/bootstrap.css">
+
+<script src="/resources/bootstrap/js/bootstrap.js"></script>
+
 
 </head>
 <body>
@@ -14,7 +16,7 @@
 		<table width="99%" border="0" align="center" cellpadding="0" cellspacing="0" class="tabelaGeral">
 			<tbody>
 				<tr>
-					<td rowspan="3"><img src="http://10.10.1.15:8080/webdesk/customresources?resourceName=logo_casp/logocasp.gif" width="204" height="79"></td>
+					<td rowspan="3"><img src="/resources/logo_casp/logocasp.gif" width="204" height="79"></td>
 					<td rowspan="3"><div align="center">
 							<b>FORMUL&Aacute;RIO DE CADASTRO DE CRITICIDADE DE CHAMADOS</b></td>
 				</tr>
@@ -89,40 +91,4 @@
 		</div>
 	</form>
 </body>
-<script>
-	function getData() {
-		var d = new Date();
-
-		var month = d.getMonth() + 1;
-		var day = d.getDate();
-
-		return d.getFullYear() + '-' + (month < 10 ? '0' : '') + month + '-'
-				+ (day < 10 ? '0' : '') + day;
-	}
-
-	function add_filho(tabela, campoData) {
-		var rows = wdkAddChild(tabela);
-		campoData = campoData + "___" + rows;
-		document.getElementById(campoData).value = getData();
-	}
-
-	function zoomColaborador() {
-		window
-				.open(
-						"/webdesk/zoom.jsp?"
-								+ "datasetId=colleague"
-								+ "&dataFields=colleagueId,Matr%c3%adcula,colleagueName,Colaborador"
-								+ "&resultFields=colleagueId,colleagueName"
-								+ "&type=colaborador"
-								+ "&title=Zoom Colaborador", "zoom",
-						"status , scrollbars=no ,width=600, height=350 , top=0 , left=0");
-	}
-
-	function setSelectedZoomItem(selectedItem) {
-		if (selectedItem['type'] == "colaborador") {
-			$("#matricula_user").val(selectedItem['colleagueId']);
-			$("#solicitante").val(selectedItem['colleagueName']);
-		}
-	}
-</script>
 </html>

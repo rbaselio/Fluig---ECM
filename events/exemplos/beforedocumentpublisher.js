@@ -1,7 +1,5 @@
 function beforeDocumentPublisher() {
 
-	//Exemplo implementação
-	
 	log.info("-----------------VALIDAÇÃO DE ARQUIVO----------------------");
 	
 	var doc = getValue("WKDocument");
@@ -10,14 +8,7 @@ function beforeDocumentPublisher() {
 	
 	var permite = false;
 	var extencao = array_extension[array_extension.length - 1];
-	var extencoes_permitidas;
-	
-	/*
-    var out = '';
-    for (var i in doc) {
-        out += i + ": " + doc[i] + "<br><br>";
-    }
-    */
+	var extencoes_permitidas;	
 	
 	log.info("-----------------CONSULTANDO DATASET----------------------");
 	var dataset = DatasetFactory.getDataset("consulta_extencao", null, null, null);
@@ -30,14 +21,11 @@ function beforeDocumentPublisher() {
 	            break;
 	        }
 	    }
-	}
-	
+	}	
 	
 	if (permite == false){
 		log.info("Arquivos com a extensão " + extencao + " não são permitidos");
 	    throw "Arquivos com a extensão " + extencao + " não são permitidos" ;
 	}
 
-
 }
-

@@ -16,10 +16,10 @@
 				<table width="99%" border="0" align="center" cellpadding="0" cellspacing="0" class="tabelaGeral">
 					<tbody>
 						<tr>
-							<td rowspan="3"><img src="http://10.10.1.15:8080/webdesk/customresources?resourceName=logo_casp/logocasp.gif" width="204" height="79"></td>
+							<td rowspan="3"><img src="/resources/logo_casp/logocasp.gif" width="204" height="79"></td>
 							<td rowspan="3">
 								<div align="center">
-									<b>FORMUL&Aacute;RIO DE CADASTRO DE TIPO DE CHAMADOS</b>
+									<b>FORMUL&Aacute;RIO DE REGISTRO DE ATENDIMENTO</b>
 								</div>
 							</td>
 						</tr>
@@ -46,7 +46,7 @@
 								</div>
 							</div>
 							<div class="box-content">
-								<div class="col-xs-36" id="div_inicio" name="div_inicio">
+								<div class="col-xs-36" id="div_inicio">
 									<div class="form-group">
 										<label for="matricula_user" class="col-sm-5 col-xs-5 control-label">Solicitante:</label>
 										<div class="col-sm-5 col-xs-5 controls">
@@ -83,7 +83,7 @@
 												</span>
 											</div>
 										</div>
-										<label for="classe" class="col-sm-5 col-xs-5 control-label">Classifica&ccedil;&atilde;o:</label>
+										<label for="classe" class="col-sm-5 col-xs-5 control-label">Criticidade da Solicitação:</label>
 										<div class="col-sm-8 col-xs-8 controls">
 											<select name="criticidade" id="criticidade" dataset="criticidade" datasetkey="Prazo" datasetvalue="Criticidade" addBlankLine="true" class="form-control"></select>
 											<input type="hidden" name="prazo" id="prazo" />
@@ -111,7 +111,7 @@
 								</div>
 							</div>
 							<div class="box-content">
-								<div class="col-xs-36" id="div_inicio" name="div_inicio">
+								<div class="col-xs-36" id="div_inicio">
 									<div class="form-group">
 										<label for="matricula_user" class="col-sm-5 col-xs-5 control-label">Atendente:</label>
 										<div class="col-sm-5 col-xs-5 controls">
@@ -189,11 +189,11 @@
 								</div>
 							</div>
 							<div class="box-content">
-								<div class="col-xs-36" id="div_inicio" name="div_inicio">
+								<div class="col-xs-36" id="div_inicio">
 									<div class="form-group">
 										<label for="nota" class="col-sm-5 col-xs-5 control-label">Avali&ccedil;&atilde;o do atendimento:</label>
 										<div class="col-sm-6 col-md-6 controls">
-											<input type="radio" name="nota" id="nota" style="cursor: pointer" value="1" checked="checked" />
+											<input type="radio" name="nota" id="nota" style="cursor: pointer" value="1" checked="checked">
 											Atendido
 											</input>
 											<br>
@@ -201,7 +201,7 @@
 											Parcialmente Atendido
 											</input>
 											<br>
-											<input type="radio" name="nota" id="nota" style="cursor: pointer" value="3" />
+											<input type="radio" name="nota" id="nota" style="cursor: pointer" value="3">
 											N&atilde;o Atendido
 											</input>
 											<br>
@@ -270,11 +270,15 @@
 				"setTipoDeChamado");
 	}
 	function setTipoDeChamado(selectedItem) {
+		
 		$("#classe").val(selectedItem['Classe']);
 		$("#tipo").val(selectedItem['Tipo']);
-		$("#responsavel").val(selectedItem['Matricula']);
+		
 		$("#re_classe").val(selectedItem['Classe']);
 		$("#re_tipo").val(selectedItem['Tipo']);
+		
+		$("#responsavel").val(selectedItem['Matricula']);
+		
 		$("#desc_chamado").val(selectedItem['Texto']);
 		$("#desc_chamado").focus().select();
 		lines = $("#desc_chamado").val().replace(/ |^\s+|\s+$/g, '').split('\n');
@@ -296,3 +300,5 @@
 
 
 </html>
+
+
