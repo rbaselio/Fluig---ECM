@@ -25,7 +25,7 @@ function beforeDocumentPublisher() {
 	
 	if (permite == false){
 		log.info("Arquivos com a extensão " + extencao + " não são permitidos");
-	    throw "Arquivos com a extensão " + extencao + " não são permitidos" ;
+	       throw "Arquivos com a extensão " + extencao + " não são permitidos" ;
 	}
 
 }

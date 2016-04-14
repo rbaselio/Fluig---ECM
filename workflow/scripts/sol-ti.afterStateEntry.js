@@ -5,8 +5,8 @@ function afterStateEntry(sequenceId) {
 	var numEmpresa = getValue("WKCompany");
 	var numProcesso = getValue("WKNumProces");
 	var nrProxAtividade = getValue("WKNextState");
-	var numThread = hAPI.getActualThread(numEmpresa, numProcesso, nrProxAtividade);
 	var numAtividade = sequenceId;
+	var numThread = hAPI.getActualThread(numEmpresa, numProcesso, numAtividade);
 	var colleagueId = getValue("WKUser");
 
 	log.info("----------------------numEmpresa: " + numEmpresa);

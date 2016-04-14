@@ -23,7 +23,7 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>Atendimento Técnico da Área de TI</processId>
-      <version>17</version>
+      <version>19</version>
     </processDefinitionVersionPK>
     <versionDescription>Nova Versão.</versionDescription>
     <formId>14</formId>
@@ -201,11 +201,11 @@
       <stateName>Aceite e avaliação do atendimento</stateName>
       <stateDescription>Aceite e avaliação do atendimento</stateDescription>
       <instruction></instruction>
-      <deadlineTime>8</deadlineTime>
+      <deadlineTime>0</deadlineTime>
       <joint>true</joint>
       <agreementPercentage>100</agreementPercentage>
       <engineAllocationId>Executor Atividade</engineAllocationId>
-      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;BaseActivity&gt;3&lt;/BaseActivity&gt;&lt;Returns&gt;Last&lt;/Returns&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;BaseActivity&gt;1&lt;/BaseActivity&gt;&lt;Returns&gt;Last&lt;/Returns&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
       <selectColleague>2</selectColleague>
       <initialState>false</initialState>
       <notifyAuthorityDelay>true</notifyAuthorityDelay>
@@ -221,7 +221,7 @@
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
       <positionX>251</positionX>
-      <positionY>125</positionY>
+      <positionY>126</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -364,7 +364,7 @@
         <version>1</version>
         <linkSequence>2</linkSequence>
       </processLinkPK>
-      <actionLabel>Retorno ao Solicitante</actionLabel>
+      <actionLabel>Encaminhar ao Solicitante</actionLabel>
       <returnPermited>false</returnPermited>
       <initialStateSequence>2</initialStateSequence>
       <finalStateSequence>3</finalStateSequence>
@@ -413,7 +413,7 @@
         <version>1</version>
         <linkSequence>5</linkSequence>
       </processLinkPK>
-      <actionLabel>Devolver para o Atendente</actionLabel>
+      <actionLabel>Continuar Atendimento</actionLabel>
       <returnPermited>false</returnPermited>
       <initialStateSequence>3</initialStateSequence>
       <finalStateSequence>6</finalStateSequence>
@@ -429,7 +429,7 @@
         <version>1</version>
         <linkSequence>6</linkSequence>
       </processLinkPK>
-      <actionLabel>Retorno ao Solicitante</actionLabel>
+      <actionLabel>Retornar ao Solicitante</actionLabel>
       <returnPermited>false</returnPermited>
       <initialStateSequence>6</initialStateSequence>
       <finalStateSequence>3</finalStateSequence>
@@ -457,17 +457,6 @@
   </list>
   <list/>
   <list>
-    <WorkflowProcessEvent>
-      <workflowProcessEventPK>
-        <companyId>1</companyId>
-        <eventId>complexgateway16</eventId>
-        <processId>SOL-TI</processId>
-        <version>1</version>
-      </workflowProcessEventPK>
-      <eventDescription>function complexgateway16() {
-
-}</eventDescription>
-    </WorkflowProcessEvent>
     <WorkflowProcessEvent>
       <workflowProcessEventPK>
         <companyId>1</companyId>
@@ -637,7 +626,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SOL-TI</processId>
-        <version>17</version>
+        <version>19</version>
         <linkSequence>5</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -648,7 +637,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SOL-TI</processId>
-        <version>17</version>
+        <version>19</version>
         <linkSequence>6</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -659,7 +648,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SOL-TI</processId>
-        <version>17</version>
+        <version>19</version>
         <linkSequence>7</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>

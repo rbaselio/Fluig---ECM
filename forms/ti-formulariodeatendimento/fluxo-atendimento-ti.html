@@ -241,10 +241,7 @@
 	$('#criticidade').on('change', function() {
 		$('#prazo').val($(this).val());
 	});
-	$(".desc_aceite").keypress(function(e) {
-		row = $(this).closest('tr').index();
-		$("#dt_aceite___" + row).val(getData());
-	});
+	
 	$('#ramal').mask('9999');
 	function add_interacao(tabela) {
 		var rows = wdkAddChild(tabela);

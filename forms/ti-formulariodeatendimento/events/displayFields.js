@@ -5,7 +5,7 @@ function displayFields(form, customHTML) {
 	form.setShowDisabledFields(true);
 	form.setHidePrintLink(true);	
 	form.setVisibleById('bt_add_interacao', false);
-	form.setHideDeleteButton(false);
+	form.setHideDeleteButton(true);
 	
 	setVisibleById('btZoomColab', false);
 	setVisibleById('busca_tipo', false);
@@ -39,7 +39,7 @@ function displayFields(form, customHTML) {
 		form.setValue('atendente', colaborador);
 		form.setValue('chamado_num', getValue("WKNumProces"));
 		
-		form.setVisibleById('re_busca_tipo', true);
+		setVisibleById('re_busca_tipo', true);
 		form.setVisibleById('bt_add_interacao', true);
 		
 		form.setHideDeleteButton(false);
@@ -47,6 +47,8 @@ function displayFields(form, customHTML) {
 
 	if (numAtividade == 3) {
 		form.setValue('chamado_num', getValue("WKNumProces"));
+		var indexes = form.getChildrenIndexes("tb_interacao");
+	    form.setValue("dt_aceite___" + indexes[indexes.length - 1], today);
 	}
 
 	if (numAtividade == 4) {

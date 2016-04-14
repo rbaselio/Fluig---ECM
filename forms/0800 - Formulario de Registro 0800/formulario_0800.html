@@ -1,0 +1,495 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="iE=edge,chrome=1">
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="/resources/bootstrap/css/bootstrap.css">
+<script src="/resources/bootstrap/js/bootstrap.js"></script>
+<script src="/resources/bootstrap/js/utils.js"></script>
+<script src="/resources/bootstrap/js/jquery.mask.min.js"></script>
+</head>
+<body>
+	<form name="form" id="validation-form" method="POST" class="form-horizontal form-bordered form-row-stripped">
+		<div class="row">
+			<div class="col-xs-36">
+				<table width="99%" border="0" align="center" cellpadding="0" cellspacing="0" class="tabelaGeral">
+					<tbody>
+						<tr>
+							<td rowspan="3" width="20%"><img src="/resources/logo_casp/logocasp.gif" width="204" height="79"></td>
+							<td rowspan="3"><div align="center">
+									<b>FORMUL&Aacute;RIO DE CADASTRO SAC</b>
+								</div></td>
+							<td align="right"><label for="chamado_num" class="control-label">N&uacute;mero:&nbsp;&nbsp;&nbsp;&nbsp;</label></td>
+							<td width="15%"><input type="text" name="chamado_num" id="chamado_num" placeholder="N&uacute;mero chamado" class="form-control" readonly="readonly" /></td>
+						</tr>
+						<tr>
+							<td align=right><label for="data_sol" class="control-label">Data:&nbsp;&nbsp;&nbsp;&nbsp;</label></td>
+							<td width="15%"><input type="date" name="data_sol" id="data_sol" class="form-control" size="15" readonly="readonly" /></td>
+						</tr>
+						<tr>
+							<td align="right"><label for="hora_sol" class="control-label">Hora:&nbsp;&nbsp;&nbsp;&nbsp;</label></td>
+							<td width="15%"><input type="time" name="hora_sol" id="hora_sol" placeholder="N&uacute;mero chamado" class="form-control" readonly="readonly" /></td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="box-content">
+					<div class="row">
+						<div class="col-sm-0 col-xs-36">
+							<div class="box box-black">
+								<div class="box-title col-xs-36">
+									<h3>
+										<i class="fa  fa-users glyphicon glyphicon-unchecked"></i>Descri&ccedil;&atilde;o da Ocorr&ecirc;ncia
+									</h3>
+									<div class="box-tool">
+										<a data-action="collapse" href="#"> Minimizar <i><i class="glyphicon glyphicon-align-right"></i></i></a>
+										<div class="col-xs-1"></div>
+									</div>
+								</div>
+								<div class="box-content">
+									<div class="row">
+										<div class="col-xs-36" id="div_atendente" name="div_atendente">
+											<div class="form-group">
+												<label for="matricula_user" class="col-sm-5 col-xs-5 control-label">Atendente:</label>
+												<div class="col-sm-5 col-xs-5 controls">
+													<input type="text" class="form-control" placeholder="Matr&iacute;cula" name="matricula_user" id="matricula_user" readonly="readonly" />
+												</div>
+												<div class="col-sm-13 col-xs-13 controls">
+													<input type="text" class="form-control" placeholder="Solicitante" name="solicitante" id="solicitante" readonly="readonly" />
+												</div>
+												<label for="ramal" class="col-sm-5 col-xs-5 control-label">Ramal:</label>
+												<div class="col-sm-5 col-xs-5 controls">
+													<input type="text" class="form-control ramal" placeholder="Ramal" name="ramal" id="ramal" readonly="readonly" />
+												</div>
+											</div>
+											<div class="form-group">
+												<label for="nome_empresa" class="col-sm-5 col-xs-5 control-label">Empresa contatante:</label>
+												<div class="col-sm-7 col-xs-7 controls">
+													<input type="text" class="form-control" placeholder="Empresa do Contato" name="nome_empresa" id="nome_empresa" />
+												</div>
+												<label for="nome_contato" class="col-sm-5 col-xs-5 control-label">Nome contatante:</label>
+												<div class="col-sm-7 col-xs-7 controls">
+													<input type="text" class="form-control" placeholder="Nome do Contato" name="nome_contato" id="nome_contato" />
+												</div>
+												<label for="localidade" class="col-sm-5 col-xs-5 control-label">Localidade:</label>
+												<div class="col-sm-7 col-xs-7 controls">
+													<input type="text" class="form-control" placeholder="Nome do Contato" name="localidade" id="localidade" />
+												</div>
+											</div>
+											<div class="form-group">
+												<label for="tel_empresa" class="col-sm-5 col-xs-5 control-label">Telefone:</label>
+												<div class="col-sm-5 col-xs-5 controls">
+													<input type="text" class="form-control" placeholder="Telefone do Contato" name="tel_empresa" id="tel_empresa" />
+												</div>
+												<label for="cel_empresa" class="col-sm-5 col-xs-5 control-label">Celular:</label>
+												<div class="col-sm-5 col-xs-5 controls">
+													<input type="text" class="form-control" placeholder="Celular do Contato" name="cel_empresa" id="cel_empresa" />
+												</div>
+												<label for="email_contato" class="col-sm-5 col-xs-5 control-label">E-mail:</label>
+												<div class="col-sm-11 col-xs-11 controls">
+													<input type="text" class="form-control" placeholder="E-mail do Contato" name="email_contato" id="email_contato" />
+												</div>
+											</div>
+											<div class="form-group">
+												<label for="rd_tipo_atend" class="col-sm-5 col-xs-5 control-label">Tipo do Atendimento:</label>
+												<div class="col-sm-5 col-xs-5 controls">
+													<input type="radio" name="rd_tipo_atend" id="rd_tipo_atend" style="cursor: pointer" value="reclamacao" checked>
+													Reclama&ccedil;&atilde;o
+													</input>
+													<br>
+													<input type="radio" name="rd_tipo_atend" id="rd_tipo_atend" style="cursor: pointer" value="melhoria">
+													Solicita&ccedil;&atilde;o de melhoria
+													</input>
+													<br>
+													<input type="radio" name="rd_tipo_atend" id="rd_tipo_atend" style="cursor: pointer" value="melhoria">
+													D&uacute;vida
+													</input>
+												</div>
+												<label for="origem" class="col-sm-5 col-xs-5 control-label">Origem:</label>
+												<div class="col-sm-8 col-xs-8 controls">
+													<select name="origem" id="origem" dataset="cadastro_origens" datasetkey="Origem" datasetvalue="Origem" addBlankLine="true" class="form-control"></select>
+												</div>
+												<label for="unid_negocio" class="col-sm-5 col-xs-5 control-label">Unidade de Neg&oacute;cio:</label>
+												<div class="col-sm-8 col-xs-8 controls">
+													<select name="unid_negocio" id="unid_negocio" dataset="unidades_de_negocio" datasetkey="Unidade_de_negocio" datasetvalue="Unidade_de_negocio" addBlankLine="true" class="form-control"></select>
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="col-sm-5 col-xs-5 control-label">Tipo da Reclama&ccedil;&atilde;o:</label>
+												<div class="col-sm-5 col-xs-5 control-label">
+													<input type="radio" class='rd_tipo_recla' name="rd_tipo_recla" id="rd_tipo_recla" style="cursor: pointer" value="servico" checked>
+													<b>Servi&ccedil;o</b>
+													</input>
+												</div>
+												<div class="col-sm-7 col-xs-7 controls">
+													<select name="servico" id="servico" dataset="cadastro_servicos" datasetkey="Servico" datasetvalue="Servico" addBlankLine="true" class="form-control"></select>
+												</div>
+												<div class="col-sm-7 col-xs-7 control-label">
+													<input type="radio" class='rd_tipo_recla' name="rd_tipo_recla" id="rd_tipo_recla" style="cursor: pointer" value="produto">
+													<b>Equipamento / Produto</b>
+													</input>
+												</div>
+												<div class="col-sm-7 col-xs-7 controls">
+													<select name="produto" id="produto" dataset="cadastro_produtos" datasetkey="produtos" datasetvalue="produtos" addBlankLine="true" class="form-control" readonly></select>
+												</div>
+											</div>
+											<div class="form-group">
+												<label for="desc_recla" class="col-sm-5 col-xs-5 control-label">Descri&ccedil;&atilde;o da solicit&ccedil;&atilde;o:</label>
+												<div class="col-sm-31 col-xs-31 controls">
+													<textarea name="desc_recla" id="desc_recla" rows="3" cols="70" class="form-control"></textarea>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="box-content">
+					<div class="row">
+						<div class="col-sm-0 col-xs-36">
+							<div class="box box-black">
+								<div class="box-title col-xs-36">
+									<h3>
+										<i class="fa  fa-users glyphicon glyphicon-unchecked"></i>Proposi&ccedil;&atilde;o de Tratativa
+									</h3>
+									<div class="box-tool">
+										<a data-action="collapse" href="#"> Minimizar <i><i class="glyphicon glyphicon-align-right"></i></i></a>
+										<div class="col-xs-1"></div>
+									</div>
+								</div>
+								<div class="box-content">
+									<div class="row">
+										<div class="col-xs-36" id="div_tratativa" name="div_tratativa">
+											<div class="form-group">
+												<label for="matricula_resp" class="col-sm-5 col-xs-5 control-label">Respons&aacute;vel pela proposta:</label>
+												<div class="col-sm-5 col-xs-5 controls">
+													<input type="text" class="form-control" placeholder="Matr&iacute;cula" name="matricula_resp" id="matricula_resp" readonly="readonly" />
+												</div>
+												<div class="col-sm-13 col-xs-13 controls">
+													<input type="text" class="form-control" placeholder="Responsavel" name="responsavel" id="responsavel" readonly="readonly" />
+												</div>
+												<label for="data_resp" class="col-sm-5 col-xs-5 control-label">Data:</label>
+												<div class="col-sm-5 col-xs-5 controls">
+													<input type="date" class="form-control" placeholder="Data" name="data_resp" id="data_resp" readonly="readonly" />
+												</div>
+											</div>
+											<div class="form-group">
+												<label for="matricula_resp2" class="col-sm-5 col-xs-5 control-label">Respons&aacute;vel pela tratativa:</label>
+												<div class="col-sm-5 col-xs-5 controls">
+													<input type="text" class="form-control" placeholder="Matr&iacute;cula" name="matricula_resp2" id="matricula_resp2" readonly="readonly" />
+												</div>
+												<div class="col-sm-13 col-xs-13 controls">
+													<div class="input-group ">
+														<input type="text" class="form-control" placeholder="Responsavel" name="user_resp" id="user_resp" readonly="readonly" />
+														<span class="input-group-btn">
+															<button class="btn btn-default btn-xs" type="button" onclick='zoomColaborador();' id="btZoomColab" name="btZoomColab">
+																<i class="glyphicon glyphicon-zoom-in glyphicon-"></i>
+															</button>
+														</span>
+													</div>
+												</div>
+												<label for="ramal_resp" class="col-sm-5 col-xs-5 control-label">Ramal:</label>
+												<div class="col-sm-5 col-xs-5 controls">
+													<input type="text" class="form-control ramal" placeholder="Ramal" name="ramal_resp" id="ramal_resp" />
+												</div>
+											</div>
+											<div class="form-group">
+												<label for="prazo" class="col-sm-5 col-xs-5 control-label">Prazo:</label>
+												<div class="col-sm-5 col-xs-5 controls">
+													<input type="date" class="form-control" placeholder="Prazo" name="prazo" id="prazo" />
+												</div>
+												<label for="desc_acao" class="col-sm-5 col-xs-5 control-label">A&ccedil;&atilde;o Sugerida:</label>
+												<div class="col-sm-21 col-xs-21 controls">
+													<textarea name="desc_acao" id="desc_acao" rows="3" cols="70" class="form-control"></textarea>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="box-content">
+					<div class="row">
+						<div class="col-sm-0 col-xs-36">
+							<div class="box box-black">
+								<div class="box-title col-xs-36">
+									<h3>
+										<i class="fa  fa-users glyphicon glyphicon-unchecked"></i>Retorno ao Cliente
+									</h3>
+									<div class="box-tool">
+										<a data-action="collapse" href="#"> Minimizar <i><i class="glyphicon glyphicon-align-right"></i></i></a>
+										<div class="col-xs-1"></div>
+									</div>
+								</div>
+								<div class="box-content">
+									<div class="row">
+										<div class="col-xs-36" id="div_retorno" name="div_retorno">
+											<div class="form-group">
+												<label for="matricula_ret" class="col-sm-5 col-xs-5 control-label">Resp. Retorno:</label>
+												<div class="col-sm-5 col-xs-5 controls">
+													<input type="text" class="form-control" placeholder="Matr&iacute;cula" name="matricula_ret" id="matricula_ret" readonly="readonly" />
+												</div>
+												<div class="col-sm-13 col-xs-13 controls">
+													<input type="text" class="form-control" placeholder="Responsavel" name="user_ret" id="user_ret" readonly="readonly" />
+												</div>
+												<label for="data_resp" class="col-sm-5 col-xs-5 control-label">Data:</label>
+												<div class="col-sm-5 col-xs-5 controls">
+													<input type="date" class="form-control" placeholder="Data" name="data_ret" id="data_ret" readonly="readonly" />
+												</div>
+											</div>
+											<div class="form-group">
+												<label for="data_contato" class="col-sm-5 col-xs-5 control-label">Data do Contato:</label>
+												<div class="col-sm-5 col-xs-5 controls">
+													<input type="date" class="form-control" placeholder="Data do Retorno" name="data_contato" id="data_contato" />
+												</div>
+												<label for="rd_aceite" class="col-sm-5 col-xs-5 control-label">Aceite do Cliente:</label>
+												<div class="col-sm-5 col-xs-5 controls">
+													<input type="radio" name="rd_aceite" id="rd_aceite" style="cursor: pointer" value="sim" checked>
+													Sim
+													</input>
+													<br>
+													<input type="radio" name="rd_aceite" id="rd_aceite" style="cursor: pointer" value="nao">
+													N&atilde;o
+													</input>
+												</div>
+											</div>
+											<div class="form-group">
+												<label for="obs_aceite" class="col-sm-5 col-xs-5 control-label">Observa&ccedil;&otilde;es:</label>
+												<div class="col-sm-31 col-xs-31 controls">
+													<textarea name="obs_aceite" id="obs_aceite" rows="3" cols="70" class="form-control"></textarea>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="box-content">
+					<div class="row">
+						<div class="col-sm-0 col-xs-36">
+							<div class="box box-black">
+								<div class="box-title col-xs-36">
+									<h3>
+										<i class="fa  fa-users glyphicon glyphicon-unchecked"></i>Execu&ccedil;&atilde;o
+									</h3>
+									<div class="box-tool">
+										<a data-action="collapse" href="#"> Minimizar <i><i class="glyphicon glyphicon-align-right"></i></i></a>
+										<div class="col-xs-1"></div>
+									</div>
+								</div>
+								<div class="box-content">
+									<div class="row">
+										<div class="col-xs-36" id="div_execucao" name="div_execucao">
+											<div class="form-group">
+												<label for="matricula_exec" class="col-sm-5 col-xs-5 control-label">Resp. Execu&ccedil;&atilde;o:</label>
+												<div class="col-sm-5 col-xs-5 controls">
+													<input type="text" class="form-control" placeholder="Matr&iacute;cula" name="matricula_exec" id="matricula_exec" readonly="readonly" />
+												</div>
+												<div class="col-sm-13 col-xs-13 controls">
+													<input type="text" class="form-control" placeholder="Responsavel" name="user_exec" id="user_exec" readonly="readonly" />
+												</div>
+												<label for="data_exec" class="col-sm-5 col-xs-5 control-label">Data:</label>
+												<div class="col-sm-5 col-xs-5 controls">
+													<input type="date" class="form-control" placeholder="Data" name="data_exec" id="data_exec" readonly="readonly" />
+												</div>
+											</div>
+											<div class="form-group">
+												<label for="obs_exec" class="col-sm-5 col-xs-5 control-label">Observa&ccedil;&otilde;es:</label>
+												<div class="col-sm-31 col-xs-31 controls">
+													<textarea name="obs_exec" id="obs_exec" rows="3" cols="70" class="form-control"></textarea>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="box-content">
+					<div class="row">
+						<div class="col-sm-0 col-xs-36">
+							<div class="box box-black">
+								<div class="box-title col-xs-36">
+									<h3>
+										<i class="fa  fa-users glyphicon glyphicon-unchecked"></i>Encerramento
+									</h3>
+									<div class="box-tool">
+										<a data-action="collapse" href="#"> Minimizar <i><i class="glyphicon glyphicon-align-right"></i></i></a>
+										<div class="col-xs-1"></div>
+									</div>
+								</div>
+								<div class="box-content">
+									<div class="row">
+										<div class="col-xs-36" id="div_encerramento" name="div_encerramento">
+											<div class="form-group">
+												<label for="matricula_encer" class="col-sm-5 col-xs-5 control-label">Resp. Encerramento:</label>
+												<div class="col-sm-5 col-xs-5 controls">
+													<input type="text" class="form-control" placeholder="Matr&iacute;cula" name="matricula_encer" id="matricula_encer" readonly="readonly" />
+												</div>
+												<div class="col-sm-13 col-xs-13 controls">
+													<input type="text" class="form-control" placeholder="Responsavel" name="user_encer" id="user_encer" readonly="readonly" />
+												</div>
+												<label for="data_encer" class="col-sm-5 col-xs-5 control-label">Data:</label>
+												<div class="col-sm-5 col-xs-5 controls">
+													<input type="date" class="form-control" placeholder="Data" name="data_encer" id="data_encer" readonly="readonly" />
+												</div>
+											</div>
+											<div class="form-group">
+												<label for="matricula_encer" class="col-sm-5 col-xs-5 control-label">A&ccedil;&atilde;o foi eficaz?</label>
+												<div class="col-sm-5 col-xs-5 controls">
+													<input type="radio" name="rd_aprov_acao" id="rd_aprov_acao" style="cursor: pointer" value="sim" checked>
+													Sim
+													</input>
+													<br>
+													<input type="radio" name="rd_aprov_acao" id="rd_aprov_acao" style="cursor: pointer" value="nao">
+													N&atilde;o
+													</input>
+												</div>
+												<label for="matricula_encer" class="col-sm-5 col-xs-5 control-label">Nota:</label>
+												<div class="col-sm-5 col-xs-5 controls">
+													<select name="origem" id="origem"  class="form-control">
+														<option value="0">0</option>
+														<option value="1">1</option>
+														<option value="2">2</option>
+														<option value="3">3</option>
+														<option value="4">4</option>
+														<option value="5">5</option>
+														<option value="6">6</option>
+														<option value="7">7</option>
+														<option value="8">8</option>
+														<option value="9">9</option>
+														<option value="10">10</option>
+													</select>
+												</div>
+											</div>
+											<div class="form-group">
+												<label for="obs_encer" class="col-sm-5 col-xs-5 control-label">Observa&ccedil;&otilde;es:</label>
+												<div class="col-sm-31 col-xs-31 controls">
+													<textarea name="obs_encer" id="obs_encer" rows="3" cols="70" class="form-control"></textarea>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				
+				<div class="box-content">
+					<div class="row">
+						<div class="col-sm-0 col-xs-36">
+							<div class="box box-black">
+								<div class="box-title col-xs-36">
+									<h3>
+										<i class="fa  fa-users glyphicon glyphicon-unchecked"></i>Qualidade
+									</h3>
+									<div class="box-tool">
+										<a data-action="collapse" href="#"> Minimizar <i><i class="glyphicon glyphicon-align-right"></i></i></a>
+										<div class="col-xs-1"></div>
+									</div>
+								</div>
+								<div class="box-content">
+									<div class="row">
+										<div class="col-xs-36" id="div_qualidade" name="div_qualidade">
+											<div class="form-group">
+												<label for="matricula_encer" class="col-sm-5 col-xs-5 control-label">Resp. Qualidade:</label>
+												<div class="col-sm-5 col-xs-5 controls">
+													<input type="text" class="form-control" placeholder="Matr&iacute;cula" name="matricula_qualidade" id="matricula_qualidade" readonly="readonly" />
+												</div>
+												<div class="col-sm-13 col-xs-13 controls">
+													<input type="text" class="form-control" placeholder="Responsavel" name="user_qualidade" id="user_qualidade" readonly="readonly" />
+												</div>
+												<label for="data_encer" class="col-sm-5 col-xs-5 control-label">Data:</label>
+												<div class="col-sm-5 col-xs-5 controls">
+													<input type="date" class="form-control" placeholder="Data" name="data_qualidade" id="data_qualidade" readonly="readonly" />
+												</div>
+											</div>
+											<div class="form-group">
+												<label for="rd_aprov_qualidade" class="col-sm-5 col-xs-5 control-label">Ser&aacute; necessario a&ccedil;&atilde;o corretiva?</label>
+												<div class="col-sm-5 col-xs-5 controls">
+													<input type="radio" name="rd_aprov_qualidade" id="rd_aprov_qualidade" style="cursor: pointer" value="sim" checked>
+													Sim
+													</input>
+													<br>
+													<input type="radio" name="rd_aprov_qualidade" id="rd_aprov_qualidade" style="cursor: pointer" value="nao">
+													N&atilde;o
+													</input>
+												</div>
+												<label for="matricula_encer" class="col-sm-5 col-xs-5 control-label">Nota:</label>
+												<div class="col-sm-5 col-xs-5 controls">
+													<input type="text" class="form-control" placeholder="Nr. RNC" name="num_nrc" id="num_nrc" />
+												</div>
+											</div>											
+											
+											<div class="form-group">
+												<label for="obs_qualidade" class="col-sm-5 col-xs-5 control-label">Observa&ccedil;&otilde;es:</label>
+												<div class="col-sm-31 col-xs-31 controls">
+													<textarea name="obs_qualidade" id="obs_quualidade" rows="3" cols="70" class="form-control"></textarea>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			
+				
+				
+				
+				
+			</div>
+		</div>
+	</form>
+</body>
+<script>
+	$(document).ready(function() {
+
+		$('.ramal').mask("9999");
+
+		$('#tel_empresa').mask("(99) 9999-9999");
+		$('#cel_empresa').mask("(99) 99999-9999");
+
+		$('.rd_tipo_recla').click(function() {
+			if ($(this).val() == 'produto') {
+				$('#produto').attr('readonly', false);
+				$('#produto').attr('disabled', false);
+				$("#servico").prop("selectedIndex", 0);
+				$('#servico').attr('readonly', true);
+				$('#servico').attr('disabled', true);
+			}
+			if ($(this).val() == 'servico') {
+				$("#produto").prop("selectedIndex", 0);
+				$('#produto').attr('readonly', true);
+				$('#produto').attr('disabled', true);
+				$('#servico').attr('readonly', false);
+				$('#servico').attr('disabled', false);
+			}
+		});
+	});
+	
+	//setColaborador responsavel
+	function zoomColaborador() {
+		zoomEcmTipo("colleague", "colleagueId,Matricula,colleagueName,Colaborador",
+				"colleagueId,colleagueName,extensionNr", "Zoom Colaborador",
+				"setColaborador");
+	}
+
+	function setColaborador(selectedItem) {
+		$("#matricula_resp2").val(selectedItem['colleagueId']);
+		$("#user_resp").val(selectedItem['colleagueName']);
+		$("#ramal_resp").val(selectedItem['extensionNr']);
+	}	
+	
+</script>
+</html>
