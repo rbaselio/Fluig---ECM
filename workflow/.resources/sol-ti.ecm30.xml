@@ -471,8 +471,8 @@
 	var numEmpresa = getValue(&quot;WKCompany&quot;);&#xd;
 	var numProcesso = getValue(&quot;WKNumProces&quot;);&#xd;
 	var nrProxAtividade = getValue(&quot;WKNextState&quot;);&#xd;
-	var numThread = hAPI.getActualThread(numEmpresa, numProcesso, nrProxAtividade);&#xd;
 	var numAtividade = sequenceId;&#xd;
+	var numThread = hAPI.getActualThread(numEmpresa, numProcesso, numAtividade);&#xd;
 	var colleagueId = getValue(&quot;WKUser&quot;);&#xd;
 &#xd;
 	log.info(&quot;----------------------numEmpresa: &quot; + numEmpresa);&#xd;

@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="1.8.0_73" class="java.beans.XMLDecoder">
+ <object class="java.util.HashMap">
+  <void method="put">
+   <string>volume</string>
+   <null/>
+  </void>
+  <void method="put">
+   <string>expediente</string>
+   <array class="java.lang.String" length="1">
+    <void index="0">
+     <string>Default</string>
+    </void>
+   </array>
+  </void>
+  <void method="put">
+   <string>camposFormulario, documentoId = 3</string>
+   <array class="java.lang.String" length="9">
+    <void index="0">
+     <string>detail</string>
+    </void>
+    <void index="1">
+     <string>dtprazoativ</string>
+    </void>
+    <void index="2">
+     <string>dueDate</string>
+    </void>
+    <void index="3">
+     <string>hdnrespativ</string>
+    </void>
+    <void index="4">
+     <string>meeting</string>
+    </void>
+    <void index="5">
+     <string>meetingDate</string>
+    </void>
+    <void index="6">
+     <string>nomeativ</string>
+    </void>
+    <void index="7">
+     <string>qtativ</string>
+    </void>
+    <void index="8">
+     <string>txtrespativ</string>
+    </void>
+   </array>
+  </void>
+  <void method="put">
+   <string>camposFormulario, documentoId = 9</string>
+   <array class="java.lang.String" length="10">
+    <void index="0">
+     <string>companyCode</string>
+    </void>
+    <void index="1">
+     <string>json_questionnarie</string>
+    </void>
+    <void index="2">
+     <string>json_status_suggestions</string>
+    </void>
+    <void index="3">
+     <string>json_suggestions</string>
+    </void>
+    <void index="4">
+     <string>logoImage</string>
+    </void>
+    <void index="5">
+     <string>menuColor</string>
+    </void>
+    <void index="6">
+     <string>SafeFolder</string>
+    </void>
+    <void index="7">
+     <string>tempName</string>
+    </void>
+    <void index="8">
+     <string>topColor</string>
+    </void>
+    <void index="9">
+     <string>typeTheme</string>
+    </void>
+   </array>
+  </void>
+  <void method="put">
+   <string>camposFormulario, documentoId = 14</string>
+   <array class="java.lang.String" length="26">
+    <void index="0">
+     <string>atendente</string>
+    </void>
+    <void index="1">
+     <string>bt_add_interacao</string>
+    </void>
+    <void index="2">
+     <string>chamado_num</string>
+    </void>
+    <void index="3">
+     <string>classe</string>
+    </void>
+    <void index="4">
+     <string>comentarios</string>
+    </void>
+    <void index="5">
+     <string>criticidade</string>
+    </void>
+    <void index="6">
+     <string>data_sol</string>
+    </void>
+    <void index="7">
+     <string>desc_aceite</string>
+    </void>
+    <void index="8">
+     <string>desc_chamado</string>
+    </void>
+    <void index="9">
+     <string>desc_interacao</string>
+    </void>
+    <void index="10">
+     <string>dt_aceite</string>
+    </void>
+    <void index="11">
+     <string>dt_final</string>
+    </void>
+    <void index="12">
+     <string>dt_intera</string>
+    </void>
+    <void index="13">
+     <string>matricula_aceite</string>
+    </void>
+    <void index="14">
+     <string>matricula_atend</string>
+    </void>
+    <void index="15">
+     <string>matricula_user</string>
+    </void>
+    <void index="16">
+     <string>nota</string>
+    </void>
+    <void index="17">
+     <string>prazo</string>
+    </void>
+    <void index="18">
+     <string>ramal</string>
+    </void>
+    <void index="19">
+     <string>responsavel</string>
+    </void>
+    <void index="20">
+     <string>re_classe</string>
+    </void>
+    <void index="21">
+     <string>re_tipo</string>
+    </void>
+    <void index="22">
+     <string>solicitante</string>
+    </void>
+    <void index="23">
+     <string>tb_interacao</string>
+    </void>
+    <void index="24">
+     <string>tipo</string>
+    </void>
+    <void index="25">
+     <string>user_aceite</string>
+    </void>
+   </array>
+  </void>
+  <void method="put">
+   <string>mecanismo</string>
+   <array class="[Ljava.lang.Object;" length="10">
+    <void index="0">
+     <array class="java.lang.Object" length="2">
+      <void index="0">
+       <string>Atribuição para um Grupo</string>
+      </void>
+      <void index="1">
+       <string>Pool Grupo</string>
+      </void>
+     </array>
+    </void>
+    <void index="1">
+     <array class="java.lang.Object" length="2">
+      <void index="0">
+       <string>Atribuição para um Papel</string>
+      </void>
+      <void index="1">
+       <string>Pool Papel</string>
+      </void>
+     </array>
+    </void>
+    <void index="2">
+     <array class="java.lang.Object" length="2">
+      <void index="0">
+       <string>Atribuição por Associação</string>
+      </void>
+      <void index="1">
+       <string>Associado</string>
+      </void>
+     </array>
+    </void>
+    <void index="3">
+     <array class="java.lang.Object" length="2">
+      <void index="0">
+       <string>Atribuição por Campo de Formulário</string>
+      </void>
+      <void index="1">
+       <string>Campo Formulário</string>
+      </void>
+     </array>
+    </void>
+    <void index="4">
+     <array class="java.lang.Object" length="2">
+      <void index="0">
+       <string>Atribuição por Executor de Atividade</string>
+      </void>
+      <void index="1">
+       <string>Executor Atividade</string>
+      </void>
+     </array>
+    </void>
+    <void index="5">
+     <array class="java.lang.Object" length="2">
+      <void index="0">
+       <string>Atribuição por Grupo</string>
+      </void>
+      <void index="1">
+       <string>Grupo</string>
+      </void>
+     </array>
+    </void>
+    <void index="6">
+     <array class="java.lang.Object" length="2">
+      <void index="0">
+       <string>Atribuição por Grupos do Colaborador</string>
+      </void>
+      <void index="1">
+       <string>Grupos Colaborador</string>
+      </void>
+     </array>
+    </void>
+    <void index="7">
+     <array class="java.lang.Object" length="2">
+      <void index="0">
+       <string>Atribuição por Papel</string>
+      </void>
+      <void index="1">
+       <string>Papel</string>
+      </void>
+     </array>
+    </void>
+    <void index="8">
+     <array class="java.lang.Object" length="2">
+      <void index="0">
+       <string>Atribuição por Usuário</string>
+      </void>
+      <void index="1">
+       <string>Usuário</string>
+      </void>
+     </array>
+    </void>
+    <void index="9">
+     <array class="java.lang.Object" length="2">
+      <void index="0">
+       <string>Papeis 0800</string>
+      </void>
+      <void index="1">
+       <string>papeis0800</string>
+      </void>
+     </array>
+    </void>
+   </array>
+  </void>
+ </object>
+</java>
