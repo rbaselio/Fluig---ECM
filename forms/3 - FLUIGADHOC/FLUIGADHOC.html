@@ -1,0 +1,169 @@
+<html>
+<head>
+
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<link rel="stylesheet" type="text/css"
+		href="/portal/resources/style-guide/css/fluig-style-guide.min.css">
+	<link rel="stylesheet" type="text/css"
+		href="/portal/resources/style-guide/css/fluig-style-guide-filter.min.css">
+	
+	<link href="FLUIGADHOC.css" type="text/css" rel="stylesheet" />
+	
+	<script src="/portal/resources/js/jquery/jquery.js"></script>
+	<script src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+	<script src="/portal/resources/js/mustache/mustache-min.js"></script>
+	
+	<script src="/portal/resources/style-guide/js/fluig-style-guide.min.js"></script>
+	<script
+		src="/portal/resources/style-guide/js/fluig-style-guide-filter.min.js"></script>
+	
+	<script src="FLUIGADHOC.js"></script>
+
+</head>
+
+<body class="fluig-style-guide background">
+	<form role="form" name="Adhocform" id="Adhocform">
+		<input type="hidden" name="qtativ" id="qtativ" />
+		<div class="container-fluid">
+
+			<div class="row">
+				<div class="col-md-7 col-sm-8 col-xs-12">
+					<div class="form-group">
+						<label for="meeting">i18n.translate("adhoc.form.meeting")</label>
+						<input class="form-control" name="meeting" id="meeting"
+							type="text" maxlength="200" />
+					</div>
+
+					<div class="form-group">
+						<label>i18n.translate("adhoc.form.detail")</label>
+						<textarea class="form-control no-resize" name="detail" id="detail" rows="8"
+							maxlength="4000"></textarea>
+					</div>
+				</div>
+
+				<div class="col-md-3 col-sm-4 col-xs-12">
+					<div class="form-group fs-cursor-pointer" id="meetingDate">
+						<label>i18n.translate("adhoc.form.meetingDate")</label>
+						<div class="input-group date">
+							<input class="form-control" name="meetingDate" type="text">
+
+							<span class="input-group-addon"> <span
+								class="fluigicon fluigicon-calendar"></span>
+							</span>
+						</div>
+					</div>
+
+					<div class="form-group fs-cursor-pointer" id="dueDate">
+						<label>i18n.translate("adhoc.form.duedate")</label>
+						<div class="input-group date">
+							<input class="form-control" name="dueDate" type="text"> <span
+								class="input-group-addon"> <span
+								class="fluigicon fluigicon-calendar"></span>
+							</span>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div style="display: none" id="divAtividades">
+	
+					<div class="form-field table-responsive" data-type="tabledetail" data-show-properties="" data-field-name="tabledetail">
+						<table tablename="tbatividades" cellspacing="0" id="tbatividades" noaddbutton=true
+								deleteicon="FLUIGADHOC4.png" style="display: none" class="table">
+							<thead>
+								<tr class="tableHeadRow">
+									<th class="tableColumn">i18n.translate("adhoc.form.activity")</th>
+									<th class="tableColumn">i18n.translate("adhoc.form.term")</th>
+									<th class="tableColumn">i18n.translate("adhoc.form.patrocinador")</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td class="col-md-6 col-sm-5">
+										<div class="form-group">
+											<input type="text" name="nomeativ" class="form-control"
+												maxlength="200" />
+										</div>
+									</td>
+	
+									<td class="col-md-2 col-sm-3">
+										<div class="form-group fs-cursor-pointer" id="dtprazoativ">
+											<div class="input-group date">
+												<input class="form-control" name=dtprazoativ type="text">
+	
+												<span class="input-group-addon"> <span
+													class="fluigicon fluigicon-calendar"></span>
+												</span>
+											</div>
+										</div>
+									</td>
+	
+									<td class="col-md-4 col-sm-4">
+										<div class="form-group">
+											<input type="hidden" name="hdnrespativ" id="hdnrespativ" /> <input
+												type="zoom" name="txtrespativ"
+												data-zoom="{
+												'datasetId':'colleague',
+												'fields':[
+													{'field':'colleagueId', 'label':'ID'}, 
+													{'field':'colleagueName', 'label':'Nome', 'standard':'true', 'search':'true'},
+													{'field':'login', 'label':'Login'}]
+												}" />
+	
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+	
+					<button type="button" class="btn btn-primary" data-toggle="button"
+						onclick="addTask()">i18n.translate("adhoc.form.Addactivity")</button>
+				</div>
+				
+				<div class="col-md-12" style="display: none" id="divMSG">
+					i18n.translate("adhoc.form.msg") <a href="#"
+						onclick="parent.ECM.workflowView.tabView.selectTab(1)">i18n.translate("adhoc.form.msgLink")</a>!
+				</div>
+			</div>
+		</div>
+	</form>
+
+	<script type="text/javascript">
+		var queryParams;
+		var row;
+
+		function getQueryParams(qs) {
+			qs = qs.split("+").join(" ");
+
+			var params = {}, tokens, re = /[?&]?([^=]+)=([^&]*)/g;
+
+			while (tokens = re.exec(qs)) {
+				params[decodeURIComponent(tokens[1])] = decodeURIComponent(tokens[2]);
+			}
+
+			return params;
+		}
+
+		function addTask() {
+
+			$('#tbatividades').show();
+
+			row = wdkAddChild('tbatividades');
+
+			FLUIGC.calendar("#dtprazoativ___" + row, {
+				minDate : new Date(),
+			});
+
+			$("#txtrespativ___" + row).on('fluig.filter.item.added', function(data) {
+				$("#hdnrespativ___" + row).val(data.item.colleagueId);
+			});
+		}
+	</script>
+
+</body>
+</html>

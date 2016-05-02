@@ -22,7 +22,7 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>Testest</processId>
-      <version>60</version>
+      <version>76</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
     <formId>182</formId>
@@ -351,16 +351,6 @@
       </workflowProcessEventPK>
       <eventDescription>function afterStateEntry(sequenceId) {
 	
-	
-	
-	
-	
-	for (var i in hAPI) {
-        log.warn(i + &quot;: &quot; + hAPI[i] );
-   }
-	
-	
-
 	if (sequenceId == 8) {
 		log.info(&quot;Entrei-------------------&quot;);
 		var process = getValue(&quot;WKNumProces&quot;);
@@ -414,12 +404,14 @@
       </workflowProcessEventPK>
       <eventDescription>function beforeCancelProcess(colleagueId,processId){&#xd;
 	&#xd;
-	&#xd;
 	var process = getValue(&quot;WKNumProces&quot;);&#xd;
 	&#xd;
 	log.info(&quot;----------------------CANCELAMENTO DE PROCESSOS-------------------------------&quot;)&#xd;
 	log.info(&quot;----------------------numProcesso: &quot; + process);&#xd;
 	&#xd;
+	var workflowServiceProvider = ServiceManager.getServiceInstance(&quot;Processos&quot;);&#xd;
+    var workflowServiceLocator = workflowServiceProvider.instantiate(&quot;com.totvs.technology.ecm.workflow.ws.ECMWorkflowEngineServiceService&quot;);&#xd;
+    var workflowService = workflowServiceLocator.getWorkflowEngineServicePort();&#xd;
 &#xd;
 	var status = false;	&#xd;
 &#xd;
@@ -444,23 +436,19 @@
 				var datasetPrincipal = DatasetFactory.getDataset(&quot;workflowProcess&quot;, null, constraints, null);&#xd;
 				&#xd;
 				if (datasetPrincipal.rowsCount &gt; 0) {&#xd;
-					hAPI.setCardValue(&quot;status___&quot; + row, &quot;Em andamento&quot;);&#xd;
+					hAPI.setCardValue(&quot;status___&quot; + row, &quot;Cancelado&quot;);&#xd;
+					&#xd;
+					var result = workflowService.cancelInstance(&quot;root&quot;, &quot;123Mudar&quot;, getValue(&quot;WKCompany&quot;), processo, getValue(&quot;WKUser&quot;), &quot;Processo pai &quot; + process + &quot; cancelado!&quot;)&#xd;
+				    log.warn(&quot;Result: &quot; + result);&#xd;
 					log.warn(&quot;O Processo &quot; + processo + &quot; ainda esta em aberto&quot;);&#xd;
-					status = true;&#xd;
-					break;&#xd;
-				} &#xd;
+					break;						&#xd;
+				}				&#xd;
 			}&#xd;
 		}&#xd;
-&#xd;
 	} catch (e) {&#xd;
 		log.error(&quot;----------------ERRO:&quot;);&#xd;
 		log.error(e);&#xd;
-	}&#xd;
-	&#xd;
-	if (status == true) {&#xd;
-		throw &quot;&lt;br&gt;É necessario finalizar ou cancelar o subprocesso nº&quot; + processo + &quot; para cancelar este processo&lt;br&gt;&quot;;&#xd;
-	}&#xd;
-		&#xd;
+	}		&#xd;
 }</eventDescription>
     </WorkflowProcessEvent>
   </list>
@@ -474,7 +462,7 @@
       <processStateTriggerPK>
         <companyId>1</companyId>
         <processId>TESTES</processId>
-        <version>60</version>
+        <version>76</version>
         <stateSequence>19</stateSequence>
         <triggerSequence>0</triggerSequence>
       </processStateTriggerPK>

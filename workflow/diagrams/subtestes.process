@@ -1988,8 +1988,8 @@
     <fonts name="Arial" size="8"/>
     <fonts bold="true" name="Arial" size="8"/>
   </pi:Diagram>
-  <bpmn2:BpmnProcess author="" cardIndex="193" category="" expedient="Default" extendedFields="&lt;list/&gt;" formSource="server" id="subteste" instruction="" keyWord="" name="subteste" serverId="TESTE TESTE TESTE" version="9" volume="Default"/>
-  <bpmn2:BpmnStartEvent esforcoCalculo="0" expediente="" id="startevent4" initializerConfiguration="&lt;org.eclipse.bpmn2.impl.AssignmentControllerColleague&gt;&#10;  &lt;colleagueId&gt;4599&lt;/colleagueId&gt;&#10;  &lt;mechanismName&gt;Usu&#225;rio&lt;/mechanismName&gt;&#10;&lt;/org.eclipse.bpmn2.impl.AssignmentControllerColleague&gt;" name="In&#237;cio" outgoing="flow7" signalId="0" type="10"/>
+  <bpmn2:BpmnProcess author="" cardIndex="193" category="" expedient="Default" extendedFields="&lt;list/&gt;" formSource="server" id="subteste" instruction="" keyWord="" name="subteste" serverId="TESTE TESTE TESTE" version="11" volume="Default"/>
+  <bpmn2:BpmnStartEvent esforcoCalculo="0" expediente="" id="startevent4" name="In&#237;cio" outgoing="flow7" signalId="0" type="10"/>
   <bpmn2:BpmnTask authNotify="true" esforcoCalculo="0" expediente="" id="task5" incoming="flow7" loopType="0" managerAssignmentControllerString="&lt;org.eclipse.bpmn2.impl.AssignmentControllerColleague&gt;&#10;  &lt;colleagueId&gt;4599&lt;/colleagueId&gt;&#10;  &lt;mechanismName&gt;Usu&#225;rio&lt;/mechanismName&gt;&#10;&lt;/org.eclipse.bpmn2.impl.AssignmentControllerColleague&gt;" managerMechanism="Usu&#225;rio" name="teste 1" outgoing="flow8" type="80"/>
   <bpmn2:BpmnEndEvent id="endevent6" incoming="flow8" name="Fim" signalId="0" type="60"/>
   <bpmn2:SequenceFlow atividadeFluxo="" atividadeRetorno="" extendedFields="&lt;list/&gt;" id="flow7" name="" sourceRef="startevent4" targetRef="task5"/>

@@ -1,0 +1,5 @@
+.background { background-repeat: no-repeat; background-image: url(FLUIGADHOC2.png); }
+
+#printBt, #printBtView { display:none; }
+
+.no-resize { resize: none !important; }

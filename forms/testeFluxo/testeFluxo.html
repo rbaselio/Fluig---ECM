@@ -1,11 +1,14 @@
 <html>
 <head>
-<link type="text/css" rel="stylesheet" href="http://style.fluig.com/css/fluig-style-guide.min.css" />
+<link type="text/css" rel="stylesheet" href="/portal/resources/style-guide/css/fluig-style-guide.min.css" />
+
 <script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
 <script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
 <script type="text/javascript" src="/portal/resources/js/mustache/mustache.min.js"></script>
+<script type="text/javascript" src="/portal/resources/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+<script src="../vcXMLRPC.js"></script>
+
 <script type="text/javascript" src="/resources/bootstrap/js/utils.js"></script>
-<script type="text/javascript" src="http://style.fluig.com/js/fluig-style-guide.min.js" charset="utf-8"></script>
 </head>
 <body>
 	<div class="fluig-style-guide">
@@ -25,8 +28,8 @@
 							<thead>
 								<tr class="tableHeadRow">
 									<th class="tableColumn">Atividade</th>
-									<th class="tableColumn">data</th>
-									<th class="tableColumn">Responsavel</th>
+									<th class="tableColumn">Data de Conclusão</th>
+									<th class="tableColumn">Responsável</th>
 									<th class="tableColumn">Processo</th>
 									<th class="tableColumn">Status</th>
 								</tr>
@@ -39,10 +42,11 @@
 										</div>
 									</td>
 									<td class="col-xs-2">
-										<div class="form-group fs-cursor-pointer" id="dtprazoativ">
-											<div class="input-group date">
-												<input type="text" name="dtprazoativ" id="dtprazoativ" class="form-control"  readonly="readonly"/>
-												<span class="input-group-addon"> <span class="fluigicon fluigicon-calendar"></span>
+										<div class="form-group " >
+											<div class="input-group date" id="dtPickerPrazo">
+												<input type="text" name="dtprazoativ" class="form-control" readonly="readonly"/>
+												<span class="input-group-addon fs-cursor-pointer"> 
+													<span class="fluigicon fluigicon-calendar"></span>
 												</span>
 											</div>
 										</div>
@@ -52,10 +56,8 @@
 											<div class="input-group">
 												<input type="text" name="responsavel" id="responsavel" class="form-control"  readonly="readonly"/>
 												<input type="hidden" name="matricula" id="matricula" />
-												<span class="input-group-btn">
-													<button class="btn btn-default form-control" type="button" onclick='zoomColaborador(this);' id="btZoomColab" name="btZoomColab">
-														<i class="fluigicon fluigicon-user-search"></i>
-													</button>
+												<span class="input-group-addon fs-cursor-pointer" onclick='zoomColaborador(this);' id="btZoomColab">
+													<span class="fluigicon fluigicon-user-search"></span>
 												</span>
 											</div>
 										</div>
@@ -74,50 +76,11 @@
 							</tbody>
 						</table>
 					</div>
-					<button type="button" class="btn btn-primary" data-toggle="button" onclick="addTarefa()">addResponsavel</button>
+					<button type="button" class="btn btn-primary" data-toggle="button" onclick="addTarefa()">Adicionar Responsável</button>
 				</div>
 			</div>
 		</form>
 	</div>
 </body>
-<script type="text/javascript">
-
-	var row;
-	
-	function zoomColaborador(linha) {
-		var nome = $(linha).attr("name");
-		row = nome.substring(nome.indexOf("___") + 3, nome.length);
-		zoomEcmTipo("colleague",
-				"colleagueId,Matricula,colleagueName,Colaborador",
-				"colleagueId,colleagueName,extensionNr", "Zoom Colaborador",
-				"setColaborador");
-		
-	}
-	
-	function setColaborador(selectedItem) {
-		$("#matricula___" + row).val(selectedItem['colleagueId']);
-		$("#responsavel___" + row).val(selectedItem['colleagueName']);
-		
-	}
-	
-	function addTarefa() {
-		row = wdkAddChild('tbatividades');
-		FLUIGC.calendar("#dtprazoativ___" + row, {
-			minDate : new Date(),
-		});		
-	}
-	
-	
-	function removeTarefa(oElement){		
-		var linha = $(oElement).closest('tr');
-	    var processo =  linha.find("input").eq(3);
-	    if(processo.val() == ""){
-	    	fnWdkRemoveChild(oElement);	    	
-    	}else{
-    		alert("Não é possivel remover tarefas com processos iniciados");	    	  		   		
-	    }
-	}
-	
-	
-</script>
+<script type="text/javascript" src="testeFluxo.js"></script>
 </html>

@@ -1,11 +1,13 @@
 function beforeCancelProcess(colleagueId,processId){
 	
-	
 	var process = getValue("WKNumProces");
 	
 	log.info("----------------------CANCELAMENTO DE PROCESSOS-------------------------------")
 	log.info("----------------------numProcesso: " + process);
 	
+	var workflowServiceProvider = ServiceManager.getServiceInstance("Processos");
+    var workflowServiceLocator = workflowServiceProvider.instantiate("com.totvs.technology.ecm.workflow.ws.ECMWorkflowEngineServiceService");
+    var workflowService = workflowServiceLocator.getWorkflowEngineServicePort();
 
 	var status = false;	
 
@@ -30,21 +32,17 @@ function beforeCancelProcess(colleagueId,processId){
 				var datasetPrincipal = DatasetFactory.getDataset("workflowProcess", null, constraints, null);
 				
 				if (datasetPrincipal.rowsCount > 0) {
-					hAPI.setCardValue("status___" + row, "Em andamento");
+					hAPI.setCardValue("status___" + row, "Cancelado");
+					
+					var result = workflowService.cancelInstance("root", "123Mudar", getValue("WKCompany"), processo, getValue("WKUser"), "Processo pai " + process + " cancelado!")
+				    log.warn("Result: " + result);
 					log.warn("O Processo " + processo + " ainda esta em aberto");
-					status = true;
-					break;
-				} 
+					break;						
+				}				
 			}
 		}
-
 	} catch (e) {
 		log.error("----------------ERRO:");
 		log.error(e);
-	}
-	
-	if (status == true) {
-		throw "<br>É necessario finalizar ou cancelar o subprocesso nº" + processo + " para cancelar este processo<br>";
-	}
-		
+	}		
 }
