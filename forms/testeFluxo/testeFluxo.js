@@ -19,6 +19,10 @@ function addTarefa() {
 	row = wdkAddChild('tbatividades');
 	FLUIGC.calendar("#dtPickerPrazo___" + row, {
 		minDate : new Date(),
+		showToday: true,
+	    language: 'pt-br',
+	    disabledDates: feriados(4),
+		daysOfWeekDisabled: [0,6]
 	});		
 }
 
@@ -44,15 +48,16 @@ function exibeCampos(mode, state, user, process){
 		
 		var dadosusuario = dataset.values[0]["colleagueName"];
 		var ramal = dataset.values[0]["extensionNr"]; 
-		alert(ramal);
+		//alert(ramal);
 		
-		blockAll();		
+		//blockAll();		
 	}	
 }
 
 
 function blockAll(){
 	$("div").removeAttr("onclick");
+	$("div").css('pointer-events', 'none');
 	$("span").removeAttr("onclick");
 	$("span").css('pointer-events', 'none');
 	$("input").attr("readonly","readonly");
@@ -68,3 +73,9 @@ var beforeMovementOptions = function(numState){
 	// throw("Favor preencehr o campo: " + $(this).attr("name"));
 	
 }
+
+
+
+
+
+

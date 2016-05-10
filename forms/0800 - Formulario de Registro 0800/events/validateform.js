@@ -26,7 +26,7 @@ function validateForm(form){
 		}
 	}
 	
-	if (numAtividade == 2) {
+	if (numAtividade == 11) {
 		if(form.getValue("prazo") == ""){
 			erros += " - [Prazo];</br>";
 		}

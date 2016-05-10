@@ -33,7 +33,7 @@ function displayFields(form,customHTML){
 		form.setValue('data_sol', today);
 	}
 	
-	if(numAtividade == 2){ //propor ação corretiva
+	if(numAtividade == 11){ //propor ação corretiva
 		form.setValue('chamado_num', getValue("WKNumProces"));
 		form.setValue('matricula_resp', matricula);
 		form.setValue('responsavel', colaborador);

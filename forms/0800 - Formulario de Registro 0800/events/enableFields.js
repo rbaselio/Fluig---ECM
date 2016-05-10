@@ -9,9 +9,9 @@ function enableFields(form){
 		form.setEnabled("nome_contato", true);
 		form.setEnabled("tel_empresa", true);
 		form.setEnabled("cel_empresa", true);
+		form.setEnabled("origem", true);
 		form.setEnabled("email_contato", true);
 		form.setEnabled("rd_tipo_atend", true);
-		form.setEnabled("origem", true);
 		form.setEnabled("unid_negocio", true);
 		form.setEnabled("rd_tipo_recla", true);
 		form.setEnabled("servico", true);		
@@ -20,7 +20,7 @@ function enableFields(form){
 		form.setEnabled("localidade", true);
 	}
 	
-	if (numAtividade == 2) {
+	if (numAtividade == 11) {
 		form.setEnabled("prazo", true);
 		form.setEnabled("desc_acao", true);
 		form.setEnabled("matricula_resp2", true);
@@ -38,8 +38,8 @@ function enableFields(form){
 	}
 	if (numAtividade == 6) {
 		form.setEnabled("obs_encer", true);		
-		form.setEnabled("rd_aprov_acao", true);		
-		form.setEnabled("origem", true);
+		form.setEnabled("rd_aprov_acao", true);	
+		form.setEnabled("nota", true);
 	}
 	
 	if (numAtividade == 9) {

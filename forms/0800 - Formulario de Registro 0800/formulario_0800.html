@@ -352,9 +352,9 @@
 													N&atilde;o
 													</input>
 												</div>
-												<label for="matricula_encer" class="col-sm-5 col-xs-5 control-label">Nota:</label>
+												<label for="nota" class="col-sm-5 col-xs-5 control-label">Nota:</label>
 												<div class="col-sm-5 col-xs-5 controls">
-													<select name="origem" id="origem"  class="form-control">
+													<select name="nota" id="nota"  class="form-control">
 														<option value="0">0</option>
 														<option value="1">1</option>
 														<option value="2">2</option>
@@ -481,7 +481,7 @@
 	//setColaborador responsavel
 	function zoomColaborador() {
 		zoomEcmTipo("colleague", "colleagueId,Matricula,colleagueName,Colaborador",
-				"colleagueId,colleagueName,extensionNr", "Zoom Colaborador",
+				"colleagueId,colleagueName,extensionNr&filterValues=active,true", "Zoom Colaborador",
 				"setColaborador");
 	}
 
