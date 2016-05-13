@@ -29,7 +29,7 @@
 						</tr>
 						<tr>
 							<td align=right><label for="data_sol" class="control-label">Data:&nbsp;&nbsp;&nbsp;&nbsp;</label></td>
-							<td width="150"><input type="date" name="data_sol" id="data_sol" class="form-control" size="15" readonly="readonly" /></td>
+							<td width="150"><input type="text" name="data_sol" id="data_sol" class="form-control" size="15" readonly="readonly" /></td>
 						</tr>
 					</tbody>
 				</table>
@@ -150,7 +150,7 @@
 														<div class="form-group">
 															<label for="dt_intera" class="col-sm-4 col-xs-4 control-label">Data:</label>
 															<div class="col-sm-6 col-xs-6 controls">
-																<input type="date" name="dt_intera" id="dt_intera" class="form-control" readonly="readonly" />
+																<input type="text" name="dt_intera" id="dt_intera" class="form-control" readonly="readonly" />
 															</div>
 															<label for="desc_interacao" class="col-sm-5 col-xs-5 control-label">Descri&ccedil;&atilde;o do atendimento:</label>
 															<div class="col-sm-21 col-xs-21 controls">
@@ -160,7 +160,7 @@
 														<div class="form-group">
 															<label for="dt_intera" class="col-sm-4 col-xs-4 control-label">Data:</label>
 															<div class="col-sm-6 col-xs-6 controls">
-																<input type="date" name="dt_aceite" id="dt_aceite" placeholder="Numero chamado" class="form-control" readonly="readonly" />
+																<input type="text" name="dt_aceite" id="dt_aceite" placeholder="Numero chamado" class="form-control" readonly="readonly" />
 															</div>
 															<label for="desc_interacao" class="col-sm-5 col-xs-5 control-label">Aceite do solicitante:</label>
 															<div class="col-sm-21 col-xs-21 controls">
@@ -221,7 +221,7 @@
 										</div>
 										<label for="dt_final" class="col-sm-5 col-xs-5 control-label">Data:</label>
 										<div class="col-sm-5 col-xs-5 controls">
-											<input type="date" class="form-control" placeholder="Usuario" name="dt_final" id="dt_final" readonly="readonly" />
+											<input type="text" class="form-control" placeholder="Data" name="dt_final" id="dt_final" readonly="readonly" />
 										</div>
 									</div>
 								</div>
@@ -237,6 +237,10 @@
 
 
 <script>	
+
+	var isChrome = /chrom(e|ium)/.test(navigator.userAgent.toLowerCase());
+	//if (!isChrome) alert("Este formulario é melhor visualizado usando o Google Chrome como navegador!");
+    	
 	
 	$('#criticidade').on('change', function() {
 		$('#prazo').val($(this).val());
@@ -252,8 +256,10 @@
 	function zoomColaborador() {
 		zoomEcmTipo("colleague",
 				"colleagueId,Matricula,colleagueName,Colaborador",
-				"colleagueId,colleagueName,extensionNr&filterValues=active,true", "Zoom Colaborador",
-				"setColaborador");
+				"colleagueId,colleagueName,extensionNr", 
+				"Zoom Colaborador",
+				"setColaborador",
+				"active,true");
 	}
 	function setColaborador(selectedItem) {
 		$("#matricula_user").val(selectedItem['colleagueId']);

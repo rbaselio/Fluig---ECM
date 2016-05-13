@@ -88,26 +88,6 @@
       </void>
      </object>
     </void>
-    <void method="add">
-     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
-      <void property="groupDescription">
-       <string>Moderator group Comunidade Teste</string>
-      </void>
-      <void property="groupId">
-       <string>MODERATOR_comunidade-teste</string>
-      </void>
-     </object>
-    </void>
-    <void method="add">
-     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
-      <void property="groupDescription">
-       <string>Member group Comunidade Teste</string>
-      </void>
-      <void property="groupId">
-       <string>MEMBER_comunidade-teste</string>
-      </void>
-     </object>
-    </void>
    </object>
   </void>
   <void method="put">
@@ -117,115 +97,6 @@
      <string>Default</string>
     </void>
    </array>
-  </void>
-  <void method="put">
-   <string>processosServidor</string>
-   <object class="java.util.ArrayList">
-    <void method="add">
-     <object class="com.totvs.tds.ecm.foundation.ws.ProcessDefinitionDto">
-      <void property="companyId">
-       <int>1</int>
-      </void>
-      <void property="processDescription">
-       <string>Listar Tarefas</string>
-      </void>
-      <void property="processId">
-       <string>FLUIGADHOC</string>
-      </void>
-     </object>
-    </void>
-    <void method="add">
-     <object class="com.totvs.tds.ecm.foundation.ws.ProcessDefinitionDto">
-      <void property="companyId">
-       <int>1</int>
-      </void>
-      <void property="processDescription">
-       <string>Fluxo de não conformidade</string>
-      </void>
-      <void property="processId">
-       <string>RNC - Relatorio de Não Conformidade</string>
-      </void>
-     </object>
-    </void>
-    <void method="add">
-     <object class="com.totvs.tds.ecm.foundation.ws.ProcessDefinitionDto">
-      <void property="companyId">
-       <int>1</int>
-      </void>
-      <void property="processDescription">
-       <string>Processo de registro de contato SAC</string>
-      </void>
-      <void property="processId">
-       <string>SAC - 0800</string>
-      </void>
-     </object>
-    </void>
-    <void method="add">
-     <object class="com.totvs.tds.ecm.foundation.ws.ProcessDefinitionDto">
-      <void property="companyId">
-       <int>1</int>
-      </void>
-      <void property="processDescription">
-       <string>Atendimento Técnico da Área de TI</string>
-      </void>
-      <void property="processId">
-       <string>SOL-TI</string>
-      </void>
-     </object>
-    </void>
-    <void method="add">
-     <object class="com.totvs.tds.ecm.foundation.ws.ProcessDefinitionDto">
-      <void property="companyId">
-       <int>1</int>
-      </void>
-      <void property="processDescription">
-       <string>Atividades RNC</string>
-      </void>
-      <void property="processId">
-       <string>Sub-RNC</string>
-      </void>
-     </object>
-    </void>
-    <void method="add">
-     <object class="com.totvs.tds.ecm.foundation.ws.ProcessDefinitionDto">
-      <void property="companyId">
-       <int>1</int>
-      </void>
-      <void property="processDescription">
-       <string>subteste</string>
-      </void>
-      <void property="processId">
-       <string>subteste</string>
-      </void>
-     </object>
-    </void>
-    <void method="add">
-     <object class="com.totvs.tds.ecm.foundation.ws.ProcessDefinitionDto">
-      <void property="companyId">
-       <int>1</int>
-      </void>
-      <void property="processDescription">
-       <string>Testest</string>
-      </void>
-      <void property="processId">
-       <string>TESTES</string>
-      </void>
-     </object>
-    </void>
-    <void method="add">
-     <object class="com.totvs.tds.ecm.foundation.ws.ProcessDefinitionDto">
-      <void property="companyId">
-       <int>1</int>
-      </void>
-      <void property="processDescription">
-       <string>Assistente de Importacao Rapida</string>
-      </void>
-      <void property="processId">
-       <string>wizard</string>
-      </void>
-     </object>
-    </void>
-   </object>
   </void>
   <void method="put">
    <string>mecanismoPapel</string>
@@ -308,20 +179,90 @@
       </void>
      </object>
     </void>
-    <void method="add">
-     <object class="com.totvs.tds.ecm.foundation.ws.WorkflowRoleDto">
-      <void property="companyId">
-       <long>1</long>
-      </void>
-      <void property="roleDescription">
-       <string>Atendentes de Chamado da TI</string>
-      </void>
-      <void property="roleId">
-       <string>TI</string>
-      </void>
-     </object>
-    </void>
    </object>
+  </void>
+  <void method="put">
+   <string>camposFormulario, documentoId = 14</string>
+   <array class="java.lang.String" length="26">
+    <void index="0">
+     <string>atendente</string>
+    </void>
+    <void index="1">
+     <string>bt_add_interacao</string>
+    </void>
+    <void index="2">
+     <string>chamado_num</string>
+    </void>
+    <void index="3">
+     <string>classe</string>
+    </void>
+    <void index="4">
+     <string>comentarios</string>
+    </void>
+    <void index="5">
+     <string>criticidade</string>
+    </void>
+    <void index="6">
+     <string>data_sol</string>
+    </void>
+    <void index="7">
+     <string>desc_aceite</string>
+    </void>
+    <void index="8">
+     <string>desc_chamado</string>
+    </void>
+    <void index="9">
+     <string>desc_interacao</string>
+    </void>
+    <void index="10">
+     <string>dt_aceite</string>
+    </void>
+    <void index="11">
+     <string>dt_final</string>
+    </void>
+    <void index="12">
+     <string>dt_intera</string>
+    </void>
+    <void index="13">
+     <string>matricula_aceite</string>
+    </void>
+    <void index="14">
+     <string>matricula_atend</string>
+    </void>
+    <void index="15">
+     <string>matricula_user</string>
+    </void>
+    <void index="16">
+     <string>nota</string>
+    </void>
+    <void index="17">
+     <string>prazo</string>
+    </void>
+    <void index="18">
+     <string>ramal</string>
+    </void>
+    <void index="19">
+     <string>responsavel</string>
+    </void>
+    <void index="20">
+     <string>re_classe</string>
+    </void>
+    <void index="21">
+     <string>re_tipo</string>
+    </void>
+    <void index="22">
+     <string>solicitante</string>
+    </void>
+    <void index="23">
+     <string>tb_interacao</string>
+    </void>
+    <void index="24">
+     <string>tipo</string>
+    </void>
+    <void index="25">
+     <string>user_aceite</string>
+    </void>
+   </array>
   </void>
   <void method="put">
    <string>mecanismo</string>
@@ -425,89 +366,6 @@
        <string>papeis0800</string>
       </void>
      </array>
-    </void>
-   </array>
-  </void>
-  <void method="put">
-   <string>camposFormulario, documentoId = 14</string>
-   <array class="java.lang.String" length="26">
-    <void index="0">
-     <string>atendente</string>
-    </void>
-    <void index="1">
-     <string>bt_add_interacao</string>
-    </void>
-    <void index="2">
-     <string>chamado_num</string>
-    </void>
-    <void index="3">
-     <string>classe</string>
-    </void>
-    <void index="4">
-     <string>comentarios</string>
-    </void>
-    <void index="5">
-     <string>criticidade</string>
-    </void>
-    <void index="6">
-     <string>data_sol</string>
-    </void>
-    <void index="7">
-     <string>desc_aceite</string>
-    </void>
-    <void index="8">
-     <string>desc_chamado</string>
-    </void>
-    <void index="9">
-     <string>desc_interacao</string>
-    </void>
-    <void index="10">
-     <string>dt_aceite</string>
-    </void>
-    <void index="11">
-     <string>dt_final</string>
-    </void>
-    <void index="12">
-     <string>dt_intera</string>
-    </void>
-    <void index="13">
-     <string>matricula_aceite</string>
-    </void>
-    <void index="14">
-     <string>matricula_atend</string>
-    </void>
-    <void index="15">
-     <string>matricula_user</string>
-    </void>
-    <void index="16">
-     <string>nota</string>
-    </void>
-    <void index="17">
-     <string>prazo</string>
-    </void>
-    <void index="18">
-     <string>ramal</string>
-    </void>
-    <void index="19">
-     <string>responsavel</string>
-    </void>
-    <void index="20">
-     <string>re_classe</string>
-    </void>
-    <void index="21">
-     <string>re_tipo</string>
-    </void>
-    <void index="22">
-     <string>solicitante</string>
-    </void>
-    <void index="23">
-     <string>tb_interacao</string>
-    </void>
-    <void index="24">
-     <string>tipo</string>
-    </void>
-    <void index="25">
-     <string>user_aceite</string>
     </void>
    </array>
   </void>

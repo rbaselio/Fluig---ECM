@@ -43,8 +43,7 @@ function createDataset(fields, constraints, sortFields) {
 		
 	//Depois de realizar a ordenação, adicionar os registros no dataset para serem apresentados
 	filhos.forEach(function(filho) {
-		dataset.addRow( new Array(filho.Produto));
-		log.info("================filho.Produto: " + filho.Produto);
+		dataset.addRow( new Array(filho.Produto));		
 	});	
 	
 	return dataset;

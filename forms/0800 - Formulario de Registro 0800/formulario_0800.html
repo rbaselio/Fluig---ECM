@@ -25,7 +25,7 @@
 						</tr>
 						<tr>
 							<td align=right><label for="data_sol" class="control-label">Data:&nbsp;&nbsp;&nbsp;&nbsp;</label></td>
-							<td width="15%"><input type="date" name="data_sol" id="data_sol" class="form-control" size="15" readonly="readonly" /></td>
+							<td width="15%"><input type="text" name="data_sol" id="data_sol" class="form-control" size="15" readonly="readonly" /></td>
 						</tr>
 						<tr>
 							<td align="right"><label for="hora_sol" class="control-label">Hora:&nbsp;&nbsp;&nbsp;&nbsp;</label></td>
@@ -172,7 +172,7 @@
 												</div>
 												<label for="data_resp" class="col-sm-5 col-xs-5 control-label">Data:</label>
 												<div class="col-sm-5 col-xs-5 controls">
-													<input type="date" class="form-control" placeholder="Data" name="data_resp" id="data_resp" readonly="readonly" />
+													<input type="text" class="form-control" placeholder="Data" name="data_resp" id="data_resp" readonly="readonly" />
 												</div>
 											</div>
 											<div class="form-group">
@@ -198,7 +198,7 @@
 											<div class="form-group">
 												<label for="prazo" class="col-sm-5 col-xs-5 control-label">Prazo:</label>
 												<div class="col-sm-5 col-xs-5 controls">
-													<input type="date" class="form-control" placeholder="Prazo" name="prazo" id="prazo" />
+													<input type="text" class="form-control" placeholder="Prazo" name="prazo" id="prazo" />
 												</div>
 												<label for="desc_acao" class="col-sm-5 col-xs-5 control-label">A&ccedil;&atilde;o Sugerida:</label>
 												<div class="col-sm-21 col-xs-21 controls">
@@ -238,13 +238,13 @@
 												</div>
 												<label for="data_resp" class="col-sm-5 col-xs-5 control-label">Data:</label>
 												<div class="col-sm-5 col-xs-5 controls">
-													<input type="date" class="form-control" placeholder="Data" name="data_ret" id="data_ret" readonly="readonly" />
+													<input type="text" class="form-control" placeholder="Data" name="data_ret" id="data_ret" readonly="readonly" />
 												</div>
 											</div>
 											<div class="form-group">
 												<label for="data_contato" class="col-sm-5 col-xs-5 control-label">Data do Contato:</label>
 												<div class="col-sm-5 col-xs-5 controls">
-													<input type="date" class="form-control" placeholder="Data do Retorno" name="data_contato" id="data_contato" />
+													<input type="text" class="form-control" placeholder="Data do Retorno" name="data_contato" id="data_contato" />
 												</div>
 												<label for="rd_aceite" class="col-sm-5 col-xs-5 control-label">Aceite do Cliente:</label>
 												<div class="col-sm-5 col-xs-5 controls">
@@ -296,7 +296,7 @@
 												</div>
 												<label for="data_exec" class="col-sm-5 col-xs-5 control-label">Data:</label>
 												<div class="col-sm-5 col-xs-5 controls">
-													<input type="date" class="form-control" placeholder="Data" name="data_exec" id="data_exec" readonly="readonly" />
+													<input type="text" class="form-control" placeholder="Data" name="data_exec" id="data_exec" readonly="readonly" />
 												</div>
 											</div>
 											<div class="form-group">
@@ -338,7 +338,7 @@
 												</div>
 												<label for="data_encer" class="col-sm-5 col-xs-5 control-label">Data:</label>
 												<div class="col-sm-5 col-xs-5 controls">
-													<input type="date" class="form-control" placeholder="Data" name="data_encer" id="data_encer" readonly="readonly" />
+													<input type="text" class="form-control" placeholder="Data" name="data_encer" id="data_encer" readonly="readonly" />
 												</div>
 											</div>
 											<div class="form-group">
@@ -410,7 +410,7 @@
 												</div>
 												<label for="data_encer" class="col-sm-5 col-xs-5 control-label">Data:</label>
 												<div class="col-sm-5 col-xs-5 controls">
-													<input type="date" class="form-control" placeholder="Data" name="data_qualidade" id="data_qualidade" readonly="readonly" />
+													<input type="text" class="form-control" placeholder="Data" name="data_qualidade" id="data_qualidade" readonly="readonly" />
 												</div>
 											</div>
 											<div class="form-group">
@@ -480,9 +480,12 @@
 	
 	//setColaborador responsavel
 	function zoomColaborador() {
-		zoomEcmTipo("colleague", "colleagueId,Matricula,colleagueName,Colaborador",
-				"colleagueId,colleagueName,extensionNr&filterValues=active,true", "Zoom Colaborador",
-				"setColaborador");
+		zoomEcmTipo(("colleague",
+				"colleagueId,Matricula,colleagueName,Colaborador",
+				"colleagueId,colleagueName,extensionNr", 
+				"Zoom Colaborador",
+				"setColaborador",
+				"active,true");
 	}
 
 	function setColaborador(selectedItem) {

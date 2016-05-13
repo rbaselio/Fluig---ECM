@@ -74,7 +74,6 @@ function createDataset(fields, constraints, sortFields) {
 
 function compare(a, b) {
 	
-	log.info("a.Classe: " + a.Classe);
 	if (a.Classe < b.Classe) return -1;
 	if (a.Classe > b.Classe) return 1;
 

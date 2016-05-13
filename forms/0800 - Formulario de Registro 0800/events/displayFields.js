@@ -15,7 +15,7 @@ function displayFields(form,customHTML){
 	var ramal = dadosusuario.get(0).get("extensionNr"); 
 
 	var dtNow = new java.util.Date();
-	var sdf = new java.text.SimpleDateFormat("yyyy-MM-dd");
+	var sdf = new java.text.SimpleDateFormat("dd/MM/yyyy");
 	var today = sdf.format(dtNow);
 	
 	var sdf = new java.text.SimpleDateFormat("HH:mm");

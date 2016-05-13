@@ -119,16 +119,17 @@
 	
 	function zoomColaborador(responsavel) {
 		rows = $(responsavel).closest('tr').index();
-		zoomECM("colleague", "colleagueId,Matr%c3%adcula,colleagueName,Colaborador", "colleagueId,colleagueName", "Zoom Colaborador");
+		zoomEcmTipo("colleague",
+				"colleagueId,Matricula,colleagueName,Colaborador",
+				"colleagueId,colleagueName,extensionNr", 
+				"Zoom Colaborador",
+				"setColaborador",
+				"active,true");
 	}
 	
-	
-
-	function setSelectedZoomItem(selectedItem) {
-		if (selectedItem['type'] == "colleague") {
-			$("#matricula_user___" + rows).val(selectedItem['colleagueId']);
-			$("#responsavel___" + rows).val(selectedItem['colleagueName']);
-		}
+	function setColaborador(selectedItem) {
+		$("#matricula_user___" + rows).val(selectedItem['colleagueId']);
+		$("#responsavel___" + rows).val(selectedItem['colleagueName']);		
 	}
 
 </script>

@@ -3,7 +3,7 @@ function displayFields(form, customHTML) {
 	customHTML.append("<script>");
 	
 	form.setShowDisabledFields(true);
-	form.setHidePrintLink(true);	
+	//form.setHidePrintLink(true);	
 	form.setVisibleById('bt_add_interacao', false);
 	form.setHideDeleteButton(true);
 	
@@ -20,7 +20,7 @@ function displayFields(form, customHTML) {
 	
 	var colaborador = dadosusuario.get("colleagueName");
 	var ramal = dadosusuario.get("extensionNr");
-	var today = new java.text.SimpleDateFormat("yyyy-MM-dd").format(new java.util.Date());
+	var today = new java.text.SimpleDateFormat("dd/MM/yyyy").format(new java.util.Date());
 
 	if (numAtividade == 0 || numAtividade == 1) {
 		

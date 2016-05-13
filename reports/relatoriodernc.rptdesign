@@ -115,9 +115,9 @@
                 </ex-property>
             </list-property>
             <property name="odaDriverClass">com.mysql.jdbc.Driver</property>
-            <property name="odaURL">jdbc:mysql://10.10.1.15:3306/byyou</property>
-            <property name="odaUser">byyou</property>
-            <encrypted-property name="odaPassword" encryptionID="base64">Y2FzcHNh</encrypted-property>
+            <property name="odaURL">jdbc:mysql://10.10.1.53:3306/fluig_prd</property>
+            <property name="odaUser">root</property>
+            <encrypted-property name="odaPassword" encryptionID="base64">I2ZtQDQ3N3NhMTJfZmw=</encrypted-property>
         </oda-data-source>
     </data-sources>
     <data-sets>
