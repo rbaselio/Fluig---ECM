@@ -79,6 +79,8 @@ function displayFields(form, customHTML) {
 		}
 		return false;
 	}
+	
+	customHTML.append("ativaPreencheCampos('" + form.getFormMode() + "','" +  getValue("WKNumState") + "','" +  getValue("WKNumProces") + "','" +  form.getDocumentId() + "');");
 	customHTML.append("</script>");
 }
 

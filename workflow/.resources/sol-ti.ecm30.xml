@@ -23,7 +23,7 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>Atendimento Técnico da Área de TI</processId>
-      <version>21</version>
+      <version>43</version>
     </processDefinitionVersionPK>
     <versionDescription>Nova Versão.</versionDescription>
     <formId>14</formId>
@@ -71,7 +71,7 @@
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
       <positionX>20</positionX>
-      <positionY>52</positionY>
+      <positionY>54</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -298,8 +298,8 @@
         <version>1</version>
         <sequence>8</sequence>
       </processStatePK>
-      <stateName>Exclusivo</stateName>
-      <stateDescription>Exclusivo</stateDescription>
+      <stateName>atendimento inicial</stateName>
+      <stateDescription>atendimento inicial</stateDescription>
       <joint>false</joint>
       <initialState>false</initialState>
       <transferAttachments>false</transferAttachments>
@@ -370,13 +370,26 @@
         <companyId>1</companyId>
         <processId>SOL-TI</processId>
         <expressionOrder>1</expressionOrder>
-        <version>21</version>
+        <version>43</version>
         <sequence>8</sequence>
       </conditionProcessStatePK>
-      <condition>true</condition>
+      <condition>(hAPI.getCardValue(&quot;responsavel&quot;) == &quot;&quot; || hAPI.getCardValue(&quot;responsavel&quot;) == &quot;root&quot;)</condition>
       <destinationSequenceId>2</destinationSequenceId>
       <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Role&gt;TI&lt;/Role&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
       <engineAllocationId>Pool Papel</engineAllocationId>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>SOL-TI</processId>
+        <expressionOrder>2</expressionOrder>
+        <version>43</version>
+        <sequence>8</sequence>
+      </conditionProcessStatePK>
+      <condition>!(hAPI.getCardValue(&quot;responsavel&quot;) == &quot;&quot;) &amp;&amp; !(hAPI.getCardValue(&quot;responsavel&quot;) == &quot;root&quot;)</condition>
+      <destinationSequenceId>2</destinationSequenceId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;FormField&gt;responsavel&lt;/FormField&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <engineAllocationId>Campo Formulário</engineAllocationId>
     </ConditionProcessState>
   </list>
   <list>
@@ -529,6 +542,7 @@
 	var numAtividade = sequenceId;&#xd;
 	var numThread = hAPI.getActualThread(numEmpresa, numProcesso, numAtividade);&#xd;
 	var colleagueId = getValue(&quot;WKUser&quot;);&#xd;
+	var documento = getValue(&quot;WKCardId&quot;);&#xd;
 &#xd;
 	log.info(&quot;----------------------numEmpresa: &quot; + numEmpresa);&#xd;
 	log.info(&quot;---------------------numProcesso: &quot; + numProcesso);&#xd;
@@ -536,14 +550,39 @@
 	log.info(&quot;-----------------------numThread: &quot; + numThread);&#xd;
 	log.info(&quot;--------------------numAtividade: &quot; + numAtividade);&#xd;
 	log.info(&quot;---------------------colleagueId: &quot; + colleagueId);&#xd;
-&#xd;
+	log.info(&quot;----------------------DocumentId: &quot; + documento);&#xd;
+	&#xd;
 	if (numAtividade == 2 || numAtividade == 6) { // seta prazo para o atendimento&#xd;
+			&#xd;
+		if (numAtividade == 2){&#xd;
+			log.info(&quot;----------------------RENOMEAR DOCUMENTO-------------------------------&quot;);&#xd;
+			var consumer = oauthUtil.getNewAPIConsumer(&quot;api_fluig&quot;, &quot;api_fluig&quot;,&#xd;
+		            &quot;03e5895b-8ef2-4bb7-90cc-9a08ceea7a74&quot;,&#xd;
+		            &quot;8737e42a-ce67-44b7-a387-7f63e6aa0bce5ad390c5-12f8-499b-8644-f22a385497c3&quot;);&#xd;
+			var jsonContent = &apos;{&quot;id&quot;:&quot;&apos; + documento + &apos;&quot;,&quot;description&quot;:&quot;Processo - &apos; + numProcesso + &apos;&quot;}&apos;;&#xd;
+			log.warn(jsonContent);    &#xd;
+			   &#xd;
+		    try{&#xd;
+		    	 consumer.post(&quot;/public/ecm/document/updateDescription&quot;, jsonContent);&#xd;
+			} catch(e){				&#xd;
+				log.error(&quot;-----------------------------Erro ao renomar documento: &quot;);&#xd;
+				log.error(e);			&#xd;
+			}&#xd;
+		    log.info(&quot;----------------------FIM RENOMEAR DOCUMENTO-------------------------------&quot;);&#xd;
+		}&#xd;
+			&#xd;
+			&#xd;
+			&#xd;
 		&#xd;
 		log.info(&quot;----------------------PRAZO DE ATEDNIMENTO-------------------------------&quot;);&#xd;
 		&#xd;
-		var colleagueId = &quot;Pool:Group:TI&quot;;&#xd;
-		if (numAtividade == 6) {&#xd;
+		if (numAtividade == 6){&#xd;
 			colleagueId = hAPI.getCardValue(&quot;matricula_atend&quot;);&#xd;
+		}&#xd;
+		else if (hAPI.getCardValue(&quot;responsavel&quot;) == &quot;&quot; || hAPI.getCardValue(&quot;responsavel&quot;) == &quot;root&quot;){&#xd;
+			colleagueId = &quot;Pool:Role:TI&quot;;&#xd;
+		} else {&#xd;
+			colleagueId = hAPI.getCardValue(&quot;responsavel&quot;);&#xd;
 		}&#xd;
 		log.info(&quot;---------------------colleagueId: &quot; + colleagueId);		&#xd;
 &#xd;
@@ -571,7 +610,7 @@
 			var dt = obj[0];&#xd;
 			var segundos = obj[1];&#xd;
 			log.info(&quot;-----------------------NOVA DATA: &quot; + dt);&#xd;
-			log.info(&quot;----------------------- SEGUNDOS: &quot; + segundos);			&#xd;
+			log.info(&quot;------------------------SEGUNDOS: &quot; + segundos);			&#xd;
 &#xd;
 			try {&#xd;
 				hAPI.setDueDate(numProcesso, numThread, colleagueId, dt, segundos);&#xd;
@@ -600,20 +639,21 @@
 	&#xd;
 	log.info(&quot;---------------------BEFORE STATE LEAVE-------------------------------&quot;);&#xd;
 	&#xd;
+	&#xd;
 	var numEmpresa = getValue(&quot;WKCompany&quot;);&#xd;
 	var numProcesso = getValue(&quot;WKNumProces&quot;);&#xd;
 	var nrProxAtividade = getValue(&quot;WKNextState&quot;);&#xd;
 	var numThread = hAPI.getActualThread(numEmpresa, numProcesso, nrProxAtividade);&#xd;
 	var numAtividade = sequenceId;&#xd;
 	var colleagueId = getValue(&quot;WKUser&quot;);&#xd;
-		&#xd;
+	&#xd;
+	&#xd;
 	log.info(&quot;---------------------numEmpresa: &quot; + numEmpresa);&#xd;
 	log.info(&quot;--------------------numProcesso: &quot; + numProcesso);&#xd;
 	log.info(&quot;----------------nrProxAtividade: &quot; + nrProxAtividade);&#xd;
 	log.info(&quot;----------------------numThread: &quot; + numThread);&#xd;
 	log.info(&quot;-------------------numAtividade: &quot; + numAtividade);&#xd;
 	log.info(&quot;--------------------colleagueId: &quot; + colleagueId);&#xd;
-	&#xd;
 	&#xd;
 		&#xd;
 	if(numAtividade == 0 || numAtividade == 1 || nrProxAtividade == 6){ &#xd;
@@ -681,7 +721,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SOL-TI</processId>
-        <version>21</version>
+        <version>43</version>
         <linkSequence>5</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -692,7 +732,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SOL-TI</processId>
-        <version>21</version>
+        <version>43</version>
         <linkSequence>6</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -703,7 +743,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SOL-TI</processId>
-        <version>21</version>
+        <version>43</version>
         <linkSequence>7</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -718,9 +758,9 @@
       <processFormFieldPK>
         <companyId>1</companyId>
         <processId>SOL-TI</processId>
-        <fieldId>desc_aceite</fieldId>
+        <fieldId>chamado_num</fieldId>
       </processFormFieldPK>
-      <fieldDescription>desc_aceite</fieldDescription>
+      <fieldDescription>chamado_num</fieldDescription>
       <slotId>1</slotId>
     </ProcessFormField>
   </list>

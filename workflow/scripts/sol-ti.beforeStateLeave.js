@@ -2,20 +2,21 @@ function beforeStateLeave(sequenceId){
 	
 	log.info("---------------------BEFORE STATE LEAVE-------------------------------");
 	
+	
 	var numEmpresa = getValue("WKCompany");
 	var numProcesso = getValue("WKNumProces");
 	var nrProxAtividade = getValue("WKNextState");
 	var numThread = hAPI.getActualThread(numEmpresa, numProcesso, nrProxAtividade);
 	var numAtividade = sequenceId;
 	var colleagueId = getValue("WKUser");
-		
+	
+	
 	log.info("---------------------numEmpresa: " + numEmpresa);
 	log.info("--------------------numProcesso: " + numProcesso);
 	log.info("----------------nrProxAtividade: " + nrProxAtividade);
 	log.info("----------------------numThread: " + numThread);
 	log.info("-------------------numAtividade: " + numAtividade);
 	log.info("--------------------colleagueId: " + colleagueId);
-	
 	
 		
 	if(numAtividade == 0 || numAtividade == 1 || nrProxAtividade == 6){ 

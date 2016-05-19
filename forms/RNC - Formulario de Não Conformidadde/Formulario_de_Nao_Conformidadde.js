@@ -17,11 +17,13 @@ $(function(ready){
 	});
 	
 	$(".isLink").each(function(i) {
-		$(this).css('pointer-events', 'all');
-		$(this).removeAttr('disabled');
-		$(this).click(function() {
-			window.open("/portal/p/Casp/pageworkflowview?app_ecm_workflowview_detailsProcessInstanceID=" + $(this).val(), '_blank');
-		});
+		if ($(this).val() != ""){
+			$(this).css('pointer-events', 'all');
+			$(this).removeAttr('disabled');
+			$(this).click(function() {
+				window.open("/portal/p/Casp/pageworkflowview?app_ecm_workflowview_detailsProcessInstanceID=" + $(this).val(), '_blank');
+			});
+		}
 	});		
 	
 	// ativa/desativa campos quando o valor da origem for modificado
@@ -172,11 +174,19 @@ function removeTarefa(oElement){
 
 
 //prencimento e ativação dos campos
-function ativaPreencheCampos(modeView, numState){
+function ativaPreencheCampos(modeView, numState, WKNumProces, documentId){
 	blockAll();
 	if(modeView == "ADD" || modeView == "MOD"){	
 		
-		var WKNumProces = parent.ECM.workflowView.processDefinition.processInstanceId;	
+		$.ajax({
+			method: "POST",
+			dataType: 'json',
+			contentType: "application/json",
+			url: "/api/public/ecm/document/updateDescription",
+			data: '{"id": "'+ documentId  +'", "description": "RNC - '+ WKNumProces + '"}'
+		});
+		
+		
 		
 		var getUsuario = $.ajax({
 					        type: 'GET',

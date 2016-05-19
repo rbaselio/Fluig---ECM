@@ -236,11 +236,19 @@
 
 
 
-<script>	
+<script>
 
-	var isChrome = /chrom(e|ium)/.test(navigator.userAgent.toLowerCase());
-	//if (!isChrome) alert("Este formulario é melhor visualizado usando o Google Chrome como navegador!");
-    	
+	function ativaPreencheCampos(modeView, numState, WKNumProces, documentId){
+		if((modeView == "ADD" || modeView == "MOD") && numState == 4){	
+			$.ajax({
+				method: "POST",
+				dataType: 'json',
+				contentType: "application/json",
+				url: "/api/public/ecm/document/updateDescription",
+				data: '{"id": "'+ documentId  +'", "description": "Atendimento - '+ WKNumProces + '"}'
+			});
+		}
+	}    	
 	
 	$('#criticidade').on('change', function() {
 		$('#prazo').val($(this).val());

@@ -18,12 +18,13 @@ $(function(ready){
 		} else $("#descReprov").attr('disabled', 'disabled').val(''); 
 	}).trigger('change');
 	
-	
-	$("#process_pai").css('pointer-events', 'all');
-	$("#process_pai").removeAttr('disabled');
-	$("#process_pai").click(function() {
-		window.open("/portal/p/Casp/pageworkflowview?app_ecm_workflowview_detailsProcessInstanceID=" + $(this).val(), '_blank');
-	});				
+	if ($("#process_pai").val() != ""){
+		$("#process_pai").css('pointer-events', 'all');
+		$("#process_pai").removeAttr('disabled');
+		$("#process_pai").click(function() {
+			window.open("/portal/p/Casp/pageworkflowview?app_ecm_workflowview_detailsProcessInstanceID=" + $(this).val(), '_blank');
+		});	
+	}
 	
 	
 });
@@ -66,16 +67,14 @@ function ativaPreencheCampos(modeView, numState){
 			$("#descMotivo").css('pointer-events', 'all');			
 		}
 		
-		if (numState == 10){
-			
+		if (numState == 10){			
 			getUsuario.done(function(response) {
 				$("#matricula_aprov").val(response.content.userCode);
 				$("#user_aprov").val(response.content.name);			   
 			});
 			$("#data_aprov").val(data);
 			$("input[id='rd_aprov']").css('pointer-events', 'all');				
-			$("#descReprov").css('pointer-events', 'all');
-			
+			$("#descReprov").css('pointer-events', 'all');			
 		}
 	}				
 }

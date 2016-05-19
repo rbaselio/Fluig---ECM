@@ -1,0 +1,554 @@
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="/portal/resources/style-guide/css/fluig-style-guide.min.css">
+<script src="/portal/resources/js/jquery/jquery.js"></script>
+<script src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+<script src="/portal/resources/js/mustache/mustache-min.js"></script>
+<script src="/portal/resources/style-guide/js/fluig-style-guide.min.js"></script>
+<script type="text/javascript" src="/resources/bootstrap/js/utils.js"></script>
+<script type="text/javascript" src="Avaliacao_De_Fornecedores.js"></script>
+
+</head>
+<body>
+	<div class="fluig-style-guide">
+		<form name="form" role="form">
+			<div class="row">
+				<table width="97%" border="0" align="center" cellpadding="0" cellspacing="0" class="tabelaGeral">
+					<tbody>
+						<tr>
+							<td rowspan="3" width="20%"><img src="/resources/logo_casp/logocasp.gif" width="204" height="79"></td>
+							<td rowspan="3"><div align="center" dir="ltr">
+									<h2>
+										<b>Avaliação de Fonecedores</b>
+									</h2>
+								</div></td>
+							<td align="right"><label for="chamado_num">N&uacute;mero RNC:&nbsp;&nbsp;&nbsp;&nbsp;</label></td>
+							<td width="15%"><input type="text" name="num_processo" id="num_processo" class="form-control" readonly="readonly" /></td>
+						</tr>
+						<tr>
+							<td align=right><label for="data_sol">Data:&nbsp;&nbsp;&nbsp;&nbsp;</label></td>
+							<td width="15%"><input type="text" name="data_sol" id="data_sol" class="form-control" readonly="readonly" /></td>
+						</tr>
+						<tr>
+							<td align="right"><label for="hora_sol">Hora:&nbsp;&nbsp;&nbsp;&nbsp;</label></td>
+							<td width="15%"><input type="text" name="hora_sol" id="hora_sol" class="form-control" readonly="readonly" /></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<ul class="nav nav-tabs clearfix" role="tablist" id="myTab">
+				<li><a href="#avaliacao" role="tab" data-toggle="tab">Avaliação de Fornecedor</a></li>
+				<li><a href="#checkList" role="tab" data-toggle="tab">Check-List Incial</a></li>
+			</ul>
+			<div class="tab-content">
+				<div class="tab-pane fade" id="avaliacao">
+					<div class="panel panel-primary" id="emissao">
+						<div class="panel-heading" style="background-color: blue;">
+							<h3 class="panel-title">
+								<strong><i class="fluigicon fluigicon-file-default fluigicon-sm"></i>&nbsp; Emissão</strong>
+							</h3>
+						</div>
+						<div class="panel-body">
+							
+							<div class="row">
+								<div class="col-xs-3">
+									<label for="matricula_emissor">Resp. Emissão:</label>
+									<input type="text" class="form-control" placeholder="Matr&iacute;cula" name="matricula_emissor" id="matricula_emissor" readonly="readonly" />								
+								</div>
+								<div class="col-xs-6">
+								<label for="user_emissor">&nbsp;</label>
+									<input type="text" class="form-control" placeholder="Responsável" name="user_emissor" id="user_emissor" readonly="readonly" />
+								</div>
+								<div class="col-xs-3">
+									<label for="ramal_emissor">Ramal:</label>
+									<input type="text" class="form-control" placeholder="Ramal" name="ramal_emissor" id="ramal_emissor" />
+								</div>
+							</div>
+							<br/>
+							<div class="row">
+								<div class="col-xs-8">
+									<label for="nomeFonec">Razão Social:</label>
+									<input class="form-control" name="nomeFonec" id="nomeFonec" type="text" />
+								</div>
+								<div class="col-xs-4">
+									<label for="cnpj">CNPJ:</label>
+									<input class="form-control mCnpj" name="cnpj" id="cnpj" type="text"/>
+								</div>
+							</div>
+							<br/>
+							<div class="row">
+								<div class="col-xs-4">
+									<label for="contato">Contato:</label>
+									<input class="form-control" name="contato" id="contato" type="text" />
+								</div>
+								<div class="col-xs-4">
+									<label for="telefone">Telefone / Celular:</label>
+									<input class="form-control mTel" name="telefone" id="telefone" type="text"/>
+								</div>
+								<div class="col-xs-4">
+									<label for="local">Local:</label>
+									<input class="form-control" name="local" id="local" type="text"/>
+								</div>
+							</div>
+							<br/>
+							<div class="row">
+								<div class="col-xs-5">
+									<label for="tipoFornec">Tipo de Fornecedor:</label> 
+									<select class="form-control" name="tipoFornec" id="tipoFornec">
+										<option value="0"></option>
+										<option value="1">Produto Acabado</option>
+										<option value="2">Serviço de Manufatura</option>
+										<option value="3">Matéria Prima / Componente</option>
+										<option value="4">Novo Fornecedor / Novos produtos</option>
+										<option value="5">Fornecedor Existente / Novos produtos</option>
+										<option value="6">Novo Fornecedor / Produtos já comprados</option>
+										<option value="99">Outros</option>
+									</select>
+									<br/>
+									<label for="rd_criticidade">Criticidade:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>	
+															
+									<input type="radio" name="rd_criticidade" id="rd_criticidade" value="x"  checked/>X
+									<input type="radio" name="rd_criticidade" id="rd_criticidade"  value="y" />Y
+									<input type="radio" name="rd_criticidade" id="rd_criticidade"  value="z" />Z
+								</div>
+								<div class="col-xs-7">
+									<label for="motivo">Motivo:</label>
+									<textarea name="motivo" id="motivo" rows="3" class="form-control"></textarea>	
+										
+								</div>
+							</div>
+							<br/>
+							<div class="row">	
+								<div class="col-xs-5">
+									<label for="codItem">Código do Item:</label>
+									<input class="form-control" name="codItem" id="codItem" type="text" />
+									<br/>
+									<label for="familia">Família:</label>
+									<input class="form-control" name="familia" id="familia" type="text" />
+								</div>							
+								<div class="col-xs-7">
+									<label for="itemServ">Produto (item) ou Serviço:</label>
+									<textarea name="itemServ" id="itemServ" rows="5" class="form-control"></textarea>									
+								</div>
+							</div>
+							<br/>
+							<div class="row">
+								
+							</div>
+							<br/>
+							<div class="row">
+								<div class="col-xs-4">
+									<label for="vlUnit">Vl. Unit. Previsto:</label>
+									<input class="form-control money" name="vlUnit" id="vlUnit" type="text"/>
+								</div>
+								<div class="col-xs-4">
+									<label for="qtPrevMes ">Quant. prevista mensal:</label>
+									<input class="form-control number" name="qtPrevMes" id="qtPrevMes" type="text"/>
+								</div>
+								<div class="col-xs-4">
+									<label for="vlTotal">Valor Total Mês:</label>
+									<input class="form-control money" name="vlTotal" id="vlTotal" type="text" readonly="readonly"/>
+								</div>
+							</div>
+							<br/>
+							<div class="row">
+								<div class="col-xs-3">
+									<label for="matricula_aprov">Aprovador:</label>
+									<input type="text" class="form-control" placeholder="Matr&iacute;cula" name="matricula_aprov" id="matricula_aprov" readonly="readonly" />								
+								</div>
+								<div class="col-xs-6">
+								<label for="user_aprov">&nbsp;</label>
+									<input type="text" class="form-control" placeholder="Responsável" name="user_aprov" id="user_aprov" readonly="readonly" />
+								</div>
+								<div class="col-xs-3">
+									<label for="data_aprov">Data:</label>
+									<input type="text" class="form-control" placeholder="Data" name="data_aprov" id="data_aprov"  readonly="readonly"/>
+								</div>
+							</div>
+							
+							
+						</div>
+					</div>
+				
+					<div class="panel panel-primary" id="avalInic">
+						<div class="panel-heading" style="background-color: blue;">
+							<h3 class="panel-title">
+								<strong><i class="fluigicon fluigicon-checked fluigicon-sm"></i>&nbsp; Avaliação Inicial (Utilizar check list)</strong>
+							</h3>
+						</div>
+						<div class="panel-body">
+							
+							<div class="row">
+								<div class="col-xs-3">
+									<input type="radio" name="rd_tipo_necessario" id="rd_tipo_necessario" value="sim"   />Necessária
+									<br/>
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="rd_avao_tipo" id="rd_avao_tipo"  value="loco" checked />In Loco
+									<br/>
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="rd_avao_tipo" id="rd_avao_tipo"  value="entrevista" />Entrevista
+									<br/>
+									<br/>
+								</div>
+								
+								<div class="col-xs-3">
+									<input type="radio" name="rd_tipo_necessario" id="rd_tipo_necessario"  value="nao" checked />Dispensada
+								</div>
+								
+							</div>
+							<br/>
+							<div class="row">
+								<div class="col-xs-3">
+									<label for="matricula_aval">Resp. Avaliação:</label>
+									<input type="text" class="form-control" placeholder="Matr&iacute;cula" name="matricula_aval" id="matricula_aval" readonly="readonly" />								
+								</div>
+								<div class="col-xs-6">
+								<label for="user_aval">&nbsp;</label>
+									<input type="text" class="form-control" placeholder="Responsável" name="user_aval" id="user_aval" readonly="readonly" />
+								</div>
+								<div class="col-xs-3">
+									<label for="data_aval">Data:</label>
+									<input type="text" class="form-control" placeholder="Data" name="data_aval" id="data_aval"  readonly="readonly"/>
+								</div>
+							</div>
+							
+							
+						</div>
+					</div>
+				
+					<div class="panel panel-primary" id="resultado">					
+						<div class="panel-heading" style="background-color: blue;">
+							<h3 class="panel-title">
+								<strong><i class="fluigicon fluigicon-newspaper fluigicon-sm"></i>&nbsp; Resultado Final</strong>
+							</h3>
+						</div>
+						<div class="panel-body">
+							<div class="row">
+								<label  class="col-xs-2" for="classQualidade">Status:</label> 
+								<div class="col-xs-5">									
+									<input type="text" class="form-control" name="statusFim" id="statusFim" readonly="readonly" />
+								</div>
+							</div>
+							<br>							
+							<div class="row">
+								<div class="col-xs-5">
+									<label for="classQualidade">Classificação da Qualidade:</label> 
+									<select class="form-control" name="classQualidade" id="classQualidade">
+										<option value="0"></option>
+										<option value="1">Qualidade Assegurada</option>
+										<option value="2">Fornecimento com Laudo / Certificado</option>
+										<option value="3">Sujeito a inspeção no recebimento</option>
+									</select>
+								</div>
+								<div class="col-xs-7">
+									<label for="considQualidade">Considerações finais Qualidade:</label>
+									<textarea name="considQualidade" id="considQualidade" rows="3" class="form-control"></textarea>	
+								</div>								
+								
+							</div>
+							<br/>
+							<div class="row">
+								<div class="col-xs-3">
+									<label for="matricula_qual">Resp. Qualidade:</label>
+									<input type="text" class="form-control" placeholder="Matr&iacute;cula" name="matricula_qual" id="matricula_qual" readonly="readonly" />								
+								</div>
+								<div class="col-xs-6">
+								<label for="user_qual">&nbsp;</label>
+									<input type="text" class="form-control" placeholder="Responsável" name="user_qual" id="user_qual" readonly="readonly" />
+								</div>
+								<div class="col-xs-3">
+									<label for="data_aval">Data:</label>
+									<input type="text" class="form-control" placeholder="Data" name="data_qual" id="data_qual"  readonly="readonly"/>
+								</div>
+							</div>
+							<br/>
+							<div class="row">
+								<div class="col-xs-5">
+									<label for="tipoAcordo">Tipo de acordo:</label> 
+									<select class="form-control" name="tipoAcordo" id="tipoAcordo">
+										<option value="0"></option>
+										<option value="1">Contrato</option>										
+									</select>
+								</div>
+								<div class="col-xs-7">
+									<label for="considAcordo">Considerações finais acordo:</label>
+									<textarea name="considAcordo" id="considAcordo" rows="3" class="form-control"></textarea>	
+								</div>
+							</div>
+							<br/>
+							<div class="row">
+								<div class="col-xs-3">
+									<label for="matricula_acord">Resp. Tipo de Acordo:</label>
+									<input type="text" class="form-control" placeholder="Matr&iacute;cula" name="matricula_acord" id="matricula_acord" readonly="readonly" />								
+								</div>
+								<div class="col-xs-6">
+								<label for="user_acord">&nbsp;</label>
+									<input type="text" class="form-control" placeholder="Responsável" name="user_acord" id="user_acord" readonly="readonly" />
+								</div>
+								<div class="col-xs-3">
+									<label for="data_acord">Data:</label>
+									<input type="text" class="form-control" placeholder="Data" name="data_acord" id="data_acord"  readonly="readonly"/>
+								</div>
+							</div>
+						</div>
+					</div>			
+					
+				</div>
+				
+				
+				<div class="tab-pane fade" id="checkList">				
+					<div class="panel panel-primary" id="capProducao">
+						<div class="panel-heading" style="background-color: blue;">
+							<h3 class="panel-title">
+								<strong><i class="fluigicon fluigicon-company fluigicon-sm"></i>&nbsp; Capacidade de Produção (Mensal)</strong>
+							</h3>
+						</div>
+						<div class="panel-body">
+							<div class="row">
+								<div class="col-xs-12">
+									<label for="referencia">Máquinas, equipamentos e dispositivos necessários para produção:</label>
+									<textarea name="maqEquip" id="maqEquip" rows="3" class="form-control"></textarea>	
+								</div>
+							</div>
+							<br/>
+							<div class="row">
+								<div class="col-xs-6">
+									<label for="rd_recursos">Fornecedor possui recursos necessários?</label>
+									<br/>
+									<input type="radio" name="rd_recursos" id="rd_recursos" value="sim"  checked />Sim
+									<input type="radio" name="rd_recursos" id="rd_recursos" value="nao"  />Não	
+																	
+								</div>
+								<div class="col-xs-6">
+									<label for="rd_atend_demanda">Fornecedor pode atender demanda da Casp?</label>
+									<br/>
+									<input type="radio" name="rd_atend_demanda" id="rd_atend_demanda" value="sim"  checked/>Sim
+									<input type="radio" name="rd_atend_demanda" id="rd_atend_demanda" value="nao"  />Não																		
+								</div>								
+							</div>
+							<br/>
+							<div class="row">
+								<div class="col-xs-4">
+									<label for="qtPrevMes ">Capacidade Total de Produção:</label>
+									<input class="form-control number" name="capProd" id="capProd" type="text"/>
+								</div>
+								<div class="col-xs-4">
+									<label for="capFornec ">Capacidade de Fornecimento à Casp:</label>
+									<input class="form-control number" name="capFornec" id="capFornec" type="text"/>
+								</div>
+								<div class="col-xs-4">
+									<label for="prazoPed ">Prazo para colocação de pedido (dias):</label>
+									<input class="form-control" name="prazoPed" id="prazoPed" type="number" min="0" step="1"/>
+								</div>
+							</div>
+							<br/>
+							<div class="row">
+								<div class="col-xs-3">
+									<label for="rd_capProd">Aprovado?</label>
+									<br/>
+									<input type="radio" name="rd_capProd" id="rd_capProd" value="sim"  checked />Sim
+									<input type="radio" name="rd_capProd" id="rd_capProd" value="nao"  />Não									
+								</div>
+								<div class="col-xs-9">
+									<label for="comentCapProd">Comentários:</label>
+									<textarea name="comentCapProd" id="comentCapProd" rows="3" class="form-control"></textarea>	
+								</div>
+							</div>
+							<br/>
+							<div class="row">
+								<div class="col-xs-3">
+									<label for="matricula_CapProd">Resp. Tipo de Acordo:</label>
+									<input type="text" class="form-control" placeholder="Matr&iacute;cula" name="matricula_CapProd" id="matricula_CapProd" readonly="readonly" />								
+								</div>
+								<div class="col-xs-6">
+								<label for="user_CapProd">&nbsp;</label>
+									<input type="text" class="form-control" placeholder="Responsável" name="user_CapProd" id="user_CapProd" readonly="readonly" />
+								</div>
+								<div class="col-xs-3">
+									<label for="data_CapProd">Data:</label>
+									<input type="text" class="form-control" placeholder="Data" name="data_CapProd" id="data_CapProd"  readonly="readonly"/>
+								</div>
+							</div>
+						</div>
+					</div>
+				
+					<div class="panel panel-primary" id="capQualidade">
+						<div class="panel-heading" style="background-color: blue;">
+							<h3 class="panel-title">
+								<strong><i class="fluigicon fluigicon-degree fluigicon-sm"></i>&nbsp; Capacidade garantia da qualidade</strong>
+							</h3>
+						</div>
+						<div class="panel-body">
+							<div class="row">
+								<div class="col-xs-6">
+									<label for="rd_recursos">Fornecedor tem sistema de garantia da qualidade?</label>
+									<br/>
+									<input type="radio" name="rd_certificado" id="rd_certificado" value="sim"  checked/>Sim
+									<input type="radio" name="rd_certificado" id="rd_certificado" value="nao"  />Não
+								</div>
+								
+								<label for="tipoCert" class="col-xs-1">Tipo:</label> 
+								<div class="col-xs-5">
+									<select class="form-control col-xs-4" name="tipoCert" id="tipoCert">
+										<option value="0"></option>
+										<option value="1">ISO 9001</option>
+										<option value="2">Controle de Processo</option>
+										<option value="99">Outro</option>										
+									</select>	
+								</div>
+															
+							</div>
+							<br/>
+							<div class="row">
+								<div class="col-xs-6">
+									<label for="rd_inspec">O fornecedor pode fazer inspeção final do produto?</label>
+									<br/>
+									<input type="radio" name="rd_inspec" id="rd_inspec" value="sim"  checked/>Sim
+									<input type="radio" name="rd_inspec" id="rd_inspec" value="nao"  />Não																		
+								</div>	
+								<div class="col-xs-6">
+									<label for="rd_lab">O fornecedor tem laboratório para ensaios?</label>
+									<br/>
+									<input type="radio" name="rd_lab" id="rd_lab" value="sim"  checked/>Sim
+									<input type="radio" name="rd_lab" id="rd_lab" value="nao"  />Não																		
+								</div>
+								
+							</div>
+							<br/>
+							<div class="row">
+								<div class="col-xs-6">
+									<label for="rd_reqQual">O fornecedor atenderá aos requisitos de qualidade?</label>
+									<br/>
+									<input type="radio" name="rd_reqQual" id="rd_reqQual" value="sim"  checked/>Sim
+									<input type="radio" name="rd_reqQual" id="rd_reqQual" value="nao"  />Não																		
+								</div>	
+								<div class="col-xs-6">
+									<label for="rd_acorQual">O fornecedor está disposto a assinar acordo de qualidade?</label>
+									<br/>
+									<input type="radio" name="rd_acorQual" id="rd_acorQual" value="sim"  checked />Sim
+									<input type="radio" name="rd_acorQual" id="rd_acorQual" value="nao"  />Não																		
+								</div>
+								
+							</div>
+							<br/>
+							<div class="row">
+								<div class="col-xs-3">
+									<label for="rd_capQual">Aprovado?</label>
+									<br/>
+									<input type="radio" name="rd_capQual" id="rd_capQual" value="sim"  checked />Sim
+									<input type="radio" name="rd_capQual" id="rd_capQual" value="nao"  />Não									
+								</div>
+								<div class="col-xs-9">
+									<label for="comentCapQual">Comentários:</label>
+									<textarea name="comentCapQual" id="comentCapQual" rows="3" class="form-control"></textarea>	
+								</div>
+							</div>
+							<br/>
+							
+							<div class="row">
+								<div class="col-xs-3">
+									<label for="matricula_CapQua">Resp. Tipo de Acordo:</label>
+									<input type="text" class="form-control" placeholder="Matr&iacute;cula" name="matricula_CapQua" id="matricula_CapQua" readonly="readonly" />								
+								</div>
+								<div class="col-xs-6">
+								<label for="user_CapQua">&nbsp;</label>
+									<input type="text" class="form-control" placeholder="Responsável" name="user_CapQua" id="user_CapQua" readonly="readonly" />
+								</div>
+								<div class="col-xs-3">
+									<label for="data_CapProd">Data:</label>
+									<input type="text" class="form-control" placeholder="Data" name="data_CapQua" id="data_CapQua"  readonly="readonly"/>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					<div class="panel panel-primary" id="capComercial">
+						<div class="panel-heading" style="background-color: blue;">
+							<h3 class="panel-title">
+								<strong><i class="fluigicon fluigicon-handshake fluigicon-sm"></i>&nbsp; Condições Comerciais</strong>
+							</h3>
+						</div>
+						<div class="panel-body">
+							<div class="row">
+								<div class="col-xs-6">
+									<label for="volNegocio">Volume total de negócio da empresa:</label>
+									<input class="form-control money" name="volNegocio" id="volNegocio" type="text"/>
+								</div>
+								<div class="col-xs-6">
+									<label for="faturamento">Faturamento</label>
+									<input class="form-control money" name="faturamento" id="faturamento" type="text"/>
+								</div>										
+							</div>
+							<br/>
+							<div class="row">
+								<div class="col-xs-4">
+									<label for="volProd">Volume de produção:</label>
+									<input class="form-control number" name="volProd" id="volProd" type="text"/>
+								</div>
+								<div class="col-xs-4">
+									<label for="numFunc">Nº Funcionários</label>
+									<input class="form-control" name="numFunc" id="numFunc" type="number" min='0'/>
+								</div>	
+								<div class="col-xs-4">
+									<label for="condPag">Cond. Pagamento (dias)</label>
+									<input class="form-control" name="condPag" id="condPag" type="number" min='0'/>
+								</div>									
+							</div>
+							<br/>							
+							<div class="row">
+								<div class="col-xs-4">
+									<label for="precoPrev">Preço previsto:</label>
+									<input class="form-control money" name="precoPrev" id="precoPrev" type="text"/>
+								</div>
+								<div class="col-xs-4">
+									<label for="volCompra">Vol. Estimado de Compra (un)</label>
+									<input class="form-control number" name="volCompra" id="volCompra" type="text"/>
+								</div>	
+								<div class="col-xs-4">
+									<label for="valEstimado">Valor Estimado</label>
+									<input class="form-control money" name="valEstimado" id="valEstimado" type="text" readonly="readonly"/>
+								</div>									
+							</div>
+							<br/>
+							<div class="row">
+								<div class="col-xs-12">
+									<label for="princCliente">Principais Clientes:</label>
+									<textarea name="princCliente" id="princCliente" rows="3" class="form-control"></textarea>	
+								</div>
+							</div>
+							<br/>							
+							<div class="row">
+								<div class="col-xs-3">
+									<label for="rd_capComl">Aprovado?</label>
+									<br/>
+									<input type="radio" name="rd_capComl" id="rd_capComl" value="sim"  checked />Sim
+									<input type="radio" name="rd_capComl" id="rd_capComl" value="nao"  />Não									
+								</div>
+								<div class="col-xs-9">
+									<label for="comentCapProd">Comentários:</label>
+									<textarea name="comentCapComl" id="comentCapComl" rows="3" class="form-control"></textarea>	
+								</div>
+							</div>
+							<br/>							
+							<div class="row">
+								<div class="col-xs-3">
+									<label for="matricula_CapComl">Resp. Tipo de Acordo:</label>
+									<input type="text" class="form-control" placeholder="Matr&iacute;cula" name="matricula_CapComl" id="matricula_CapComl" readonly="readonly" />								
+								</div>
+								<div class="col-xs-6">
+								<label for="user_CapComl">&nbsp;</label>
+									<input type="text" class="form-control" placeholder="Responsável" name="user_CapComl" id="user_CapComl" readonly="readonly" />
+								</div>
+								<div class="col-xs-3">
+									<label for="data_CapComl">Data:</label>
+									<input type="text" class="form-control" placeholder="Data" name="data_CapComl" id="data_CapComl"  readonly="readonly"/>
+								</div>
+							</div>
+						</div>
+					</div>					
+
+							
+				</div>
+			</div>
+		</form>
+	</div>
+</body>
+</html>
