@@ -23,7 +23,7 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>Atendimento Técnico da Área de TI</processId>
-      <version>43</version>
+      <version>44</version>
     </processDefinitionVersionPK>
     <versionDescription>Nova Versão.</versionDescription>
     <formId>14</formId>
@@ -248,8 +248,8 @@
         <version>1</version>
         <sequence>6</sequence>
       </processStatePK>
-      <stateName>Atedendimentos / interações</stateName>
-      <stateDescription>Atedendimentos / interações</stateDescription>
+      <stateName>Atendimentos / interações</stateName>
+      <stateDescription>Atendimentos / interações</stateDescription>
       <instruction></instruction>
       <deadlineTime>0</deadlineTime>
       <joint>false</joint>
@@ -370,7 +370,7 @@
         <companyId>1</companyId>
         <processId>SOL-TI</processId>
         <expressionOrder>1</expressionOrder>
-        <version>43</version>
+        <version>44</version>
         <sequence>8</sequence>
       </conditionProcessStatePK>
       <condition>(hAPI.getCardValue(&quot;responsavel&quot;) == &quot;&quot; || hAPI.getCardValue(&quot;responsavel&quot;) == &quot;root&quot;)</condition>
@@ -383,7 +383,7 @@
         <companyId>1</companyId>
         <processId>SOL-TI</processId>
         <expressionOrder>2</expressionOrder>
-        <version>43</version>
+        <version>44</version>
         <sequence>8</sequence>
       </conditionProcessStatePK>
       <condition>!(hAPI.getCardValue(&quot;responsavel&quot;) == &quot;&quot;) &amp;&amp; !(hAPI.getCardValue(&quot;responsavel&quot;) == &quot;root&quot;)</condition>
@@ -553,27 +553,6 @@
 	log.info(&quot;----------------------DocumentId: &quot; + documento);&#xd;
 	&#xd;
 	if (numAtividade == 2 || numAtividade == 6) { // seta prazo para o atendimento&#xd;
-			&#xd;
-		if (numAtividade == 2){&#xd;
-			log.info(&quot;----------------------RENOMEAR DOCUMENTO-------------------------------&quot;);&#xd;
-			var consumer = oauthUtil.getNewAPIConsumer(&quot;api_fluig&quot;, &quot;api_fluig&quot;,&#xd;
-		            &quot;03e5895b-8ef2-4bb7-90cc-9a08ceea7a74&quot;,&#xd;
-		            &quot;8737e42a-ce67-44b7-a387-7f63e6aa0bce5ad390c5-12f8-499b-8644-f22a385497c3&quot;);&#xd;
-			var jsonContent = &apos;{&quot;id&quot;:&quot;&apos; + documento + &apos;&quot;,&quot;description&quot;:&quot;Processo - &apos; + numProcesso + &apos;&quot;}&apos;;&#xd;
-			log.warn(jsonContent);    &#xd;
-			   &#xd;
-		    try{&#xd;
-		    	 consumer.post(&quot;/public/ecm/document/updateDescription&quot;, jsonContent);&#xd;
-			} catch(e){				&#xd;
-				log.error(&quot;-----------------------------Erro ao renomar documento: &quot;);&#xd;
-				log.error(e);			&#xd;
-			}&#xd;
-		    log.info(&quot;----------------------FIM RENOMEAR DOCUMENTO-------------------------------&quot;);&#xd;
-		}&#xd;
-			&#xd;
-			&#xd;
-			&#xd;
-		&#xd;
 		log.info(&quot;----------------------PRAZO DE ATEDNIMENTO-------------------------------&quot;);&#xd;
 		&#xd;
 		if (numAtividade == 6){&#xd;
@@ -721,7 +700,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SOL-TI</processId>
-        <version>43</version>
+        <version>44</version>
         <linkSequence>5</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -732,7 +711,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SOL-TI</processId>
-        <version>43</version>
+        <version>44</version>
         <linkSequence>6</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -743,7 +722,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SOL-TI</processId>
-        <version>43</version>
+        <version>44</version>
         <linkSequence>7</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>

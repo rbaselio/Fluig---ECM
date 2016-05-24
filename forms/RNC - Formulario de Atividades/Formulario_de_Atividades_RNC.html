@@ -6,20 +6,15 @@
 <script src="/portal/resources/js/mustache/mustache-min.js"></script>
 <script src="/portal/resources/style-guide/js/fluig-style-guide.min.js"></script>
 
-<script type="text/javascript" src="/resources/bootstrap/js/utils.js"></script>
+<script src="/resources/casp_lib/js/utils.js"></script>
 <script type="text/javascript" src="Formulario_de_Atividades_RNC.js"></script>
 
-<style type="text/css">
-
-	textarea { resize:vertical; } 
-
-</style>
 </head>
 <body>
 	<div class="fluig-style-guide">
 		<form name="form" role="form">
 			<div class="row">
-				<table width="97%" border="0" align="center" cellpadding="0" cellspacing="0" class="tabelaGeral">
+				<table style="width:97% border:0; align:center; cellpadding:0; cellspacing:0" class="tabelaGeral">
 					<tbody>
 						<tr>
 							<td rowspan="3" width="20%"><img src="/resources/logo_casp/logocasp.gif" width="204" height="79"></td>
@@ -51,7 +46,7 @@
 					<div class="row">
 						<div class="col-xs-3">
 							<label for="referencia">Processo Pai:</label>
-							<input class="form-control" name="process_pai" id="process_pai" type="text" readonly="readonly"/>
+							<input class="form-control isProcessLink" name="process_pai" id="process_pai" type="text" readonly="readonly"/>
 							<input name="prazo_conclusao" id="prazo_conclusao" type="hidden" />
 							<input name="responsavel" id="responsavel" type="hidden" />
 						</div>
@@ -113,14 +108,9 @@
 					<div class="row">
 						<div class="col-xs-3">
 							<label for="descAtividade">Aprovado:</label>
-							<input type="radio" name="rd_aprov" id="rd_aprov" style="cursor: pointer" value="sim" checked>
-							Sim
-							</input>
-							<input type="radio" name="rd_aprov" id="rd_aprov" style="cursor: pointer" value="nao">
-							Não
-							</input>
+							<input type="radio" name="rd_aprov" id="rd_aprov" style="cursor: pointer" value="sim" checked />Sim
+							<input type="radio" name="rd_aprov" id="rd_aprov" style="cursor: pointer" value="nao"/>Não
 						</div>					
-						
 						<div class="col-xs-9">
 							<label for="descAtividade">Motivo Reprovação:</label>
 							<textarea name="descReprov" id="descReprov" class="form-control" rows="3" ></textarea>							

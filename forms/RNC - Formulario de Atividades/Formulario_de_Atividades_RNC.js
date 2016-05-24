@@ -16,15 +16,8 @@ $(function(ready){
 		if ($(this).filter(':checked').val() == "nao") {
 			$("#descReprov").removeAttr('disabled');
 		} else $("#descReprov").attr('disabled', 'disabled').val(''); 
-	}).trigger('change');
+	}).trigger('change');	
 	
-	if ($("#process_pai").val() != ""){
-		$("#process_pai").css('pointer-events', 'all');
-		$("#process_pai").removeAttr('disabled');
-		$("#process_pai").click(function() {
-			window.open("/portal/p/Casp/pageworkflowview?app_ecm_workflowview_detailsProcessInstanceID=" + $(this).val(), '_blank');
-		});	
-	}
 	
 	
 });

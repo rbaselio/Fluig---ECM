@@ -2,29 +2,13 @@ var row;
 
 $(function(ready){
 	
-	$(".onlyNumber").each(function(i) {
-		$(this).keydown(function(e) {
-			if ((e.which >= 48 && e.which <= 57) || (e.which >= 96 && e.which <=105) || e.which == 8 || e.which  == 0) return true;
-			else return false; 		
-		});
-	});
-	
 	$(".status").each(function(i) {
 		if 	($(this).val() == "Cancelado") 	$(this).css({'background-color' : 'grey', 'color': 'black'});
 		else if ($(this).val() == "Em andamento" || $(this).val() == "Iniciado") $(this).css({'background-color' : 'yellow'});
 		else if ($(this).val() == "Em atraso")	$(this).css({'background-color' : 'red', 'color': 'black'});
 		else if ($(this).val() != "") $(this).css({'background-color' : 'green' , 'color': 'black'});				
-	});
-	
-	$(".isLink").each(function(i) {
-		if ($(this).val() != ""){
-			$(this).css('pointer-events', 'all');
-			$(this).removeAttr('disabled');
-			$(this).click(function() {
-				window.open("/portal/p/Casp/pageworkflowview?app_ecm_workflowview_detailsProcessInstanceID=" + $(this).val(), '_blank');
-			});
-		}
-	});		
+	});	
+			
 	
 	// ativa/desativa campos quando o valor da origem for modificado
 	$("#origem").change(function () {
@@ -34,19 +18,19 @@ $(function(ready){
 	}).trigger('change');
 	
 	// ativa/desativa campos quando o valor do tipo for modificado
-	$("#tipo").change(function () {	
-		$("#processo").attr('disabled', 'disabled').val('0'); 
-		$("#cod_prod").attr('disabled', 'disabled').val(''); 
-		$("#nome_prod").attr('disabled', 'disabled').val('');
+	$("#tipo").change(function () {			
 		
 		if ($("#tipo").val() == "produto"){
 			$("#nome_prod").removeAttr('disabled');
-			$("#cod_prod").removeAttr('disabled');		 
+			$("#cod_prod").removeAttr('disabled');
+			$("#processo").attr('disabled', 'disabled').val('0'); 
 		}
 		else if ($("#tipo").val() == "processo"){
-			$("#processo").removeAttr('disabled');		 
+			$("#processo").removeAttr('disabled');
+			$("#cod_prod").attr('disabled', 'disabled').val(''); 
+			$("#nome_prod").attr('disabled', 'disabled').val('');
 		}				
-	}).trigger('change');
+	}).trigger('change');;
 	
 	// ativa/desativa campos quando o valor da reincidencia for modificado
 	$("#reincidencia").change(function () {	
@@ -153,7 +137,7 @@ function addLinhaTabela(tabela) {
 			    language: 'pt-br',
 			    disabledDates: feriados(4),
 				daysOfWeekDisabled: [0,6]
-			});			
+			});		
 		}
 	});
 }
@@ -178,16 +162,6 @@ function ativaPreencheCampos(modeView, numState, WKNumProces, documentId){
 	blockAll();
 	if(modeView == "ADD" || modeView == "MOD"){	
 		
-		$.ajax({
-			method: "POST",
-			dataType: 'json',
-			contentType: "application/json",
-			url: "/api/public/ecm/document/updateDescription",
-			data: '{"id": "'+ documentId  +'", "description": "RNC - '+ WKNumProces + '"}'
-		});
-		
-		
-		
 		var getUsuario = $.ajax({
 					        type: 'GET',
 					        dataType: 'json',
@@ -210,8 +184,7 @@ function ativaPreencheCampos(modeView, numState, WKNumProces, documentId){
 				$("#user_emissor").val(response.content.name);			   
 			});
 			$("#data_emissor").val(data);	
-			
-			$("#emissao").css('pointer-events', 'all');
+			showElemento($("#emissao"));			
 		}
 		
 		if (numState == 4){
@@ -222,10 +195,7 @@ function ativaPreencheCampos(modeView, numState, WKNumProces, documentId){
 				$("#resp_disp").val(response.content.name);			   
 			});
 			$("#data_disp").val(data);	
-			
-			$("#disposicao").css('pointer-events', 'all');
-			offset =  $('#disposicao').offset().top * 0.50;
-			$('html, body').animate({ scrollTop: offset - 100 }, offset);			
+			showElemento($("#disposicao"));	
 		}
 		
 		
@@ -237,11 +207,7 @@ function ativaPreencheCampos(modeView, numState, WKNumProces, documentId){
 				$("#resp_emer").val(response.content.name);			   
 			});
 			$("#data_emer").val(data);	
-			
-			$("#emergencial").css('pointer-events', 'all');
-			offset =  $('#emergencial').offset().top * 0.50;
-			$('html, body').animate({ scrollTop: offset - 100 }, offset);
-					
+			showElemento($("#emergencial"));					
 		}
 		
 		if (numState == 6){
@@ -250,10 +216,7 @@ function ativaPreencheCampos(modeView, numState, WKNumProces, documentId){
 				$("#resp_parecer").val(response.content.name);			   
 			});
 			$("#data_parecer").val(data);	
-			
-			$("#parecer").css('pointer-events', 'all');
-			offset =  $('#parecer').offset().top * 0.50;
-			$('html, body').animate({ scrollTop: offset - 100 }, offset);
+			showElemento($("#parecer"));			
 		}
 		
 		if (numState == 15){
@@ -266,31 +229,48 @@ function ativaPreencheCampos(modeView, numState, WKNumProces, documentId){
 			$("#data_causa_raiz").val(data);
 			$("#data_acoes").val(data);
 			
-			$("#causa_raiz").css('pointer-events', 'all');
-			$("#acoes").css('pointer-events', 'all');
-			
-			offset =  $('#causa_raiz').offset().top * 0.50;
-			$('html, body').animate({ scrollTop: offset - 100 }, offset);
+			showElemento($("#causa_raiz"));
+			showElemento($("#acoes"));	
 		}
 		
 		if (numState == 18){
+			
+			$.ajax({
+				method: "POST",
+				dataType: 'json',
+				contentType: "application/json",
+				url: "/api/public/ecm/document/updateDescription",
+				data: '{"id": "'+ documentId  +'", "description": "RNC - '+ WKNumProces + '"}'
+			});
+			
+			
 			getUsuario.done(function(response) {
 				$("#mat_eficacia").val(response.content.userCode);
 				$("#resp_eficacia").val(response.content.name);				
 			});
-			
-			$("#eficacia").css('pointer-events', 'all');
-			offset =  $('#eficacia').offset().top * 0.50;
-			$('html, body').animate({ scrollTop: offset - 100 }, offset);
+			showElemento($("#eficacia"));
 		}		
 	}	
 }
 
+function showElemento(elemento){
+	elemento.show();
+	elemento.css('pointer-events', 'all');
+	var offset = elemento.offset().top * 0.50; 
+	$('html, body').animate({ scrollTop: offset - 150 }, offset);	
+}
+
 //bloquear todas os campos
-function blockAll(){
+function blockAll() {
 	$('.panel').each(function(i) {
-		if ($(this).attr('id') != null){
+		if ($(this).attr('id') != null) {
+			$(this).hide();
 			$(this).css('pointer-events', 'none');
+			$(this).find('input[type=text]').each(function(){
+				if ($(this).val() != "") {
+					$(this).closest('.panel').show();
+				}
+			});		
 		}
 	});
 }

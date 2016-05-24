@@ -1,15 +1,5 @@
 $(function(ready) {
 	
-	$("textarea").keyup(function(e) {
-		
-	    $(this).height(30);
-	    $(this).height(this.scrollHeight + parseFloat($(this).css("borderTopWidth")) + parseFloat($(this).css("borderBottomWidth")));
-	}).css({ 'resize':'vertical' }); 
-	
-	$('input[type=radio]').each(function(){
-		$(this).css({'cursor': 'pointer'});
-	});
-	
 	$(':radio[id="rd_tipo_necessario"]').change(function() {
 		if ($(this).filter(':checked').val() == 'nao'){
 			$(':radio[id="rd_avao_tipo"]').attr('disabled', 'disabled')
@@ -34,47 +24,17 @@ $(function(ready) {
 	else if ($("#statusFim").val() == "APROVADO") $("#statusFim").css({'background-color' : 'green'});
 	else if ($("#statusFim").val() != "") $("#statusFim").css({'background-color' : 'yellow'});	
 	
-	$('.number').priceFormat({
-	    prefix: '',
-	    centsSeparator: ',',
-	    thousandsSeparator: '.',
-	    limit: 10,
-	    centsLimit: 2
-	});
-	
-	$('.money').priceFormat({
-	    prefix: 'R$ ',
-	    centsSeparator: ',',
-	    thousandsSeparator: '.',
-	    limit: 13,
-	    centsLimit: 2
-	});
+	$('.number').number( true, 2, ',' ,'.', '');
+	$('.money').number( true, 2, ',' ,'.', 'R$ ');
 	
 	$('#qtPrevMes, #vlUnit').on('keyup blur', function() {
-		$('#vlTotal').val(($('#qtPrevMes').FloatNumber() * $('#vlUnit').FloatNumber()).toFixed(4));
-		$('#vlTotal').trigger('keyup');
-		
+		$('#vlTotal').val($('#qtPrevMes').val() * $('#vlUnit').val());
 	});
 	
 	$('#precoPrev, #volCompra').on('keyup blur', function() {
-		$('#valEstimado').val(($('#precoPrev').FloatNumber() * $('#volCompra').FloatNumber()).toFixed(4));
-		$('#valEstimado').trigger('keyup');
-		
+		$('#valEstimado').val($('#precoPrev').val() * $('#volCompra').val());				
 	});
-
-	$('#myTab a').click(function(e) {
-		e.preventDefault();
-		$(this).tab('show');
-	});
-
 });
-
-function posiciona(elemento){
-	elemento.show();
-	elemento.css('pointer-events', 'all');
-	var offset = elemento.offset().top * 0.50; 
-	$('html, body').animate({ scrollTop: offset - 150 }, offset);	
-}
 
 // prencimento e ativação dos campos
 function ativaPreencheCampos(modeView, numState, WKNumProces, documentId) {
@@ -106,7 +66,7 @@ function ativaPreencheCampos(modeView, numState, WKNumProces, documentId) {
 			$('#data_sol').val(data);
 			$('#hora_sol').val(hora);
 			
-			posiciona($("#emissao"));			
+			showElemento($("#emissao"));			
 		}
 		
 		if (numState == 2) {
@@ -126,7 +86,7 @@ function ativaPreencheCampos(modeView, numState, WKNumProces, documentId) {
 			});
 			$('#num_processo').val(WKNumProces);
 			
-			posiciona($("#avalInic"));			
+			showElemento($("#avalInic"));			
 		}
 		
 		if (numState == 7) {
@@ -137,9 +97,7 @@ function ativaPreencheCampos(modeView, numState, WKNumProces, documentId) {
 				$('#user_CapProd').val(response.content.name);
 				$('#data_CapProd').val(data);				
 			});
-			posiciona($("#capProducao"));	
-			
-			
+			posiciona($("#capProducao"));				
 		}
 		
 		if (numState == 8) {
@@ -150,7 +108,7 @@ function ativaPreencheCampos(modeView, numState, WKNumProces, documentId) {
 				$('#user_CapQua').val(response.content.name);
 				$('#data_CapQua').val(data);				
 			});
-			posiciona($("#capQualidade"));		
+			showElemento($("#capQualidade"));		
 			
 		}
 		
@@ -162,7 +120,7 @@ function ativaPreencheCampos(modeView, numState, WKNumProces, documentId) {
 				$('#user_CapComl').val(response.content.name);
 				$('#data_CapComl').val(data);				
 			});
-			posiciona($("#capComercial"));	
+			showElemento($("#capComercial"));	
 			
 			
 		}
@@ -188,7 +146,7 @@ function ativaPreencheCampos(modeView, numState, WKNumProces, documentId) {
 			
 			$("#classQualidade").css('pointer-events', 'none');
 			$("#considQualidade").css('pointer-events', 'none');
-			posiciona($("#resultado"));			
+			showElemento($("#resultado"));			
 		}
 		
 		if (numState == 18 || numState == 19) {
@@ -213,6 +171,13 @@ function ativaPreencheCampos(modeView, numState, WKNumProces, documentId) {
 	}
 }
 
+function showElemento(elemento){
+	elemento.show();
+	elemento.css('pointer-events', 'all');
+	var offset = elemento.offset().top * 0.50; 
+	$('html, body').animate({ scrollTop: offset - 150 }, offset);	
+}
+
 // bloquear todas os campos
 function blockAll() {
 	$('.panel').each(function(i) {
@@ -226,7 +191,6 @@ function blockAll() {
 			});		
 		}
 	});
-
 }
 
 // validação dos campos

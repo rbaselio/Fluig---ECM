@@ -6,20 +6,15 @@
 <script src="/portal/resources/js/mustache/mustache-min.js"></script>
 <script src="/portal/resources/style-guide/js/fluig-style-guide.min.js"></script>
 
-<script type="text/javascript" src="/resources/bootstrap/js/utils.js"></script>
+<script src="/resources/casp_lib/js/utils.js"></script>
 <script type="text/javascript" src="Formulario_de_Nao_Conformidadde.js"></script>
 
-<style type="text/css">
-
-	textarea { resize:vertical; } 	
-
-</style>
 </head>
 <body>
 	<div class="fluig-style-guide">
 		<form name="form" role="form">
 			<div class="row">
-				<table width="97%" border="0" align="center" cellpadding="0" cellspacing="0" class="tabelaGeral">
+				<table style="width:97% border:0; align:center; cellpadding:0; cellspacing:0" class="tabelaGeral">
 					<tbody>
 						<tr>
 							<td rowspan="3" width="20%"><img src="/resources/logo_casp/logocasp.gif" width="204" height="79"></td>
@@ -161,7 +156,7 @@
 								<div class="input-group">
 									<input type="text" name="responsavel_disp" id="responsavel_disp" class="form-control"  readonly="readonly"/>
 									<input type="hidden" name="mat_disp" id="mat_disp" />
-									<span class="input-group-addon fs-cursor-pointer" onclick='zoomColaborador_disp();' name="btZoomColab_disp" id="btZoomColab_disp">
+									<span class="input-group-addon fs-cursor-pointer" onclick='zoomColaborador_disp();' id="btZoomColab_disp">
 										<span class="fluigicon fluigicon-user-search"></span>
 									</span>
 								</div>
@@ -169,7 +164,7 @@
 						</div>
 						<div class="col-xs-2">
 							<label for="referencia">Quant.:</label>
-							<input class="form-control onlyNumber" name="quant" id="quant" type="text" />
+							<input class="form-control integer" name="quant" id="quant" type="text" />
 						</div>
 					</div>				
 					
@@ -207,8 +202,8 @@
 					<div class="row">
 						<div class="col-xs-3">
 							<label for="acao">Ação à ser tomada:</label> 
-							<select class="form-control" name="acao" size="1" id="acao">
-							    <option value="0" selected=""> </option>
+							<select class="form-control" name="acao" id="acao">
+							    <option value="0" selected="selected"> </option>
                                 <option value="rejeitar">Rejeitar</option>
                                 <option value="retrabalhar">Retrabalhar</option>
                                 <option value="aceitar com concessao">Aceitar com Concessão</option>
@@ -217,12 +212,12 @@
 						</div>
 						<div class="col-xs-2">
 							<label for="quant_disp">Quant.:</label>
-							<input class="form-control onlyNumber" name="quant_disp" id="quant_disp" type="text" />
+							<input class="form-control integer" name="quant_disp" id="quant_disp" type="text" />
 						</div>	
 						<div class="col-xs-3">
 							<label for="retrabalho">Verificação do Retrabalho:</label> 
-							<select class="form-control" name="retrabalho" size="1" id="retrabalho">
-							    <option value="0" selected=""> </option>
+							<select class="form-control" name="retrabalho" id="retrabalho">
+							    <option value="0" selected="selected"> </option>
                                 <option value="aprovado">Aprovado</option>
                                 <option value="reprovado">Reprovado</option>                                                          
 							</select>
@@ -296,7 +291,7 @@
 											<div class="input-group">
 												<input type="text" name="responsavel_emer" id="responsavel_emer" class="form-control"  readonly="readonly"/>
 												<input type="hidden" name="mat_emer" id="mat_emer" />
-												<span class="input-group-addon fs-cursor-pointer" onclick='zoomColaborador(this);' name="btZoomColab" id="btZoomColab">
+												<span class="input-group-addon fs-cursor-pointer" onclick='zoomColaborador(this);' id="btZoomColab">
 													<span class="fluigicon fluigicon-user-search"></span>
 												</span>
 											</div>
@@ -304,7 +299,7 @@
 									</td>
 									<td class="col-xs-2">
 										<div class="form-group">
-											<input type="text" name="fluxo_emer" id="fluxo_emer" class="form-control isLink" readonly="readonly"/>
+											<input type="text" name="fluxo_emer" id="fluxo_emer" class="form-control isProcessLink" readonly="readonly"/>
 										</div>
 									</td>
 									<td class="col-xs-2">
@@ -349,7 +344,7 @@
 						<div class="col-xs-4">
 							<label for="disposocao">Abrir documento:</label>
 							<select name="disposocao" id="disposocao" class="form-control">
-								<option value="0" selected=""> </option>
+								<option value="0" selected="selected"> </option>
 								<option value="SAC">SAC</option>
 								<option value="NCF">NCF</option>
 								<option value="Nao Finalizar">Não - Finalizar Solicitação</option>
@@ -366,7 +361,7 @@
 						<div class="col-xs-3">
 							<label for="orgao">Orgão:</label>
 							<select name="orgao" id="orgao" class="form-control">
-								<option value="0" selected=""> </option>
+								<option value="0" selected="selected"> </option>
 								<option value="ADM">ADM</option>
 								<option value="P&amp;D INC">P&amp;D INC</option>
 								<option value="P&amp;D ARM">P&amp;D ARM</option>
@@ -396,7 +391,7 @@
 							<div class="input-group">
 								<input type="text" name="responsavel_parecer" id="responsavel_parecer" class="form-control"  readonly="readonly"/>
 								<input type="hidden" name="matricula_parecer" id="matricula_parecer" />
-								<span class="input-group-addon fs-cursor-pointer" onclick='zoomColaborador_parecer();' name="btZoomColab_parecer" id="btZoomColab_parecer">
+								<span class="input-group-addon fs-cursor-pointer" onclick='zoomColaborador_parecer();' id="btZoomColab_parecer">
 									<span class="fluigicon fluigicon-user-search"></span>
 								</span>
 							</div>
@@ -434,12 +429,12 @@
 				</div>
 				<div class="panel-body">
 					<div class="row">
-						<table width="98%" border="0" align="center" cellpadding="0" cellspacing="0" class="table">
+						<table style="width:98% border:0; align:center; cellpadding:0; cellspacing:0" class="table">
 							<tbody>								
 								<tr>
 									<td class="col-xs-4">
 										<label>Cauzas Raizes</label>
-										<textarea name="desc_causa" cols="40" class="form-control" rows="7" wrap="VIRTUAL" id="desc_causa"></textarea>
+										<textarea name="desc_causa" cols="40" class="form-control" rows="7" id="desc_causa"></textarea>
 									</td>
 									<td  class="col-xs-6">
 										<span >
@@ -447,9 +442,9 @@
 											<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" value="materiais" name="c2" id="c2">Materiais</label>
 											<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" value="metodo" name="c3" id="c3">Método</label>
 										</span>
-										</br>
+										<br/>
 										<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="espinhapeixe.jpg" ></label>
-										</br>
+										<br/>
 										<span>
 											<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" value="maquinas" name="c4" id="c4">Máquinas</label>
 											<label>&nbsp;&nbsp;<input type="checkbox" value="meioAmbiente" name="c5" id="c5">Meio Ambiente</label>
@@ -520,7 +515,7 @@
 											<div class="input-group">
 												<input type="text" name="responsavel_corr" id="responsavel_corr" class="form-control"  readonly="readonly"/>
 												<input type="hidden" name="matricula_corr" id="matricula_corr" />
-												<span class="input-group-addon fs-cursor-pointer" onclick='zoomColaborador_corr(this);' name="btZoomColab_corr" id="btZoomColab_corr">
+												<span class="input-group-addon fs-cursor-pointer" onclick='zoomColaborador_corr(this);' id="btZoomColab_corr">
 													<span class="fluigicon fluigicon-user-search"></span>
 												</span>
 											</div>
@@ -528,7 +523,7 @@
 									</td>
 									<td class="col-xs-2">
 										<div class="form-group">
-											<input type="text" name="fluxo_corr" id="fluxo_corr" class="form-control isLink" readonly="readonly"/>
+											<input type="text" name="fluxo_corr" id="fluxo_corr" class="form-control isProcessLink" readonly="readonly"/>
 										</div>
 									</td>
 									<td class="col-xs-2">
@@ -572,7 +567,7 @@
 						<div class="col-xs-3">
 							<label for="conclusao">Conclusão:</label>					
 							<select name="conclusao" class="form-control" id="conclusao">
-							    <option value="0" selected=""> </option>
+							    <option value="0" selected="selected"> </option>
 				                <option value="Eficaz">Eficaz</option>
 				                <option value="Ineficaz">Ineficaz</option>
 								<option value="Ineficaz (Encerrar Solicitacao)">Ineficaz (Encerrar solicitação)</option>
@@ -583,7 +578,7 @@
 					<div class="row">
 						<div class="col-xs-12">
 							<label>Observações:</label>
-							<textarea name="desc_eficacia" cols="40" class="form-control" rows="3" wrap="VIRTUAL" id="desc_eficacia"></textarea>	
+							<textarea name="desc_eficacia" cols="40" class="form-control" rows="3" id="desc_eficacia"></textarea>	
 						</div>
 					</div>
 					

@@ -1,101 +1,92 @@
 <html>
 <head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="iE=edge,chrome=1">
-<meta name="description" content="">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" type="text/css" href="/resources/bootstrap/css/bootstrap.css">
-
-<script src="/resources/bootstrap/js/bootstrap.js"></script>
-<script src="/resources/bootstrap/js/utils.js"></script>
+<link rel="stylesheet" type="text/css" href="/portal/resources/style-guide/css/fluig-style-guide.min.css">
+<script src="/portal/resources/js/jquery/jquery.js"></script>
+<script src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+<script src="/portal/resources/js/mustache/mustache-min.js"></script>
+<script src="/portal/resources/style-guide/js/fluig-style-guide.min.js"></script>
+<script src="/resources/casp_lib/js/utils.js"></script>
 </head>
 <body>
-	<form name="form" id="validation-form" method="POST" class="form-horizontal form-bordered form-row-stripped">
-		<table width="99%" border="0" align="center" cellpadding="0" cellspacing="0" class="tabelaGeral">
-			<tbody>
-				<tr>
-					<td rowspan="3"><img src="/resources/logo_casp/logocasp.gif" width="204" height="79"></td>
-					<td rowspan="3"><div align="center">
-							<b>FORMUL&Aacute;RIO DE CADASTRO DE TIPOS CHAMADOS</b></td>
-				</tr>
-				<tr>
-					<td align="right"><label for="usuario" class="control-label">Usu&aacute;rio Modifica&ccedil;&atilde;o:&nbsp;&nbsp;&nbsp;&nbsp;</label></td>
-					<td width="150"><input type="text" name="usuario" id="usuario" class="form-control" readonly="readonly" /></td>
-				</tr>
-				<tr>
-					<td align=right><label for="data_mod" class="control-label">Ultima Modifica&ccedil;&atilde;o:&nbsp;&nbsp;&nbsp;&nbsp;</label></td>
-					<td width="150"><input type="text" name="data_mod" id="data_mod" class="form-control" size="15" readonly="readonly" /></td>
-				</tr>
-			</tbody>
-		</table>
-		<div class="row">
-			<div class="col-xs-36">
-				<div class="box-content">
-					<div class="row">
-						<div class="box-content">
-							<div class="row">
-								<div class="col-sm-0 col-xs-36">
-									<div class="box box-black">
-										<div class="box-title col-xs-36">
-											<h3>
-												<i class="fa  fa-users glyphicon glyphicon-unchecked"></i>Tipos de Chamado
-											</h3>
-											<div class="box-tool">
-												<a data-action="collapse" href="#"> Minimizar <i><i class="glyphicon glyphicon-align-right"></i></i></a>
-												<div class="col-xs-1"></div>
-											</div>
-										</div>
-										<div class="box-content">
-											<div class="row">
-												<div class="col-xs-36 " id="div_controladoria" name="div_controladoria">
-													<div class="form-group">
-														<div class="col-sm-36 col-xs-36 controls">
-															<table border="0" tablename="tb_tipo" id="tb_tipo" noaddbutton=true class="table">
-																<thead>
+	<div class="fluig-style-guide">
+		<form name="form" id="validation-form" method="POST" class="form-horizontal form-bordered form-row-stripped">
+			<table width="99%" border="0" align="center" cellpadding="0" cellspacing="0" class="tabelaGeral">
+				<tbody>
+					<tr>
+						<td rowspan="3"><img src="/resources/logo_casp/logocasp.gif" width="204" height="79"></td>
+						<td rowspan="3"><div align="center">
+								<b>FORMUL&Aacute;RIO DE CADASTRO DE TIPOS CHAMADOS</b></td>
+					</tr>
+					<tr>
+						<td align="right"><label for="usuario" class="control-label">Usu&aacute;rio Modifica&ccedil;&atilde;o:&nbsp;&nbsp;&nbsp;&nbsp;</label></td>
+						<td width="250"><input type="text" name="usuario" id="usuario" class="form-control" readonly="readonly" /></td>
+					</tr>
+					<tr>
+						<td align=right><label for="data_mod" class="control-label">Ultima Modifica&ccedil;&atilde;o:&nbsp;&nbsp;&nbsp;&nbsp;</label></td>
+						<td width="250"><input type="text" name="data_mod" id="data_mod" class="form-control" size="15" readonly="readonly" /></td>
+					</tr>
+				</tbody>
+			</table>
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="box-content">
+						<div class="row">
+							<div class="box-content">
+								<div class="row">
+									<div class="col-sm-0 col-xs-12">
+										<div class="box box-black">
+											<div class="box-content">
+												<div class="row">
+													<div class="col-xs-12 " id="div_controladoria" name="div_controladoria">
+														<div class="form-group">
+															<div class="col-sm-12 col-xs-12 controls">
+																<table border="0" tablename="tb_tipo" id="tb_tipo" noaddbutton=true class="table">
+																	<thead>
+																		<tr>
+																			<td></td>
+																		</tr>
+																	</thead>
 																	<tr>
-																		<td></td>
-																	</tr>
-																</thead>
-																<tr>
-																	<td>
-																		<div class="form-group">
-																			<label for="classe" class="col-sm-3 col-xs-3 control-label">Classe:</label>
-																			<div class="col-sm-5 col-xs-5 controls">
-																				<select name="classe" id="classe" dataset="ClassificacaoDeChamados" datasetkey="Classe" datasetvalue="Classe" addBlankLine="false" class="form-control"></select>
-																			</div>
-																			<label for="classe" class="col-sm-3 col-xs-3 control-label">Tipo:</label>
-																			<div class="col-sm-6 col-xs-6 controls">
-																				<input type="text" name="tipo" id="tipo" placeholder="Tipo de ocorrencia" class="form-control" />
-																			</div>
-																			
-																			<label for="matricula_user" class="col-sm-3 col-xs-3 control-label">Respons&aacute;vel:</label>
-																			<div class="col-sm-5 col-xs-5 controls">
-																				<input type="text" class="form-control" placeholder="Matr&iacute;cula" name="matricula_user" id="matricula_user" readonly="readonly" />
-																			</div>
-																			<div class="col-sm-11 col-xs-11 controls">
-																				<div class="input-group ">
-																					<input type="text" class="form-control" placeholder="Respons&aacute;vel" name="responsavel" id="responsavel" readonly="readonly" />
-																					<span class="input-group-btn">
-																						<button class="btn btn-default btn-xs" type="button" onclick='zoomColaborador(this);' id="busca_sol" name="busca_sol">
-																							<i class="glyphicon glyphicon-zoom-in glyphicon-"></i>
-																						</button>
-																					</span>
+																		<td>
+																			<div class="form-group">
+																				<div class="col-sm-3 col-xs-3 controls">
+																					<label >Classe:</label>
+																					<select name="classe" id="classe" dataset="ClassificacaoDeChamados" datasetkey="Classe" datasetvalue="Classe" addBlankLine="false" class="form-control"></select>
+																				</div>
+																				<div class="col-sm-3 col-xs-3 controls">
+																					<label >Tipo:</label>
+																					<input type="text" name="tipo" id="tipo" placeholder="Tipo de ocorrencia" class="form-control" />
+																				</div>
+																				
+																				<div class="col-sm-2 col-xs-2 controls">
+																					<label >Respons&aacute;vel:</label>
+																					<input type="text" class="form-control" placeholder="Matr&iacute;cula" name="matricula_user" id="matricula_user" readonly="readonly" />
+																				</div>
+																				<div class="col-sm-3 col-xs-3 controls">
+																					<label>&nbsp;</label>
+																					<div class="input-group">																						
+																						<input type="text" class="form-control" placeholder="Respons&aacute;vel" name="responsavel" id="responsavel" readonly="readonly" />
+																						<span class="input-group-btn">
+																							<button class="btn btn-default" type="button" onclick='zoomColaborador(this);' id="busca_sol" name="busca_sol">
+																								<i class="fluigicon fluigicon-user-search fluigicon-sm"></i>
+																							</button>
+																						</span>
+																					</div>
 																				</div>
 																			</div>
-																			
-																		</div>
-																		
-																		<div class="form-group">
-																			<label for="classe" class="col-sm-3 col-xs-3 control-label">Sugest&atilde;o de Preenchimento:</label>
-																			<div class="col-sm-33 col-xs-33 controls">
-																				<textarea name="sugestao" id="sugestao" rows="3" class="form-control"></textarea>
+																			<div class="form-group">
+																				
+																				<div class="col-sm-12 col-xs-12 controls">
+																				<label>Sugest&atilde;o de Preenchimento:</label>
+																					<textarea name="sugestao" id="sugestao" rows="3" class="form-control"></textarea>
+																				</div>
 																			</div>
-																		</div>
-																	</td>
-																</tr>
-															</table>
-															<div class="col-sm-7 col-xs-7 controls">
-																<input type="button" class="form-control" id="bt_add_interacao" name="bt_add_interacao" onclick="wdkAddChild('tb_tipo')" value="Adicionar tipo">
+																		</td>
+																	</tr>
+																</table>
+																<div class="col-sm-7 col-xs-7 controls">
+																	<input type="button" class="form-control" id="bt_add_interacao" name="bt_add_interacao" onclick="wdkAddChild('tb_tipo')" value="Adicionar tipo">
+																</div>
 															</div>
 														</div>
 													</div>
@@ -109,29 +100,23 @@
 					</div>
 				</div>
 			</div>
-		</div>
-	</form>
+		</form>
+	</div>
 </body>
-
-
 <script>
 	var rows;
-	
+
 	function zoomColaborador(responsavel) {
 		rows = $(responsavel).closest('tr').index();
 		zoomEcmTipo("colleague",
 				"colleagueId,Matricula,colleagueName,Colaborador",
-				"colleagueId,colleagueName,extensionNr", 
-				"Zoom Colaborador",
-				"setColaborador",
-				"active,true");
+				"colleagueId,colleagueName,extensionNr", "Zoom Colaborador",
+				"setColaborador", "active,true");
 	}
-	
+
 	function setColaborador(selectedItem) {
 		$("#matricula_user___" + rows).val(selectedItem['colleagueId']);
-		$("#responsavel___" + rows).val(selectedItem['colleagueName']);		
+		$("#responsavel___" + rows).val(selectedItem['colleagueName']);
 	}
-
 </script>
-
 </html>
