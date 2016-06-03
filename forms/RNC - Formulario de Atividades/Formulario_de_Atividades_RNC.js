@@ -93,8 +93,7 @@ var beforeSendValidate = function(numState){
 		if ($("#descMotivo").val() == "" && $("#ativiRealizada").val() == ""){
 			message += "</br>Atividade realizada ou Motivo da prorrogação";
 		}		
-	}
-	
+	}	
 	
 	if (numState == 10){
 		if ($("input[name='rd_aprov']").filter(':checked').val() == "nao" && $("#descReprov").val() == "" ){

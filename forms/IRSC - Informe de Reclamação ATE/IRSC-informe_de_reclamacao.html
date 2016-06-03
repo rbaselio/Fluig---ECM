@@ -1,0 +1,297 @@
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="/portal/resources/style-guide/css/fluig-style-guide.min.css">
+<script src="/portal/resources/js/jquery/jquery.js"></script>
+<script src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+<script src="/portal/resources/js/mustache/mustache-min.js"></script>
+<script src="/portal/resources/style-guide/js/fluig-style-guide.min.js"></script>
+<script src="/portal/resources/js/jquery.mask.min.js"></script>
+<script src="/resources/casp_lib/js/utils.js"></script>
+<script type="text/javascript" src="IRSC-informe_de_reclamacao.js"></script>
+<script src="../vcXMLRPC.js"></script>
+
+</head>
+<body>
+
+<div class="fluig-style-guide">
+		<form name="form" role="form">
+			<div class="row">
+				<table style="width:98% border:0; align:center; cellpadding:0; cellspacing:0" class="tabelaGeral">
+					<tbody>
+						<tr>
+							<td rowspan="3" width="20%"><img src="/resources/logo_casp/logocasp.gif" width="204" height="79"></td>
+							<td rowspan="3"><div align="center" dir="ltr">
+									<h2><b>Informe de Reclamação / Sugestão do Cliente</b></h2>
+								</div></td>
+							<td align="right"><label for="chamado_num">N&uacute;mero RNC:&nbsp;&nbsp;&nbsp;&nbsp;</label></td>
+							<td width="15%"><input type="text" name="num_processo" id="num_processo" class="form-control" readonly="readonly" /></td>
+						</tr>
+						<tr>
+							<td align=right><label for="data_sol">Data:&nbsp;&nbsp;&nbsp;&nbsp;</label></td>
+							<td width="15%"><input type="text" name="data_sol" id="data_sol" class="form-control" size="15" readonly="readonly" /></td>
+						</tr>
+						<tr>
+							<td align="right"><label for="hora_sol">Hora:&nbsp;&nbsp;&nbsp;&nbsp;</label></td>
+							<td width="15%"><input type="text" name="hora_sol" id="hora_sol" class="form-control" readonly="readonly" /></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<br>
+			<div class="panel panel-primary" id="emissao">
+				<div class="panel-heading" style="background-color: blue;">
+					<h3 class="panel-title">
+						<strong><i class="fluigicon fluigicon-file-default fluigicon-sm"></i>&nbsp; Abertura do Chamado</strong>
+					</h3>
+				</div>
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-xs-8">
+							<label for="cliente">Cliente:</label>
+							<input class="form-control" name="cliente" id="cliente" type="text" />
+						</div>
+						<div class="col-xs-4">
+							<label for="cidade">Cidade:</label>
+							<input class="form-control" name="cidade" id="cidade" type="text"/>
+						</div>
+					</div>
+					<br/>
+					<div class="row">
+						<div class="col-xs-4">
+							<label for="contato">Contato:</label>
+							<input class="form-control" name="contato" id="contato" type="text"/>
+						</div>
+						<div class="col-xs-4">
+							<label for="email">E-mail:</label>
+							<input class="form-control" name="email" id="email" type="text"/>
+						</div>
+						<div class="col-xs-4">
+							<label for="telefone">Telefone / Celular:</label>
+							<input class="form-control" name="telefone" id="telefone" type="text"/>
+						</div>
+						
+					</div>
+					<br/>				
+					<div class="row">
+						<div class="col-xs-3">
+							<label for="tipo">Avali&ccedil;&atilde;o do atendimento:</label>
+							<br>							
+							<input type="radio" name="tipo" id="tipo" style="cursor: pointer" value="reclamacao" checked="checked"/> Reclamação
+							<br>
+							<input type="radio" name="tipo" id="tipo" style="cursor: pointer" value="consulta"/> Consulta							
+						</div>
+						<div class="col-xs-3">
+							<label for="tipo">&nbsp;</label>
+							<br>
+							<input type="radio" name="tipo" id="tipo" style="cursor: pointer" value="duvida"/> Dúvidas
+							<br>
+							<input type="radio" name="tipo" id="tipo" style="cursor: pointer" value="sugestao"/> Sugestão
+						</div>
+						<div class="col-xs-4">
+							<label for="motivo">Unidade de Neg&oacute;cio:</label>
+							<select name="unid_negocio" id="unid_negocio" dataset="unidades_de_negocio" datasetkey="Unidade_de_negocio" datasetvalue="Unidade_de_negocio" addBlankLine="true" class="form-control"></select>
+						</div>
+					</div>
+					<br/>
+					<div class="row">
+						<div class="col-xs-12">
+							<label for="processo">Descri&ccedil;&atilde;o do Atendimento:</label>
+							<textarea name="desc_atend" id="desc_atend" rows="3" class="form-control" placeholder="Informe a descri&ccedil;&atilde;o do atendimento!"></textarea>
+						</div>
+					</div>
+					<br/>					
+					<div class="row">
+						<div class="col-xs-3">
+							<label for="matricula_emiss">Emissor:</label> 
+							<input type="text" class="form-control" placeholder="Matr&iacute;cula" name="matricula_emiss" id="matricula_emiss" readonly="readonly" />
+						</div>
+						<div class="col-xs-6">
+							<label for="resp_emiss">&nbsp;</label>
+							<input type="text" class="form-control" placeholder="Atendente" name="resp_emiss" id="resp_emiss" readonly="readonly" />
+						</div>	
+						<div class="col-xs-3">
+							<label for="data_emiss">Data:</label>
+							<input type="text" class="form-control" placeholder="Ramal" name="data_emiss" id="data_emiss" readonly="readonly" />
+						</div>						
+					</div>	
+					
+				</div>
+			</div>
+			
+			<div class="panel panel-primary" id="disposicao">
+				<div class="panel-heading" style="background-color: blue;">
+					<h3 class="panel-title">
+						<strong><i class="fluigicon fluigicon-system-tools fluigicon-sm"></i>&nbsp;Definição da Disposição </strong>
+					</h3>
+				</div>
+				
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-xs-3">
+							<label for="disp">Avali&ccedil;&atilde;o do atendimento:</label>
+							<br>							
+							<input type="radio" name="disp" id="disp" style="cursor: pointer" value="visita" checked="checked"/> Visita técnica
+							<br>
+							<input type="radio" name="disp" id="disp" style="cursor: pointer" value="enviar"/> Enviar peça
+							<br>
+							<input type="radio" name="disp" id="disp" style="cursor: pointer" value="orientacao"/> Orientação técnica telefonica
+							<br>							
+							<input type="radio" name="disp" id="disp" style="cursor: pointer" value="manual" checked="checked"/> Enviar manual
+							
+						</div>
+						<div class="col-xs-6">
+							<label for="disp">&nbsp;</label>
+							<br/>
+							<input type="radio" name="disp" id="disp" style="cursor: pointer" value="treinamento"/> Programar treinamento com operadores
+							<br>
+							<input type="radio" name="disp" id="disp" style="cursor: pointer" value="sem_acao"/> Não requer ação
+							<br>
+							<input type="radio" name="disp" id="disp" style="cursor: pointer" value="outros"/> Outros
+							
+							<input type="text" class="form-control" placeholder="Detalhar outros" name="det_outros" id="det_outros"/>
+						</div>
+					</div>
+					<br/>
+					<div class="row">
+						<div class="col-xs-3">
+							<label for="matricula_resp">Responsável:</label>
+							<input type="text" class="form-control" placeholder="Matr&iacute;cula" name="matricula_resp" id="matricula_resp" readonly="readonly" />
+						</div>
+						<div class="col-xs-6">
+							<label>&nbsp;</label>
+							<div class="input-group">
+								<input type="text" name="resp_exec" id="resp_exec" class="form-control"  readonly="readonly"/>
+								<span class="input-group-addon fs-cursor-pointer" onclick='zoomResponsavel();' id="btZoomColab">
+									<span class="fluigicon fluigicon-user-search"></span>
+								</span>
+							</div>
+						</div>
+						<div class="col-xs-3">
+							<label for="matricula_aval">Prazo:</label>
+							<div class="input-group date" id="dtPickerPrazo">
+								<input type="text" name="prazo" id="prazo" class="form-control" readonly="readonly"/>
+								<span class="input-group-addon fs-cursor-pointer"> 
+									<span class="fluigicon fluigicon-calendar"></span>
+								</span>
+							</div>							
+						</div>						
+					</div>
+					<br/>
+					
+					<div class="row">
+						<div class="col-xs-12">
+							<label for="obs_compl">Observações Complementares:</label>
+							<textarea name="obs_compl" id="obs_compl" rows="3" class="form-control" placeholder="Observações complementares"></textarea>
+						</div>
+					</div>
+					<br/>					
+					<div class="row">
+						<div class="col-xs-3">
+							<label for="matricula_disp">Emissor:</label> 
+							<input type="text" class="form-control" placeholder="Matr&iacute;cula" name="matricula_disp" id="matricula_disp" readonly="readonly" />
+						</div>
+						<div class="col-xs-6">
+							<label for="resp_disp">&nbsp;</label>
+							<input type="text" class="form-control" placeholder="Atendente" name="resp_disp" id="resp_disp" readonly="readonly" />
+						</div>	
+						<div class="col-xs-3">
+							<label for="data_disp">Data:</label>
+							<input type="text" class="form-control" placeholder="Ramal" name="data_disp" id="data_disp" readonly="readonly" />
+						</div>						
+					</div>	
+					
+				</div>
+			
+			</div>
+			
+			<div class="panel panel-primary" id="Atendimento">
+				<div class="panel-heading" style="background-color: blue;">
+					<h3 class="panel-title">
+						<strong><i class="fluigicon fluigicon-school-note fluigicon-sm"></i>&nbsp;Detalhar Ações Realizadas no Atendimento </strong>
+					</h3>
+				</div>
+				
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-xs-3">
+							<label for="atend">Atendimento foi eficaz?</label>
+							<br>							
+							<input type="radio" name="atend" id="atend" style="cursor: pointer" value="sim" checked="checked"/> Sim
+							<br>
+							<input type="radio" name="atend" id="atend" style="cursor: pointer" value="nao"/> Não
+							<br>
+							<input type="radio" name="atend" id="atend" style="cursor: pointer" value="outros"/> Outros
+						</div>
+						<div class="col-xs-9">
+							<label for="desc_acoes">Ações realizadas no atendimento:</label>
+							<textarea name="desc_acoes" id="desc_acoes" rows="3" class="form-control" placeholder="Informe os comentarios sobre o atendimento!"></textarea>
+						</div>
+					</div>
+					
+					<div class="row">
+						<div class="col-xs-3">
+							<label for="matricula_atend">Usuario:</label>
+							<input type="text" class="form-control" placeholder="Matr&iacute;cula" name="matricula_atend" id="matricula_atend" readonly="readonly" />								
+						</div>
+						<div class="col-xs-6">
+						<label for="user_atend">&nbsp;</label>
+							<input type="text" class="form-control" placeholder="Responsavel" name="user_atend" id="user_atend" readonly="readonly" />
+						</div>
+						<div class="col-xs-3">
+							<label for="dt_atend">Data:</label>
+							<input type="text" class="form-control" placeholder="Data" name="dt_atend" id="dt_atend" readonly="readonly" />
+						</div>
+					</div>									
+				</div>
+			</div>	
+
+			<div class="panel panel-primary" id="conclusao">
+				<div class="panel-heading" style="background-color: blue;">
+					<h3 class="panel-title">
+						<strong><i class="fluigicon fluigicon-school-note fluigicon-sm"></i>&nbsp;Conclusão sobre o atendimento </strong>
+					</h3>
+				</div>
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-xs-3">
+							<label for="rd_docto">Abrir algum documento?</label>
+							<br>							
+							<input type="radio" name="rd_docto" id="rd_docto" style="cursor: pointer" value="nao" checked="checked"/> Não
+							<br>
+							<input type="radio" name="rd_docto" id="rd_docto" style="cursor: pointer" value="rnc"/> RNC
+							<br>
+							<input type="radio" name="rd_docto" id="rd_docto" style="cursor: pointer" value="sap"/> SAP
+						</div>
+						<div class="col-xs-4">
+							<label for="rd_docto">&nbsp;</label>
+							<br>							
+							<input type="radio" name="rd_docto" id="rd_docto" style="cursor: pointer" value="smc"/> SMC
+							<br> 
+							<input type="text" class="form-control" placeholder="Numero do documento" name="nr_docto" id="nr_docto"/>
+							
+						</div>
+					</div>
+					
+					<div class="row">
+						<div class="col-xs-3">
+							<label for="matricula_concl">Usuario:</label>
+							<input type="text" class="form-control" placeholder="Matr&iacute;cula" name="matricula_concl" id="matricula_concl" readonly="readonly" />								
+						</div>
+						<div class="col-xs-6">
+						<label for="user_atend">&nbsp;</label>
+							<input type="text" class="form-control" placeholder="Responsavel" name="user_concl" id="user_concl" readonly="readonly" />
+						</div>
+						<div class="col-xs-3">
+							<label for="dt_concl">Data:</label>
+							<input type="text" class="form-control" placeholder="Data" name="dt_concl" id="dt_concl" readonly="readonly" />
+						</div>
+					</div>									
+				</div>
+			</div>	
+		
+		</form>
+	</div>		
+</body>
+</html>
+
+

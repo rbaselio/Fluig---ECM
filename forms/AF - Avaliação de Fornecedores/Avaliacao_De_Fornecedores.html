@@ -5,6 +5,7 @@
 <script src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
 <script src="/portal/resources/js/mustache/mustache-min.js"></script>
 <script src="/portal/resources/style-guide/js/fluig-style-guide.min.js"></script>
+<script src="/portal/resources/js/jquery.mask.min.js"></script>
 <script src="/resources/casp_lib/js/utils.js"></script>
 <script type="text/javascript" src="Avaliacao_De_Fornecedores.js"></script>
 
@@ -12,30 +13,31 @@
 <body>
 	<div class="fluig-style-guide">
 		<form name="form" role="form">
-			<div class="row">
-				<table style="width:97% border:0; align:center; cellpadding:0; cellspacing:0" class="tabelaGeral">
-					<tbody>
-						<tr>
-							<td rowspan="3" width="20%"><img src="/resources/logo_casp/logocasp.gif" width="204" height="79"></td>
-							<td rowspan="3"><div align="center" dir="ltr">
-									<h2>
-										<b>Avaliação de Fonecedores</b>
-									</h2>
-								</div></td>
-							<td align="right"><label for="chamado_num">N&uacute;mero RNC:&nbsp;&nbsp;&nbsp;&nbsp;</label></td>
-							<td width="15%"><input type="text" name="num_processo" id="num_processo" class="form-control" readonly="readonly" /></td>
-						</tr>
-						<tr>
-							<td align=right><label for="data_sol">Data:&nbsp;&nbsp;&nbsp;&nbsp;</label></td>
-							<td width="15%"><input type="text" name="data_sol" id="data_sol" class="form-control" readonly="readonly" /></td>
-						</tr>
-						<tr>
-							<td align="right"><label for="hora_sol">Hora:&nbsp;&nbsp;&nbsp;&nbsp;</label></td>
-							<td width="15%"><input type="text" name="hora_sol" id="hora_sol" class="form-control" readonly="readonly" /></td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
+			
+			<table style="width:100% border:0; align:center; cellpadding:0; cellspacing:0" class="tabelaGeral">
+				<tbody>
+					<tr>
+						<td rowspan="3" align=center><img src="/resources/logo_casp/logocasp.gif" width="204" height="79"></td>
+						<td rowspan="3"><div align="center" dir="ltr">
+								<h2>
+									<b>Avaliação de Fonecedores</b>
+								</h2>
+							</div></td>
+						<td align="right"><label for="chamado_num">N&uacute;mero RNC:&nbsp;&nbsp;&nbsp;&nbsp;</label></td>
+						<td width="15%"><input type="text" name="num_processo" id="num_processo" class="form-control" readonly="readonly" /></td>
+					</tr>
+					<tr>
+						<td align=right><label for="data_sol">Data:&nbsp;&nbsp;&nbsp;&nbsp;</label></td>
+						<td width="15%"><input type="text" name="data_sol" id="data_sol" class="form-control" readonly="readonly" /></td>
+					</tr>
+					<tr>
+						<td align="right"><label for="hora_sol">Hora:&nbsp;&nbsp;&nbsp;&nbsp;</label></td>
+						<td width="15%"><input type="text" name="hora_sol" id="hora_sol" class="form-control" readonly="readonly" /></td>
+					</tr>
+				</tbody>
+			</table>
+			<br/>
+			
 			<ul class="nav nav-tabs clearfix" role="tablist" id="myTab">
 				<li><a href="#avaliacao" role="tab" data-toggle="tab">Avaliação de Fornecedor</a></li>
 				<li><a href="#checkList" role="tab" data-toggle="tab">Check-List Incial</a></li>
@@ -72,7 +74,7 @@
 								</div>
 								<div class="col-xs-4">
 									<label for="cnpj">CNPJ:</label>
-									<input class="form-control mCnpj" name="cnpj" id="cnpj" type="text"/>
+									<input class="form-control" name="cnpj" id="cnpj" type="text"/>
 								</div>
 							</div>
 							<br/>
@@ -83,7 +85,7 @@
 								</div>
 								<div class="col-xs-4">
 									<label for="telefone">Telefone / Celular:</label>
-									<input class="form-control mTel" name="telefone" id="telefone" type="text"/>
+									<input class="form-control" name="telefone" id="telefone" type="text"/>
 								</div>
 								<div class="col-xs-4">
 									<label for="local">Local:</label>
@@ -108,8 +110,8 @@
 									<label for="rd_criticidade">Criticidade:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>	
 															
 									<input type="radio" name="rd_criticidade" id="rd_criticidade" value="x"  checked/>X
-									<input type="radio" name="rd_criticidade" id="rd_criticidade"  value="y" />Y
-									<input type="radio" name="rd_criticidade" id="rd_criticidade"  value="z" />Z
+									<input type="radio" name="rd_criticidade" id="rd_criticidade" value="y" />Y
+									<input type="radio" name="rd_criticidade" id="rd_criticidade" value="z" />Z
 								</div>
 								<div class="col-xs-7">
 									<label for="motivo">Motivo:</label>
@@ -130,10 +132,6 @@
 									<label for="itemServ">Produto (item) ou Serviço:</label>
 									<textarea name="itemServ" id="itemServ" rows="5" class="form-control"></textarea>									
 								</div>
-							</div>
-							<br/>
-							<div class="row">
-								
 							</div>
 							<br/>
 							<div class="row">

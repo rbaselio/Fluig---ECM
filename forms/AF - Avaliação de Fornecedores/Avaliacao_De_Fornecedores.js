@@ -24,9 +24,6 @@ $(function(ready) {
 	else if ($("#statusFim").val() == "APROVADO") $("#statusFim").css({'background-color' : 'green'});
 	else if ($("#statusFim").val() != "") $("#statusFim").css({'background-color' : 'yellow'});	
 	
-	$('.number').number( true, 2, ',' ,'.', '');
-	$('.money').number( true, 2, ',' ,'.', 'R$ ');
-	
 	$('#qtPrevMes, #vlUnit').on('keyup blur', function() {
 		$('#vlTotal').val($('#qtPrevMes').val() * $('#vlUnit').val());
 	});
@@ -34,6 +31,45 @@ $(function(ready) {
 	$('#precoPrev, #volCompra').on('keyup blur', function() {
 		$('#valEstimado').val($('#precoPrev').val() * $('#volCompra').val());				
 	});
+	
+	
+	$('#cnpj').mask("00.000.000/0000-00", {reverse:true})
+	.on('focusout',function(e) {
+		var obj = $(this);		
+		if (!isCNPJValid($(this).val())){
+			FLUIGC.message.alert({
+				message: 'CNPJ Invalido, insira um CNPJ correto!!',
+				title: 'Erro CNPJ: ',
+				label: 'OK'
+			}, function(el, ev) {
+				setTimeout(function() {
+					obj.focus().select();
+					}, 100);
+			});
+		}
+	}).attr("maxlength", 18);	
+	
+	
+	//marcara para telefone
+	$('#telefone').on('input', function() {
+		$(this).unmask();
+		$(this).val().replace(/\D/g, '').length > 10 ? $(this).mask("(99) 99999-9999") : $(this).mask("(99) 9999-99999");	    
+	}).on('blur',function() {
+		var obj = $(this);
+		obj.trigger('input');
+		if (!isTelValid($(this).val())){
+			FLUIGC.message.alert({
+				message: 'Telefone inválido, insira um telefone correto',
+				title: 'Erro Telefone: ',
+				label: 'OK'
+			}, function(el, ev) {
+				setTimeout(function() {
+					obj.focus().select();
+					}, 100);
+			});
+		}
+	}).trigger('input').attr("maxlength", 15);	
+	
 });
 
 // prencimento e ativação dos campos
@@ -97,7 +133,10 @@ function ativaPreencheCampos(modeView, numState, WKNumProces, documentId) {
 				$('#user_CapProd').val(response.content.name);
 				$('#data_CapProd').val(data);				
 			});
-			posiciona($("#capProducao"));				
+			
+			
+			
+			showElemento($("#capProducao"));				
 		}
 		
 		if (numState == 8) {
@@ -131,7 +170,7 @@ function ativaPreencheCampos(modeView, numState, WKNumProces, documentId) {
 				$('#user_qual').val(response.content.name);
 				$('#data_qual').val(data);				
 			});
-			posiciona($("#resultado"));
+			showElemento($("#resultado"));
 			$("#tipoAcordo").css('pointer-events', 'none');
 			$("#considAcordo").css('pointer-events', 'none');
 			

@@ -1,17 +1,27 @@
 $(function(ready) {	
-	$('#criticidade').on('change', function() {
-		$('#prazo').val($(this).val());
-	}).trigger('change');	
-	
 	$('#tb_interacao').find('tr').each(function(indice){
 		indice--;
 	    $(this).find("label").eq(0).text("ATENDIMENTO nº" + ("0" + indice).substr(-2));	      
 	});	
 	
+	if ($("#tipo").val() =="") $("#desc_chamado").attr("readOnly", true); 
+	
 	$('#ramal').number( true, 0, ',' ,'', '');
 	$('#ramal_atend').number( true, 0, ',' ,'', '');
 	
 });
+
+function zoomCriticidade() {
+	zoomEcmTipo("criticidade",
+			"Criticidade,Criticidade",
+			"Criticidade,Prazo", 
+			"Criticidade",
+			"setCriticidade");
+}
+function setCriticidade(selectedItem) {
+	$("#criticidade").val(selectedItem['Criticidade']);
+	$("#prazo").val(selectedItem['Prazo']);	
+}
 
 //setar solicitante
 function zoomSolicitante() {
@@ -44,9 +54,11 @@ function setTipoDeChamado(selectedItem) {
 	
 	$("#responsavel").val(selectedItem['Matricula']);
 	
+	$("#desc_chamado").removeAttr('readOnly');
 	$("#desc_chamado").val(selectedItem['Texto']);
 	$("#desc_chamado").focus().select();
 	$("#desc_chamado").trigger('keyup');
+	
 	
 	if ($("#tipo").val().match(/divers/ig)){
 		myMessage = FLUIGC.message.alert({
@@ -67,15 +79,10 @@ function setReclassificacao(selectedItem) {
 	$("#re_tipo").val(selectedItem['Tipo']);
 }
 
-
-	
-
-
-
 // prencimento e ativação dos campos
 function ativaPreencheCampos(modeView, numState, WKNumProces, documentId) {
 	blockAll();
-	if (modeView == "ADD" || modeView == "MOD") {		
+	if (modeView == "ADD" || modeView == "MOD") {	
 		
 		var getUsuario = $.ajax({
 			type : 'GET',
@@ -119,12 +126,24 @@ function ativaPreencheCampos(modeView, numState, WKNumProces, documentId) {
 				$('#atendente').val(response.content.name);
 				$('#ramal_atend').val(response.content.userData.UserRamal);				
 			});	
-		
-			$('#num_processo').val(WKNumProces);			
-			addLinha();
-			$('#re_busca_tipo').css('pointer-events', 'all');
-			$('#ramal_atend').css('pointer-events', 'all');
 			
+			
+			if ($('#tb_interacao tr').last().find("textarea[id^='desc_interacao_']").val() == ""){
+				 $('#tb_interacao tr').last().remove();
+			}			
+			
+			if ($('#tb_interacao tr').last().find("textarea[id^='desc_aceite_']").val() != ""){
+				addLinha(true);
+			}
+			else{
+				addLinha(false);				
+			}
+			
+			
+			$('#num_processo').val(WKNumProces);
+			$('#zoomCriticidade').css('pointer-events', 'all');
+			$('#re_busca_tipo').css('pointer-events', 'all');
+			$('#ramal_atend').css('pointer-events', 'all');			
 		}
 		
 		if (numState == 3) {			
@@ -136,7 +155,12 @@ function ativaPreencheCampos(modeView, numState, WKNumProces, documentId) {
 		}		
 		
 		if (numState == 6) {
-			addLinha();
+			if ($('#tb_interacao tr').last().find("textarea[id^='desc_aceite_']").val() != ""){
+				addLinha(true);
+			}
+			else{
+				addLinha(false);				
+			}
 		}		
 		
 		if (numState == 4) {
@@ -145,7 +169,8 @@ function ativaPreencheCampos(modeView, numState, WKNumProces, documentId) {
 				dataType : 'json',
 				contentType : "application/json",
 				url : "/api/public/ecm/document/updateDescription",
-				data : '{"id": "' + documentId + '", "description": "Atendimento - '+ WKNumProces + '"}'
+				data : '{"id": "' + documentId + '", "description": "Chamado - '+ WKNumProces + '"}',
+				async : true
 			});
 			
 			getUsuario.done(function(response) {
@@ -159,8 +184,8 @@ function ativaPreencheCampos(modeView, numState, WKNumProces, documentId) {
 	}
 }
 
-function addLinha(){
-	wdkAddChild('tb_interacao');
+function addLinha(adicionaLinha){
+	if (adicionaLinha) wdkAddChild('tb_interacao');
 	
 	var ultimaLinhaTabela = $('#tb_interacao tr').last();
 	$("#atendimento").css('pointer-events', 'none');

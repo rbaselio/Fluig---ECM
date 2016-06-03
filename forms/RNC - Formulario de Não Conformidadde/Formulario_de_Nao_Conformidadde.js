@@ -19,7 +19,6 @@ $(function(ready){
 	
 	// ativa/desativa campos quando o valor do tipo for modificado
 	$("#tipo").change(function () {			
-		
 		if ($("#tipo").val() == "produto"){
 			$("#nome_prod").removeAttr('disabled');
 			$("#cod_prod").removeAttr('disabled');
@@ -30,7 +29,7 @@ $(function(ready){
 			$("#cod_prod").attr('disabled', 'disabled').val(''); 
 			$("#nome_prod").attr('disabled', 'disabled').val('');
 		}				
-	}).trigger('change');;
+	}).trigger('change');
 	
 	// ativa/desativa campos quando o valor da reincidencia for modificado
 	$("#reincidencia").change(function () {	
@@ -61,7 +60,26 @@ $(function(ready){
 			$("#fornecedor").removeAttr('disabled');
 			$("#btZoomColab_parecer").css('pointer-events', 'all');
 		} else $("#fornecedor").attr('disabled', 'disabled').val('');
-	}).trigger('change');		
+	}).trigger('change');
+	
+	
+	$("#reponsabilidade").change(function () {			
+		if($(this).val() == 6){
+			$("#fornec").removeAttr('disabled');
+			$("#matr_falha").attr('disabled', 'disabled').val('');
+			$("#colab_falha").attr('disabled', 'disabled').val('');
+		}	
+		else if($(this).val() == 10){
+			$("#fornec").attr('disabled', 'disabled').val('');
+			$("#matr_falha").removeAttr('disabled');
+			$("#colab_falha").removeAttr('disabled');
+		}
+		else{
+			$("#fornec").attr('disabled', 'disabled').val('');
+			$("#matr_falha").attr('disabled', 'disabled').val('');
+			$("#colab_falha").attr('disabled', 'disabled').val('');			
+		}
+	}).trigger('change');	
 	
 });
 
@@ -125,6 +143,19 @@ function setColaborador_disp(selectedItem) {
 	$("#responsavel_disp").val(selectedItem['colleagueName']);		
 }
 
+//zoom de colaboradores para a atribuição de responsavel por disposição
+function zoomModFalha() {
+	zoomEcmTipo("mod_falha",
+				"Modo_Falha,Modo Falha",
+				"Modo_Falha", 
+				"Zoom Colaborador",
+				"setModFalha");
+}
+function setModFalha(selectedItem) {
+	$("#desc_mod_falha").val(selectedItem['Modo_Falha']);
+			
+}
+
 //adição linha a tabela ação emergencial
 function addLinhaTabela(tabela) {
 	row = wdkAddChild(tabela);	
@@ -160,6 +191,8 @@ function removeTarefa(oElement){
 //prencimento e ativação dos campos
 function ativaPreencheCampos(modeView, numState, WKNumProces, documentId){
 	blockAll();
+	$('#myTab a:first').tab('show');
+	showElemento($("#mod_falha"));
 	if(modeView == "ADD" || modeView == "MOD"){	
 		
 		var getUsuario = $.ajax({
@@ -240,15 +273,23 @@ function ativaPreencheCampos(modeView, numState, WKNumProces, documentId){
 				dataType: 'json',
 				contentType: "application/json",
 				url: "/api/public/ecm/document/updateDescription",
-				data: '{"id": "'+ documentId  +'", "description": "RNC - '+ WKNumProces + '"}'
+				data: '{"id": "'+ documentId  +'", "description": "RNC - '+ WKNumProces + '"}',
+				async: true
 			});
 			
 			
 			getUsuario.done(function(response) {
 				$("#mat_eficacia").val(response.content.userCode);
-				$("#resp_eficacia").val(response.content.name);				
+				$("#mat_falha").val(response.content.name);
+				$("#mat_eficacia").val(response.content.userCode);
+				$("#resp_falha").val(response.content.name);
 			});
+			
+			$("#data_falha").val(data);
+			$("#data_eficacia").val(data);
+			
 			showElemento($("#eficacia"));
+			
 		}		
 	}	
 }
@@ -366,8 +407,12 @@ var beforeSendValidate = function(numState){
 	}
 	
 	if (numState == 18){
-		if ($("#conclusao").val() == "0") message += "</br>Conslusão";
+		if ($("#conclusao").val() == "0") message += "</br>Conclusão";
 		if ($("#desc_eficacia").val() == "") message += "</br>Descrição";
+		
+		if ($("#reponsabilidade").val() == "0") message += "</br>Responsabilidade:";
+		if ($("#desc_mod_falha").val() == "") message += "</br>Modo Falha:";
+		
 	}		
 	
 	if (message != ""){

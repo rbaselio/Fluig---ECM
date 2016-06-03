@@ -10,8 +10,8 @@
     <publicProcess>false</publicProcess>
     <volumeId>Default</volumeId>
     <categoryId>Qualidade</categoryId>
-    <managerEngineAllocationId>Usuário</managerEngineAllocationId>
-    <managerEngineAllocationConfiguration>&lt;AssignmentController&gt;&lt;User&gt;adm&lt;/User&gt;&lt;/AssignmentController&gt;</managerEngineAllocationConfiguration>
+    <managerEngineAllocationId>Papel</managerEngineAllocationId>
+    <managerEngineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Role&gt;SGQ&lt;/Role&gt;&lt;/AssignmentController&gt;</managerEngineAllocationConfiguration>
     <snapshotFrequency>0</snapshotFrequency>
     <baseDay>0</baseDay>
     <baseMonth>0</baseMonth>
@@ -23,7 +23,7 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>Processo de registro de contato SAC</processId>
-      <version>9</version>
+      <version>4</version>
     </processDefinitionVersionPK>
     <versionDescription>Nova Versão.</versionDescription>
     <formId>176</formId>
@@ -254,8 +254,8 @@
       <deadlineTime>162000</deadlineTime>
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
-      <engineAllocationId>Grupo</engineAllocationId>
-      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Group&gt;SGQ&lt;/Group&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <engineAllocationId>Papel</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Role&gt;SGQ&lt;/Role&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
       <selectColleague>1</selectColleague>
       <initialState>false</initialState>
       <notifyAuthorityDelay>true</notifyAuthorityDelay>
@@ -444,7 +444,7 @@
         <companyId>1</companyId>
         <processId>SAC - 0800</processId>
         <expressionOrder>1</expressionOrder>
-        <version>9</version>
+        <version>4</version>
         <sequence>4</sequence>
       </conditionProcessStatePK>
       <condition>(hAPI.getCardValue(&quot;rd_aceite&quot;) == &quot;sim&quot;)</condition>
@@ -457,7 +457,7 @@
         <companyId>1</companyId>
         <processId>SAC - 0800</processId>
         <expressionOrder>2</expressionOrder>
-        <version>9</version>
+        <version>4</version>
         <sequence>4</sequence>
       </conditionProcessStatePK>
       <condition>(hAPI.getCardValue(&quot;rd_aceite&quot;) == &quot;nao&quot;)</condition>
@@ -470,20 +470,20 @@
         <companyId>1</companyId>
         <processId>SAC - 0800</processId>
         <expressionOrder>1</expressionOrder>
-        <version>9</version>
+        <version>4</version>
         <sequence>8</sequence>
       </conditionProcessStatePK>
       <condition>(hAPI.getCardValue(&quot;rd_aprov_acao&quot;) == &quot;sim&quot;)</condition>
       <destinationSequenceId>9</destinationSequenceId>
-      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Group&gt;SGQ&lt;/Group&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
-      <engineAllocationId>Grupo</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Role&gt;SGQ&lt;/Role&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <engineAllocationId>Papel</engineAllocationId>
     </ConditionProcessState>
     <ConditionProcessState>
       <conditionProcessStatePK>
         <companyId>1</companyId>
         <processId>SAC - 0800</processId>
         <expressionOrder>2</expressionOrder>
-        <version>9</version>
+        <version>4</version>
         <sequence>8</sequence>
       </conditionProcessStatePK>
       <condition>(hAPI.getCardValue(&quot;rd_aprov_acao&quot;) == &quot;nao&quot;)</condition>

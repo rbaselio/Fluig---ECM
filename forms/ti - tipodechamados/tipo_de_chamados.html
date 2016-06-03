@@ -28,71 +28,54 @@
 				</tbody>
 			</table>
 			<div class="row">
-				<div class="col-xs-12">
+				<div class="box box-black">
 					<div class="box-content">
-						<div class="row">
-							<div class="box-content">
-								<div class="row">
-									<div class="col-sm-0 col-xs-12">
-										<div class="box box-black">
-											<div class="box-content">
-												<div class="row">
-													<div class="col-xs-12 " id="div_controladoria" name="div_controladoria">
-														<div class="form-group">
-															<div class="col-sm-12 col-xs-12 controls">
-																<table border="0" tablename="tb_tipo" id="tb_tipo" noaddbutton=true class="table">
-																	<thead>
-																		<tr>
-																			<td></td>
-																		</tr>
-																	</thead>
-																	<tr>
-																		<td>
-																			<div class="form-group">
-																				<div class="col-sm-3 col-xs-3 controls">
-																					<label >Classe:</label>
-																					<select name="classe" id="classe" dataset="ClassificacaoDeChamados" datasetkey="Classe" datasetvalue="Classe" addBlankLine="false" class="form-control"></select>
-																				</div>
-																				<div class="col-sm-3 col-xs-3 controls">
-																					<label >Tipo:</label>
-																					<input type="text" name="tipo" id="tipo" placeholder="Tipo de ocorrencia" class="form-control" />
-																				</div>
-																				
-																				<div class="col-sm-2 col-xs-2 controls">
-																					<label >Respons&aacute;vel:</label>
-																					<input type="text" class="form-control" placeholder="Matr&iacute;cula" name="matricula_user" id="matricula_user" readonly="readonly" />
-																				</div>
-																				<div class="col-sm-3 col-xs-3 controls">
-																					<label>&nbsp;</label>
-																					<div class="input-group">																						
-																						<input type="text" class="form-control" placeholder="Respons&aacute;vel" name="responsavel" id="responsavel" readonly="readonly" />
-																						<span class="input-group-btn">
-																							<button class="btn btn-default" type="button" onclick='zoomColaborador(this);' id="busca_sol" name="busca_sol">
-																								<i class="fluigicon fluigicon-user-search fluigicon-sm"></i>
-																							</button>
-																						</span>
-																					</div>
-																				</div>
-																			</div>
-																			<div class="form-group">
-																				
-																				<div class="col-sm-12 col-xs-12 controls">
-																				<label>Sugest&atilde;o de Preenchimento:</label>
-																					<textarea name="sugestao" id="sugestao" rows="3" class="form-control"></textarea>
-																				</div>
-																			</div>
-																		</td>
-																	</tr>
-																</table>
-																<div class="col-sm-7 col-xs-7 controls">
-																	<input type="button" class="form-control" id="bt_add_interacao" name="bt_add_interacao" onclick="wdkAddChild('tb_tipo')" value="Adicionar tipo">
-																</div>
-															</div>
+						<div class="col-xs-12 " id="div_controladoria" name="div_controladoria">
+							<div class="form-group">
+								<div class="col-sm-12 col-xs-12 controls">
+									<table border="0" tablename="tb_tipo" id="tb_tipo" noaddbutton=true class="table">
+										<thead>
+											<tr>
+												<td></td>
+											</tr>
+										</thead>
+										<tr>
+											<td>
+												<div class="form-group">
+													<div class="col-sm-3 col-xs-3 controls">
+														<label>Classe:</label> <select name="classe" id="classe" dataset="ClassificacaoDeChamados" datasetkey="Classe" datasetvalue="Classe" addBlankLine="false" class="form-control"></select>
+													</div>
+													<div class="col-sm-3 col-xs-3 controls">
+														<label>Tipo:</label>
+														<input type="text" name="tipo" id="tipo" placeholder="Tipo de ocorrencia" class="form-control" />
+													</div>
+													<div class="col-sm-2 col-xs-2 controls">
+														<label>Respons&aacute;vel:</label>
+														<input type="text" class="form-control" placeholder="Matr&iacute;cula" name="matricula_user" id="matricula_user" readonly="readonly" />
+													</div>
+													<div class="col-sm-3 col-xs-3 controls">
+														<label>&nbsp;</label>
+														<div class="input-group">
+															<input type="text" class="form-control" placeholder="Respons&aacute;vel" name="responsavel" id="responsavel" readonly="readonly" />
+															<span class="input-group-btn">
+																<button class="btn btn-default" type="button" onclick='zoomColaborador(this);' id="busca_sol" name="busca_sol">
+																	<i class="fluigicon fluigicon-user-search fluigicon-sm"></i>
+																</button>
+															</span>
 														</div>
 													</div>
 												</div>
-											</div>
-										</div>
+												<div class="form-group">
+													<div class="col-sm-12 col-xs-12 controls">
+														<label>Sugest&atilde;o de Preenchimento:</label>
+														<textarea name="sugestao" id="sugestao" rows="3" class="form-control"></textarea>
+													</div>
+												</div>
+											</td>
+										</tr>
+									</table>
+									<div class="col-sm-7 col-xs-7 controls">
+										<input type="button" class="form-control" id="bt_add_interacao" name="bt_add_interacao" onclick="wdkAddChild('tb_tipo')" value="Adicionar tipo">
 									</div>
 								</div>
 							</div>

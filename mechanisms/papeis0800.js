@@ -8,6 +8,7 @@ function resolve(process,colleague){
 	userList.add('Pool:Role:lpa');
 	userList.add('Pool:Role:la');
 	userList.add('Pool:Role:ep');
+	userList.add('Pool:Role:SGQ');
 	
 	return userList;
 

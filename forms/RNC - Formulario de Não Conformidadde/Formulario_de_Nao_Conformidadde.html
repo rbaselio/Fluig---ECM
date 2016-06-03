@@ -5,21 +5,21 @@
 <script src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
 <script src="/portal/resources/js/mustache/mustache-min.js"></script>
 <script src="/portal/resources/style-guide/js/fluig-style-guide.min.js"></script>
-
 <script src="/resources/casp_lib/js/utils.js"></script>
 <script type="text/javascript" src="Formulario_de_Nao_Conformidadde.js"></script>
-
 </head>
 <body>
 	<div class="fluig-style-guide">
 		<form name="form" role="form">
 			<div class="row">
-				<table style="width:97% border:0; align:center; cellpadding:0; cellspacing:0" class="tabelaGeral">
+				<table style="width: 97% border:0; align: center; cellpadding: 0; cellspacing: 0" class="tabelaGeral">
 					<tbody>
 						<tr>
 							<td rowspan="3" width="20%"><img src="/resources/logo_casp/logocasp.gif" width="204" height="79"></td>
 							<td rowspan="3"><div align="center" dir="ltr">
-									<h2><b>REGISTRO DE RNC</b></h2>
+									<h2>
+										<b>REGISTRO DE RNC</b>
+									</h2>
 								</div></td>
 							<td align="right"><label for="chamado_num">N&uacute;mero RNC:&nbsp;&nbsp;&nbsp;&nbsp;</label></td>
 							<td width="15%"><input type="text" name="num_processo" id="num_processo" class="form-control" readonly="readonly" /></td>
@@ -36,570 +36,610 @@
 				</table>
 			</div>
 			<br>
-			<div class="panel panel-primary" id="emissao">
-				<div class="panel-heading" style="background-color: blue;">
-					<h3 class="panel-title">
-						<strong><i class="fluigicon fluigicon-file-default fluigicon-sm"></i>&nbsp; Origem e identificação de não conformidade (real/potencial) ou melhoria</strong>
-					</h3>
-				</div>
-				<div class="panel-body">
-					<div class="row">
-						<div class="col-xs-3">
-							<label for="origem">Origem:</label> 
-							<select class="form-control" name="origem" size="1" id="origem">
-								<option value="0"></option>
-								<option value="reclamacao de cliente">Reclamação de Cliente</option>
-								<option value="montagem em campo">Montagem em Campo</option>
-								<option value="recebimento">Inspeção Recebimento</option>
-								<option value="manufatura">Manufatura / Produção</option>
-								<option value="logistica">Logistica (Est/Exp)</option>
-								<option value="auditoria">Auditoria</option>
-								<option value="outros">Outros</option>
-							</select>
+			<ul class="nav nav-tabs clearfix" role="tablist" id="myTab">
+				<li><a href="#rnc" role="tab" data-toggle="tab">Não Conformidade</a></li>
+				<li><a href="#falha" role="tab" data-toggle="tab">Modo Falha e Responsabilidades</a></li>
+			</ul>
+			<div class="tab-content">
+				<div class="tab-pane fade" id="rnc">
+					<div class="panel panel-primary" id="emissao">
+						<div class="panel-heading" style="background-color: blue;">
+							<h3 class="panel-title">
+								<strong><i class="fluigicon fluigicon-file-default fluigicon-sm"></i>&nbsp; Origem e identificação de não conformidade (real/potencial) ou melhoria</strong>
+							</h3>
 						</div>
-						<div class="col-xs-4">
-							<label for="referencia">Referência / Cliente:</label>
-							<input class="form-control" name="referencia" id="referencia" type="text" />
-						</div>
-						<div class="col-xs-3">
-							<label for="referencia">Pedido:</label>
-							<input class="form-control" name="pedido" id="pedido" type="text" />
-						</div>						
-					</div>
-					<div class="row">
-						<div class="col-xs-2">
-							<label for="tipo">Tipo:</label> 
-							<select class="form-control" name="tipo" size="1" id="tipo">
-								<option value="0"></option>
-								<option value="processo">Processo</option>
-								<option value="produto">Produto</option>
-							</select>
-						</div>
-						<div class="col-xs-4">
-							<label for="cod_prod">Código Produto:</label>
-							<input class="form-control" name="cod_prod" id="cod_prod" type="text" />
-						</div>
-						<div class="col-xs-6">
-							<label for="nome_prod">Nome Produto:</label>
-							<input class="form-control" name="nome_prod" id="nome_prod" type="text" />
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-xs-4">
-							<label for="processo">Processo:</label>
-							<select class="form-control" name="processo" id="processo">
-								<option value="0"></option>
-								<option value="administracao">Administração</option>
-								<option value="comercial">Comercial</option>
-								<option value="engenharia de produto">Engenharia de Produto</option>
-								<option value="engenharia de aplicação">Engenharia de Aplicação</option>
-								<option value="manufatura">Manufatura</option>
-								<option value="logistica">Logística</option>
-								<option value="suprimento">Suprimento</option>
-								<option value="gestão de recurso">Gestão de Recursos</option>
-								<option value="medicao/analise/melhoria ">Medição/Análise/Melhoria</option>
-								<option value="assistência tecnica">Assistência Técnica</option>
-							</select>
-						</div>
-					
-						<div class="col-xs-3">
-							<label for="unid_negocio">Un. de Neg&oacute;cio:</label> 
-							<select name="unid_negocio" id="unid_negocio" dataset="unidades_de_negocio" datasetkey="Unidade_de_negocio" datasetvalue="Unidade_de_negocio" addBlankLine="true" class="form-control"></select>
-						</div>						
-						<div class="col-xs-3">
-							<label for="criticidade">Criticidade:</label>
-							<select class="form-control" name="criticidade" id="criticidade">
-								<option value="0"></option>
-								<option value="pouco critico">Pouco crítico</option>
-								<option value="critico">Crítico</option>
-								<option value="muito critico">Muito crítico</option>								
-							</select>
-						</div>
-						<div class="col-xs-2">
-							<label for="reincidencia">Reincidência:</label>
-							<select class="form-control" name="reincidencia" id="reincidencia">
-								<option value="0"></option>
-								<option value="sim">Sim</option>
-								<option value="nao">Não</option>																
-							</select>
-						</div>						
-					</div>
-					<div class="row">
-						<div class="col-xs-3">
-							<label for="local_detec">Local detecção:</label>
-							<select class="form-control" name="local_detec" id="local_detec">
-								<option value="0"> </option>
-								<option value="Recebimento/CQ">Recebimento/CQ</option>
-								<option value="Estoque">Estoque</option>
-								<option value="Producao">Produção</option>
-								<option value="Expedicao">Expedição</option>
-								<option value="Outros">Outros</option>
-                    
-							</select>
-						</div>
-						<div class="col-xs-4">
-							<label for="especific">Detalhar:</label>
-							<input class="form-control" name="especific" id="especific" type="text" />															
-							
-						</div>
-						<div class="col-xs-5">
-							<label for="desc_reinc">Desc. Reincidência:</label>
-							<input class="form-control" name="desc_reinc" id="desc_reinc" type="text" />
-						</div>
-					</div>
-					
-					
-					<div class="row">
-						<div class="col-xs-6">
-							<label for="desc_reinc">Resp. Disposição:</label>
-							<div class="form-group">
-								<div class="input-group">
-									<input type="text" name="responsavel_disp" id="responsavel_disp" class="form-control"  readonly="readonly"/>
-									<input type="hidden" name="mat_disp" id="mat_disp" />
-									<span class="input-group-addon fs-cursor-pointer" onclick='zoomColaborador_disp();' id="btZoomColab_disp">
-										<span class="fluigicon fluigicon-user-search"></span>
-									</span>
+						<div class="panel-body">
+							<div class="row">
+								<div class="col-xs-3">
+									<label for="origem">Origem:</label> <select class="form-control" name="origem" size="1" id="origem">
+										<option value="0"></option>
+										<option value="reclamacao de cliente">Reclamação de Cliente</option>
+										<option value="montagem em campo">Montagem em Campo</option>
+										<option value="recebimento">Inspeção Recebimento</option>
+										<option value="manufatura">Manufatura / Produção</option>
+										<option value="logistica">Logistica (Est/Exp)</option>
+										<option value="auditoria">Auditoria</option>
+										<option value="outros">Outros</option>
+									</select>
+								</div>
+								<div class="col-xs-4">
+									<label for="referencia">Referência / Cliente:</label>
+									<input class="form-control" name="referencia" id="referencia" type="text" />
+								</div>
+								<div class="col-xs-3">
+									<label for="referencia">Pedido:</label>
+									<input class="form-control" name="pedido" id="pedido" type="text" />
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-2">
+									<label for="tipo">Tipo:</label> <select class="form-control" name="tipo" size="1" id="tipo">
+										<option value="0"></option>
+										<option value="processo">Processo</option>
+										<option value="produto">Produto</option>
+									</select>
+								</div>
+								<div class="col-xs-4">
+									<label for="cod_prod">Código Produto:</label>
+									<input class="form-control" name="cod_prod" id="cod_prod" type="text" />
+								</div>
+								<div class="col-xs-6">
+									<label for="nome_prod">Nome Produto:</label>
+									<input class="form-control" name="nome_prod" id="nome_prod" type="text" />
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-4">
+									<label for="processo">Processo:</label> <select class="form-control" name="processo" id="processo">
+										<option value="0"></option>
+										<option value="administracao">Administração</option>
+										<option value="comercial">Comercial</option>
+										<option value="engenharia de produto">Engenharia de Produto</option>
+										<option value="engenharia de aplicação">Engenharia de Aplicação</option>
+										<option value="manufatura">Manufatura</option>
+										<option value="logistica">Logística</option>
+										<option value="suprimento">Suprimento</option>
+										<option value="gestão de recurso">Gestão de Recursos</option>
+										<option value="medicao/analise/melhoria ">Medição/Análise/Melhoria</option>
+										<option value="assistência tecnica">Assistência Técnica</option>
+									</select>
+								</div>
+								<div class="col-xs-3">
+									<label for="unid_negocio">Un. de Neg&oacute;cio:</label> <select name="unid_negocio" id="unid_negocio" dataset="unidades_de_negocio" datasetkey="Unidade_de_negocio" datasetvalue="Unidade_de_negocio" addBlankLine="true" class="form-control"></select>
+								</div>
+								<div class="col-xs-3">
+									<label for="criticidade">Criticidade:</label> <select class="form-control" name="criticidade" id="criticidade">
+										<option value="0"></option>
+										<option value="pouco critico">Pouco crítico</option>
+										<option value="critico">Crítico</option>
+										<option value="muito critico">Muito crítico</option>
+									</select>
+								</div>
+								<div class="col-xs-2">
+									<label for="reincidencia">Reincidência:</label> <select class="form-control" name="reincidencia" id="reincidencia">
+										<option value="0"></option>
+										<option value="sim">Sim</option>
+										<option value="nao">Não</option>
+									</select>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-3">
+									<label for="local_detec">Local detecção:</label> <select class="form-control" name="local_detec" id="local_detec">
+										<option value="0"></option>
+										<option value="Recebimento/CQ">Recebimento/CQ</option>
+										<option value="Estoque">Estoque</option>
+										<option value="Producao">Produção</option>
+										<option value="Expedicao">Expedição</option>
+										<option value="Outros">Outros</option>
+									</select>
+								</div>
+								<div class="col-xs-4">
+									<label for="especific">Detalhar:</label>
+									<input class="form-control" name="especific" id="especific" type="text" />
+								</div>
+								<div class="col-xs-5">
+									<label for="desc_reinc">Desc. Reincidência:</label>
+									<input class="form-control" name="desc_reinc" id="desc_reinc" type="text" />
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-6">
+									<label for="desc_reinc">Resp. Disposição:</label>
+									<div class="form-group">
+										<div class="input-group">
+											<input type="text" name="responsavel_disp" id="responsavel_disp" class="form-control" readonly="readonly" />
+											<input type="hidden" name="mat_disp" id="mat_disp" />
+											<span class="input-group-addon fs-cursor-pointer" onclick='zoomColaborador_disp();' id="btZoomColab_disp"> <span class="fluigicon fluigicon-user-search"></span>
+											</span>
+										</div>
+									</div>
+								</div>
+								<div class="col-xs-2">
+									<label for="referencia">Quant.:</label>
+									<input class="form-control integer" name="quant" id="quant" type="text" />
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-12">
+									<label for="descEmissao">Descrição:</label>
+									<textarea name="descEmissao" id="descEmissao" rows="3" class="form-control"></textarea>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-3">
+									<label for="matricula_emissor">Resp. Emissão:</label>
+									<input type="text" class="form-control" placeholder="Matr&iacute;cula" name="matricula_emissor" id="matricula_emissor" readonly="readonly" />
+								</div>
+								<div class="col-xs-6">
+									<label for="matricula_emissor">&nbsp;</label>
+									<input type="text" class="form-control" placeholder="Responsavel" name="user_emissor" id="user_emissor" readonly="readonly" />
+								</div>
+								<div class="col-xs-3">
+									<label for="data_emissor">Data:</label>
+									<input type="text" class="form-control" placeholder="Data" name="data_emissor" id="data_emissor" readonly="readonly" />
 								</div>
 							</div>
 						</div>
-						<div class="col-xs-2">
-							<label for="referencia">Quant.:</label>
-							<input class="form-control integer" name="quant" id="quant" type="text" />
-						</div>
-					</div>				
-					
-					
-					<div class="row">
-						<div class="col-xs-12">
-							<label for="descEmissao">Descrição:</label>
-							<textarea name="descEmissao" id="descEmissao" rows="3" class="form-control"></textarea>							
-						</div>
 					</div>
-					<div class="row">
-						<div class="col-xs-3">
-							<label for="matricula_emissor">Resp. Emissão:</label>
-							<input type="text" class="form-control" placeholder="Matr&iacute;cula" name="matricula_emissor" id="matricula_emissor" readonly="readonly" />								
+					<div class="panel panel-primary" id="disposicao">
+						<div class="panel-heading" style="background-color: blue;">
+							<h3 class="panel-title">
+								<strong><i class="fluigicon fluigicon-file-default fluigicon-sm"></i>&nbsp;Disposição de item não conforme </strong>
+							</h3>
 						</div>
-						<div class="col-xs-6">
-						<label for="matricula_emissor">&nbsp;</label>
-							<input type="text" class="form-control" placeholder="Responsavel" name="user_emissor" id="user_emissor" readonly="readonly" />
-						</div>
-						<div class="col-xs-3">
-							<label for="data_emissor">Data:</label>
-							<input type="text" class="form-control" placeholder="Data" name="data_emissor" id="data_emissor" readonly="readonly" />
-						</div>
-					</div>
-				</div>
-			</div>
-			
-			<div class="panel panel-primary" id="disposicao">
-				<div class="panel-heading" style="background-color: blue;">
-					<h3 class="panel-title">
-						<strong><i class="fluigicon fluigicon-file-default fluigicon-sm"></i>&nbsp;Disposição de item não conforme </strong>
-					</h3>
-				</div>
-				<div class="panel-body">
-					<div class="row">
-						<div class="col-xs-3">
-							<label for="acao">Ação à ser tomada:</label> 
-							<select class="form-control" name="acao" id="acao">
-							    <option value="0" selected="selected"> </option>
-                                <option value="rejeitar">Rejeitar</option>
-                                <option value="retrabalhar">Retrabalhar</option>
-                                <option value="aceitar com concessao">Aceitar com Concessão</option>
-                                <option value="outros">Outros</option>                            
-							</select>
-						</div>
-						<div class="col-xs-2">
-							<label for="quant_disp">Quant.:</label>
-							<input class="form-control integer" name="quant_disp" id="quant_disp" type="text" />
-						</div>	
-						<div class="col-xs-3">
-							<label for="retrabalho">Verificação do Retrabalho:</label> 
-							<select class="form-control" name="retrabalho" id="retrabalho">
-							    <option value="0" selected="selected"> </option>
-                                <option value="aprovado">Aprovado</option>
-                                <option value="reprovado">Reprovado</option>                                                          
-							</select>
-						</div>	
-						<div class="col-xs-4">
-							<label for="quant_disp">Res. Retrabalho:</label>
-							<input class="form-control" name="resp_retrabalho" id="resp_retrabalho" type="text" />
-						</div>					
-					</div>	
-					<div class="row">
-						<div class="col-xs-12">
-							<label for="desc_disp">Descrição:</label>
-							<textarea name="desc_disp" id="desc_disp" class="form-control" rows="3" ></textarea>							
-						</div>
-					</div>	
-					<div class="row">
-						<div class="col-xs-3">
-							<label for="matricula_disp">Resp. Emissão:</label>
-							<input type="text" class="form-control" placeholder="Matr&iacute;cula" name="matricula_disp" id="matricula_disp" readonly="readonly" />								
-						</div>
-						<div class="col-xs-6">
-						<label for="resp_disp">&nbsp;</label>
-							<input type="text" class="form-control" placeholder="Responsavel" name="resp_disp" id="resp_disp" readonly="readonly" />
-						</div>
-						<div class="col-xs-3">
-							<label for="data_disp">Data:</label>
-							<input type="text" class="form-control" placeholder="Data" name="data_disp" id="data_disp" readonly="readonly" />
-						</div>
-					</div>			
-				</div>
-			</div>
-			
-			<div class="panel panel-primary" id="emergencial">
-				<div class="panel-heading" style="background-color: blue;">
-					<h3 class="panel-title">
-						<strong><i class="fluigicon fluigicon-parabolicsatellite fluigicon-sm"></i>&nbsp;Ação emergencial </strong>
-					</h3>
-				</div>
-				<div class="panel-body">
-					
-					<div class="form-field table-responsive" data-type="tabledetail" data-show-properties="" data-field-name="tabledetail">
-						<table tablename="tbatividades" cellspacing="0" id="tbatividades" noaddbutton=true class="table" customFnDelete="removeTarefa(this)">
-							<thead>
-								<tr class="tableHeadRow">
-									<th class="tableColumn">Descrição da Atividade</th>
-									<th class="tableColumn">Data de Conclusão</th>
-									<th class="tableColumn">Responsável</th>
-									<th class="tableColumn">Processo</th>
-									<th class="tableColumn">Status/Data Conclusão</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td class="col-xs-3">
-										<div class="form-group">
-											<textarea name="descAtividade_emer" id="descAtividade_emer" class="form-control" rows="2" ></textarea>
-										</div>
-									</td>
-									<td class="col-xs-2">
-										<div class="form-group " >
-											<div class="input-group date" id="dtPickerPrazo_emer">
-												<input type="text" name="dtprazoativ_emer" class="form-control" readonly="readonly"/>
-												<span class="input-group-addon fs-cursor-pointer"> 
-													<span class="fluigicon fluigicon-calendar"></span>
-												</span>
-											</div>
-										</div>
-									</td>
-									<td class="col-xs-3">
-										<div class="form-group">
-											<div class="input-group">
-												<input type="text" name="responsavel_emer" id="responsavel_emer" class="form-control"  readonly="readonly"/>
-												<input type="hidden" name="mat_emer" id="mat_emer" />
-												<span class="input-group-addon fs-cursor-pointer" onclick='zoomColaborador(this);' id="btZoomColab">
-													<span class="fluigicon fluigicon-user-search"></span>
-												</span>
-											</div>
-										</div>
-									</td>
-									<td class="col-xs-2">
-										<div class="form-group">
-											<input type="text" name="fluxo_emer" id="fluxo_emer" class="form-control isProcessLink" readonly="readonly"/>
-										</div>
-									</td>
-									<td class="col-xs-2">
-										<div class="form-group">
-											<input type="text" name="status_emer" id="status_emer" class="form-control status"  readonly="readonly"/>
-										</div>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-						<div class="col-xs-12" align="right">
-						 	<button type="button" class="btn btn-primary" data-toggle="button" onclick="addLinhaTabela('tbatividades')">Adicionar Atividade</button>
-					 	</div>
-					</div>
-						
-					
-					<div class="row">
-						<div class="col-xs-3">
-							<label for="matricula_emer">Resp. Emissão:</label>
-							<input type="text" class="form-control" placeholder="Matr&iacute;cula" name="matricula_emer" id="matricula_emer" readonly="readonly" />								
-						</div>
-						<div class="col-xs-6">
-						<label for="resp_emer">&nbsp;</label>
-							<input type="text" class="form-control" placeholder="Responsavel" name="resp_emer" id="resp_emer" readonly="readonly" />
-						</div>
-						<div class="col-xs-3">
-							<label for="data_emer">Data:</label>
-							<input type="text" class="form-control" placeholder="Data" name="data_emer" id="data_emer" readonly="readonly" />
-						</div>
-					</div>									
-				</div>
-			</div>			
-		
-			<div class="panel panel-primary" id="parecer">
-				<div class="panel-heading" style="background-color: blue;">
-					<h3 class="panel-title">
-						<strong><i class="fluigicon fluigicon-comment fluigicon-sm"></i>&nbsp;Parecer da qualidade </strong>
-					</h3>
-				</div>
-				<div class="panel-body">
-					<div class="row">
-						<div class="col-xs-4">
-							<label for="disposocao">Abrir documento:</label>
-							<select name="disposocao" id="disposocao" class="form-control">
-								<option value="0" selected="selected"> </option>
-								<option value="SAC">SAC</option>
-								<option value="NCF">NCF</option>
-								<option value="Nao Finalizar">Não - Finalizar Solicitação</option>
-								<option value="Nao Rejeicao">Não - Rejeição p/ Solicitante</option>
-							</select>					
-						</div>
-						
-						<div class="col-xs-6">
-							<label for="fornecedor">Fornecedor:</label>
-							<input type="text" class="form-control" name="fornecedor" id="fornecedor" />
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-xs-3">
-							<label for="orgao">Orgão:</label>
-							<select name="orgao" id="orgao" class="form-control">
-								<option value="0" selected="selected"> </option>
-								<option value="ADM">ADM</option>
-								<option value="P&amp;D INC">P&amp;D INC</option>
-								<option value="P&amp;D ARM">P&amp;D ARM</option>
-								<option value="P&amp;D AVI">P&amp;D AVI</option>
-								<option value="P&amp;D MAT">P&amp;D MAT</option>
-								<option value="COM INC">COM INC</option>
-								<option value="COM ARM">COM ARM</option>
-								<option value="COM AVI">COM AVI</option>
-								<option value="EXPORTACAO">EXPORTAÇÃO</option>
-								<option value="MANUFATURA">MANUFATURA</option>
-								<option value="LOG INC">LOG INC</option>
-								<option value="LOG ARM">LOG ARM</option>
-								<option value="LOG AVI">LOG AVI</option>
-								<option value="SUPRIMENTOS">SUPRIMENTOS</option>
-								<option value="ATE INC">ATE INC</option>
-								<option value="ATE ARM">ATE ARM</option>
-								<option value="ATE AVI">ATE AVI</option>
-								<option value="GRE RH">GRE RH</option>
-								<option value="GRE INFO">GRE INFO</option>
-								<option value="GRE MANUTENCAO">GRE MANUTENçãO</option>
-								<option value="MAM QUALIDADE">MAM QUALIDADE</option>
-							</select>
-						</div>
-						
-						<div class="col-xs-5">
-							<label for="responsavel_parecer">Responsável:</label>
-							<div class="input-group">
-								<input type="text" name="responsavel_parecer" id="responsavel_parecer" class="form-control"  readonly="readonly"/>
-								<input type="hidden" name="matricula_parecer" id="matricula_parecer" />
-								<span class="input-group-addon fs-cursor-pointer" onclick='zoomColaborador_parecer();' id="btZoomColab_parecer">
-									<span class="fluigicon fluigicon-user-search"></span>
-								</span>
+						<div class="panel-body">
+							<div class="row">
+								<div class="col-xs-3">
+									<label for="acao">Ação à ser tomada:</label> <select class="form-control" name="acao" id="acao">
+										<option value="0" selected="selected"></option>
+										<option value="rejeitar">Rejeitar</option>
+										<option value="retrabalhar">Retrabalhar</option>
+										<option value="aceitar com concessao">Aceitar com Concessão</option>
+										<option value="outros">Outros</option>
+									</select>
+								</div>
+								<div class="col-xs-2">
+									<label for="quant_disp">Quant.:</label>
+									<input class="form-control integer" name="quant_disp" id="quant_disp" type="text" />
+								</div>
+								<div class="col-xs-3">
+									<label for="retrabalho">Verificação do Retrabalho:</label> <select class="form-control" name="retrabalho" id="retrabalho">
+										<option value="0" selected="selected"></option>
+										<option value="aprovado">Aprovado</option>
+										<option value="reprovado">Reprovado</option>
+									</select>
+								</div>
+								<div class="col-xs-4">
+									<label for="quant_disp">Res. Retrabalho:</label>
+									<input class="form-control" name="resp_retrabalho" id="resp_retrabalho" type="text" />
+								</div>
 							</div>
-						</div>														
+							<div class="row">
+								<div class="col-xs-12">
+									<label for="desc_disp">Descrição:</label>
+									<textarea name="desc_disp" id="desc_disp" class="form-control" rows="3"></textarea>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-3">
+									<label for="matricula_disp">Resp. Emissão:</label>
+									<input type="text" class="form-control" placeholder="Matr&iacute;cula" name="matricula_disp" id="matricula_disp" readonly="readonly" />
+								</div>
+								<div class="col-xs-6">
+									<label for="resp_disp">&nbsp;</label>
+									<input type="text" class="form-control" placeholder="Responsavel" name="resp_disp" id="resp_disp" readonly="readonly" />
+								</div>
+								<div class="col-xs-3">
+									<label for="data_disp">Data:</label>
+									<input type="text" class="form-control" placeholder="Data" name="data_disp" id="data_disp" readonly="readonly" />
+								</div>
+							</div>
+						</div>
 					</div>
-					<div class="row">
-						<div class="col-xs-12">
-							<label for="desc_parecer">Observações:</label>
-							<textarea name="desc_parecer" id="desc_parecer" class="form-control" rows="3" ></textarea>							
+					<div class="panel panel-primary" id="emergencial">
+						<div class="panel-heading" style="background-color: blue;">
+							<h3 class="panel-title">
+								<strong><i class="fluigicon fluigicon-parabolicsatellite fluigicon-sm"></i>&nbsp;Ação emergencial </strong>
+							</h3>
 						</div>
-					</div>						
-					
-					<div class="row">
-						<div class="col-xs-3">
-							<label for="mat_parecer">Resp. Parecer:</label>
-							<input type="text" class="form-control" placeholder="Matr&iacute;cula" name="mat_parecer" id="mat_parecer" readonly="readonly" />								
+						<div class="panel-body">
+							<div class="form-field table-responsive" data-type="tabledetail" data-show-properties="" data-field-name="tabledetail">
+								<table tablename="tbatividades" cellspacing="0" id="tbatividades" noaddbutton=true class="table" customFnDelete="removeTarefa(this)">
+									<thead>
+										<tr class="tableHeadRow">
+											<th class="tableColumn">Descrição da Atividade</th>
+											<th class="tableColumn">Data de Conclusão</th>
+											<th class="tableColumn">Responsável</th>
+											<th class="tableColumn">Processo</th>
+											<th class="tableColumn">Status/Data Conclusão</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td class="col-xs-3">
+												<div class="form-group">
+													<textarea name="descAtividade_emer" id="descAtividade_emer" class="form-control" rows="2"></textarea>
+												</div>
+											</td>
+											<td class="col-xs-2">
+												<div class="form-group ">
+													<div class="input-group date" id="dtPickerPrazo_emer">
+														<input type="text" name="dtprazoativ_emer" class="form-control" readonly="readonly" />
+														<span class="input-group-addon fs-cursor-pointer"> <span class="fluigicon fluigicon-calendar"></span>
+														</span>
+													</div>
+												</div>
+											</td>
+											<td class="col-xs-3">
+												<div class="form-group">
+													<div class="input-group">
+														<input type="text" name="responsavel_emer" id="responsavel_emer" class="form-control" readonly="readonly" />
+														<input type="hidden" name="mat_emer" id="mat_emer" />
+														<span class="input-group-addon fs-cursor-pointer" onclick='zoomColaborador(this);' id="btZoomColab"> <span class="fluigicon fluigicon-user-search"></span>
+														</span>
+													</div>
+												</div>
+											</td>
+											<td class="col-xs-2">
+												<div class="form-group">
+													<input type="text" name="fluxo_emer" id="fluxo_emer" class="form-control isProcessLink" readonly="readonly" />
+												</div>
+											</td>
+											<td class="col-xs-2">
+												<div class="form-group">
+													<input type="text" name="status_emer" id="status_emer" class="form-control status" readonly="readonly" />
+												</div>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+								<div class="col-xs-12" align="right">
+									<button type="button" class="btn btn-primary" data-toggle="button" onclick="addLinhaTabela('tbatividades')">Adicionar Atividade</button>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-3">
+									<label for="matricula_emer">Resp. Emissão:</label>
+									<input type="text" class="form-control" placeholder="Matr&iacute;cula" name="matricula_emer" id="matricula_emer" readonly="readonly" />
+								</div>
+								<div class="col-xs-6">
+									<label for="resp_emer">&nbsp;</label>
+									<input type="text" class="form-control" placeholder="Responsavel" name="resp_emer" id="resp_emer" readonly="readonly" />
+								</div>
+								<div class="col-xs-3">
+									<label for="data_emer">Data:</label>
+									<input type="text" class="form-control" placeholder="Data" name="data_emer" id="data_emer" readonly="readonly" />
+								</div>
+							</div>
 						</div>
-						<div class="col-xs-6">
-						<label for="resp_parecer">&nbsp;</label>
-							<input type="text" class="form-control" placeholder="Responsavel" name="resp_parecer" id="resp_parecer" readonly="readonly" />
+					</div>
+					<div class="panel panel-primary" id="parecer">
+						<div class="panel-heading" style="background-color: blue;">
+							<h3 class="panel-title">
+								<strong><i class="fluigicon fluigicon-comment fluigicon-sm"></i>&nbsp;Parecer da qualidade </strong>
+							</h3>
 						</div>
-						<div class="col-xs-3">
-							<label for="data_parecer">Data:</label>
-							<input type="text" class="form-control" placeholder="Data" name="data_parecer" id="data_parecer" readonly="readonly" />
-						</div>
-					</div>									
-				</div>
-			</div>	
-			
-			<div class="panel panel-primary" id="causa_raiz">
-				<div class="panel-heading" style="background-color: blue;">
-					<h3 class="panel-title">
-						<strong><i class="fluigicon fluigicon-tests-central fluigicon-sm"></i>&nbsp;Descrição da Cauza Raiz </strong>
-					</h3>
-				</div>
-				<div class="panel-body">
-					<div class="row">
-						<table style="width:98% border:0; align:center; cellpadding:0; cellspacing:0" class="table">
-							<tbody>								
-								<tr>
-									<td class="col-xs-4">
-										<label>Cauzas Raizes</label>
-										<textarea name="desc_causa" cols="40" class="form-control" rows="7" id="desc_causa"></textarea>
-									</td>
-									<td  class="col-xs-6">
-										<span >
-											<label>&nbsp;&nbsp;&nbsp;<input type="checkbox" value="medida" name="c1" id="c1">Medida</label>
-											<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" value="materiais" name="c2" id="c2">Materiais</label>
-											<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" value="metodo" name="c3" id="c3">Método</label>
+						<div class="panel-body">
+							<div class="row">
+								<div class="col-xs-4">
+									<label for="disposocao">Abrir documento:</label> <select name="disposocao" id="disposocao" class="form-control">
+										<option value="0" selected="selected"></option>
+										<option value="SAC">SAC</option>
+										<option value="NCF">NCF</option>
+										<option value="Nao Finalizar">Não - Finalizar Solicitação</option>
+										<option value="Nao Rejeicao">Não - Rejeição p/ Solicitante</option>
+									</select>
+								</div>
+								<div class="col-xs-6">
+									<label for="fornecedor">Fornecedor:</label>
+									<input type="text" class="form-control" name="fornecedor" id="fornecedor" />
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-3">
+									<label for="orgao">Orgão:</label> <select name="orgao" id="orgao" class="form-control">
+										<option value="0" selected="selected"></option>
+										<option value="ADM">ADM</option>
+										<option value="P&amp;D INC">P&amp;D INC</option>
+										<option value="P&amp;D ARM">P&amp;D ARM</option>
+										<option value="P&amp;D AVI">P&amp;D AVI</option>
+										<option value="P&amp;D MAT">P&amp;D MAT</option>
+										<option value="COM INC">COM INC</option>
+										<option value="COM ARM">COM ARM</option>
+										<option value="COM AVI">COM AVI</option>
+										<option value="EXPORTACAO">EXPORTAÇÃO</option>
+										<option value="MANUFATURA">MANUFATURA</option>
+										<option value="LOG INC">LOG INC</option>
+										<option value="LOG ARM">LOG ARM</option>
+										<option value="LOG AVI">LOG AVI</option>
+										<option value="SUPRIMENTOS">SUPRIMENTOS</option>
+										<option value="ATE INC">ATE INC</option>
+										<option value="ATE ARM">ATE ARM</option>
+										<option value="ATE AVI">ATE AVI</option>
+										<option value="GRE RH">GRE RH</option>
+										<option value="GRE INFO">GRE INFO</option>
+										<option value="GRE MANUTENCAO">GRE MANUTENçãO</option>
+										<option value="MAM QUALIDADE">MAM QUALIDADE</option>
+									</select>
+								</div>
+								<div class="col-xs-5">
+									<label for="responsavel_parecer">Responsável:</label>
+									<div class="input-group">
+										<input type="text" name="responsavel_parecer" id="responsavel_parecer" class="form-control" readonly="readonly" />
+										<input type="hidden" name="matricula_parecer" id="matricula_parecer" />
+										<span class="input-group-addon fs-cursor-pointer" onclick='zoomColaborador_parecer();' id="btZoomColab_parecer"> <span class="fluigicon fluigicon-user-search"></span>
 										</span>
-										<br/>
-										<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="espinhapeixe.jpg" ></label>
-										<br/>
-										<span>
-											<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" value="maquinas" name="c4" id="c4">Máquinas</label>
-											<label>&nbsp;&nbsp;<input type="checkbox" value="meioAmbiente" name="c5" id="c5">Meio Ambiente</label>
-											<label>&nbsp;<input type="checkbox" value="maoObra" name="c6" id="c6">Mão de Obra</label>
-										</span>	
-									</td>
-								</tr>
-								</tbody>
-						</table>
-					</div>
-				
-					<div class="row">
-						<div class="col-xs-3">
-							<label for="mat_causa_raiz">Resp. Causa Raiz:</label>
-							<input type="text" class="form-control" placeholder="Matr&iacute;cula" name="mat_causa_raiz" id="mat_causa_raiz" readonly="readonly" />								
-						</div>
-						<div class="col-xs-6">
-						<label for="resp_causa_raiz">&nbsp;</label>
-							<input type="text" class="form-control" placeholder="Responsavel" name="resp_causa_raiz" id="resp_causa_raiz" readonly="readonly" />
-						</div>
-						<div class="col-xs-3">
-							<label for="data_causa_raiz">Data:</label>
-							<input type="text" class="form-control" placeholder="Data" name="data_causa_raiz" id="data_causa_raiz" readonly="readonly" />
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-12">
+									<label for="desc_parecer">Observações:</label>
+									<textarea name="desc_parecer" id="desc_parecer" class="form-control" rows="3"></textarea>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-3">
+									<label for="mat_parecer">Resp. Parecer:</label>
+									<input type="text" class="form-control" placeholder="Matr&iacute;cula" name="mat_parecer" id="mat_parecer" readonly="readonly" />
+								</div>
+								<div class="col-xs-6">
+									<label for="resp_parecer">&nbsp;</label>
+									<input type="text" class="form-control" placeholder="Responsavel" name="resp_parecer" id="resp_parecer" readonly="readonly" />
+								</div>
+								<div class="col-xs-3">
+									<label for="data_parecer">Data:</label>
+									<input type="text" class="form-control" placeholder="Data" name="data_parecer" id="data_parecer" readonly="readonly" />
+								</div>
+							</div>
 						</div>
 					</div>
-					
-														
-				</div>
-			</div>	
-			
-			<div class="panel panel-primary" id="acoes">
-				<div class="panel-heading" style="background-color: blue;">
-					<h3 class="panel-title">
-						<strong><i class="fluigicon fluigicon-parabolicsatellite fluigicon-sm"></i>&nbsp;Definição das Ações Corretivas </strong>
-					</h3>
-				</div>
-				<div class="panel-body">
-				
-				
-					<div class="form-field table-responsive" data-type="table_" data-show-properties="" data-field-name="tabledetail">
-						<table tablename="table_acao_corretiva" cellspacing="0" id="table_acao_corretiva" noaddbutton=true class="table" customFnDelete="removeTarefa(this)">
-							<thead>
-								<tr class="tableHeadRow">
-									<th class="tableColumn">Descrição da Atividade</th>
-									<th class="tableColumn">Data de Conclusão</th>
-									<th class="tableColumn">Responsável</th>
-									<th class="tableColumn">Processo</th>
-									<th class="tableColumn">Status/Data Conclusão</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td class="col-xs-3">
-										<textarea name="descAtividade_corr" id="descAtividade_corr" class="form-control" rows="2" ></textarea>										
-									</td>
-									<td class="col-xs-2">
-										<div class="form-group " >
-											<div class="input-group date" id="dtPickerPrazo_corr">
-												<input type="text" name="dtprazoativ_corr" class="form-control" readonly="readonly"/>
-												<span class="input-group-addon fs-cursor-pointer"> 
-													<span class="fluigicon fluigicon-calendar"></span>
-												</span>
-											</div>
-										</div>
-									</td>
-									<td class="col-xs-3">
-										<div class="form-group">
-											<div class="input-group">
-												<input type="text" name="responsavel_corr" id="responsavel_corr" class="form-control"  readonly="readonly"/>
-												<input type="hidden" name="matricula_corr" id="matricula_corr" />
-												<span class="input-group-addon fs-cursor-pointer" onclick='zoomColaborador_corr(this);' id="btZoomColab_corr">
-													<span class="fluigicon fluigicon-user-search"></span>
-												</span>
-											</div>
-										</div>
-									</td>
-									<td class="col-xs-2">
-										<div class="form-group">
-											<input type="text" name="fluxo_corr" id="fluxo_corr" class="form-control isProcessLink" readonly="readonly"/>
-										</div>
-									</td>
-									<td class="col-xs-2">
-										<div class="form-group">
-											<input type="text" name="status_corr" id="status_corr" class="form-control status"  readonly="readonly"/>
-										</div>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-						<div class="col-xs-12" align="right">
-						 	<button type="button" class="btn btn-primary" data-toggle="button" onclick="addLinhaTabela('table_acao_corretiva')">Adicionar Atividade</button>
-					 	</div>
-					</div>	
-					<div class="row">
-						<div class="col-xs-3">
-							<label for="mat_acoes">Resp. Ações Corrretivas:</label>
-							<input type="text" class="form-control" placeholder="Matr&iacute;cula" name="mat_acoes" id="mat_acoes" readonly="readonly" />								
+					<div class="panel panel-primary" id="causa_raiz">
+						<div class="panel-heading" style="background-color: blue;">
+							<h3 class="panel-title">
+								<strong><i class="fluigicon fluigicon-tests-central fluigicon-sm"></i>&nbsp;Descrição da Cauza Raiz </strong>
+							</h3>
 						</div>
-						<div class="col-xs-6">
-						<label for="resp_acoes">&nbsp;</label>
-							<input type="text" class="form-control" placeholder="Responsavel" name="resp_acoes" id="resp_acoes" readonly="readonly" />
-						</div>
-						<div class="col-xs-3">
-							<label for="data_acoes">Data:</label>
-							<input type="text" class="form-control" placeholder="Data" name="data_acoes" id="data_acoes" readonly="readonly" />
-						</div>
-					</div>	
-														
-				</div>
-			</div>	
-			
-			<div class="panel panel-primary" id="eficacia">
-				<div class="panel-heading" style="background-color: blue;">
-					<h3 class="panel-title">
-						<strong><i class="fluigicon fluigicon-verified fluigicon-sm"></i>&nbsp;Verificação da eficácia </strong>
-					</h3>
-				</div>
-				<div class="panel-body">
-					<div class="row">
-						<div class="col-xs-3">
-							<label for="conclusao">Conclusão:</label>					
-							<select name="conclusao" class="form-control" id="conclusao">
-							    <option value="0" selected="selected"> </option>
-				                <option value="Eficaz">Eficaz</option>
-				                <option value="Ineficaz">Ineficaz</option>
-								<option value="Ineficaz (Encerrar Solicitacao)">Ineficaz (Encerrar solicitação)</option>
-				                <option value="Nao Implementado">Não Implementado</option>
-			              	</select>
+						<div class="panel-body">
+							<div class="row">
+								<table style="width: 98% border:0; align: center; cellpadding: 0; cellspacing: 0" class="table">
+									<tbody>
+										<tr>
+											<td class="col-xs-4"><label>Cauzas Raizes</label> <textarea name="desc_causa" cols="40" class="form-control" rows="7" id="desc_causa"></textarea></td>
+											<td class="col-xs-6"><span> <label>&nbsp;&nbsp;&nbsp;<input type="checkbox" value="medida" name="c1" id="c1">Medida
+												</label> <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" value="materiais" name="c2" id="c2">Materiais
+												</label> <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" value="metodo" name="c3" id="c3">Método
+												</label>
+											</span> <br /> <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="espinhapeixe.jpg"></label> <br /> <span> <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" value="maquinas" name="c4" id="c4">Máquinas
+												</label> <label>&nbsp;&nbsp;<input type="checkbox" value="meioAmbiente" name="c5" id="c5">Meio Ambiente
+												</label> <label>&nbsp;<input type="checkbox" value="maoObra" name="c6" id="c6">Mão de Obra
+												</label>
+											</span></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="row">
+								<div class="col-xs-3">
+									<label for="mat_causa_raiz">Resp. Causa Raiz:</label>
+									<input type="text" class="form-control" placeholder="Matr&iacute;cula" name="mat_causa_raiz" id="mat_causa_raiz" readonly="readonly" />
+								</div>
+								<div class="col-xs-6">
+									<label for="resp_causa_raiz">&nbsp;</label>
+									<input type="text" class="form-control" placeholder="Responsavel" name="resp_causa_raiz" id="resp_causa_raiz" readonly="readonly" />
+								</div>
+								<div class="col-xs-3">
+									<label for="data_causa_raiz">Data:</label>
+									<input type="text" class="form-control" placeholder="Data" name="data_causa_raiz" id="data_causa_raiz" readonly="readonly" />
+								</div>
+							</div>
 						</div>
 					</div>
-					<div class="row">
-						<div class="col-xs-12">
-							<label>Observações:</label>
-							<textarea name="desc_eficacia" cols="40" class="form-control" rows="3" id="desc_eficacia"></textarea>	
+					<div class="panel panel-primary" id="acoes">
+						<div class="panel-heading" style="background-color: blue;">
+							<h3 class="panel-title">
+								<strong><i class="fluigicon fluigicon-parabolicsatellite fluigicon-sm"></i>&nbsp;Definição das Ações Corretivas </strong>
+							</h3>
+						</div>
+						<div class="panel-body">
+							<div class="form-field table-responsive" data-type="table_" data-show-properties="" data-field-name="tabledetail">
+								<table tablename="table_acao_corretiva" cellspacing="0" id="table_acao_corretiva" noaddbutton=true class="table" customFnDelete="removeTarefa(this)">
+									<thead>
+										<tr class="tableHeadRow">
+											<th class="tableColumn">Descrição da Atividade</th>
+											<th class="tableColumn">Data de Conclusão</th>
+											<th class="tableColumn">Responsável</th>
+											<th class="tableColumn">Processo</th>
+											<th class="tableColumn">Status/Data Conclusão</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td class="col-xs-3"><textarea name="descAtividade_corr" id="descAtividade_corr" class="form-control" rows="2"></textarea></td>
+											<td class="col-xs-2">
+												<div class="form-group ">
+													<div class="input-group date" id="dtPickerPrazo_corr">
+														<input type="text" name="dtprazoativ_corr" class="form-control" readonly="readonly" />
+														<span class="input-group-addon fs-cursor-pointer"> <span class="fluigicon fluigicon-calendar"></span>
+														</span>
+													</div>
+												</div>
+											</td>
+											<td class="col-xs-3">
+												<div class="form-group">
+													<div class="input-group">
+														<input type="text" name="responsavel_corr" id="responsavel_corr" class="form-control" readonly="readonly" />
+														<input type="hidden" name="matricula_corr" id="matricula_corr" />
+														<span class="input-group-addon fs-cursor-pointer" onclick='zoomColaborador_corr(this);' id="btZoomColab_corr"> <span class="fluigicon fluigicon-user-search"></span>
+														</span>
+													</div>
+												</div>
+											</td>
+											<td class="col-xs-2">
+												<div class="form-group">
+													<input type="text" name="fluxo_corr" id="fluxo_corr" class="form-control isProcessLink" readonly="readonly" />
+												</div>
+											</td>
+											<td class="col-xs-2">
+												<div class="form-group">
+													<input type="text" name="status_corr" id="status_corr" class="form-control status" readonly="readonly" />
+												</div>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+								<div class="col-xs-12" align="right">
+									<button type="button" class="btn btn-primary" data-toggle="button" onclick="addLinhaTabela('table_acao_corretiva')">Adicionar Atividade</button>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-3">
+									<label for="mat_acoes">Resp. Ações Corrretivas:</label>
+									<input type="text" class="form-control" placeholder="Matr&iacute;cula" name="mat_acoes" id="mat_acoes" readonly="readonly" />
+								</div>
+								<div class="col-xs-6">
+									<label for="resp_acoes">&nbsp;</label>
+									<input type="text" class="form-control" placeholder="Responsavel" name="resp_acoes" id="resp_acoes" readonly="readonly" />
+								</div>
+								<div class="col-xs-3">
+									<label for="data_acoes">Data:</label>
+									<input type="text" class="form-control" placeholder="Data" name="data_acoes" id="data_acoes" readonly="readonly" />
+								</div>
+							</div>
 						</div>
 					</div>
-					
-					<div class="row">
-						<div class="col-xs-3">
-							<label for="mat_eficacia">Resp. Verificação:</label>
-							<input type="text" class="form-control" placeholder="Matr&iacute;cula" name="mat_eficacia" id="mat_eficacia" readonly="readonly" />								
+					<div class="panel panel-primary" id="eficacia">
+						<div class="panel-heading" style="background-color: blue;">
+							<h3 class="panel-title">
+								<strong><i class="fluigicon fluigicon-verified fluigicon-sm"></i>&nbsp;Verificação da eficácia </strong>
+							</h3>
 						</div>
-						<div class="col-xs-6">
-						<label for="resp_eficacia">&nbsp;</label>
-							<input type="text" class="form-control" placeholder="Responsavel" name="resp_eficacia" id="resp_eficacia" readonly="readonly" />
+						<div class="panel-body">
+							<div class="row">
+								<div class="col-xs-3">
+									<label for="conclusao">Conclusão:</label> <select name="conclusao" class="form-control" id="conclusao">
+										<option value="0" selected="selected"></option>
+										<option value="Eficaz">Eficaz</option>
+										<option value="Ineficaz">Ineficaz</option>
+										<option value="Ineficaz (Encerrar Solicitacao)">Ineficaz (Encerrar solicitação)</option>
+										<option value="Nao Implementado">Não Implementado</option>
+									</select>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-12">
+									<label>Observações:</label>
+									<textarea name="desc_eficacia" cols="40" class="form-control" rows="3" id="desc_eficacia"></textarea>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-3">
+									<label for="mat_eficacia">Resp. Verificação:</label>
+									<input type="text" class="form-control" placeholder="Matr&iacute;cula" name="mat_eficacia" id="mat_eficacia" readonly="readonly" />
+								</div>
+								<div class="col-xs-6">
+									<label for="resp_eficacia">&nbsp;</label>
+									<input type="text" class="form-control" placeholder="Responsavel" name="resp_eficacia" id="resp_eficacia" readonly="readonly" />
+								</div>
+								<div class="col-xs-3">
+									<label for="data_eficacia">Data:</label>
+									<input type="text" class="form-control" placeholder="Data" name="data_eficacia" id="data_eficacia" readonly="readonly" />
+								</div>
+							</div>
 						</div>
-						<div class="col-xs-3">
-							<label for="data_eficacia">Data:</label>
-							<input type="text" class="form-control" placeholder="Data" name="data_eficacia" id="data_eficacia" readonly="readonly" />
-						</div>
-					</div>	
-														
+					</div>
 				</div>
-			</div>					
-		
+				<div class="tab-pane fade" id="falha">
+					<div class="panel panel-primary" id="mod_falha">
+						<div class="panel-heading" style="background-color: blue;">
+							<h3 class="panel-title">
+								<strong><i class="fluigicon fluigicon-file-default fluigicon-sm"></i>&nbsp;Modo Falha e Responsabilidade</strong>
+							</h3>
+						</div>
+						<div class="panel-body">
+							<div class="row">
+								<div class="col-xs-3">
+									<label for="reponsabilidade">Responsabilidade:</label> 
+									<select class="form-control" name="reponsabilidade" size="1" id="reponsabilidade">
+										<option value="0"></option>
+										<option value='1'>Assistência técnica</option>
+										<option value='2'>Comercial</option>
+										<option value='3'>Concessão</option>
+										<option value='4'>Engenharia aplicação</option>
+										<option value='5'>Engenharia de produto</option>
+										<option value='6'>Fornecedor</option>
+										<option value='7'>Improcedente</option>
+										<option value='8'>Indefinido</option>
+										<option value='9'>Logística</option>
+										<option value='10'>Manufatura</option>
+										<option value='11'>Montagem</option>
+										<option value='12'>Qualidade</option>
+										<option value='13'>Suprimentos</option>
+									</select>
+								</div>
+								<div class="col-xs-5">
+									<label for="desc_reinc">Modo Falha:</label>
+									<div class="form-group">
+										<div class="input-group">
+											<input type="text" name="desc_mod_falha" id="desc_mod_falha" class="form-control" readonly="readonly" />
+											<span class="input-group-addon fs-cursor-pointer" onclick='zoomModFalha();' id="btModFalha"> <span class="fluigicon fluigicon-user-search"></span>
+											</span>
+										</div>
+									</div>
+								</div>
+								<div class="col-xs-4">
+									<label for="equip">Equipamento:</label>
+									<input type="text" class="form-control" placeholder="Equipamento" name="equip" id="equip" />
+								</div>
+							</div>
+							
+							<div class="row">
+								<div class="col-xs-4">
+									<label for="fornec">Fornecedor:</label>
+									<input type="text" class="form-control" placeholder="Fornecedor" name="fornec" id="fornec" />
+								</div>
+								<div class="col-xs-3">
+									<label for="matr_falha">Matricula:</label>
+									<input type="text" class="form-control" placeholder="Matrícula" name="matr_falha" id="matr_falha" />
+								</div>
+								<div class="col-xs-4">
+									<label for="colab_falha">Colaborador:</label>
+									<input type="text" class="form-control" placeholder="Colaborador" name="colab_falha" id="colab_falha" />
+								</div>
+							</div>
+							
+							<div class="row">
+								<div class="col-xs-12">
+									<label>Observações:</label>
+									<textarea name="desc_falha" cols="40" class="form-control" rows="3" id="desc_falha"></textarea>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-3">
+									<label for="mat_falha">Resp. Verificação:</label>
+									<input type="text" class="form-control" placeholder="Matr&iacute;cula" name="mat_falha" id="mat_falha" readonly="readonly" />
+								</div>
+								<div class="col-xs-6">
+									<label for="resp_falha">&nbsp;</label>
+									<input type="text" class="form-control" placeholder="Responsavel" name="resp_falha" id="resp_falha" readonly="readonly" />
+								</div>
+								<div class="col-xs-3">
+									<label for="data_falha">Data:</label>
+									<input type="text" class="form-control" placeholder="Data" name="data_falha" id="data_falha" readonly="readonly" />
+								</div>
+							</div>
+							
+							
+							
+							
+							
+							
+							
+						</div>
+					</div>
+				</div>
+			</div>
 		</form>
 	</div>
 </body>

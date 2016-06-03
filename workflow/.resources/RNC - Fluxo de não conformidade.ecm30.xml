@@ -4,13 +4,14 @@
       <companyId>1</companyId>
       <processId>RNC</processId>
     </processDefinitionPK>
-    <processDescription>Fluxo de não conformidade</processDescription>
+    <processDescription>RNC - Relátorio de não conformidade</processDescription>
     <instruction></instruction>
     <active>true</active>
     <publicProcess>true</publicProcess>
     <volumeId>Default</volumeId>
     <categoryId>Qualidade</categoryId>
-    <managerEngineAllocationId></managerEngineAllocationId>
+    <managerEngineAllocationId>Papel</managerEngineAllocationId>
+    <managerEngineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Role&gt;SGQ&lt;/Role&gt;&lt;/AssignmentController&gt;</managerEngineAllocationConfiguration>
     <snapshotFrequency>0</snapshotFrequency>
     <baseDay>0</baseDay>
     <baseMonth>0</baseMonth>
@@ -21,11 +22,11 @@
   <ProcessDefinitionVersion>
     <processDefinitionVersionPK>
       <companyId>1</companyId>
-      <processId>Fluxo de não conformidade</processId>
-      <version>27</version>
+      <processId>RNC - Relátorio de não conformidade</processId>
+      <version>5</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
-    <formId>325</formId>
+    <formId>298</formId>
     <editionMode>true</editionMode>
     <updateAttachmentsVersion>false</updateAttachmentsVersion>
     <controlsAttachmentsSecurity>false</controlsAttachmentsSecurity>
@@ -153,8 +154,8 @@
       <deadlineTime>0</deadlineTime>
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
-      <engineAllocationId>Pool Grupo</engineAllocationId>
-      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Group&gt;SGQ&lt;/Group&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <engineAllocationId>Papel</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Role&gt;SGQ&lt;/Role&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
       <selectColleague>0</selectColleague>
       <initialState>false</initialState>
       <notifyAuthorityDelay>true</notifyAuthorityDelay>
@@ -369,7 +370,7 @@
       <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>303</positionX>
+      <positionX>347</positionX>
       <positionY>40</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
@@ -447,36 +448,11 @@
       <subProcessId></subProcessId>
       <formFolder>0</formFolder>
       <automatic>false</automatic>
-      <positionX>347</positionX>
-      <positionY>76</positionY>
+      <positionX>335</positionX>
+      <positionY>154</positionY>
       <inhibitTransfer>false</inhibitTransfer>
       <stateType>4</stateType>
       <bpmnType>127</bpmnType>
-      <signalId>0</signalId>
-      <openInstances>0</openInstances>
-      <destinationStates/>
-      <digitalSignature>false</digitalSignature>
-    </ProcessState>
-    <ProcessState>
-      <processStatePK>
-        <companyId>1</companyId>
-        <processId>RNC</processId>
-        <version>1</version>
-        <sequence>25</sequence>
-      </processStatePK>
-      <stateName>Paralelo</stateName>
-      <stateDescription>Paralelo</stateDescription>
-      <joint>false</joint>
-      <initialState>false</initialState>
-      <transferAttachments>false</transferAttachments>
-      <subProcessId></subProcessId>
-      <formFolder>0</formFolder>
-      <automatic>false</automatic>
-      <positionX>75</positionX>
-      <positionY>85</positionY>
-      <inhibitTransfer>false</inhibitTransfer>
-      <stateType>3</stateType>
-      <bpmnType>126</bpmnType>
       <signalId>0</signalId>
       <openInstances>0</openInstances>
       <destinationStates/>
@@ -537,6 +513,31 @@
         <companyId>1</companyId>
         <processId>RNC</processId>
         <version>1</version>
+        <sequence>39</sequence>
+      </processStatePK>
+      <stateName>Atividades paralelas</stateName>
+      <stateDescription>Atividades paralelas</stateDescription>
+      <joint>false</joint>
+      <initialState>false</initialState>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <automatic>false</automatic>
+      <positionX>75</positionX>
+      <positionY>71</positionY>
+      <inhibitTransfer>false</inhibitTransfer>
+      <stateType>3</stateType>
+      <bpmnType>121</bpmnType>
+      <signalId>0</signalId>
+      <openInstances>0</openInstances>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>RNC</processId>
+        <version>1</version>
         <sequence>19</sequence>
       </processStatePK>
       <stateName>Fim</stateName>
@@ -586,7 +587,7 @@
         <companyId>1</companyId>
         <processId>RNC</processId>
         <expressionOrder>1</expressionOrder>
-        <version>27</version>
+        <version>5</version>
         <sequence>29</sequence>
       </conditionProcessStatePK>
       <condition>(hAPI.getCardValue(&quot;disposocao&quot;) == &quot;Nao Rejeicao&quot;)</condition>
@@ -599,7 +600,7 @@
         <companyId>1</companyId>
         <processId>RNC</processId>
         <expressionOrder>2</expressionOrder>
-        <version>27</version>
+        <version>5</version>
         <sequence>29</sequence>
       </conditionProcessStatePK>
       <condition>(hAPI.getCardValue(&quot;disposocao&quot;) == &quot;SAC&quot;) || (hAPI.getCardValue(&quot;disposocao&quot;) == &quot;NCF&quot;)</condition>
@@ -612,7 +613,7 @@
         <companyId>1</companyId>
         <processId>RNC</processId>
         <expressionOrder>3</expressionOrder>
-        <version>27</version>
+        <version>5</version>
         <sequence>29</sequence>
       </conditionProcessStatePK>
       <condition>(hAPI.getCardValue(&quot;disposocao&quot;) == &quot;Nao Finalizar&quot;)</condition>
@@ -623,7 +624,7 @@
         <companyId>1</companyId>
         <processId>RNC</processId>
         <expressionOrder>1</expressionOrder>
-        <version>27</version>
+        <version>5</version>
         <sequence>35</sequence>
       </conditionProcessStatePK>
       <condition>(hAPI.getCardValue(&quot;conclusao&quot;) == &quot;Ineficaz&quot;)</condition>
@@ -636,11 +637,37 @@
         <companyId>1</companyId>
         <processId>RNC</processId>
         <expressionOrder>2</expressionOrder>
-        <version>27</version>
+        <version>5</version>
         <sequence>35</sequence>
       </conditionProcessStatePK>
       <condition>(hAPI.getCardValue(&quot;conclusao&quot;) != &quot;Ineficaz&quot;)</condition>
       <destinationSequenceId>19</destinationSequenceId>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>RNC</processId>
+        <expressionOrder>1</expressionOrder>
+        <version>5</version>
+        <sequence>39</sequence>
+      </conditionProcessStatePK>
+      <condition>true</condition>
+      <destinationSequenceId>5</destinationSequenceId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Role&gt;SGQ&lt;/Role&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <engineAllocationId>Pool Papel</engineAllocationId>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>RNC</processId>
+        <expressionOrder>2</expressionOrder>
+        <version>5</version>
+        <sequence>39</sequence>
+      </conditionProcessStatePK>
+      <condition>true</condition>
+      <destinationSequenceId>4</destinationSequenceId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;FormField&gt;mat_disp&lt;/FormField&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <engineAllocationId>Campo Formulário</engineAllocationId>
     </ConditionProcessState>
   </list>
   <list>
@@ -735,54 +762,6 @@
       <returnPermited>false</returnPermited>
       <initialStateSequence>16</initialStateSequence>
       <finalStateSequence>18</finalStateSequence>
-      <returnLabel></returnLabel>
-      <name></name>
-      <automaticLink>false</automaticLink>
-      <type>0</type>
-    </ProcessLink>
-    <ProcessLink>
-      <processLinkPK>
-        <companyId>1</companyId>
-        <processId>RNC</processId>
-        <version>1</version>
-        <linkSequence>26</linkSequence>
-      </processLinkPK>
-      <actionLabel></actionLabel>
-      <returnPermited>false</returnPermited>
-      <initialStateSequence>1</initialStateSequence>
-      <finalStateSequence>25</finalStateSequence>
-      <returnLabel></returnLabel>
-      <name></name>
-      <automaticLink>false</automaticLink>
-      <type>0</type>
-    </ProcessLink>
-    <ProcessLink>
-      <processLinkPK>
-        <companyId>1</companyId>
-        <processId>RNC</processId>
-        <version>1</version>
-        <linkSequence>27</linkSequence>
-      </processLinkPK>
-      <actionLabel></actionLabel>
-      <returnPermited>false</returnPermited>
-      <initialStateSequence>25</initialStateSequence>
-      <finalStateSequence>5</finalStateSequence>
-      <returnLabel></returnLabel>
-      <name></name>
-      <automaticLink>false</automaticLink>
-      <type>0</type>
-    </ProcessLink>
-    <ProcessLink>
-      <processLinkPK>
-        <companyId>1</companyId>
-        <processId>RNC</processId>
-        <version>1</version>
-        <linkSequence>28</linkSequence>
-      </processLinkPK>
-      <actionLabel></actionLabel>
-      <returnPermited>false</returnPermited>
-      <initialStateSequence>25</initialStateSequence>
-      <finalStateSequence>4</finalStateSequence>
       <returnLabel></returnLabel>
       <name></name>
       <automaticLink>false</automaticLink>
@@ -895,6 +874,54 @@
       <returnPermited>false</returnPermited>
       <initialStateSequence>35</initialStateSequence>
       <finalStateSequence>15</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>RNC</processId>
+        <version>1</version>
+        <linkSequence>40</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>1</initialStateSequence>
+      <finalStateSequence>39</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>RNC</processId>
+        <version>1</version>
+        <linkSequence>41</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>39</initialStateSequence>
+      <finalStateSequence>5</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>RNC</processId>
+        <version>1</version>
+        <linkSequence>42</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>39</initialStateSequence>
+      <finalStateSequence>4</finalStateSequence>
       <returnLabel></returnLabel>
       <name></name>
       <automaticLink>false</automaticLink>
@@ -1273,7 +1300,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>RNC</processId>
-        <version>27</version>
+        <version>5</version>
         <linkSequence>32</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1284,7 +1311,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>RNC</processId>
-        <version>27</version>
+        <version>5</version>
         <linkSequence>32</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
@@ -1295,7 +1322,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>RNC</processId>
-        <version>27</version>
+        <version>5</version>
         <linkSequence>32</linkSequence>
         <bendSequence>3</bendSequence>
       </processLinkBendPK>
@@ -1306,7 +1333,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>RNC</processId>
-        <version>27</version>
+        <version>5</version>
         <linkSequence>32</linkSequence>
         <bendSequence>4</bendSequence>
       </processLinkBendPK>
@@ -1317,7 +1344,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>RNC</processId>
-        <version>27</version>
+        <version>5</version>
         <linkSequence>33</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1328,7 +1355,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>RNC</processId>
-        <version>27</version>
+        <version>5</version>
         <linkSequence>33</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
@@ -1339,7 +1366,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>RNC</processId>
-        <version>27</version>
+        <version>5</version>
         <linkSequence>33</linkSequence>
         <bendSequence>3</bendSequence>
       </processLinkBendPK>
@@ -1350,7 +1377,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>RNC</processId>
-        <version>27</version>
+        <version>5</version>
         <linkSequence>37</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1361,7 +1388,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>RNC</processId>
-        <version>27</version>
+        <version>5</version>
         <linkSequence>38</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1372,12 +1399,34 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>RNC</processId>
-        <version>27</version>
+        <version>5</version>
         <linkSequence>38</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
       <positionX>717</positionX>
       <positionY>192</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>RNC</processId>
+        <version>5</version>
+        <linkSequence>41</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>107</positionX>
+      <positionY>58</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>RNC</processId>
+        <version>5</version>
+        <linkSequence>42</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>103</positionX>
+      <positionY>197</positionY>
     </ProcessLinkBend>
   </list>
   <list>
@@ -1385,7 +1434,7 @@
       <processStateTriggerPK>
         <companyId>1</companyId>
         <processId>RNC</processId>
-        <version>27</version>
+        <version>5</version>
         <stateSequence>10</stateSequence>
         <triggerSequence>0</triggerSequence>
       </processStateTriggerPK>
@@ -1393,13 +1442,13 @@
       <type>3</type>
       <value>Fluxo de não conformidade.intermediateconditional10.js</value>
       <timeTrigger>0:0:0</timeTrigger>
-      <frequencia>01</frequencia>
+      <frequencia>04</frequencia>
     </ProcessStateTrigger>
     <ProcessStateTrigger>
       <processStateTriggerPK>
         <companyId>1</companyId>
         <processId>RNC</processId>
-        <version>27</version>
+        <version>5</version>
         <stateSequence>16</stateSequence>
         <triggerSequence>1</triggerSequence>
       </processStateTriggerPK>
@@ -1407,7 +1456,7 @@
       <type>3</type>
       <value>Fluxo de não conformidade.intermediateconditional16.js</value>
       <timeTrigger>0:0:0</timeTrigger>
-      <frequencia>01</frequencia>
+      <frequencia>04</frequencia>
     </ProcessStateTrigger>
   </list>
   <list/>

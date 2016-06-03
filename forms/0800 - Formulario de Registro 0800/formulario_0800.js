@@ -19,7 +19,45 @@ $(function(ready) {
 	    language: 'pt-br',
 	    disabledDates: feriados(4),
 		daysOfWeekDisabled: [0,6]
-	});	
+	});
+	
+	//marcara para telefone
+	$('#tel_empresa').on('input', function() {
+		$(this).unmask();
+		tamanho = $(this).val().replace(/\D/g, '').length;
+		if (tamanho <= 10) $(this).mask("(99) 9999-99999");
+		else if (tamanho <= 11) $(this).mask("(99) 99999-99999");
+		else if (tamanho <= 12) $(this).mask("99 (99) 9999-99999");	
+		else $(this).mask("99 (99) 99999-9999");   
+	}).on('blur',function() {
+		var obj = $(this);
+		if (!isTelValid($(this).val())){
+			FLUIGC.message.alert({
+				message: 'Telefone inválido, insira um telefone correto',
+				title: 'Erro Telefone: ',
+				label: 'OK'
+			}, function(el, ev) {
+				setTimeout(function() {
+					obj.focus().select();
+					}, 100);
+			});
+		}
+	}).trigger('input').attr("maxlength", 18);
+	
+	$('#email_contato').on('blur',function() {
+		var obj = $(this);
+		if (!$(this).val().match(/\S+@\S+\.\S+/)){
+			FLUIGC.message.alert({
+				message: 'E-mail inválido, insira um e-mail válido',
+				title: 'Erro e-mail: ',
+				label: 'OK'
+			}, function(el, ev) {
+				setTimeout(function() {
+					obj.focus().select();
+					}, 100);
+			});
+		}
+	});
 	
 });
 
@@ -158,7 +196,7 @@ var beforeSendValidate = function(numState) {
 		if ($("#nome_contato").val() == "") message += "</br>Nome contatante";
 		if ($("#localidade").val() == "") message += "</br>Localidade";
 		if (!isTelValid($("#tel_empresa").val())) message += "</br>Informe um telefone válido";
-		if ($("#email_contato").val() == "") message += "</br>E-mail";
+		if (!$("#email_contato").val().match(/\S+@\S+\.\S+/)) message += "</br>Insira um e-mail válido";
 		if ($("#origem").val() == "") message += "</br>Origem";
 		if ($("#unid_negocio").val() == "") message += "</br>Unidade de Negócio";
 		

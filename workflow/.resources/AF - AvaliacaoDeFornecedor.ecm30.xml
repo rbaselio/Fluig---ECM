@@ -22,10 +22,10 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>Avaliação de Fornecedores</processId>
-      <version>17</version>
+      <version>2</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
-    <formId>490</formId>
+    <formId>296</formId>
     <editionMode>true</editionMode>
     <updateAttachmentsVersion>false</updateAttachmentsVersion>
     <controlsAttachmentsSecurity>false</controlsAttachmentsSecurity>
@@ -154,7 +154,7 @@
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
       <engineAllocationId>Associado</engineAllocationId>
-      <engineAllocationConfiguration>&lt;AssociatedController ConditionAssociated=&quot;AND&quot;&gt;&lt;ControlXML TypeAssociated=&quot;Papel&quot;&gt;&lt;AssignmentController&gt;&lt;Role&gt;Gerencia&lt;/Role&gt;&lt;/AssignmentController&gt;&lt;/ControlXML&gt;&lt;ControlXML TypeAssociated=&quot;Papel&quot;&gt;&lt;AssignmentController&gt;&lt;Role&gt;MemSupr&lt;/Role&gt;&lt;/AssignmentController&gt;&lt;/ControlXML&gt;&lt;/AssociatedController&gt;</engineAllocationConfiguration>
+      <engineAllocationConfiguration>&lt;AssociatedController ConditionAssociated=&quot;AND&quot;&gt;&lt;ControlXML TypeAssociated=&quot;Papel&quot;&gt;&lt;AssignmentController&gt;&lt;Role&gt;GER&lt;/Role&gt;&lt;/AssignmentController&gt;&lt;/ControlXML&gt;&lt;ControlXML TypeAssociated=&quot;Papel&quot;&gt;&lt;AssignmentController&gt;&lt;Role&gt;SUP&lt;/Role&gt;&lt;/AssignmentController&gt;&lt;/ControlXML&gt;&lt;/AssociatedController&gt;</engineAllocationConfiguration>
       <selectColleague>1</selectColleague>
       <initialState>false</initialState>
       <notifyAuthorityDelay>true</notifyAuthorityDelay>
@@ -204,7 +204,7 @@
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
       <engineAllocationId>Papel</engineAllocationId>
-      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Role&gt;MemEng&lt;/Role&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Role&gt;ENG&lt;/Role&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
       <selectColleague>1</selectColleague>
       <initialState>false</initialState>
       <notifyAuthorityDelay>true</notifyAuthorityDelay>
@@ -254,7 +254,7 @@
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
       <engineAllocationId>Papel</engineAllocationId>
-      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Role&gt;MemQual&lt;/Role&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Role&gt;SGQ&lt;/Role&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
       <selectColleague>1</selectColleague>
       <initialState>false</initialState>
       <notifyAuthorityDelay>true</notifyAuthorityDelay>
@@ -304,7 +304,7 @@
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
       <engineAllocationId>Papel</engineAllocationId>
-      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Role&gt;MemSupr&lt;/Role&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Role&gt;SUP&lt;/Role&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
       <selectColleague>1</selectColleague>
       <initialState>false</initialState>
       <notifyAuthorityDelay>true</notifyAuthorityDelay>
@@ -353,8 +353,8 @@
       <deadlineTime>0</deadlineTime>
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
-      <engineAllocationId>Papel</engineAllocationId>
-      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Role&gt;MemQual&lt;/Role&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <engineAllocationId>Pool Papel</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Role&gt;SGQ&lt;/Role&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
       <selectColleague>1</selectColleague>
       <initialState>false</initialState>
       <notifyAuthorityDelay>true</notifyAuthorityDelay>
@@ -404,7 +404,7 @@
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
       <engineAllocationId>Papel</engineAllocationId>
-      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Role&gt;MemSupr&lt;/Role&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Role&gt;SUP&lt;/Role&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
       <selectColleague>1</selectColleague>
       <initialState>false</initialState>
       <notifyAuthorityDelay>true</notifyAuthorityDelay>
@@ -669,12 +669,12 @@
         <companyId>1</companyId>
         <processId>AF-AvaliacaoDeFornecedor</processId>
         <expressionOrder>1</expressionOrder>
-        <version>17</version>
+        <version>2</version>
         <sequence>6</sequence>
       </conditionProcessStatePK>
       <condition>(hAPI.getCardValue(&quot;rd_tipo_necessario&quot;) == &quot;sim&quot;)</condition>
       <destinationSequenceId>7</destinationSequenceId>
-      <engineAllocationConfiguration>&lt;AssociatedController ConditionAssociated=&quot;AND&quot;&gt;&lt;ControlXML TypeAssociated=&quot;Papel&quot;&gt;&lt;AssignmentController&gt;&lt;Role&gt;Gerencia&lt;/Role&gt;&lt;/AssignmentController&gt;&lt;/ControlXML&gt;&lt;ControlXML TypeAssociated=&quot;Papel&quot;&gt;&lt;AssignmentController&gt;&lt;Role&gt;MemEng&lt;/Role&gt;&lt;/AssignmentController&gt;&lt;/ControlXML&gt;&lt;/AssociatedController&gt;</engineAllocationConfiguration>
+      <engineAllocationConfiguration>&lt;AssociatedController ConditionAssociated=&quot;AND&quot;&gt;&lt;ControlXML TypeAssociated=&quot;Papel&quot;&gt;&lt;AssignmentController&gt;&lt;Role&gt;GER&lt;/Role&gt;&lt;/AssignmentController&gt;&lt;/ControlXML&gt;&lt;ControlXML TypeAssociated=&quot;Papel&quot;&gt;&lt;AssignmentController&gt;&lt;Role&gt;ENG&lt;/Role&gt;&lt;/AssignmentController&gt;&lt;/ControlXML&gt;&lt;/AssociatedController&gt;</engineAllocationConfiguration>
       <engineAllocationId>Associado</engineAllocationId>
     </ConditionProcessState>
     <ConditionProcessState>
@@ -682,12 +682,12 @@
         <companyId>1</companyId>
         <processId>AF-AvaliacaoDeFornecedor</processId>
         <expressionOrder>2</expressionOrder>
-        <version>17</version>
+        <version>2</version>
         <sequence>6</sequence>
       </conditionProcessStatePK>
       <condition>(hAPI.getCardValue(&quot;rd_tipo_necessario&quot;) == &quot;sim&quot;)</condition>
       <destinationSequenceId>9</destinationSequenceId>
-      <engineAllocationConfiguration>&lt;AssociatedController ConditionAssociated=&quot;AND&quot;&gt;&lt;ControlXML TypeAssociated=&quot;Papel&quot;&gt;&lt;AssignmentController&gt;&lt;Role&gt;Gerencia&lt;/Role&gt;&lt;/AssignmentController&gt;&lt;/ControlXML&gt;&lt;ControlXML TypeAssociated=&quot;Papel&quot;&gt;&lt;AssignmentController&gt;&lt;Role&gt;MemSupr&lt;/Role&gt;&lt;/AssignmentController&gt;&lt;/ControlXML&gt;&lt;/AssociatedController&gt;</engineAllocationConfiguration>
+      <engineAllocationConfiguration>&lt;AssociatedController ConditionAssociated=&quot;AND&quot;&gt;&lt;ControlXML TypeAssociated=&quot;Papel&quot;&gt;&lt;AssignmentController&gt;&lt;Role&gt;GER&lt;/Role&gt;&lt;/AssignmentController&gt;&lt;/ControlXML&gt;&lt;ControlXML TypeAssociated=&quot;Papel&quot;&gt;&lt;AssignmentController&gt;&lt;Role&gt;SUP&lt;/Role&gt;&lt;/AssignmentController&gt;&lt;/ControlXML&gt;&lt;/AssociatedController&gt;</engineAllocationConfiguration>
       <engineAllocationId>Associado</engineAllocationId>
     </ConditionProcessState>
     <ConditionProcessState>
@@ -695,12 +695,12 @@
         <companyId>1</companyId>
         <processId>AF-AvaliacaoDeFornecedor</processId>
         <expressionOrder>3</expressionOrder>
-        <version>17</version>
+        <version>2</version>
         <sequence>6</sequence>
       </conditionProcessStatePK>
       <condition>(hAPI.getCardValue(&quot;rd_tipo_necessario&quot;) == &quot;sim&quot;)</condition>
       <destinationSequenceId>8</destinationSequenceId>
-      <engineAllocationConfiguration>&lt;AssociatedController ConditionAssociated=&quot;AND&quot;&gt;&lt;ControlXML TypeAssociated=&quot;Papel&quot;&gt;&lt;AssignmentController&gt;&lt;Role&gt;Gerencia&lt;/Role&gt;&lt;/AssignmentController&gt;&lt;/ControlXML&gt;&lt;ControlXML TypeAssociated=&quot;Papel&quot;&gt;&lt;AssignmentController&gt;&lt;Role&gt;MemQual&lt;/Role&gt;&lt;/AssignmentController&gt;&lt;/ControlXML&gt;&lt;/AssociatedController&gt;</engineAllocationConfiguration>
+      <engineAllocationConfiguration>&lt;AssociatedController ConditionAssociated=&quot;AND&quot;&gt;&lt;ControlXML TypeAssociated=&quot;Papel&quot;&gt;&lt;AssignmentController&gt;&lt;Role&gt;GER&lt;/Role&gt;&lt;/AssignmentController&gt;&lt;/ControlXML&gt;&lt;ControlXML TypeAssociated=&quot;Papel&quot;&gt;&lt;AssignmentController&gt;&lt;Role&gt;SGQ&lt;/Role&gt;&lt;/AssignmentController&gt;&lt;/ControlXML&gt;&lt;/AssociatedController&gt;</engineAllocationConfiguration>
       <engineAllocationId>Associado</engineAllocationId>
     </ConditionProcessState>
     <ConditionProcessState>
@@ -708,12 +708,12 @@
         <companyId>1</companyId>
         <processId>AF-AvaliacaoDeFornecedor</processId>
         <expressionOrder>1</expressionOrder>
-        <version>17</version>
+        <version>2</version>
         <sequence>31</sequence>
       </conditionProcessStatePK>
       <condition>true</condition>
       <destinationSequenceId>18</destinationSequenceId>
-      <engineAllocationConfiguration>&lt;AssociatedController ConditionAssociated=&quot;AND&quot;&gt;&lt;ControlXML TypeAssociated=&quot;Papel&quot;&gt;&lt;AssignmentController&gt;&lt;Role&gt;Gerencia&lt;/Role&gt;&lt;/AssignmentController&gt;&lt;/ControlXML&gt;&lt;ControlXML TypeAssociated=&quot;Papel&quot;&gt;&lt;AssignmentController&gt;&lt;Role&gt;MemQual&lt;/Role&gt;&lt;/AssignmentController&gt;&lt;/ControlXML&gt;&lt;/AssociatedController&gt;</engineAllocationConfiguration>
+      <engineAllocationConfiguration>&lt;AssociatedController ConditionAssociated=&quot;AND&quot;&gt;&lt;ControlXML TypeAssociated=&quot;Papel&quot;&gt;&lt;AssignmentController&gt;&lt;Role&gt;GER&lt;/Role&gt;&lt;/AssignmentController&gt;&lt;/ControlXML&gt;&lt;ControlXML TypeAssociated=&quot;Papel&quot;&gt;&lt;AssignmentController&gt;&lt;Role&gt;SGQ&lt;/Role&gt;&lt;/AssignmentController&gt;&lt;/ControlXML&gt;&lt;/AssociatedController&gt;</engineAllocationConfiguration>
       <engineAllocationId>Associado</engineAllocationId>
     </ConditionProcessState>
     <ConditionProcessState>
@@ -721,12 +721,12 @@
         <companyId>1</companyId>
         <processId>AF-AvaliacaoDeFornecedor</processId>
         <expressionOrder>2</expressionOrder>
-        <version>17</version>
+        <version>2</version>
         <sequence>31</sequence>
       </conditionProcessStatePK>
       <condition>true</condition>
       <destinationSequenceId>19</destinationSequenceId>
-      <engineAllocationConfiguration>&lt;AssociatedController ConditionAssociated=&quot;AND&quot;&gt;&lt;ControlXML TypeAssociated=&quot;Papel&quot;&gt;&lt;AssignmentController&gt;&lt;Role&gt;Gerencia&lt;/Role&gt;&lt;/AssignmentController&gt;&lt;/ControlXML&gt;&lt;ControlXML TypeAssociated=&quot;Papel&quot;&gt;&lt;AssignmentController&gt;&lt;Role&gt;MemSupr&lt;/Role&gt;&lt;/AssignmentController&gt;&lt;/ControlXML&gt;&lt;/AssociatedController&gt;</engineAllocationConfiguration>
+      <engineAllocationConfiguration>&lt;AssociatedController ConditionAssociated=&quot;AND&quot;&gt;&lt;ControlXML TypeAssociated=&quot;Papel&quot;&gt;&lt;AssignmentController&gt;&lt;Role&gt;GER&lt;/Role&gt;&lt;/AssignmentController&gt;&lt;/ControlXML&gt;&lt;ControlXML TypeAssociated=&quot;Papel&quot;&gt;&lt;AssignmentController&gt;&lt;Role&gt;SUP&lt;/Role&gt;&lt;/AssignmentController&gt;&lt;/ControlXML&gt;&lt;/AssociatedController&gt;</engineAllocationConfiguration>
       <engineAllocationId>Associado</engineAllocationId>
     </ConditionProcessState>
     <ConditionProcessState>
@@ -734,7 +734,7 @@
         <companyId>1</companyId>
         <processId>AF-AvaliacaoDeFornecedor</processId>
         <expressionOrder>1</expressionOrder>
-        <version>17</version>
+        <version>2</version>
         <sequence>40</sequence>
       </conditionProcessStatePK>
       <condition>(hAPI.getCardValue(&quot;rd_tipo_necessario&quot;) == &quot;sim&quot;)</condition>
@@ -745,7 +745,7 @@
         <companyId>1</companyId>
         <processId>AF-AvaliacaoDeFornecedor</processId>
         <expressionOrder>2</expressionOrder>
-        <version>17</version>
+        <version>2</version>
         <sequence>40</sequence>
       </conditionProcessStatePK>
       <condition>(hAPI.getCardValue(&quot;rd_tipo_necessario&quot;) == &quot;nao&quot;)</condition>
@@ -1071,7 +1071,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>AF-AvaliacaoDeFornecedor</processId>
-        <version>17</version>
+        <version>2</version>
         <linkSequence>36</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1082,7 +1082,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>AF-AvaliacaoDeFornecedor</processId>
-        <version>17</version>
+        <version>2</version>
         <linkSequence>36</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
@@ -1093,7 +1093,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>AF-AvaliacaoDeFornecedor</processId>
-        <version>17</version>
+        <version>2</version>
         <linkSequence>36</linkSequence>
         <bendSequence>3</bendSequence>
       </processLinkBendPK>
@@ -1104,7 +1104,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>AF-AvaliacaoDeFornecedor</processId>
-        <version>17</version>
+        <version>2</version>
         <linkSequence>36</linkSequence>
         <bendSequence>4</bendSequence>
       </processLinkBendPK>
@@ -1115,7 +1115,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>AF-AvaliacaoDeFornecedor</processId>
-        <version>17</version>
+        <version>2</version>
         <linkSequence>43</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1126,7 +1126,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>AF-AvaliacaoDeFornecedor</processId>
-        <version>17</version>
+        <version>2</version>
         <linkSequence>43</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
@@ -1137,7 +1137,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>AF-AvaliacaoDeFornecedor</processId>
-        <version>17</version>
+        <version>2</version>
         <linkSequence>43</linkSequence>
         <bendSequence>3</bendSequence>
       </processLinkBendPK>

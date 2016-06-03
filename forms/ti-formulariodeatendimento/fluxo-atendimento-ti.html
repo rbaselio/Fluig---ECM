@@ -14,7 +14,7 @@
 <div class="fluig-style-guide">
 		<form name="form" role="form">
 			<div class="row">
-				<table style="width:97% border:0; align:center; cellpadding:0; cellspacing:0" class="tabelaGeral">
+				<table style="width:98% border:0; align:center; cellpadding:0; cellspacing:0" class="tabelaGeral">
 					<tbody>
 						<tr>
 							<td rowspan="3" width="20%"><img src="/resources/logo_casp/logocasp.gif" width="204" height="79"></td>
@@ -79,16 +79,22 @@
 							</div>
 						</div>
 						<div class="col-xs-3">
-							<label for="cod_prod">Criticidade da Solicitação:</label>
-							<input type="hidden" name="prazo" id="prazo" />
-							<select name="criticidade" id="criticidade" dataset="criticidade" datasetkey="Prazo" datasetvalue="Criticidade" addBlankLine="true" class="form-control"></select>
+							<label for="criticidade">Criticidade da Solicitação:</label>
+							<div class="input-group">
+								<input type="text" name="criticidade" id="criticidade" class="form-control"  readonly="readonly"/>
+								<input type="hidden" name="prazo" id="prazo" />
+								<span class="input-group-addon fs-cursor-pointer" onclick='zoomCriticidade()' id="zoomCriticidade">
+									<span class="fluigicon fluigicon-user-search"></span>
+								</span>
+							</div>
+							
 						</div>
 					</div>
 					<br/>
 					<div class="row">
 						<div class="col-xs-12">
 							<label for="processo">Descri&ccedil;&atilde;o do Chamado:</label>
-							<textarea name="desc_chamado" id="desc_chamado" rows="3" class="form-control" placeholder="Informe a descri&ccedil;&atilde;o do atendimento!"></textarea>
+							<textarea name="desc_chamado" id="desc_chamado" rows="3" class="form-control" placeholder="Para liberar este campo, informe o tipo do chamado!"></textarea>
 						</div>
 					</div>
 				</div>
@@ -171,7 +177,7 @@
 											</div>
 											<div class="col-xs-9">
 												<label for="desc_interacao">Descrição:</label>
-												<textarea name="desc_aceite" id="desc_aceite" rows="4" class="form-control" placeholder="Informe a atendimento recebido!"></textarea>
+												<textarea name="desc_aceite" id="desc_aceite" rows="4" class="form-control" placeholder="Informe o atendimento recebido!"></textarea>
 											</div>
 										</div>
 									</td>									

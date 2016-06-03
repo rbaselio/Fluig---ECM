@@ -1,5 +1,4 @@
 function afterStateEntry(sequenceId) {
-	var debug = true;
 	
 	log.info("----------------------AFTER STATE ENTRY-------------------------------");
 
@@ -61,4 +60,6 @@ function afterStateEntry(sequenceId) {
 		log.info("---------------------- FIM PRAZO DE ATENDIMENTO -----------------------------");
 	}
 	log.info("----------------------FIM AFTER STATE ENTRY-------------------------------");
+	
+	
 }
