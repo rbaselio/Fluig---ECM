@@ -23,7 +23,7 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>Atividades RNC</processId>
-      <version>1</version>
+      <version>2</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
     <formId>297</formId>
@@ -369,7 +369,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Sub-RNC</processId>
-        <version>1</version>
+        <version>2</version>
         <linkSequence>11</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -380,7 +380,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Sub-RNC</processId>
-        <version>1</version>
+        <version>2</version>
         <linkSequence>12</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>

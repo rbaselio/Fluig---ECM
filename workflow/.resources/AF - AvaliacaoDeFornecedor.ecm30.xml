@@ -22,7 +22,7 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>Avaliação de Fornecedores</processId>
-      <version>2</version>
+      <version>1</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
     <formId>296</formId>
@@ -669,7 +669,7 @@
         <companyId>1</companyId>
         <processId>AF-AvaliacaoDeFornecedor</processId>
         <expressionOrder>1</expressionOrder>
-        <version>2</version>
+        <version>1</version>
         <sequence>6</sequence>
       </conditionProcessStatePK>
       <condition>(hAPI.getCardValue(&quot;rd_tipo_necessario&quot;) == &quot;sim&quot;)</condition>
@@ -682,7 +682,7 @@
         <companyId>1</companyId>
         <processId>AF-AvaliacaoDeFornecedor</processId>
         <expressionOrder>2</expressionOrder>
-        <version>2</version>
+        <version>1</version>
         <sequence>6</sequence>
       </conditionProcessStatePK>
       <condition>(hAPI.getCardValue(&quot;rd_tipo_necessario&quot;) == &quot;sim&quot;)</condition>
@@ -695,7 +695,7 @@
         <companyId>1</companyId>
         <processId>AF-AvaliacaoDeFornecedor</processId>
         <expressionOrder>3</expressionOrder>
-        <version>2</version>
+        <version>1</version>
         <sequence>6</sequence>
       </conditionProcessStatePK>
       <condition>(hAPI.getCardValue(&quot;rd_tipo_necessario&quot;) == &quot;sim&quot;)</condition>
@@ -708,7 +708,7 @@
         <companyId>1</companyId>
         <processId>AF-AvaliacaoDeFornecedor</processId>
         <expressionOrder>1</expressionOrder>
-        <version>2</version>
+        <version>1</version>
         <sequence>31</sequence>
       </conditionProcessStatePK>
       <condition>true</condition>
@@ -721,7 +721,7 @@
         <companyId>1</companyId>
         <processId>AF-AvaliacaoDeFornecedor</processId>
         <expressionOrder>2</expressionOrder>
-        <version>2</version>
+        <version>1</version>
         <sequence>31</sequence>
       </conditionProcessStatePK>
       <condition>true</condition>
@@ -734,7 +734,7 @@
         <companyId>1</companyId>
         <processId>AF-AvaliacaoDeFornecedor</processId>
         <expressionOrder>1</expressionOrder>
-        <version>2</version>
+        <version>1</version>
         <sequence>40</sequence>
       </conditionProcessStatePK>
       <condition>(hAPI.getCardValue(&quot;rd_tipo_necessario&quot;) == &quot;sim&quot;)</condition>
@@ -745,7 +745,7 @@
         <companyId>1</companyId>
         <processId>AF-AvaliacaoDeFornecedor</processId>
         <expressionOrder>2</expressionOrder>
-        <version>2</version>
+        <version>1</version>
         <sequence>40</sequence>
       </conditionProcessStatePK>
       <condition>(hAPI.getCardValue(&quot;rd_tipo_necessario&quot;) == &quot;nao&quot;)</condition>
@@ -1071,7 +1071,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>AF-AvaliacaoDeFornecedor</processId>
-        <version>2</version>
+        <version>1</version>
         <linkSequence>36</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1082,7 +1082,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>AF-AvaliacaoDeFornecedor</processId>
-        <version>2</version>
+        <version>1</version>
         <linkSequence>36</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
@@ -1093,7 +1093,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>AF-AvaliacaoDeFornecedor</processId>
-        <version>2</version>
+        <version>1</version>
         <linkSequence>36</linkSequence>
         <bendSequence>3</bendSequence>
       </processLinkBendPK>
@@ -1104,7 +1104,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>AF-AvaliacaoDeFornecedor</processId>
-        <version>2</version>
+        <version>1</version>
         <linkSequence>36</linkSequence>
         <bendSequence>4</bendSequence>
       </processLinkBendPK>
@@ -1115,7 +1115,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>AF-AvaliacaoDeFornecedor</processId>
-        <version>2</version>
+        <version>1</version>
         <linkSequence>43</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1126,7 +1126,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>AF-AvaliacaoDeFornecedor</processId>
-        <version>2</version>
+        <version>1</version>
         <linkSequence>43</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
@@ -1137,7 +1137,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>AF-AvaliacaoDeFornecedor</processId>
-        <version>2</version>
+        <version>1</version>
         <linkSequence>43</linkSequence>
         <bendSequence>3</bendSequence>
       </processLinkBendPK>

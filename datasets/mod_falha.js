@@ -15,7 +15,7 @@ function createDataset(fields, constraints, sortFields) {
 	    newDataset.addRow(new Array('Entrega fora do prazo'));
 	    newDataset.addRow(new Array('Envio incorreto'));
 	    newDataset.addRow(new Array('Erro de estrutura'));
-	    newDataset.addRow(new Array('Erro de estrutura'));
+	    newDataset.addRow(new Array('Erro no Fornecedor'));
 	    newDataset.addRow(new Array('Erro de projeto'));
 	    newDataset.addRow(new Array('Erro manuais / esquemas elétricos'));
 	    newDataset.addRow(new Array('Falha de identificação / separação de materiais'));

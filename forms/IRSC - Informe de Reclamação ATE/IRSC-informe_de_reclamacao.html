@@ -23,7 +23,7 @@
 							<td rowspan="3"><div align="center" dir="ltr">
 									<h2><b>Informe de Reclamação / Sugestão do Cliente</b></h2>
 								</div></td>
-							<td align="right"><label for="chamado_num">N&uacute;mero RNC:&nbsp;&nbsp;&nbsp;&nbsp;</label></td>
+							<td align="right"><label for="chamado_num">N&uacute;mero IRSC:&nbsp;&nbsp;&nbsp;&nbsp;</label></td>
 							<td width="15%"><input type="text" name="num_processo" id="num_processo" class="form-control" readonly="readonly" /></td>
 						</tr>
 						<tr>
@@ -46,13 +46,17 @@
 				</div>
 				<div class="panel-body">
 					<div class="row">
-						<div class="col-xs-8">
+						<div class="col-xs-6">
 							<label for="cliente">Cliente:</label>
 							<input class="form-control" name="cliente" id="cliente" type="text" />
 						</div>
 						<div class="col-xs-4">
 							<label for="cidade">Cidade:</label>
 							<input class="form-control" name="cidade" id="cidade" type="text"/>
+						</div>
+						<div class="col-xs-2">
+							<label for="cidade">UF:</label>
+							<input class="form-control" name="uf" id="uf" type="text"/>
 						</div>
 					</div>
 					<br/>
@@ -245,7 +249,7 @@
 				</div>
 			</div>	
 
-			<div class="panel panel-primary" id="conclusao">
+			<div class="panel panel-primary" id="detalhar">
 				<div class="panel-heading" style="background-color: blue;">
 					<h3 class="panel-title">
 						<strong><i class="fluigicon fluigicon-school-note fluigicon-sm"></i>&nbsp;Conclusão sobre o atendimento </strong>
@@ -257,20 +261,27 @@
 							<label for="rd_docto">Abrir algum documento?</label>
 							<br>							
 							<input type="radio" name="rd_docto" id="rd_docto" style="cursor: pointer" value="nao" checked="checked"/> Não
+						</div>
+						<div class="col-xs-4">
+							<label for="rd_docto">&nbsp;</label>
 							<br>
 							<input type="radio" name="rd_docto" id="rd_docto" style="cursor: pointer" value="rnc"/> RNC
 							<br>
 							<input type="radio" name="rd_docto" id="rd_docto" style="cursor: pointer" value="sap"/> SAP
-						</div>
-						<div class="col-xs-4">
-							<label for="rd_docto">&nbsp;</label>
-							<br>							
+							<br>
 							<input type="radio" name="rd_docto" id="rd_docto" style="cursor: pointer" value="smc"/> SMC
 							<br> 
-							<input type="text" class="form-control" placeholder="Numero do documento" name="nr_docto" id="nr_docto"/>
-							
+							<input type="text" class="form-control" placeholder="Numero do documento" name="nr_docto" id="nr_docto"/>							
 						</div>
 					</div>
+					<br/>
+					<div class="row">
+						<div class="col-xs-12">
+							<label for="obs_compl">Observações:</label>
+							<textarea name="obs_conclu" id="obs_conclu" rows="3" class="form-control" placeholder="Observações complementares"></textarea>
+						</div>
+					</div>
+					<br/>
 					
 					<div class="row">
 						<div class="col-xs-3">

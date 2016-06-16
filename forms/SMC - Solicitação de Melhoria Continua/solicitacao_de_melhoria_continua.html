@@ -1,0 +1,435 @@
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="/portal/resources/style-guide/css/fluig-style-guide.min.css">
+<script src="/portal/resources/js/jquery/jquery.js"></script>
+<script src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+<script src="/portal/resources/js/mustache/mustache-min.js"></script>
+<script src="/portal/resources/style-guide/js/fluig-style-guide.min.js"></script>
+<script src="/resources/casp_lib/js/utils.js"></script>
+<script type="text/javascript" src="solicitacao_de_melhoria_continua.js"></script>
+<script src="../vcXMLRPC.js"></script>
+</head>
+<body>
+	<div class="fluig-style-guide">
+		<form name="form" role="form">
+			<div class="row">
+				<table style="width: 97% border:0; align: center; cellpadding: 0; cellspacing: 0" class="tabelaGeral">
+					<tbody>
+						<tr>
+							<td rowspan="3" width="20%"><img src="/resources/logo_casp/logocasp.gif" width="204" height="79"></td>
+							<td rowspan="3"><div align="center" dir="ltr">
+									<h2>
+										<b>Solicitação de Melhoria Contínua</b>
+									</h2>
+								</div></td>
+							<td align="right"><label for="chamado_num">N&uacute;mero SMC:&nbsp;&nbsp;&nbsp;&nbsp;</label></td>
+							<td width="15%"><input type="text" name="num_processo" id="num_processo" class="form-control" readonly="readonly" /></td>
+						</tr>
+						<tr>
+							<td align=right><label for="data_sol">Data:&nbsp;&nbsp;&nbsp;&nbsp;</label></td>
+							<td width="15%"><input type="text" name="data_sol" id="data_sol" class="form-control" size="15" readonly="readonly" /></td>
+						</tr>
+						<tr>
+							<td align="right"><label for="hora_sol">Hora:&nbsp;&nbsp;&nbsp;&nbsp;</label></td>
+							<td width="15%"><input type="text" name="hora_sol" id="hora_sol" class="form-control" readonly="readonly" /></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<br/>
+			<div class="panel panel-primary" id="emissao">
+				<div class="panel-heading" style="background-color: blue;">
+					<h3 class="panel-title">
+						<strong><i class="fluigicon fluigicon-file-default fluigicon-sm"></i>&nbsp; Emissão da Solicitação de Melhoria</strong>
+					</h3>
+				</div>
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-xs-4">
+						<label for="produto">Produto ou Processo a ser melhorado:</label>
+							<input class="form-control" name="produto" id="produto" type="text" />
+							<br/>
+							<label for="origem">Origem:</label>
+							<input type="zoom"  id="origem" name="origem" data-zoom="{'displayKey':'Origem',
+																					    'datasetId':'cadastro_origens_smc',
+																					    'fields':[{
+																					          	'field':'Origem',
+																					          	'label':'Origem',
+																					          	'search':'true'
+																					          }]}"  />
+						</div>						
+						<div class="col-xs-4">
+							<label for="tipo">Tipo de Melhoria:</label>
+							<br/>							
+							<input type="radio" name="tipo" id="tipo" style="cursor: pointer" value="custo" checked="checked"/> Redução de custo
+							<br/>
+							<input type="radio" name="tipo" id="tipo" style="cursor: pointer" value="eficiencia"/> Eficiência do produto
+							<br/>
+							<input type="radio" name="tipo" id="tipo" style="cursor: pointer" value="montagem"/> Melhorar / otimizar montagem
+							<br/>							
+							<input type="radio" name="tipo" id="tipo" style="cursor: pointer" value="produto"/> Melhorar / otimizar uso do produto
+							<br/>
+							<input type="radio" name="tipo" id="tipo" style="cursor: pointer" value="treinamento"/> Redução de tempo de operação
+						</div>
+						<div class="col-xs-4">
+							<div class="form-group">
+								<label for="tipo">&nbsp;</label>
+								<br/>
+								<input type="radio" name="tipo" id="tipo" style="cursor: pointer" value="layout"/> Organização do Local de trabalho / layout
+								<br/>
+								<input type="radio" name="tipo" id="tipo" style="cursor: pointer" value="acidentes"/> Prevenção de acidentes
+								<br/>
+								<input type="radio" name="tipo" id="tipo" style="cursor: pointer" value="outros"/> Outros
+								<input type="text" class="form-control" placeholder="Detalhar outros" name="det_outros" id="det_outros"/>
+							</div>
+						</div>						
+					</div>
+					<br/>
+					<div class="row">
+						<div class="col-xs-12">
+							<label for="sitAtual">Descreva a situação atual:</label>
+							<textarea name="sitAtual" id="sitAtual" rows="3" class="form-control"></textarea>
+						</div>
+					</div>
+					<br/>
+					<div class="row">
+						<div class="col-xs-12">
+							<label for="sitPretendida">Descreva a melhoria pretendia e os possiveis ganhos:</label>
+							<textarea name="sitPretendida" id="sitPretendida" rows="3" class="form-control"></textarea>
+						</div>
+					</div>
+					<br/>
+					<div class="row">
+						<div class="col-xs-3">
+							<label for="matricula_emissor">Resp. Emissão:</label>
+							<input type="text" class="form-control" placeholder="Matr&iacute;cula" name="matricula_emissor" id="matricula_emissor" readonly="readonly" />
+						</div>
+						<div class="col-xs-6">
+							<label for="matricula_emissor">&nbsp;</label>
+							<input type="text" class="form-control" placeholder="Responsavel" name="user_emissor" id="user_emissor" readonly="readonly" />
+						</div>
+						<div class="col-xs-3">
+							<label for="data_emissor">Data:</label>
+							<input type="text" class="form-control" placeholder="Data" name="data_emissor" id="data_emissor" readonly="readonly" />
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="panel panel-primary" id="preAnalise">
+				<div class="panel-heading" style="background-color: blue;">
+					<h3 class="panel-title">
+						<strong><i class="fluigicon fluigicon-file-default fluigicon-sm"></i>&nbsp; Pré análise da solicitação </strong>
+					</h3>
+				</div>
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-xs-3">
+							<label for="decisao">Decisão:</label> 
+							<select class="form-control" name="decisao" id="decisao">
+								<option value="0" selected="selected"></option>
+								<option value="Devolver">Devolver</option>
+								<option value="Prosseguir">Prosseguir</option>								
+							</select>
+						</div>
+						<div class="col-xs-4">
+							<label for="orgao">Orgão:</label> 
+							<select name="orgao" id="orgao" class="form-control">
+								<option value="0" selected="selected"></option>
+								<option value="ADM">ADM</option>
+								<option value="P&amp;D INC">P&amp;D INC</option>
+								<option value="P&amp;D ARM">P&amp;D ARM</option>
+								<option value="P&amp;D AVI">P&amp;D AVI</option>
+								<option value="P&amp;D MAT">P&amp;D MAT</option>
+								<option value="COM INC">COM INC</option>
+								<option value="COM ARM">COM ARM</option>
+								<option value="COM AVI">COM AVI</option>
+								<option value="EXPORTACAO">EXPORTAÇÃO</option>
+								<option value="MANUFATURA">MANUFATURA</option>
+								<option value="LOG INC">LOG INC</option>
+								<option value="LOG ARM">LOG ARM</option>
+								<option value="LOG AVI">LOG AVI</option>
+								<option value="SUPRIMENTOS">SUPRIMENTOS</option>
+								<option value="ATE INC">ATE INC</option>
+								<option value="ATE ARM">ATE ARM</option>
+								<option value="ATE AVI">ATE AVI</option>
+								<option value="GRE RH">GRE RH</option>
+								<option value="GRE INFO">GRE INFO</option>
+								<option value="GRE MANUTENCAO">GRE MANUTENçãO</option>
+								<option value="MAM QUALIDADE">MAM QUALIDADE</option>
+							</select>
+						</div>
+						<div class="col-xs-5">
+							<label for="retrabalho">Responsável:</label>
+							<input type="hidden" name="matricula_preAnal" id="matricula_preAnal" />
+							<input type="zoom"  id="responsavel_preAnal" name="responsavel_preAnal" data-zoom="{'displayKey':'colleagueName',
+																					    'datasetId':'colleague',
+																					    'filterValues': 'active,true',
+																					    'fields':[{
+																					       		'field':'colleagueId',
+																					       		'label':'ID'
+																					        	},{
+																					          	'field':'colleagueName',
+																					          	'label':'Nome',
+																					          	'standard':'true',
+																					          	'search':'true'
+																					          	},{
+																					          	'field':'login',
+																					          	'label':'Login',
+																					          	'search':'true'
+																					          }]}"  />
+						</div>						
+					</div>
+					<br/>
+					<div class="row">
+						<div class="col-xs-12">
+							<label for="obser_preAnal">Observações:</label>
+							<textarea name="obser_preAnal" id="obser_preAnal" class="form-control" rows="3"></textarea>
+						</div>
+					</div>
+					<br/>
+					<div class="row">
+						<div class="col-xs-3">
+							<label for="mat_preAnal">Resp. Pré Analise:</label>
+							<input type="text" class="form-control" placeholder="Matr&iacute;cula" name="mat_preAnal" id="mat_preAnal" readonly="readonly" />
+						</div>
+						<div class="col-xs-6">
+							<label for="resp_preAnal">&nbsp;</label>
+							<input type="text" class="form-control" placeholder="Responsavel" name="resp_preAnal" id="resp_preAnal" readonly="readonly" />
+						</div>
+						<div class="col-xs-3">
+							<label for="data_preAnal">Data:</label>
+							<input type="text" class="form-control" placeholder="Data" name="data_preAnal" id="data_preAnal" readonly="readonly" />
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="panel panel-primary" id="analise">
+				<div class="panel-heading" style="background-color: blue;">
+					<h3 class="panel-title">
+						<strong><i class="fluigicon fluigicon-file-default fluigicon-sm"></i>&nbsp; Análise crítica da solicitação </strong>
+					</h3>
+				</div>
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-xs-4">
+							<label for="decisao">Decisão da análise:</label> 
+							<select class="form-control" name="decisao_anal" id="decisao_anal">
+								<option value="0" selected="selected"></option>
+								<option value="Devolver">Devolver</option>
+								<option value="Prosseguir">Prosseguir</option>
+								<option value="Encerrar">Encerrar</option>								
+							</select>
+						</div>
+						<div class="col-xs-3">							
+							<label for="urgencia">Urgência:</label>
+							<br/>
+							<input type="radio" name="urgencia" id="urgencia" style="cursor: pointer" value="7" checked="checked"/> Imediato (Até 7 dias)
+							<br/>
+							<input type="radio" name="urgencia" id="urgencia" style="cursor: pointer" value="90"/> Médio prazo (Até 90 dias)							 							
+						</div>	
+						<div class="col-xs-3">							
+							<label for="urgencia">&nbsp;</label>
+							<br/>   
+							<input type="radio" name="urgencia" id="urgencia" style="cursor: pointer" value="30"/> Curto prazo (Até 30 dias) 
+							<br/>   
+							<input type="radio" name="urgencia" id="urgencia" style="cursor: pointer" value="999"/> Longo prazo (acima de 90 dias)   							
+						</div>												
+					</div>
+					<br/>
+					<div class="row">
+						<div class="col-xs-12">
+							<label for="obser_anal">Observações:</label>
+							<textarea name="obser_anal" id="obser_anal" class="form-control" rows="3"></textarea>
+						</div>
+					</div>
+					<br/>
+					<div class="row">
+						<div class="col-xs-3">
+							<label for="mat_anal">Resp. Pré Analise:</label>
+							<input type="text" class="form-control" placeholder="Matr&iacute;cula" name="mat_anal" id="mat_anal" readonly="readonly" />
+						</div>
+						<div class="col-xs-6">
+							<label for="resp_anal">&nbsp;</label>
+							<input type="text" class="form-control" placeholder="Responsavel" name="resp_anal" id="resp_anal" readonly="readonly" />
+						</div>
+						<div class="col-xs-3">
+							<label for="data_anal">Data:</label>
+							<input type="text" class="form-control" placeholder="Data" name="data_anal" id="data_anal" readonly="readonly" />
+						</div>
+					</div>
+				</div>
+			</div>	
+					
+			<div class="panel panel-primary" id="acoes">
+				<div class="panel-heading" style="background-color: blue;">
+					<h3 class="panel-title">
+						<strong><i class="fluigicon fluigicon-parabolicsatellite fluigicon-sm"></i>&nbsp;Ações necessarias para implantação da melhoria </strong>
+					</h3>
+				</div>
+				<div class="panel-body">
+					<div class="form-field table-responsive" data-type="tabledetail" data-show-properties="" data-field-name="tabledetail">
+						<table tablename="tbatividades" cellspacing="0" id="tbatividades" noaddbutton=true class="table" customFnDelete="removeTarefa(this)">
+							<thead>
+								<tr class="tableHeadRow">
+									<th class="tableColumn">Descrição da Atividade</th>
+									<th class="tableColumn">Data de Conclusão</th>
+									<th class="tableColumn">Responsável</th>
+									<th class="tableColumn">Processo</th>
+									<th class="tableColumn">Status/Data Conclusão</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td class="col-xs-3">
+										<div class="form-group">
+											<textarea name="descAtividade_acoes" id="descAtividade_acoes" class="form-control" rows="1"></textarea>
+										</div>
+									</td>
+									<td class="col-xs-2">
+										<div class="form-group ">
+											<div class="input-group date" id="dtPickerPrazo_acoes">
+												<input type="text" name="dtprazoativ_acoes" class="form-control" readonly="readonly" />
+												<span class="input-group-addon fs-cursor-pointer"> <span class="fluigicon fluigicon-calendar"></span>
+												</span>
+											</div>
+										</div>
+									</td>
+									<td class="col-xs-3">
+										<div class="form-group">
+											<input type="hidden" name="mat_acoes" id="mat_acoes" />
+											<input type="zoom"  id="responsavel_acoes" name="responsavel_acoes" data-zoom="{'displayKey':'colleagueName',
+																					    'datasetId':'colleague',
+																					    'filterValues': 'active,true',
+																					    'fields':[{
+																					       		'field':'colleagueId',
+																					       		'label':'ID'
+																					        	},{
+																					          	'field':'colleagueName',
+																					          	'label':'Nome',
+																					          	'standard':'true',
+																					          	'search':'true'
+																					          	},{
+																					          	'field':'login',
+																					          	'label':'Login',
+																					          	'search':'true'
+																					          }]}"  />
+										</div>
+									</td>
+									<td class="col-xs-2">
+										<div class="form-group">
+											<input type="text" name="fluxo_acoes" id="fluxo_acoes" class="form-control isProcessLink" readonly="readonly" />
+										</div>
+									</td>
+									<td class="col-xs-2">
+										<div class="form-group">
+											<input type="text" name="status_acoes" id="status_acoes" class="form-control status" readonly="readonly" />
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						<div class="col-xs-12" align="right">
+							<button type="button" class="btn btn-primary" data-toggle="button" onclick="addAcoes('tbatividades')">Adicionar Atividade</button>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-3">
+							<label for="matricula_acoes">Resp. Emissão:</label>
+							<input type="text" class="form-control" placeholder="Matr&iacute;cula" name="matricula_acoes" id="matricula_acoes" readonly="readonly" />
+						</div>
+						<div class="col-xs-6">
+							<label for="resp_acoes">&nbsp;</label>
+							<input type="text" class="form-control" placeholder="Responsavel" name="resp_acoes" id="resp_acoes" readonly="readonly" />
+						</div>
+						<div class="col-xs-3">
+							<label for="data_acoes">Data:</label>
+							<input type="text" class="form-control" placeholder="Data" name="data_acoes" id="data_acoes" readonly="readonly" />
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="panel panel-primary" id="analEficacia">
+				<div class="panel-heading" style="background-color: blue;">
+					<h3 class="panel-title">
+						<strong><i class="fluigicon fluigicon-comment fluigicon-sm"></i>&nbsp;Análise da eficácia </strong>
+					</h3>
+				</div>
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-xs-3">
+							<label for="atend">Melhoria implementada conforme sugestão?</label>
+							<br>							
+							<input type="radio" name="atend" id="atend" style="cursor: pointer" value="sim" checked="checked"/> Sim
+							<input type="radio" name="atend" id="atend" style="cursor: pointer" value="nao"/> Não							
+						</div>						
+					</div>	
+					<br/>				
+					<div class="row">
+						<div class="col-xs-5">
+							<label for="desc_parecer">Observações:</label>
+							<textarea name="desc_parecer" id="desc_parecer" class="form-control" rows="3"></textarea>
+						</div>
+						<div class="col-xs-7">
+							<table tablename="tbganho" cellspacing="0" id="tbganho" noaddbutton=true class="table">
+								<thead>
+									<tr class="tableHeadRow">
+										<th class="tableColumn">Tipo</th>
+										<th class="tableColumn">Descrição</th>
+										<th class="tableColumn">Valor ou tempo</th>
+										
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td class="col-xs-3">
+											<div class="form-group">
+											<input type="zoom"  id="tipo_ganho" name="tipo_ganho" data-zoom="{'displayKey':'Ganhos',
+																					    'datasetId':'cadastro_ganhos_smc',
+																					    'fields':[{
+																					          	'field':'Ganhos',
+																					          	'label':'Ganhos',
+																					          	'search':'true'
+																					          }]}"  />
+											</div>
+										</td>
+										<td class="col-xs-6">
+											<div class="form-group">
+												<input type="text" name="desc_ganho" id="desc_ganho" class="form-control"/>
+											</div>
+										</td>
+										<td class="col-xs-3">
+											<div class="form-group">
+												<input type="text" name="val_ganho" id="val_ganho" class="form-control"/>
+											</div>
+										</td>
+										
+									</tr>
+								</tbody>
+							</table>
+							<div class="col-xs-12" align="right">
+								<button type="button" class="btn btn-primary" data-toggle="button" onclick="addGanhos('tbganho')">Adicionar ganho</button>
+							</div>							
+						</div>							
+					</div>
+					<br/>
+					<div class="row">
+						<div class="col-xs-3">
+							<label for="mat_eficacia">Resp. Parecer:</label>
+							<input type="text" class="form-control" placeholder="Matr&iacute;cula" name="mat_eficacia" id="mat_eficacia" readonly="readonly" />
+						</div>
+						<div class="col-xs-6">
+							<label for="resp_eficacia">&nbsp;</label>
+							<input type="text" class="form-control" placeholder="Responsavel" name="resp_eficacia" id="resp_eficacia" readonly="readonly" />
+						</div>
+						<div class="col-xs-3">
+							<label for="data_eficacia">Data:</label>
+							<input type="text" class="form-control" placeholder="Data" name="data_eficacia" id="data_eficacia" readonly="readonly" />
+						</div>
+					</div>
+				</div>
+			</div>			
+		</form>
+	</div>
+</body>
+</html>

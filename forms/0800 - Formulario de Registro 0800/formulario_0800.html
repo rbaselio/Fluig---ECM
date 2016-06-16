@@ -5,7 +5,7 @@
 <script src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
 <script src="/portal/resources/js/mustache/mustache-min.js"></script>
 <script src="/portal/resources/style-guide/js/fluig-style-guide.min.js"></script>
-
+<script src="/portal/resources/js/jquery.mask.min.js"></script>
 <script src="/resources/casp_lib/js/utils.js"></script>
 <script type="text/javascript" src="formulario_0800.js"></script>
 
@@ -63,25 +63,29 @@
 					</div>
 					<br/>
 					<div class="row">
-						<div class="col-xs-7">
+						<div class="col-xs-5">
 							<label for="nomeFonec">Empresa contatante:</label>
 							<input class="form-control" name="nome_empresa" id="nome_empresa" type="text" placeholder="Empresa do Contato"/>
 						</div>
-						<div class="col-xs-5">
+						<div class="col-xs-4">
 							<label for="cnpj">Nome contatante:</label>
 							<input class="form-control" name="nome_contato" id="nome_contato" type="text" placeholder="Nome do Contato"/>
 						</div>
+						<div class="col-xs-3">
+							<label for="contato">Localidade:</label>
+							<input class="form-control" name="localidade" id="localidade" type="text" placeholder="Localidade" />
+						</div>
 					</div>
 					<br/>
-					<div class="row">
+					<div class="row">						
 						<div class="col-xs-4">
-							<label for="contato">Localidade:</label>
-							<input class="form-control" name="localidade" id="localidade" type="text" />
-						</div>
+							<label for="tel_empresa">Telefone:</label>
+							<input class="form-control" name="tel_empresa" id="tel_empresa" type="text" placeholder="Telefone"/>
+						</div>	
 						<div class="col-xs-4">
-							<label for="telefone">Telefone / Celular:</label>
-							<input class="form-control" name="tel_empresa" id="tel_empresa" type="text"/>
-						</div>						
+							<label for="cel_empresa">Celular:</label>
+							<input class="form-control" name="cel_empresa" id="cel_empresa" type="text" placeholder="Celular"/>
+						</div>					
 						<div class="col-xs-4">
 							<label for="local">E-mail:</label>
 							<input class="form-control" name="email_contato" id="email_contato" type="text" placeholder="E-mail do Contato"/>

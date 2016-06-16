@@ -80,124 +80,98 @@ function setReclassificacao(selectedItem) {
 }
 
 // prencimento e ativação dos campos
-function ativaPreencheCampos(modeView, numState, WKNumProces, documentId) {
+function ativaPreencheCampos(modeView, numState, matricula, WKNumProces, documentId) {
 	blockAll();
 	if (modeView == "ADD" || modeView == "MOD") {	
 		
-		var getUsuario = $.ajax({
-			type : 'GET',
-			dataType : 'json',
-			contentType : "application/json",
-			url : '/api/public/social/user/logged/v2',
-			async : true
-		});
+		var filter = new Object();
+		filter["colleaguePK.colleagueId"] = matricula;
+		var colaborador = getDatasetValues('colleague', filter);
 		
+		var usuario = colaborador[0].colleagueName;
+		var ramal = colaborador[0].extensionNr;
 		var data = getData();
-		var hora = getHora();			
+		var hora = getHora();		
 
-		if (numState == 0 || numState == 1) {			
-			getUsuario.done(function(response) {
-				$('#matricula_user').val(response.content.userCode);
-				$('#solicitante').val(response.content.name);
-				$('#ramal').val(response.content.userData.UserRamal);					
-				
-				$.ajax({
-					type : 'GET',
-					dataType : 'json',
-					contentType : "application/json",
-					url : '/api/public/2.0/groups/containsUser/TI/' +  response.content.userCode,
-					async : true
-				}).done(function(response) {
-					if (! response.content){
-						$('#btZoomColab').css('pointer-events', 'none');
-					}
-				});	
-			});	
+		if (numState == 0 || numState == 1) {	
+			showElemento($("#emissao"));			
+			
+			$('#matricula_user').attr("readOnly", true).val(matricula);
+			$('#solicitante').attr("readOnly", true).val(usuario);
+			$('#ramal').val(ramal);					
 			
 			$('#num_processo').val(WKNumProces);
 			$('#data_sol').val(data);
-			$('#hora_sol').val(hora);			
-			showElemento($("#emissao"));			
+			$('#hora_sol').val(hora);	
+			
+			$('#classe').attr("readOnly", true);
+			$('#tipo').attr("readOnly", true);
+			$('#criticidade').attr("readOnly", true);
+			
+			var filterGroup = new Object();
+			filterGroup["colleagueGroupPK.groupId"] = 'TI';
+			filterGroup["colleagueGroupPK.colleagueId"] = matricula;
+			var grupos = getDatasetValues('colleagueGroup', filterGroup);
+			if (!grupos[0]) {	
+				$('#btZoomColab').css('pointer-events', 'none');				
+			};
 		}
 		
-		if (numState == 2) {	
-			getUsuario.done(function(response) {
-				$('#matricula_atend').val(response.content.userCode);
-				$('#atendente').val(response.content.name);
-				$('#ramal_atend').val(response.content.userData.UserRamal);				
-			});	
+		if (numState == 2 || numState == 6 ) {	
 			
 			
-			if ($('#tb_interacao tr').last().find("textarea[id^='desc_interacao_']").val() == ""){
-				 $('#tb_interacao tr').last().remove();
-			}			
-			
-			if ($('#tb_interacao tr').last().find("textarea[id^='desc_aceite_']").val() != ""){
-				addLinha(true);
-			}
-			else{
-				addLinha(false);				
-			}
-			
+			$('#matricula_atend').val(matricula);
+			$('#atendente').val(usuario);
+			$('#ramal_atend').val(ramal);
 			
 			$('#num_processo').val(WKNumProces);
 			$('#zoomCriticidade').css('pointer-events', 'all');
-			$('#re_busca_tipo').css('pointer-events', 'all');
-			$('#ramal_atend').css('pointer-events', 'all');			
+			$('#re_busca_tipo').css('pointer-events', 'all');			
+			
+			var ultimaLinhaTabela = $('#tb_interacao tr').last();
+			
+			if (ultimaLinhaTabela.find("textarea[id^='desc_interacao_']").val() == ""){ $('#tb_interacao tr').last().remove();}			
+			
+			
+			
+			if (ultimaLinhaTabela.last().find("textarea[id^='desc_aceite_']").val() != ""){	
+				wdkAddChild('tb_interacao');
+				ultimaLinhaTabela = $('#tb_interacao tr').last();			
+			}
+			
+			ultimaLinhaTabela.find("input[id^='dt_intera']").val(getData());
+			ultimaLinhaTabela.find("input[id^='hr_intera']").val(getHora());
+			ultimaLinhaTabela.find("textarea[id^='desc_interacao']").removeAttr('readOnly');
+			
+			showElemento(ultimaLinhaTabela.find("textarea[id^='desc_interacao']"));
+					
 		}
 		
-		if (numState == 3) {			
-			$("#atendimento").css('pointer-events', 'none');			
+		if (numState == 3) {
 			var ultimaLinhaTabela = $('#tb_interacao tr').last();
 			ultimaLinhaTabela.find("input[id^='dt_aceite']").val(data);
 			ultimaLinhaTabela.find("input[id^='hr_aceite']").val(hora);
+			ultimaLinhaTabela.find("textarea[id^='desc_aceite']").removeAttr('readOnly');
 			showElemento(ultimaLinhaTabela.find("textarea[id^='desc_aceite']"));
-		}		
+		}			
 		
-		if (numState == 6) {
-			if ($('#tb_interacao tr').last().find("textarea[id^='desc_aceite_']").val() != ""){
-				addLinha(true);
-			}
-			else{
-				addLinha(false);				
-			}
-		}		
-		
-		if (numState == 4) {
-			$.ajax({
-				method : "POST",
-				dataType : 'json',
-				contentType : "application/json",
-				url : "/api/public/ecm/document/updateDescription",
-				data : '{"id": "' + documentId + '", "description": "Chamado - '+ WKNumProces + '"}',
-				async : true
-			});
-			
-			getUsuario.done(function(response) {
-				$('#matricula_aceite').val(response.content.userCode);
-				$('#user_aceite').val(response.content.name);
-			});
-			$('#dt_final').val(data);
-			
-			showElemento($("#avaliacao"));			
+		if (numState == 4) {	
+			showElemento($("#avaliacao"));	
+			$('#matricula_aceite').val(matricula).attr("readOnly", true);
+			$('#user_aceite').val(usuario).attr("readOnly", true);
+			$('#dt_final').val(data).attr("readOnly", true);
+					
 		}
 	}
 }
 
-function addLinha(adicionaLinha){
-	if (adicionaLinha) wdkAddChild('tb_interacao');
-	
-	var ultimaLinhaTabela = $('#tb_interacao tr').last();
-	$("#atendimento").css('pointer-events', 'none');
-	
-	ultimaLinhaTabela.find("input[id^='dt_intera']").val(getData());
-	ultimaLinhaTabela.find("input[id^='hr_intera']").val(getHora());
-	showElemento(ultimaLinhaTabela.find("textarea[id^='desc_interacao']"));
-}
 
 function showElemento(elemento){
+	
 	elemento.show();
 	elemento.css('pointer-events', 'all');
+	elemento.find('input[type=text]').removeAttr('readOnly');
+	elemento.find('textarea').removeAttr('readOnly');
 	
 	setTimeout(function () {
 		var offset = elemento.offset().top * 0.50; 
@@ -209,13 +183,21 @@ function showElemento(elemento){
 function blockAll() {	
 	$('.panel').each(function(i) {
 		if ($(this).attr('id') != null) {
+			
 			$(this).hide();
-			$(this).css('pointer-events', 'none');
-			$(this).find('input[type=text]').each(function(){
-				if ($(this).val() != "") {
-					$(this).closest('.panel').show();
-				}
-			});		
+			$(this).css('pointer-events', 'none'); 
+			$(this).find('input[type=text]')
+					.attr("readOnly", true)
+					.css('pointer-events', 'all')
+					.each(function(){
+						if ($(this).val() != "") {
+							$(this).closest('.panel').show();
+						}
+			});	
+			$(this).find('textarea')
+				   .attr("readOnly", true)
+				   .css('pointer-events', 'all'); 			
+			
 		}
 	});
 }

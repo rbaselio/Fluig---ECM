@@ -23,7 +23,7 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>Atendimento Técnico da Área de TI</processId>
-      <version>24</version>
+      <version>25</version>
     </processDefinitionVersionPK>
     <versionDescription>Nova Versão.</versionDescription>
     <formId>14</formId>
@@ -370,7 +370,7 @@
         <companyId>1</companyId>
         <processId>SOL-TI</processId>
         <expressionOrder>1</expressionOrder>
-        <version>24</version>
+        <version>25</version>
         <sequence>8</sequence>
       </conditionProcessStatePK>
       <condition>(hAPI.getCardValue(&quot;responsavel&quot;) == &quot;&quot; || hAPI.getCardValue(&quot;responsavel&quot;) == &quot;root&quot;)</condition>
@@ -383,7 +383,7 @@
         <companyId>1</companyId>
         <processId>SOL-TI</processId>
         <expressionOrder>2</expressionOrder>
-        <version>24</version>
+        <version>25</version>
         <sequence>8</sequence>
       </conditionProcessStatePK>
       <condition>!(hAPI.getCardValue(&quot;responsavel&quot;) == &quot;&quot;) &amp;&amp; !(hAPI.getCardValue(&quot;responsavel&quot;) == &quot;root&quot;)</condition>
@@ -673,18 +673,7 @@
 		}&#xd;
 		log.info(&quot;---------------------- FIM PRAZO DE ATENDIMENTO -----------------------------&quot;);&#xd;
 	}&#xd;
-	log.info(&quot;----------------------FIM AFTER STATE ENTRY-------------------------------&quot;);&#xd;
-&#xd;
-	&#xd;
-	&#xd;
-	&#xd;
-	&#xd;
-	&#xd;
-	&#xd;
-	&#xd;
-	&#xd;
-	&#xd;
-	&#xd;
+	log.info(&quot;----------------------FIM AFTER STATE ENTRY-------------------------------&quot;);	&#xd;
 	&#xd;
 }</eventDescription>
     </WorkflowProcessEvent>
@@ -761,7 +750,7 @@ log.info(&quot;---------------------AFTER STATE LEAVE---------------------------
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SOL-TI</processId>
-        <version>24</version>
+        <version>25</version>
         <linkSequence>5</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -772,7 +761,7 @@ log.info(&quot;---------------------AFTER STATE LEAVE---------------------------
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SOL-TI</processId>
-        <version>24</version>
+        <version>25</version>
         <linkSequence>6</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -783,7 +772,7 @@ log.info(&quot;---------------------AFTER STATE LEAVE---------------------------
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SOL-TI</processId>
-        <version>24</version>
+        <version>25</version>
         <linkSequence>7</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>

@@ -129,21 +129,12 @@ function ativaPreencheCampos(modeView, numState, matricula, WKNumProces, documen
 			$('#user_concl').val(usuario);
 			$('#dt_concl').val(data);	
 			
-			showElemento($("#conclusao"));					
+			showElemento($("#detalhar"));					
 		}
 		
 				
 		
-		/*if (numState == 99) {
-			$.ajax({
-				method : "POST",
-				dataType : 'json',
-				contentType : "application/json",
-				url : "/api/public/ecm/document/updateDescription",
-				data : '{"id": "' + documentId + '", "description": "Chamado - '+ WKNumProces + '"}'
-			});	
-					
-		}*/
+		
 	}
 }
 
@@ -179,6 +170,7 @@ var beforeSendValidate = function(numState) {
 	if (numState == 0 || numState == 4) {	
 		if ($("#cliente").val() == "") message += "</br>Cliente";
 		if ($("#cidade").val() == "") message += "</br>Cidade";
+		if ($("#uf").val() == "") message += "</br>Estado";
 		if ($("#contato").val() == "") message += "</br>Contato";
 		if ($("#telefone").val() == "") message += "</br>Telefone";
 		if ($("#unid_negocio").val() == "") message += "</br>Unidade de Negocio";

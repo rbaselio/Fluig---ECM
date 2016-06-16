@@ -384,9 +384,8 @@ var beforeSendValidate = function(numState){
 		} else if ($("#disposocao").val() == "NCF") {
 			if ($("#fornecedor").val() == "") message += "</br>Fornecedor";
 			if ($("#responsavel_parecer").val() == "") message += "</br>Responsavel";
-		}
+		}		
 		
-		if ($("#orgao").val() == "0") message += "</br>Orgão";	
 		
 		if ($("#desc_parecer").val() == "") message += "</br>Observações";
 	}
