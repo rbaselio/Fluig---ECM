@@ -23,7 +23,7 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>SMC - Solicitacao de Melhoria Continua</processId>
-      <version>2</version>
+      <version>9</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
     <formId>998</formId>
@@ -464,7 +464,7 @@
         <companyId>1</companyId>
         <processId>SMC</processId>
         <expressionOrder>1</expressionOrder>
-        <version>2</version>
+        <version>9</version>
         <sequence>4</sequence>
       </conditionProcessStatePK>
       <condition>(hAPI.getCardValue(&quot;decisao&quot;) == &quot;Devolver&quot;)</condition>
@@ -477,7 +477,7 @@
         <companyId>1</companyId>
         <processId>SMC</processId>
         <expressionOrder>2</expressionOrder>
-        <version>2</version>
+        <version>9</version>
         <sequence>4</sequence>
       </conditionProcessStatePK>
       <condition>(hAPI.getCardValue(&quot;decisao&quot;) == &quot;Prosseguir&quot;)</condition>
@@ -490,7 +490,7 @@
         <companyId>1</companyId>
         <processId>SMC</processId>
         <expressionOrder>1</expressionOrder>
-        <version>2</version>
+        <version>9</version>
         <sequence>9</sequence>
       </conditionProcessStatePK>
       <condition>(hAPI.getCardValue(&quot;decisao_anal&quot;) == &quot;Encerrar&quot;)</condition>
@@ -501,7 +501,7 @@
         <companyId>1</companyId>
         <processId>SMC</processId>
         <expressionOrder>2</expressionOrder>
-        <version>2</version>
+        <version>9</version>
         <sequence>9</sequence>
       </conditionProcessStatePK>
       <condition>(hAPI.getCardValue(&quot;decisao_anal&quot;) == &quot;Prosseguir&quot;)</condition>
@@ -512,7 +512,7 @@
         <companyId>1</companyId>
         <processId>SMC</processId>
         <expressionOrder>3</expressionOrder>
-        <version>2</version>
+        <version>9</version>
         <sequence>9</sequence>
       </conditionProcessStatePK>
       <condition>(hAPI.getCardValue(&quot;decisao_anal&quot;) == &quot;Devolver&quot;)</condition>
@@ -525,7 +525,7 @@
         <companyId>1</companyId>
         <processId>SMC</processId>
         <expressionOrder>1</expressionOrder>
-        <version>2</version>
+        <version>9</version>
         <sequence>21</sequence>
       </conditionProcessStatePK>
       <condition>(hAPI.getCardValue(&quot;atend&quot;) == &quot;sim&quot;)</condition>
@@ -536,7 +536,7 @@
         <companyId>1</companyId>
         <processId>SMC</processId>
         <expressionOrder>2</expressionOrder>
-        <version>2</version>
+        <version>9</version>
         <sequence>21</sequence>
       </conditionProcessStatePK>
       <condition>(hAPI.getCardValue(&quot;atend&quot;) == &quot;nao&quot;)</condition>
@@ -760,77 +760,131 @@
     <WorkflowProcessEvent>
       <workflowProcessEventPK>
         <companyId>1</companyId>
+        <eventId>afterStateEntry</eventId>
+        <processId>SMC</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>function afterStateEntry(sequenceId) {&#xd;
+&#xd;
+	log.info(&quot;Entrei-------------------&quot; + sequenceId);&#xd;
+&#xd;
+	var process = getValue(&quot;WKNumProces&quot;);&#xd;
+&#xd;
+	var resposta;&#xd;
+	var row;&#xd;
+&#xd;
+	var cardData = new java.util.HashMap();&#xd;
+	cardData = hAPI.getCardData(process);&#xd;
+	var keys = cardData.keySet().toArray();&#xd;
+&#xd;
+	if (sequenceId == 14) {&#xd;
+&#xd;
+		try {&#xd;
+&#xd;
+			var cardData = new java.util.HashMap();&#xd;
+			cardData = hAPI.getCardData(process);&#xd;
+			var keys = cardData.keySet().toArray();&#xd;
+			for ( var key in keys) {&#xd;
+				var field = keys[key];&#xd;
+				if (field.indexOf(&quot;mat_acoes___&quot;) &gt; -1) {&#xd;
+&#xd;
+					row = field.replace(&quot;mat_acoes___&quot;, &quot;&quot;);&#xd;
+&#xd;
+					if (hAPI.getCardValue(&quot;fluxo_acoes___&quot; + row) == &quot;&quot;) {&#xd;
+						var userList = new java.util.ArrayList();&#xd;
+						userList.add(hAPI.getCardValue(&quot;mat_acoes___&quot; + row));&#xd;
+&#xd;
+						var hpForm = new java.util.HashMap();&#xd;
+						hpForm.put(&quot;process_pai&quot;, &quot;&quot; + process);&#xd;
+						hpForm.put(&quot;prazo_conclusao&quot;, &quot;&quot; + hAPI.getCardValue(&quot;dtprazoativ_acoes___&quot;	+ row));&#xd;
+						hpForm.put(&quot;descAtividade&quot;, &quot;&quot; + hAPI.getCardValue(&quot;descAtividade_acoes___&quot; + row));&#xd;
+						hpForm.put(&quot;responsavel&quot;, &quot;&quot; + hAPI.getCardValue(&quot;mat_acoes___&quot; + row));&#xd;
+						&#xd;
+						resposta = hAPI.startProcess(&quot;Sub-RNC&quot;, 0, userList, hAPI.getCardValue(&quot;descAtividade_acoes___&quot; + row), true, hpForm, false);&#xd;
+						hAPI.setCardValue(&quot;fluxo_acoes___&quot; + row, resposta.get(&quot;iProcess&quot;));&#xd;
+						hAPI.setCardValue(&quot;status_acoes___&quot; + row, &quot;Iniciado&quot;);&#xd;
+					}&#xd;
+				}&#xd;
+			}&#xd;
+&#xd;
+		} catch (e) {&#xd;
+			log.error(&quot;----------------ERRO:&quot;);&#xd;
+			log.error(e);&#xd;
+		}&#xd;
+	}&#xd;
+&#xd;
+}</eventDescription>
+    </WorkflowProcessEvent>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
         <eventId>intermediateconditional14</eventId>
         <processId>SMC</processId>
         <version>1</version>
       </workflowProcessEventPK>
       <eventDescription>function intermediateconditional14() {
 	
-var process = getValue(&quot;WKNumProces&quot;);
+	var process = getValue(&quot;WKNumProces&quot;);
 	
 	log.info(&quot;----------------------STATUS DE PROCESSOS-------------------------------&quot;)
 	log.info(&quot;----------------------numProcesso: &quot; + process);
 	
 
 	var status = true;
+	
+	var cardData = new java.util.HashMap();
+	cardData = hAPI.getCardData(process);
+	var keys = cardData.keySet().toArray();
+	log.warn(&quot;Verificando status dos subprocessos do processo: &quot; + process);
+	for ( var key in keys) {
+		var field = keys[key];
+		if (field.indexOf(&quot;fluxo_acoes___&quot;) &gt; -1) {
 
-	try {
-		var cardData = new java.util.HashMap();
-		cardData = hAPI.getCardData(process);
-		var keys = cardData.keySet().toArray();
-		log.warn(&quot;Verificando status dos subprocessos do processo: &quot; + process);
-		for ( var key in keys) {
-			var field = keys[key];
-			if (field.indexOf(&quot;fluxo_acoes___&quot;) &gt; -1) {
+			var row = field.replace(&quot;fluxo_acoes___&quot;, &quot;&quot;);
+			var processo = hAPI.getCardValue(&quot;fluxo_acoes___&quot; + row);				
 
-				var row = field.replace(&quot;fluxo_acoes___&quot;, &quot;&quot;);
-				var processo = hAPI.getCardValue(&quot;fluxo_acoes___&quot; + row);				
-
-				var c1 = DatasetFactory.createConstraint(&quot;processTaskPK.processInstanceId&quot;, processo, processo, ConstraintType.MUST);
-				var c2 = DatasetFactory.createConstraint(&quot;processTaskPK.companyId&quot;, getValue(&quot;WKCompany&quot;), getValue(&quot;WKCompany&quot;), ConstraintType.MUST);
-				var constraints = new Array(c1, c2);
+			var c1 = DatasetFactory.createConstraint(&quot;processTaskPK.processInstanceId&quot;, processo, processo, ConstraintType.MUST);
+			var c2 = DatasetFactory.createConstraint(&quot;processTaskPK.companyId&quot;, getValue(&quot;WKCompany&quot;), getValue(&quot;WKCompany&quot;), ConstraintType.MUST);
+			var constraints = new Array(c1, c2);
+			
+			var sortingFields = new Array(&quot;processTaskPK.movementSequence&quot;);
+			
+			var datasetPrincipal = DatasetFactory.getDataset(&quot;processTask&quot;, null, constraints, sortingFields);
+			
+			var i = datasetPrincipal.rowsCount - 1;
+			
+			if (datasetPrincipal.getValue(i, &quot;active&quot;) == true){
 				
-				var sortingFields = new Array(&quot;processTaskPK.movementSequence&quot;);
+				var childCardData = hAPI.getCardData(processo);
+				hAPI.setCardValue(&quot;dtprazoativ_acoes___&quot; + row, childCardData.get(&quot;prazo_conclusao&quot;));
 				
-				var datasetPrincipal = DatasetFactory.getDataset(&quot;processTask&quot;, null, constraints, sortingFields);
+				var dataStr = hAPI.getCardValue(&quot;dtprazoativ_acoes___&quot; + row).split(&quot;/&quot;);
+				var dataPrevista = new Date();
+				dataPrevista.setDate(dataStr[0]);
+				dataPrevista.setMonth(dataStr[1] - 1);
+				dataPrevista.setFullYear(dataStr[2]);
 				
-				var i = datasetPrincipal.rowsCount - 1;
+				if (new Date() &gt; dataPrevista) {
+					hAPI.setCardValue(&quot;status_acoes___&quot; + row, &quot;Em atraso&quot;);
+					log.warn(&quot;O Processo &quot; + processo + &quot; ainda esta em atraso&quot;);						
+				}
+				else {
+					hAPI.setCardValue(&quot;status_acoes___&quot; + row, &quot;Em andamento&quot;);
+					log.warn(&quot;O Processo &quot; + processo + &quot; ainda esta em aberto&quot;);
+				}					
+				status = false;
 				
-				if (datasetPrincipal.getValue(i, &quot;active&quot;) == true){
-					
-					var childCardData = hAPI.getCardData(processo);
-					hAPI.setCardValue(&quot;dtprazoativ_acoes___&quot; + row, childCardData.get(&quot;prazo_conclusao&quot;));
-					
-					var dataStr = hAPI.getCardValue(&quot;dtprazoativ_acoes___&quot; + row).split(&quot;/&quot;);
-					var dataPrevista = new Date();
-					dataPrevista.setDate(dataStr[0]);
-					dataPrevista.setMonth(dataStr[1] - 1);
-					dataPrevista.setFullYear(dataStr[2]);
-					
-					if (new Date() &gt; dataPrevista) {
-						hAPI.setCardValue(&quot;status_acoes___&quot; + row, &quot;Em atraso&quot;);
-						log.warn(&quot;O Processo &quot; + processo + &quot; ainda esta em atraso&quot;);						
-					}
-					else {
-						hAPI.setCardValue(&quot;status_acoes___&quot; + row, &quot;Em andamento&quot;);
-						log.warn(&quot;O Processo &quot; + processo + &quot; ainda esta em aberto&quot;);
-					}					
-					status = false;
-					
-				} else if(datasetPrincipal.getValue(i, &quot;status&quot;) == 4){
-					hAPI.setCardValue(&quot;status_acoes___&quot; + row, &quot;Cancelado&quot;);
-					log.warn(&quot;O Processo &quot; + processo + &quot; foi cancelado&quot;);											
-				} else {
-					hAPI.setCardValue(&quot;status_acoes___&quot; + row, datasetPrincipal.getValue(i, &quot;taskCompletionDate&quot;));
-					log.warn(&quot;O Processo &quot; + processo + &quot; foi concluído&quot;);										
-				}				
-			}
+			} else if(datasetPrincipal.getValue(i, &quot;status&quot;) == 4){
+				hAPI.setCardValue(&quot;status_acoes___&quot; + row, &quot;Cancelado&quot;);
+				log.warn(&quot;O Processo &quot; + processo + &quot; foi cancelado&quot;);											
+			} else {
+				hAPI.setCardValue(&quot;status_acoes___&quot; + row, datasetPrincipal.getValue(i, &quot;taskCompletionDate&quot;));
+				log.warn(&quot;O Processo &quot; + processo + &quot; foi concluído&quot;);										
+			}				
 		}
-
-	} catch (e) {
-		log.error(&quot;----------------ERRO:&quot;);
-		log.error(e);
 	}
+
+	
 	return status;
 
 }</eventDescription>
@@ -869,7 +923,7 @@ var process = getValue(&quot;WKNumProces&quot;);
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SMC</processId>
-        <version>2</version>
+        <version>9</version>
         <linkSequence>8</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -880,7 +934,7 @@ var process = getValue(&quot;WKNumProces&quot;);
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SMC</processId>
-        <version>2</version>
+        <version>9</version>
         <linkSequence>8</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
@@ -891,7 +945,7 @@ var process = getValue(&quot;WKNumProces&quot;);
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SMC</processId>
-        <version>2</version>
+        <version>9</version>
         <linkSequence>8</linkSequence>
         <bendSequence>3</bendSequence>
       </processLinkBendPK>
@@ -902,7 +956,7 @@ var process = getValue(&quot;WKNumProces&quot;);
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SMC</processId>
-        <version>2</version>
+        <version>9</version>
         <linkSequence>11</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -913,7 +967,7 @@ var process = getValue(&quot;WKNumProces&quot;);
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SMC</processId>
-        <version>2</version>
+        <version>9</version>
         <linkSequence>11</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
@@ -924,7 +978,7 @@ var process = getValue(&quot;WKNumProces&quot;);
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SMC</processId>
-        <version>2</version>
+        <version>9</version>
         <linkSequence>11</linkSequence>
         <bendSequence>3</bendSequence>
       </processLinkBendPK>
@@ -935,7 +989,7 @@ var process = getValue(&quot;WKNumProces&quot;);
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SMC</processId>
-        <version>2</version>
+        <version>9</version>
         <linkSequence>20</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -946,7 +1000,7 @@ var process = getValue(&quot;WKNumProces&quot;);
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SMC</processId>
-        <version>2</version>
+        <version>9</version>
         <linkSequence>20</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
@@ -957,7 +1011,7 @@ var process = getValue(&quot;WKNumProces&quot;);
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SMC</processId>
-        <version>2</version>
+        <version>9</version>
         <linkSequence>20</linkSequence>
         <bendSequence>3</bendSequence>
       </processLinkBendPK>
@@ -968,7 +1022,7 @@ var process = getValue(&quot;WKNumProces&quot;);
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SMC</processId>
-        <version>2</version>
+        <version>9</version>
         <linkSequence>28</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -979,7 +1033,7 @@ var process = getValue(&quot;WKNumProces&quot;);
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SMC</processId>
-        <version>2</version>
+        <version>9</version>
         <linkSequence>28</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
@@ -990,7 +1044,7 @@ var process = getValue(&quot;WKNumProces&quot;);
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SMC</processId>
-        <version>2</version>
+        <version>9</version>
         <linkSequence>28</linkSequence>
         <bendSequence>3</bendSequence>
       </processLinkBendPK>
@@ -1003,12 +1057,13 @@ var process = getValue(&quot;WKNumProces&quot;);
       <processStateTriggerPK>
         <companyId>1</companyId>
         <processId>SMC</processId>
-        <version>2</version>
+        <version>9</version>
         <stateSequence>14</stateSequence>
         <triggerSequence>0</triggerSequence>
       </processStateTriggerPK>
       <runType>0</runType>
       <type>3</type>
+      <value>SMC.intermediateconditional14.js</value>
       <timeTrigger>0:0:0</timeTrigger>
       <frequencia>01</frequencia>
     </ProcessStateTrigger>

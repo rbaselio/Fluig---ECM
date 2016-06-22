@@ -22,13 +22,14 @@ function intermediateconditional16() {
 
 				var c1 = DatasetFactory.createConstraint("processTaskPK.processInstanceId", processo, processo, ConstraintType.MUST);
 				var c2 = DatasetFactory.createConstraint("processTaskPK.companyId", getValue("WKCompany"), getValue("WKCompany"), ConstraintType.MUST);
-				var constraints = new Array(c1, c2);
+				var c3 = DatasetFactory.createConstraint("active", true, true, ConstraintType.MUST);
+				var constraints = new Array(c1, c2, c3);
 				
 				var sortingFields = new Array("processTaskPK.movementSequence");
 				
 				var datasetPrincipal = DatasetFactory.getDataset("processTask", null, constraints, sortingFields);
 				
-				var i = datasetPrincipal.rowsCount - 1;
+				var i = 0;
 				
 				if (datasetPrincipal.getValue(i, "active") == true){
 					

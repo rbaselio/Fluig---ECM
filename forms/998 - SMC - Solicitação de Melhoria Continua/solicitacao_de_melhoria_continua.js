@@ -165,6 +165,7 @@ function blockAll() {
 	});
 }
 
+
 //validação dos campos
 var beforeSendValidate = function(numState){
 	var message = "";
