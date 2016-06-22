@@ -22,7 +22,7 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>FP - Ficha de Pendencia</processId>
-      <version>1</version>
+      <version>2</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
     <formId>979</formId>
@@ -418,7 +418,7 @@
         <companyId>1</companyId>
         <processId>FP-FichaDePendencia</processId>
         <expressionOrder>1</expressionOrder>
-        <version>1</version>
+        <version>2</version>
         <sequence>14</sequence>
       </conditionProcessStatePK>
       <condition>(hAPI.getCardValue(&quot;orc_aprovado&quot;) == &quot;sim&quot;)</condition>
@@ -431,7 +431,7 @@
         <companyId>1</companyId>
         <processId>FP-FichaDePendencia</processId>
         <expressionOrder>2</expressionOrder>
-        <version>1</version>
+        <version>2</version>
         <sequence>14</sequence>
       </conditionProcessStatePK>
       <condition>(hAPI.getCardValue(&quot;orc_aprovado&quot;) == &quot;nao&quot;)</condition>
@@ -581,7 +581,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>FP-FichaDePendencia</processId>
-        <version>1</version>
+        <version>2</version>
         <linkSequence>15</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -592,7 +592,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>FP-FichaDePendencia</processId>
-        <version>1</version>
+        <version>2</version>
         <linkSequence>15</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
@@ -603,7 +603,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>FP-FichaDePendencia</processId>
-        <version>1</version>
+        <version>2</version>
         <linkSequence>15</linkSequence>
         <bendSequence>3</bendSequence>
       </processLinkBendPK>
