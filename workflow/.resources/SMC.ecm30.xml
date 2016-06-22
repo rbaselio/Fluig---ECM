@@ -755,7 +755,144 @@
     </ProcessLink>
   </list>
   <list/>
-  <list/>
+  <list>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>afterStateEntry</eventId>
+        <processId>SMC</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>function afterStateEntry(sequenceId){&#xd;
+	&#xd;
+	log.info(&quot;Entrei-------------------&quot; + sequenceId);&#xd;
+	&#xd;
+	var process = getValue(&quot;WKNumProces&quot;);&#xd;
+	&#xd;
+	var resposta;&#xd;
+	var row;&#xd;
+&#xd;
+	var cardData = new java.util.HashMap();&#xd;
+	cardData = hAPI.getCardData(process);&#xd;
+	var keys = cardData.keySet().toArray();&#xd;
+	&#xd;
+	if (sequenceId == 14) {&#xd;
+		&#xd;
+		try {	&#xd;
+			&#xd;
+			var cardData = new java.util.HashMap();&#xd;
+			cardData = hAPI.getCardData(process);&#xd;
+			var keys = cardData.keySet().toArray();&#xd;
+			for ( var key in keys) {&#xd;
+				var field = keys[key];&#xd;
+				if (field.indexOf(&quot;mat_acoes___&quot;) &gt; -1) {&#xd;
+					&#xd;
+					row = field.replace(&quot;mat_acoes___&quot;, &quot;&quot;);&#xd;
+					&#xd;
+					if (hAPI.getCardValue(&quot;fluxo_acoes___&quot; + row) == &quot;&quot;){					&#xd;
+						var userList = new java.util.ArrayList();&#xd;
+						userList.add(hAPI.getCardValue(&quot;mat_acoes___&quot; + row));&#xd;
+						&#xd;
+						var hpForm = new java.util.HashMap();						&#xd;
+						hpForm.put(&quot;process_pai&quot;, &quot;&quot; + process);&#xd;
+						hpForm.put(&quot;prazo_conclusao&quot;, &quot;&quot; + hAPI.getCardValue(&quot;dtprazoativ_acoes___&quot; + row));&#xd;
+						hpForm.put(&quot;descAtividade&quot;, &quot;&quot; + hAPI.getCardValue(&quot;descAtividade_acoes___&quot; + row));&#xd;
+						hpForm.put(&quot;responsavel&quot;, &quot;&quot; + hAPI.getCardValue(&quot;mat_acoes___&quot; + row));&#xd;
+						&#xd;
+						resposta = hAPI.startProcess(&quot;Sub-RNC&quot;, 0, userList, hAPI.getCardValue(&quot;descAtividade_acoes___&quot; + row), true, hpForm, false);&#xd;
+						hAPI.setCardValue(&quot;fluxo_acoes___&quot; + row, resposta.get(&quot;iProcess&quot;));&#xd;
+						hAPI.setCardValue(&quot;status_acoes___&quot; + row,&quot;Iniciado&quot;);&#xd;
+					}					&#xd;
+				}&#xd;
+			}&#xd;
+&#xd;
+		} catch (e) {&#xd;
+			log.error(&quot;----------------ERRO:&quot;);&#xd;
+			log.error(e);&#xd;
+		}&#xd;
+	}	&#xd;
+	&#xd;
+}</eventDescription>
+    </WorkflowProcessEvent>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>intermediateconditional14</eventId>
+        <processId>SMC</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>function intermediateconditional14() {
+	
+var process = getValue(&quot;WKNumProces&quot;);
+	
+	log.info(&quot;----------------------STATUS DE PROCESSOS-------------------------------&quot;)
+	log.info(&quot;----------------------numProcesso: &quot; + process);
+	
+
+	var status = true;
+
+	try {
+		var cardData = new java.util.HashMap();
+		cardData = hAPI.getCardData(process);
+		var keys = cardData.keySet().toArray();
+		log.warn(&quot;Verificando status dos subprocessos do processo: &quot; + process);
+		for ( var key in keys) {
+			var field = keys[key];
+			if (field.indexOf(&quot;fluxo_acoes___&quot;) &gt; -1) {
+
+				var row = field.replace(&quot;fluxo_acoes___&quot;, &quot;&quot;);
+				var processo = hAPI.getCardValue(&quot;fluxo_acoes___&quot; + row);				
+
+				var c1 = DatasetFactory.createConstraint(&quot;processTaskPK.processInstanceId&quot;, processo, processo, ConstraintType.MUST);
+				var c2 = DatasetFactory.createConstraint(&quot;processTaskPK.companyId&quot;, getValue(&quot;WKCompany&quot;), getValue(&quot;WKCompany&quot;), ConstraintType.MUST);
+				var constraints = new Array(c1, c2);
+				
+				var sortingFields = new Array(&quot;processTaskPK.movementSequence&quot;);
+				
+				var datasetPrincipal = DatasetFactory.getDataset(&quot;processTask&quot;, null, constraints, sortingFields);
+				
+				var i = datasetPrincipal.rowsCount - 1;
+				
+				if (datasetPrincipal.getValue(i, &quot;active&quot;) == true){
+					
+					var childCardData = hAPI.getCardData(processo);
+					hAPI.setCardValue(&quot;dtprazoativ_acoes___&quot; + row, childCardData.get(&quot;prazo_conclusao&quot;));
+					
+					var dataStr = hAPI.getCardValue(&quot;dtprazoativ_acoes___&quot; + row).split(&quot;/&quot;);
+					var dataPrevista = new Date();
+					dataPrevista.setDate(dataStr[0]);
+					dataPrevista.setMonth(dataStr[1] - 1);
+					dataPrevista.setFullYear(dataStr[2]);
+					
+					if (new Date() &gt; dataPrevista) {
+						hAPI.setCardValue(&quot;status_acoes___&quot; + row, &quot;Em atraso&quot;);
+						log.warn(&quot;O Processo &quot; + processo + &quot; ainda esta em atraso&quot;);						
+					}
+					else {
+						hAPI.setCardValue(&quot;status_acoes___&quot; + row, &quot;Em andamento&quot;);
+						log.warn(&quot;O Processo &quot; + processo + &quot; ainda esta em aberto&quot;);
+					}					
+					status = false;
+					
+				} else if(datasetPrincipal.getValue(i, &quot;status&quot;) == 4){
+					hAPI.setCardValue(&quot;status_acoes___&quot; + row, &quot;Cancelado&quot;);
+					log.warn(&quot;O Processo &quot; + processo + &quot; foi cancelado&quot;);											
+				} else {
+					hAPI.setCardValue(&quot;status_acoes___&quot; + row, datasetPrincipal.getValue(i, &quot;taskCompletionDate&quot;));
+					log.warn(&quot;O Processo &quot; + processo + &quot; foi concluído&quot;);										
+				}				
+			}
+		}
+
+	} catch (e) {
+		log.error(&quot;----------------ERRO:&quot;);
+		log.error(e);
+	}
+	return status;
+
+}</eventDescription>
+    </WorkflowProcessEvent>
+  </list>
   <list/>
   <list/>
   <list>
@@ -929,7 +1066,6 @@
       </processStateTriggerPK>
       <runType>0</runType>
       <type>3</type>
-      <value>SMC - SolicitacaoDeMelhoriaContinua.intermediateconditional14.js</value>
       <timeTrigger>0:0:0</timeTrigger>
       <frequencia>01</frequencia>
     </ProcessStateTrigger>

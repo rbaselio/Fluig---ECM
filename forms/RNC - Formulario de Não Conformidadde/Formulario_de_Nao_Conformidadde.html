@@ -622,6 +622,64 @@
 									<textarea name="desc_falha" cols="40" class="form-control" rows="3" id="desc_falha"></textarea>
 								</div>
 							</div>
+							
+							
+							
+							<div class="row">
+								<div class="form-field table-responsive" data-type="tabledetail" data-show-properties="" data-field-name="tabledetail">
+									<table tablename="td_materiais" cellspacing="0" id="td_materiais" noaddbutton=true class="table">
+										<thead>
+											<tr class="tableHeadRow">
+												<th class="tableColumn">Tipo:</th>
+												<th class="tableColumn">Descrição Material</th>
+												<th class="tableColumn">Valor</th>												
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td class="col-xs-3">
+													<select name="orgao" id="orgao" class="form-control">
+														<option value="analise">Analise / Inspeção / Medição</option>
+														<option value="bonificacao">Bonificação</option>
+														<option value="correio">Correio / Sedex</option>
+														<option value="estadia">Estadia</option>
+														<option value="frete">Frete</option>
+														<option value="mao">Mão de obra</option>
+														<option value="servicos">Serviços</option>
+														<option value="troca">Troca em garantia</option>
+														<option value="visita">Visita técnica</option>
+														<option value="outros">Outros</option>														
+													</select>
+												</td>
+												<td class="col-xs-6">
+													<input type="text" name="desc_mat" id="desc_mat" class="form-control" />
+												</td>
+												<td class="col-xs-3">
+													<input type="text" name="vl_mat" id="vl_mat" class="form-control money somar" />													
+												</td>												
+											</tr>
+										</tbody>
+									</table>
+								</div>																	
+							</div>
+							<div class="row">
+								<div class="col-xs-4">
+										<button type="button" class="btn btn-primary" data-toggle="button" onclick="addLinhaTabela('td_materiais')">Adicionar Material</button>
+									</div>
+								<div class="col-xs-5" align="right">
+									<label for="vl_tot" >Valor Total do Orçamento:</label>
+								</div>	
+								<div class="col-xs-3">
+									<input class="form-control money" name="vl_tot" id="vl_tot" type="text" />
+								</div>												
+							</div>
+							
+							
+							
+							
+							
+							
+							
 							<div class="row">
 								<div class="col-xs-3">
 									<label for="mat_falha">Resp. Verificação:</label>

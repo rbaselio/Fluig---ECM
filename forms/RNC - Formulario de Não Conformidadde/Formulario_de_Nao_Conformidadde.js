@@ -156,6 +156,8 @@ function setModFalha(selectedItem) {
 			
 }
 
+
+
 //adição linha a tabela ação emergencial
 function addLinhaTabela(tabela) {
 	row = wdkAddChild(tabela);	
@@ -171,6 +173,21 @@ function addLinhaTabela(tabela) {
 			});		
 		}
 	});
+	
+	if (tabela = 'td_materiais'){
+		$("input[id='vl_mat___" + row + "']")
+			.number( true, 2, ',' ,'.', 'R$ ')
+			.keyup(function () {
+				var soma = 0;
+				$("input[id^='vl_mat___']").each(function(i) {
+					soma = soma + ($(this).val() * 1);
+				});		
+				$('#vl_tot').val(soma);
+		}).trigger('keyup');
+	}
+	
+	
+	
 }
 
 //remove linha da tabela

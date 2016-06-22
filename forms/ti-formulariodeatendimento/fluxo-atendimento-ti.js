@@ -119,7 +119,6 @@ function ativaPreencheCampos(modeView, numState, matricula, WKNumProces, documen
 		
 		if (numState == 2 || numState == 6 ) {	
 			
-			
 			$('#matricula_atend').val(matricula);
 			$('#atendente').val(usuario);
 			$('#ramal_atend').val(ramal);
@@ -132,11 +131,9 @@ function ativaPreencheCampos(modeView, numState, matricula, WKNumProces, documen
 			
 			if (ultimaLinhaTabela.find("textarea[id^='desc_interacao_']").val() == ""){ $('#tb_interacao tr').last().remove();}			
 			
-			
-			
 			if (ultimaLinhaTabela.last().find("textarea[id^='desc_aceite_']").val() != ""){	
 				wdkAddChild('tb_interacao');
-				ultimaLinhaTabela = $('#tb_interacao tr').last();			
+				ultimaLinhaTabela = $('#tb_interacao tr').last();
 			}
 			
 			ultimaLinhaTabela.find("input[id^='dt_intera']").val(getData());

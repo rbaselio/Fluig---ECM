@@ -20,23 +20,7 @@ $(function(ready) {
 		}		
 	}).trigger('change');
 	
-	$('#telefone').on('input', function() {
-		$(this).unmask();
-		$(this).val().replace(/\D/g, '').length > 10 ? $(this).mask("(99) 99999-9999") : $(this).mask("(99) 9999-99999");	  
-	}).on('blur',function() {
-		var obj = $(this);
-		if (!isTelValid($(this).val())){
-			FLUIGC.message.alert({
-				message: 'Telefone inválido, insira um telefone correto',
-				title: 'Erro Telefone: ',
-				label: 'OK'
-			}, function(el, ev) {
-				setTimeout(function() {
-					obj.focus().select();
-					}, 100);
-			});
-		}
-	}).trigger('input').attr("maxlength", 15);
+	
 	
 	$('#email').on('blur',function() {
 		var obj = $(this);
@@ -45,10 +29,7 @@ $(function(ready) {
 				message: 'E-mail inválido, insira um e-mail válido',
 				title: 'Erro e-mail: ',
 				label: 'OK'
-			}, function(el, ev) {
-				setTimeout(function() {
-					obj.focus().select();
-					}, 100);
+			}, function(el, ev) {				
 			});
 		}
 	});
@@ -172,7 +153,6 @@ var beforeSendValidate = function(numState) {
 		if ($("#cidade").val() == "") message += "</br>Cidade";
 		if ($("#uf").val() == "") message += "</br>Estado";
 		if ($("#contato").val() == "") message += "</br>Contato";
-		if ($("#telefone").val() == "") message += "</br>Telefone";
 		if ($("#unid_negocio").val() == "") message += "</br>Unidade de Negocio";
 		if ($("#desc_atend").val() == "") message += "</br>Descrição do Atendimento";
 	}
