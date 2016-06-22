@@ -9,7 +9,7 @@
     <active>true</active>
     <publicProcess>true</publicProcess>
     <volumeId>Default</volumeId>
-    <categoryId></categoryId>
+    <categoryId>Qualidade</categoryId>
     <managerEngineAllocationId>Papel</managerEngineAllocationId>
     <managerEngineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Role&gt;SGQ&lt;/Role&gt;&lt;/AssignmentController&gt;</managerEngineAllocationConfiguration>
     <snapshotFrequency>0</snapshotFrequency>
@@ -200,9 +200,10 @@
       <stateName>Ações necessárias</stateName>
       <stateDescription>Ações necessárias</stateDescription>
       <instruction></instruction>
-      <deadlineTime>0</deadlineTime>
+      <deadlineTime>288000</deadlineTime>
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId></engineAllocationId>
       <selectColleague>0</selectColleague>
       <initialState>false</initialState>
       <notifyAuthorityDelay>true</notifyAuthorityDelay>
@@ -248,11 +249,11 @@
       <stateName>Análise da Eficácia</stateName>
       <stateDescription>Análise da Eficácia</stateDescription>
       <instruction></instruction>
-      <deadlineTime>57600</deadlineTime>
+      <deadlineTime>288000</deadlineTime>
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
-      <engineAllocationId>Pool Papel</engineAllocationId>
-      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Role&gt;SGQ&lt;/Role&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <engineAllocationId>Executor Atividade</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;BaseActivity&gt;2&lt;/BaseActivity&gt;&lt;Returns&gt;Last&lt;/Returns&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
       <selectColleague>1</selectColleague>
       <initialState>false</initialState>
       <notifyAuthorityDelay>true</notifyAuthorityDelay>
@@ -539,8 +540,8 @@
         <sequence>21</sequence>
       </conditionProcessStatePK>
       <condition>(hAPI.getCardValue(&quot;atend&quot;) == &quot;nao&quot;)</condition>
-      <destinationSequenceId>1</destinationSequenceId>
-      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;BaseActivity&gt;1&lt;/BaseActivity&gt;&lt;Returns&gt;Last&lt;/Returns&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <destinationSequenceId>6</destinationSequenceId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;BaseActivity&gt;6&lt;/BaseActivity&gt;&lt;Returns&gt;Last&lt;/Returns&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
       <engineAllocationId>Executor Atividade</engineAllocationId>
     </ConditionProcessState>
   </list>
@@ -742,78 +743,20 @@
         <companyId>1</companyId>
         <processId>SMC</processId>
         <version>1</version>
-        <linkSequence>24</linkSequence>
+        <linkSequence>28</linkSequence>
       </processLinkPK>
       <actionLabel></actionLabel>
       <returnPermited>false</returnPermited>
       <initialStateSequence>21</initialStateSequence>
-      <finalStateSequence>1</finalStateSequence>
+      <finalStateSequence>6</finalStateSequence>
       <returnLabel></returnLabel>
-      <name>Não</name>
+      <name></name>
       <automaticLink>false</automaticLink>
       <type>0</type>
     </ProcessLink>
   </list>
   <list/>
   <list>
-    <WorkflowProcessEvent>
-      <workflowProcessEventPK>
-        <companyId>1</companyId>
-        <eventId>afterStateEntry</eventId>
-        <processId>SMC</processId>
-        <version>1</version>
-      </workflowProcessEventPK>
-      <eventDescription>function afterStateEntry(sequenceId){&#xd;
-	&#xd;
-	log.info(&quot;Entrei-------------------&quot; + sequenceId);&#xd;
-	&#xd;
-	var process = getValue(&quot;WKNumProces&quot;);&#xd;
-	&#xd;
-	var resposta;&#xd;
-	var row;&#xd;
-&#xd;
-	var cardData = new java.util.HashMap();&#xd;
-	cardData = hAPI.getCardData(process);&#xd;
-	var keys = cardData.keySet().toArray();&#xd;
-	&#xd;
-	if (sequenceId == 14) {&#xd;
-		&#xd;
-		try {	&#xd;
-			&#xd;
-			var cardData = new java.util.HashMap();&#xd;
-			cardData = hAPI.getCardData(process);&#xd;
-			var keys = cardData.keySet().toArray();&#xd;
-			for ( var key in keys) {&#xd;
-				var field = keys[key];&#xd;
-				if (field.indexOf(&quot;mat_acoes___&quot;) &gt; -1) {&#xd;
-					&#xd;
-					row = field.replace(&quot;mat_acoes___&quot;, &quot;&quot;);&#xd;
-					&#xd;
-					if (hAPI.getCardValue(&quot;fluxo_acoes___&quot; + row) == &quot;&quot;){					&#xd;
-						var userList = new java.util.ArrayList();&#xd;
-						userList.add(hAPI.getCardValue(&quot;mat_acoes___&quot; + row));&#xd;
-						&#xd;
-						var hpForm = new java.util.HashMap();						&#xd;
-						hpForm.put(&quot;process_pai&quot;, &quot;&quot; + process);&#xd;
-						hpForm.put(&quot;prazo_conclusao&quot;, &quot;&quot; + hAPI.getCardValue(&quot;dtprazoativ_acoes___&quot; + row));&#xd;
-						hpForm.put(&quot;descAtividade&quot;, &quot;&quot; + hAPI.getCardValue(&quot;descAtividade_acoes___&quot; + row));&#xd;
-						hpForm.put(&quot;responsavel&quot;, &quot;&quot; + hAPI.getCardValue(&quot;mat_acoes___&quot; + row));&#xd;
-						&#xd;
-						resposta = hAPI.startProcess(&quot;Sub-RNC&quot;, 0, userList, hAPI.getCardValue(&quot;descAtividade_acoes___&quot; + row), true, hpForm, false);&#xd;
-						hAPI.setCardValue(&quot;fluxo_acoes___&quot; + row, resposta.get(&quot;iProcess&quot;));&#xd;
-						hAPI.setCardValue(&quot;status_acoes___&quot; + row,&quot;Iniciado&quot;);&#xd;
-					}					&#xd;
-				}&#xd;
-			}&#xd;
-&#xd;
-		} catch (e) {&#xd;
-			log.error(&quot;----------------ERRO:&quot;);&#xd;
-			log.error(e);&#xd;
-		}&#xd;
-	}	&#xd;
-	&#xd;
-}</eventDescription>
-    </WorkflowProcessEvent>
     <WorkflowProcessEvent>
       <workflowProcessEventPK>
         <companyId>1</companyId>
@@ -1026,33 +969,33 @@ var process = getValue(&quot;WKNumProces&quot;);
         <companyId>1</companyId>
         <processId>SMC</processId>
         <version>2</version>
-        <linkSequence>24</linkSequence>
+        <linkSequence>28</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
-      <positionX>1190</positionX>
-      <positionY>301</positionY>
+      <positionX>1189</positionX>
+      <positionY>299</positionY>
     </ProcessLinkBend>
     <ProcessLinkBend>
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SMC</processId>
         <version>2</version>
-        <linkSequence>24</linkSequence>
+        <linkSequence>28</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
-      <positionX>654</positionX>
-      <positionY>301</positionY>
+      <positionX>880</positionX>
+      <positionY>299</positionY>
     </ProcessLinkBend>
     <ProcessLinkBend>
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SMC</processId>
         <version>2</version>
-        <linkSequence>24</linkSequence>
+        <linkSequence>28</linkSequence>
         <bendSequence>3</bendSequence>
       </processLinkBendPK>
-      <positionX>117</positionX>
-      <positionY>301</positionY>
+      <positionX>539</positionX>
+      <positionY>299</positionY>
     </ProcessLinkBend>
   </list>
   <list>

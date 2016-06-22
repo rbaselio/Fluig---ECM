@@ -10,54 +10,47 @@ $(function(ready){
 		$('#et_estado').val($('#estado').val());    
 	});
 	
-	$('.somar').keyup(function () {
-		var soma = ($('#vl_serv').val() * 1);
-		$("input[id^='vl_mat_']").each(function(i) {
-			soma = soma + ($(this).val() * 1);
-		});		
-		$('#vl_tot').val(soma);
-	}).trigger('keyup');	
+	$("#vl_serv_conserto").keyup(function () {
+		somatorio();
+	}).trigger('keyup');
 	
-	//marcara para telefone
-	$('#telefone').on('input', function() {
-		$(this).unmask();
-		tamanho = $(this).val().replace(/\D/g, '').length;
-		if (tamanho <= 10) $(this).mask("(99) 9999-99999");
-		else if (tamanho <= 11) $(this).mask("(99) 99999-99999");
-		else if (tamanho <= 12) $(this).mask("99 (99) 9999-99999");
-		else $(this).mask("99 (99) 99999-9999"); 	
-	}).on('blur',function() {
-		var obj = $(this);
-		obj.trigger('input');
-		if (!isTelValid($(this).val())){
-			FLUIGC.message.alert({
-				message: 'Telefone inválido, insira um telefone correto',
-				title: 'Erro Telefone: ',
-				label: 'OK'
-			}, function(el, ev) {
-				setTimeout(function() {
-					obj.focus().select();
-					}, 100);
-			});
-		}
-	}).trigger('input').attr("maxlength", 18);	
+	$("#vl_serv_cobrado").keyup(function () {
+		somatorio();
+	}).trigger('keyup');		
 	
 });
 
-
-
+function somatorio(){
+	var soma = $('#vl_serv_conserto').val() * 1;
+	$("input[id^='vl_conserto___']").each(function(i) {
+		soma += $(this).val() * 1;
+	});				
+	$('#vl_tot_conserto').val(soma);
+	
+	var soma = $('#vl_serv_cobrado').val() * 1;
+	$("input[id^='vl_cobrado___']").each(function(i) {
+		soma += $(this).val() * 1;
+	});				
+	$('#vl_tot_cobrado').val(soma);	
+	
+}
 
 function addLinha(tabela){
 	var row = wdkAddChild(tabela);
+	
+	$("input[id='nr_item___" + row + "']").val($("#num_processo").val() + "/" + ("00" + row).substr(-3));
 	$("input[id='quant___" + row + "']").number( true, 2, ',' ,'.', '');
-	$("input[id='vl_mat___" + row + "']")
+	
+	$("input[id='vl_conserto___" + row + "']")
+		.number( true, 2, ',' ,'.', 'R$ ')
+		.keyup(function () { 
+			somatorio();			
+	}).trigger('keyup');
+	
+	$("input[id='vl_cobrado___" + row + "']")
 		.number( true, 2, ',' ,'.', 'R$ ')
 		.keyup(function () {
-			var soma = ($('#vl_serv').val() * 1);
-			$("input[id^='vl_mat_']").each(function(i) {
-				soma = soma + ($(this).val() * 1);
-			});		
-			$('#vl_tot').val(soma);
+			somatorio();
 	}).trigger('keyup');	
 }
 
@@ -67,7 +60,7 @@ function addLinha(tabela){
 
 //prencimento e ativação dos campos
 function ativaPreencheCampos(modeView, numState, matricula, WKNumProces, documentId) {
-	blockAll();
+	//blockAll();
 	$('#myTab a:first').tab('show');
 	$("#pn_etiqueta").show();
 	if(modeView == "ADD" || modeView == "MOD"){	
@@ -123,17 +116,7 @@ function ativaPreencheCampos(modeView, numState, matricula, WKNumProces, documen
 		}
 		
 		
-		if (numState == 6){
-			
-			$.ajax({
-				method: "POST",
-				dataType: 'json',
-				contentType: "application/json",
-				url: "/api/public/ecm/document/updateDescription",
-				data: '{"id": "'+ documentId  +'", "description": "FP - '+ WKNumProces + '"}',
-				async: true
-			});		
-			
+		if (numState == 6){			
 			
 		}		
 	}	

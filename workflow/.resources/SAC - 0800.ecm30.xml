@@ -4,7 +4,7 @@
       <companyId>1</companyId>
       <processId>SAC - 0800</processId>
     </processDefinitionPK>
-    <processDescription>Processo de registro de contato SAC</processDescription>
+    <processDescription>SAC - Processo de registro de contato</processDescription>
     <instruction></instruction>
     <active>true</active>
     <publicProcess>false</publicProcess>
@@ -22,7 +22,7 @@
   <ProcessDefinitionVersion>
     <processDefinitionVersionPK>
       <companyId>1</companyId>
-      <processId>Processo de registro de contato SAC</processId>
+      <processId>SAC - Processo de registro de contato</processId>
       <version>5</version>
     </processDefinitionVersionPK>
     <versionDescription>Nova Versão.</versionDescription>
