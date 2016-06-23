@@ -2,36 +2,43 @@ var row;
 
 $(function(ready){
 	
+	$(".status").each(function(i) {
+		if 	($(this).val() == "Cancelado") 	$(this).css({'background-color' : 'grey', 'color': 'black'});
+		else if ($(this).val() == "Em andamento" || $(this).val() == "Iniciado") $(this).css({'background-color' : 'yellow'});
+		else if ($(this).val() != "") $(this).css({'background-color' : 'green' , 'color': 'black'});				
+	});		
+	
+	
 	$("#myTab").on("click", function(){
 		$('#et_numsol').val($('#num_processo').val());
 		$('#et_cliente').val($('#cliente').val());
 		$('#et_data').val($('#data_sol').val());
 		$('#et_cidade').val($('#cidade').val());
 		$('#et_estado').val($('#estado').val());    
-	});
+	});	
 	
-	$("#vl_serv_conserto").keyup(function () {
-		somatorio();
-	}).trigger('keyup');
 	
-	$("#vl_serv_cobrado").keyup(function () {
-		somatorio();
-	}).trigger('keyup');		
+	$("input[id^='vl_cobrado']").number( true, 2, ',' ,'.', 'R$ ')
+								.on('keyup blur', function() {
+									somatorio();
+								});
+	
+	somatorio();	
 	
 });
 
 function somatorio(){
-	var soma = $('#vl_serv_conserto').val() * 1;
+	var soma = 0;
 	$("input[id^='vl_conserto___']").each(function(i) {
-		soma += $(this).val() * 1;
+		soma += $(this).val().replace(/[^0-9\,]+/g,"").replace(",",".") * 1;		
 	});				
-	$('#vl_tot_conserto').val(soma);
+	$('#vl_tot_conserto').val(soma);	
 	
-	var soma = $('#vl_serv_cobrado').val() * 1;
+	var soma = 0;
 	$("input[id^='vl_cobrado___']").each(function(i) {
-		soma += $(this).val() * 1;
+		soma += $(this).val().replace(/[^0-9\,]+/g,"").replace(",",".") * 1;		
 	});				
-	$('#vl_tot_cobrado').val(soma);	
+	$('#vl_tot_cobrado').val(soma);
 	
 }
 
@@ -41,17 +48,34 @@ function addLinha(tabela){
 	$("input[id='nr_item___" + row + "']").val($("#num_processo").val() + "/" + ("00" + row).substr(-3));
 	$("input[id='quant___" + row + "']").number( true, 2, ',' ,'.', '');
 	
-	$("input[id='vl_conserto___" + row + "']")
-		.number( true, 2, ',' ,'.', 'R$ ')
-		.keyup(function () { 
-			somatorio();			
-	}).trigger('keyup');
+	$('#nr_item___' + row).attr("readOnly", true);
+	$('#vl_conserto___' + row).attr("readOnly", true);
+	$('#def_const___' + row).attr("readOnly", true);
+	$('#serv_envio___' + row).attr("readOnly", true);
+	$('#vl_cobrado___' + row).attr("readOnly", true);
+	$('#responsavel_fp___' + row).attr("readOnly", true);
+	$('#fluxo_fp___' + row).attr("readOnly", true);
+	$('#status_fp___' + row).attr("readOnly", true);
+	$('#nf_ret___' + row).attr("readOnly", true);
 	
-	$("input[id='vl_cobrado___" + row + "']")
-		.number( true, 2, ',' ,'.', 'R$ ')
-		.keyup(function () {
-			somatorio();
-	}).trigger('keyup');	
+	$('#per_gar___' + row).val("nao");
+	
+}
+
+
+function zoomResponsavelFP(linha) {
+	var nome = $(linha).attr("name");
+	row = nome.substring(nome.lastIndexOf("_") + 1);
+	zoomEcmTipo("colleague",
+			"colleagueId,Matricula,colleagueName,Colaborador",
+			"colleagueId,colleagueName,extensionNr", 
+			"Zoom Colaborador",
+			"setColaboradorFP",
+			"active,true");	
+}
+function setColaboradorFP(selectedItem) {
+	$("#mat_fp___" + row).val(selectedItem['colleagueId']);
+	$("#responsavel_fp___" + row).val(selectedItem['colleagueName']);		
 }
 
 
@@ -60,7 +84,7 @@ function addLinha(tabela){
 
 //prencimento e ativação dos campos
 function ativaPreencheCampos(modeView, numState, matricula, WKNumProces, documentId) {
-	//blockAll();
+	blockAll();
 	$('#myTab a:first').tab('show');
 	$("#pn_etiqueta").show();
 	if(modeView == "ADD" || modeView == "MOD"){	
@@ -78,68 +102,56 @@ function ativaPreencheCampos(modeView, numState, matricula, WKNumProces, documen
 		if (numState == 0 || numState == 1){
 			$("#data_sol").val(data);
 			$("#hora_sol").val(hora);
-			$("#matricula_emissor").val(matricula);
-			$("#user_emissor").val(usuario);
-			$("#data_emissor").val(data);
 			
-			showElemento($("#pn_emissao"));			
-		}
-		
-		if (numState == 2){
-			$("#num_processo").val(WKNumProces);
-			$("#matricula_orc").val(matricula);
-			$("#user_orc").val(usuario);
-			$("#data_orc").val(data);
+			showElemento($("#pn_orcamento"));	
+			showElemento($("#pn_emissao"));
 			
-			showElemento($("#pn_orcamento"));			
+			$('#matricula_emissor').attr("readOnly", true).val(matricula);
+			$('#user_emissor').attr("readOnly", true).val(usuario);
+			$("#data_emissor").attr("readOnly", true).val(data);
 		}
 		
-		if (numState == 3){
-			$("#matricula_env").val(matricula);
-			$("#user_env").val(usuario);
-			$("#data_env").val(data);
-			showElemento($("#env_orcamento"));			
-		}
-		
-		if (numState == 4){
-			$("#matricula_aprov").val(matricula);
-			$("#user_aprov").val(usuario);
-			$("#data_aprov").val(data);
-			showElemento($("#aprov_orcamento"));			
-		}
-		
-		if (numState == 5){
-			$("#matricula_exec").val(matricula);
-			$("#user_exec").val(usuario);
-			$("#data_exec").val(data);
-			showElemento($("#executar"));			
-		}
-		
-		
-		if (numState == 6){			
+		if (numState == 8){
+			$("#data_sol").val(data);
+			$("#hora_sol").val(hora);
 			
-		}		
+			$("input[id^='nf_ret']").removeAttr('readOnly');
+			$("input[id^='vl_cobrado']").removeAttr('readOnly');
+			
+			
+			
+			$('#matricula_orc').attr("readOnly", true).val(matricula);
+			$('#user_orc').attr("readOnly", true).val(usuario);
+			$("#data_orc").attr("readOnly", true).val(data);
+		}
+		
+		
 	}	
 }
 
-function showElemento(elemento){
+function showElemento(elemento){	
 	elemento.show();
 	elemento.css('pointer-events', 'all');
-	var offset = elemento.offset().top * 0.50; 
-	$('html, body').animate({ scrollTop: offset - 150 }, offset);	
+	elemento.find('input[type=text], input[type=zoom], textarea').removeAttr('readOnly');
+	setTimeout(function () {
+		var offset = elemento.offset().top * 0.50; 
+		$('html, body').animate({ scrollTop: offset + 150 }, offset);	
+	}, 1000);
 }
 
-//bloquear todas os campos
-function blockAll() {
+function blockAll() {	
 	$('.panel').each(function(i) {
-		if ($(this).attr('id') != null) {
+		if ($(this).attr('id') != null) {			
 			$(this).hide();
-			$(this).css('pointer-events', 'none');
-			$(this).find('input[type=text]').each(function(){
-				if ($(this).val() != "") {
-					$(this).closest('.panel').show();
-				}
-			});		
+			$(this).css('pointer-events', 'none'); 
+			$(this).find('input[type=text], input[type=zoom], textarea')
+					.attr("readOnly", true)
+					.css('pointer-events', 'all')
+					.each(function(){
+						if ($(this).val() != "") {
+							$(this).closest('.panel').show();
+						}
+			});
 		}
 	});
 }
@@ -149,54 +161,49 @@ var beforeSendValidate = function(numState){
 	var message = "";
 	
 	if (numState == 0 || numState == 1){
-		if ($("#cliente").val() == "") message += "</br>Cliente";
-		if ($("#cidade").val() == "") message += "</br>Cidade";
-		if ($("#estado").val() == "") message += "</br>Estado";
-		if ($("#equip").val() == "") message += "</br>Equipamento";
-		if ($("#nr_serie").val() == "") message += "</br>Nr. Série";
-		if ($("#nf_ent").val() == "") message += "</br>Nota fiscal de entrada";
-		if ($("#per_gar").val() == "") message += "</br>Periodo Garantia:";
-		if ($("#desc_defeito").val() == "") message += "</br>Descrição do Defeito:";	
-	}		
-	
-	if (numState == 2){
 		
-		if ($("#desc_serv").val() == "") message += "</br>Descrição do serviço";
-		if ($("#desc_const").val() == "") message += "</br>Constatação";
-		if ($("#vl_serv").val() == "") message += "</br>Valor do Serviço";
+		if($("#cliente").val() == "") message += "<br/>Cliente";
+		if($("#cidade").val() == "") message += "<br/>Cidade";
+		if($("#estado").val() == "") message += "<br/>Estado";
+		if($("#nf_ent").val() == "") message += "<br/>Nota Fiscal de Entrada";
+		if($("#contato").val() == "") message += "<br/>Contato";
+		if($("#telefone").val() == "") message += "<br/>Telefone";
+		if($("#e_mail").val() == "") message += "<br/>E-mail";		
 		
-		$("input[id^='quant_']").each(function(i) {
+		$("input[id^='cod_item']").each(function(i) {
 			if ($(this).closest('tr').attr('style') != "display:none" && $(this).val() == ""){
-				message += "</br>Quantidade na linha" + $(this).closest('tr').index();
-			}	
+				message += "<br/>Codigo do item na linha" + $(this).closest('tr').index();
+			}
+		});	
+		
+		
+		$("input[id^='desc_mat']").each(function(i) {
+			if ($(this).closest('tr').attr('style') != "display:none" && $(this).val() == ""){
+				message += "<br/>Descrição do material na linha" + $(this).closest('tr').index();
+			}
 		});
 		
-		$("input[id^='desc_mat_']").each(function(i) {
+		$("input[id^='it_nr_serie']").each(function(i) {
 			if ($(this).closest('tr').attr('style') != "display:none" && $(this).val() == ""){
-				message += "</br>Descrição na linha" + $(this).closest('tr').index();
-			}	
+				message += "<br/>Nº serie na linha" + $(this).closest('tr').index();
+			}
+		});		
+		
+		$("input[id^='fornecedor']").each(function(i) {
+			if ($(this).closest('tr').attr('style') != "display:none" && $(this).val() == ""){
+				message += "<br/>Fornecedor na linha" + $(this).closest('tr').index();
+			}
 		});
 		
-		$("input[id^='vl_mat_']").each(function(i) {
+		$("input[id^='mat_fp']").each(function(i) {
 			if ($(this).closest('tr').attr('style') != "display:none" && $(this).val() == ""){
-				message += "</br>Valor na linha" + $(this).closest('tr').index();
-			}	
+				message += "<br/>Responsável na linha" + $(this).closest('tr').index();
+			}
 		});
-	}
-	if (numState == 3){
-		if ($("#contato").val() == "") message += "</br>Contato";
-		if ($("#telefone").val() == "") message += "</br>Telefone";
-		if ($("#e_mail").val() == "") message += "</br>E-mail";			
-	}	
-	
-	if (numState == 4){
-		if ($("#orc_aprovado").val() == "nao" && $("#desc_reprov").val() == "") message += "</br>Motivo da Reprovação";			
+		
+				
 	}
 	
-	if (numState == 5){
-		if ($("#orc_aprovado").val() == "sim" && $("#notaFiscal").val() == "") message += "</br>Nota fiscal";
-		if ($("#orc_aprovado").val() == "nao" && $("#desc_conclu").val() == "") message += "</br>Motivo";	
-	}
 	
 		
 	

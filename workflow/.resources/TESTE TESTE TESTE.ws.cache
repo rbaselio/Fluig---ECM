@@ -654,7 +654,7 @@
       <void property="lastModifiedDate">
        <object class="com.sun.org.apache.xerces.internal.jaxp.datatype.XMLGregorianCalendarImpl">
         <void property="day">
-         <int>14</int>
+         <int>16</int>
         </void>
         <void property="hour">
          <int>0</int>
@@ -2553,7 +2553,7 @@
     <void method="add">
      <object class="com.totvs.tds.ecm.foundation.ws.DocumentDto">
       <void property="UUID">
-       <string>3F5159B8-2F77-43A9-A9F1-FE120AC5A2B8</string>
+       <string>790817A5-ED25-4D64-8746-28D59545AF1B</string>
       </void>
       <void property="accessCount">
        <int>1</int>
@@ -2573,7 +2573,7 @@
       <void property="createDate">
        <object class="com.sun.org.apache.xerces.internal.jaxp.datatype.XMLGregorianCalendarImpl">
         <void property="day">
-         <int>6</int>
+         <int>21</int>
         </void>
         <void property="hour">
          <int>0</int>
@@ -2608,7 +2608,7 @@
        <int>298</int>
       </void>
       <void property="documentPropertyVersion">
-       <int>2000</int>
+       <int>3000</int>
       </void>
       <void property="documentType">
        <string>4</string>
@@ -2656,7 +2656,7 @@
       <void property="lastModifiedDate">
        <object class="com.sun.org.apache.xerces.internal.jaxp.datatype.XMLGregorianCalendarImpl">
         <void property="day">
-         <int>6</int>
+         <int>21</int>
         </void>
         <void property="hour">
          <int>0</int>
@@ -2722,7 +2722,7 @@
        </object>
       </void>
       <void property="version">
-       <int>2000</int>
+       <int>3000</int>
       </void>
       <void property="versionDescription">
        <string></string>
@@ -2735,7 +2735,7 @@
     <void method="add">
      <object class="com.totvs.tds.ecm.foundation.ws.DocumentDto">
       <void property="UUID">
-       <string>825EEB2A-35C8-4B5B-8218-F7C3BF129742</string>
+       <string>0D417DA2-4A63-45DF-AD7A-FFC9D6499AB6</string>
       </void>
       <void property="accessCount">
        <int>0</int>
@@ -2755,7 +2755,7 @@
       <void property="createDate">
        <object class="com.sun.org.apache.xerces.internal.jaxp.datatype.XMLGregorianCalendarImpl">
         <void property="day">
-         <int>13</int>
+         <int>23</int>
         </void>
         <void property="hour">
          <int>0</int>
@@ -2790,7 +2790,7 @@
        <int>979</int>
       </void>
       <void property="documentPropertyVersion">
-       <int>1000</int>
+       <int>14000</int>
       </void>
       <void property="documentType">
        <string>4</string>
@@ -2838,7 +2838,7 @@
       <void property="lastModifiedDate">
        <object class="com.sun.org.apache.xerces.internal.jaxp.datatype.XMLGregorianCalendarImpl">
         <void property="day">
-         <int>14</int>
+         <int>23</int>
         </void>
         <void property="hour">
          <int>0</int>
@@ -2904,7 +2904,7 @@
        </object>
       </void>
       <void property="version">
-       <int>1000</int>
+       <int>14000</int>
       </void>
       <void property="versionDescription">
        <string></string>
@@ -3020,7 +3020,7 @@
       <void property="lastModifiedDate">
        <object class="com.sun.org.apache.xerces.internal.jaxp.datatype.XMLGregorianCalendarImpl">
         <void property="day">
-         <int>15</int>
+         <int>21</int>
         </void>
         <void property="hour">
          <int>0</int>
@@ -3099,7 +3099,7 @@
     <void method="add">
      <object class="com.totvs.tds.ecm.foundation.ws.DocumentDto">
       <void property="UUID">
-       <string>B9D32E74-9BA7-4530-BA07-44F950BBFF1B</string>
+       <string>C60AE80B-6052-447F-BDB3-3C099F6698AF</string>
       </void>
       <void property="accessCount">
        <int>0</int>
@@ -3119,7 +3119,7 @@
       <void property="createDate">
        <object class="com.sun.org.apache.xerces.internal.jaxp.datatype.XMLGregorianCalendarImpl">
         <void property="day">
-         <int>15</int>
+         <int>21</int>
         </void>
         <void property="hour">
          <int>0</int>
@@ -3154,7 +3154,7 @@
        <int>998</int>
       </void>
       <void property="documentPropertyVersion">
-       <int>10000</int>
+       <int>15000</int>
       </void>
       <void property="documentType">
        <string>4</string>
@@ -3202,7 +3202,7 @@
       <void property="lastModifiedDate">
        <object class="com.sun.org.apache.xerces.internal.jaxp.datatype.XMLGregorianCalendarImpl">
         <void property="day">
-         <int>15</int>
+         <int>22</int>
         </void>
         <void property="hour">
          <int>0</int>
@@ -3268,7 +3268,7 @@
        </object>
       </void>
       <void property="version">
-       <int>10000</int>
+       <int>15000</int>
       </void>
       <void property="versionDescription">
        <string></string>
@@ -3281,7 +3281,7 @@
     <void method="add">
      <object class="com.totvs.tds.ecm.foundation.ws.DocumentDto">
       <void property="UUID">
-       <string>CAD0A4A8-9D83-4AE2-A5D8-5FFFC4E06D4C</string>
+       <string>53396C3C-4765-413C-8E4D-7792F4BA3C1E</string>
       </void>
       <void property="accessCount">
        <int>0</int>
@@ -3301,7 +3301,7 @@
       <void property="createDate">
        <object class="com.sun.org.apache.xerces.internal.jaxp.datatype.XMLGregorianCalendarImpl">
         <void property="day">
-         <int>15</int>
+         <int>16</int>
         </void>
         <void property="hour">
          <int>0</int>
@@ -3324,19 +3324,19 @@
        </object>
       </void>
       <void property="datasetName">
-       <string>cadastro_de_origens_smc</string>
+       <string>cadastro_de_ganhos_smc</string>
       </void>
       <void property="documentDescription">
-       <string>SMC - Cadastro de Origens</string>
+       <string>SMC - Cadastro de Ganhos</string>
       </void>
       <void property="documentId">
-       <int>1004</int>
+       <int>1012</int>
       </void>
       <void property="documentPropertyNumber">
-       <int>1004</int>
+       <int>1012</int>
       </void>
       <void property="documentPropertyVersion">
-       <int>2000</int>
+       <int>1000</int>
       </void>
       <void property="documentType">
        <string>4</string>
@@ -3347,7 +3347,7 @@
       <void property="expirationDate">
        <object class="com.sun.org.apache.xerces.internal.jaxp.datatype.XMLGregorianCalendarImpl">
         <void property="day">
-         <int>15</int>
+         <int>16</int>
         </void>
         <void property="hour">
          <int>0</int>
@@ -3384,7 +3384,371 @@
       <void property="lastModifiedDate">
        <object class="com.sun.org.apache.xerces.internal.jaxp.datatype.XMLGregorianCalendarImpl">
         <void property="day">
-         <int>15</int>
+         <int>16</int>
+        </void>
+        <void property="hour">
+         <int>0</int>
+        </void>
+        <void property="minute">
+         <int>0</int>
+        </void>
+        <void property="month">
+         <int>6</int>
+        </void>
+        <void property="second">
+         <int>0</int>
+        </void>
+        <void property="timezone">
+         <int>-180</int>
+        </void>
+        <void property="year">
+         <int>2016</int>
+        </void>
+       </object>
+      </void>
+      <void property="parentDocumentId">
+       <int>165</int>
+      </void>
+      <void property="phisicalFile">
+       <string>tipos_ganhos.html</string>
+      </void>
+      <void property="phisicalFileSize">
+       <float>0.00246239</float>
+      </void>
+      <void property="publisherId">
+       <string>root</string>
+      </void>
+      <void property="relatedFiles">
+       <string>tipos_ganhos.html</string>
+      </void>
+      <void property="topicId">
+       <int>0</int>
+      </void>
+      <void property="validationStartDate">
+       <object class="com.sun.org.apache.xerces.internal.jaxp.datatype.XMLGregorianCalendarImpl">
+        <void property="day">
+         <int>16</int>
+        </void>
+        <void property="hour">
+         <int>0</int>
+        </void>
+        <void property="minute">
+         <int>0</int>
+        </void>
+        <void property="month">
+         <int>6</int>
+        </void>
+        <void property="second">
+         <int>0</int>
+        </void>
+        <void property="timezone">
+         <int>-180</int>
+        </void>
+        <void property="year">
+         <int>2016</int>
+        </void>
+       </object>
+      </void>
+      <void property="version">
+       <int>1000</int>
+      </void>
+      <void property="versionDescription">
+       <string></string>
+      </void>
+      <void property="volumeId">
+       <string>Default</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.DocumentDto">
+      <void property="UUID">
+       <string>4E8C1428-CCB9-4C66-9B4C-B431E61DFBBF</string>
+      </void>
+      <void property="accessCount">
+       <int>0</int>
+      </void>
+      <void property="additionalComments">
+       <string></string>
+      </void>
+      <void property="cardDescription">
+       <string></string>
+      </void>
+      <void property="colleagueId">
+       <string>root</string>
+      </void>
+      <void property="companyId">
+       <int>1</int>
+      </void>
+      <void property="createDate">
+       <object class="com.sun.org.apache.xerces.internal.jaxp.datatype.XMLGregorianCalendarImpl">
+        <void property="day">
+         <int>16</int>
+        </void>
+        <void property="hour">
+         <int>0</int>
+        </void>
+        <void property="minute">
+         <int>0</int>
+        </void>
+        <void property="month">
+         <int>6</int>
+        </void>
+        <void property="second">
+         <int>0</int>
+        </void>
+        <void property="timezone">
+         <int>-180</int>
+        </void>
+        <void property="year">
+         <int>2016</int>
+        </void>
+       </object>
+      </void>
+      <void property="datasetName">
+       <string>cadastro_de_origens_smc</string>
+      </void>
+      <void property="documentDescription">
+       <string>SMC - Cadastro de Origens</string>
+      </void>
+      <void property="documentId">
+       <int>1013</int>
+      </void>
+      <void property="documentPropertyNumber">
+       <int>1013</int>
+      </void>
+      <void property="documentPropertyVersion">
+       <int>1000</int>
+      </void>
+      <void property="documentType">
+       <string>4</string>
+      </void>
+      <void property="documentTypeId">
+       <string></string>
+      </void>
+      <void property="expirationDate">
+       <object class="com.sun.org.apache.xerces.internal.jaxp.datatype.XMLGregorianCalendarImpl">
+        <void property="day">
+         <int>16</int>
+        </void>
+        <void property="hour">
+         <int>0</int>
+        </void>
+        <void property="minute">
+         <int>0</int>
+        </void>
+        <void property="month">
+         <int>6</int>
+        </void>
+        <void property="second">
+         <int>0</int>
+        </void>
+        <void property="timezone">
+         <int>-180</int>
+        </void>
+        <void property="year">
+         <int>2016</int>
+        </void>
+       </object>
+      </void>
+      <void property="iconId">
+       <int>0</int>
+      </void>
+      <void property="inheritSecurity">
+       <boolean>true</boolean>
+      </void>
+      <void property="keyWord">
+       <string></string>
+      </void>
+      <void property="languageId">
+       <string></string>
+      </void>
+      <void property="lastModifiedDate">
+       <object class="com.sun.org.apache.xerces.internal.jaxp.datatype.XMLGregorianCalendarImpl">
+        <void property="day">
+         <int>16</int>
+        </void>
+        <void property="hour">
+         <int>0</int>
+        </void>
+        <void property="minute">
+         <int>0</int>
+        </void>
+        <void property="month">
+         <int>6</int>
+        </void>
+        <void property="second">
+         <int>0</int>
+        </void>
+        <void property="timezone">
+         <int>-180</int>
+        </void>
+        <void property="year">
+         <int>2016</int>
+        </void>
+       </object>
+      </void>
+      <void property="parentDocumentId">
+       <int>165</int>
+      </void>
+      <void property="phisicalFile">
+       <string>cadastro_de_origens.html</string>
+      </void>
+      <void property="phisicalFileSize">
+       <float>0.00246429</float>
+      </void>
+      <void property="publisherId">
+       <string>root</string>
+      </void>
+      <void property="relatedFiles">
+       <string>cadastro_de_origens.html</string>
+      </void>
+      <void property="topicId">
+       <int>0</int>
+      </void>
+      <void property="validationStartDate">
+       <object class="com.sun.org.apache.xerces.internal.jaxp.datatype.XMLGregorianCalendarImpl">
+        <void property="day">
+         <int>16</int>
+        </void>
+        <void property="hour">
+         <int>0</int>
+        </void>
+        <void property="minute">
+         <int>0</int>
+        </void>
+        <void property="month">
+         <int>6</int>
+        </void>
+        <void property="second">
+         <int>0</int>
+        </void>
+        <void property="timezone">
+         <int>-180</int>
+        </void>
+        <void property="year">
+         <int>2016</int>
+        </void>
+       </object>
+      </void>
+      <void property="version">
+       <int>1000</int>
+      </void>
+      <void property="versionDescription">
+       <string></string>
+      </void>
+      <void property="volumeId">
+       <string>Default</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.DocumentDto">
+      <void property="UUID">
+       <string>8F39E197-23C3-455B-B550-E2ECA06C1DC3</string>
+      </void>
+      <void property="accessCount">
+       <int>0</int>
+      </void>
+      <void property="additionalComments">
+       <string></string>
+      </void>
+      <void property="cardDescription">
+       <string></string>
+      </void>
+      <void property="colleagueId">
+       <string>root</string>
+      </void>
+      <void property="companyId">
+       <int>1</int>
+      </void>
+      <void property="createDate">
+       <object class="com.sun.org.apache.xerces.internal.jaxp.datatype.XMLGregorianCalendarImpl">
+        <void property="day">
+         <int>23</int>
+        </void>
+        <void property="hour">
+         <int>0</int>
+        </void>
+        <void property="minute">
+         <int>0</int>
+        </void>
+        <void property="month">
+         <int>6</int>
+        </void>
+        <void property="second">
+         <int>0</int>
+        </void>
+        <void property="timezone">
+         <int>-180</int>
+        </void>
+        <void property="year">
+         <int>2016</int>
+        </void>
+       </object>
+      </void>
+      <void property="datasetName">
+       <string></string>
+      </void>
+      <void property="documentDescription">
+       <string>FP - Ficha de Pendencia - Subfluxo</string>
+      </void>
+      <void property="documentId">
+       <int>1051</int>
+      </void>
+      <void property="documentPropertyNumber">
+       <int>1051</int>
+      </void>
+      <void property="documentPropertyVersion">
+       <int>2000</int>
+      </void>
+      <void property="documentType">
+       <string>4</string>
+      </void>
+      <void property="documentTypeId">
+       <string></string>
+      </void>
+      <void property="expirationDate">
+       <object class="com.sun.org.apache.xerces.internal.jaxp.datatype.XMLGregorianCalendarImpl">
+        <void property="day">
+         <int>22</int>
+        </void>
+        <void property="hour">
+         <int>0</int>
+        </void>
+        <void property="minute">
+         <int>0</int>
+        </void>
+        <void property="month">
+         <int>6</int>
+        </void>
+        <void property="second">
+         <int>0</int>
+        </void>
+        <void property="timezone">
+         <int>-180</int>
+        </void>
+        <void property="year">
+         <int>2016</int>
+        </void>
+       </object>
+      </void>
+      <void property="iconId">
+       <int>0</int>
+      </void>
+      <void property="inheritSecurity">
+       <boolean>true</boolean>
+      </void>
+      <void property="keyWord">
+       <string></string>
+      </void>
+      <void property="languageId">
+       <string></string>
+      </void>
+      <void property="lastModifiedDate">
+       <object class="com.sun.org.apache.xerces.internal.jaxp.datatype.XMLGregorianCalendarImpl">
+        <void property="day">
+         <int>23</int>
         </void>
         <void property="hour">
          <int>0</int>
@@ -3410,16 +3774,16 @@
        <int>2</int>
       </void>
       <void property="phisicalFile">
-       <string>cadastro_de_origens.html</string>
+       <string>FP-subfluxo.html</string>
       </void>
       <void property="phisicalFileSize">
-       <float>0.00246429</float>
+       <float>0.0111179</float>
       </void>
       <void property="publisherId">
        <string>root</string>
       </void>
       <void property="relatedFiles">
-       <string>cadastro_de_origens.html</string>
+       <string>FP-subfluxo.html</string>
       </void>
       <void property="topicId">
        <int>0</int>
@@ -3427,7 +3791,7 @@
       <void property="validationStartDate">
        <object class="com.sun.org.apache.xerces.internal.jaxp.datatype.XMLGregorianCalendarImpl">
         <void property="day">
-         <int>15</int>
+         <int>22</int>
         </void>
         <void property="hour">
          <int>0</int>
@@ -3471,521 +3835,225 @@
    </array>
   </void>
   <void method="put">
-   <string>camposFormulario, documentoId = 176</string>
-   <array class="java.lang.String" length="49">
+   <string>camposFormulario, documentoId = 1051</string>
+   <array class="java.lang.String" length="17">
     <void index="0">
-     <string>cel_empresa</string>
+     <string>cliente</string>
     </void>
     <void index="1">
-     <string>data_contato</string>
+     <string>cod_item</string>
     </void>
     <void index="2">
-     <string>data_encer</string>
-    </void>
-    <void index="3">
-     <string>data_exec</string>
-    </void>
-    <void index="4">
-     <string>data_qualidade</string>
-    </void>
-    <void index="5">
-     <string>data_resp</string>
-    </void>
-    <void index="6">
-     <string>data_ret</string>
-    </void>
-    <void index="7">
-     <string>data_sol</string>
-    </void>
-    <void index="8">
-     <string>desc_acao</string>
-    </void>
-    <void index="9">
-     <string>desc_recla</string>
-    </void>
-    <void index="10">
-     <string>email_contato</string>
-    </void>
-    <void index="11">
-     <string>hora_sol</string>
-    </void>
-    <void index="12">
-     <string>localidade</string>
-    </void>
-    <void index="13">
-     <string>matricula_encer</string>
-    </void>
-    <void index="14">
-     <string>matricula_exec</string>
-    </void>
-    <void index="15">
-     <string>matricula_qualidade</string>
-    </void>
-    <void index="16">
-     <string>matricula_resp</string>
-    </void>
-    <void index="17">
-     <string>matricula_resp2</string>
-    </void>
-    <void index="18">
-     <string>matricula_ret</string>
-    </void>
-    <void index="19">
-     <string>matricula_user</string>
-    </void>
-    <void index="20">
-     <string>nome_contato</string>
-    </void>
-    <void index="21">
-     <string>nome_empresa</string>
-    </void>
-    <void index="22">
-     <string>nota</string>
-    </void>
-    <void index="23">
-     <string>num_nrc</string>
-    </void>
-    <void index="24">
-     <string>num_processo</string>
-    </void>
-    <void index="25">
-     <string>obs_aceite</string>
-    </void>
-    <void index="26">
-     <string>obs_encer</string>
-    </void>
-    <void index="27">
-     <string>obs_exec</string>
-    </void>
-    <void index="28">
-     <string>obs_qualidade</string>
-    </void>
-    <void index="29">
-     <string>origem</string>
-    </void>
-    <void index="30">
-     <string>prazo</string>
-    </void>
-    <void index="31">
-     <string>produto</string>
-    </void>
-    <void index="32">
-     <string>ramal</string>
-    </void>
-    <void index="33">
-     <string>ramal_resp</string>
-    </void>
-    <void index="34">
-     <string>rd_aceite</string>
-    </void>
-    <void index="35">
-     <string>rd_aprov_acao</string>
-    </void>
-    <void index="36">
-     <string>rd_aprov_qualidade</string>
-    </void>
-    <void index="37">
-     <string>rd_tipo_atend</string>
-    </void>
-    <void index="38">
-     <string>rd_tipo_recla</string>
-    </void>
-    <void index="39">
-     <string>responsavel</string>
-    </void>
-    <void index="40">
-     <string>servico</string>
-    </void>
-    <void index="41">
-     <string>solicitante</string>
-    </void>
-    <void index="42">
-     <string>tel_empresa</string>
-    </void>
-    <void index="43">
-     <string>unid_negocio</string>
-    </void>
-    <void index="44">
-     <string>user_encer</string>
-    </void>
-    <void index="45">
-     <string>user_exec</string>
-    </void>
-    <void index="46">
-     <string>user_qualidade</string>
-    </void>
-    <void index="47">
-     <string>user_resp</string>
-    </void>
-    <void index="48">
-     <string>user_ret</string>
-    </void>
-   </array>
-  </void>
-  <void method="put">
-   <string>camposFormulario, documentoId = 298</string>
-   <array class="java.lang.String" length="84">
-    <void index="0">
-     <string>acao</string>
-    </void>
-    <void index="1">
-     <string>c1</string>
-    </void>
-    <void index="2">
-     <string>c2</string>
-    </void>
-    <void index="3">
-     <string>c3</string>
-    </void>
-    <void index="4">
-     <string>c4</string>
-    </void>
-    <void index="5">
-     <string>c5</string>
-    </void>
-    <void index="6">
-     <string>c6</string>
-    </void>
-    <void index="7">
-     <string>cod_prod</string>
-    </void>
-    <void index="8">
-     <string>colab_falha</string>
-    </void>
-    <void index="9">
-     <string>conclusao</string>
-    </void>
-    <void index="10">
-     <string>criticidade</string>
-    </void>
-    <void index="11">
-     <string>data_acoes</string>
-    </void>
-    <void index="12">
-     <string>data_causa_raiz</string>
-    </void>
-    <void index="13">
-     <string>data_disp</string>
-    </void>
-    <void index="14">
-     <string>data_eficacia</string>
-    </void>
-    <void index="15">
-     <string>data_emer</string>
-    </void>
-    <void index="16">
      <string>data_emissor</string>
     </void>
-    <void index="17">
-     <string>data_falha</string>
+    <void index="3">
+     <string>data_pai</string>
     </void>
-    <void index="18">
-     <string>data_parecer</string>
-    </void>
-    <void index="19">
+    <void index="4">
      <string>data_sol</string>
     </void>
-    <void index="20">
-     <string>descAtividade_corr</string>
+    <void index="5">
+     <string>def_const</string>
     </void>
-    <void index="21">
-     <string>descAtividade_emer</string>
+    <void index="6">
+     <string>def_inf</string>
     </void>
-    <void index="22">
-     <string>descEmissao</string>
+    <void index="7">
+     <string>desc_mat</string>
     </void>
-    <void index="23">
-     <string>desc_causa</string>
+    <void index="8">
+     <string>fp_pai</string>
     </void>
-    <void index="24">
-     <string>desc_disp</string>
-    </void>
-    <void index="25">
-     <string>desc_eficacia</string>
-    </void>
-    <void index="26">
-     <string>desc_falha</string>
-    </void>
-    <void index="27">
-     <string>desc_mod_falha</string>
-    </void>
-    <void index="28">
-     <string>desc_parecer</string>
-    </void>
-    <void index="29">
-     <string>desc_reinc</string>
-    </void>
-    <void index="30">
-     <string>disposocao</string>
-    </void>
-    <void index="31">
-     <string>dtprazoativ_corr</string>
-    </void>
-    <void index="32">
-     <string>dtprazoativ_emer</string>
-    </void>
-    <void index="33">
-     <string>equip</string>
-    </void>
-    <void index="34">
-     <string>especific</string>
-    </void>
-    <void index="35">
-     <string>fluxo_corr</string>
-    </void>
-    <void index="36">
-     <string>fluxo_emer</string>
-    </void>
-    <void index="37">
-     <string>fornec</string>
-    </void>
-    <void index="38">
-     <string>fornecedor</string>
-    </void>
-    <void index="39">
+    <void index="9">
      <string>hora_sol</string>
     </void>
-    <void index="40">
-     <string>local_detec</string>
+    <void index="10">
+     <string>it_nr_serie</string>
     </void>
-    <void index="41">
-     <string>matricula_corr</string>
-    </void>
-    <void index="42">
-     <string>matricula_disp</string>
-    </void>
-    <void index="43">
-     <string>matricula_emer</string>
-    </void>
-    <void index="44">
+    <void index="11">
      <string>matricula_emissor</string>
     </void>
-    <void index="45">
-     <string>matricula_parecer</string>
-    </void>
-    <void index="46">
-     <string>matr_falha</string>
-    </void>
-    <void index="47">
-     <string>mat_acoes</string>
-    </void>
-    <void index="48">
-     <string>mat_causa_raiz</string>
-    </void>
-    <void index="49">
-     <string>mat_disp</string>
-    </void>
-    <void index="50">
-     <string>mat_eficacia</string>
-    </void>
-    <void index="51">
-     <string>mat_emer</string>
-    </void>
-    <void index="52">
-     <string>mat_falha</string>
-    </void>
-    <void index="53">
-     <string>mat_parecer</string>
-    </void>
-    <void index="54">
-     <string>nome_prod</string>
-    </void>
-    <void index="55">
+    <void index="12">
      <string>num_processo</string>
     </void>
-    <void index="56">
-     <string>orgao</string>
+    <void index="13">
+     <string>process_pai</string>
     </void>
-    <void index="57">
-     <string>origem</string>
+    <void index="14">
+     <string>serv_envio</string>
     </void>
-    <void index="58">
-     <string>pedido</string>
-    </void>
-    <void index="59">
-     <string>processo</string>
-    </void>
-    <void index="60">
-     <string>quant</string>
-    </void>
-    <void index="61">
-     <string>quant_disp</string>
-    </void>
-    <void index="62">
-     <string>referencia</string>
-    </void>
-    <void index="63">
-     <string>reincidencia</string>
-    </void>
-    <void index="64">
-     <string>reponsabilidade</string>
-    </void>
-    <void index="65">
-     <string>responsavel_corr</string>
-    </void>
-    <void index="66">
-     <string>responsavel_disp</string>
-    </void>
-    <void index="67">
-     <string>responsavel_emer</string>
-    </void>
-    <void index="68">
-     <string>responsavel_parecer</string>
-    </void>
-    <void index="69">
-     <string>resp_acoes</string>
-    </void>
-    <void index="70">
-     <string>resp_causa_raiz</string>
-    </void>
-    <void index="71">
-     <string>resp_disp</string>
-    </void>
-    <void index="72">
-     <string>resp_eficacia</string>
-    </void>
-    <void index="73">
-     <string>resp_emer</string>
-    </void>
-    <void index="74">
-     <string>resp_falha</string>
-    </void>
-    <void index="75">
-     <string>resp_parecer</string>
-    </void>
-    <void index="76">
-     <string>resp_retrabalho</string>
-    </void>
-    <void index="77">
-     <string>retrabalho</string>
-    </void>
-    <void index="78">
-     <string>rot_rej</string>
-    </void>
-    <void index="79">
-     <string>status_corr</string>
-    </void>
-    <void index="80">
-     <string>status_emer</string>
-    </void>
-    <void index="81">
-     <string>tipo</string>
-    </void>
-    <void index="82">
-     <string>unid_negocio</string>
-    </void>
-    <void index="83">
+    <void index="15">
      <string>user_emissor</string>
+    </void>
+    <void index="16">
+     <string>vl_conserto</string>
     </void>
    </array>
   </void>
   <void method="put">
-   <string>camposFormulario, documentoId = 980</string>
-   <array class="java.lang.String" length="35">
+   <string>camposFormulario, documentoId = 979</string>
+   <array class="java.lang.String" length="54">
     <void index="0">
-     <string>atend</string>
-    </void>
-    <void index="1">
      <string>cidade</string>
     </void>
-    <void index="2">
+    <void index="1">
      <string>cliente</string>
+    </void>
+    <void index="2">
+     <string>cod_item</string>
     </void>
     <void index="3">
      <string>contato</string>
     </void>
     <void index="4">
-     <string>data_disp</string>
+     <string>data_aprov</string>
     </void>
     <void index="5">
-     <string>data_emiss</string>
+     <string>data_emissor</string>
     </void>
     <void index="6">
-     <string>data_sol</string>
+     <string>data_env</string>
     </void>
     <void index="7">
-     <string>desc_acoes</string>
+     <string>data_envio</string>
     </void>
     <void index="8">
-     <string>desc_atend</string>
+     <string>data_orc</string>
     </void>
     <void index="9">
-     <string>det_outros</string>
+     <string>data_sol</string>
     </void>
     <void index="10">
-     <string>disp</string>
+     <string>def_const</string>
     </void>
     <void index="11">
-     <string>dt_atend</string>
+     <string>def_inf</string>
     </void>
     <void index="12">
-     <string>dt_concl</string>
+     <string>desc_mat</string>
     </void>
     <void index="13">
-     <string>email</string>
+     <string>desc_reprov</string>
     </void>
     <void index="14">
-     <string>hora_sol</string>
+     <string>estado</string>
     </void>
     <void index="15">
-     <string>matricula_atend</string>
+     <string>et_cidade</string>
     </void>
     <void index="16">
-     <string>matricula_concl</string>
+     <string>et_cliente</string>
     </void>
     <void index="17">
-     <string>matricula_disp</string>
+     <string>et_data</string>
     </void>
     <void index="18">
-     <string>matricula_emiss</string>
+     <string>et_estado</string>
     </void>
     <void index="19">
-     <string>matricula_resp</string>
+     <string>et_numsol</string>
     </void>
     <void index="20">
-     <string>nr_docto</string>
+     <string>e_mail</string>
     </void>
     <void index="21">
-     <string>num_processo</string>
+     <string>forma_envio</string>
     </void>
     <void index="22">
-     <string>obs_compl</string>
+     <string>fornecedor</string>
     </void>
     <void index="23">
-     <string>obs_conclu</string>
+     <string>hora_sol</string>
     </void>
     <void index="24">
-     <string>prazo</string>
+     <string>it_nr_serie</string>
     </void>
     <void index="25">
-     <string>rd_docto</string>
+     <string>matricula_aprov</string>
     </void>
     <void index="26">
-     <string>resp_disp</string>
+     <string>matricula_emissor</string>
     </void>
     <void index="27">
-     <string>resp_emiss</string>
+     <string>matricula_env</string>
     </void>
     <void index="28">
-     <string>resp_exec</string>
+     <string>matricula_envio</string>
     </void>
     <void index="29">
-     <string>telefone</string>
+     <string>matricula_orc</string>
     </void>
     <void index="30">
-     <string>tipo</string>
+     <string>mat_fp</string>
     </void>
     <void index="31">
-     <string>uf</string>
+     <string>nf_ent</string>
     </void>
     <void index="32">
-     <string>unid_negocio</string>
+     <string>nf_ret</string>
     </void>
     <void index="33">
-     <string>user_atend</string>
+     <string>notaFiscal_ret</string>
     </void>
     <void index="34">
-     <string>user_concl</string>
+     <string>notaFiscal_serv</string>
+    </void>
+    <void index="35">
+     <string>nr_item</string>
+    </void>
+    <void index="36">
+     <string>num_processo</string>
+    </void>
+    <void index="37">
+     <string>obs_envio</string>
+    </void>
+    <void index="38">
+     <string>orc_aprovado</string>
+    </void>
+    <void index="39">
+     <string>per_gar</string>
+    </void>
+    <void index="40">
+     <string>rastreio</string>
+    </void>
+    <void index="41">
+     <string>responsavel_fp</string>
+    </void>
+    <void index="42">
+     <string>serv_envio</string>
+    </void>
+    <void index="43">
+     <string>status_fp</string>
+    </void>
+    <void index="44">
+     <string>telefone</string>
+    </void>
+    <void index="45">
+     <string>user_aprov</string>
+    </void>
+    <void index="46">
+     <string>user_emissor</string>
+    </void>
+    <void index="47">
+     <string>user_env</string>
+    </void>
+    <void index="48">
+     <string>user_envio</string>
+    </void>
+    <void index="49">
+     <string>user_orc</string>
+    </void>
+    <void index="50">
+     <string>vl_cobrado</string>
+    </void>
+    <void index="51">
+     <string>vl_conserto</string>
+    </void>
+    <void index="52">
+     <string>vl_tot_cobrado</string>
+    </void>
+    <void index="53">
+     <string>vl_tot_conserto</string>
     </void>
    </array>
   </void>
@@ -4093,6 +4161,19 @@
       </void>
       <void property="processId">
        <string>SOL-TI</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.ProcessDefinitionDto">
+      <void property="companyId">
+       <int>1</int>
+      </void>
+      <void property="processDescription">
+       <string>Subatividades Ficha de Pendencia</string>
+      </void>
+      <void property="processId">
+       <string>Sub-FP</string>
       </void>
      </object>
     </void>
@@ -4426,157 +4507,6 @@
        <string>papeis0800</string>
       </void>
      </array>
-    </void>
-   </array>
-  </void>
-  <void method="put">
-   <string>camposFormulario, documentoId = 998</string>
-   <array class="java.lang.String" length="42">
-    <void index="0">
-     <string>atend</string>
-    </void>
-    <void index="1">
-     <string>data_acoes</string>
-    </void>
-    <void index="2">
-     <string>data_anal</string>
-    </void>
-    <void index="3">
-     <string>data_eficacia</string>
-    </void>
-    <void index="4">
-     <string>data_emissor</string>
-    </void>
-    <void index="5">
-     <string>data_preAnal</string>
-    </void>
-    <void index="6">
-     <string>data_sol</string>
-    </void>
-    <void index="7">
-     <string>decisao</string>
-    </void>
-    <void index="8">
-     <string>descAtividade_acoes</string>
-    </void>
-    <void index="9">
-     <string>desc_ganho</string>
-    </void>
-    <void index="10">
-     <string>desc_parecer</string>
-    </void>
-    <void index="11">
-     <string>det_outros</string>
-    </void>
-    <void index="12">
-     <string>dtprazoativ_acoes</string>
-    </void>
-    <void index="13">
-     <string>fluxo_acoes</string>
-    </void>
-    <void index="14">
-     <string>hora_sol</string>
-    </void>
-    <void index="15">
-     <string>matricula_acoes</string>
-    </void>
-    <void index="16">
-     <string>matricula_emissor</string>
-    </void>
-    <void index="17">
-     <string>matricula_preAnal</string>
-    </void>
-    <void index="18">
-     <string>mat_acoes</string>
-    </void>
-    <void index="19">
-     <string>mat_anal</string>
-    </void>
-    <void index="20">
-     <string>mat_eficacia</string>
-    </void>
-    <void index="21">
-     <string>mat_preAnal</string>
-    </void>
-    <void index="22">
-     <string>num_processo</string>
-    </void>
-    <void index="23">
-     <string>obser_anal</string>
-    </void>
-    <void index="24">
-     <string>obser_preAnal</string>
-    </void>
-    <void index="25">
-     <string>orgao</string>
-    </void>
-    <void index="26">
-     <string>origem</string>
-    </void>
-    <void index="27">
-     <string>produto</string>
-    </void>
-    <void index="28">
-     <string>responsavel_acoes</string>
-    </void>
-    <void index="29">
-     <string>responsavel_preAnal</string>
-    </void>
-    <void index="30">
-     <string>resp_acoes</string>
-    </void>
-    <void index="31">
-     <string>resp_anal</string>
-    </void>
-    <void index="32">
-     <string>resp_eficacia</string>
-    </void>
-    <void index="33">
-     <string>resp_preAnal</string>
-    </void>
-    <void index="34">
-     <string>sitAtual</string>
-    </void>
-    <void index="35">
-     <string>sitPretendida</string>
-    </void>
-    <void index="36">
-     <string>status_acoes</string>
-    </void>
-    <void index="37">
-     <string>tipo</string>
-    </void>
-    <void index="38">
-     <string>tipo_ganho</string>
-    </void>
-    <void index="39">
-     <string>urgencia</string>
-    </void>
-    <void index="40">
-     <string>user_emissor</string>
-    </void>
-    <void index="41">
-     <string>val_ganho</string>
-    </void>
-   </array>
-  </void>
-  <void method="put">
-   <string>camposFormulario, documentoId = 1004</string>
-   <array class="java.lang.String" length="5">
-    <void index="0">
-     <string>bt_add_interacao</string>
-    </void>
-    <void index="1">
-     <string>data_mod</string>
-    </void>
-    <void index="2">
-     <string>div_controladoria</string>
-    </void>
-    <void index="3">
-     <string>origem</string>
-    </void>
-    <void index="4">
-     <string>user</string>
     </void>
    </array>
   </void>

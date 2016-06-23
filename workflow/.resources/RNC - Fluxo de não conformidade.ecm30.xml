@@ -23,7 +23,7 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>RNC - Relátorio de não conformidade</processId>
-      <version>4</version>
+      <version>7</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
     <formId>298</formId>
@@ -251,7 +251,7 @@
       <stateName>Causa Raiz</stateName>
       <stateDescription>Causa Raiz</stateDescription>
       <instruction></instruction>
-      <deadlineTime>0</deadlineTime>
+      <deadlineTime>576000</deadlineTime>
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
       <engineAllocationId>Campo Formulário</engineAllocationId>
@@ -328,7 +328,7 @@
       <notifyManagerDelay>false</notifyManagerDelay>
       <allowanceManagerTime>0</allowanceManagerTime>
       <frequenceManagerTime>0</frequenceManagerTime>
-      <inhibitTransfer>false</inhibitTransfer>
+      <inhibitTransfer>true</inhibitTransfer>
       <periodId>Default</periodId>
       <stateType>0</stateType>
       <bpmnType>80</bpmnType>
@@ -587,7 +587,7 @@
         <companyId>1</companyId>
         <processId>RNC</processId>
         <expressionOrder>1</expressionOrder>
-        <version>4</version>
+        <version>7</version>
         <sequence>29</sequence>
       </conditionProcessStatePK>
       <condition>(hAPI.getCardValue(&quot;disposocao&quot;) == &quot;Nao Rejeicao&quot;)</condition>
@@ -600,7 +600,7 @@
         <companyId>1</companyId>
         <processId>RNC</processId>
         <expressionOrder>2</expressionOrder>
-        <version>4</version>
+        <version>7</version>
         <sequence>29</sequence>
       </conditionProcessStatePK>
       <condition>(hAPI.getCardValue(&quot;disposocao&quot;) == &quot;SAC&quot;) || (hAPI.getCardValue(&quot;disposocao&quot;) == &quot;NCF&quot;)</condition>
@@ -613,7 +613,7 @@
         <companyId>1</companyId>
         <processId>RNC</processId>
         <expressionOrder>3</expressionOrder>
-        <version>4</version>
+        <version>7</version>
         <sequence>29</sequence>
       </conditionProcessStatePK>
       <condition>(hAPI.getCardValue(&quot;disposocao&quot;) == &quot;Nao Finalizar&quot;)</condition>
@@ -624,7 +624,7 @@
         <companyId>1</companyId>
         <processId>RNC</processId>
         <expressionOrder>1</expressionOrder>
-        <version>4</version>
+        <version>7</version>
         <sequence>35</sequence>
       </conditionProcessStatePK>
       <condition>(hAPI.getCardValue(&quot;conclusao&quot;) == &quot;Ineficaz&quot;)</condition>
@@ -637,7 +637,7 @@
         <companyId>1</companyId>
         <processId>RNC</processId>
         <expressionOrder>2</expressionOrder>
-        <version>4</version>
+        <version>7</version>
         <sequence>35</sequence>
       </conditionProcessStatePK>
       <condition>(hAPI.getCardValue(&quot;conclusao&quot;) != &quot;Ineficaz&quot;)</condition>
@@ -648,7 +648,7 @@
         <companyId>1</companyId>
         <processId>RNC</processId>
         <expressionOrder>1</expressionOrder>
-        <version>4</version>
+        <version>7</version>
         <sequence>39</sequence>
       </conditionProcessStatePK>
       <condition>true</condition>
@@ -661,7 +661,7 @@
         <companyId>1</companyId>
         <processId>RNC</processId>
         <expressionOrder>2</expressionOrder>
-        <version>4</version>
+        <version>7</version>
         <sequence>39</sequence>
       </conditionProcessStatePK>
       <condition>true</condition>
@@ -1300,7 +1300,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>RNC</processId>
-        <version>4</version>
+        <version>7</version>
         <linkSequence>32</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1311,7 +1311,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>RNC</processId>
-        <version>4</version>
+        <version>7</version>
         <linkSequence>32</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
@@ -1322,7 +1322,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>RNC</processId>
-        <version>4</version>
+        <version>7</version>
         <linkSequence>32</linkSequence>
         <bendSequence>3</bendSequence>
       </processLinkBendPK>
@@ -1333,7 +1333,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>RNC</processId>
-        <version>4</version>
+        <version>7</version>
         <linkSequence>32</linkSequence>
         <bendSequence>4</bendSequence>
       </processLinkBendPK>
@@ -1344,7 +1344,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>RNC</processId>
-        <version>4</version>
+        <version>7</version>
         <linkSequence>33</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1355,7 +1355,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>RNC</processId>
-        <version>4</version>
+        <version>7</version>
         <linkSequence>33</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
@@ -1366,7 +1366,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>RNC</processId>
-        <version>4</version>
+        <version>7</version>
         <linkSequence>33</linkSequence>
         <bendSequence>3</bendSequence>
       </processLinkBendPK>
@@ -1377,7 +1377,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>RNC</processId>
-        <version>4</version>
+        <version>7</version>
         <linkSequence>37</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1388,7 +1388,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>RNC</processId>
-        <version>4</version>
+        <version>7</version>
         <linkSequence>38</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1399,7 +1399,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>RNC</processId>
-        <version>4</version>
+        <version>7</version>
         <linkSequence>38</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
@@ -1410,7 +1410,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>RNC</processId>
-        <version>4</version>
+        <version>7</version>
         <linkSequence>41</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1421,7 +1421,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>RNC</processId>
-        <version>4</version>
+        <version>7</version>
         <linkSequence>42</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1434,7 +1434,7 @@
       <processStateTriggerPK>
         <companyId>1</companyId>
         <processId>RNC</processId>
-        <version>4</version>
+        <version>7</version>
         <stateSequence>10</stateSequence>
         <triggerSequence>0</triggerSequence>
       </processStateTriggerPK>
@@ -1448,7 +1448,7 @@
       <processStateTriggerPK>
         <companyId>1</companyId>
         <processId>RNC</processId>
-        <version>4</version>
+        <version>7</version>
         <stateSequence>16</stateSequence>
         <triggerSequence>1</triggerSequence>
       </processStateTriggerPK>

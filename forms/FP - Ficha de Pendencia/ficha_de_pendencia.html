@@ -21,7 +21,7 @@
 							<td rowspan="3" width="20%"><img src="/resources/logo_casp/logocasp.gif" width="204" height="79"></td>
 							<td rowspan="3"><div align="center" dir="ltr">
 									<h2>
-										<b>FICHA DE PENDÊNCIA</b>
+										<b>FICHA DE PENDÃŠNCIA</b>
 									</h2>
 								</div></td>
 							<td align="right"><label for="chamado_num">N&uacute;mero RNC:&nbsp;&nbsp;&nbsp;&nbsp;</label></td>
@@ -48,7 +48,7 @@
 					<div class="panel panel-primary" id="pn_emissao">
 						<div class="panel-heading" style="background-color: blue;">
 							<h3 class="panel-title">
-								<strong><i class="fluigicon fluigicon-file-default fluigicon-sm"></i>&nbsp; Emissão</strong>
+								<strong><i class="fluigicon fluigicon-file-default fluigicon-sm"></i>&nbsp; EmissÃ£o</strong>
 							</h3>
 						</div>
 						<div class="panel-body">
@@ -69,23 +69,11 @@
 							</div>
 							<br/>
 							<div class="row">
-								<div class="col-xs-5">
-									<label for="equip">Equipamento:</label>
-									<input class="form-control" name="equip" id="equip" type="text" />
-								</div>
-								
-								<div class="col-xs-3">
+								<div class="col-xs-2">
 									<label for="nf_ent">NF. Entrada:</label>
 									<input class="form-control" name="nf_ent" id="nf_ent" type="text" />
-								</div>
+								</div>															
 								<div class="col-xs-3">
-									<label for="per_gar">Periodo Garantia:</label>
-									<input class="form-control" name="per_gar" id="per_gar" type="text" />
-								</div>								
-							</div>
-							<br/>
-							<div class="row">
-								<div class="col-xs-4">
 									<label for="contato">Contato:</label>
 									<input type="text" name="contato" id="contato" class="form-control" />						
 								</div>	
@@ -100,15 +88,8 @@
 							</div>
 							<br/>
 							<div class="row">
-								<div class="col-xs-12">
-									<label for="desc_defeito">Descrição do Defeito:</label>
-									<textarea class="form-control" name="desc_defeito" id="desc_defeito"></textarea>
-								</div>													
-							</div>
-							<br/>
-							<div class="row">
 								<div class="col-xs-3">
-									<label for="matricula_emissor">Resp. Emissão:</label>
+									<label for="matricula_emissor">Resp. EmissÃ£o:</label>
 									<input type="text" class="form-control" placeholder="Matr&iacute;cula" name="matricula_emissor" id="matricula_emissor" readonly="readonly" />
 								</div>
 								<div class="col-xs-6">
@@ -130,102 +111,122 @@
 						</div>
 						<div class="panel-body">
 							<div class="row">
-								<div class="col-xs-12">
-									<label for="desc_const">Constatação:</label>
-									<textarea class="form-control" name="desc_const" id="desc_const" rows='3'></textarea>							
-								</div>													
-							</div>
-							<br/>
-							<div class="row">
-								<div class="col-xs-6">
-									<label for="desc_serv">Descrição do Serviço:</label>
-									<textarea class="form-control" name="desc_serv" id="desc_serv" rows='1'></textarea>									
-								</div>
-								<div class="col-xs-2">
-									<label for="nf_servico">Nota fiscal de serviço</label>
-									<input type="text" class="form-control" name="nf_servico" id="nf_servico"/>
-								</div>	
-								<div class="col-xs-2">
-									<label for="vl_serv_conserto">Valor Concerto:</label>
-									<input type="text" name="vl_serv_conserto" id="vl_serv_conserto" class="form-control money" />
-									
-								</div>	
-								<div class="col-xs-2">
-									<label for="vl_serv_cobrado">Valor Cobrado:</label>
-									<input type="text" name="vl_serv_cobrado" id="vl_serv_cobrado" class="form-control money" />
-									
-								</div>												
-							</div>
-							<br/>
-							<div class="row">
-								<div class="form-field table-responsive" data-type="tabledetail" data-show-properties="" data-field-name="tabledetail">
+								
 									<table tablename="td_materiais" cellspacing="0" id="td_materiais" noaddbutton=true class="table">
 										<thead>
 											<tr class="tableHeadRow">
-												<th class="tableColumn">Item / Quant.:</th>
-												<th class="tableColumn">Codigo / NF</th>
-												<th class="tableColumn">Descrição / Nº Serie</th>
-												<th class="tableColumn">Valores</th>																								
+												<th class="tableColumn">Fichas de pendencias:</th>																																				
 											</tr>
 										</thead>
 										<tbody>
 											<tr>
-												<td class="col-xs-2">
-													<label for="nr_item">FP nº:</label>
-													<input type="text" name="nr_item" id="nr_item" class="form-control" readonly="readonly" />
-													<br/>
-													<label for="nr_item">Quant.:</label>
-													<input type="text" name="quant" id="quant" class="form-control number" />
-												</td>
-												
-												<td class="col-xs-3">
-													<label for="desc_mat">Código:</label>
-													<input type="text" name="cod_item" id="cod_item" class="form-control" />
-													</br>
-													<label for="desc_mat">NF retorno:</label>
-													<input type="text" name="nf_ret" id="nf_ret" class="form-control" />													
-												</td>
-												
-												<td class="col-xs-5">
-													<label for="desc_mat">Descrição</label>
-													<input type="text" name="desc_mat" id="desc_mat" class="form-control" />
-													</br>
-													<label for="it_nr_serie">NF retorno:</label>
-													<input type="text" name="it_nr_serie" id="it_nr_serie" class="form-control" />												
-												</td>												
-																								
-												<td class="col-xs-3">
-													<label for="vl_concerto">Conserto:</label>
-													<input type="text" name="vl_conserto" id="vl_conserto" class="form-control" />
-													<br/>
-													<label for="vl_cobrado">Cobrado:</label>
-													<input type="text" name="vl_cobrado" id="vl_cobrado" class="form-control" />	
-												</td>
-																							
+												<td>
+													<div class="row">
+														<div class="col-xs-2">
+															<label for="nr_item">FP nÂº:</label>
+															<input type="text" name="nr_item" id="nr_item" class="form-control" readonly="readonly" />								
+														</div>
+														<div class="col-xs-2">
+															<label for="desc_mat">CÃ³digo:</label>
+															<input type="text" name="cod_item" id="cod_item" class="form-control" />
+														</div>	
+														<div class="col-xs-5">
+															<label for="desc_mat">DescriÃ§Ã£o</label>
+															<input type="text" name="desc_mat" id="desc_mat" class="form-control" />
+															
+														</div>	
+														<div class="col-xs-3">
+															<label for="vl_concerto">Vl. Conserto:</label>
+															<input type="text" name="vl_conserto" id="vl_conserto" class="form-control" />
+														</div>												
+													</div>
+													
+													<div class="row">
+														<div class="col-xs-4">
+															<label for="def_inf">Defeito Informado:</label>
+															<textarea class="form-control" name="def_inf" id="def_inf" rows='3'></textarea>								
+														</div>
+														<div class="col-xs-4">
+															<label for="def_const">Defeito Constatado:</label>
+															<textarea class="form-control" name="def_const" id="def_const" rows='3'></textarea>	
+														</div>	
+														<div class="col-xs-4">
+															<label for="serv_envio">ServiÃ§o executado:</label>
+															<textarea class="form-control" name="serv_envio" id="serv_envio" rows='3'></textarea>	
+															
+														</div>																										
+													</div>
+													<div class="row">
+														<div class="col-xs-3">
+															<label for="desc_mat">NF retorno:</label>
+															<input type="text" name="nf_ret" id="nf_ret" class="form-control" />
+														</div>	
+														<div class="col-xs-4">
+															<label for="it_nr_serie">NÂº Serie:</label>
+															<input type="text" name="it_nr_serie" id="it_nr_serie" class="form-control" />
+														</div>	
+														<div class="col-xs-2">
+															<label for="per_gar">Periodo Garantia:</label>
+															<select class="form-control" name="per_gar" id="per_gar">
+																<option value="sim">Sim</option>
+																<option value='nao'>NÃ£o</option>										
+															</select>																
+														</div>	
+														<div class="col-xs-3">
+															<label for="vl_cobrado">Vl. a ser cobrado:</label>
+															<input type="text" name="vl_cobrado" id="vl_cobrado" class="form-control" />
+														</div>												
+													</div>
+													<div class="row">
+														<div class="col-xs-3">
+															<label for="fornecedor">Fornecedor:</label>
+															<input type="text" name="fornecedor" id="fornecedor" class="form-control" />
+														</div>	
+														<div class="col-xs-4">
+															<label for="responsavel_fp">ResponsÃ¡vel:</label>
+															<input type="hidden" name="mat_fp" id="mat_fp" />
+															<div class="input-group">
+																<input type="text" name="responsavel_fp" id="responsavel_fp" class="form-control" readonly="readonly"/>
+																<span class="input-group-addon fs-cursor-pointer" onclick='zoomResponsavelFP(this);' id="btZoomColab">
+																	<span class="fluigicon fluigicon-user-search"></span>
+																</span>
+															</div>																								
+														</div>	
+														<div class="col-xs-2">
+															<label for="fluxo_fp">Sub-Atividade:</label>
+															<input type="text" name="fluxo_fp" id="fluxo_fp" class="form-control isProcessLink" readonly="readonly" />
+																														
+														</div>	
+														<div class="col-xs-3">
+															<label for="status_fp">Status:</label>
+															<input type="text" name="status_fp" id="status_fp" class="form-control status" readonly="readonly" />
+														</div>												
+													</div>														
+												</td>											
 											</tr>
 										</tbody>
 									</table>
-								</div>																	
+																								
 							</div>
 							<br/>
 							<div class="row">
 								<div class="col-xs-6">
-										<button type="button" class="btn btn-primary" data-toggle="button" onclick="addLinha('td_materiais')">Adicionar Material</button>
-									</div>
+									<button type="button" class="btn btn-primary" data-toggle="button" onclick="addLinha('td_materiais')">Adicionar Material</button>
+								</div>
 								<div class="col-xs-3">
 									<label for="vl_tot_conserto" >Total do Conserto:</label>
 									<input class="form-control money" name="vl_tot_conserto" id="vl_tot_conserto" type="text" />
 									
 								</div>	
 								<div class="col-xs-3">
-									<label for="vl_tot_cobrado" >Total do Orçamento:</label>
+									<label for="vl_tot_cobrado" >Total do OrÃ§amento:</label>
 									<input class="form-control money" name="vl_tot_cobrado" id="vl_tot_cobrado" type="text" />
 								</div>												
 							</div>
 							<br/>
 							<div class="row">
 								<div class="col-xs-3">
-									<label for="matricula_orc">Resp. Emissão:</label>
+									<label for="matricula_orc">Resp. EmissÃ£o:</label>
 									<input type="text" class="form-control" placeholder="Matr&iacute;cula" name="matricula_orc" id="matricula_orc" readonly="readonly" />
 								</div>
 								<div class="col-xs-6">
@@ -243,12 +244,14 @@
 					<div class="panel panel-primary" id="env_orcamento">
 						<div class="panel-heading" style="background-color: blue;">
 							<h3 class="panel-title">
-								<strong><i class="fluigicon fluigicon-file-default fluigicon-sm"></i>&nbsp; Envio da Cotação</strong>
+								<strong><i class="fluigicon fluigicon-file-default fluigicon-sm"></i>&nbsp; Envio da CotaÃ§Ã£o</strong>
 							</h3>
 						</div>
 						<div class="panel-body">
 							<div class="row">
-																				
+								<div class="col-xs-3">
+									<button type="button" class="btn btn-primary" data-toggle="button" onclick="gerar()">Gerar CotaÃ§Ã£o</button>
+								</div>														
 							</div>
 							<br/>
 							<div class="row">
@@ -271,16 +274,16 @@
 					<div class="panel panel-primary" id="aprov_orcamento">
 						<div class="panel-heading" style="background-color: blue;">
 							<h3 class="panel-title">
-								<strong><i class="fluigicon fluigicon-file-default fluigicon-sm"></i>&nbsp; Aprovar da Cotação</strong>
+								<strong><i class="fluigicon fluigicon-file-default fluigicon-sm"></i>&nbsp; Aprovar da CotaÃ§Ã£o</strong>
 							</h3>
 						</div>
 						<div class="panel-body">
 							<div class="row">
 								<div class="col-xs-3">
-									<label for="contato">Orçamento Aprovado?</label>
+									<label for="contato">OrÃ§amento Aprovado?</label>
 									<select class="form-control" name="orc_aprovado" size="1" id="orc_aprovado">
 										<option value="sim">Sim</option>
-										<option value='nao'>Não</option>										
+										<option value='nao'>NÃ£o</option>										
 									</select>					
 								</div>	
 								<div class="col-xs-9">
@@ -306,46 +309,51 @@
 						</div>
 					</div>
 					
-					<div class="panel panel-primary" id="executar">
+					<div class="panel panel-primary" id="emit_notafiscal">
 						<div class="panel-heading" style="background-color: blue;">
 							<h3 class="panel-title">
-								<strong><i class="fluigicon fluigicon-file-default fluigicon-sm"></i>&nbsp; Executar Serviço</strong>
+								<strong><i class="fluigicon fluigicon-file-default fluigicon-sm"></i>&nbsp; EmissÃ£o de Nota Fiscal</strong>
 							</h3>
 						</div>
 						<div class="panel-body">
 							<div class="row">
 								<div class="col-xs-3">
-									<label for="contato">Serviço concluido?</label>
-									<select class="form-control" name="serv_concl" size="1" id="serv_concl">
-										<option value="sim">Sim</option>
-										<option value='nao'>Não</option>										
-									</select>					
+									<label for="notaFiscal_ret">Nota Fiscal Retorno:</label>
+									<input type="text" class="form-control" placeholder="Nota fiscal" name="notaFiscal_ret" id="notaFiscal_ret"/>
 								</div>
-								<div class="col-xs-4">
-									<label for="notaFiscal">Nota Fiscal:</label>
-									<input type="text" class="form-control" placeholder="Nota fiscal" name="notaFiscal" id="notaFiscal"/>
+								<div class="col-xs-3">
+									<label for="notaFiscal_serv">Nota Fiscal ServiÃ§o:</label>
+									<input type="text" class="form-control" placeholder="Nota fiscal" name="notaFiscal_serv" id="notaFiscal_serv"/>
+								</div>
+								<div class="col-xs-3">
+									<label for="forma_envio">Forma de Envio:</label>
+									<input type="text" class="form-control" placeholder="Forma de Envio" name="forma_envio" id="forma_envio"/>
+								</div>
+								<div class="col-xs-3">
+									<label for="rastreio">Rastreio:</label>
+									<input type="text" class="form-control" placeholder="Rastreio" name="rastreio" id="rastreio"/>
 								</div>
 							</div>
 							<br/>
 							<div class="row">	
 								<div class="col-xs-12">
-									<label for="desc_conclu">Motivo:</label>
-									<textarea class="form-control" name="desc_conclu" id="desc_conclu"></textarea>		
+									<label for="desc_conclu">ObservaÃ§Ãµes:</label>
+									<textarea class="form-control" name="obs_envio" id="obs_envio"></textarea>		
 								</div>										
 							</div>
 							<br/>
 							<div class="row">
 								<div class="col-xs-3">
-									<label for="matricula_exec">Resp. Aprov:</label>
-									<input type="text" class="form-control" placeholder="Matr&iacute;cula" name="matricula_exec" id="matricula_exec" readonly="readonly" />
+									<label for="matricula_envio">Resp. Aprov:</label>
+									<input type="text" class="form-control" placeholder="Matr&iacute;cula" name="matricula_envio" id="matricula_envio" readonly="readonly" />
 								</div>
 								<div class="col-xs-6">
-									<label for="user_exec">&nbsp;</label>
-									<input type="text" class="form-control" placeholder="Responsavel" name="user_exec" id="user_exec" readonly="readonly" />
+									<label for="user_envio">&nbsp;</label>
+									<input type="text" class="form-control" placeholder="Responsavel" name="user_envio" id="user_envio" readonly="readonly" />
 								</div>
 								<div class="col-xs-3">
-									<label for="data_exec">Data:</label>
-									<input type="text" class="form-control" placeholder="Data" name="data_exec" id="data_exec" readonly="readonly" />
+									<label for="data_envio">Data:</label>
+									<input type="text" class="form-control" placeholder="Data" name="data_envio" id="data_envio" readonly="readonly" />
 								</div>
 							</div>
 						</div>
@@ -357,7 +365,7 @@
 					<div class="panel panel-primary" id="pn_etiqueta">
 						<div class="panel-heading" style="background-color: blue;">
 							<h3 class="panel-title">
-								<strong><i class="fluigicon fluigicon-file-default fluigicon-sm"></i>&nbsp;Identificação</strong>
+								<strong><i class="fluigicon fluigicon-file-default fluigicon-sm"></i>&nbsp;IdentificaÃ§Ã£o</strong>
 							</h3>
 						</div>
 						<div class="panel-body">
