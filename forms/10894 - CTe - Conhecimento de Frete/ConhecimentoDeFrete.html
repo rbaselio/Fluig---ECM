@@ -13,7 +13,7 @@
 	<body onload="loadElementos()">
 		<div class="fluig-style-guide">
 			<form name="form" role="form">
-				<input type="hidden" name="ChaveNF" id="ChaveNF" />
+				
 				<input type="hidden" name="ChaveCTe" id="ChaveCTe" />											
 				
 				<div class="row">
@@ -188,47 +188,72 @@
 								<label for="user_entrega">Vl. Melhor Valor:</label>
 								<input type="text" name="vlMelhor" id="vlMelhor" class="form-control money"/>
 							</div>									
-						</div>
-						<div class="row">
-							<br/>
-							<div class="col-sm-12 col-xs-12">
-								<div class="alert alert-info" role="alert" align="center"><strong>Dados da Nota Fiscal</strong></div>
-							</div>
-						</div>					
-						<div class="row">						
-							<div class="col-sm-3 col-xs-12">
-								<label for="user_entrega">Nr. Nota Fiscal:</label>
-								<input type="text" name="nrNota" id="nrNota" class="form-control"/>
-							</div>
-							<div class="col-sm-3 col-xs-12">
-								<label for="user_entrega">S&eacute;rie:</label>
-								<input type="text" name="SerieNF" id="SerieNF" class="form-control"/>
-							</div>
-							<div class="col-sm-3 col-xs-12">
-								<label for="user_entrega">Data NF:</label>
-								<input type="text" name="DataNF" id="DataNF" class="form-control"/>
-							</div>		
-							<div class="col-sm-3 col-xs-12">
-								<label for="user_entrega">Valor Frete NF:</label>
-								<input type="text" name="freteNF" id="freteNF" class="form-control money"/>
-							</div>							
-						</div>
-						<div class="row">						
-							<div class="col-xs-12">
-									<label for="desc_conclu">Comentarios:</label>
-									<textarea class="form-control" name="narrativaNF" id="narrativaNF"></textarea>		
-							</div>
-						</div>						
+						</div>											
 						<br/>
 						<div class="row">
-							<table tablename="tb_cotacoes" id="tb_cotacoes" cellspacing="0" class="table" noaddbutton="true" nodeletebutton="false">
-								<thead>
-									<tr>									
+							<table tablename="tb_cotacoes" id="tb_cotacoes" cellspacing="0"  class="table" noaddbutton="true" nodeletebutton="false">
+								<thead>								
+									<tr>
+										<th class="tableColumn"></th>									
 									</tr>
 								</thead>
 								<tbody>
 									<tr>
 										<td >
+											<div class = "nota_fiscal">
+												<input type="hidden" name="ChaveNF" id="ChaveNF" />
+												<div class="row">
+													<br/>
+													<div class="col-sm-12 col-xs-12">
+														<div class="alert alert-info" role="alert" align="center"><strong>Dados da Nota Fiscal</strong></div>
+													</div>
+												</div>					
+												<div class="row">						
+													<div class="col-sm-3 col-xs-12">
+														<label for="user_entrega">Nr. Nota Fiscal:</label>
+														<input type="text" name="nrNota" id="nrNota" class="form-control"/>
+													</div>
+													<div class="col-sm-3 col-xs-12">
+														<label for="user_entrega">S&eacute;rie:</label>
+														<input type="text" name="SerieNF" id="SerieNF" class="form-control"/>
+													</div>
+													<div class="col-sm-3 col-xs-12">
+														<label for="user_entrega">Data NF:</label>
+														<input type="text" name="DateNF" id="DateNF" class="form-control"/>
+													</div>		
+													<div class="col-sm-3 col-xs-12">
+														<label for="user_entrega">Valor Frete NF:</label>
+														<input type="text" name="freteNF" id="freteNF" class="form-control money"/>
+													</div>	
+																			
+												</div>
+												<div class="row">						
+													<div class="col-xs-12">
+															<label for="desc_conclu">Coment&aacute;rios:</label>
+															<textarea class="form-control" name="narrativaNF" id="narrativaNF" rows="3"></textarea>		
+													</div>
+												</div>	
+											</div>												
+											<div class = "pedido">
+												<div class="row">
+													<div class="col-sm-2 col-xs-12">
+														<label for="user_entrega">Nr. Pedido:</label>
+														<input type="text" name="nrPedido" id="nrPedido" class="form-control"/>
+													</div>
+													<div class="col-sm-1 col-xs-12">
+														<label for="user_entrega">Tipo:</label>
+														<input type="text" name="tp_pedido" id="tp_pedido" class="form-control"/>
+													</div>
+													<div class="col-sm-3 col-xs-12">
+														<label for="user_entrega">Cliente:</label>
+														<input type="text" name="codEmitentePed" id="codEmitentePed" class="form-control"/>
+													</div>
+													<div class="col-sm-6 col-xs-12">
+														<label for="user_entrega">Nome Cliente/Destino:</label>
+														<input type="text" name="nomeEmitPed" id="nomeEmitPed" class="form-control"/>
+													</div>
+												</div>												
+											</div>											
 											<div class="row">
 												<div class="col-sm-3 col-xs-12">
 													<label for="user_entrega">Cod.Item:</label>
@@ -239,19 +264,11 @@
 													<input type="text" name="descItem" id="descItem" class="form-control"/>
 												</div>
 												<div class="col-sm-3 col-xs-12">
-													<label for="user_entrega">Vl. Item:</label>
-													<input type="text" name="vlItem" id="vlItem" class="form-control money"/>
-												</div>
+													<label for="user_entrega">vl. Frete Item:</label>
+													<input type="text" name="freteItNf" id="freteItNf" class="form-control money"/>
+												</div>													
 											</div>
 											<div class="row">
-												<div class="col-sm-2 col-xs-12">
-													<label for="user_entrega">Nr. Pedido:</label>
-													<input type="text" name="nrPedido" id="nrPedido" class="form-control"/>
-												</div>
-												<div class="col-sm-1 col-xs-12">
-													<label for="user_entrega">Tipo:</label>
-													<input type="text" name="tp_pedido" id="tp_pedido" class="form-control"/>
-												</div>
 												<div class="col-sm-2 col-xs-12">
 													<label for="user_entrega">Qt. Fat:</label>
 													<input type="text" name="qtFat" id="qtFat" class="form-control"/>
@@ -263,6 +280,10 @@
 												<div class="col-sm-2 col-xs-12">
 													<label for="user_entrega">Qt. Pend.:</label>
 													<input type="text" name="qtPendt" id="qtPendt" class="form-control"/>
+												</div>
+												<div class="col-sm-3 col-xs-12">
+													<label for="user_entrega">Vl. Item:</label>
+													<input type="text" name="vlItem" id="vlItem" class="form-control money"/>
 												</div>
 												<div class="col-sm-3 col-xs-12">
 													<label for="user_entrega">vl. Frete Pedido:</label>

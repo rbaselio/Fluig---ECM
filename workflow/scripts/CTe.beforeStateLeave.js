@@ -1,5 +1,7 @@
 function beforeStateLeave(sequenceId){
 	
+	hAPI.setCardValue("num_processo", getValue("WKNumProces"));
+	
 	if (sequenceId == 29) {
 		var calendar = java.util.Calendar.getInstance().getTime();
         var docs = hAPI.listAttachments();
@@ -60,7 +62,7 @@ function beforeStateLeave(sequenceId){
 			}
 		}
 	    if (auxObs != "") hAPI.setCardValue("narrativaNF", hAPI.getCardValue("narrativaNF") + "\n\nEste CTe também contem:\n" + auxObs);
-	    hAPI.setCardValue("num_processo", getValue("WKNumProces"));
+	    
 	}	
 	
 	

@@ -6,21 +6,19 @@ function afterTaskComplete(colleagueId,nextSequenceId,userList){
 	var numThread = hAPI.getActualThread(numEmpresa, numProcesso, sequenceId);
 	var colleagueId = getValue("WKUser");	
 	
-	if (sequenceId == 0 || sequenceId == 1) hAPI.setTaskComments(colleagueId, numProcesso,  numThread, hAPI.getCardValue("narrativaNF"));
-	
-	if (sequenceId == 3) hAPI.setTaskComments(colleagueId, numProcesso,  numThread, hAPI.getCardValue("desc_analista"));
+	if (sequenceId == 3) hAPI.setTaskComments(colleagueId, numProcesso,  numThread, hAPI.getCardValue("desc_analista").replace("\n", "<br/>"));
 			
-	if (sequenceId == 11)  hAPI.setTaskComments(colleagueId, numProcesso,  numThread, hAPI.getCardValue("desc_contratante"));
+	if (sequenceId == 11)  hAPI.setTaskComments(colleagueId, numProcesso,  numThread, hAPI.getCardValue("desc_contratante").replace("\n", "<br/>"));
 		
-	if (sequenceId == 38)  hAPI.setTaskComments(colleagueId, numProcesso,  numThread, hAPI.getCardValue("desc_cancelamento")); 
+	if (sequenceId == 38)  hAPI.setTaskComments(colleagueId, numProcesso,  numThread, hAPI.getCardValue("desc_cancelamento").replace("\n", "<br/>")); 
 	
-	if (sequenceId == 48) hAPI.setTaskComments(colleagueId, numProcesso,  numThread, hAPI.getCardValue("desc_checkDados")); 
+	if (sequenceId == 48) hAPI.setTaskComments(colleagueId, numProcesso,  numThread, hAPI.getCardValue("desc_checkDados").replace("\n", "<br/>")); 
 
-	if (sequenceId == 52) hAPI.setTaskComments(colleagueId, numProcesso,  numThread, hAPI.getCardValue("desc_aprov_checkDados")); 
+	if (sequenceId == 52) hAPI.setTaskComments(colleagueId, numProcesso,  numThread, hAPI.getCardValue("desc_aprov_checkDados").replace("\n", "<br/>")); 
 
-	if (sequenceId == 59) hAPI.setTaskComments(colleagueId, numProcesso,  numThread, hAPI.getCardValue("desc_aprov_final")); 
+	if (sequenceId == 59) hAPI.setTaskComments(colleagueId, numProcesso,  numThread, hAPI.getCardValue("desc_aprov_final").replace("\n", "<br/>")); 
 
-	if (sequenceId == 29) hAPI.setTaskComments(colleagueId, numProcesso,  numThread, hAPI.getCardValue("desc_lancDatasul"));
+	if (sequenceId == 29) hAPI.setTaskComments(colleagueId, numProcesso,  numThread, hAPI.getCardValue("desc_lancDatasul").replace("\n", "<br/>"));
 	
 	
 }
