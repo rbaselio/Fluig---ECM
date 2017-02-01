@@ -1,6 +1,6 @@
 function afterStateEntry(sequenceId) {
 	
-	log.info("----------------------AFTER STATE ENTRY-------------------------------");
+	//log.warn("----------------------AFTER STATE ENTRY-------------------------------");
 
 	var numEmpresa = getValue("WKCompany");
 	var numProcesso = getValue("WKNumProces");
@@ -10,16 +10,16 @@ function afterStateEntry(sequenceId) {
 	var colleagueId = getValue("WKUser");
 	var documento = getValue("WKCardId");
 
-	log.info("----------------------numEmpresa: " + numEmpresa);
-	log.info("---------------------numProcesso: " + numProcesso);
-	log.info("-----------------nrProxAtividade: " + nrProxAtividade);
-	log.info("-----------------------numThread: " + numThread);
-	log.info("--------------------numAtividade: " + numAtividade);
-	log.info("---------------------colleagueId: " + colleagueId);
-	log.info("----------------------DocumentId: " + documento);
+	//log.warn("----------------------numEmpresa: " + numEmpresa);
+	//log.warn("---------------------numProcesso: " + numProcesso);
+	//log.warn("-----------------nrProxAtividade: " + nrProxAtividade);
+	//log.warn("-----------------------numThread: " + numThread);
+	//log.warn("--------------------numAtividade: " + numAtividade);
+	//log.warn("---------------------colleagueId: " + colleagueId);
+	//log.warn("----------------------DocumentId: " + documento);
 	
 	if (numAtividade == 2 || numAtividade == 6) { // seta prazo para o atendimento
-		log.info("----------------------PRAZO DE ATEDNIMENTO-------------------------------");
+		//log.warn("----------------------PRAZO DE ATEDNIMENTO-------------------------------");
 		
 		if (numAtividade == 6){
 			colleagueId = hAPI.getCardValue("matricula_atend");
@@ -28,24 +28,24 @@ function afterStateEntry(sequenceId) {
 		} else {
 			colleagueId = hAPI.getCardValue("responsavel");
 		}
-		log.info("---------------------colleagueId: " + colleagueId);		
+		//log.warn("---------------------colleagueId: " + colleagueId);		
 
 		var data = new Date();
-		log.info("-----------------------DATA ATUAL: " + data);
+		//log.warn("-----------------------DATA ATUAL: " + data);
 		
 		var horas = hAPI.getCardValue("prazo");
-		log.info("------------HORAS DE ATENDIMENTO: " + horas);
+		//log.warn("------------HORAS DE ATENDIMENTO: " + horas);
 		
 		try {
 			
 			var elapsed = (data.getHours() * 60 * 60) + (data.getMinutes() * 60) + data.getSeconds();
-			log.info("-----------------------SEGUNDOS: " + elapsed);
+			//log.warn("-----------------------SEGUNDOS: " + elapsed);
 			
 			var obj = hAPI.calculateDeadLineHours(data, elapsed, horas, "Default");
 			var dt = obj[0];
 			var segundos = obj[1];
-			log.info("-----------------------NOVA DATA: " + dt);
-			log.info("------------------------SEGUNDOS: " + segundos);			
+			//log.warn("-----------------------NOVA DATA: " + dt);
+			//log.warn("------------------------SEGUNDOS: " + segundos);			
 
 			try {
 				hAPI.setDueDate(numProcesso, numThread, colleagueId, dt, segundos);
@@ -57,9 +57,9 @@ function afterStateEntry(sequenceId) {
 			log.error("----------------Erro ao calcular o novo periodo:");
 			log.error(e);
 		}
-		log.info("---------------------- FIM PRAZO DE ATENDIMENTO -----------------------------");
+		//log.warn("---------------------- FIM PRAZO DE ATENDIMENTO -----------------------------");
 	}
-	log.info("----------------------FIM AFTER STATE ENTRY-------------------------------");
+	//log.warn("----------------------FIM AFTER STATE ENTRY-------------------------------");
 	
 	
 }

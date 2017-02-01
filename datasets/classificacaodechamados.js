@@ -12,6 +12,8 @@ function createDataset(fields, constraints, sortFields) {
     var filhos = new Array();
     var count = 0;
     
+  
+    
     for (var i = 0; i < datasetPrincipal.rowsCount; i++) {
         var documentId = datasetPrincipal.getValue(i, "metadata#id");
         var documentVersion = datasetPrincipal.getValue(i, "metadata#version");
@@ -27,7 +29,8 @@ function createDataset(fields, constraints, sortFields) {
 		
 		for (var j = 0; j < datasetFilhos.rowsCount; j++) {
 			filhos[count] = {Classe: datasetFilhos.getValue(j, "classe")};
-			count++;            
+			count++;
+            
         }
     }
     
@@ -36,6 +39,7 @@ function createDataset(fields, constraints, sortFields) {
 		
 	//Depois de realizar a ordenação, adicionar os registros no dataset para serem apresentados
 	filhos.forEach(function(filho) {
+		//log.warn(filho.Classe);
 		dataset.addRow( new Array(filho.Classe));
 	});
     

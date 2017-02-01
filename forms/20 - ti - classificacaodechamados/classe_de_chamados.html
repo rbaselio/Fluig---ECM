@@ -1,0 +1,61 @@
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="/portal/resources/style-guide/css/fluig-style-guide.min.css">
+<script src="/portal/resources/js/jquery/jquery.js"></script>
+<script src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+<script src="/portal/resources/js/mustache/mustache-min.js"></script>
+<script src="/portal/resources/style-guide/js/fluig-style-guide.min.js"></script>
+</head>
+<body>
+	<div class="fluig-style-guide">
+		<form name="form" id="validation-form" method="POST" class="form-horizontal form-bordered form-row-stripped">
+			<table width="99%" border="0" align="center" cellpadding="0" cellspacing="0" class="tabelaGeral">
+				<tbody>
+					<tr>
+						<td rowspan="3"><img src="/resources/logo_casp/logocasp.gif" width="204" height="79"></td>
+						<td rowspan="3"><div align="center">
+								<b>FORMUL&Aacute;RIO DE CADASTRO DE CLASSE DE CHAMADOS</b></td>
+					</tr>
+					<tr>
+						<td align="right"><label for="usuario" class="control-label">Usu&aacute;rio Modifica&ccedil;&atilde;o:&nbsp;&nbsp;&nbsp;&nbsp;</label></td>
+						<td width="300"><input type="text" name="usuario" id="usuario" class="form-control" readonly="readonly" /></td>
+					</tr>
+					<tr>
+						<td align=right><label for="data_mod" class="control-label">Ultima Modifica&ccedil;&atilde;o:&nbsp;&nbsp;&nbsp;&nbsp;</label></td>
+						<td width="300"><input type="text" name="data_mod" id="data_mod" class="form-control" size="15" readonly="readonly" /></td>
+					</tr>
+				</tbody>
+			</table>
+			<div class="row">
+				<div class="box box-black">
+					<div class="box-content">
+						<div class="col-xs-12 " id="div_controladoria" name="div_controladoria">
+							<div class="form-group">
+								<div class="col-sm-12 col-xs-12 controls">
+									<table border="0" tablename="tb_classe" id="tb_classe" noaddbutton=true class="table">
+										<thead>
+											<tr>
+												<td><label>Classifica&ccedil;&otilde;es:</label></td>
+											</tr>
+										</thead>
+										<tr>
+											<td>
+												<div class="col-sm-6 col-xs-6 controls">
+													<input type="text" name="classe" id="classe" placeholder="classe" class="form-control" />
+												</div>
+											</td>
+										</tr>
+									</table>
+									<div class="col-sm-3 col-xs-3 controls">
+										<input type="button" class="form-control" id="bt_add_interacao" name="bt_add_interacao" onclick="wdkAddChild('tb_classe')" value="Adicionar classe">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+</body>
+</html>

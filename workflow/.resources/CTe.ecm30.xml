@@ -1,0 +1,1716 @@
+<list>
+  <ProcessDefinition>
+    <processDefinitionPK>
+      <companyId>1</companyId>
+      <processId>CTe</processId>
+    </processDefinitionPK>
+    <processDescription>CTe - Conhecimento de Transporte</processDescription>
+    <instruction></instruction>
+    <active>true</active>
+    <publicProcess>true</publicProcess>
+    <volumeId>Default</volumeId>
+    <categoryId>Fiscal</categoryId>
+    <managerEngineAllocationId>Papel</managerEngineAllocationId>
+    <managerEngineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Role&gt;AnalFIscal&lt;/Role&gt;&lt;/AssignmentController&gt;</managerEngineAllocationConfiguration>
+    <snapshotFrequency>0</snapshotFrequency>
+    <baseDay>0</baseDay>
+    <baseMonth>0</baseMonth>
+    <periodId>Default</periodId>
+    <uniqueCardVersion>true</uniqueCardVersion>
+    <keyWord></keyWord>
+    <complementsLevel>1</complementsLevel>
+    <notifyRequisitionerComplements>true</notifyRequisitionerComplements>
+    <notifyManagerComplements>true</notifyManagerComplements>
+    <notifyAuthorityComplements>true</notifyAuthorityComplements>
+  </ProcessDefinition>
+  <ProcessDefinitionVersion>
+    <processDefinitionVersionPK>
+      <companyId>1</companyId>
+      <processId>CTe - Conhecimento de Transporte</processId>
+      <version>10</version>
+    </processDefinitionVersionPK>
+    <versionDescription></versionDescription>
+    <formId>10894</formId>
+    <editionMode>true</editionMode>
+    <updateAttachmentsVersion>false</updateAttachmentsVersion>
+    <controlsAttachmentsSecurity>true</controlsAttachmentsSecurity>
+    <active>true</active>
+    <blockedVersion>false</blockedVersion>
+    <counterSign>false</counterSign>
+    <openInstances>0</openInstances>
+    <bpmnVersion>2</bpmnVersion>
+    <processStates/>
+    <favorito>false</favorito>
+    <inheritFormSecurity>false</inheritFormSecurity>
+    <mobileReady>false</mobileReady>
+  </ProcessDefinitionVersion>
+  <list>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>CTe</processId>
+        <version>1</version>
+        <sequence>1</sequence>
+      </processStatePK>
+      <stateName>Início</stateName>
+      <stateDescription>Início</stateDescription>
+      <instruction>Matheus</instruction>
+      <deadlineTime>0</deadlineTime>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId>Associado</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssociatedController ConditionAssociated=&quot;OR&quot;&gt;&lt;ControlXML TypeAssociated=&quot;Papel&quot;&gt;&lt;AssignmentController&gt;&lt;Role&gt;AnalFIscal&lt;/Role&gt;&lt;/AssignmentController&gt;&lt;/ControlXML&gt;&lt;ControlXML TypeAssociated=&quot;Papel&quot;&gt;&lt;AssignmentController&gt;&lt;Role&gt;admin&lt;/Role&gt;&lt;/AssignmentController&gt;&lt;/ControlXML&gt;&lt;/AssociatedController&gt;</engineAllocationConfiguration>
+      <selectColleague>0</selectColleague>
+      <initialState>true</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>19</positionX>
+      <positionY>94</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>10</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>CTe</processId>
+        <version>1</version>
+        <sequence>3</sequence>
+      </processStatePK>
+      <stateName>Análise</stateName>
+      <stateDescription>Análise</stateDescription>
+      <instruction></instruction>
+      <deadlineTime>28800</deadlineTime>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId></engineAllocationId>
+      <selectColleague>0</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>110</positionX>
+      <positionY>83</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>true</notifyManagerDelay>
+      <allowanceManagerTime>3600</allowanceManagerTime>
+      <frequenceManagerTime>3600</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>80</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>3600</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+      <executionType>0</executionType>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>CTe</processId>
+        <version>1</version>
+        <sequence>11</sequence>
+      </processStatePK>
+      <stateName>Verificação do contratante</stateName>
+      <stateDescription>Verificação do contratante</stateDescription>
+      <instruction>conforme seleção</instruction>
+      <deadlineTime>28800</deadlineTime>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId>Papel</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Role&gt;contrCTe&lt;/Role&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <selectColleague>1</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>290</positionX>
+      <positionY>76</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>true</notifyManagerDelay>
+      <allowanceManagerTime>3600</allowanceManagerTime>
+      <frequenceManagerTime>3600</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>80</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>3600</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+      <executionType>0</executionType>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>CTe</processId>
+        <version>1</version>
+        <sequence>29</sequence>
+      </processStatePK>
+      <stateName>Lançamento TOTVS/Datasul</stateName>
+      <stateDescription>Lançamento TOTVS/Datasul</stateDescription>
+      <instruction></instruction>
+      <deadlineTime>28800</deadlineTime>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId>Pool Papel</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Role&gt;AnalFIscal&lt;/Role&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <selectColleague>0</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>1360</positionX>
+      <positionY>76</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>80</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+      <executionType>0</executionType>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>CTe</processId>
+        <version>1</version>
+        <sequence>38</sequence>
+      </processStatePK>
+      <stateName>Conferencia do Cancelamento</stateName>
+      <stateDescription>Conferencia do Cancelamento</stateDescription>
+      <instruction></instruction>
+      <deadlineTime>28800</deadlineTime>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId></engineAllocationId>
+      <selectColleague>0</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>434</positionX>
+      <positionY>201</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>80</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+      <executionType>0</executionType>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>CTe</processId>
+        <version>1</version>
+        <sequence>45</sequence>
+      </processStatePK>
+      <stateName>Notifica CAP</stateName>
+      <stateDescription>Notifica CAP</stateDescription>
+      <instruction></instruction>
+      <deadlineTime>115200</deadlineTime>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId>Papel</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Role&gt;ContasAP&lt;/Role&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <selectColleague>1</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>1360</positionX>
+      <positionY>208</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>true</notifyManagerDelay>
+      <allowanceManagerTime>3600</allowanceManagerTime>
+      <frequenceManagerTime>3600</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>80</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>3600</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+      <executionType>0</executionType>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>CTe</processId>
+        <version>1</version>
+        <sequence>48</sequence>
+      </processStatePK>
+      <stateName>Check dos Dados</stateName>
+      <stateDescription>Check dos Dados</stateDescription>
+      <instruction></instruction>
+      <deadlineTime>28800</deadlineTime>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId>Associado</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssociatedController ConditionAssociated=&quot;OR&quot;&gt;&lt;ControlXML TypeAssociated=&quot;Papel&quot;&gt;&lt;AssignmentController&gt;&lt;Role&gt;ConfAvicola&lt;/Role&gt;&lt;/AssignmentController&gt;&lt;/ControlXML&gt;&lt;ControlXML TypeAssociated=&quot;Papel&quot;&gt;&lt;AssignmentController&gt;&lt;Role&gt;ConfArmazenagem&lt;/Role&gt;&lt;/AssignmentController&gt;&lt;/ControlXML&gt;&lt;ControlXML TypeAssociated=&quot;Papel&quot;&gt;&lt;AssignmentController&gt;&lt;Role&gt;ConfExpor&lt;/Role&gt;&lt;/AssignmentController&gt;&lt;/ControlXML&gt;&lt;ControlXML TypeAssociated=&quot;Papel&quot;&gt;&lt;AssignmentController&gt;&lt;Role&gt;ConfPecas&lt;/Role&gt;&lt;/AssignmentController&gt;&lt;/ControlXML&gt;&lt;/AssociatedController&gt;</engineAllocationConfiguration>
+      <selectColleague>0</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>602</positionX>
+      <positionY>76</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>true</notifyManagerDelay>
+      <allowanceManagerTime>3600</allowanceManagerTime>
+      <frequenceManagerTime>3600</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>80</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>3600</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+      <executionType>0</executionType>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>CTe</processId>
+        <version>1</version>
+        <sequence>52</sequence>
+      </processStatePK>
+      <stateName>Vericação de dados</stateName>
+      <stateDescription>Vericação de dados</stateDescription>
+      <instruction></instruction>
+      <deadlineTime>28800</deadlineTime>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId></engineAllocationId>
+      <selectColleague>0</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>780</positionX>
+      <positionY>76</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>true</notifyManagerDelay>
+      <allowanceManagerTime>3600</allowanceManagerTime>
+      <frequenceManagerTime>3600</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>80</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>3600</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+      <executionType>0</executionType>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>CTe</processId>
+        <version>1</version>
+        <sequence>59</sequence>
+      </processStatePK>
+      <stateName>Aprovação</stateName>
+      <stateDescription>Aprovação</stateDescription>
+      <instruction></instruction>
+      <deadlineTime>28800</deadlineTime>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId>Papel</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Role&gt;aprovCTe&lt;/Role&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <selectColleague>1</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>1053</positionX>
+      <positionY>83</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>true</notifyManagerDelay>
+      <allowanceManagerTime>3600</allowanceManagerTime>
+      <frequenceManagerTime>3600</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>80</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>3600</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+      <executionType>0</executionType>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>CTe</processId>
+        <version>1</version>
+        <sequence>82</sequence>
+      </processStatePK>
+      <stateName>Definindo Atribuições</stateName>
+      <stateDescription>Definindo Atribuições</stateDescription>
+      <instruction>Evento intermediário do processo</instruction>
+      <deadlineTime>0</deadlineTime>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId></engineAllocationId>
+      <engineAllocationConfiguration></engineAllocationConfiguration>
+      <selectColleague>0</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>1</allowanceAuthorityTime>
+      <frequenceAuthorityTime>1</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>true</automatic>
+      <positionX>19</positionX>
+      <positionY>219</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>32</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+      <parentSequence>0</parentSequence>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>CTe</processId>
+        <version>1</version>
+        <sequence>70</sequence>
+      </processStatePK>
+      <stateName>Definir Analisador</stateName>
+      <stateDescription>Definir Analisador</stateDescription>
+      <joint>false</joint>
+      <initialState>false</initialState>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <automatic>true</automatic>
+      <positionX>133</positionX>
+      <positionY>179</positionY>
+      <inhibitTransfer>false</inhibitTransfer>
+      <stateType>1</stateType>
+      <bpmnType>120</bpmnType>
+      <signalId>0</signalId>
+      <openInstances>0</openInstances>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>CTe</processId>
+        <version>1</version>
+        <sequence>74</sequence>
+      </processStatePK>
+      <stateName>Aprovado?</stateName>
+      <stateDescription>Aprovado?</stateDescription>
+      <joint>false</joint>
+      <initialState>false</initialState>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <automatic>true</automatic>
+      <positionX>457</positionX>
+      <positionY>60</positionY>
+      <inhibitTransfer>false</inhibitTransfer>
+      <stateType>1</stateType>
+      <bpmnType>120</bpmnType>
+      <signalId>0</signalId>
+      <openInstances>0</openInstances>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>CTe</processId>
+        <version>1</version>
+        <sequence>75</sequence>
+      </processStatePK>
+      <stateName>Cancelado ?</stateName>
+      <stateDescription>Cancelado ?</stateDescription>
+      <joint>false</joint>
+      <initialState>false</initialState>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <automatic>true</automatic>
+      <positionX>623</positionX>
+      <positionY>185</positionY>
+      <inhibitTransfer>false</inhibitTransfer>
+      <stateType>1</stateType>
+      <bpmnType>120</bpmnType>
+      <signalId>0</signalId>
+      <openInstances>0</openInstances>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>CTe</processId>
+        <version>1</version>
+        <sequence>76</sequence>
+      </processStatePK>
+      <stateName>OK?</stateName>
+      <stateDescription>OK?</stateDescription>
+      <joint>false</joint>
+      <initialState>false</initialState>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <automatic>true</automatic>
+      <positionX>947</positionX>
+      <positionY>67</positionY>
+      <inhibitTransfer>false</inhibitTransfer>
+      <stateType>1</stateType>
+      <bpmnType>120</bpmnType>
+      <signalId>0</signalId>
+      <openInstances>0</openInstances>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>CTe</processId>
+        <version>1</version>
+        <sequence>77</sequence>
+      </processStatePK>
+      <stateName>Aprovado?</stateName>
+      <stateDescription>Aprovado?</stateDescription>
+      <joint>false</joint>
+      <initialState>false</initialState>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <automatic>true</automatic>
+      <positionX>1220</positionX>
+      <positionY>60</positionY>
+      <inhibitTransfer>false</inhibitTransfer>
+      <stateType>1</stateType>
+      <bpmnType>120</bpmnType>
+      <signalId>0</signalId>
+      <openInstances>0</openInstances>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>CTe</processId>
+        <version>1</version>
+        <sequence>30</sequence>
+      </processStatePK>
+      <stateName>Fim</stateName>
+      <stateDescription>Fim</stateDescription>
+      <instruction>Atividade final do processo</instruction>
+      <deadlineTime>0</deadlineTime>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId></engineAllocationId>
+      <engineAllocationConfiguration></engineAllocationConfiguration>
+      <selectColleague>0</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>0</allowanceAuthorityTime>
+      <frequenceAuthorityTime>1</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>1510</positionX>
+      <positionY>219</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>60</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+    </ProcessState>
+  </list>
+  <list>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>CTe</processId>
+        <expressionOrder>1</expressionOrder>
+        <version>10</version>
+        <sequence>70</sequence>
+      </conditionProcessStatePK>
+      <condition>(hAPI.getCardValue(&quot;codEstab&quot;) != 8) </condition>
+      <destinationSequenceId>3</destinationSequenceId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Role&gt;AnalCte1&lt;/Role&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <engineAllocationId>Pool Papel</engineAllocationId>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>CTe</processId>
+        <expressionOrder>2</expressionOrder>
+        <version>10</version>
+        <sequence>70</sequence>
+      </conditionProcessStatePK>
+      <condition>(hAPI.getCardValue(&quot;codEstab&quot;) == 8) </condition>
+      <destinationSequenceId>3</destinationSequenceId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Role&gt;AnalCte8&lt;/Role&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <engineAllocationId>Pool Papel</engineAllocationId>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>CTe</processId>
+        <expressionOrder>1</expressionOrder>
+        <version>10</version>
+        <sequence>74</sequence>
+      </conditionProcessStatePK>
+      <condition>(hAPI.getCardValue(&quot;aprov_contratante&quot;) == &quot;nao&quot;) </condition>
+      <destinationSequenceId>38</destinationSequenceId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Role&gt;AnalFIscal&lt;/Role&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <engineAllocationId>Pool Papel</engineAllocationId>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>CTe</processId>
+        <expressionOrder>2</expressionOrder>
+        <version>10</version>
+        <sequence>74</sequence>
+      </conditionProcessStatePK>
+      <condition>(hAPI.getCardValue(&quot;aprov_contratante&quot;) == &quot;sim&quot; &amp;&amp; hAPI.getCardValue(&quot;tipoPedido&quot;) == &quot;&quot;) </condition>
+      <destinationSequenceId>59</destinationSequenceId>
+      <engineAllocationConfiguration>&lt;AssociatedController ConditionAssociated=&quot;AND&quot;&gt;&lt;ControlXML TypeAssociated=&quot;Papel&quot;&gt;&lt;AssignmentController&gt;&lt;Role&gt;DirAdm&lt;/Role&gt;&lt;/AssignmentController&gt;&lt;/ControlXML&gt;&lt;ControlXML TypeAssociated=&quot;Papel&quot;&gt;&lt;AssignmentController&gt;&lt;Role&gt;aprovCTe&lt;/Role&gt;&lt;/AssignmentController&gt;&lt;/ControlXML&gt;&lt;/AssociatedController&gt;</engineAllocationConfiguration>
+      <engineAllocationId>Associado</engineAllocationId>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>CTe</processId>
+        <expressionOrder>3</expressionOrder>
+        <version>10</version>
+        <sequence>74</sequence>
+      </conditionProcessStatePK>
+      <condition>(hAPI.getCardValue(&quot;aprov_contratante&quot;) == &quot;sim&quot; &amp;&amp; hAPI.getCardValue(&quot;tipoPedido&quot;) == &quot;avicola&quot;) </condition>
+      <destinationSequenceId>48</destinationSequenceId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Role&gt;ConfAvicola&lt;/Role&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <engineAllocationId>Pool Papel</engineAllocationId>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>CTe</processId>
+        <expressionOrder>4</expressionOrder>
+        <version>10</version>
+        <sequence>74</sequence>
+      </conditionProcessStatePK>
+      <condition>(hAPI.getCardValue(&quot;aprov_contratante&quot;) == &quot;sim&quot; &amp;&amp; hAPI.getCardValue(&quot;tipoPedido&quot;) == &quot;armazenagem&quot;) </condition>
+      <destinationSequenceId>48</destinationSequenceId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Role&gt;ConfArmazenagem&lt;/Role&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <engineAllocationId>Pool Papel</engineAllocationId>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>CTe</processId>
+        <expressionOrder>5</expressionOrder>
+        <version>10</version>
+        <sequence>74</sequence>
+      </conditionProcessStatePK>
+      <condition>(hAPI.getCardValue(&quot;aprov_contratante&quot;) == &quot;sim&quot; &amp;&amp; hAPI.getCardValue(&quot;tipoPedido&quot;) == &quot;exportacao&quot;) </condition>
+      <destinationSequenceId>48</destinationSequenceId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Role&gt;ConfExpor&lt;/Role&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <engineAllocationId>Pool Papel</engineAllocationId>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>CTe</processId>
+        <expressionOrder>6</expressionOrder>
+        <version>10</version>
+        <sequence>74</sequence>
+      </conditionProcessStatePK>
+      <condition>(hAPI.getCardValue(&quot;aprov_contratante&quot;) == &quot;sim&quot; &amp;&amp; hAPI.getCardValue(&quot;tipoPedido&quot;) == &quot;pecasAvi&quot;) </condition>
+      <destinationSequenceId>48</destinationSequenceId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Role&gt;ConfPecas&lt;/Role&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <engineAllocationId>Pool Papel</engineAllocationId>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>CTe</processId>
+        <expressionOrder>7</expressionOrder>
+        <version>10</version>
+        <sequence>74</sequence>
+      </conditionProcessStatePK>
+      <condition>true</condition>
+      <destinationSequenceId>48</destinationSequenceId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Role&gt;ConfArmazenagem&lt;/Role&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <engineAllocationId>Pool Papel</engineAllocationId>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>CTe</processId>
+        <expressionOrder>1</expressionOrder>
+        <version>10</version>
+        <sequence>75</sequence>
+      </conditionProcessStatePK>
+      <condition>(hAPI.getCardValue(&quot;cancelamento&quot;) == &quot;sim&quot;) </condition>
+      <destinationSequenceId>45</destinationSequenceId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Role&gt;ContasAP&lt;/Role&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <engineAllocationId>Papel</engineAllocationId>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>CTe</processId>
+        <expressionOrder>2</expressionOrder>
+        <version>10</version>
+        <sequence>75</sequence>
+      </conditionProcessStatePK>
+      <condition>(hAPI.getCardValue(&quot;cancelamento&quot;) == &quot;nao&quot;) </condition>
+      <destinationSequenceId>11</destinationSequenceId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;BaseActivity&gt;11&lt;/BaseActivity&gt;&lt;Returns&gt;Last&lt;/Returns&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <engineAllocationId>Executor Atividade</engineAllocationId>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>CTe</processId>
+        <expressionOrder>1</expressionOrder>
+        <version>10</version>
+        <sequence>76</sequence>
+      </conditionProcessStatePK>
+      <condition>(hAPI.getCardValue(&quot;aprovcheckDados&quot;) == &quot;sim&quot;) </condition>
+      <destinationSequenceId>59</destinationSequenceId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Role&gt;Usuarios&lt;/Role&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <engineAllocationId>Papel</engineAllocationId>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>CTe</processId>
+        <expressionOrder>2</expressionOrder>
+        <version>10</version>
+        <sequence>76</sequence>
+      </conditionProcessStatePK>
+      <condition>(hAPI.getCardValue(&quot;aprovcheckDados&quot;) == &quot;nao&quot;) </condition>
+      <destinationSequenceId>48</destinationSequenceId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;BaseActivity&gt;48&lt;/BaseActivity&gt;&lt;Returns&gt;Last&lt;/Returns&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <engineAllocationId>Executor Atividade</engineAllocationId>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>CTe</processId>
+        <expressionOrder>1</expressionOrder>
+        <version>10</version>
+        <sequence>77</sequence>
+      </conditionProcessStatePK>
+      <condition>(hAPI.getCardValue(&quot;aprovfinal&quot;) == &quot;sim&quot;) </condition>
+      <destinationSequenceId>29</destinationSequenceId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Role&gt;AnalFIscal&lt;/Role&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <engineAllocationId>Pool Papel</engineAllocationId>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>CTe</processId>
+        <expressionOrder>2</expressionOrder>
+        <version>10</version>
+        <sequence>77</sequence>
+      </conditionProcessStatePK>
+      <condition>(hAPI.getCardValue(&quot;aprovfinal&quot;) == &quot;nao&quot;) </condition>
+      <destinationSequenceId>11</destinationSequenceId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;BaseActivity&gt;11&lt;/BaseActivity&gt;&lt;Returns&gt;Last&lt;/Returns&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <engineAllocationId>Executor Atividade</engineAllocationId>
+    </ConditionProcessState>
+  </list>
+  <list>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>CTe</processId>
+        <version>1</version>
+        <linkSequence>17</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>11</initialStateSequence>
+      <finalStateSequence>74</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>CTe</processId>
+        <version>1</version>
+        <linkSequence>36</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>3</initialStateSequence>
+      <finalStateSequence>11</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>CTe</processId>
+        <version>1</version>
+        <linkSequence>39</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>74</initialStateSequence>
+      <finalStateSequence>38</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name>Não</name>
+      <automaticLink>false</automaticLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>CTe</processId>
+        <version>1</version>
+        <linkSequence>41</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>38</initialStateSequence>
+      <finalStateSequence>75</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>CTe</processId>
+        <version>1</version>
+        <linkSequence>42</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>75</initialStateSequence>
+      <finalStateSequence>11</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name>Não</name>
+      <automaticLink>false</automaticLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>CTe</processId>
+        <version>1</version>
+        <linkSequence>46</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>75</initialStateSequence>
+      <finalStateSequence>45</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name>Sim</name>
+      <automaticLink>false</automaticLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>CTe</processId>
+        <version>1</version>
+        <linkSequence>47</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>45</initialStateSequence>
+      <finalStateSequence>30</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>true</automaticLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>CTe</processId>
+        <version>1</version>
+        <linkSequence>49</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>74</initialStateSequence>
+      <finalStateSequence>48</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name>Com Pedido</name>
+      <automaticLink>false</automaticLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>CTe</processId>
+        <version>1</version>
+        <linkSequence>53</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>48</initialStateSequence>
+      <finalStateSequence>52</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>CTe</processId>
+        <version>1</version>
+        <linkSequence>56</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>52</initialStateSequence>
+      <finalStateSequence>76</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>CTe</processId>
+        <version>1</version>
+        <linkSequence>58</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>76</initialStateSequence>
+      <finalStateSequence>48</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name>Não</name>
+      <automaticLink>false</automaticLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>CTe</processId>
+        <version>1</version>
+        <linkSequence>60</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>76</initialStateSequence>
+      <finalStateSequence>59</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name>Sim</name>
+      <automaticLink>false</automaticLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>CTe</processId>
+        <version>1</version>
+        <linkSequence>62</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>59</initialStateSequence>
+      <finalStateSequence>77</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>CTe</processId>
+        <version>1</version>
+        <linkSequence>65</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>48</initialStateSequence>
+      <finalStateSequence>59</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>CTe</processId>
+        <version>1</version>
+        <linkSequence>67</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>77</initialStateSequence>
+      <finalStateSequence>29</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name>Sim</name>
+      <automaticLink>false</automaticLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>CTe</processId>
+        <version>1</version>
+        <linkSequence>69</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>29</initialStateSequence>
+      <finalStateSequence>45</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>CTe</processId>
+        <version>1</version>
+        <linkSequence>72</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>70</initialStateSequence>
+      <finalStateSequence>3</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>CTe</processId>
+        <version>1</version>
+        <linkSequence>83</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>1</initialStateSequence>
+      <finalStateSequence>82</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>CTe</processId>
+        <version>1</version>
+        <linkSequence>84</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>82</initialStateSequence>
+      <finalStateSequence>70</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>CTe</processId>
+        <version>1</version>
+        <linkSequence>86</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>77</initialStateSequence>
+      <finalStateSequence>11</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name>Não</name>
+      <automaticLink>false</automaticLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>CTe</processId>
+        <version>1</version>
+        <linkSequence>87</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>74</initialStateSequence>
+      <finalStateSequence>59</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name>Sem Pedido</name>
+      <automaticLink>false</automaticLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>CTe</processId>
+        <version>1</version>
+        <linkSequence>88</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>45</initialStateSequence>
+      <finalStateSequence>30</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <type>0</type>
+    </ProcessLink>
+  </list>
+  <list>
+    <ProcessAttachmentSecurity>
+      <processAttachmentSecurityPK>
+        <companyId>1</companyId>
+        <processId>CTe</processId>
+        <version>1</version>
+        <sequence>1</sequence>
+      </processAttachmentSecurityPK>
+      <engineAllocationId>Todos os Usuários</engineAllocationId>
+      <accessLevel>PRME</accessLevel>
+      <editionMode>false</editionMode>
+    </ProcessAttachmentSecurity>
+  </list>
+  <list>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>afterTaskComplete</eventId>
+        <processId>CTe</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>function afterTaskComplete(colleagueId,nextSequenceId,userList){&#xd;
+	&#xd;
+	var sequenceId = getValue(&quot;WKNumState&quot;);&#xd;
+	var numEmpresa = getValue(&quot;WKCompany&quot;);&#xd;
+	var numProcesso = getValue(&quot;WKNumProces&quot;);&#xd;
+	var numThread = hAPI.getActualThread(numEmpresa, numProcesso, sequenceId);&#xd;
+	var colleagueId = getValue(&quot;WKUser&quot;);	&#xd;
+	&#xd;
+	if (sequenceId == 0 || sequenceId == 1) hAPI.setTaskComments(colleagueId, numProcesso,  numThread, hAPI.getCardValue(&quot;narrativaNF&quot;));&#xd;
+	&#xd;
+	if (sequenceId == 3) hAPI.setTaskComments(colleagueId, numProcesso,  numThread, hAPI.getCardValue(&quot;desc_analista&quot;));&#xd;
+			&#xd;
+	if (sequenceId == 11)  hAPI.setTaskComments(colleagueId, numProcesso,  numThread, hAPI.getCardValue(&quot;desc_contratante&quot;));&#xd;
+		&#xd;
+	if (sequenceId == 38)  hAPI.setTaskComments(colleagueId, numProcesso,  numThread, hAPI.getCardValue(&quot;desc_cancelamento&quot;)); &#xd;
+	&#xd;
+	if (sequenceId == 48) hAPI.setTaskComments(colleagueId, numProcesso,  numThread, hAPI.getCardValue(&quot;desc_checkDados&quot;)); &#xd;
+&#xd;
+	if (sequenceId == 52) hAPI.setTaskComments(colleagueId, numProcesso,  numThread, hAPI.getCardValue(&quot;desc_aprov_checkDados&quot;)); &#xd;
+&#xd;
+	if (sequenceId == 59) hAPI.setTaskComments(colleagueId, numProcesso,  numThread, hAPI.getCardValue(&quot;desc_aprov_final&quot;)); &#xd;
+&#xd;
+	if (sequenceId == 29) hAPI.setTaskComments(colleagueId, numProcesso,  numThread, hAPI.getCardValue(&quot;desc_lancDatasul&quot;));&#xd;
+	&#xd;
+	&#xd;
+}</eventDescription>
+    </WorkflowProcessEvent>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>beforeCancelProcess</eventId>
+        <processId>CTe</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>function beforeCancelProcess(colleagueId,processId){&#xd;
+	var process;&#xd;
+	var cardData = new java.util.HashMap();&#xd;
+	&#xd;
+	//Monta as constraints para consulta&#xd;
+    var c1 = DatasetFactory.createConstraint(&quot;processId&quot;, &quot;CTe&quot;, &quot;CTe&quot;, ConstraintType.MUST);&#xd;
+    var c2 = DatasetFactory.createConstraint(&quot;active&quot;, &quot;true&quot;, &quot;true&quot;, ConstraintType.MUST);&#xd;
+    var constraints   = new Array(c1, c2);&#xd;
+    &#xd;
+    //Define os campos para ordenação&#xd;
+    var sortingFields = new Array(&quot;workflowProcessPK.processInstanceId&quot;);&#xd;
+     &#xd;
+    //Busca o dataset&#xd;
+    var dataset = DatasetFactory.getDataset(&quot;workflowProcess&quot;, null, constraints, sortingFields);    &#xd;
+    &#xd;
+    for(var i = 0; i &lt; dataset.rowsCount; i++) {&#xd;
+    	process = dataset.getValue(i, &quot;workflowProcessPK.processInstanceId&quot;);	&#xd;
+		cardData = hAPI.getCardData(process);			&#xd;
+		if (hAPI.getCardValue(&quot;ChaveCTe&quot;)  == cardData.get(&quot;ChaveCTe&quot;)){&#xd;
+			 throw &quot; Existem mais processos referentes a CTe em aberto, não é possivel cancelar &quot;;			&#xd;
+		}&#xd;
+	}  &#xd;
+	&#xd;
+	&#xd;
+	&#xd;
+}</eventDescription>
+    </WorkflowProcessEvent>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>beforeTaskSave</eventId>
+        <processId>CTe</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>function beforeTaskSave(colleagueId, nextSequenceId, userList) {&#xd;
+	if (hAPI.listAttachments().size() &lt; 2) {&#xd;
+        throw &quot;    É necessario incluir os arquivos XML e PDF!&quot;;&#xd;
+    }&#xd;
+	&#xd;
+	if (nextSequenceId == 45) {&#xd;
+		&#xd;
+		var process;&#xd;
+		var cardData = new java.util.HashMap();&#xd;
+		&#xd;
+		//Monta as constraints para consulta&#xd;
+	    var c1 = DatasetFactory.createConstraint(&quot;processId&quot;, &quot;CTe&quot;, &quot;CTe&quot;, ConstraintType.MUST);&#xd;
+	    var c2 = DatasetFactory.createConstraint(&quot;active&quot;, &quot;true&quot;, &quot;true&quot;, ConstraintType.MUST);&#xd;
+	    var constraints   = new Array(c1, c2);&#xd;
+	    &#xd;
+	    //Busca o dataset&#xd;
+	    var dataset = DatasetFactory.getDataset(&quot;workflowProcess&quot;, null, constraints, null);&#xd;
+	    &#xd;
+	    process = 0;&#xd;
+	    for(var i = 0; i &lt; dataset.rowsCount; i++) {&#xd;
+	    	process = dataset.getValue(i, &quot;workflowProcessPK.processInstanceId&quot;);	    	&#xd;
+	    	cardData = hAPI.getCardData(process);			&#xd;
+			if (hAPI.getCardValue(&quot;ChaveCTe&quot;)  == cardData.get(&quot;ChaveCTe&quot;) &amp;&amp; process != getValue(&quot;WKNumProces&quot;)){&#xd;
+				var cc1 = DatasetFactory.createConstraint(&quot;processHistoryPK.processInstanceId&quot;, process, process, ConstraintType.MUST);&#xd;
+			    var cc2 = DatasetFactory.createConstraint(&quot;active&quot;, &quot;true&quot;, &quot;true&quot;, ConstraintType.MUST);&#xd;
+			    var cconstraints   = new Array(cc1, cc2);&#xd;
+			    &#xd;
+			    var subDataset = DatasetFactory.getDataset(&quot;processHistory&quot;, null, cconstraints, null);&#xd;
+			    for(var j = 0; j &lt; subDataset.rowsCount; j++) {&#xd;
+			    	if (subDataset.getValue(j, &quot;stateSequence&quot;) != 29 &amp;&amp; subDataset.getValue(j, &quot;stateSequence&quot;) != 45) throw &quot;&lt;br/&gt;Ainda não é possivel enviar este processo para a proxima etapa! &lt;/br&gt;Aguardando o processo: &quot; + process;			    &#xd;
+			    }			&#xd;
+				&#xd;
+			}&#xd;
+		}&#xd;
+	}&#xd;
+	&#xd;
+&#xd;
+	if (nextSequenceId == 74) {&#xd;
+		&#xd;
+		var process;&#xd;
+		var cardData = new java.util.HashMap();&#xd;
+		&#xd;
+		//Monta as constraints para consulta&#xd;
+	    var c1 = DatasetFactory.createConstraint(&quot;processId&quot;, &quot;CTe&quot;, &quot;CTe&quot;, ConstraintType.MUST);&#xd;
+	    var c2 = DatasetFactory.createConstraint(&quot;active&quot;, &quot;true&quot;, &quot;true&quot;, ConstraintType.MUST);&#xd;
+	    var constraints   = new Array(c1, c2);&#xd;
+	    &#xd;
+	    //Busca o dataset&#xd;
+	    var dataset = DatasetFactory.getDataset(&quot;workflowProcess&quot;, null, constraints, null);&#xd;
+	    &#xd;
+	    process = 0;&#xd;
+	    for(var i = 0; i &lt; dataset.rowsCount; i++) {&#xd;
+	    	process = dataset.getValue(i, &quot;workflowProcessPK.processInstanceId&quot;);	    	&#xd;
+	    	cardData = hAPI.getCardData(process);			&#xd;
+			if (hAPI.getCardValue(&quot;ChaveCTe&quot;)  == cardData.get(&quot;ChaveCTe&quot;) &amp;&amp; process != getValue(&quot;WKNumProces&quot;)){&#xd;
+				var cc1 = DatasetFactory.createConstraint(&quot;processHistoryPK.processInstanceId&quot;, process, process, ConstraintType.MUST);&#xd;
+			    var cc2 = DatasetFactory.createConstraint(&quot;active&quot;, &quot;true&quot;, &quot;true&quot;, ConstraintType.MUST);&#xd;
+			    var cconstraints   = new Array(cc1, cc2);&#xd;
+			    &#xd;
+			    var subDataset = DatasetFactory.getDataset(&quot;processHistory&quot;, null, cconstraints, null);&#xd;
+			    for(var j = 0; j &lt; subDataset.rowsCount; j++) {&#xd;
+			    	if (subDataset.getValue(j, &quot;stateSequence&quot;) != 3 &amp;&amp; subDataset.getValue(j, &quot;stateSequence&quot;) != 11) {&#xd;
+			    		if (cardData.get(&quot;aprov_contratante&quot;) != hAPI.getCardValue(&quot;aprov_contratante&quot;))&#xd;
+			    			throw &quot;&lt;br/&gt;A decisão desta tarefa difere do processo &quot; + process + &quot; que contem o mesmo CTe e &lt;strong&gt;&quot; + cardData.get(&quot;aprov_contratante&quot;) + &quot;&lt;/strong&gt; foi aprovado&quot;;			    &#xd;
+			    	}&#xd;
+			    }			&#xd;
+				&#xd;
+			}&#xd;
+		}&#xd;
+	}&#xd;
+}</eventDescription>
+    </WorkflowProcessEvent>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>afterTaskSave</eventId>
+        <processId>CTe</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>function afterTaskSave(colleagueId,nextSequenceId,userList){&#xd;
+	&#xd;
+	 	&#xd;
+	&#xd;
+	&#xd;
+	&#xd;
+}</eventDescription>
+    </WorkflowProcessEvent>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>beforeStateLeave</eventId>
+        <processId>CTe</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>function beforeStateLeave(sequenceId){&#xd;
+	&#xd;
+	if (sequenceId == 29) {&#xd;
+		var calendar = java.util.Calendar.getInstance().getTime();&#xd;
+        var docs = hAPI.listAttachments();&#xd;
+        for (var i = 0; i &lt; docs.size(); i++) {&#xd;
+            var doc = docs.get(i);&#xd;
+            &#xd;
+            if (doc.getDocumentType() != &quot;7&quot;) {continue;}&#xd;
+             &#xd;
+            var ext = doc.getDocumentDescription().substring(doc.getDocumentDescription().lastIndexOf(&quot;.&quot;)) ;             &#xd;
+           &#xd;
+            doc.setParentDocumentId(10809);&#xd;
+            doc.setDocumentDescription(&quot;Processo: &quot; + getValue(&quot;WKNumProces&quot;) + &quot; - Anexo: &quot; + (i + 1) +  ext );          &#xd;
+            doc.setVersionDescription(&quot;Processo: &quot; + getValue(&quot;WKNumProces&quot;));&#xd;
+            doc.setAdditionalComments(&quot;Processo: &quot; + getValue(&quot;WKNumProces&quot;) + &quot; - Anexo: &quot; + (i + 1));&#xd;
+            doc.setExpires(false);&#xd;
+            doc.setCreateDate(calendar);&#xd;
+            doc.setValidationStartDate(calendar);&#xd;
+            &#xd;
+            doc.setInheritSecurity(true);&#xd;
+            doc.setTopicId(1);&#xd;
+            doc.setUserNotify(false);&#xd;
+            &#xd;
+            doc.setVersionOption(&quot;0&quot;);&#xd;
+            doc.setImutable(false);&#xd;
+            doc.setUpdateIsoProperties(true);&#xd;
+            try { &#xd;
+            	hAPI.publishWorkflowAttachment(doc);&#xd;
+            } catch (e) {&#xd;
+        		log.error(&quot;----------------ERRO:&quot;);&#xd;
+        		log.error(e);&#xd;
+        	}&#xd;
+        }&#xd;
+        &#xd;
+    }&#xd;
+	&#xd;
+	if (sequenceId == 82) {&#xd;
+		var process;&#xd;
+		var auxObs = &quot;&quot;;&#xd;
+		var cardData = new java.util.HashMap();&#xd;
+		&#xd;
+		//Monta as constraints para consulta&#xd;
+	    var c1 = DatasetFactory.createConstraint(&quot;processId&quot;, &quot;CTe&quot;, &quot;CTe&quot;, ConstraintType.MUST);&#xd;
+	    var c2 = DatasetFactory.createConstraint(&quot;active&quot;, &quot;true&quot;, &quot;true&quot;, ConstraintType.MUST);&#xd;
+	    var constraints   = new Array(c1, c2);&#xd;
+	    &#xd;
+	    //Define os campos para ordenação&#xd;
+	    var sortingFields = new Array(&quot;workflowProcessPK.processInstanceId&quot;);&#xd;
+	     &#xd;
+	    //Busca o dataset&#xd;
+	    var dataset = DatasetFactory.getDataset(&quot;workflowProcess&quot;, null, constraints, sortingFields);&#xd;
+	    &#xd;
+	    process = 0;&#xd;
+	    for(var i = 0; i &lt; dataset.rowsCount; i++) {&#xd;
+	    	process = dataset.getValue(i, &quot;workflowProcessPK.processInstanceId&quot;);	    	&#xd;
+	    	cardData = hAPI.getCardData(process);			&#xd;
+			if (hAPI.getCardValue(&quot;ChaveCTe&quot;)  == cardData.get(&quot;ChaveCTe&quot;) &amp;&amp; process != getValue(&quot;WKNumProces&quot;)){&#xd;
+				auxObs = auxObs + &quot;- Nota Fiscal: &quot; + cardData.get(&quot;nrNota&quot;) + &quot; no fluxo: &quot; + process + &quot;\n&quot;;&#xd;
+			}&#xd;
+		}&#xd;
+	    if (auxObs != &quot;&quot;) hAPI.setCardValue(&quot;narrativaNF&quot;, hAPI.getCardValue(&quot;narrativaNF&quot;) + &quot;\n\nEste CTe também contem:\n&quot; + auxObs);&#xd;
+	    hAPI.setCardValue(&quot;num_processo&quot;, getValue(&quot;WKNumProces&quot;));&#xd;
+	}	&#xd;
+	&#xd;
+	&#xd;
+}</eventDescription>
+    </WorkflowProcessEvent>
+  </list>
+  <list/>
+  <list/>
+  <list/>
+  <list/>
+  <list>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>CTe</processId>
+        <version>10</version>
+        <linkSequence>42</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>652</positionX>
+      <positionY>323</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>CTe</processId>
+        <version>10</version>
+        <linkSequence>42</linkSequence>
+        <bendSequence>2</bendSequence>
+      </processLinkBendPK>
+      <positionX>342</positionX>
+      <positionY>323</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>CTe</processId>
+        <version>10</version>
+        <linkSequence>47</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>1413</positionX>
+      <positionY>289</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>CTe</processId>
+        <version>10</version>
+        <linkSequence>47</linkSequence>
+        <bendSequence>2</bendSequence>
+      </processLinkBendPK>
+      <positionX>1526</positionX>
+      <positionY>289</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>CTe</processId>
+        <version>10</version>
+        <linkSequence>58</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>976</positionX>
+      <positionY>46</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>CTe</processId>
+        <version>10</version>
+        <linkSequence>58</linkSequence>
+        <bendSequence>2</bendSequence>
+      </processLinkBendPK>
+      <positionX>812</positionX>
+      <positionY>46</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>CTe</processId>
+        <version>10</version>
+        <linkSequence>58</linkSequence>
+        <bendSequence>3</bendSequence>
+      </processLinkBendPK>
+      <positionX>655</positionX>
+      <positionY>46</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>CTe</processId>
+        <version>10</version>
+        <linkSequence>65</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>654</positionX>
+      <positionY>172</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>CTe</processId>
+        <version>10</version>
+        <linkSequence>65</linkSequence>
+        <bendSequence>2</bendSequence>
+      </processLinkBendPK>
+      <positionX>919</positionX>
+      <positionY>172</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>CTe</processId>
+        <version>10</version>
+        <linkSequence>65</linkSequence>
+        <bendSequence>3</bendSequence>
+      </processLinkBendPK>
+      <positionX>1105</positionX>
+      <positionY>172</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>CTe</processId>
+        <version>10</version>
+        <linkSequence>86</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>1250</positionX>
+      <positionY>323</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>CTe</processId>
+        <version>10</version>
+        <linkSequence>86</linkSequence>
+        <bendSequence>2</bendSequence>
+      </processLinkBendPK>
+      <positionX>342</positionX>
+      <positionY>323</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>CTe</processId>
+        <version>10</version>
+        <linkSequence>87</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>487</positionX>
+      <positionY>28</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>CTe</processId>
+        <version>10</version>
+        <linkSequence>87</linkSequence>
+        <bendSequence>2</bendSequence>
+      </processLinkBendPK>
+      <positionX>821</positionX>
+      <positionY>28</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>CTe</processId>
+        <version>10</version>
+        <linkSequence>87</linkSequence>
+        <bendSequence>3</bendSequence>
+      </processLinkBendPK>
+      <positionX>1106</positionX>
+      <positionY>28</positionY>
+    </ProcessLinkBend>
+  </list>
+  <list>
+    <ProcessStateTrigger>
+      <processStateTriggerPK>
+        <companyId>1</companyId>
+        <processId>CTe</processId>
+        <version>10</version>
+        <stateSequence>82</stateSequence>
+        <triggerSequence>0</triggerSequence>
+      </processStateTriggerPK>
+      <runType>0</runType>
+      <type>2</type>
+      <timeTrigger>0:0:0</timeTrigger>
+      <frequencia>01</frequencia>
+    </ProcessStateTrigger>
+  </list>
+  <list/>
+  <list/>
+  <list/>
+  <list/>
+</list>

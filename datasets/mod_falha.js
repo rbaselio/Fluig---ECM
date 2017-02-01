@@ -39,7 +39,8 @@ function createDataset(fields, constraints, sortFields) {
 	    newDataset.addRow(new Array('Peças com dimensional fora do especificado em desenho'));
 	    newDataset.addRow(new Array('Perda / extravio de material'));
 	    newDataset.addRow(new Array('Processo com alto risco de falha / manual'));
-	    newDataset.addRow(new Array('Tempo de processo/cura não cumprido'));	    
+	    newDataset.addRow(new Array('Tempo de processo/cura não cumprido'));
+	    newDataset.addRow(new Array('Sob Análise'));
 	    
 	    
 	    return newDataset;	

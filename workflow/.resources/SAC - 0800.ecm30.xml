@@ -4,7 +4,7 @@
       <companyId>1</companyId>
       <processId>SAC - 0800</processId>
     </processDefinitionPK>
-    <processDescription>SAC - Processo de registro de contato</processDescription>
+    <processDescription>Processo de registro de contato SAC</processDescription>
     <instruction></instruction>
     <active>true</active>
     <publicProcess>false</publicProcess>
@@ -18,12 +18,16 @@
     <periodId>Default</periodId>
     <uniqueCardVersion>true</uniqueCardVersion>
     <keyWord></keyWord>
+    <complementsLevel>0</complementsLevel>
+    <notifyRequisitionerComplements>false</notifyRequisitionerComplements>
+    <notifyManagerComplements>false</notifyManagerComplements>
+    <notifyAuthorityComplements>false</notifyAuthorityComplements>
   </ProcessDefinition>
   <ProcessDefinitionVersion>
     <processDefinitionVersionPK>
       <companyId>1</companyId>
-      <processId>SAC - Processo de registro de contato</processId>
-      <version>5</version>
+      <processId>Processo de registro de contato SAC</processId>
+      <version>7</version>
     </processDefinitionVersionPK>
     <versionDescription>Nova Versão.</versionDescription>
     <formId>176</formId>
@@ -71,7 +75,7 @@
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
       <positionX>67</positionX>
-      <positionY>34</positionY>
+      <positionY>20</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -121,7 +125,7 @@
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
       <positionX>32</positionX>
-      <positionY>227</positionY>
+      <positionY>305</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -140,6 +144,7 @@
       <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
       <destinationStates/>
       <digitalSignature>false</digitalSignature>
+      <executionType>0</executionType>
     </ProcessState>
     <ProcessState>
       <processStatePK>
@@ -170,8 +175,8 @@
       <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>350</positionX>
-      <positionY>271</positionY>
+      <positionX>308</positionX>
+      <positionY>298</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -190,6 +195,7 @@
       <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
       <destinationStates/>
       <digitalSignature>false</digitalSignature>
+      <executionType>0</executionType>
     </ProcessState>
     <ProcessState>
       <processStatePK>
@@ -220,8 +226,8 @@
       <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>350</positionX>
-      <positionY>168</positionY>
+      <positionX>308</positionX>
+      <positionY>202</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -240,6 +246,7 @@
       <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
       <destinationStates/>
       <digitalSignature>false</digitalSignature>
+      <executionType>0</executionType>
     </ProcessState>
     <ProcessState>
       <processStatePK>
@@ -270,8 +277,8 @@
       <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>350</positionX>
-      <positionY>76</positionY>
+      <positionX>484</positionX>
+      <positionY>93</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -290,6 +297,7 @@
       <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
       <destinationStates/>
       <digitalSignature>false</digitalSignature>
+      <executionType>0</executionType>
     </ProcessState>
     <ProcessState>
       <processStatePK>
@@ -304,7 +312,7 @@
       <deadlineTime>28800</deadlineTime>
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
-      <engineAllocationId>papeis0800</engineAllocationId>
+      <engineAllocationId></engineAllocationId>
       <selectColleague>0</selectColleague>
       <initialState>false</initialState>
       <notifyAuthorityDelay>true</notifyAuthorityDelay>
@@ -320,7 +328,7 @@
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
       <positionX>32</positionX>
-      <positionY>108</positionY>
+      <positionY>85</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -339,6 +347,7 @@
       <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
       <destinationStates/>
       <digitalSignature>false</digitalSignature>
+      <executionType>0</executionType>
     </ProcessState>
     <ProcessState>
       <processStatePK>
@@ -356,7 +365,7 @@
       <formFolder>0</formFolder>
       <automatic>true</automatic>
       <positionX>200</positionX>
-      <positionY>204</positionY>
+      <positionY>282</positionY>
       <inhibitTransfer>false</inhibitTransfer>
       <stateType>1</stateType>
       <bpmnType>120</bpmnType>
@@ -380,8 +389,8 @@
       <subProcessId></subProcessId>
       <formFolder>0</formFolder>
       <automatic>true</automatic>
-      <positionX>200</positionX>
-      <positionY>85</positionY>
+      <positionX>331</positionX>
+      <positionY>63</positionY>
       <inhibitTransfer>false</inhibitTransfer>
       <stateType>1</stateType>
       <bpmnType>120</bpmnType>
@@ -419,8 +428,8 @@
       <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>500</positionX>
-      <positionY>86</positionY>
+      <positionX>519</positionX>
+      <positionY>219</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -444,7 +453,7 @@
         <companyId>1</companyId>
         <processId>SAC - 0800</processId>
         <expressionOrder>1</expressionOrder>
-        <version>5</version>
+        <version>7</version>
         <sequence>4</sequence>
       </conditionProcessStatePK>
       <condition>(hAPI.getCardValue(&quot;rd_aceite&quot;) == &quot;sim&quot;)</condition>
@@ -457,11 +466,11 @@
         <companyId>1</companyId>
         <processId>SAC - 0800</processId>
         <expressionOrder>2</expressionOrder>
-        <version>5</version>
+        <version>7</version>
         <sequence>4</sequence>
       </conditionProcessStatePK>
       <condition>(hAPI.getCardValue(&quot;rd_aceite&quot;) == &quot;nao&quot;)</condition>
-      <destinationSequenceId>11</destinationSequenceId>
+      <destinationSequenceId>1</destinationSequenceId>
       <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;BaseActivity&gt;11&lt;/BaseActivity&gt;&lt;Returns&gt;Last&lt;/Returns&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
       <engineAllocationId>Executor Atividade</engineAllocationId>
     </ConditionProcessState>
@@ -469,8 +478,19 @@
       <conditionProcessStatePK>
         <companyId>1</companyId>
         <processId>SAC - 0800</processId>
+        <expressionOrder>3</expressionOrder>
+        <version>7</version>
+        <sequence>4</sequence>
+      </conditionProcessStatePK>
+      <condition>(hAPI.getCardValue(&quot;rd_aceite&quot;) == &quot;encerrar&quot;)</condition>
+      <destinationSequenceId>7</destinationSequenceId>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>SAC - 0800</processId>
         <expressionOrder>1</expressionOrder>
-        <version>5</version>
+        <version>7</version>
         <sequence>8</sequence>
       </conditionProcessStatePK>
       <condition>(hAPI.getCardValue(&quot;rd_aprov_acao&quot;) == &quot;sim&quot;)</condition>
@@ -483,7 +503,7 @@
         <companyId>1</companyId>
         <processId>SAC - 0800</processId>
         <expressionOrder>2</expressionOrder>
-        <version>5</version>
+        <version>7</version>
         <sequence>8</sequence>
       </conditionProcessStatePK>
       <condition>(hAPI.getCardValue(&quot;rd_aprov_acao&quot;) == &quot;nao&quot;)</condition>
@@ -626,11 +646,11 @@
         <companyId>1</companyId>
         <processId>SAC - 0800</processId>
         <version>1</version>
-        <linkSequence>14</linkSequence>
+        <linkSequence>15</linkSequence>
       </processLinkPK>
       <actionLabel></actionLabel>
       <returnPermited>false</returnPermited>
-      <initialStateSequence>4</initialStateSequence>
+      <initialStateSequence>8</initialStateSequence>
       <finalStateSequence>11</finalStateSequence>
       <returnLabel></returnLabel>
       <name></name>
@@ -642,12 +662,28 @@
         <companyId>1</companyId>
         <processId>SAC - 0800</processId>
         <version>1</version>
-        <linkSequence>15</linkSequence>
+        <linkSequence>16</linkSequence>
       </processLinkPK>
       <actionLabel></actionLabel>
       <returnPermited>false</returnPermited>
-      <initialStateSequence>8</initialStateSequence>
-      <finalStateSequence>11</finalStateSequence>
+      <initialStateSequence>4</initialStateSequence>
+      <finalStateSequence>7</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>SAC - 0800</processId>
+        <version>1</version>
+        <linkSequence>17</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>4</initialStateSequence>
+      <finalStateSequence>1</finalStateSequence>
       <returnLabel></returnLabel>
       <name></name>
       <automaticLink>false</automaticLink>
@@ -663,21 +699,59 @@
         <processId>SAC - 0800</processId>
         <version>1</version>
       </workflowProcessEventPK>
-      <eventDescription>function afterStateEntry(sequenceId){&#xd;&#xd;	var numEmpresa = getValue(&quot;WKCompany&quot;);&#xd;	var numProcesso = getValue(&quot;WKNumProces&quot;);&#xd;	var numAtividade = sequenceId;&#xd;	var numThread = hAPI.getActualThread(numEmpresa, numProcesso, numAtividade);&#xd;	var colleagueId = getValue(&quot;WKUser&quot;);&#xd;	&#xd;	log.info(&quot;----------------------AFTER STATE ENTRY-------------------------------&quot;)&#xd;	log.info(&quot;----------------------numEmpresa: &quot; + numEmpresa);&#xd;	log.info(&quot;----------------------numProcesso: &quot; + numProcesso);&#xd;	log.info(&quot;----------------------numThread: &quot; + numThread);&#xd;	log.info(&quot;----------------------numAtividade: &quot; + numAtividade);&#xd;	log.info(&quot;----------------------colleagueId: &quot; + colleagueId);&#xd;	&#xd;&#xd;	if(numAtividade == 5){  //implementar plano e ação&#xd;&#xd;		var colleagueId = hAPI.getCardValue(&quot;matricula_resp2&quot;);&#xd;		log.info(&quot;----------------------colleagueId: &quot; + colleagueId);&#xd;		&#xd;		var data = new Date();&#xd;		&#xd;		var prazo = hAPI.getCardValue(&quot;prazo&quot;);&#xd;		var dt_planejada;&#xd;		&#xd;		if (prazo.indexOf(&quot;-&quot;) &gt; 0){&#xd;			dt_planejada = new java.lang.String(prazo).split(&quot;-&quot;);&#xd;			log.info(&quot;----------------------DIA: &quot; + dt_planejada[2]);&#xd;			log.info(&quot;----------------------MES: &quot; + (dt_planejada[1] - 1));&#xd;			log.info(&quot;----------------------ANO: &quot; + dt_planejada[0]);	&#xd;			//seta o dia, mês (Janeiro é 0) e ano&#xd;			data.setDate(dt_planejada[2]);&#xd;			data.setMonth(dt_planejada[1] - 1);&#xd;			data.setFullYear(dt_planejada[0]);&#xd;			log.info(&quot;----------------------DATA: &quot; + data);&#xd;		} else{&#xd;			dt_planejada = new java.lang.String(prazo).split(&quot;/&quot;);&#xd;			log.info(&quot;----------------------DIA: &quot; + dt_planejada[0]);&#xd;			log.info(&quot;----------------------MES: &quot; + (dt_planejada[1] - 1));&#xd;			log.info(&quot;----------------------ANO: &quot; + dt_planejada[2]);&#xd;			//seta o dia, mês (Janeiro é 0) e ano&#xd;			data.setDate(dt_planejada[0]);&#xd;			data.setMonth(dt_planejada[1] - 1);&#xd;			data.setFullYear(dt_planejada[2]);&#xd;			log.info(&quot;----------------------DATA: &quot; + data);&#xd;		}&#xd;		&#xd;&#xd;		try {&#xd;			hAPI.setDueDate(numProcesso, numThread, colleagueId, data, 28800);&#xd;		}catch (e) {&#xd;		            log.error(&quot;Erro ao alterar a data de execução:\n&quot; + e);&#xd;		}&#xd;	}&#xd;&#xd;&#xd;}</eventDescription>
-    </WorkflowProcessEvent>
-    <WorkflowProcessEvent>
-      <workflowProcessEventPK>
-        <companyId>1</companyId>
-        <eventId>beforeStateLeave</eventId>
-        <processId>SAC - 0800</processId>
-        <version>1</version>
-      </workflowProcessEventPK>
-      <eventDescription>function beforeStateLeave(sequenceId){&#xd;	&#xd;	var numEmpresa = getValue(&quot;WKCompany&quot;);&#xd;	var numProcesso = getValue(&quot;WKNumProces&quot;);&#xd;	var nrProxAtividade = getValue(&quot;WKNextState&quot;);&#xd;	var numAtividade = sequenceId;&#xd;	var numThread = hAPI.getActualThread(numEmpresa, numProcesso, numAtividade);&#xd;	var colleagueId = getValue(&quot;WKUser&quot;);&#xd;	&#xd;	log.info(&quot;----------------------SET TASK COMENT-------------------------------&quot;);&#xd;	log.info(&quot;numEmpresa: &quot; + numEmpresa);&#xd;	log.info(&quot;numProcesso: &quot; + numProcesso);&#xd;	log.info(&quot;nrProxAtividade: &quot; + nrProxAtividade);&#xd;	log.info(&quot;numThread: &quot; + numThread);&#xd;	log.info(&quot;numAtividade: &quot; + numAtividade);&#xd;	log.info(&quot;colleagueId: &quot; + colleagueId);&#xd;	&#xd;	if(numAtividade == 0 || numAtividade == 1){ //abertura do atendimento&#xd;		log.info(&quot;numAtividade: &quot; + numAtividade);&#xd;		log.info(&quot;setTaskComments: &quot; + hAPI.getCardValue(&quot;desc_recla&quot;));&#xd;		hAPI.setTaskComments(colleagueId, numProcesso,  numThread,  hAPI.getCardValue(&quot;desc_recla&quot;));		&#xd;	}&#xd;	&#xd;	if(numAtividade == 11){ //propor ação corretiva&#xd;		hAPI.setTaskComments(colleagueId, numProcesso,  numThread,  hAPI.getCardValue(&quot;desc_acao&quot;));&#xd;		log.info(&quot;numAtividade: &quot; + numAtividade);&#xd;		log.info(&quot;setTaskComments: &quot; + hAPI.getCardValue(&quot;desc_acao&quot;));&#xd;	}&#xd;	&#xd;	if(numAtividade == 3){ //notificar cliente&#xd;		hAPI.setTaskComments(colleagueId, numProcesso,  numThread,  hAPI.getCardValue(&quot;obs_aceite&quot;));&#xd;		log.info(&quot;numAtividade: &quot; + numAtividade);&#xd;		log.info(&quot;setTaskComments: &quot; + hAPI.getCardValue(&quot;obs_aceite&quot;));&#xd;	}&#xd;	&#xd;	if(numAtividade == 5){ //implementar plano e ação&#xd;		setTaskComments(colleagueId, numProcesso,  numThread,  hAPI.getCardValue(&quot;obs_exec&quot;));&#xd;		log.info(&quot;numAtividade: &quot; + numAtividade);&#xd;		log.info(&quot;setTaskComments: &quot; + hAPI.getCardValue(&quot;obs_exec&quot;));&#xd;	}&#xd;	&#xd;	if(numAtividade == 6){ //implementar plano e ação&#xd;		hAPI.setTaskComments(colleagueId, numProcesso,  numThread,  hAPI.getCardValue(&quot;obs_encer&quot;));&#xd;		log.info(&quot;numAtividade: &quot; + numAtividade);&#xd;		log.info(&quot;setTaskComments: &quot; + hAPI.getCardValue(&quot;obs_encer&quot;));&#xd;	}&#xd;&#xd;}&#xd;</eventDescription>
+      <eventDescription>function afterStateEntry(sequenceId){&#xd;&#xd;	var numEmpresa = getValue(&quot;WKCompany&quot;);&#xd;	var numProcesso = getValue(&quot;WKNumProces&quot;);&#xd;	var numAtividade = sequenceId;&#xd;	var numThread = hAPI.getActualThread(numEmpresa, numProcesso, numAtividade);&#xd;	var colleagueId = getValue(&quot;WKUser&quot;);&#xd;	&#xd;	//log.warn(&quot;----------------------AFTER STATE ENTRY-------------------------------&quot;)&#xd;	//log.warn(&quot;----------------------numEmpresa: &quot; + numEmpresa);&#xd;	//log.warn(&quot;----------------------numProcesso: &quot; + numProcesso);&#xd;	//log.warn(&quot;----------------------numThread: &quot; + numThread);&#xd;	//log.warn(&quot;----------------------numAtividade: &quot; + numAtividade);&#xd;	//log.warn(&quot;----------------------colleagueId: &quot; + colleagueId);&#xd;	&#xd;&#xd;	if(numAtividade == 5){  //implementar plano e ação&#xd;&#xd;		var colleagueId = hAPI.getCardValue(&quot;matricula_resp2&quot;);&#xd;		//log.warn(&quot;----------------------colleagueId: &quot; + colleagueId);&#xd;		&#xd;		var data = new Date();&#xd;		&#xd;		var prazo = hAPI.getCardValue(&quot;prazo&quot;);&#xd;		var dt_planejada;&#xd;		&#xd;		if (prazo.indexOf(&quot;-&quot;) &gt; 0){&#xd;			dt_planejada = new java.lang.String(prazo).split(&quot;-&quot;);&#xd;			//log.warn(&quot;----------------------DIA: &quot; + dt_planejada[2]);&#xd;			//log.warn(&quot;----------------------MES: &quot; + (dt_planejada[1] - 1));&#xd;			//log.warn(&quot;----------------------ANO: &quot; + dt_planejada[0]);	&#xd;			//seta o dia, mês (Janeiro é 0) e ano&#xd;			data.setDate(dt_planejada[2]);&#xd;			data.setMonth(dt_planejada[1] - 1);&#xd;			data.setFullYear(dt_planejada[0]);&#xd;			//log.warn(&quot;----------------------DATA: &quot; + data);&#xd;		} else{&#xd;			dt_planejada = new java.lang.String(prazo).split(&quot;/&quot;);&#xd;			//log.warn(&quot;----------------------DIA: &quot; + dt_planejada[0]);&#xd;			//log.warn(&quot;----------------------MES: &quot; + (dt_planejada[1] - 1));&#xd;			//log.warn(&quot;----------------------ANO: &quot; + dt_planejada[2]);&#xd;			//seta o dia, mês (Janeiro é 0) e ano&#xd;			data.setDate(dt_planejada[0]);&#xd;			data.setMonth(dt_planejada[1] - 1);&#xd;			data.setFullYear(dt_planejada[2]);&#xd;			//log.warn(&quot;----------------------DATA: &quot; + data);&#xd;		}&#xd;		&#xd;&#xd;		try {&#xd;			hAPI.setDueDate(numProcesso, numThread, colleagueId, data, 28800);&#xd;		}catch (e) {&#xd;		            log.error(&quot;Erro ao alterar a data de execução:\n&quot; + e);&#xd;		}&#xd;	}&#xd;&#xd;&#xd;}</eventDescription>
     </WorkflowProcessEvent>
   </list>
   <list/>
   <list/>
   <list/>
+  <list/>
+  <list>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>SAC - 0800</processId>
+        <version>7</version>
+        <linkSequence>16</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>230</positionX>
+      <positionY>392</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>SAC - 0800</processId>
+        <version>7</version>
+        <linkSequence>16</linkSequence>
+        <bendSequence>2</bendSequence>
+      </processLinkBendPK>
+      <positionX>422</positionX>
+      <positionY>392</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>SAC - 0800</processId>
+        <version>7</version>
+        <linkSequence>16</linkSequence>
+        <bendSequence>3</bendSequence>
+      </processLinkBendPK>
+      <positionX>536</positionX>
+      <positionY>392</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>SAC - 0800</processId>
+        <version>7</version>
+        <linkSequence>17</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>229</positionX>
+      <positionY>37</positionY>
+    </ProcessLinkBend>
+  </list>
   <list/>
   <list/>
   <list/>

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>Fluig</name>
+	<name>Fluig - Publicados</name>
 	<comment></comment>
 	<projects>
 	</projects>
 	<buildSpec>
 		<buildCommand>
-			<name>org.eclipse.wst.jsdt.core.javascriptValidator</name>
+			<name>org.eclipse.wst.validation.validationbuilder</name>
 			<arguments>
 			</arguments>
 		</buildCommand>
@@ -15,4 +15,15 @@
 		<nature>org.eclipse.wst.jsdt.core.jsNature</nature>
 		<nature>com.totvs.tds.ecm.designer.nature</nature>
 	</natures>
+	<filteredResources>
+		<filter>
+			<id>1482935391271</id>
+			<name></name>
+			<type>22</type>
+			<matcher>
+				<id>org.eclipse.ui.ide.multiFilter</id>
+				<arguments>1.0-name-matches-false-false-desktop.ini</arguments>
+			</matcher>
+		</filter>
+	</filteredResources>
 </projectDescription>

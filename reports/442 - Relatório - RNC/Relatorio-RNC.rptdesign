@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.23" id="1">
     <property name="author">Carla Tonon</property>
-    <property name="createdBy">Eclipse BIRT Designer Version 4.5.0.v201506092134 Build &lt;@BUILD@></property>
-    <property name="units">in</property>
+    <property name="createdBy">Eclipse BIRT Designer Version 4.6.0.v201606072122</property>
+    <property name="units">cm</property>
     <property name="iconFile">/templates/blank_report.gif</property>
     <property name="layoutPreference">auto layout</property>
     <property name="bidiLayoutOrientation">ltr</property>
@@ -325,6 +325,36 @@
                     <property name="onColumnLayout">false</property>
                     <text-property name="heading">colab_falha</text-property>
                 </structure>
+                <structure>
+                    <property name="columnName">DISPOSICAO</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">DISPOSICAO</text-property>
+                    <text-property name="heading">DISPOSICAO</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">PARECER</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">PARECER</text-property>
+                    <text-property name="heading">PARECER</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">MODO_FALHA</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">MODO_FALHA</text-property>
+                    <text-property name="heading">MODO_FALHA</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">ACAO_TOMADA</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">ACAO_TOMADA</text-property>
+                    <text-property name="heading">ACAO_TOMADA</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">QUANT_ACAO</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">QUANT_ACAO</text-property>
+                    <text-property name="heading">QUANT_ACAO</text-property>
+                </structure>
             </list-property>
             <list-property name="parameters">
                 <structure>
@@ -518,6 +548,31 @@
                     <structure>
                         <property name="position">28</property>
                         <property name="name">colab_falha</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">29</property>
+                        <property name="name">DISPOSICAO</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">30</property>
+                        <property name="name">PARECER</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">31</property>
+                        <property name="name">MODO_FALHA</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">32</property>
+                        <property name="name">ACAO_TOMADA</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">33</property>
+                        <property name="name">QUANT_ACAO</property>
                         <property name="dataType">string</property>
                     </structure>
                 </list-property>
@@ -717,6 +772,41 @@
                     <property name="position">28</property>
                     <property name="name">colab_falha</property>
                     <property name="nativeName">colab_falha</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">29</property>
+                    <property name="name">DISPOSICAO</property>
+                    <property name="nativeName">DISPOSICAO</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">30</property>
+                    <property name="name">PARECER</property>
+                    <property name="nativeName">PARECER</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">31</property>
+                    <property name="name">MODO_FALHA</property>
+                    <property name="nativeName">MODO_FALHA</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">32</property>
+                    <property name="name">ACAO_TOMADA</property>
+                    <property name="nativeName">ACAO_TOMADA</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">33</property>
+                    <property name="name">QUANT_ACAO</property>
+                    <property name="nativeName">QUANT_ACAO</property>
                     <property name="dataType">string</property>
                     <property name="nativeDataType">12</property>
                 </structure>
@@ -922,8 +1012,52 @@
 				FICHA.NR_VERSAO = ANEXO_PROCES.NR_VERSAO AND
                 FICHA.COD_VALOR is not null and
 				FICHA.COD_TABELA = "principal" AND
-				FICHA.COD_CAMPO = "colab_falha") as colab_falha 
-    
+				FICHA.COD_CAMPO = "colab_falha") as colab_falha,
+				
+                
+         (select FICHA.COD_VALOR
+			from FICHA 
+			where FICHA.COD_EMPRESA = ANEXO_PROCES.COD_EMPRESA AND
+				FICHA.NR_FICHA = ANEXO_PROCES.NR_DOCUMENTO and
+				FICHA.NR_VERSAO = ANEXO_PROCES.NR_VERSAO AND
+                FICHA.COD_VALOR is not null and
+				FICHA.COD_TABELA = "principal" AND
+				FICHA.COD_CAMPO = "disposocao") as DISPOSICAO,
+		       
+         (select FICHA.COD_VALOR
+			from FICHA 
+			where FICHA.COD_EMPRESA = ANEXO_PROCES.COD_EMPRESA AND
+				FICHA.NR_FICHA = ANEXO_PROCES.NR_DOCUMENTO and
+				FICHA.NR_VERSAO = ANEXO_PROCES.NR_VERSAO AND
+                FICHA.COD_VALOR is not null and
+				FICHA.COD_TABELA = "principal" AND
+				FICHA.COD_CAMPO = "desc_parecer") as PARECER,
+                
+		(select FICHA.COD_VALOR
+			from FICHA 
+			where FICHA.COD_EMPRESA = ANEXO_PROCES.COD_EMPRESA AND
+				FICHA.NR_FICHA = ANEXO_PROCES.NR_DOCUMENTO and
+				FICHA.NR_VERSAO = ANEXO_PROCES.NR_VERSAO AND
+                FICHA.COD_VALOR is not null and
+				FICHA.COD_TABELA = "principal" AND
+				FICHA.COD_CAMPO = "desc_falha") as MODO_FALHA, 
+        (select FICHA.COD_VALOR
+			from FICHA 
+			where FICHA.COD_EMPRESA = ANEXO_PROCES.COD_EMPRESA AND
+				FICHA.NR_FICHA = ANEXO_PROCES.NR_DOCUMENTO and
+				FICHA.NR_VERSAO = ANEXO_PROCES.NR_VERSAO AND
+                FICHA.COD_VALOR is not null and
+				FICHA.COD_TABELA = "principal" AND
+				FICHA.COD_CAMPO = "acao") as ACAO_TOMADA ,
+                
+		(select FICHA.COD_VALOR
+			from FICHA 
+			where FICHA.COD_EMPRESA = ANEXO_PROCES.COD_EMPRESA AND
+				FICHA.NR_FICHA = ANEXO_PROCES.NR_DOCUMENTO and
+				FICHA.NR_VERSAO = ANEXO_PROCES.NR_VERSAO AND
+                FICHA.COD_VALOR is not null and
+				FICHA.COD_TABELA = "principal" AND
+				FICHA.COD_CAMPO = "quant_disp") as QUANT_ACAO 
 
   FROM PROCES_WORKFLOW 
   INNER JOIN HISTOR_PROCES ON
@@ -986,68 +1120,6 @@
             <xml-property name="designerValues"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
 <model:DesignValues xmlns:design="http://www.eclipse.org/datatools/connectivity/oda/design" xmlns:model="http://www.eclipse.org/birt/report/model/adapter/odaModel">
   <Version>2.0</Version>
-  <DataSetParameters>
-    <parameter>
-      <design:ParameterDefinition>
-        <design:inOutMode>In</design:inOutMode>
-        <design:attributes>
-          <design:identifier>
-            <design:name></design:name>
-            <design:position>2</design:position>
-          </design:identifier>
-          <design:nativeDataTypeCode>-1</design:nativeDataTypeCode>
-          <design:precision>0</design:precision>
-          <design:scale>0</design:scale>
-          <design:nullability>Unknown</design:nullability>
-        </design:attributes>
-      </design:ParameterDefinition>
-    </parameter>
-    <parameter>
-      <design:ParameterDefinition>
-        <design:inOutMode>In</design:inOutMode>
-        <design:attributes>
-          <design:identifier>
-            <design:name></design:name>
-            <design:position>3</design:position>
-          </design:identifier>
-          <design:nativeDataTypeCode>-1</design:nativeDataTypeCode>
-          <design:precision>0</design:precision>
-          <design:scale>0</design:scale>
-          <design:nullability>Unknown</design:nullability>
-        </design:attributes>
-      </design:ParameterDefinition>
-    </parameter>
-    <parameter>
-      <design:ParameterDefinition>
-        <design:inOutMode>In</design:inOutMode>
-        <design:attributes>
-          <design:identifier>
-            <design:name></design:name>
-            <design:position>4</design:position>
-          </design:identifier>
-          <design:nativeDataTypeCode>-1</design:nativeDataTypeCode>
-          <design:precision>0</design:precision>
-          <design:scale>0</design:scale>
-          <design:nullability>Unknown</design:nullability>
-        </design:attributes>
-      </design:ParameterDefinition>
-    </parameter>
-    <parameter>
-      <design:ParameterDefinition>
-        <design:inOutMode>In</design:inOutMode>
-        <design:attributes>
-          <design:identifier>
-            <design:name></design:name>
-            <design:position>5</design:position>
-          </design:identifier>
-          <design:nativeDataTypeCode>-1</design:nativeDataTypeCode>
-          <design:precision>0</design:precision>
-          <design:scale>0</design:scale>
-          <design:nullability>Unknown</design:nullability>
-        </design:attributes>
-      </design:ParameterDefinition>
-    </parameter>
-  </DataSetParameters>
   <design:ResultSets derivedMetaData="true">
     <design:resultSetDefinitions>
       <design:resultSetColumns>
@@ -2360,8 +2432,8 @@
         <simple-master-page name="Simple MasterPage" id="2">
             <property name="type">custom</property>
             <property name="orientation">landscape</property>
-            <property name="height">297mm</property>
-            <property name="width">1035mm</property>
+            <property name="height">913mm</property>
+            <property name="width">1390mm</property>
             <page-header>
                 <grid id="188">
                     <property name="height">0.6041666666666666in</property>
@@ -2546,6 +2618,36 @@ else "Relatório de RNCs em Aberto"</expression>
                     <expression name="expression" type="javascript">dataSetRow["_STATUS"]</expression>
                     <property name="dataType">string</property>
                 </structure>
+                <structure>
+                    <property name="name">DISPOSICAO</property>
+                    <text-property name="displayName">DISPOSICAO</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["DISPOSICAO"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">MODO_FALHA</property>
+                    <text-property name="displayName">MODO_FALHA</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["MODO_FALHA"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">PARECER</property>
+                    <text-property name="displayName">PARECER</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["PARECER"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">ACAO_TOMADA</property>
+                    <text-property name="displayName">ACAO_TOMADA</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["ACAO_TOMADA"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">QUANT_ACAO</property>
+                    <text-property name="displayName">QUANT_ACAO</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["QUANT_ACAO"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
             </list-property>
             <column id="314">
                 <property name="whiteSpace">nowrap</property>
@@ -2559,6 +2661,10 @@ else "Relatório de RNCs em Aberto"</expression>
                 <property name="whiteSpace">nowrap</property>
                 <property name="width">1in</property>
             </column>
+            <column id="534">
+                <property name="repeat">1</property>
+                <property name="width">2in</property>
+            </column>
             <column id="316">
                 <property name="whiteSpace">nowrap</property>
                 <property name="width">1in</property>
@@ -2570,11 +2676,12 @@ else "Relatório de RNCs em Aberto"</expression>
             <column id="318">
                 <property name="width">4in</property>
             </column>
-            <column id="319">
+            <column id="320">
+                <property name="repeat">1</property>
                 <property name="whiteSpace">nowrap</property>
                 <property name="width">1in</property>
             </column>
-            <column id="320">
+            <column id="319">
                 <property name="whiteSpace">nowrap</property>
                 <property name="width">1in</property>
             </column>
@@ -2607,10 +2714,17 @@ else "Relatório de RNCs em Aberto"</expression>
             <column id="465">
                 <property name="width">1in</property>
             </column>
+            <column id="457">
+                <property name="width">4in</property>
+            </column>
             <column id="461">
+                <property name="repeat">1</property>
                 <property name="width">2in</property>
             </column>
-            <column id="457">
+            <column id="540">
+                <property name="width">4in</property>
+            </column>
+            <column id="546">
                 <property name="width">4in</property>
             </column>
             <column id="453">
@@ -2624,6 +2738,12 @@ else "Relatório de RNCs em Aberto"</expression>
             </column>
             <column id="479">
                 <property name="width">2in</property>
+            </column>
+            <column id="556">
+                <property name="width">2.8020833333333335in</property>
+            </column>
+            <column id="552">
+                <property name="width">1.1979166666666667in</property>
             </column>
             <header>
                 <row id="269">
@@ -2674,6 +2794,19 @@ else "Relatório de RNCs em Aberto"</expression>
                             <text-property name="text">Status</text-property>
                         </label>
                     </cell>
+                    <cell id="531">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <label id="535">
+                            <text-property name="text">Parecer</text-property>
+                        </label>
+                    </cell>
                     <cell id="272">
                         <property name="borderBottomStyle">solid</property>
                         <property name="borderBottomWidth">thin</property>
@@ -2710,20 +2843,7 @@ else "Relatório de RNCs em Aberto"</expression>
                         <property name="borderTopStyle">solid</property>
                         <property name="borderTopWidth">thin</property>
                         <label id="336">
-                            <text-property name="text">Descrição</text-property>
-                        </label>
-                    </cell>
-                    <cell id="275">
-                        <property name="borderBottomStyle">solid</property>
-                        <property name="borderBottomWidth">thin</property>
-                        <property name="borderLeftStyle">solid</property>
-                        <property name="borderLeftWidth">thin</property>
-                        <property name="borderRightStyle">solid</property>
-                        <property name="borderRightWidth">thin</property>
-                        <property name="borderTopStyle">solid</property>
-                        <property name="borderTopWidth">thin</property>
-                        <label id="338">
-                            <text-property name="text">Tipo</text-property>
+                            <text-property name="text">  Descrição da Falha</text-property>
                         </label>
                     </cell>
                     <cell id="276">
@@ -2737,6 +2857,19 @@ else "Relatório de RNCs em Aberto"</expression>
                         <property name="borderTopWidth">thin</property>
                         <label id="340">
                             <text-property name="text">Quant.</text-property>
+                        </label>
+                    </cell>
+                    <cell id="275">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <label id="338">
+                            <text-property name="text">Tipo</text-property>
                         </label>
                     </cell>
                     <cell id="434">
@@ -2775,7 +2908,7 @@ else "Relatório de RNCs em Aberto"</expression>
                         <property name="borderTopStyle">solid</property>
                         <property name="borderTopWidth">thin</property>
                         <label id="344">
-                            <text-property name="text">Processo</text-property>
+                            <text-property name="text">Nome Processo</text-property>
                         </label>
                     </cell>
                     <cell id="279">
@@ -2801,7 +2934,7 @@ else "Relatório de RNCs em Aberto"</expression>
                         <property name="borderTopStyle">solid</property>
                         <property name="borderTopWidth">thin</property>
                         <label id="348">
-                            <text-property name="text">Referencia</text-property>
+                            <text-property name="text">Cliente e/ou referencia</text-property>
                         </label>
                     </cell>
                     <cell id="281">
@@ -2840,7 +2973,20 @@ else "Relatório de RNCs em Aberto"</expression>
                         <property name="borderTopStyle">solid</property>
                         <property name="borderTopWidth">thin</property>
                         <label id="466">
-                            <text-property name="text">Conclusão</text-property>
+                            <text-property name="text">Prazo</text-property>
+                        </label>
+                    </cell>
+                    <cell id="454">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <label id="470">
+                            <text-property name="text">Observações</text-property>
                         </label>
                     </cell>
                     <cell id="458">
@@ -2856,7 +3002,7 @@ else "Relatório de RNCs em Aberto"</expression>
                             <text-property name="text">Responsabilidade</text-property>
                         </label>
                     </cell>
-                    <cell id="454">
+                    <cell id="537">
                         <property name="borderBottomStyle">solid</property>
                         <property name="borderBottomWidth">thin</property>
                         <property name="borderLeftStyle">solid</property>
@@ -2865,8 +3011,21 @@ else "Relatório de RNCs em Aberto"</expression>
                         <property name="borderRightWidth">thin</property>
                         <property name="borderTopStyle">solid</property>
                         <property name="borderTopWidth">thin</property>
-                        <label id="470">
-                            <text-property name="text">Descrição</text-property>
+                        <label id="541">
+                            <text-property name="text">Modo Falha</text-property>
+                        </label>
+                    </cell>
+                    <cell id="543">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <label id="547">
+                            <text-property name="text">Justificativa</text-property>
                         </label>
                     </cell>
                     <cell id="450">
@@ -2879,7 +3038,7 @@ else "Relatório de RNCs em Aberto"</expression>
                         <property name="borderTopStyle">solid</property>
                         <property name="borderTopWidth">thin</property>
                         <label id="472">
-                            <text-property name="text">Forncedor</text-property>
+                            <text-property name="text">Fornecedor</text-property>
                         </label>
                     </cell>
                     <cell id="487">
@@ -2919,6 +3078,32 @@ else "Relatório de RNCs em Aberto"</expression>
                         <property name="borderTopWidth">thin</property>
                         <label id="480">
                             <text-property name="text">Colaborador</text-property>
+                        </label>
+                    </cell>
+                    <cell id="553">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <label id="557">
+                            <text-property name="text">Ação a ser tomada</text-property>
+                        </label>
+                    </cell>
+                    <cell id="549">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <label id="559">
+                            <text-property name="text">Quant.:</text-property>
                         </label>
                     </cell>
                 </row>
@@ -2984,6 +3169,19 @@ else "Relatório de RNCs em Aberto"</expression>
                             <property name="resultSetColumn">_STATUS</property>
                         </data>
                     </cell>
+                    <cell id="532">
+                        <property name="borderBottomStyle">dotted</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">dotted</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">dotted</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">dotted</property>
+                        <property name="borderTopWidth">thin</property>
+                        <data id="536">
+                            <property name="resultSetColumn">DISPOSICAO</property>
+                        </data>
+                    </cell>
                     <cell id="287">
                         <property name="borderBottomStyle">dotted</property>
                         <property name="borderBottomWidth">thin</property>
@@ -3023,19 +3221,6 @@ else "Relatório de RNCs em Aberto"</expression>
                             <property name="resultSetColumn">Descricao</property>
                         </data>
                     </cell>
-                    <cell id="290">
-                        <property name="borderBottomStyle">dotted</property>
-                        <property name="borderBottomWidth">thin</property>
-                        <property name="borderLeftStyle">dotted</property>
-                        <property name="borderLeftWidth">thin</property>
-                        <property name="borderRightStyle">dotted</property>
-                        <property name="borderRightWidth">thin</property>
-                        <property name="borderTopStyle">dotted</property>
-                        <property name="borderTopWidth">thin</property>
-                        <data id="505">
-                            <property name="resultSetColumn">Tipo</property>
-                        </data>
-                    </cell>
                     <cell id="291">
                         <property name="borderBottomStyle">dotted</property>
                         <property name="borderBottomWidth">thin</property>
@@ -3047,6 +3232,19 @@ else "Relatório de RNCs em Aberto"</expression>
                         <property name="borderTopWidth">thin</property>
                         <data id="506">
                             <property name="resultSetColumn">Quant</property>
+                        </data>
+                    </cell>
+                    <cell id="290">
+                        <property name="borderBottomStyle">dotted</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">dotted</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">dotted</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">dotted</property>
+                        <property name="borderTopWidth">thin</property>
+                        <data id="505">
+                            <property name="resultSetColumn">Tipo</property>
                         </data>
                     </cell>
                     <cell id="435">
@@ -3153,6 +3351,19 @@ else "Relatório de RNCs em Aberto"</expression>
                             <property name="resultSetColumn">DAT_FIM_PRAZ</property>
                         </data>
                     </cell>
+                    <cell id="455">
+                        <property name="borderBottomStyle">dotted</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">dotted</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">dotted</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">dotted</property>
+                        <property name="borderTopWidth">thin</property>
+                        <data id="516">
+                            <property name="resultSetColumn">desc_mod_falha</property>
+                        </data>
+                    </cell>
                     <cell id="459">
                         <property name="borderBottomStyle">dotted</property>
                         <property name="borderBottomWidth">thin</property>
@@ -3166,7 +3377,7 @@ else "Relatório de RNCs em Aberto"</expression>
                             <property name="resultSetColumn">reponsabilidade</property>
                         </data>
                     </cell>
-                    <cell id="455">
+                    <cell id="538">
                         <property name="borderBottomStyle">dotted</property>
                         <property name="borderBottomWidth">thin</property>
                         <property name="borderLeftStyle">dotted</property>
@@ -3175,8 +3386,21 @@ else "Relatório de RNCs em Aberto"</expression>
                         <property name="borderRightWidth">thin</property>
                         <property name="borderTopStyle">dotted</property>
                         <property name="borderTopWidth">thin</property>
-                        <data id="516">
-                            <property name="resultSetColumn">desc_mod_falha</property>
+                        <data id="542">
+                            <property name="resultSetColumn">MODO_FALHA</property>
+                        </data>
+                    </cell>
+                    <cell id="544">
+                        <property name="borderBottomStyle">dotted</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">dotted</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">dotted</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">dotted</property>
+                        <property name="borderTopWidth">thin</property>
+                        <data id="548">
+                            <property name="resultSetColumn">PARECER</property>
                         </data>
                     </cell>
                     <cell id="451">
@@ -3231,6 +3455,32 @@ else "Relatório de RNCs em Aberto"</expression>
                             <property name="resultSetColumn">colab_falha</property>
                         </data>
                     </cell>
+                    <cell id="554">
+                        <property name="borderBottomStyle">dotted</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">dotted</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">dotted</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">dotted</property>
+                        <property name="borderTopWidth">thin</property>
+                        <data id="558">
+                            <property name="resultSetColumn">ACAO_TOMADA</property>
+                        </data>
+                    </cell>
+                    <cell id="550">
+                        <property name="borderBottomStyle">dotted</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">dotted</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">dotted</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">dotted</property>
+                        <property name="borderTopWidth">thin</property>
+                        <data id="560">
+                            <property name="resultSetColumn">QUANT_ACAO</property>
+                        </data>
+                    </cell>
                 </row>
             </detail>
             <footer>
@@ -3277,6 +3527,16 @@ else "Relatório de RNCs em Aberto"</expression>
                         <property name="borderTopStyle">solid</property>
                         <property name="borderTopWidth">thin</property>
                     </cell>
+                    <cell id="533">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                    </cell>
                     <cell id="302">
                         <property name="borderBottomStyle">solid</property>
                         <property name="borderBottomWidth">thin</property>
@@ -3307,7 +3567,7 @@ else "Relatório de RNCs em Aberto"</expression>
                         <property name="borderTopStyle">solid</property>
                         <property name="borderTopWidth">thin</property>
                     </cell>
-                    <cell id="305">
+                    <cell id="306">
                         <property name="borderBottomStyle">solid</property>
                         <property name="borderBottomWidth">thin</property>
                         <property name="borderLeftStyle">solid</property>
@@ -3317,7 +3577,7 @@ else "Relatório de RNCs em Aberto"</expression>
                         <property name="borderTopStyle">solid</property>
                         <property name="borderTopWidth">thin</property>
                     </cell>
-                    <cell id="306">
+                    <cell id="305">
                         <property name="borderBottomStyle">solid</property>
                         <property name="borderBottomWidth">thin</property>
                         <property name="borderLeftStyle">solid</property>
@@ -3407,6 +3667,16 @@ else "Relatório de RNCs em Aberto"</expression>
                         <property name="borderTopStyle">solid</property>
                         <property name="borderTopWidth">thin</property>
                     </cell>
+                    <cell id="456">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                    </cell>
                     <cell id="460">
                         <property name="borderBottomStyle">solid</property>
                         <property name="borderBottomWidth">thin</property>
@@ -3417,7 +3687,17 @@ else "Relatório de RNCs em Aberto"</expression>
                         <property name="borderTopStyle">solid</property>
                         <property name="borderTopWidth">thin</property>
                     </cell>
-                    <cell id="456">
+                    <cell id="539">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                    </cell>
+                    <cell id="545">
                         <property name="borderBottomStyle">solid</property>
                         <property name="borderBottomWidth">thin</property>
                         <property name="borderLeftStyle">solid</property>
@@ -3458,6 +3738,26 @@ else "Relatório de RNCs em Aberto"</expression>
                         <property name="borderTopWidth">thin</property>
                     </cell>
                     <cell id="478">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                    </cell>
+                    <cell id="555">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                    </cell>
+                    <cell id="551">
                         <property name="borderBottomStyle">solid</property>
                         <property name="borderBottomWidth">thin</property>
                         <property name="borderLeftStyle">solid</property>

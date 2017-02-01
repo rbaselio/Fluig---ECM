@@ -10,20 +10,24 @@
     <publicProcess>false</publicProcess>
     <volumeId>Default</volumeId>
     <categoryId>Tecnologia da Informação</categoryId>
-    <managerEngineAllocationId>Usuário</managerEngineAllocationId>
-    <managerEngineAllocationConfiguration>&lt;AssignmentController&gt;&lt;User&gt;adm&lt;/User&gt;&lt;/AssignmentController&gt;</managerEngineAllocationConfiguration>
+    <managerEngineAllocationId>Papel</managerEngineAllocationId>
+    <managerEngineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Role&gt;admin&lt;/Role&gt;&lt;/AssignmentController&gt;</managerEngineAllocationConfiguration>
     <snapshotFrequency>0</snapshotFrequency>
     <baseDay>0</baseDay>
     <baseMonth>0</baseMonth>
     <periodId>Default</periodId>
     <uniqueCardVersion>true</uniqueCardVersion>
     <keyWord></keyWord>
+    <complementsLevel>0</complementsLevel>
+    <notifyRequisitionerComplements>false</notifyRequisitionerComplements>
+    <notifyManagerComplements>false</notifyManagerComplements>
+    <notifyAuthorityComplements>false</notifyAuthorityComplements>
   </ProcessDefinition>
   <ProcessDefinitionVersion>
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>Atendimento Técnico da Área de TI</processId>
-      <version>25</version>
+      <version>26</version>
     </processDefinitionVersionPK>
     <versionDescription>Nova Versão.</versionDescription>
     <formId>14</formId>
@@ -140,6 +144,7 @@
       <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
       <destinationStates/>
       <digitalSignature>false</digitalSignature>
+      <executionType>0</executionType>
     </ProcessState>
     <ProcessState>
       <processStatePK>
@@ -151,9 +156,9 @@
       <stateName>Retorno ao solicitante</stateName>
       <stateDescription>Retorno ao solicitante</stateDescription>
       <instruction></instruction>
-      <deadlineTime>28800</deadlineTime>
+      <deadlineTime>57600</deadlineTime>
       <joint>false</joint>
-      <agreementPercentage>100</agreementPercentage>
+      <agreementPercentage>0</agreementPercentage>
       <engineAllocationId>Campo Formulário</engineAllocationId>
       <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;FormField&gt;matricula_user&lt;/FormField&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
       <selectColleague>1</selectColleague>
@@ -190,6 +195,7 @@
       <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
       <destinationStates/>
       <digitalSignature>false</digitalSignature>
+      <executionType>0</executionType>
     </ProcessState>
     <ProcessState>
       <processStatePK>
@@ -201,7 +207,7 @@
       <stateName>Aceite e avaliação do atendimento</stateName>
       <stateDescription>Aceite e avaliação do atendimento</stateDescription>
       <instruction></instruction>
-      <deadlineTime>300</deadlineTime>
+      <deadlineTime>600</deadlineTime>
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
       <engineAllocationId>Campo Formulário</engineAllocationId>
@@ -240,6 +246,7 @@
       <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
       <destinationStates/>
       <digitalSignature>false</digitalSignature>
+      <executionType>0</executionType>
     </ProcessState>
     <ProcessState>
       <processStatePK>
@@ -290,6 +297,7 @@
       <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
       <destinationStates/>
       <digitalSignature>false</digitalSignature>
+      <executionType>0</executionType>
     </ProcessState>
     <ProcessState>
       <processStatePK>
@@ -370,7 +378,7 @@
         <companyId>1</companyId>
         <processId>SOL-TI</processId>
         <expressionOrder>1</expressionOrder>
-        <version>25</version>
+        <version>26</version>
         <sequence>8</sequence>
       </conditionProcessStatePK>
       <condition>(hAPI.getCardValue(&quot;responsavel&quot;) == &quot;&quot; || hAPI.getCardValue(&quot;responsavel&quot;) == &quot;root&quot;)</condition>
@@ -383,7 +391,7 @@
         <companyId>1</companyId>
         <processId>SOL-TI</processId>
         <expressionOrder>2</expressionOrder>
-        <version>25</version>
+        <version>26</version>
         <sequence>8</sequence>
       </conditionProcessStatePK>
       <condition>!(hAPI.getCardValue(&quot;responsavel&quot;) == &quot;&quot;) &amp;&amp; !(hAPI.getCardValue(&quot;responsavel&quot;) == &quot;root&quot;)</condition>
@@ -522,6 +530,38 @@
       <automaticLink>false</automaticLink>
       <type>0</type>
     </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>SOL-TI</processId>
+        <version>1</version>
+        <linkSequence>11</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>3</initialStateSequence>
+      <finalStateSequence>4</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>true</automaticLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>SOL-TI</processId>
+        <version>1</version>
+        <linkSequence>12</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>4</initialStateSequence>
+      <finalStateSequence>5</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>true</automaticLink>
+      <type>0</type>
+    </ProcessLink>
   </list>
   <list/>
   <list>
@@ -534,7 +574,7 @@
       </workflowProcessEventPK>
       <eventDescription>function afterStateEntry(sequenceId) {&#xd;
 	&#xd;
-	log.info(&quot;----------------------AFTER STATE ENTRY-------------------------------&quot;);&#xd;
+	//log.warn(&quot;----------------------AFTER STATE ENTRY-------------------------------&quot;);&#xd;
 &#xd;
 	var numEmpresa = getValue(&quot;WKCompany&quot;);&#xd;
 	var numProcesso = getValue(&quot;WKNumProces&quot;);&#xd;
@@ -544,16 +584,16 @@
 	var colleagueId = getValue(&quot;WKUser&quot;);&#xd;
 	var documento = getValue(&quot;WKCardId&quot;);&#xd;
 &#xd;
-	log.info(&quot;----------------------numEmpresa: &quot; + numEmpresa);&#xd;
-	log.info(&quot;---------------------numProcesso: &quot; + numProcesso);&#xd;
-	log.info(&quot;-----------------nrProxAtividade: &quot; + nrProxAtividade);&#xd;
-	log.info(&quot;-----------------------numThread: &quot; + numThread);&#xd;
-	log.info(&quot;--------------------numAtividade: &quot; + numAtividade);&#xd;
-	log.info(&quot;---------------------colleagueId: &quot; + colleagueId);&#xd;
-	log.info(&quot;----------------------DocumentId: &quot; + documento);&#xd;
+	//log.warn(&quot;----------------------numEmpresa: &quot; + numEmpresa);&#xd;
+	//log.warn(&quot;---------------------numProcesso: &quot; + numProcesso);&#xd;
+	//log.warn(&quot;-----------------nrProxAtividade: &quot; + nrProxAtividade);&#xd;
+	//log.warn(&quot;-----------------------numThread: &quot; + numThread);&#xd;
+	//log.warn(&quot;--------------------numAtividade: &quot; + numAtividade);&#xd;
+	//log.warn(&quot;---------------------colleagueId: &quot; + colleagueId);&#xd;
+	//log.warn(&quot;----------------------DocumentId: &quot; + documento);&#xd;
 	&#xd;
 	if (numAtividade == 2 || numAtividade == 6) { // seta prazo para o atendimento&#xd;
-		log.info(&quot;----------------------PRAZO DE ATEDNIMENTO-------------------------------&quot;);&#xd;
+		//log.warn(&quot;----------------------PRAZO DE ATEDNIMENTO-------------------------------&quot;);&#xd;
 		&#xd;
 		if (numAtividade == 6){&#xd;
 			colleagueId = hAPI.getCardValue(&quot;matricula_atend&quot;);&#xd;
@@ -562,24 +602,24 @@
 		} else {&#xd;
 			colleagueId = hAPI.getCardValue(&quot;responsavel&quot;);&#xd;
 		}&#xd;
-		log.info(&quot;---------------------colleagueId: &quot; + colleagueId);		&#xd;
+		//log.warn(&quot;---------------------colleagueId: &quot; + colleagueId);		&#xd;
 &#xd;
 		var data = new Date();&#xd;
-		log.info(&quot;-----------------------DATA ATUAL: &quot; + data);&#xd;
+		//log.warn(&quot;-----------------------DATA ATUAL: &quot; + data);&#xd;
 		&#xd;
 		var horas = hAPI.getCardValue(&quot;prazo&quot;);&#xd;
-		log.info(&quot;------------HORAS DE ATENDIMENTO: &quot; + horas);&#xd;
+		//log.warn(&quot;------------HORAS DE ATENDIMENTO: &quot; + horas);&#xd;
 		&#xd;
 		try {&#xd;
 			&#xd;
 			var elapsed = (data.getHours() * 60 * 60) + (data.getMinutes() * 60) + data.getSeconds();&#xd;
-			log.info(&quot;-----------------------SEGUNDOS: &quot; + elapsed);&#xd;
+			//log.warn(&quot;-----------------------SEGUNDOS: &quot; + elapsed);&#xd;
 			&#xd;
 			var obj = hAPI.calculateDeadLineHours(data, elapsed, horas, &quot;Default&quot;);&#xd;
 			var dt = obj[0];&#xd;
 			var segundos = obj[1];&#xd;
-			log.info(&quot;-----------------------NOVA DATA: &quot; + dt);&#xd;
-			log.info(&quot;------------------------SEGUNDOS: &quot; + segundos);			&#xd;
+			//log.warn(&quot;-----------------------NOVA DATA: &quot; + dt);&#xd;
+			//log.warn(&quot;------------------------SEGUNDOS: &quot; + segundos);			&#xd;
 &#xd;
 			try {&#xd;
 				hAPI.setDueDate(numProcesso, numThread, colleagueId, dt, segundos);&#xd;
@@ -591,9 +631,9 @@
 			log.error(&quot;----------------Erro ao calcular o novo periodo:&quot;);&#xd;
 			log.error(e);&#xd;
 		}&#xd;
-		log.info(&quot;---------------------- FIM PRAZO DE ATENDIMENTO -----------------------------&quot;);&#xd;
+		//log.warn(&quot;---------------------- FIM PRAZO DE ATENDIMENTO -----------------------------&quot;);&#xd;
 	}&#xd;
-	log.info(&quot;----------------------FIM AFTER STATE ENTRY-------------------------------&quot;);&#xd;
+	//log.warn(&quot;----------------------FIM AFTER STATE ENTRY-------------------------------&quot;);&#xd;
 	&#xd;
 	&#xd;
 }&#xd;
@@ -623,7 +663,7 @@
       </workflowProcessEventPK>
       <eventDescription>function afterTaskSave(colleagueId,nextSequenceId,userList){&#xd;
 	&#xd;
-	log.info(&quot;----------------------AFTER TASK SAVE ENTRY-------------------------------&quot;);&#xd;
+	//log.warn(&quot;----------------------AFTER TASK SAVE ENTRY-------------------------------&quot;);&#xd;
 &#xd;
 	var numEmpresa = getValue(&quot;WKCompany&quot;);&#xd;
 	var numProcesso = getValue(&quot;WKNumProces&quot;);&#xd;
@@ -633,33 +673,33 @@
 	var colleagueId = getValue(&quot;WKUser&quot;);&#xd;
 	var documento = getValue(&quot;WKCardId&quot;);&#xd;
 &#xd;
-	log.info(&quot;----------------------numEmpresa: &quot; + numEmpresa);&#xd;
-	log.info(&quot;---------------------numProcesso: &quot; + numProcesso);&#xd;
-	log.info(&quot;-----------------nrProxAtividade: &quot; + nrProxAtividade);&#xd;
-	log.info(&quot;-----------------------numThread: &quot; + numThread);&#xd;
-	log.info(&quot;--------------------numAtividade: &quot; + numAtividade);&#xd;
-	log.info(&quot;---------------------colleagueId: &quot; + colleagueId);&#xd;
-	log.info(&quot;----------------------DocumentId: &quot; + documento);&#xd;
+	//log.warn(&quot;----------------------numEmpresa: &quot; + numEmpresa);&#xd;
+	//log.warn(&quot;---------------------numProcesso: &quot; + numProcesso);&#xd;
+	//log.warn(&quot;-----------------nrProxAtividade: &quot; + nrProxAtividade);&#xd;
+	//log.warn(&quot;-----------------------numThread: &quot; + numThread);&#xd;
+	//log.warn(&quot;--------------------numAtividade: &quot; + numAtividade);&#xd;
+	//log.warn(&quot;---------------------colleagueId: &quot; + colleagueId);&#xd;
+	//log.warn(&quot;----------------------DocumentId: &quot; + documento);&#xd;
 	&#xd;
 	if (numAtividade == 2) { // seta prazo para o atendimento&#xd;
-		log.info(&quot;----------------------PRAZO DE ATEDNIMENTO-------------------------------&quot;);&#xd;
+		//log.warn(&quot;----------------------PRAZO DE ATEDNIMENTO-------------------------------&quot;);&#xd;
 		&#xd;
 		var data = new Date();&#xd;
-		log.info(&quot;-----------------------DATA ATUAL: &quot; + data);&#xd;
+		//log.warn(&quot;-----------------------DATA ATUAL: &quot; + data);&#xd;
 		&#xd;
 		var horas = hAPI.getCardValue(&quot;prazo&quot;);&#xd;
-		log.info(&quot;------------HORAS DE ATENDIMENTO: &quot; + horas);&#xd;
+		//log.warn(&quot;------------HORAS DE ATENDIMENTO: &quot; + horas);&#xd;
 		&#xd;
 		try {&#xd;
 			&#xd;
 			var elapsed = (data.getHours() * 60 * 60) + (data.getMinutes() * 60) + data.getSeconds();&#xd;
-			log.info(&quot;-----------------------SEGUNDOS: &quot; + elapsed);&#xd;
+			//log.warn(&quot;-----------------------SEGUNDOS: &quot; + elapsed);&#xd;
 			&#xd;
 			var obj = hAPI.calculateDeadLineHours(data, elapsed, horas, &quot;Default&quot;);&#xd;
 			var dt = obj[0];&#xd;
 			var segundos = obj[1];&#xd;
-			log.info(&quot;-----------------------NOVA DATA: &quot; + dt);&#xd;
-			log.info(&quot;------------------------SEGUNDOS: &quot; + segundos);			&#xd;
+			//log.warn(&quot;-----------------------NOVA DATA: &quot; + dt);&#xd;
+			//log.warn(&quot;------------------------SEGUNDOS: &quot; + segundos);			&#xd;
 &#xd;
 			try {&#xd;
 				hAPI.setDueDate(numProcesso, numThread, colleagueId, dt, segundos);&#xd;
@@ -671,9 +711,20 @@
 			log.error(&quot;----------------Erro ao calcular o novo periodo:&quot;);&#xd;
 			log.error(e);&#xd;
 		}&#xd;
-		log.info(&quot;---------------------- FIM PRAZO DE ATENDIMENTO -----------------------------&quot;);&#xd;
+		//log.warn(&quot;---------------------- FIM PRAZO DE ATENDIMENTO -----------------------------&quot;);&#xd;
 	}&#xd;
-	log.info(&quot;----------------------FIM AFTER STATE ENTRY-------------------------------&quot;);	&#xd;
+	//log.warn(&quot;----------------------FIM AFTER STATE ENTRY-------------------------------&quot;);&#xd;
+&#xd;
+	&#xd;
+	&#xd;
+	&#xd;
+	&#xd;
+	&#xd;
+	&#xd;
+	&#xd;
+	&#xd;
+	&#xd;
+	&#xd;
 	&#xd;
 }</eventDescription>
     </WorkflowProcessEvent>
@@ -686,7 +737,7 @@
       </workflowProcessEventPK>
       <eventDescription>function afterStateLeave(sequenceId){&#xd;
 	&#xd;
-log.info(&quot;---------------------AFTER STATE LEAVE-------------------------------&quot;);&#xd;
+//log.warn(&quot;---------------------AFTER STATE LEAVE-------------------------------&quot;);&#xd;
 	&#xd;
 	&#xd;
 	var numEmpresa = getValue(&quot;WKCompany&quot;);&#xd;
@@ -697,45 +748,45 @@ log.info(&quot;---------------------AFTER STATE LEAVE---------------------------
 	var colleagueId = getValue(&quot;WKUser&quot;);&#xd;
 	&#xd;
 	&#xd;
-	log.info(&quot;---------------------numEmpresa: &quot; + numEmpresa);&#xd;
-	log.info(&quot;--------------------numProcesso: &quot; + numProcesso);&#xd;
-	log.info(&quot;----------------nrProxAtividade: &quot; + nrProxAtividade);&#xd;
-	log.info(&quot;----------------------numThread: &quot; + numThread);&#xd;
-	log.info(&quot;-------------------numAtividade: &quot; + numAtividade);&#xd;
-	log.info(&quot;--------------------colleagueId: &quot; + colleagueId);&#xd;
+	//log.warn(&quot;---------------------numEmpresa: &quot; + numEmpresa);&#xd;
+	//log.warn(&quot;--------------------numProcesso: &quot; + numProcesso);&#xd;
+	//log.warn(&quot;----------------nrProxAtividade: &quot; + nrProxAtividade);&#xd;
+	//log.warn(&quot;----------------------numThread: &quot; + numThread);&#xd;
+	//log.warn(&quot;-------------------numAtividade: &quot; + numAtividade);&#xd;
+	//log.warn(&quot;--------------------colleagueId: &quot; + colleagueId);&#xd;
 	&#xd;
 		&#xd;
 	if(numAtividade == 0 || numAtividade == 1 || nrProxAtividade == 6){ &#xd;
 		&#xd;
 		var newComment = new String(hAPI.getCardValue(&quot;desc_chamado&quot;)).replace(new RegExp(&quot;\r?\n&quot;,&quot;g&quot;), &quot;&lt;br/&gt;&quot;);	&#xd;
 		&#xd;
-		log.info(&quot;---------------------------------- EMAIL ----------------------------------------&quot;);				&#xd;
-		log.info(&quot;-------Monta mapa de parâmetros: &quot;);				&#xd;
+		//log.warn(&quot;---------------------------------- EMAIL ----------------------------------------&quot;);				&#xd;
+		//log.warn(&quot;-------Monta mapa de parâmetros: &quot;);				&#xd;
 		var parametros = new java.util.HashMap();				&#xd;
 		&#xd;
-		log.info(&quot;-------Setando titulo do e-mail: &quot;);				&#xd;
+		//log.warn(&quot;-------Setando titulo do e-mail: &quot;);				&#xd;
 		parametros.put(&quot;subject&quot;, &quot;Chamado técnico para a área de TI&quot;);				&#xd;
 		&#xd;
-		log.info(&quot;----------Preechendo o template: &quot;);				&#xd;
+		//log.warn(&quot;----------Preechendo o template: &quot;);				&#xd;
 		parametros.put(&quot;processo&quot;, &quot;&quot; + numProcesso );	&#xd;
 		parametros.put(&quot;descricao&quot;, newComment);&#xd;
 		parametros.put(&quot;tempo&quot;, hAPI.getCardValue(&quot;prazo&quot;));			&#xd;
 		parametros.put(&quot;WDK_CompanyId&quot;, numEmpresa);&#xd;
 		parametros.put(&quot;WDK_TaskLink&quot;, hAPI.getUserTaskLink(sequenceId));	&#xd;
 		&#xd;
-		log.info(&quot;---Monta lista de destinatários: &quot;);				&#xd;
+		//log.warn(&quot;---Monta lista de destinatários: &quot;);				&#xd;
 		var destinatarios = new java.util.ArrayList();				&#xd;
 		var usuario_form = hAPI.getCardValue(&quot;matricula_user&quot;);				&#xd;
 		destinatarios.add(usuario_form);								&#xd;
 		&#xd;
-		log.info(&quot;--------------------Enviando e-mail: &quot;);				&#xd;
+		//log.warn(&quot;--------------------Enviando e-mail: &quot;);				&#xd;
 		notifier.notify(colleagueId, &quot;abert-chamado&quot;, parametros, destinatarios, &quot;text/html&quot;);&#xd;
-		log.info(&quot;---------------------E-mail enviado: &quot;);&#xd;
+		//log.warn(&quot;---------------------E-mail enviado: &quot;);&#xd;
 &#xd;
-		log.info(&quot;-------------------------------FIM EMAIL ----------------------------------------&quot;);		&#xd;
+		//log.warn(&quot;-------------------------------FIM EMAIL ----------------------------------------&quot;);		&#xd;
 		&#xd;
 	}&#xd;
-	log.info(&quot;---------------------FIM AFTER STATE LEAVE-------------------------------&quot;);&#xd;
+	//log.warn(&quot;---------------------FIM AFTER STATE LEAVE-------------------------------&quot;);&#xd;
 	&#xd;
 	&#xd;
 }</eventDescription>
@@ -750,7 +801,7 @@ log.info(&quot;---------------------AFTER STATE LEAVE---------------------------
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SOL-TI</processId>
-        <version>25</version>
+        <version>26</version>
         <linkSequence>5</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -761,7 +812,7 @@ log.info(&quot;---------------------AFTER STATE LEAVE---------------------------
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SOL-TI</processId>
-        <version>25</version>
+        <version>26</version>
         <linkSequence>6</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -772,7 +823,7 @@ log.info(&quot;---------------------AFTER STATE LEAVE---------------------------
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>SOL-TI</processId>
-        <version>25</version>
+        <version>26</version>
         <linkSequence>7</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -793,4 +844,6 @@ log.info(&quot;---------------------AFTER STATE LEAVE---------------------------
       <slotId>1</slotId>
     </ProcessFormField>
   </list>
+  <list/>
+  <list/>
 </list>

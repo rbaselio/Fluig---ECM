@@ -36,15 +36,19 @@ function createDataset(fields, constraints, sortFields) {
 			filhos[count] = {Produto: datasetFilhos.getValue(j, "produtos")};
 			count++;
 		}
-	}	
+	}
+	
 	
 	//Faz a ordenação
 	filhos.sort(compare);
 		
 	//Depois de realizar a ordenação, adicionar os registros no dataset para serem apresentados
 	filhos.forEach(function(filho) {
-		dataset.addRow( new Array(filho.Produto));		
-	});	
+		dataset.addRow( new Array(filho.Produto));
+		//log.warn("================filho.Produto: " + filho.Produto);
+	});
+	
+	
 	
 	return dataset;
 }

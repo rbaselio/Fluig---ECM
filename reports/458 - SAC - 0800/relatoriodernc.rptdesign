@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.23" id="1">
     <property name="author">Carla Tonon</property>
-    <property name="createdBy">Eclipse BIRT Designer Version 4.5.0.v201506092134 Build &lt;@BUILD@></property>
+    <property name="createdBy">Eclipse BIRT Designer Version 4.4.2.v201410272105 Build &lt;4.4.2.v20150217-1805></property>
     <property name="units">in</property>
     <property name="iconFile">/templates/blank_report.gif</property>
     <property name="layoutPreference">auto layout</property>
@@ -240,6 +240,12 @@
                     <text-property name="heading">prop_acao</text-property>
                 </structure>
                 <structure>
+                    <property name="columnName">Ultima_Inte</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">Ultima_Inte</text-property>
+                    <text-property name="heading">Ultima_Inte</text-property>
+                </structure>
+                <structure>
                     <property name="columnName">prazo</property>
                     <property name="analysis">dimension</property>
                     <text-property name="displayName">prazo</text-property>
@@ -398,11 +404,16 @@
                     </structure>
                     <structure>
                         <property name="position">19</property>
-                        <property name="name">prazo</property>
+                        <property name="name">Ultima_Inte</property>
                         <property name="dataType">string</property>
                     </structure>
                     <structure>
                         <property name="position">20</property>
+                        <property name="name">prazo</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">21</property>
                         <property name="name">data_exec_acao</property>
                         <property name="dataType">string</property>
                     </structure>
@@ -538,13 +549,20 @@
                 </structure>
                 <structure>
                     <property name="position">19</property>
+                    <property name="name">Ultima_Inte</property>
+                    <property name="nativeName">Ultima_Inte</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">20</property>
                     <property name="name">prazo</property>
                     <property name="nativeName">prazo</property>
                     <property name="dataType">string</property>
                     <property name="nativeDataType">12</property>
                 </structure>
                 <structure>
-                    <property name="position">20</property>
+                    <property name="position">21</property>
                     <property name="name">data_exec_acao</property>
                     <property name="nativeName">data_exec_acao</property>
                     <property name="dataType">string</property>
@@ -663,15 +681,17 @@ select distinct (PROCES_WORKFLOW.NUM_PROCES), FICHA.COD_VALOR as dt_abertura,
                 ESTADO_PROCES.NUM_VERS = PROCES_WORKFLOW.NUM_VERS AND
                 ESTADO_PROCES.NUM_SEQ = HISTOR_PROCES.NUM_SEQ_ESTADO) AS ATIV_ATUAL,
                 
-            DATE_FORMAT((select 
-                tar_proces.DAT_FIM_PRAZ 
+             DATE_FORMAT((select 
+                distinct tar_proces.DAT_FIM_PRAZ 
             FROM
-                tar_proces
+                tar_proces 
             where
                 tar_proces.NUM_PROCES = PROCES_WORKFLOW.NUM_PROCES AND
                 tar_proces.COD_EMPRESA = PROCES_WORKFLOW.COD_EMPRESA AND
                 tar_proces.LOG_ATIV = PROCES_WORKFLOW.LOG_ATIV and
-                tar_proces.NUM_SEQ_MOVTO = histor_proces.NUM_SEQ_MOVTO) ,'%d/%m/%Y') AS DT_CONCL,
+                tar_proces.NUM_SEQ_MOVTO = HISTOR_PROCES.NUM_SEQ_MOVTO 
+            order by tar_proces.DAT_FIM_PRAZ desc
+				limit 1) ,'%d/%m/%Y') AS DT_CONCL,
                 
 		 if (PROCES_WORKFLOW.LOG_ATIV = 0, (select FICHA.COD_VALOR
 			from FICHA 
@@ -699,7 +719,16 @@ select distinct (PROCES_WORKFLOW.NUM_PROCES), FICHA.COD_VALOR as dt_abertura,
 				FICHA.NR_VERSAO = ANEXO_PROCES.NR_VERSAO AND
                 FICHA.COD_VALOR is not null and
 				FICHA.COD_TABELA = "principal" AND
-				FICHA.COD_CAMPO = "data_resp") as prop_acao,        
+				FICHA.COD_CAMPO = "data_resp") as prop_acao,
+				
+		(select FICHA.COD_VALOR
+			from FICHA 
+			where FICHA.COD_EMPRESA = ANEXO_PROCES.COD_EMPRESA AND
+				FICHA.NR_FICHA = ANEXO_PROCES.NR_DOCUMENTO and
+				FICHA.NR_VERSAO = ANEXO_PROCES.NR_VERSAO AND
+                FICHA.COD_VALOR is not null and
+				FICHA.COD_TABELA = "principal" AND
+				FICHA.COD_CAMPO = "data_resp_ultima") as Ultima_Inte,         
 		
          (select FICHA.COD_VALOR
 			from FICHA 
@@ -2140,7 +2169,7 @@ WHERE (PROCES_WORKFLOW.COD_EMPRESA = PROCES_WORKFLOW.COD_EMPRESA AND
             <property name="type">custom</property>
             <property name="orientation">landscape</property>
             <property name="height">297mm</property>
-            <property name="width">900mm</property>
+            <property name="width">930mm</property>
             <page-header>
                 <grid id="188">
                     <property name="height">0.6041666666666666in</property>
@@ -2313,6 +2342,12 @@ else "Relatório de SACs em Aberto"</expression>
                     <expression name="expression" type="javascript">dataSetRow["desc_acao"]</expression>
                     <property name="dataType">string</property>
                 </structure>
+                <structure>
+                    <property name="name">Ultima_Inte</property>
+                    <text-property name="displayName">Ultima_Inte</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["Ultima_Inte"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
             </list-property>
             <column id="314">
                 <property name="whiteSpace">nowrap</property>
@@ -2372,6 +2407,9 @@ else "Relatório de SACs em Aberto"</expression>
             </column>
             <column id="326">
                 <property name="width">1.65625in</property>
+            </column>
+            <column id="528">
+                <property name="width">1.4583333333333333in</property>
             </column>
             <column id="465">
                 <property name="width">1.4583333333333333in</property>
@@ -2598,6 +2636,19 @@ else "Relatório de SACs em Aberto"</expression>
                         <property name="borderTopWidth">thin</property>
                         <label id="352">
                             <text-property name="text">Data Prop. Ação</text-property>
+                        </label>
+                    </cell>
+                    <cell id="525">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <label id="533">
+                            <text-property name="text">Ultima Tratativa</text-property>
                         </label>
                     </cell>
                     <cell id="462">
@@ -2871,6 +2922,19 @@ else "Relatório de SACs em Aberto"</expression>
                             <property name="resultSetColumn">prop_acao</property>
                         </data>
                     </cell>
+                    <cell id="526">
+                        <property name="borderBottomStyle">dotted</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">dotted</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">dotted</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">dotted</property>
+                        <property name="borderTopWidth">thin</property>
+                        <data id="534">
+                            <property name="resultSetColumn">Ultima_Inte</property>
+                        </data>
+                    </cell>
                     <cell id="463">
                         <property name="borderBottomStyle">dotted</property>
                         <property name="borderBottomWidth">thin</property>
@@ -3077,6 +3141,16 @@ else "Relatório de SACs em Aberto"</expression>
                         <property name="borderTopWidth">thin</property>
                     </cell>
                     <cell id="312">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                    </cell>
+                    <cell id="527">
                         <property name="borderBottomStyle">solid</property>
                         <property name="borderBottomWidth">thin</property>
                         <property name="borderLeftStyle">solid</property>
