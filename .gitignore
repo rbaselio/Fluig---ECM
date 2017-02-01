@@ -1,3 +1,7 @@
+desktop.ini
+.resources
+.resources/
+.metadata
 .classpath
 .project
 .settings/
@@ -12,3 +16,4 @@ node_modules/
 .metadata
 *.versionsBackup
 *.log
+
