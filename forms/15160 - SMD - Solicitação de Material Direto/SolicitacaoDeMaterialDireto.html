@@ -1,0 +1,527 @@
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="/portal/resources/style-guide/css/fluig-style-guide.min.css">
+		<script src="/portal/resources/js/jquery/jquery.js"></script>
+		<script src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+		<script src="/portal/resources/js/mustache/mustache-min.js"></script>
+		<script src="/portal/resources/style-guide/js/fluig-style-guide.min.js"></script>
+		<script src="/portal/resources/js/jquery.mask.min.js"></script>
+		<script src="/resources/casp_lib/js/utils.js"></script>
+		<script type="text/javascript"	src="SolicitacaoDeMaterialDireto.js"></script>
+		<script src="../vcXMLRPC.js"></script>
+	</head>
+	<body onload="loadElementos()">
+		<div class="fluig-style-guide">
+			<form name="form" role="form">
+				<div class="row">
+					<div class="col-sm-3 col-xs-12 text-center">
+						<img src="/resources/logo_casp/logocasp.gif" width="204" height="79">
+					</div>
+					<div class="col-sm-5 col-xs-12">
+						<h2 class="text-center">
+							<b>SOLICITA&Ccedil;&Atilde;O DE MATERIAL DIRETO</b>
+						</h2>
+					</div>
+					<div class="col-sm-4 col-xs-12">
+						<div class="row form-group">
+							<label for="chamado_num" class="col-sm-6 col-xs-12 text-right">Solicita&ccedil;&atilde;o n&deg;:</label>
+							<div class="col-sm-6 col-xs-12 controls">
+								<input type="text" name="num_processo" id="num_processo" class="form-control" readonly="readonly" />
+							</div>
+							<br/>
+							<label for="data_sol" class="col-sm-6 col-xs-12 text-right">Data:</label>
+							<div class="col-sm-6 col-xs-12 controls">
+								<input type="text" name="data_sol" id="data_sol" class="form-control" size="15" readonly="readonly" />
+							</div>
+							<br/>						
+							<label for="hora_sol" class="col-sm-6 col-xs-12 text-right">Hora:</label>
+							<div class="col-sm-6 col-xs-12 controls">
+								<input type="text" name="hora_sol" id="hora_sol" class="form-control" readonly="readonly" />
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="panel panel-primary" id="emissao">				
+					<div class="panel-heading" style="background-color: blue;">
+						<h3 class="panel-title">
+							<strong><i class="fluigicon fluigicon-file-default fluigicon-sm"></i>&nbsp; Emiss&atilde;o:</strong>
+						</h3>
+					</div>
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-sm-3 col-xs-12">
+								<label for="ccusto">C. Custo:</label>
+								<input type="zoom"  placeholder="Centro de Custo" name="ccusto" id="ccusto" class="form-control"
+															data-zoom="{
+																        'displayKey':'Descricao',
+																        'datasetId':'centros_de_custos',
+																        'fields':[
+																            {
+																               'field':'Descricao',
+																               'label':'Centros de Custos',
+																               'search':'true'
+																            }
+																        ]
+																     }"
+	 							/>									
+							</div>
+							<div class="col-sm-3 col-xs-12">
+								<label for="quant">O. F.:</label>
+								<input type="text" class="form-control" placeholder="Ordem Fabrica&ccedil;&atilde;o" name="ord_fabric" id="ord_fabric" />
+							</div>
+							<div class="col-sm-2 col-xs-12">
+								<label for="quant">Quant.:</label>
+								<input type="text" class="form-control number" placeholder="Quantidade" name="quant" id="quant" />
+							</div>
+							<div class="col-sm-2 col-xs-12">
+								<label for="unmedida">UN:</label>
+								<input type="text" class="form-control" placeholder="Unidade de Medida" name="unmedida" id="unmedida" />
+							</div>	
+							<div class="col-sm-2 col-xs-12">
+								<label for="prevdias">Previs&atilde;o:</label> 
+								<input type="text" class="form-control dias" placeholder="Dias" name="prevdias" id="prevdias" />							
+							</div>							
+						</div>
+						<div class="row">
+							<div class="col-sm-3 col-xs-12">
+								<label for="tipocompra">Tipo:</label> 
+								<select class="form-control" name="tipocompra" id="tipocompra">
+									<option value=""></option>
+									<option value="material">Material</option>
+									<option value="servico">Servi&ccedil;o</option>	
+									<option value="ambos">Ambos</option>																
+								</select>
+								<label for="valor_aprox">Cotação Inicial:</label>
+								<input type="text" class="form-control money" name="valor_aprox" id="valor_aprox" />
+								<input type="hidden" name="valor_conv" id="valor_conv" />
+							</div>			
+							<div class="col-sm-5 col-xs-12">
+								<label for="desccompra">Descri&ccedil;&atilde;o:</label>
+								<textarea name="desccompra" id="desccompra" class="form-control" placeholder="Descri&ccedil;&atilde;o do material / servi&ccedil;o" rows="4"></textarea>
+							</div>
+							<div class="col-sm-4 col-xs-12">
+								<label for="aplicacao">Aplica&ccedil;&atilde;o:</label>
+								<textarea name="aplicacao" id="aplicacao" class="form-control" placeholder="Aplica&ccedil;&atilde;o do material / servi&ccedil;o" rows="4"></textarea>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-3 col-xs-12">
+								<label for="matricula_solic">Solicitante:</label>
+								<input type="text" class="form-control" placeholder="Matr&iacute;cula" name="matricula_solic" id="matricula_solic" readonly="readonly" />
+							</div>
+							<div class="col-sm-6 col-xs-12">
+								<label for="user_solic">&nbsp;</label>
+								<input type="text" class="form-control" placeholder="Responsavel" name="user_solic" id="user_solic" readonly="readonly" />
+							</div>
+							<div class="col-sm-3 col-xs-12">
+								<label for="data_solic">Ramal:</label>
+								<input type="text" class="form-control" placeholder="Data" name="data_solic" id="data_solic" readonly="readonly" />
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="panel panel-primary" id="aprov_solic">
+					<div class="panel-heading" style="background-color: blue;">
+						<h3 class="panel-title">
+							<strong><i class="fluigicon fluigicon-file-default fluigicon-sm"></i>&nbsp; Aprova&ccedil;&atilde;o Superior Imediato</strong>
+						</h3>
+					</div>
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-sm-3 col-xs-12">
+								<label for="aprov_solicitacao">Aprovado?</label>
+								<br>							
+								<input type="radio" name="aprov_solicitacao" id="aprov_solicitacao" style="cursor: pointer" value="sim" checked="checked"/> Sim
+								<input type="radio" name="aprov_solicitacao" id="aprov_solicitacao" style="cursor: pointer" value="nao" /> N&atilde;o							
+							</div>						
+							<div class="col-sm-9 col-xs-12">
+								<label for="desc_aprov_solic">Observa&ccedil;&otilde;es:</label>
+								<textarea name="desc_aprov_solic" id="desc_aprov_solic" class="form-control" rows="3"></textarea>
+							</div>
+						</div>
+						<br/>
+						<div class="row">
+							<div class="col-sm-3 col-xs-12">
+								<label for="matricula_aprov_solic">Aprovador:</label>
+								<input type="text" class="form-control" placeholder="Matr&iacute;cula" name="matricula_aprov_solic" id="matricula_aprov_solic" readonly="readonly" />
+							</div>
+							<div class="col-sm-6 col-xs-12">
+								<label for="user_aprov_solic">&nbsp;</label>
+								<input type="text" class="form-control" placeholder="Responsavel" name="user_aprov_solic" id="user_aprov_solic" readonly="readonly" />
+							</div>
+							<div class="col-sm-3 col-xs-12">
+								<label for="data_aprov_solic">Data:</label>
+								<input type="text" class="form-control" placeholder="Data" name="data_aprov_solic" id="data_aprov_solic" readonly="readonly" />
+							</div>
+						</div>
+					</div>
+				</div>	
+				
+				<div class="panel panel-primary" id="membro_compras">
+					<div class="panel-heading" style="background-color: blue;">
+						<h3 class="panel-title">
+							<strong><i class="fluigicon fluigicon-file-default fluigicon-sm"></i>&nbsp; An&aacute;lise de Suprimentos</strong>
+						</h3>
+					</div>
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-sm-3 col-xs-12">
+								<label for="aprov_membro_compras">Aprovado?</label>
+								<br>							
+								<input type="radio" name="aprov_membro_compras" id="aprov_membro_compras" style="cursor: pointer" value="sim" checked="checked"/> Sim
+								<input type="radio" name="aprov_membro_compras" id="aprov_membro_compras" style="cursor: pointer" value="nao" /> N&atilde;o							
+							</div>						
+							<div class="col-sm-9 col-xs-12">
+								<label for="desc_membro_compras">Observa&ccedil;&otilde;es:</label>
+								<textarea name="desc_membro_compras" id="desc_membro_compras" class="form-control" rows="3"></textarea>
+							</div>
+						</div>
+						<br/>
+						<div class="row">
+							<div class="col-sm-3 col-xs-12">
+								<label for="matricula_membro_compras">Aprovador:</label>
+								<input type="text" class="form-control" placeholder="Matr&iacute;cula" name="matricula_membro_compras" id="matricula_membro_compras" readonly="readonly" />
+							</div>
+							<div class="col-sm-6 col-xs-12">
+								<label for="user_membro_compras">&nbsp;</label>
+								<input type="text" class="form-control" placeholder="Responsavel" name="user_membro_compras" id="user_membro_compras" readonly="readonly" />
+							</div>
+							<div class="col-sm-3 col-xs-12">
+								<label for="data_membro_compras">Data:</label>
+								<input type="text" class="form-control" placeholder="Data" name="data_membro_compras" id="data_membro_compras" readonly="readonly" />
+							</div>
+						</div>
+					</div>
+				</div>	
+				
+				<div class="panel panel-primary" id="contabilidade">
+					<div class="panel-heading" style="background-color: blue;">
+						<h3 class="panel-title">
+							<strong><i class="fluigicon fluigicon-file-default fluigicon-sm"></i>&nbsp; Verifica&ccedil;&atilde;o Cont&aacute;bil:</strong>
+						</h3>
+					</div>
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-sm-3 col-xs-12">
+								<label for="ccontabil">Conta Cont&aacute;bil:</label>
+								<input type="text" class="form-control" placeholder="Conta Cont&aacute;bil" name="ccontabil" id="ccontabil" />
+							</div>
+							<div class="col-sm-6 col-xs-12">
+								<label for="desc_ccontabil">Descri&ccedil;&atilde;o:</label>
+								<input type="text" class="form-control" placeholder="Descri&ccedil;&atilde;o" name="desc_ccontabil" id="desc_ccontabil" />
+							</div>
+							<div class="col-sm-3 col-xs-12">
+								<label for="ativo">Ativo?</label>
+								<br>							
+								<input type="radio" name="ativo" id="ativo" style="cursor: pointer" value="sim" /> Sim
+								<input type="radio" name="ativo" id="ativo" style="cursor: pointer" value="nao" /> N&atilde;o							
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-12 col-xs-12">
+								<label for="obs_contabil">Observa&ccedil;&otilde;es:</label>
+								<textarea name="obs_contabil" id="obs_contabil" class="form-control" rows="3"></textarea>
+							</div>
+						</div>
+						<br/>
+						<div class="row">
+							<div class="col-sm-3 col-xs-12">
+								<label for="matricula_contab">Solicitante:</label>
+								<input type="text" class="form-control" placeholder="Matr&iacute;cula" name="matricula_contab" id="matricula_contab" readonly="readonly" />
+							</div>
+							<div class="col-sm-6 col-xs-12">
+								<label for="user_contab">&nbsp;</label>
+								<input type="text" class="form-control" placeholder="Responsavel" name="user_contab" id="user_contab" readonly="readonly" />
+							</div>
+							<div class="col-sm-3 col-xs-12">
+								<label for="data_contab">Data:</label>
+								<input type="text" class="form-control" placeholder="Data" name="data_contab" id="data_contab" readonly="readonly" />
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="panel panel-primary" id="pn_aprovadores">
+					<div class="panel-heading" style="background-color: blue;">
+						<h3 class="panel-title">
+							<strong><i class="fluigicon fluigicon-file-default fluigicon-sm"></i>&nbsp; Aprova&ccedil;&otilde;es</strong>
+						</h3>
+					</div>
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-sm-4 col-xs-12">
+								<label for="aprov_ger_suprimento">Aprovado Gerencia?</label>
+								<br>							
+								<input type="radio" name="aprov_ger_suprimento" id="aprov_ger_suprimento" style="cursor: pointer" value="sim" checked="checked"/> Sim
+								<input type="radio" name="aprov_ger_suprimento" id="aprov_ger_suprimento" style="cursor: pointer" value="nao" /> N&atilde;o							
+							</div>	
+							<div class="col-sm-4 col-xs-12">
+								<label for="aprov_dir_suprimento">Aprovado Diretoria?</label>
+								<br>							
+								<input type="radio" name="aprov_dir_suprimento" id="aprov_dir_suprimento" style="cursor: pointer" value="sim" checked="checked"/> Sim
+								<input type="radio" name="aprov_dir_suprimento" id="aprov_dir_suprimento" style="cursor: pointer" value="nao" /> N&atilde;o							
+							</div>
+							<div class="col-sm-3 col-xs-12">
+								<label for="aprov_dirPresidencia">Aprovado Dir. Executiva?</label>
+								<br>							
+								<input type="radio" name="aprov_dirPresidencia" id="aprov_dirPresidencia" style="cursor: pointer" value="sim" checked="checked"/> Sim
+								<input type="radio" name="aprov_dirPresidencia" id="aprov_dirPresidencia" style="cursor: pointer" value="nao" /> N&atilde;o							
+							</div>							
+						</div>	
+						<div class="row">				
+							<div class="col-sm-4 col-xs-12">
+								<label for="desc_aprov_ger_suprimento">Observa&ccedil;&otilde;es:</label>
+								<textarea name="desc_aprov_ger_suprimento" id="desc_aprov_ger_suprimento" class="form-control" rows="3"></textarea>
+							</div>
+							<div class="col-sm-4 col-xs-12">
+								<label for="desc_aprov_dir_suprimento">Observa&ccedil;&otilde;es:</label>
+								<textarea name="desc_aprov_dir_suprimento" id="desc_aprov_dir_suprimento" class="form-control" rows="3"></textarea>
+							</div>
+							<div class="col-sm-4 col-xs-12">
+								<label for="desc_aprov_dirPresidencia">Observa&ccedil;&otilde;es:</label>
+								<textarea name="desc_aprov_dirPresidencia" id="desc_aprov_dirPresidencia" class="form-control" rows="3"></textarea>
+							</div>
+						</div>
+						<br/>
+						<div class="row">
+							<div class="col-sm-3 col-xs-12">
+								<label for="matricula_aprov_ger_suprimento">Aprovador Gerência:</label>
+								<input type="text" class="form-control" placeholder="Matr&iacute;cula" name="matricula_aprov_ger_suprimento" id="matricula_aprov_ger_suprimento" readonly="readonly" />
+							</div>
+							<div class="col-sm-6 col-xs-12">
+								<label for="user_aprov_ger_suprimento">&nbsp;</label>
+								<input type="text" class="form-control" placeholder="Responsavel" name="user_aprov_ger_suprimento" id="user_aprov_ger_suprimento" readonly="readonly" />
+							</div>
+							<div class="col-sm-3 col-xs-12">
+								<label for="data_aprov_ger_suprimento">Data:</label>
+								<input type="text" class="form-control" placeholder="Data" name="data_aprov_ger_suprimento" id="data_aprov_ger_suprimento" readonly="readonly" />
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-3 col-xs-12">
+								<label for="matricula_aprov_dir_suprimento">Aprovador Diretoria:</label>
+								<input type="text" class="form-control" placeholder="Matr&iacute;cula" name="matricula_aprov_dir_suprimento" id="matricula_aprov_dir_suprimento" readonly="readonly" />
+							</div>
+							<div class="col-sm-6 col-xs-12">
+								<label for="user_aprov_dir_suprimento">&nbsp;</label>
+								<input type="text" class="form-control" placeholder="Responsavel" name="user_aprov_dir_suprimento" id="user_aprov_dir_suprimento" readonly="readonly" />
+							</div>
+							<div class="col-sm-3 col-xs-12">
+								<label for="data_aprov_dir_suprimento">Data:</label>
+								<input type="text" class="form-control" placeholder="Data" name="data_aprov_dir_suprimento" id="data_aprov_dir_suprimento" readonly="readonly" />
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-3 col-xs-12">
+								<label for="matricula_aprov_dirPresidencia">Aprovador Dir. Executiva:</label>
+								<input type="text" class="form-control" placeholder="Matr&iacute;cula" name="matricula_aprov_dirPresidencia" id="matricula_aprov_dirPresidencia" readonly="readonly" />
+							</div>
+							<div class="col-sm-6 col-xs-12">
+								<label for="user_aprov_dirPresidencia">&nbsp;</label>
+								<input type="text" class="form-control" placeholder="Responsavel" name="user_aprov_dirPresidencia" id="user_aprov_dirPresidencia" readonly="readonly" />
+							</div>
+							<div class="col-sm-3 col-xs-12">
+								<label for="data_aprov_dirPresidencia">Data:</label>
+								<input type="text" class="form-control" placeholder="Data" name="data_aprov_dirPresidencia" id="data_aprov_dirPresidencia" readonly="readonly" />
+							</div>
+						</div>
+					</div>
+				</div>	
+				
+				<div class="panel panel-primary" id="cotacoes">
+					<div class="panel-heading" style="background-color: blue;">
+						<h3 class="panel-title">
+							<strong><i class="fluigicon fluigicon-file-default fluigicon-sm"></i>&nbsp;Registro das Cota&ccedil;&otilde;es</strong>
+						</h3>
+					</div>
+					<div class="panel-body">
+						<div class="row" id='div_cotacoes'>
+							<table tablename="tb_cotacoes" cellspacing="0" id="tb_cotacoes"  class="table" noaddbutton="true" nodeletebutton="false" customFnDelete="fnCustomDelete(this)">
+								<thead>
+									<tr class="tableHeadRow">
+									<!-- 	<th class="tableColumn">Fornecedor:</th>
+										<th class="tableColumn">Vl. Unit:</th>
+										<th class="tableColumn">Desconto (%):</th>									 
+										<th class="tableColumn">IPI (%):</th>
+										<th class="tableColumn">Cond. Pagto:</th>
+										<th class="tableColumn">Prazo Entrega:</th>-->
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td >
+											<div class="row">
+												<div class="col-sm-5 col-xs-12">
+													<label for="user_entrega">Fornecedor:</label>
+													<input type="text" name="fornecedor" id="fornecedor" class="form-control"/>
+												</div>
+												<div class="col-sm-2 col-xs-12">
+													<label for="user_entrega">Desc. (%):</label>
+													<input type="text" name="desconto" id="desconto" class="form-control number"/>
+												</div>
+												<div class="col-sm-2 col-xs-12">
+													<label for="user_entrega">IPI (%):</label>
+													<input type="text" name="ipi" id="ipi" class="form-control number"/>
+												</div>	
+												
+												<div class="col-sm-3 col-xs-12">
+													<label for="user_entrega">Vl. Unit:</label>
+													<input type="text" name="vl_unit" id="vl_unit" class="form-control money"/>
+												</div>	
+											</div>
+											
+											<div class="row">
+												<div class="col-sm-3 col-xs-12">
+													<label for="modFrete">Modalidade Frete:</label>
+													<select class="form-control" name="modFrete" id="modFrete">
+														<option value=""></option>
+														<option value="cif">CIF</option>
+														<option value="fob">FOB</option>																	
+													</select>	
+												</div>
+												<div class="col-sm-3 col-xs-12">
+													<label for="user_entrega">Custos Frete:</label>
+													<input type="text" name="vl_frete" id="vl_frete" class="form-control money"/>
+												</div>
+												<div class="col-sm-2 col-xs-12">
+													<label for="user_entrega">Prazo Entrega:</label>
+													<input type="text" name="prazo_ent" id="prazo_ent" class="form-control dias"/>
+												</div>
+												<div class="col-sm-2 col-xs-12">
+													<label for="user_entrega">Cond. Pagto:</label>
+													<input type="text" name="cond_pagto" id="cond_pagto" class="form-control"/>
+												</div>
+											</div>											
+											<div class="row">
+												<div class="col-sm-12 col-xs-12">
+													<label for="desc_aprov_dirPresidencia">Observa&ccedil;&otilde;es:</label>
+													<textarea name="desc_cota" id="desc_cota" class="form-control" rows="3"></textarea>
+												</div>
+											</div>
+										</td>										
+									</tr>
+								</tbody>
+							</table>
+							<div class="col-sm-12 col-xs-12 divAddButton" align="right">
+								<button type="button" class="btn btn-primary" data-toggle="button" onclick="addLinha('tb_cotacoes')">Adicionar Cotações</button>
+							</div>
+						</div>
+								
+								
+						<br/>
+						<div class="row">
+							<div class="col-sm-3 col-xs-12">
+								<label for="matricula_cotacao">Resp. Cota&ccedil;&atilde;o:</label> 
+								<input type="text" class="form-control" placeholder="Matr&iacute;cula" name="matricula_cotacao" id="matricula_cotacao" readonly="readonly" />
+							</div>
+							<div class="col-sm-6 col-xs-12">
+								<label for="user_cotacao">&nbsp;</label> 
+								<input type="text" class="form-control" placeholder="Responsavel" name="user_cotacao" id="user_cotacao" readonly="readonly" />
+							</div>
+							<div class="col-sm-3 col-xs-12">
+								<label for="data_cotacao">Data:</label> 
+								<input type="text" class="form-control" placeholder="Data" name="data_cotacao" id="data_cotacao" readonly="readonly" />
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="panel panel-primary" id="selecao_compra">
+					<div class="panel-heading" style="background-color: blue;">
+						<h3 class="panel-title">
+							<strong><i class="fluigicon fluigicon-file-default fluigicon-sm"></i>&nbsp; Sele&ccedil;&atilde;o da Cota&ccedil;&atilde;o </strong>
+						</h3>
+					</div>
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-sm-3 col-xs-12">
+								<label for="fornecedor_sel">Fornecedor:</label>
+								<input type="text" name="fornecedor_sel" id="fornecedor_sel" class="form-control"/>	
+								<label for="vl_unit_sel">Valor</label><br/>
+								<input type="text" name="vl_unit_sel" id="vl_unit_sel" class="form-control money"/>							
+							</div>						
+							<div class="col-sm-9 col-xs-12">
+								<label for="desc_sel">Observa&ccedil;&otilde;es:</label>
+								<textarea name="desc_sel" id="desc_sel" class="form-control" rows="4"></textarea>
+							</div>
+						</div>
+						<br/>
+						<div class="row">
+							<div class="col-sm-3 col-xs-12">
+								<label for="matricula_selecao">Executor:</label>
+								<input type="text" class="form-control" placeholder="Matr&iacute;cula" name="matricula_selecao" id="matricula_selecao" readonly="readonly" />
+							</div>
+							<div class="col-sm-6 col-xs-12">
+								<label for="user_selecao">&nbsp;</label>
+								<input type="text" class="form-control" placeholder="Responsavel" name="user_selecao" id="user_selecao" readonly="readonly" />
+							</div>
+							<div class="col-sm-3 col-xs-12">
+								<label for="data_selecao">Data:</label>
+								<input type="text" class="form-control" placeholder="Data" name="data_selecao" id="data_selecao" readonly="readonly" />
+							</div>
+						</div>
+					</div>
+				</div>	
+				
+				
+				<div class="panel panel-primary" id="pn_compra">
+					<div class="panel-heading" style="background-color: blue;">
+						<h3 class="panel-title">
+							<strong><i class="fluigicon fluigicon-file-default fluigicon-sm"></i>&nbsp; Compras</strong>
+						</h3>
+					</div>
+					<div class="panel-body">
+						<div class="row">
+							<table tablename="tb_pedido" cellspacing="0" id="tb_pedido"  class="table" noaddbutton="true" nodeletebutton="false">
+								<thead>
+									<tr class="tableHeadRow">									 	
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td >
+											<div class="row">
+												<div class="col-sm-3 col-xs-12">
+													<label for="ordem_datasul">O.C. TOTVS</label>
+													<input type="text" name="ordem_datasul" id="ordem_datasul" class="form-control ordemCompra"/>							
+													<label for="ordem_datasul">Pedido TOTVS</label>
+													<input type="text" name="pedido_datasul" id="pedido_datasul" class="form-control pedido"/>
+												</div>						
+												<div class="col-sm-9 col-xs-12">
+													<label for="desc_compra">Observa&ccedil;&otilde;es:</label>
+													<textarea name="desc_compra" id="desc_compra" class="form-control" rows="4"></textarea>
+												</div>
+											</div>
+										</td>										
+									</tr>
+								</tbody>
+							</table>
+							<div class="col-sm-12 col-xs-12 divAddButton" align="right">
+								<button type="button" class="btn btn-primary" data-toggle="button" onclick="addLinha('tb_pedido')">Adicionar Pedido/OC</button>
+							</div>
+						</div>
+						<br/>
+						<div class="row">
+							<div class="col-sm-3 col-xs-12">
+								<label for="matricula_selecao">Executor:</label>
+								<input type="text" class="form-control" placeholder="Matr&iacute;cula" name="matricula_comprador" id="matricula_comprador" readonly="readonly" />
+							</div>
+							<div class="col-sm-6 col-xs-12">
+								<label for="user_comprador">&nbsp;</label>
+								<input type="text" class="form-control" placeholder="Responsavel" name="user_comprador" id="user_comprador" readonly="readonly" />
+							</div>
+							<div class="col-sm-3 col-xs-12">
+								<label for="data_comprador">Data:</label>
+								<input type="text" class="form-control" placeholder="Data" name="data_comprador" id="data_comprador" readonly="readonly" />
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				
+			</form>
+		</div>
+	</body>
+</html>

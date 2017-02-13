@@ -363,7 +363,7 @@ function ativaPreencheCampos(modeView, numState, matricula, processo) {
 }
 
 function gerarResumo(){	                                         
-	window.open("http://fluig.casp.com.br/webdeskreport/frameset?__id=idownloadFrame&__report=file:///%2Ftmp%2Fecm%2Freports%2F5190%2F1001%2FresumoRDV4267719071769816416.rptdesign&param_1="+ process + "&__masterpage=true&__format=html&__cID=1", '_blank');
+	window.open("http://fluig.casp.com.br/webdeskreport/frameset?__id=idownloadFrame&__report=file:///%2Ftmp%2Fecm%2Freports%2F5190%2F1001%2FresumoRDV4339098323085338558.rptdesign&param_1="+ process + "&__masterpage=true&__format=html&__cID=1", '_blank');
 }
 
 //obter a quantidade de anexos atual

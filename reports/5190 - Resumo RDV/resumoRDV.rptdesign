@@ -114,6 +114,12 @@
                     <text-property name="heading">CENTRO_CUSTO</text-property>
                 </structure>
                 <structure>
+                    <property name="columnName">LOCAL_DESP</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">LOCAL_DESP</text-property>
+                    <text-property name="heading">LOCAL_DESP</text-property>
+                </structure>
+                <structure>
                     <property name="columnName">PEDIDO</property>
                     <property name="analysis">dimension</property>
                     <text-property name="displayName">PEDIDO</text-property>
@@ -236,56 +242,61 @@
                     </structure>
                     <structure>
                         <property name="position">9</property>
-                        <property name="name">PEDIDO</property>
+                        <property name="name">LOCAL_DESP</property>
                         <property name="dataType">string</property>
                     </structure>
                     <structure>
                         <property name="position">10</property>
-                        <property name="name">OPERACAO</property>
+                        <property name="name">PEDIDO</property>
                         <property name="dataType">string</property>
                     </structure>
                     <structure>
                         <property name="position">11</property>
-                        <property name="name">VL_DESP</property>
+                        <property name="name">OPERACAO</property>
                         <property name="dataType">string</property>
                     </structure>
                     <structure>
                         <property name="position">12</property>
-                        <property name="name">DESC_DESP</property>
+                        <property name="name">VL_DESP</property>
                         <property name="dataType">string</property>
                     </structure>
                     <structure>
                         <property name="position">13</property>
-                        <property name="name">BANCO</property>
+                        <property name="name">DESC_DESP</property>
                         <property name="dataType">string</property>
                     </structure>
                     <structure>
                         <property name="position">14</property>
-                        <property name="name">AGENCIA</property>
+                        <property name="name">BANCO</property>
                         <property name="dataType">string</property>
                     </structure>
                     <structure>
                         <property name="position">15</property>
-                        <property name="name">CONTA</property>
+                        <property name="name">AGENCIA</property>
                         <property name="dataType">string</property>
                     </structure>
                     <structure>
                         <property name="position">16</property>
-                        <property name="name">TOTAL_DESP</property>
+                        <property name="name">CONTA</property>
                         <property name="dataType">string</property>
                     </structure>
                     <structure>
                         <property name="position">17</property>
-                        <property name="name">KM_PER</property>
+                        <property name="name">TOTAL_DESP</property>
                         <property name="dataType">string</property>
                     </structure>
                     <structure>
                         <property name="position">18</property>
-                        <property name="name">VL_KM</property>
+                        <property name="name">KM_PER</property>
                         <property name="dataType">string</property>
                     </structure>
                     <structure>
                         <property name="position">19</property>
+                        <property name="name">VL_KM</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">20</property>
                         <property name="name">TOTAL_GERAL</property>
                         <property name="dataType">string</property>
                     </structure>
@@ -351,76 +362,83 @@
                 </structure>
                 <structure>
                     <property name="position">9</property>
+                    <property name="name">LOCAL_DESP</property>
+                    <property name="nativeName">local_despesa</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">10</property>
                     <property name="name">PEDIDO</property>
                     <property name="nativeName">pedido</property>
                     <property name="dataType">string</property>
                     <property name="nativeDataType">12</property>
                 </structure>
                 <structure>
-                    <property name="position">10</property>
+                    <property name="position">11</property>
                     <property name="name">OPERACAO</property>
                     <property name="nativeName">desp_cart</property>
                     <property name="dataType">string</property>
                     <property name="nativeDataType">12</property>
                 </structure>
                 <structure>
-                    <property name="position">11</property>
+                    <property name="position">12</property>
                     <property name="name">VL_DESP</property>
                     <property name="nativeName">vl_despesa</property>
                     <property name="dataType">string</property>
                     <property name="nativeDataType">12</property>
                 </structure>
                 <structure>
-                    <property name="position">12</property>
+                    <property name="position">13</property>
                     <property name="name">DESC_DESP</property>
                     <property name="nativeName">desc_despesa</property>
                     <property name="dataType">string</property>
                     <property name="nativeDataType">12</property>
                 </structure>
                 <structure>
-                    <property name="position">13</property>
+                    <property name="position">14</property>
                     <property name="name">BANCO</property>
                     <property name="nativeName">banco</property>
                     <property name="dataType">string</property>
                     <property name="nativeDataType">12</property>
                 </structure>
                 <structure>
-                    <property name="position">14</property>
+                    <property name="position">15</property>
                     <property name="name">AGENCIA</property>
                     <property name="nativeName">agencia</property>
                     <property name="dataType">string</property>
                     <property name="nativeDataType">12</property>
                 </structure>
                 <structure>
-                    <property name="position">15</property>
+                    <property name="position">16</property>
                     <property name="name">CONTA</property>
                     <property name="nativeName">conta_cor</property>
                     <property name="dataType">string</property>
                     <property name="nativeDataType">12</property>
                 </structure>
                 <structure>
-                    <property name="position">16</property>
+                    <property name="position">17</property>
                     <property name="name">TOTAL_DESP</property>
                     <property name="nativeName">vl_tot_despesa</property>
                     <property name="dataType">string</property>
                     <property name="nativeDataType">12</property>
                 </structure>
                 <structure>
-                    <property name="position">17</property>
+                    <property name="position">18</property>
                     <property name="name">KM_PER</property>
                     <property name="nativeName">km_ini</property>
                     <property name="dataType">string</property>
                     <property name="nativeDataType">12</property>
                 </structure>
                 <structure>
-                    <property name="position">18</property>
+                    <property name="position">19</property>
                     <property name="name">VL_KM</property>
                     <property name="nativeName">vl_km_devido</property>
                     <property name="dataType">string</property>
                     <property name="nativeDataType">12</property>
                 </structure>
                 <structure>
-                    <property name="position">19</property>
+                    <property name="position">20</property>
                     <property name="name">TOTAL_GERAL</property>
                     <property name="nativeName">vl_tot_dev</property>
                     <property name="dataType">string</property>
@@ -448,6 +466,7 @@
 	
 	ml001020.ccontabil AS CONTA_CONTABIL,
 	ml001020.ccusto AS CENTRO_CUSTO,
+	ml001020.local_despesa AS LOCAL_DESP,
     ml001020.pedido AS PEDIDO,
     ml001020.desp_cart AS OPERACAO,
     ml001020.vl_despesa AS VL_DESP,
@@ -2127,6 +2146,7 @@ iNNER jOIN  ml001020 ON
             <property name="borderRightWidth">thin</property>
             <property name="borderTopStyle">solid</property>
             <property name="borderTopWidth">thin</property>
+            <property name="width">10.59375in</property>
             <property name="dataSet">Data Set</property>
             <list-property name="boundDataColumns">
                 <structure>
@@ -2171,6 +2191,12 @@ iNNER jOIN  ml001020 ON
                     <expression name="expression" type="javascript">dataSetRow["TIPO_DESP"]</expression>
                     <property name="dataType">string</property>
                 </structure>
+                <structure>
+                    <property name="name">LOCAL_DESP</property>
+                    <text-property name="displayName">LOCAL_DESP</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["LOCAL_DESP"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
             </list-property>
             <column id="608">
                 <property name="whiteSpace">nowrap</property>
@@ -2178,11 +2204,16 @@ iNNER jOIN  ml001020 ON
             </column>
             <column id="609">
                 <property name="whiteSpace">nowrap</property>
-                <property name="width">3.7708333333333335in</property>
+                <property name="width">3.1875in</property>
+            </column>
+            <column id="897">
+                <property name="textAlign">center</property>
+                <property name="whiteSpace">nowrap</property>
+                <property name="width">1.0729166666666667in</property>
             </column>
             <column id="610">
                 <property name="whiteSpace">nowrap</property>
-                <property name="width">1.7604166666666667in</property>
+                <property name="width">1.375in</property>
             </column>
             <column id="611">
                 <property name="whiteSpace">nowrap</property>
@@ -2198,7 +2229,7 @@ iNNER jOIN  ml001020 ON
             </column>
             <column id="614">
                 <property name="whiteSpace">nowrap</property>
-                <property name="width">0.8020833333333334in</property>
+                <property name="width">1.03125in</property>
             </column>
             <header>
                 <row id="566">
@@ -2240,6 +2271,22 @@ iNNER jOIN  ml001020 ON
                         <label id="640">
                             <property name="fontWeight">bold</property>
                             <text-property name="text">Tipo</text-property>
+                        </label>
+                    </cell>
+                    <cell id="894">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <property name="verticalAlign">middle</property>
+                        <property name="whiteSpace">nowrap</property>
+                        <label id="898">
+                            <property name="fontWeight">bold</property>
+                            <text-property name="text">Local Despesa</text-property>
                         </label>
                     </cell>
                     <cell id="569">
@@ -2358,6 +2405,21 @@ iNNER jOIN  ml001020 ON
                             <property name="resultSetColumn">TIPO_DESP</property>
                         </data>
                     </cell>
+                    <cell id="895">
+                        <property name="borderBottomStyle">dotted</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">dotted</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">dotted</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">dotted</property>
+                        <property name="borderTopWidth">thin</property>
+                        <property name="verticalAlign">middle</property>
+                        <property name="whiteSpace">nowrap</property>
+                        <data id="899">
+                            <property name="resultSetColumn">LOCAL_DESP</property>
+                        </data>
+                    </cell>
                     <cell id="583">
                         <property name="borderBottomStyle">dotted</property>
                         <property name="borderBottomWidth">thin</property>
@@ -2456,6 +2518,18 @@ iNNER jOIN  ml001020 ON
                         <property name="whiteSpace">nowrap</property>
                     </cell>
                     <cell id="596">
+                        <property name="borderBottomStyle">dotted</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">dotted</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">dotted</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">dotted</property>
+                        <property name="borderTopWidth">thin</property>
+                        <property name="verticalAlign">middle</property>
+                        <property name="whiteSpace">nowrap</property>
+                    </cell>
+                    <cell id="896">
                         <property name="borderBottomStyle">dotted</property>
                         <property name="borderBottomWidth">thin</property>
                         <property name="borderLeftStyle">dotted</property>
