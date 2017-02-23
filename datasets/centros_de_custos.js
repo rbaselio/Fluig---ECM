@@ -29,6 +29,7 @@ function createDataset(fields, constraints, sortFields) {
 	newDataset.addRow(new Array('300.201','300.201 - Administrativo - Armazenagem'));
 	newDataset.addRow(new Array('300.202','300.202 - Supervisores de Campo - Armazenagem'));
 	newDataset.addRow(new Array('300.203','300.203 - Assitência Técnica - Armazenagem'));
+	newDataset.addRow(new Array('300.204','300.204 - Montagem'));
 	newDataset.addRow(new Array('300.301','300.301 - Comercia - Exporção Armazenagem'));
 	newDataset.addRow(new Array('400.101','400.101 - Comercial Matrizes'));
 	newDataset.addRow(new Array('400.102','400.102 - Pós Venda Matrizes'));

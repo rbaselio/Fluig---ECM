@@ -30,6 +30,8 @@ function addLinha(tabela){
 	setMoneyClass($("#vl_unit___" + row));
 	setMoneyClass($("#desconto___" + row));
 	setMoneyClass($("#ipi___" + row));
+	$("#selecionado___" + row).val("nao");
+	
 	
 	$(".ordemCompra").mask("0000000.00", {reverse: true});
 	$(".pedido").mask("000.000.000", {reverse: true});	
@@ -164,21 +166,8 @@ function ativaPreencheCampos(modeView, numState, matricula, WKNumProces, documen
 			$("#data_cotacao").attr("readOnly", true).val(data);	
 		}
 		
-		if (numState == 15){
-			showElemento($("#selecao_compra"));
-			
-			$('#matricula_selecao').attr("readOnly", true).val(matricula);
-			$('#user_selecao').attr("readOnly", true).val(usuario);
-			$("#data_selecao").attr("readOnly", true).val(data);	
-		}
 		
-		if (numState == 17){
-			showElemento($("#pn_compra"));
-			
-			$('#matricula_comprador').attr("readOnly", true).val(matricula);
-			$('#user_comprador').attr("readOnly", true).val(usuario);
-			$("#data_comprador").attr("readOnly", true).val(data);	
-		}
+		
 	}
 }
 

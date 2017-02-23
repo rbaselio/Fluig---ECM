@@ -333,7 +333,7 @@
 				<div class="panel panel-primary" id="cotacoes">
 					<div class="panel-heading" style="background-color: blue;">
 						<h3 class="panel-title">
-							<strong><i class="fluigicon fluigicon-file-default fluigicon-sm"></i>&nbsp;Registro das Cota&ccedil;&otilde;es</strong>
+							<strong><i class="fluigicon fluigicon-file-default fluigicon-sm"></i>&nbsp;Registro das Cota&ccedil;&otilde;es / Compras</strong>
 						</h3>
 					</div>
 					<div class="panel-body">
@@ -393,6 +393,13 @@
 													<label for="user_entrega">Cond. Pagto:</label>
 													<input type="text" name="cond_pagto" id="cond_pagto" class="form-control"/>
 												</div>
+												<div class="col-sm-2 col-xs-12">
+													<label for="tipocompra">Selecionado:</label> 
+													<select class="form-control" name="selecionado" id="selecionado">
+														<option value="nao">Não</option>
+														<option value="sim">Sim</option>																
+													</select>
+												</div>
 											</div>											
 											<div class="row">
 												<div class="col-sm-12 col-xs-12">
@@ -407,72 +414,7 @@
 							<div class="col-sm-12 col-xs-12 divAddButton" align="right">
 								<button type="button" class="btn btn-primary" data-toggle="button" onclick="addLinha('tb_cotacoes')">Adicionar Cotações</button>
 							</div>
-						</div>
-								
-								
-						<br/>
-						<div class="row">
-							<div class="col-sm-3 col-xs-12">
-								<label for="matricula_cotacao">Resp. Cota&ccedil;&atilde;o:</label> 
-								<input type="text" class="form-control" placeholder="Matr&iacute;cula" name="matricula_cotacao" id="matricula_cotacao" readonly="readonly" />
-							</div>
-							<div class="col-sm-6 col-xs-12">
-								<label for="user_cotacao">&nbsp;</label> 
-								<input type="text" class="form-control" placeholder="Responsavel" name="user_cotacao" id="user_cotacao" readonly="readonly" />
-							</div>
-							<div class="col-sm-3 col-xs-12">
-								<label for="data_cotacao">Data:</label> 
-								<input type="text" class="form-control" placeholder="Data" name="data_cotacao" id="data_cotacao" readonly="readonly" />
-							</div>
-						</div>
-					</div>
-				</div>
-				
-				<div class="panel panel-primary" id="selecao_compra">
-					<div class="panel-heading" style="background-color: blue;">
-						<h3 class="panel-title">
-							<strong><i class="fluigicon fluigicon-file-default fluigicon-sm"></i>&nbsp; Sele&ccedil;&atilde;o da Cota&ccedil;&atilde;o </strong>
-						</h3>
-					</div>
-					<div class="panel-body">
-						<div class="row">
-							<div class="col-sm-3 col-xs-12">
-								<label for="fornecedor_sel">Fornecedor:</label>
-								<input type="text" name="fornecedor_sel" id="fornecedor_sel" class="form-control"/>	
-								<label for="vl_unit_sel">Valor</label><br/>
-								<input type="text" name="vl_unit_sel" id="vl_unit_sel" class="form-control money"/>							
-							</div>						
-							<div class="col-sm-9 col-xs-12">
-								<label for="desc_sel">Observa&ccedil;&otilde;es:</label>
-								<textarea name="desc_sel" id="desc_sel" class="form-control" rows="4"></textarea>
-							</div>
-						</div>
-						<br/>
-						<div class="row">
-							<div class="col-sm-3 col-xs-12">
-								<label for="matricula_selecao">Executor:</label>
-								<input type="text" class="form-control" placeholder="Matr&iacute;cula" name="matricula_selecao" id="matricula_selecao" readonly="readonly" />
-							</div>
-							<div class="col-sm-6 col-xs-12">
-								<label for="user_selecao">&nbsp;</label>
-								<input type="text" class="form-control" placeholder="Responsavel" name="user_selecao" id="user_selecao" readonly="readonly" />
-							</div>
-							<div class="col-sm-3 col-xs-12">
-								<label for="data_selecao">Data:</label>
-								<input type="text" class="form-control" placeholder="Data" name="data_selecao" id="data_selecao" readonly="readonly" />
-							</div>
-						</div>
-					</div>
-				</div>	
-				
-				
-				<div class="panel panel-primary" id="pn_compra">
-					<div class="panel-heading" style="background-color: blue;">
-						<h3 class="panel-title">
-							<strong><i class="fluigicon fluigicon-file-default fluigicon-sm"></i>&nbsp; Compras</strong>
-						</h3>
-					</div>
-					<div class="panel-body">
+						</div>	
 						<div class="row">
 							<table tablename="tb_pedido" cellspacing="0" id="tb_pedido"  class="table" noaddbutton="true" nodeletebutton="false">
 								<thead>
@@ -501,25 +443,49 @@
 							<div class="col-sm-12 col-xs-12 divAddButton" align="right">
 								<button type="button" class="btn btn-primary" data-toggle="button" onclick="addLinha('tb_pedido')">Adicionar Pedido/OC</button>
 							</div>
-						</div>
+						</div>								
 						<br/>
 						<div class="row">
 							<div class="col-sm-3 col-xs-12">
-								<label for="matricula_selecao">Executor:</label>
-								<input type="text" class="form-control" placeholder="Matr&iacute;cula" name="matricula_comprador" id="matricula_comprador" readonly="readonly" />
+								<label for="matricula_cotacao">Resp. Cota&ccedil;&atilde;o:</label> 
+								<input type="text" class="form-control" placeholder="Matr&iacute;cula" name="matricula_cotacao" id="matricula_cotacao" readonly="readonly" />
 							</div>
 							<div class="col-sm-6 col-xs-12">
-								<label for="user_comprador">&nbsp;</label>
-								<input type="text" class="form-control" placeholder="Responsavel" name="user_comprador" id="user_comprador" readonly="readonly" />
+								<label for="user_cotacao">&nbsp;</label> 
+								<input type="text" class="form-control" placeholder="Responsavel" name="user_cotacao" id="user_cotacao" readonly="readonly" />
 							</div>
 							<div class="col-sm-3 col-xs-12">
-								<label for="data_comprador">Data:</label>
-								<input type="text" class="form-control" placeholder="Data" name="data_comprador" id="data_comprador" readonly="readonly" />
+								<label for="data_cotacao">Data:</label> 
+								<input type="text" class="form-control" placeholder="Data" name="data_cotacao" id="data_cotacao" readonly="readonly" />
 							</div>
 						</div>
 					</div>
 				</div>
 				
+				<div class="panel panel-primary" id="selecao_compra">
+					<div class="panel-heading" style="background-color: blue;">
+						<h3 class="panel-title">
+							<strong><i class="fluigicon fluigicon-file-default fluigicon-sm"></i>&nbsp; Sele&ccedil;&atilde;o da Cota&ccedil;&atilde;o </strong>
+						</h3>
+					</div>
+					<div class="panel-body">
+						<br/>
+						<div class="row">
+							<div class="col-sm-3 col-xs-12">
+								<label for="matricula_selecao">Executor:</label>
+								<input type="text" class="form-control" placeholder="Matr&iacute;cula" name="matricula_selecao" id="matricula_selecao" readonly="readonly" />
+							</div>
+							<div class="col-sm-6 col-xs-12">
+								<label for="user_selecao">&nbsp;</label>
+								<input type="text" class="form-control" placeholder="Responsavel" name="user_selecao" id="user_selecao" readonly="readonly" />
+							</div>
+							<div class="col-sm-3 col-xs-12">
+								<label for="data_selecao">Data:</label>
+								<input type="text" class="form-control" placeholder="Data" name="data_selecao" id="data_selecao" readonly="readonly" />
+							</div>
+						</div>
+					</div>
+				</div>				
 				
 			</form>
 		</div>

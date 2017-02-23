@@ -43,9 +43,10 @@ function validateForm(form){
 	}
 	
 	if (numState == 10){
-		if (!temAnexo()) message += "<br/>- Anexar a cotação inicial; " + temAnexo();
+		if (!temAnexo()) message += "<br/>- Anexar a cotação inicial; "
 		
 		var indexes = form.getChildrenIndexes("tb_cotacoes");
+		var selecao = 0;
 		if (indexes.length == 0) message += "<br/>- Informe ao menos uma cotação;";
 		
 		for (var i = 0; i < indexes.length; i++) {
@@ -53,20 +54,23 @@ function validateForm(form){
 			if (form.getValue("vl_unit___" + indexes[i]) == "0,00") message += "<br/>- Valor unitário na linha " + ( i + 1);
 			if (form.getValue("cond_pagto___" + indexes[i]) == "") message += "<br/>- Condição de pagamento na linha " + ( i + 1);
 			if (form.getValue("prazo_ent___" + indexes[i]) == "") message += "<br/>- Prazo de entrega na linha " + ( i + 1);
-			if (form.getValue("modFrete___" + indexes[i]) == "") message += "<br/>- Modalidade de Frete na linha " + ( i + 1);			
-			
+			if (form.getValue("modFrete___" + indexes[i]) == "") message += "<br/>- Modalidade de Frete na linha " + ( i + 1);
+			if (form.getValue("selecionado___" + indexes[i]) == "sim") selecao++;
 		}
-	}
-	
-	if (numState == 17){		
-		var indexes = form.getChildrenIndexes("tb_pedido");
-		if (indexes.length == 0) message += "<br/>- Informe ao menos um pedido/OC;";
+		
+		if (selecao == 0) message += "<br/>- Selecione ao menos um fornecedor como aprovado;";
+		
+		indexes = form.getChildrenIndexes("tb_pedido");
+		/*if (indexes.length == 0) message += "<br/>- Informe ao menos um pedido/OC;";
 		
 		for (var i = 0; i < indexes.length; i++) {
 	    	if (form.getValue("ordem_datasul___" + indexes[i]) == "") message += message += "<br/>- Nr. Ordem na linha " + ( i + 1);
 			if (form.getValue("pedido_datasul___" + indexes[i]) == "") message += "<br/>- Nr. pedido na linha " + ( i + 1);						
-		}
+		}*/
+		
 	}
+	
+	
 	
 	
 	if (message != "") throw "<br/><strong>Os campos abaixo são de preencimento obrigatório:</strong><br/>" + message + "<br/><br/>.";	
