@@ -16,4 +16,5 @@ node_modules/
 .metadata
 *.versionsBackup
 *.log
+tokens.js
 
