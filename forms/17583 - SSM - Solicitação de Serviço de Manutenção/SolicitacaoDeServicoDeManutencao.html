@@ -1,0 +1,540 @@
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="/portal/resources/style-guide/css/fluig-style-guide.min.css">
+		<script src="/portal/resources/js/jquery/jquery.js"></script>
+		<script src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+		<script src="/portal/resources/js/mustache/mustache-min.js"></script>
+		<script src="/portal/resources/style-guide/js/fluig-style-guide.min.js"></script>
+		<script src="/portal/resources/js/jquery.mask.min.js"></script>
+		<script src="/resources/casp_lib/js/utils.js"></script>
+		<script type="text/javascript"	src="SolicitacaoDeServicoDeManutencao.js"></script>
+		<script src="../vcXMLRPC.js"></script>
+	</head>
+	<body onload="loadElementos()">
+		<div class="fluig-style-guide">
+			<form name="form" role="form">
+				<div class="row">
+					<div class="col-sm-3 col-xs-12 text-center">
+						<img src="/resources/logo_casp/logocasp.gif" width="204" height="79">
+					</div>
+					<div class="col-sm-5 col-xs-12">
+						<h2 class="text-center">
+							<b>SOLICITA&Ccedil;&Atilde;O DE SERVI&Ccedil;O DE MANUTEN&Ccedil;&Atilde;O</b>
+						</h2>
+					</div>
+					<div class="col-sm-4 col-xs-12">
+						<div class="row form-group">
+							<label for="chamado_num" class="col-sm-6 col-xs-12 text-right">Solicita&ccedil;&atilde;o n&deg;:</label>
+							<div class="col-sm-6 col-xs-12 controls">
+								<input type="text" name="num_processo" id="num_processo" class="form-control" readonly="readonly" />
+							</div>
+							<br/>
+							<label for="data_sol" class="col-sm-6 col-xs-12 text-right">Data:</label>
+							<div class="col-sm-6 col-xs-12 controls">
+								<input type="text" name="data_sol" id="data_sol" class="form-control" size="15" readonly="readonly" />
+							</div>
+							<br/>						
+							<label for="hora_sol" class="col-sm-6 col-xs-12 text-right">Hora:</label>
+							<div class="col-sm-6 col-xs-12 controls">
+								<input type="text" name="hora_sol" id="hora_sol" class="form-control" readonly="readonly" />
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="panel panel-primary" id="emissao">
+					<div class="panel-heading" style="background-color: blue;">
+						<h3 class="panel-title">
+							<strong><i class="fluigicon fluigicon-file-default fluigicon-sm"></i>&nbsp; Emiss&atilde;o:</strong>
+						</h3>
+					</div>
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-sm-3 col-xs-12 ">
+								<label for="tipo_manut">Criticidade do Serviço:</label>
+								<select class="form-control" name="tipo_manut" id="tipo_manut">
+									<option value=""></option>
+									<option value="defeito">Equipamento com defeito</option>
+									<option value="melhoria">Melhoria no equipamento</option>
+									<option value="impede">Impede a operação</option>
+									<option value="impedepaliativo">Impede a operação sem procedimento paliativo</option>
+									<option value="naoimpede">Não impede a operação/option>
+									<option value="sugestao">Sugestão de Melhoria</option>
+								</select>						
+							</div>	
+							<div class="col-sm-3 col-xs-12">
+								<label for="tipo_equipamento">Tipo Manuten&ccedil;&atilde;o:</label> 
+								<select class="form-control" name="tipo_manut_equip" id="tipo_manut_equip">
+									<option value=""></option>
+									<option value="maquina">M&aacute;quina</option>
+									<option value="instalacao">Instala&ccedil;&atilde;o</option>
+									<option value="estampo">Estampo</option>
+									<option value="veiculo">Ve&iacute;culo</option>
+									<option value="dispositivo">Dispositivo</option>
+									<option value="outros">Outros</option>									
+								</select>																
+							</div>
+							<div class="col-sm-6 col-xs-12">
+								<label for="nome_resp">Descri&ccedil;&atilde;o do Equipamento</label>
+								<input type="text" class="form-control" id="desc_equip" name="desc_equip"/>									
+							</div>		
+						</div>
+						<div class="row">
+							<div class="col-sm-3 col-xs-12">
+								<label for="ident_equip">Identifica&ccedil;&atilde;o do Equipamento</label>
+								<input type="text" class="form-control" id="ident_equip" name="ident_equip"/>									
+							</div>	
+							<div class="col-sm-4 col-xs-12">
+								<label for="ccusto">C. Custo:</label>
+								<input type="zoom" name="ccusto" id="ccusto" class="form-control"
+															data-zoom="{
+																        'displayKey':'Descricao',
+																        'datasetId':'centros_de_custos',
+																        'fields':[
+																            {
+																               'field':'Descricao',
+																               'label':'Centros de Custos',
+																               'search':'true'
+																            }
+																        ]
+																     }"
+	 							/>									
+							</div>
+							<div class="col-sm-2 col-xs-12">
+								<label for="dias_manut">Previs&atilde;o(dias)</label>
+								<input type="text" class="form-control" id="dias_manut" name="dias_manut"/>									
+							</div>
+							<div class="col-sm-3 col-xs-12">
+								<label for="tipo_equipamento">Tipo Problema:</label> 
+								<select class="form-control" name="tipo_problema" id="tipo_problema">
+									<option value=""></option>
+									<option value="mecanico">MecÃ¢nico</option>
+									<option value="eletrico">El&eacute;trico</option>
+									<option value="ferramental">Ferramental</option>
+									<option value="seguranca">Seguran&ccedil;a</option>
+									<option value="outros">Outros</option>									
+								</select>																
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-12 col-xs-12">
+								<label for="desc_parecer">Detalhes do Problema:</label>
+								<textarea name="desc_emissao" id="desc_emissao" class="form-control" rows="3"></textarea>
+							</div>
+						</div>
+						<br/>
+						<div class="row">
+							<div class="col-sm-3 col-xs-12">
+								<label for="matricula_solic">Solicitante:</label>
+								<input type="text" class="form-control" placeholder="Matr&iacute;cula" name="matricula_solic" id="matricula_solic" readonly="readonly" />
+							</div>
+							<div class="col-sm-6 col-xs-12">
+								<label for="user_solic">&nbsp;</label>
+								<input type="text" class="form-control" placeholder="Responsavel" name="user_solic" id="user_solic" readonly="readonly" />
+							</div>
+							<div class="col-sm-3 col-xs-12">
+								<label for="data_solic">Data:</label>
+								<input type="text" class="form-control" placeholder="Data" name="data_solic" id="data_solic" readonly="readonly" />
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="panel panel-primary" id="preAnalise">
+					<div class="panel-heading" style="background-color: blue;">
+						<h3 class="panel-title">
+							<strong><i class="fluigicon fluigicon-file-default fluigicon-sm"></i>&nbsp; Defini&ccedil;&atilde;o do Executor </strong>
+						</h3>
+					</div>
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-xs-12">
+								<label for="obser_preAnal">Observa&ccedil;&otilde;es:</label>
+								<textarea name="obser_preAnal" id="obser_preAnal" class="form-control" rows="3"></textarea>
+							</div>
+						</div>
+						<br/>
+						<div class="row">
+							<div class="col-sm-3 col-xs-12">
+								<label for="mat_preAnal">Resp. PrÃ© Analise:</label>
+								<input type="text" class="form-control" placeholder="Matr&iacute;cula" name="mat_preAnal" id="mat_preAnal" readonly="readonly" />
+							</div>
+							<div class="col-sm-6 col-xs-12">
+								<label for="resp_preAnal">&nbsp;</label>
+								<input type="text" class="form-control" placeholder="Responsavel" name="resp_preAnal" id="resp_preAnal" readonly="readonly" />
+							</div>
+							<div class="col-sm-3 col-xs-12">
+								<label for="data_preAnal">Data:</label>
+								<input type="text" class="form-control" placeholder="Data" name="data_preAnal" id="data_preAnal" readonly="readonly" />
+							</div>
+						</div>
+					</div>
+				</div>			
+			
+				<div class="panel panel-primary" id="pn_avaliacao">
+					<div class="panel-heading" style="background-color: blue;">
+						<h3 class="panel-title">
+							<strong><i class="fluigicon fluigicon-file-default fluigicon-sm"></i>&nbsp;Avalia&ccedil;&atilde;o do Problema</strong>
+						</h3>
+					</div>
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-sm-3 col-xs-12">
+								<label for="resp_aprov_manut">Necessidade de aquisi&ccedil;&atilde;o de material?</label>
+								<br>							
+								<input type="radio" name="nec_material" id="nec_material" style="cursor: pointer" value="sim" checked="checked"/> Sim
+								<input type="radio" name="nec_material" id="nec_material" style="cursor: pointer" value="nao" /> N&atilde;o							
+							</div>
+							<div class="col-sm-9 col-xs-12">
+								<label for="desc_aval_manut">Avalia&ccedil;&atilde;o da Situa&ccedil;&atilde;o:</label>
+								<textarea name="desc_aval_manut" id="desc_aval_manut" class="form-control" rows="3"></textarea>
+							</div>
+						</div>
+						
+						<div class="row" id='div_pecas'>
+							<table tablename="tb_pecas" cellspacing="0" id="tb_pecas"  class="table" noaddbutton="true" nodeletebutton="false" customFnDelete="fnCustomDelete(this)">
+								<thead>
+									<tr class="tableHeadRow">
+										<!--<th class="tableColumn">Quant.:</th>
+										<th class="tableColumn">Cod. Datasul:</th>
+										<th class="tableColumn">Valor:</th>	-->									 
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>
+											<div class="row">
+												<div class="col-sm-3 col-xs-12">
+													<label for="quant_pecs">Quant.:</label>
+													<input type="text" name="quant_pecs" id="quant_pecs" class="form-control number"/>
+												</div>
+												<div class="col-sm-4 col-xs-12">
+													<label for="cod_pecs">Cod. TOTVS:</label>
+													<input type="text" name="cod_pecs" id="cod_pecs" class="form-control"/>
+												</div>
+												<div class="col-sm-5 col-xs-12">
+													<label for="valor_pecs">Valor:</label>
+													<input type="text" name="valor_pecs" id="valor_pecs" class="form-control money"/>
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-sm-3 col-xs-12">
+													<label for="matricula_aprov_manut">Nr. SMD:</label>
+													<input type="text" class="form-control smd" placeholder="SMD" name="num_smd" id="num_smd" />
+												</div>
+												<div class="col-sm-9 col-xs-12">
+													<label for="desc_pecs">Descri&ccedil;&atilde;o:</label>
+													<textarea name="desc_pecs" id="desc_pecs" class="form-control" rows="3"></textarea>
+												</div>												
+											</div>											
+										</td>										
+									</tr>
+								</tbody>
+							</table>
+							<div class="col-sm-12 col-xs-12" align="right">
+								<button type="button" class="btn btn-primary" data-toggle="button" onclick="addLinha('tb_pecas')">Adicionar Materiais</button>
+							</div>
+						</div>
+								
+								
+						<br/>
+						<div class="row">
+							<div class="col-sm-3 col-xs-12">
+								<label for="matricula_avaliacao">Resp. Avalia&ccedil;&atilde;o:</label> 
+								<input type="text" class="form-control" placeholder="Matr&iacute;cula" name="matricula_avaliacao" id="matricula_avaliacao" readonly="readonly" />
+							</div>
+							<div class="col-sm-6 col-xs-12">
+								<label for="user_avaliacao">&nbsp;</label> 
+								<input type="text" class="form-control" placeholder="Responsavel" name="user_avaliacao" id="user_avaliacao" readonly="readonly" />
+							</div>
+							<div class="col-sm-3 col-xs-12">
+								<label for="data_avaliacao">Data:</label> 
+								<input type="text" class="form-control" placeholder="Data" name="data_avaliacao" id="data_avaliacao" readonly="readonly" />
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="panel panel-primary" id="cotacao">
+					<div class="panel-heading" style="background-color: blue;">
+						<h3 class="panel-title">
+							<strong><i class="fluigicon fluigicon-file-default fluigicon-sm"></i>&nbsp; Cotacao </strong>
+						</h3>
+					</div>
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-xs-12">
+								<label for="obser_cotacao">Observa&ccedil;&otilde;es:</label>
+								<textarea name="obser_cotacao" id="obser_cotacao" class="form-control" rows="3"></textarea>
+							</div>
+						</div>
+						<br/>
+						<div class="row">
+							<div class="col-sm-3 col-xs-12">
+								<label for="mat_cotacao">Resp. PrÃ© Analise:</label>
+								<input type="text" class="form-control" placeholder="Matr&iacute;cula" name="mat_cotacao" id="mat_cotacao" readonly="readonly" />
+							</div>
+							<div class="col-sm-6 col-xs-12">
+								<label for="resp_cotacao">&nbsp;</label>
+								<input type="text" class="form-control" placeholder="Responsavel" name="resp_cotacao" id="resp_cotacao" readonly="readonly" />
+							</div>
+							<div class="col-sm-3 col-xs-12">
+								<label for="data_cotacao">Data:</label>
+								<input type="text" class="form-control" placeholder="Data" name="data_cotacao" id="data_cotacao" readonly="readonly" />
+							</div>
+						</div>
+					</div>
+				</div>			
+			
+				
+				<div class="panel panel-primary" id="pn_aprov_manut">
+					<div class="panel-heading" style="background-color: blue;">
+						<h3 class="panel-title">
+							<strong><i class="fluigicon fluigicon-file-default fluigicon-sm"></i>&nbsp; Aprova&ccedil;&atilde;o</strong>
+						</h3>
+					</div>
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-sm-3 col-xs-12">
+								<label for="resp_aprov_manut">Aprovado?</label>
+								<br>							
+								<input type="radio" name="resp_aprov_manut" id="resp_aprov_manut" style="cursor: pointer" value="sim" checked="checked"/> Sim
+								<input type="radio" name="resp_aprov_manut" id="resp_aprov_manut" style="cursor: pointer" value="nao" /> N&atilde;o							
+							</div>						
+							<div class="col-sm-9 col-xs-12">
+								<label for="desc_parecer">Observa&ccedil;&otilde;es:</label>
+								<textarea name="desc_aprov_manut" id="desc_aprov_manut" class="form-control" rows="3"></textarea>
+							</div>
+						</div>
+						<br/>
+						<div class="row">
+							<div class="col-sm-3 col-xs-12">
+								<label for="matricula_aprov_manut">Aprovador:</label>
+								<input type="text" class="form-control" placeholder="Matr&iacute;cula" name="matricula_aprov_manut" id="matricula_aprov_manut" readonly="readonly" />
+							</div>
+							<div class="col-sm-6 col-xs-12">
+								<label for="user_aprov_manut">&nbsp;</label>
+								<input type="text" class="form-control" placeholder="Responsavel" name="aprov_manut" id="aprov_manut" readonly="readonly" />
+							</div>
+							<div class="col-sm-3 col-xs-12">
+								<label for="data_aprov_manut">Data:</label>
+								<input type="text" class="form-control" placeholder="Data" name="data_aprov_manut" id="data_aprov_manut" readonly="readonly" />
+							</div>
+						</div>
+					</div>
+				</div>	
+				
+				<div class="panel panel-primary" id="pn_compra">
+					<div class="panel-heading" style="background-color: blue;">
+						<h3 class="panel-title">
+							<strong><i class="fluigicon fluigicon-file-default fluigicon-sm"></i>&nbsp; Compra de Material</strong>
+						</h3>
+					</div>
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-sm-9 col-xs-12">
+								<label for="desc_parecer">Observa&ccedil;&otilde;es:</label>
+								<textarea name="desc_compra_manut" id="desc_compra_manut" class="form-control" rows="3"></textarea>
+							</div>
+						</div>
+						<br/>
+						<div class="row">
+							<div class="col-sm-3 col-xs-12">
+								<label for="matricula_compra_manut">Resp. Solic. Compra:</label>
+								<input type="text" class="form-control" placeholder="Matr&iacute;cula" name="matricula_compra_manut" id="matricula_compra_manut" readonly="readonly" />
+							</div>
+							<div class="col-sm-6 col-xs-12">
+								<label for="compra_manut">&nbsp;</label>
+								<input type="text" class="form-control" placeholder="Responsavel" name="compra_manut" id="compra_manut" readonly="readonly" />
+							</div>
+							<div class="col-sm-3 col-xs-12">
+								<label for="data_compra_manut">Data:</label>
+								<input type="text" class="form-control" placeholder="Data" name="data_compra_manut" id="data_compra_manut" readonly="readonly" />
+							</div>
+						</div>
+					</div>
+				</div>	
+				
+				
+						
+				<div class="panel panel-primary" id="pn_exec_manut">
+					<div class="panel-heading" style="background-color: blue;">
+						<h3 class="panel-title">
+							<strong><i class="fluigicon fluigicon-file-default fluigicon-sm"></i>&nbsp; Execu&ccedil;&atilde;o</strong>
+						</h3>
+					</div>
+					<div class="panel-body">
+						<div class="row">
+							<table tablename="tb_rep_horas" cellspacing="0" id="tb_rep_horas"  class="table" noaddbutton="true" nodeletebutton="false" customFnDelete="fnCustomDelete(this)">
+								<thead>
+									<tr class="tableHeadRow">
+										<th class="tableColumn">Data Ini.:</th>
+										<th class="tableColumn">Hora Ini.:</th>
+										<th class="tableColumn"></th>
+										<th class="tableColumn">Data Fim:</th>
+										<th class="tableColumn">Hora Fim:</th>
+										<th class="tableColumn"></th>
+										<th class="tableColumn">Total Hrs:</th>																			 
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td class="col-sm-2 col-xs-12">
+											<input type="text" name="data_ini_manut" id="data_ini_manut" class="form-control readonly" />
+										</td>
+										<td class="col-sm-2 col-xs-12">
+											<input type="text" name="hora_ini_manut" id="hora_ini_manut" class="form-control readonly" />
+										</td>
+										<td class="col-sm-1 col-xs-12">
+											<button type="button" class="btn btn-primary setIni" data-toggle="button" id="btn_ini_manut">Inciar Manuten&ccedil;&atildeo</button>
+										</td>
+										<td class="col-sm-2 col-xs-12">
+											<input type="text" name="data_fim_manut" id="data_fim_manut" class="form-control readonly" />
+										</td>
+										<td class="col-sm-2 col-xs-12">
+											<input type="text" name="hora_fim_manut" id="hora_fim_manut" class="form-control readonly" />
+										</td>
+										<td class="col-sm-1 col-xs-12">
+											<button type="button" class="btn btn-primary setFim" data-toggle="button" id="btn_fim_manut">Finalizar Manuten&ccedil;&atildeo</button>
+										</td>	
+										<td class="col-sm-2 col-xs-12">
+											<input type="text" class="form-control readonly" placeholder="Data" name="tempo_rep_manut" id="tempo_rep_manut" />
+										</td>											
+																				
+									</tr>
+								</tbody>
+							</table>							
+						</div>
+						<div class="row">
+							<div class="col-sm-3 col-xs-12">
+								<label for="desc_parecer">Tempo gasto:</label>
+								<input type="text" class="form-control readonly" placeholder="Data" name="tempo_manut" id="tempo_manut"/>
+							</div>
+							<div class="col-sm-4 col-xs-12">
+								<label for="manut_prev">Ã Preventiva:</label>
+								<br>							
+								<input type="radio" name="manut_prev" id="manut_prev" style="cursor: pointer" value="sim" checked="checked"/> Sim
+								<input type="radio" name="manut_prev" id="manut_prev" style="cursor: pointer" value="nao"/> N&atilde;o							
+							</div>
+							<div class="col-sm-5 col-xs-12" align="right">
+								<button type="button" class="btn btn-primary" data-toggle="button" onclick="addReporte('tb_rep_horas')">Adicionar Reporte</button>
+							</div>
+						</div>
+						</br>
+						<div class="row">
+							<div class="col-sm-12 col-xs-12">
+								<label for="desc_exec_manut">Descri&ccedil;&atilde;o da Manuten&ccedil;&atilde;o Realizada:</label>
+								<textarea name="desc_exec_manut" id="desc_exec_manut" class="form-control" rows="3"></textarea>
+							</div>
+						</div>
+						<br/>
+						<div class="row">
+							<div class="col-sm-12 col-xs-12">
+								<div class="alert alert-info" role="alert" align="center"><strong>Materiais utilizados</strong></div>
+							</div>
+						</div>	
+						<div class="row" id='div_pecas_utilizadas'>
+							<table tablename="tb_pecas_utilizadas" cellspacing="0" id="tb_pecas_utilizadas"  class="table" noaddbutton="true" nodeletebutton="false" customFnDelete="fnCustomDelete(this)">
+								<thead>
+									<tr class="tableHeadRow">
+										<!--<th class="tableColumn">Quant.:</th>
+										<th class="tableColumn">Cod. Datasul:</th>
+										<th class="tableColumn">Valor:</th>-->										 
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>
+											<div class="row">
+												<div class="col-sm-3 col-xs-12">
+													<label for="quant_pecs_utilizadas">Quant.:</label>
+													<input type="text" name="quant_pecs_utilizadas" id="quant_pecs_utilizadas" class="form-control number"/>
+												</div>
+												<div class="col-sm-4 col-xs-12">
+													<label for="cod_pecs_utilizadas">Cod. TOTVS:</label>
+													<input type="text" name="cod_pecs_utilizadas" id="cod_pecs_utilizadas" class="form-control"/>
+												</div>
+												<div class="col-sm-5 col-xs-12">
+													<label for="valor_pecs_utilizadas">Valor:</label>
+													<input type="text" name="valor_pecs_utilizadas" id="valor_pecs_utilizadas" class="form-control money"/>
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-sm-12 col-xs-12">
+													<label for="desc_pecs_utilizadas">Descri&ccedil;&atilde;o:</label>
+													<textarea name="desc_pecs_utilizadas" id="desc_pecs_utilizadas" class="form-control" rows="3"></textarea>
+												</div>												
+											</div>											
+										</td>										
+									</tr>
+								</tbody>
+							</table>
+							<div class="col-sm-12 col-xs-12" align="right">
+								<button type="button" class="btn btn-primary" data-toggle="button" onclick="addPecasUtilizadas('tb_pecas_utilizadas')">Adicionar Materiais</button>
+							</div>
+						</div>
+								
+						
+						<br/>
+						<div class="row">
+							<div class="col-sm-3 col-xs-12">
+								<label for="matricula_exec_manut">Executor:</label>
+								<input type="text" class="form-control" placeholder="Matr&iacute;cula" name="matricula_exec_manut" id="matricula_exec_manut" readonly="readonly" />
+							</div>
+							<div class="col-sm-6 col-xs-12">
+								<label for="user_exec_manut">&nbsp;</label>
+								<input type="text" class="form-control" placeholder="Responsavel" name="user_exec_manut" id="user_exec_manut" readonly="readonly" />
+							</div>
+							<div class="col-sm-3 col-xs-12">
+								<label for="data_exec_manut">Data:</label>
+								<input type="text" class="form-control" placeholder="Data" name="data_exec_manut" id="data_exec_manut" readonly="readonly" />
+							</div>
+						</div>
+					</div>
+				</div>	
+				
+				<div class="panel panel-primary" id="pn_user_aprov_manut">
+					<div class="panel-heading" style="background-color: blue;">
+						<h3 class="panel-title">
+							<strong><i class="fluigicon fluigicon-file-default fluigicon-sm"></i>&nbsp; Aprova&ccedil;&atilde;o do Solicitante</strong>
+						</h3>
+					</div>
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-sm-3 col-xs-12">
+								<label for="sol_aprov_manut">Aprovado?</label>
+								<br>							
+								<input type="radio" name="sol_aprov_manut" id="sol_aprov_manut" style="cursor: pointer" value="sim" checked="checked"/> Sim
+								<input type="radio" name="sol_aprov_manut" id="sol_aprov_manut" style="cursor: pointer" value="nao"/> N&atilde;o							
+							</div>						
+							<div class="col-sm-9 col-xs-12">
+								<label for="desc_parecer">Observa&ccedil;&otilde;es:</label>
+								<textarea name="desc_user_aprov_manut" id="desc_user_aprov_manut" class="form-control" rows="3"></textarea>
+							</div>
+						</div>
+						<br/>
+						<div class="row">
+							<div class="col-sm-3 col-xs-12">
+								<label for="matricula_user_aprov_manut">Aprovador:</label>
+								<input type="text" class="form-control" placeholder="Matr&iacute;cula" name="matricula_user_aprov_manut" id="matricula_user_aprov_manut" readonly="readonly" />
+							</div>
+							<div class="col-sm-6 col-xs-12">
+								<label for="user_aprov_manut">&nbsp;</label>
+								<input type="text" class="form-control" placeholder="Responsavel" name="user_aprov_manut" id="user_aprov_manut" readonly="readonly" />
+							</div>
+							<div class="col-sm-3 col-xs-12">
+								<label for="data_user_aprov_manut">Data:</label>
+								<input type="text" class="form-control" placeholder="Data" name="data_user_aprov_manut" id="data_user_aprov_manut" readonly="readonly" />
+							</div>
+						</div>
+					</div>
+				</div>	
+				
+				
+	
+				
+				
+			</form>
+		</div>
+	</body>
+</html>

@@ -4,14 +4,17 @@ function createDataset(fields, constraints, sortFields) {
 		
 		if (constraints != null) {
 	        for (var i = 0; i < constraints.length; i++) { 
-	        	if (constraints[i].fieldName == 'nat_operacao' ) nat_operacao = constraints[i].initialValue;	        	
+	        	if (constraints[i].fieldName == 'nat_operacao' ) nat_operacao = String(constraints[i].initialValue);	        	
 	        }
-		}
-	
+		}	
 		
        var newDataset = DatasetBuilder.newDataset();
        
-       var minhaQuery = 'select "nat-operacao", "denominacao", "aliquota-icm" from PUB."natur-oper" where "nat-operacao" = \''  + nat_operacao + '\'';
+       var minhaQuery = 'select "nat-operacao", "denominacao", "aliquota-icm", CASE "tipo" '+ 
+																			'WHEN 1 THEN \'entrada\' ' +  
+																			'WHEN 2 THEN \'saida\' ' +
+																			'else \'servico\'  end as tipo ' + 
+    	   'from PUB."natur-oper" where "nat-operacao" = \''  + nat_operacao + '\'';
        
        //log..warn("QUERY: " + minhaQuery);
        //log..warn(">>>>>>>>>>>>>>>>>>>>>>>>PASSO 01");
@@ -59,7 +62,7 @@ function createDataset(fields, constraints, sortFields) {
                     newDataset.addRow(Arr);
              }
        } catch (e) {
-             //log..error("DATASET_SQL_ERRO==============> " + e.message);
+             log.error("DATASET_SQL_ERRO==============> " + e.message);
        } finally {
              if (stmt != null)
                     stmt.close();

@@ -6,9 +6,9 @@ function createDataset(fields, constraints, sortFields) {
 	if (constraints != null) {
 		for (var i = 0; i < constraints.length; i++) {
 			if (constraints[i].fieldName == 'cod_item')
-				cod_item = constraints[i].initialValue;
+				cod_item = String(constraints[i].initialValue);
 			if (constraints[i].fieldName == 'estab')
-				estab = constraints[i].initialValue;
+				estab = String(constraints[i].initialValue);
 		}
 	}
 
@@ -21,6 +21,7 @@ function createDataset(fields, constraints, sortFields) {
 			+ estab + ' and "it-codigo" = \'' + cod_item + '\'';
 
 	log.warn("QUERY: " + QueryPrincipal);
+	log.warn("QUERY: " + QuerySUB);
 	log.warn(">>>>>>>>>>>>>>>>>>>>>>>>PASSO 01");
 	var dataSourceMGCAD = "/jdbc/ProgressMGCAD";
 	var dataSourceMGMOV = "/jdbc/ProgressMGMOV";
