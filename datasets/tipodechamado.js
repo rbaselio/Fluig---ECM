@@ -2,18 +2,18 @@ function createDataset(fields, constraints, sortFields) {
 	
 	var er = /[^a-z0-9]/gi;
 	
-	log.warn("----------------------------------------contraint");
+	//log.warn("----------------------------------------contraint");
 	
 	var classe = "";
 	if (constraints != null) {
         for (var i = 0; i < constraints.length; i++) {
-        	log.warn(constraints[i].getFieldName());
-        	log.warn(constraints[i].initialValue);
+        	//log.warn(constraints[i].getFieldName());
+        	//log.warn(constraints[i].initialValue);
         	if (constraints[i].getFieldName() == "Classe")  classe = new String(constraints[i].initialValue).replace(er, "");
         }
 	}
 	
-	log.warn("----------------------------------------dataset");
+	//log.warn("----------------------------------------dataset");
 	// Cria as colunas do dataset
 	var dataset = DatasetBuilder.newDataset();
 	dataset.addColumn("Classe");
@@ -38,7 +38,7 @@ function createDataset(fields, constraints, sortFields) {
 	var filhos = new Array();
 	var count = 0;
 
-	log.warn("----------------------------------------loop");
+	//log.warn("----------------------------------------loop");
 	for (var i = 0; i < datasetPrincipal.rowsCount; i++) {
 		
 
@@ -54,11 +54,11 @@ function createDataset(fields, constraints, sortFields) {
 		var constraintsFilhos = new Array(c1, c2, c3);
 
 		var datasetFilhos = DatasetFactory.getDataset(datasetDoFormulario, null, constraintsFilhos, new Array("tipo", "classe"));
-		log.warn("----------------------------------------filhos");
+		//log.warn("----------------------------------------filhos");
 		for (var j = 0; j < datasetFilhos.rowsCount; j++) {
-			log.warn(datasetFilhos.getValue(j, "classe"));
-			log.warn(new String(datasetFilhos.getValue(j, "classe")).replace(er, ""));
-			log.warn(classe);
+			//log.warn(datasetFilhos.getValue(j, "classe"));
+			//log.warn(new String(datasetFilhos.getValue(j, "classe")).replace(er, ""));
+			//log.warn(classe);
 			if (classe != "" && new String(datasetFilhos.getValue(j, "classe")).replace(er, "") != classe) continue;
 			
 			

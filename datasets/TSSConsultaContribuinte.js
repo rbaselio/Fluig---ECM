@@ -4,24 +4,28 @@ function createDataset(fields, constraints, sortFields) {
 	if (constraints != null) {
 		uf = null;
 		cnpj = null;
-		cpf = null; //"28100393800";
+		cpf = null; 
 		IE = null;
 		
         for (var i = 0; i < constraints.length; i++) { 
         	if (constraints[i].fieldName == 'uf' ) uf = constraints[i].initialValue;
-        	if (constraints[i].fieldName == 'cnpj' ) cnpj = constraints[i].initialValue;
-        	if (constraints[i].fieldName == 'cpf' ) cpf = constraints[i].initialValue;
+        	if (constraints[i].fieldName == 'cnpj' ) cnpj = String(constraints[i].initialValue).replace(/\D/g, '');
+        	if (constraints[i].fieldName == 'cpf' ) cpf = String(constraints[i].initialValue).replace(/\D/g, '');
         	if (constraints[i].fieldName == 'IE' ) IE = constraints[i].initialValue;
         }
 	}
 	if (uf == null){		
-		var uf = "SP";
-		var cnpj = "51479772000199";
-		var cpf = null; //"28100393800";
-		var IE = null;
+		var uf = "PI";
+		var cnpj = "07228083000110";
+		var cpf = null; /* "22696091820";*/
+		var IE = null; /* "P0152052070001";*/
 	}
 	
 	log.warn("------------------------------------------------------------------------------------------------------------");
+	log.warn(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + cnpj);
+	log.warn(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + cpf);
+	log.warn(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + uf);
+	
 	
 	// Cria o dataset
     var dataset = DatasetBuilder.newDataset();
@@ -64,6 +68,7 @@ function createDataset(fields, constraints, sortFields) {
 		
 		var situacao = result.getSITUACAO() == 1 ? "Habilitado" : "Não habilitado";
 		
+		log.warn(result.getRAZAOSOCIAL());
 		
 	    dataset.addRow(new Array(	"OK", 
 	    							sm.format(new Date()), 
@@ -91,7 +96,9 @@ function createDataset(fields, constraints, sortFields) {
 	    		));
    
     } catch (erro) {
+    	log.warn(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + erro.toString());
         dataset.addRow(new Array("ERRO", sm.format(new Date()), erro.toString()));
+        
     }
     
     return dataset;	

@@ -1,90 +1,83 @@
-function createDataset(fields, constraints, sortFields) {
-	  
-	  var newDataset = DatasetBuilder.newDataset();
-	   var DatasetFiltrado = DatasetBuilder.newDataset()
-       
-       var minhaQuery = 'select "cod-transp", nome from PUB."transporte"';
-       
-       //log.warn("QUERY: " + minhaQuery);
-       //log.warn(">>>>>>>>>>>>>>>>>>>>>>>>PASSO 01");
-       var dataSource = "/jdbc/ProgressMGCAD";
-       var ic = new javax.naming.InitialContext();
-       //log.warn(">>>>>>>>>>>>>>>>>>>>>>>>PASSO 02");
-       //log.warn("ic: " + ic);
-       var ds = ic.lookup(dataSource);
-       //log.warn(">>>>>>>>>>>>>>>>>>>>>>>>PASSO 03");
-       //log.warn("ds: " + ds);
-       var created = false;
-       //log.warn(">>>>>>>>>>>>>>>>>>>>>>>>>>> PASSO 04");
-       
-       try {
-    	   var conn = ds.getConnection();
-           //log.warn("conn: " + conn);
-           var stmt = conn.createStatement();
-           //log.warn("stmt: " + stmt);
-           var rs = stmt.executeQuery(minhaQuery);
-           //log.warn(">>>>>>>>>>>>>>>>>>>>>>>>PASSO 05");           
-           
-           var columnCount = rs.getMetaData().getColumnCount();      
-            
-            
-             while (rs.next()) {           	 
-            	            	 
-                    if (!created) {
-                    	
-                           for (var i = 1; i <= columnCount; i++) {
-                                  newDataset.addColumn(rs.getMetaData().getColumnName(i));
-                                  DatasetFiltrado.addColumn(rs.getMetaData().getColumnName(i));
-                                  //log.warn(rs.getMetaData().getColumnName(i));
-                           }
-                           created = true;
-                    }
-                    var Arr = new Array();
-                    for (var i = 1; i <= columnCount; i++) {
-                           var obj = rs.getObject(rs.getMetaData().getColumnName(i));
-                           if (null != obj) {
-                                  Arr[i - 1] = rs.getObject(rs.getMetaData().getColumnName(i)).toString();
-                                  //log.warn(rs.getObject(rs.getMetaData().getColumnName(i)).toString());
-                           } else {
-                                  Arr[i - 1] = "null";
-                           }
-                    }
-                    newDataset.addRow(Arr);
-             }
-       } catch (e) {
-             //log.error("DATASET_SQL_ERRO==============> " + e.message);
-       } finally {
-             if (stmt != null)
-                    stmt.close();
-             if (conn != null)
-                    conn.close();
-       }
-       
-     
-       
-       if (constraints.length <= 1) return newDataset;
-	   	else {
-	   		var campo = '';
-	   		for (var j = 0; j < newDataset.rowsCount; j++) {
-	   			for (var i in constraints) {
-	   				var inicial = constraints[i].getInitialValue().toUpperCase();
-	   				
-	   				try {
-	   					campo =  newDataset.getValue(j, constraints[i].getFieldName()) ?  newDataset.getValue(j, constraints[i].getFieldName()).toUpperCase() : '';
-	   				}catch (e) {
-	   					//log.error("DATASET_SQL_ERRO==============> " + e.message);
-	   				}
-	   				if (campo != '' && campo.indexOf(inicial) >= 0){
-	   					log.warn(campo);
-	   					DatasetFiltrado.addRow(new Array(newDataset.getValue(j, "cod-transp"),  newDataset.getValue(j, "nome")));
-	   					break;
-	   				};       
-	   		    }	
-	   		}
-	   		return DatasetFiltrado;
-	   	}     
-      
-       
-     
- 
+function defineStructure() {
+	addColumn("cod_transp");
+	addColumn("nome_transp");
+	setKey([ "cod_transp", "nome_transp" ]);
+	addIndex([ "cod_transp" ]);
+	addIndex([ "cod_transp", "nome_tranap"]);
 }
+
+function onSync(lastSyncDate) {
+	var newDataset = DatasetBuilder.newDataset();	
+	try{
+		//log.warn(">>>>>>>>>>>>>>>>>>>>>>>>PASSO 1");
+		var serviceProvider = ServiceManager.getService('TOTVS');
+		
+		//log.warn(">>>>>>>>>>>>>>>>>>>>>>>>PASSO 2");
+	    var serviceLocator = serviceProvider.instantiate('com.totvs.framework.ws.execbo.service.WebServiceExecBO');
+	    
+	    //log.warn(">>>>>>>>>>>>>>>>>>>>>>>>PASSO 3");
+	    var service = serviceLocator.getWebServiceExecBOPort();
+	     
+	    //log.warn(">>>>>>>>>>>>>>>>>>>>>>>>PASSO 4");
+	    var token = service.userLogin("super");   
+	    
+	    //log.warn(token);	    
+	    
+	    //array para receber os campos da tabela
+	    var tt_fields = new Array();
+	    //campos da tabelas
+	    var fields1 = new Object();
+	    fields1.type = "integer";
+	    fields1.name = "cod_transp";
+	    fields1.label = "cod_transp";
+	    tt_fields[0] = fields1;
+	    
+	    var fields2 = new Object();
+	    fields2.type = "character";
+	    fields2.name = "nome";
+	    fields2.label = "Nome";
+	    tt_fields[1] = fields2;
+	    
+	    //formador do paremetro value para temp-table
+	    var valores1 = new Object();
+	    valores1.name = "tt-transportador";
+	    valores1.records = new Array();
+	    valores1.fields = tt_fields;
+	    
+	    //array para receber os parametros input da chamada da função
+	    var params = new Array();
+		var param1 = new Object();
+		param1.dataType = "temptable";
+		param1.name = "tt-transportador";
+		param1.type = "input-output";
+		param1.value = valores1;
+		params[0] = param1;
+		
+		//conversor dos parametros de input para Json
+		var jsonParams = JSON.stringify(params);
+    	
+	    //log.warn(">>>>>>>>>>>>>>>>>>>>>>>>PASSO 5");	
+	    var resp = service.callProcedureWithToken(token, "webservices/esws0001.r", "getTransportador", jsonParams);
+	    
+	    //log.warn(">>>>>>>>>>>>>>>>>>>>>>>>PASSO 6");
+	    var respObj = JSON.parse(resp);
+	    var callProcedureWithTokenResponse = JSON.parse(respObj[0].value);
+	    
+	    for (var i in callProcedureWithTokenResponse.records){
+	    	var Arr = new Array();
+	    	var p = 0;
+	    	for (var j in callProcedureWithTokenResponse.records[i]){
+	    		Arr[p] = "" + callProcedureWithTokenResponse.records[i][j];
+	    		//log.warn(callProcedureWithTokenResponse.records[i][j]);
+	    		p++;    		
+	    	}    	
+	    	newDataset.addOrUpdateRow(Arr);
+	    }
+	} catch (e) {
+		Arr[0] = "NOK"
+    	Arr[1] = e.message;
+		newDataset.addRow(Arr);       
+    } 
+    return newDataset;
+}
+

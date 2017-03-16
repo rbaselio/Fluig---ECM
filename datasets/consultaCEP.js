@@ -10,7 +10,7 @@ function createDataset(fields, constraints, sortFields) {
 		cep = "13904904";
 	}
 	
-	log.warn("--------------------CONSULTA CEP----------------------------------------------------------------------");
+	//log.warn("--------------------CONSULTA CEP----------------------------------------------------------------------");
 	
 	var dataset = DatasetBuilder.newDataset(); 
 	dataset.addColumn('STATUS');
@@ -31,7 +31,7 @@ function createDataset(fields, constraints, sortFields) {
 		
 		if(result== null || result.isEmpty()){
 			dataset.addRow(new Array("NOK", "Erro ao comunicar ao consultar o CEP", data));	
-			log.warn("NOT FOUND: " + data);		
+			//log.warn("NOT FOUND: " + data);		
 		}else{						
 			try{		
 				var objdata = JSON.parse(result);
@@ -42,10 +42,10 @@ function createDataset(fields, constraints, sortFields) {
 				array[0] = "OK";
 				array[1] = "Consulta OK";
 				array[2] = result;
-				log.warn("RETORNO: " + result);
+				//log.warn("RETORNO: " + result);
 				var i = 3;
 				for (var obj in objdata){	
-					log.warn(obj + " - " + objdata[obj]);
+					//log.warn(obj + " - " + objdata[obj]);
 					array[i] = objdata[obj].toString();
 					i++;
 				};
@@ -53,13 +53,13 @@ function createDataset(fields, constraints, sortFields) {
 				dataset.addRow(array);
 			} catch (e) {
 				dataset.addRow(new Array("NOK", e.toString(), result));
-				log.warn("JSON PARSE: " + result);
+				//log.warn("JSON PARSE: " + result);
 			}
 			
 		}
 	} catch (e) {
 		dataset.addRow(new Array("NOK", e.toString(), vo));
-		log.warn("Client Service: " + vo);
+		//log.warn("Client Service: " + vo);
 	}
 	return dataset;	
 		

@@ -1,113 +1,135 @@
 function createDataset(fields, constraints, sortFields) {
 
-	var cod_item = '01083050 ';
-	var estab = '1';
+	var cod_item, estab, token;
 
 	if (constraints != null) {
 		for (var i = 0; i < constraints.length; i++) {
-			if (constraints[i].fieldName == 'cod_item')
-				cod_item = String(constraints[i].initialValue);
-			if (constraints[i].fieldName == 'estab')
-				estab = String(constraints[i].initialValue);
+			if (constraints[i].fieldName == 'cod_item') cod_item = String(constraints[i].initialValue);
+			if (constraints[i].fieldName == 'estab') estab = String(constraints[i].initialValue);
+			if (constraints[i].fieldName == 'token' ) token = constraints[i].initialValue;  
 		}
+	}
+	if (cod_item == null){
+		cod_item = '';
+		var estab = '1';
+		token = DatasetFactory.getDataset('tokens', null, null, null).getValue(0, "tokenTOTVSDatasul");
 	}
 
 	var newDataset = DatasetBuilder.newDataset();
-
-	var QueryPrincipal = 'select "it-codigo", "desc-item", "cod-destaq" as NCM, "aliquota-ipi" from PUB.ITEM where "it-codigo" = \''
-			+ cod_item + '\'';
-
-	var QuerySUB = 'select "it-codigo", "item-estab"."val-unit-mat-m", "item-estab"."val-unit-mob-m", "item-estab"."val-unit-ggf-m" from PUB."item-estab" where "cod-estabel" = '
-			+ estab + ' and "it-codigo" = \'' + cod_item + '\'';
-
-	log.warn("QUERY: " + QueryPrincipal);
-	log.warn("QUERY: " + QuerySUB);
-	log.warn(">>>>>>>>>>>>>>>>>>>>>>>>PASSO 01");
-	var dataSourceMGCAD = "/jdbc/ProgressMGCAD";
-	var dataSourceMGMOV = "/jdbc/ProgressMGMOV";
-
-	var ic = new javax.naming.InitialContext();
-	log.warn(">>>>>>>>>>>>>>>>>>>>>>>>PASSO 02");
-	log.warn("ic: " + ic);
-	var dsMGCAD = ic.lookup(dataSourceMGCAD);
-	var dsMGMOV = ic.lookup(dataSourceMGMOV);
-	log.warn(">>>>>>>>>>>>>>>>>>>>>>>>PASSO 03");
-	log.warn("dsMGCAD: " + dsMGCAD);
-	log.warn("dsMGMOV: " + dsMGMOV);
-	var created = false;
-	log.warn(">>>>>>>>>>>>>>>>>>>>>>>>>>> PASSO 04");
-
-	try {
-		var conn = dsMGCAD.getConnection();
-		log.warn("conn: " + conn);
-		var stmt = conn.createStatement();
-		log.warn("stmt: " + stmt);
-		var rs = stmt.executeQuery(QueryPrincipal);
-		log.warn(">>>>>>>>>>>>>>>>>>>>>>>>PASSO 05");
-
-		var connMGMOV = dsMGMOV.getConnection();
-		log.warn("conn: " + connMGMOV);
-		var stmtMGMOV = connMGMOV.createStatement();
-
-		var columnCount = rs.getMetaData().getColumnCount();
-
-		while (rs.next()) {
-			var Arr = new Array();
-			if (!created) {
-				for (var i = 1; i <= columnCount; i++) {
-					newDataset.addColumn(rs.getMetaData().getColumnName(i));
-					log.warn(rs.getMetaData().getColumnName(i));
-				}
-				newDataset.addColumn("val-unit-mat-m");
-				newDataset.addColumn("val-unit-mob-m");
-				newDataset.addColumn("val-unit-ggf-m");
-				created = true;
-			}
-
-			for (var i = 1; i <= columnCount; i++) {
-				var obj = rs.getObject(rs.getMetaData().getColumnName(i));
-				if (null != obj) {
-					Arr[i - 1] = rs
-							.getObject(rs.getMetaData().getColumnName(i))
-							.toString();
-					log.warn(rs.getObject(rs.getMetaData().getColumnName(i))
-							.toString());
-				} else {
-					Arr[i - 1] = "null";
-				}
-			}
-
-			log.warn("stmtMGMOV: " + stmtMGMOV);
-			var rsMGMOV = stmtMGMOV.executeQuery(QuerySUB);
-			if (rsMGMOV.getMetaData().getColumnCount() > 0) {
-				rsMGMOV.next();
-				Arr[columnCount] = rsMGMOV.getObject("val-unit-mat-m")
-						.toString().split(';')[0];
-				Arr[columnCount + 1] = rsMGMOV.getObject("val-unit-mob-m")
-						.toString().split(';')[0];
-				Arr[columnCount + 2] = rsMGMOV.getObject("val-unit-ggf-m")
-						.toString().split(';')[0];
-
-				log.warn(rsMGMOV.getObject("val-unit-mat-m").toString().split(
-						';')[0]);
-				log.warn("connMGMOV: " + connMGMOV);
-
-			}
-			newDataset.addRow(Arr);
-		}
+	newDataset.addColumn("STATUS");
+	
+	try{
+		//log.warn(">>>>>>>>>>>>>>>>>>>>>>>>PASSO 1");
+		var serviceProvider = ServiceManager.getService('TOTVS');
+		
+		//log.warn(">>>>>>>>>>>>>>>>>>>>>>>>PASSO 2");
+	    var serviceLocator = serviceProvider.instantiate('com.totvs.framework.ws.execbo.service.WebServiceExecBO');
+	    
+	    //log.warn(">>>>>>>>>>>>>>>>>>>>>>>>PASSO 3");
+	    var service = serviceLocator.getWebServiceExecBOPort();
+	     
+	    //log.warn(">>>>>>>>>>>>>>>>>>>>>>>>PASSO 4");
+	    //log.warn(token);	    
+	    
+	    //array para receber os campos da tabela
+	   
+	    //campos da tabelas
+	    var it_codigo_tt = new Object();
+	    it_codigo_tt.type = "character";
+	    it_codigo_tt.name = "it_codigo";
+	    it_codigo_tt.label = "it_codigo";
+	    
+	    var desc_item = new Object();
+	    desc_item.type = "character";
+	    desc_item.name = "desc_item";
+	    desc_item.label = "desc_item";
+	    
+	    var ncm = new Object();
+	    ncm.type = "character";
+	    ncm.name = "ncm";
+	    ncm.label = "ncm";
+	    
+	    var ipi = new Object();
+	    ipi.type = "decimal";
+	    ipi.name = "ipi";
+	    ipi.label = "ipi";
+	    
+	    var m_mat = new Object();
+	    m_mat.type = "decimal";
+	    m_mat.name = "m_mat";
+	    m_mat.label = "m_mat";
+	    
+	    var m_mob = new Object();
+	    m_mob.type = "decimal";
+	    m_mob.name = "m_mob";
+	    m_mob.label = "m_mob";
+	    
+	    var m_ggf = new Object();
+	    m_ggf.type = "decimal";
+	    m_ggf.name = "m_ggf";
+	    m_ggf.label = "m_ggf";
+	          
+	    //formador do paremetro value para temp-table
+	    var campos_tabela = new Object();
+	    campos_tabela.name = "tt-item";
+	    campos_tabela.records = new Array();
+	    campos_tabela.fields = [it_codigo_tt, desc_item, ncm, ipi, m_mat, m_mob, m_ggf];
+	    
+	    var tt_itens = new Object();
+	    tt_itens.dataType = "temptable";
+	    tt_itens.name = "tt-item";
+	    tt_itens.type = "input-output";
+	    tt_itens.value = campos_tabela;
+	    
+	    var it_codigo = new Object();
+	    it_codigo.dataType = "character";
+	    it_codigo.name = "it_codigo";
+	    it_codigo.type = "input";
+	    it_codigo.value = cod_item;		
+		
+		var cod_estabel = new Object();
+		cod_estabel.dataType = "character";
+		cod_estabel.name = "cod_estabel";
+		cod_estabel.type = "input";
+		cod_estabel.value = estab;				
+		
+		var params = [it_codigo, cod_estabel, tt_itens];
+		
+		//conversor dos parametros de input para Json
+		var jsonParams = JSON.stringify(params);
+    	
+	    //log.warn(">>>>>>>>>>>>>>>>>>>>>>>>PASSO 5");	
+	    var resp = service.callProcedureWithToken(token, "webservices/esws0001.r", "getItem", jsonParams);
+	    
+	    //log.warn(">>>>>>>>>>>>>>>>>>>>>>>>PASSO 6");
+	    var respObj = JSON.parse(resp);
+	    var callProcedureWithTokenResponse = JSON.parse(respObj[0].value);    
+	   	   
+	    
+	    var created = false;
+        for (var i in callProcedureWithTokenResponse.records){
+	    	var Arr = new Array();
+	    	var p = 1;
+	    	for (var j in callProcedureWithTokenResponse.records[i]){
+	    		if (!created) {
+		    		newDataset.addColumn("" + j);
+		    	}
+	    		Arr[0] = "OK"
+	    		Arr[p] = '' + callProcedureWithTokenResponse.records[i][j];
+	    		//log.warn(callProcedureWithTokenResponse.records[i][j]);
+	    		p++;    		
+	    	}
+	    	created = true;
+	    	newDataset.addRow(Arr);
+	    }
 	} catch (e) {
-		log.error("DATASET_SQL_ERRO==============> " + e.message);
-	} finally {
-		if (stmt != null) {
-			stmt.close();
-			stmtMGMOV.close();
-		}
-		if (conn != null) {
-			conn.close();
-			connMGMOV.close();
-		}
-
-	}
+		var Arr = new Array();
+		newDataset.addColumn("MENSAGEM");
+		Arr[0] = "NOK"
+    	Arr[1] = e.message;
+		newDataset.addRow(Arr);
+		//log.error(e.message);       
+    }    
 
 	return newDataset;
 

@@ -192,10 +192,10 @@ function ativaPreencheCampos(modeView, numState, matricula, WKNumProces, documen
 			
 			$('#matricula_aprov_manut').attr("readOnly", true).val(matr);
 			$('#aprov_manut').attr("readOnly", true).val(usuario);
-			$("#data_aprov_manut").attr("readOnly", true).val(ramal);
+			$("#data_aprov_manut").attr("readOnly", true).val(ramal);	
+			
+			alert("Para valores e custos, favor consultar as cotações em anexo");
 		}
-		
-		
 		
 		if (numState == 15){
 			showElemento($("#pn_compra"));

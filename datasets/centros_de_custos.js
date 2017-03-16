@@ -75,6 +75,7 @@ function createDataset(fields, constraints, sortFields) {
 	newDataset.addRow(new Array('700.101','700.101 - Planejamento de Controle da Produção'));
 	newDataset.addRow(new Array('700.201','700.201 - Compras'));
 	newDataset.addRow(new Array('800.101','800.101 - Controle da Qualidade'));
+	newDataset.addRow(new Array('900.113','900.113 - Rateio de despesas'));
 	
 	if (constraints.length <= 1) return newDataset;
 	else {		
