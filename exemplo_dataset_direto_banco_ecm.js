@@ -41,7 +41,7 @@ function createDataset(fields, constraints, sortFields) {
                     newDataset.addRow(Arr);
              }
        } catch (e) {
-             log.error("DATASET_SQL_ERRO==============> " + e.message);
+             //log.error("DATASET_SQL_ERRO==============> " + e.message);
        } finally {
              if (stmt != null)
                     stmt.close();

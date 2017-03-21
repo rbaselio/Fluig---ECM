@@ -21,10 +21,10 @@ function createDataset(fields, constraints, sortFields) {
 		var IE = null; /* "P0152052070001";*/
 	}
 	
-	log.warn("------------------------------------------------------------------------------------------------------------");
-	log.warn(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + cnpj);
-	log.warn(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + cpf);
-	log.warn(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + uf);
+	//log.warn("------------------------------------------------------------------------------------------------------------");
+	//log.warn(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + cnpj);
+	//log.warn(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + cpf);
+	//log.warn(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + uf);
 	
 	
 	// Cria o dataset
@@ -68,7 +68,7 @@ function createDataset(fields, constraints, sortFields) {
 		
 		var situacao = result.getSITUACAO() == 1 ? "Habilitado" : "Não habilitado";
 		
-		log.warn(result.getRAZAOSOCIAL());
+		//log.warn(result.getRAZAOSOCIAL());
 		
 	    dataset.addRow(new Array(	"OK", 
 	    							sm.format(new Date()), 
@@ -96,7 +96,7 @@ function createDataset(fields, constraints, sortFields) {
 	    		));
    
     } catch (erro) {
-    	log.warn(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + erro.toString());
+    	//log.warn(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + erro.toString());
         dataset.addRow(new Array("ERRO", sm.format(new Date()), erro.toString()));
         
     }

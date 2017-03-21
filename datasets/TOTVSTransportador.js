@@ -3,7 +3,7 @@ function defineStructure() {
 	addColumn("nome_transp");
 	setKey([ "cod_transp", "nome_transp" ]);
 	addIndex([ "cod_transp" ]);
-	addIndex([ "cod_transp", "nome_tranap"]);
+	addIndex([ "cod_transp", "nome_transp"]);
 }
 
 function onSync(lastSyncDate) {

@@ -32,8 +32,8 @@ function afterStateEntry(sequenceId) {
 				hAPI.setDueDate(numProcesso, numThread, responsavel, data,
 						61200);
 			} catch (e) {
-				log.error("----------------Erro ao alterar a data de execução:");
-				log.error(e);
+				//log.error("----------------Erro ao alterar a data de execução:");
+				//log.error(e);
 			}
 		}
 	}

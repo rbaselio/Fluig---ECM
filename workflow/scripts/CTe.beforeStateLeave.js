@@ -30,8 +30,8 @@ function beforeStateLeave(sequenceId){
             try { 
             	hAPI.publishWorkflowAttachment(doc);
             } catch (e) {
-        		log.error("----------------ERRO:");
-        		log.error(e);
+        		//log.error("----------------ERRO:");
+        		//log.error(e);
         	}
         }
         

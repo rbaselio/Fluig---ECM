@@ -11,7 +11,7 @@ function intermediateconditional9() {
  	var cardData = new java.util.HashMap();
  	cardData = hAPI.getCardData(process);
  	var keys = cardData.keySet().toArray();
- 	log.warn("Verificando status dos subprocessos do processo: " + process);
+ 	//log.warn("Verificando status dos subprocessos do processo: " + process);
  	for ( var key in keys) {
  		var field = keys[key];
  		if (field.indexOf("nr_item___") > -1) {
@@ -36,7 +36,7 @@ function intermediateconditional9() {
  				
  			} else if(datasetPrincipal.getValue(i, "status") == 4){
  				hAPI.setCardValue("status_fp___" + row, "Cancelado");
- 				log.warn("O Processo " + processo + " foi cancelado");				
+ 				//log.warn("O Processo " + processo + " foi cancelado");				
  			} else {				
  				var cardDataFilho = hAPI.getCardData(processo);
  				
@@ -45,7 +45,7 @@ function intermediateconditional9() {
  				hAPI.setCardValue("def_const___" + row, cardDataFilho.get("def_const"));
  				hAPI.setCardValue("serv_envio___" + row, cardDataFilho.get("serv_envio"));
  				hAPI.setCardValue("status_fp___" + row, datasetPrincipal.getValue(i, "taskCompletionDate"));
- 				log.warn("O Processo " + processo + " foi concluído");										
+ 				//log.warn("O Processo " + processo + " foi concluído");										
  			}				
  		}
  	}	

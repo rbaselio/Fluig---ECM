@@ -42,8 +42,8 @@ function afterStateEntry(sequenceId) {
 			}
 
 		} catch (e) {
-			log.error("----------------ERRO:");
-			log.error(e);
+			//log.error("----------------ERRO:");
+			//log.error(e);
 		}
 	}
 	
@@ -74,8 +74,8 @@ function afterStateEntry(sequenceId) {
 			}
 
 		} catch (e) {
-			log.error("----------------ERRO:");
-			log.error(e);
+			//log.error("----------------ERRO:");
+			//log.error(e);
 		}
 	}	
 	
@@ -83,7 +83,7 @@ function afterStateEntry(sequenceId) {
 		try {
 			cardData = hAPI.getCardData(process);
 			var keys = cardData.keySet().toArray();
-			log.warn("Verificando status dos subprocessos do processo: " + process);
+			//log.warn("Verificando status dos subprocessos do processo: " + process);
 			for ( var key in keys) {
 				var field = keys[key];
 				if (field.indexOf("fluxo_emer___") > -1) {
@@ -103,17 +103,17 @@ function afterStateEntry(sequenceId) {
 					
 					if(datasetPrincipal.getValue(i, "status") == 4){
 						hAPI.setCardValue("status_emer___" + row, "Cancelado");
-						log.warn("O Processo " + processo + " foi cancelado");											
+						//log.warn("O Processo " + processo + " foi cancelado");											
 					} else {
 						hAPI.setCardValue("status_emer___" + row, datasetPrincipal.getValue(i, "taskCompletionDate"));
-						log.warn("O Processo " + processo + " foi concluído");										
+						//log.warn("O Processo " + processo + " foi concluído");										
 					}				
 				}
 			}
 
 		} catch (e) {
-			log.error("----------------ERRO:");
-			log.error(e);
+			//log.error("----------------ERRO:");
+			//log.error(e);
 		}
 	}
 }

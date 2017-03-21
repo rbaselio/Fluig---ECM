@@ -12,7 +12,7 @@ function intermediateconditional16() {
 		var cardData = new java.util.HashMap();
 		cardData = hAPI.getCardData(process);
 		var keys = cardData.keySet().toArray();
-		log.warn("Verificando status dos subprocessos do processo: " + process);
+		//log.warn("Verificando status dos subprocessos do processo: " + process);
 		for ( var key in keys) {
 			var field = keys[key];
 			if (field.indexOf("fluxo_corr___") > -1) {
@@ -43,27 +43,27 @@ function intermediateconditional16() {
 					
 					if (new Date() > dataPrevista) {
 						hAPI.setCardValue("status_corr___" + row, "Em atraso");
-						log.warn("O Processo " + processo + " ainda esta em atraso");						
+						//log.warn("O Processo " + processo + " ainda esta em atraso");						
 					}
 					else {
 						hAPI.setCardValue("status_corr___" + row, "Em andamento");
-						log.warn("O Processo " + processo + " ainda esta em aberto");
+						//log.warn("O Processo " + processo + " ainda esta em aberto");
 					}
 					status = false;
 					
 				} else if(datasetPrincipal.getValue(i, "status") == 4){
 					hAPI.setCardValue("status_corr___" + row, "Cancelado");
-					log.warn("O Processo " + processo + " foi cancelado");											
+					//log.warn("O Processo " + processo + " foi cancelado");											
 				} else {
 					hAPI.setCardValue("status_corr___" + row, datasetPrincipal.getValue(i, "taskCompletionDate"));
-					log.warn("O Processo " + processo + " foi concluído");										
+					//log.warn("O Processo " + processo + " foi concluído");										
 				}				
 			}
 		}
 
 	} catch (e) {
-		log.error("----------------ERRO:");
-		log.error(e);
+		//log.error("----------------ERRO:");
+		//log.error(e);
 	}
 	return status;
 
