@@ -50,55 +50,39 @@
 					</div>
 					<div class="panel-body">
 						<div class="row">
-							<div class="col-sm-3 col-xs-12 ">
-								<label for="tipo_manut">Criticidade do Serviço:</label>
-								<select class="form-control" name="tipo_manut" id="tipo_manut">
-									<option value=""></option>
-									<option value="defeito">Equipamento com defeito</option>
-									<option value="melhoria">Melhoria no equipamento</option>
-									<option value="impede">Impede a operação</option>
-									<option value="impedepaliativo">Impede a operação sem procedimento paliativo</option>
-									<option value="naoimpede">Não impede a operação/option>
-									<option value="sugestao">Sugestão de Melhoria</option>
-								</select>						
-							</div>	
-							<div class="col-sm-3 col-xs-12">
-								<label for="tipo_equipamento">Tipo Manuten&ccedil;&atilde;o:</label> 
-								<select class="form-control" name="tipo_manut_equip" id="tipo_manut_equip">
-									<option value=""></option>
-									<option value="maquina">M&aacute;quina</option>
-									<option value="instalacao">Instala&ccedil;&atilde;o</option>
-									<option value="estampo">Estampo</option>
-									<option value="veiculo">Ve&iacute;culo</option>
-									<option value="dispositivo">Dispositivo</option>
-									<option value="outros">Outros</option>									
-								</select>																
-							</div>
-							<div class="col-sm-6 col-xs-12">
-								<label for="nome_resp">Descri&ccedil;&atilde;o do Equipamento</label>
-								<input type="text" class="form-control" id="desc_equip" name="desc_equip"/>									
-							</div>		
-						</div>
-						<div class="row">
 							<div class="col-sm-3 col-xs-12">
 								<label for="ident_equip">Identifica&ccedil;&atilde;o do Equipamento</label>
 								<input type="text" class="form-control" id="ident_equip" name="ident_equip"/>									
 							</div>	
+							
+							<div class="col-sm-9 col-xs-12">
+								<label for="nome_resp">Descri&ccedil;&atilde;o do Equipamento</label>
+								<input type="text" class="form-control" id="desc_equip" name="desc_equip"/>									
+							</div>								
+															
+						</div>
+						<div class="row">
+							<div class="col-sm-3 col-xs-12 ">
+								<label for="tipo_manut">Criticidade do ServiÃ§o:</label>
+								<select class="form-control" name="tipo_manut" id="tipo_manut">
+									<option value=""></option>
+									<option value="defeito">Equipamento com defeito</option>
+									<option value="melhoria">Melhoria no equipamento</option>
+									<option value="impede">Impede a operaÃ§Ã£o</option>
+									<option value="impedepaliativo">Impede a operaÃ§Ã£o sem procedimento paliativo</option>
+									<option value="naoimpede">NÃ£o impede a operaÃ§Ã£o/option>
+									<option value="sugestao">SugestÃ£o de Melhoria</option>
+								</select>						
+							</div>								
 							<div class="col-sm-4 col-xs-12">
 								<label for="ccusto">C. Custo:</label>
-								<input type="zoom" name="ccusto" id="ccusto" class="form-control"
-															data-zoom="{
-																        'displayKey':'Descricao',
-																        'datasetId':'centros_de_custos',
-																        'fields':[
-																            {
-																               'field':'Descricao',
-																               'label':'Centros de Custos',
-																               'search':'true'
-																            }
-																        ]
-																     }"
-	 							/>									
+								<div class="input-group">
+									<input type="text" class="form-control readonly" placeholder="Centro de Custo" name="ccusto" id="ccusto" />
+						            <span class="input-group-btn">
+						            	<button class="btn btn-default" type="button" id="listCcusto">&nbsp;<span class="fluigicon fluigicon-search fluigicon-sm"></span></button>
+						            </span>						            
+						        </div>																
+														
 							</div>
 							<div class="col-sm-2 col-xs-12">
 								<label for="dias_manut">Previs&atilde;o(dias)</label>
@@ -117,7 +101,28 @@
 							</div>
 						</div>
 						<div class="row">
-							<div class="col-sm-12 col-xs-12">
+							<div class="col-sm-3 col-xs-12">
+								<label for="tipo_equipamento">Tipo de Manuten&ccedil;&atilde;o:</label> 
+								<select class="form-control" name="manut_prev" id="manut_prev">
+									<option value=""></option>
+									<option value="preventiva">Preventiva</option>
+									<option value="corretiva">Corretiva</option>
+									<option value="preditiva">Preditiva</option>
+									<option value="outros">Outros</option>									
+								</select>																
+							
+								<label for="tipo_equipamento">Tipo Equipamento:</label> 
+								<select class="form-control" name="tipo_manut_equip" id="tipo_manut_equip">
+									<option value=""></option>
+									<option value="maquina">M&aacute;quina</option>
+									<option value="instalacao">Instala&ccedil;&atilde;o</option>
+									<option value="estampo">Estampo</option>
+									<option value="veiculo">Ve&iacute;culo</option>
+									<option value="dispositivo">Dispositivo</option>
+									<option value="outros">Outros</option>									
+								</select>
+							</div>							
+							<div class="col-sm-9 col-xs-12">
 								<label for="desc_parecer">Detalhes do Problema:</label>
 								<textarea name="desc_emissao" id="desc_emissao" class="form-control" rows="3"></textarea>
 							</div>
@@ -139,6 +144,8 @@
 						</div>
 					</div>
 				</div>
+				
+				
 				
 				<div class="panel panel-primary" id="preAnalise">
 					<div class="panel-heading" style="background-color: blue;">
@@ -190,6 +197,50 @@
 								<textarea name="desc_aval_manut" id="desc_aval_manut" class="form-control" rows="3"></textarea>
 							</div>
 						</div>
+						<div class="row">
+							<table tablename="tb_rep_avail" cellspacing="0" id="tb_rep_avail"  class="table" noaddbutton="true" nodeletebutton="false" customFnDelete="fnCustomDelete(this)">
+								<thead>
+									<tr class="tableHeadRow">
+										<th class="tableColumn">Data Ini.:</th>
+										<th class="tableColumn">Hora Ini.:</th>
+										<th class="tableColumn"></th>
+										<th class="tableColumn">Data Fim:</th>
+										<th class="tableColumn">Hora Fim:</th>
+										<th class="tableColumn"></th>
+										<th class="tableColumn">Total Hrs:</th>																			 
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td class="col-sm-2 col-xs-12">
+											<input type="text" name="data_ini_aval" id="data_ini_aval" class="form-control readonly" />
+										</td>
+										<td class="col-sm-2 col-xs-12">
+											<input type="text" name="hora_ini_aval" id="hora_ini_aval" class="form-control readonly" />
+										</td>
+										<td class="col-sm-1 col-xs-12">
+											<button type="button" class="btn btn-primary setIniAval" data-toggle="button" id="btn_ini_aval">Iniciar Avalia&ccedil;&atilde;o</button>
+										</td>
+										<td class="col-sm-2 col-xs-12">
+											<input type="text" name="data_fim_aval" id="data_fim_aval" class="form-control readonly" />
+										</td>
+										<td class="col-sm-2 col-xs-12">
+											<input type="text" name="hora_fim_aval" id="hora_fim_aval" class="form-control readonly" />
+										</td>
+										<td class="col-sm-1 col-xs-12">
+											<button type="button" class="btn btn-primary setFimAval" data-toggle="button" id="btn_fim_aval">Finalizar Avalia&ccedil;&atilde;o</button>
+										</td>	
+										<td class="col-sm-2 col-xs-12">
+											<input type="text" class="form-control readonly" placeholder="Data" name="tempo_rep_aval" id="tempo_rep_aval" />
+										</td>											
+																				
+									</tr>
+								</tbody>
+							</table>
+							<div class="col-sm-12 col-xs-12" align="right">
+								<button type="button" class="btn btn-primary" data-toggle="button" onclick="addAval('tb_rep_avail')">Adicionar Reporte</button>
+							</div>														
+						</div>
 						
 						<div class="row" id='div_pecas'>
 							<table tablename="tb_pecas" cellspacing="0" id="tb_pecas"  class="table" noaddbutton="true" nodeletebutton="false" customFnDelete="fnCustomDelete(this)">
@@ -231,6 +282,7 @@
 							<div class="col-sm-12 col-xs-12" align="right">
 								<button type="button" class="btn btn-primary" data-toggle="button" onclick="addLinha('tb_pecas')">Adicionar Materiais</button>
 							</div>
+							
 						</div>
 								
 								
@@ -350,10 +402,7 @@
 							</div>
 						</div>
 					</div>
-				</div>	
-				
-				
-						
+				</div>			
 				<div class="panel panel-primary" id="pn_exec_manut">
 					<div class="panel-heading" style="background-color: blue;">
 						<h3 class="panel-title">
@@ -383,7 +432,7 @@
 											<input type="text" name="hora_ini_manut" id="hora_ini_manut" class="form-control readonly" />
 										</td>
 										<td class="col-sm-1 col-xs-12">
-											<button type="button" class="btn btn-primary setIni" data-toggle="button" id="btn_ini_manut">Inciar Manuten&ccedil;&atildeo</button>
+											<button type="button" class="btn btn-primary setIni" data-toggle="button" id="btn_ini_manut">Inciar Manuten&ccedil;&atilde;o</button>
 										</td>
 										<td class="col-sm-2 col-xs-12">
 											<input type="text" name="data_fim_manut" id="data_fim_manut" class="form-control readonly" />
@@ -392,7 +441,7 @@
 											<input type="text" name="hora_fim_manut" id="hora_fim_manut" class="form-control readonly" />
 										</td>
 										<td class="col-sm-1 col-xs-12">
-											<button type="button" class="btn btn-primary setFim" data-toggle="button" id="btn_fim_manut">Finalizar Manuten&ccedil;&atildeo</button>
+											<button type="button" class="btn btn-primary setFim" data-toggle="button" id="btn_fim_manut">Finalizar Manuten&ccedil;&atilde;o</button>
 										</td>	
 										<td class="col-sm-2 col-xs-12">
 											<input type="text" class="form-control readonly" placeholder="Data" name="tempo_rep_manut" id="tempo_rep_manut" />

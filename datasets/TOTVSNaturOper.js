@@ -9,7 +9,7 @@ function createDataset(fields, constraints, sortFields) {
         }
 	}	
 	if (nat_oper == null){
-		nat_oper = '61109C';
+		nat_oper = '5999kd';
 		token = DatasetFactory.getDataset('tokens', null, null, null).getValue(0, "tokenTOTVSDatasul");
 	}
 	

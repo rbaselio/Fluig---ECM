@@ -2,6 +2,7 @@ var row, anexos, matr, process, isMobile;
 
 //comportamento do form
 function loadElementos(){
+	
 	$("#dias_manut").mask("000", {reverse: true});
 	
 	$(':radio[id="nec_material"]').change(function() {
@@ -22,8 +23,70 @@ function loadElementos(){
 	setMoneyClass($(".money"));
 	setMoneyClass($(".number"));
 	setTimeInicial($(".setIni"));
-	setTimeFinal($(".setFim"));	
+	setTimeFinal($(".setFim"));
+	setAvalInicial($(".setIniAval"));
+	setAvalFinal($(".setFimAval"));	
 	somaHoras();
+	
+	
+	$('#listCcusto').click(function() {
+		var thisModal = FLUIGC.modal({
+		    title: 'Lista de Centros de Custos',
+		    content: '<div id="postEmb"></div>',
+		    id: 'fluig-modal',
+		    actions: [{
+		        'label': 'Fechar',
+		        'autoClose': true
+		    }]
+		}, function(err, data) {			
+			var thisTable = FLUIGC.datatable('#postEmb', {
+			    dataRequest: {
+			        url: '/api/public/ecm/dataset/search',
+			        options: {
+			            contentType:"application/json",
+			            dataType: 'json',
+			            method: 'POST',
+			            data: JSON.stringify({"datasetId" : "TOTVSCentroDeCusto","limit" : "0"}),
+			            crossDomain: true,
+			            cache: false
+			        },
+			        root: 'content'
+			    },
+			    renderContent: ['cod_ccusto', 'descricao'], 
+			    header: [{'title': 'Cod.'},
+			             {'title': 'Descição'}],
+			    multiSelect: false,
+			    search: {
+			        enabled: true,
+			        onSearch: function(response) {
+			        	$.ajax({
+							  type: 'POST',
+							  contentType: 'application/json',
+							  dataType: 'json',
+							  url: '/api/public/ecm/dataset/search',
+							  data: JSON.stringify({"datasetId" : "TOTVSCentroDeCusto","limit" : "0", "searchField" : "descricao", "searchValue" : response }),
+							  success: function(data) {
+								  thisTable.reload(data.content);
+							  }
+							});
+			        }
+			    },
+			    scroll: {
+			        target: '#postEmb',
+			        enabled: true			        
+		        },
+			    tableStyle: 'table-striped'
+			}).on('dblclick', function(ev) {
+				var index = thisTable.selectedRows()[0];
+			    var selected = thisTable.getRow(index);	
+			    $('#ccusto').val(selected.cod_ccusto + " - " + selected.descricao);
+			    thisModal.remove();					    
+			});
+		});
+		$(".modal-body").css("max-height" , window.innerHeight/2 + 'px');
+	});
+	
+	
 	
 }
 function addReporte(tabela){
@@ -46,10 +109,9 @@ function setTimeInicial(elemento){
 }
 
 function setTimeFinal(elemento){
-	elemento.on('click', function(){
-		var aux = $(this).closest('tr').find("input").eq(1).attr('id').indexOf('___');
-		var thisRow = $(this).closest('tr').find("input").eq(1).attr('id').substring(aux + 3);
-		
+	elemento.on('click', function(){		
+		var aux = $(this).closest('tr').find('input').attr('id').indexOf('___');
+		var thisRow = $(this).closest('tr').find('input').attr('id').substring(aux + 3);
 		if($("#data_ini_manut___" + thisRow).val() != ''){
 			var dataini = $("#data_ini_manut___" + thisRow).val().split("/");
 			var horaini = $("#hora_ini_manut___" + thisRow).val().split(":");
@@ -71,16 +133,68 @@ function setTimeFinal(elemento){
 function somaHoras() {
 	var acum = 0;
 	$("#tempo_manut").val("00:00");
+	$("input[id^='tempo_rep_aval___']").each(function(i) {
+		var tempo = $(this).val().split(':');
+		var minTot = parseInt(tempo[1]) + (tempo[0] * 60);
+		minTot = minTot ? minTot : 0;
+		acum += minTot;		
+	});	
 	$("input[id^='tempo_rep_manut___']").each(function(i) {
 		var tempo = $(this).val().split(':');
-		var horastot = parseFloat(tempo[0]) + (tempo[1] / 60);
-		horastot = horastot ? horastot : 0;
-		acum += horastot;
-		horas = Math.trunc(acum);
-		minutos = Math.trunc((horastot - horas) * 60);
-		$("#tempo_manut").val(("0" + horas).substr(-2) + ":" + ("0" + minutos).substr(-2));
-	});		
+		var minTot = parseInt(tempo[1]) + (tempo[0] * 60);
+		minTot = minTot ? minTot : 0;
+		acum += minTot;
+	});	
+	var horas = Math.trunc(acum / 60);
+	var minutos = acum - (horas * 60)
+	$("#tempo_manut").val(("0" + horas).substr(-2) + ":" + ("0" + minutos).substr(-2));	
 }
+
+function addAval(tabela){
+	$(".readonly").attr("readOnly", true);
+	row = wdkAddChild(tabela);
+	setAvalInicial($("#btn_ini_aval___" + row));
+	setAvalFinal($("#btn_fim_aval___" + row));	
+}
+
+function setAvalInicial(elemento){
+	elemento.on('click', function(){
+		var aux = $(this).closest('tr').find("input").eq(1).attr('id').indexOf('___');
+		var thisRow = $(this).closest('tr').find("input").eq(1).attr('id').substring(aux + 3);
+		if($("#data_ini_aval___" + thisRow).val() == ''){
+			dataAtual = new Date();
+			$("#data_ini_aval___" + thisRow).val(getData());
+			$("#hora_ini_aval___" + thisRow).val(getHora());
+		}
+	});
+}
+
+function setAvalFinal(elemento){
+	
+	elemento.on('click', function(){
+		var aux = $(this).closest('tr').find("input").eq(1).attr('id').indexOf('___');
+		var thisRow = $(this).closest('tr').find("input").eq(1).attr('id').substring(aux + 3);
+		
+		if($("#data_ini_aval___" + thisRow).val() != ''){
+			console.log("ssssssssssssssssssssssssssssssssssss");
+			
+			var dataini = $("#data_ini_aval___" + thisRow).val().split("/");
+			var horaini = $("#hora_ini_aval___" + thisRow).val().split(":");
+			var inicio = new Date(dataini[2], dataini[1] - 1, dataini[0], horaini[0], horaini[1], 0, 0);
+			
+			dataAtual = new Date();		
+			$("#data_fim_aval___" + thisRow).val(getData());
+			$("#hora_fim_aval___" + thisRow).val(getHora());
+						
+			var diferenca = Math.abs(inicio - dataAtual)
+			var horas = Math.trunc(diferenca / (60 * 60 * 1000));
+			var minutos = Math.trunc(((diferenca / (60 * 60 * 1000)) - horas) * 60);
+			$("#tempo_rep_aval___" + thisRow).val(("0" + horas).substr(-2) + ":" + ("0" + minutos).substr(-2));
+			somaHoras();	
+		}
+	});	
+}
+
 function setMoneyClass(elemento){
 	elemento.mask('000.000.000,00', {reverse: true})
 		.on('focusin', function(){$(this).select();})
@@ -181,6 +295,7 @@ function ativaPreencheCampos(modeView, numState, matricula, WKNumProces, documen
 		if (numState == 12){
 			anexos = getAnexos(WKNumProces);
 			showElemento($("#cotacao"));	
+			$("#pn_exec_manut").hide();
 			$('#mat_cotacao').attr("readOnly", true).val(matr);
 			$('#resp_cotacao').attr("readOnly", true).val(usuario);
 			$("#data_cotacao").attr("readOnly", true).val(ramal);
@@ -188,6 +303,7 @@ function ativaPreencheCampos(modeView, numState, matricula, WKNumProces, documen
 		
 		if (numState == 8){
 			showElemento($("#pn_aprov_manut"));
+			$("#pn_exec_manut").hide();
 			$("#num_processo").val(process);
 			
 			$('#matricula_aprov_manut').attr("readOnly", true).val(matr);
@@ -195,10 +311,19 @@ function ativaPreencheCampos(modeView, numState, matricula, WKNumProces, documen
 			$("#data_aprov_manut").attr("readOnly", true).val(ramal);	
 			
 			alert("Para valores e custos, favor consultar as cotações em anexo");
+			
+			
+			
+			
+			
+			
 		}
+		
+		
 		
 		if (numState == 15){
 			showElemento($("#pn_compra"));
+			$("#pn_exec_manut").hide();
 			
 			$('#matricula_compra_manut').attr("readOnly", true).val(matr);
 			$('#compra_manut').attr("readOnly", true).val(usuario);
@@ -274,6 +399,16 @@ var beforeMovementOptions = function(numState){
 	
 	if (numState == 4){
 		if ($("#desc_sit_manut").val() == '') message += "<br/>- Informe a situação encontrada";
+		
+		if($("input[id^='data_ini_aval___']").length == 0) message += "<br/>- Informe ao menos um reporte de tempo;";
+		else{
+			$("input[id^='data_ini_aval___']").each(function(i) {
+				if ($(this).val() == '') message += "<br/>- Informe o reporte de tempo inicial na " + $(this).closest('tr').index();
+			});
+			$("input[id^='data_fim_aval___']").each(function(i) {
+				if ($(this).val() == '') message += "<br/>- Informe o reporte de tempo final na " + $(this).closest('tr').index();
+			});
+		}
 		
 		if ($('#nec_material:checked').val() == "sim"){
 			if($("input[id^='quant_pecs___']").length == 0) message += "<br/>- Informe ao menos um item para compra;";
