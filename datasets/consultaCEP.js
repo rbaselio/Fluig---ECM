@@ -17,8 +17,7 @@ function createDataset(fields, constraints, sortFields) {
 	dataset.addColumn('message');
 	dataset.addColumn('retorno');	
 	
-	try{
-		
+	try{		
 		var clientService = fluigAPI.getAuthorizeClientService();
 		var data = {
 				serviceCode : 'viaCEP',

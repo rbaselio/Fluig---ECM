@@ -1,0 +1,383 @@
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="/portal/resources/style-guide/css/fluig-style-guide.min.css">
+		<script src="/portal/resources/js/jquery/jquery.js"></script>
+		<script src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+		<script src="/portal/resources/js/mustache/mustache-min.js"></script>
+		<script src="/portal/resources/style-guide/js/fluig-style-guide.min.js"></script>
+		<script src="/resources/casp_lib/js/utils.js"></script>
+		<script src="/portal/resources/js/jquery.mask.min.js"></script>
+		<script type="text/javascript"	src="SolicitacaoDeNotaFiscal.js"></script>
+		<script type="text/javascript"	src="jquery.crypt.js"></script>
+		<script src="../vcXMLRPC.js"></script>
+	</head>
+	<body onload="loadElementos()">
+		<div class="fluig-style-guide">
+			<form name="form" role="form">
+				<div class="row">
+					<div class="col-sm-3 col-xs-12 text-center">
+						<img src="/resources/logo_casp/logocasp.gif" width="204" height="79">
+					</div>
+					<div class="col-sm-5 col-xs-12">
+						<h2 class="text-center">
+							<b>SOLICITA&Ccedil;&Atilde;O DE NOTA FISCAL</b>
+						</h2>
+					</div>
+					
+					<div class="col-sm-4 col-xs-12">
+						<div class="row form-group">
+							<label for="chamado_num" class="col-sm-6 col-xs-12 text-right">Solicita&ccedil;&atilde;o n&deg;:</label>
+							<div class="col-sm-6 col-xs-12 controls">
+								<input type="text" name="num_processo" id="num_processo" class="form-control readonly" readonly="readonly" />
+							</div>
+							<br/>
+							<label for="data_sol" class="col-sm-6 col-xs-12 text-right">Data:</label>
+							<div class="col-sm-6 col-xs-12 controls">
+								<input type="text" name="data_sol" id="data_sol" class="form-control readonly" size="15"readonly="readonly"/>
+							</div>
+							<br/>						
+							<label for="hora_sol" class="col-sm-6 col-xs-12 text-right">Hora:</label>
+							<div class="col-sm-6 col-xs-12 controls">
+								<input type="text" name="hora_sol" id="hora_sol" class="form-control readonly"readonly="readonly"/>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="panel panel-primary" id="solicitacao">				
+					<div class="panel-heading" style="background-color: blue;">
+						<h3 class="panel-title">
+							<strong><i class="fluigicon fluigicon-file-default fluigicon-sm"></i>&nbsp; Emiss&atilde;o:</strong>
+						</h3>
+					</div>
+					<div class="panel-body">
+						<div class="row">
+							<div class="alert alert-info" role="alert" align="center"><strong>Dados Destino / Remetente</strong></div>
+							<div class="col-sm-3 col-xs-12">
+								<label for="cod_emitente">Cod. Cliente/Fornecedor:</label>
+								<input type="text" class="form-control soNumeros" placeholder="C&oacute;digo"" name="cod_emitente" id="cod_emitente" />
+							</div>
+							<div class="col-sm-6 col-xs-12">
+								<label for="nome_emitente">Nome Cliente/Fornecedor:</label>
+								<input type="text" class="form-control" placeholder="Nome" name="nome_emitente" id="nome_emitente" />
+							</div>
+							<div class="col-sm-3 col-xs-12">
+								<label for="cep_emitente">CEP:</label>
+								<input type="text" class="form-control" placeholder="CEP" name="cep_emitente" id="cep_emitente"/>
+							</div>																					
+						</div>
+						
+						<div class="row">
+							<div class="col-sm-3 col-xs-12">
+								<label for="pessoaNota">Pessoa:</label>
+								<select class="form-control" name="pessoaNota" id="pessoaNota">
+									<option value="juridica">Jur&iacute;dica</option>	
+									<option value="fisica">F&iacute;sica</option>																									
+								</select>	
+							</div>
+							<div class="col-sm-4 col-xs-12">
+								<label for="cnpj_emitente">CNPJ/CPF:</label>
+								<input type="text" class="form-control" placeholder="CNPJ / CPF"" name="cnpj_emitente" id="cnpj_emitente" />
+							</div>
+							<div class="col-sm-4 col-xs-12">
+								<label for="insc_emitente">Insc. Estadual:</label>
+								<input type="text" class="form-control" placeholder="Insc. Estadual" name="insc_emitente" id="insc_emitente" />
+							</div>
+														
+						</div>
+						<div class="row">
+							<div class="col-sm-6 col-xs-12">
+								<label for="end_emitente">Endere&ccedil;o:</label>
+								<input type="text" class="form-control" placeholder="Endere&ccedil;o"" name="end_emitente" id="end_emitente" />
+							</div>
+							<div class="col-sm-4 col-xs-12">
+								<label for="cid_emitente">Cidade:</label>
+								<input type="text" class="form-control" placeholder="Cidade" name="cid_emitente" id="cid_emitente" />
+							</div>
+							<div class="col-sm-2 col-xs-12">
+								<label for="uf_emitente">UF:</label>
+								<input type="text" class="form-control" placeholder="UF" name="uf_emitente" id="uf_emitente"/>
+							</div>
+						</div>						
+						<div class="row">
+							<div class="col-sm-3 col-xs-12">
+								<label for="espNota">Estabelecimento:</label>
+								<select class="form-control" name="estabNota" id="estabNota">
+									<option value=""></option>
+									<option value="1">Unidade 1</option>
+									<option value="8">Unidade 8</option>																	
+								</select>							
+							</div>
+							<div class="col-sm-3 col-xs-12">
+								<label for="espNota">Esp&eacute;cie:</label>
+								<select class="form-control" name="espNota" id="espNota">
+									<option value=""></option>
+									<option value="devolucao">Devolu&ccedil;&atilde;o / Retorno</option>
+									<option value="outros">Outros</option>																	
+								</select>							
+							</div>	
+							<div class="col-sm-3 col-xs-12">
+								<label for="nfRef">NF Refer&ecirc;ncia:</label>
+								<input type="text" class="form-control soNumeros" placeholder="NF" name="nfRef" id="nfRef" />						
+							</div>
+							<div class="col-sm-3 col-xs-12">
+								<label for="destNota">Tipo Destino:</label>
+								<select class="form-control" name="destNota" id="destNota">
+									<option value=""></option>
+									<option value="C">Cliente</option>
+									<option value="F">Fornecedor</option>																	
+								</select>							
+							</div>	
+						</div>
+						<div class="row">
+							<div class="col-sm-3 col-xs-12">
+								<label for="natOper_emitente">Nat. Opera&ccedil;&atilde;o:</label>
+								<input type="text" class="form-control" placeholder="Nat. Opera&ccedil;&atilde;o" name="natOper_emitente" id="natOper_emitente"/>
+							</div>	
+							<div class="col-sm-6 col-xs-12">
+								<label for="desc_nat">Descri&ccedil;&atilde;o da Natureza:</label>
+								<input type="text" class="form-control readonly" placeholder="Nome" name="desc_nat" id="desc_nat" />
+							</div>
+							<div class="col-sm-3 col-xs-12">
+								<label for="tipoNota">Tipo:</label>
+								<input type="text" class="form-control readonly" placeholder="Tipo da Nota"" name="tipoNota" id="tipoNota" />														
+							</div>													
+						</div>
+						<br/>
+						<div class="row">
+							<div class="alert alert-info" role="alert" align="center"><strong>Dados do transportador</strong></div>
+							<div class="col-sm-3 col-xs-12">
+								<label for="modNota">Tipo do Frete:</label>
+								<select class="form-control" name="modNota" id="modNota">
+									<option value=""></option>
+									<option value="0">CIF</option>
+									<option value="1">FOB</option>																	
+								</select>	
+							</div>
+							<div class="col-sm-3 col-xs-12">
+								<label for="cod_transp">Cod. Tranportador:</label>
+								<input type="text" class="form-control readonly" placeholder="C&oacute;digo"" name="cod_transp" id="cod_transp" />
+							</div>
+							<div class="col-sm-6 col-xs-12">
+								<label for="nome_transp">Nome transportador:</label>
+								<div class="input-group">
+									<input type="text" class="form-control readonly" placeholder="Nome" name="nome_transp" id="nome_transp" />
+						            <span class="input-group-btn">
+						            	<button class="btn btn-default" type="button" id="listaTransp">&nbsp;<span class="fluigicon fluigicon-search fluigicon-sm"></span></button>
+						            </span>						            
+						        </div>																
+							</div>							
+						</div>
+						<div class="row">
+							<div class="col-sm-3 col-xs-12">
+								<label for="volumes">Quant. Volumes:</label>
+								<input type="text" class="form-control soNumeros" placeholder="" name="volumes" id="volumes"/>
+							</div>
+							<div class="col-sm-3 col-xs-12">
+								<label for="tpEmbalagem">Tipo Volumes/Embalagem:</label>
+								<div class="input-group">
+									<input type="hidden" name="embSigla" id="embSigla" />
+									<input type="text" class="form-control readonly" placeholder="Embalagem" name="tpEmbalagem" id="tpEmbalagem" />
+						            <span class="input-group-btn">
+						            	<button class="btn btn-default" type="button" id="listaEmb">&nbsp;<span class="fluigicon fluigicon-search fluigicon-sm"></span></button>
+						            </span>						            
+						        </div>								
+							</div>
+							<div class="col-sm-3 col-xs-12">
+								<label for="pesoBruto">Peso Bruto (Kg):</label>
+								<input type="text" class="form-control money" placeholder="" name="pesoBruto" id="pesoBruto"/>
+							</div>
+							<div class="col-sm-3 col-xs-12">
+								<label for="pesoLiq">Peso L&iacute;quido (Kg):</label>
+								<input type="text" class="form-control money" placeholder="" name="pesoLiq" id="pesoLiq"/>
+							</div>
+						</div>
+						<br/>
+						<div class="row">
+							<div class="alert alert-info" role="alert" align="center"><strong>Dados da Nota Fiscal</strong></div>
+							<div class="col-sm-12 col-xs-12">
+								<label for="desc_sol_nota">Observa&ccedil;&otilde;es:</label>
+								<textarea name="desc_sol_nota" id="desc_sol_nota" class="form-control" rows="3"></textarea>
+							</div>
+						</div>
+						<div class="row">
+							<table tablename="tb_itens_nota" cellspacing="0" id="tb_itens_nota"class="table" noaddbutton="true" nodeletebutton="false" customFnDelete="fnCustomDelete(this)">
+								<thead><tr><th></th></tr></thead>																
+								<tbody>
+									<tr>
+										<td>
+											<div class="row">
+												<div class="col-sm-2 col-xs-12">
+													<label for="quant_item">Quant.:</label>
+													<input type="text" class="form-control money" placeholder="Quant."" name="quant_item" id="quant_item" />
+												</div>
+												<div class="col-sm-3 col-xs-12">
+													<label for="cod_item">C&oacute;digo:</label>
+													<input type="text" class="form-control" placeholder="Codigo"" name="cod_item" id="cod_item" />		
+												</div>
+												<div class="col-sm-7 col-xs-12">
+													<label for="desc_item">Desc. Item:</label>
+													<input type="text" class="form-control" placeholder="Descri&ccedil;&atilde;o"" name="desc_item" id="desc_item" />	
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-sm-3 col-xs-12">
+													<label for="natOper_emitente">Nat. Oper.:</label>
+													<input type="text" class="form-control" placeholder="Nat. Oper."" name="natOper_item" id="natOper_item" />
+												</div>
+												<div class="col-sm-6 col-xs-12">
+													<label for="desc_nat">Descri&ccedil;&atilde;o da Natureza:</label>
+													<input type="text" class="form-control readonly" placeholder="Nome" name="desc_nat_item" id="desc_nat_item" />
+												</div>
+												<div class="col-sm-3 col-xs-12">
+													<label for="icms_item">ICMS(%):</label>
+													<input type="text" class="form-control money readonly" placeholder="ICMS" name="icms_item" id="icms_item" />
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-sm-3 col-xs-12">
+													<label for="ncm_item">NCM:</label>
+													<input type="text" class="form-control NCM" placeholder="NCM"" name="ncm_item" id="ncm_item" />			
+												</div>	
+												<div class="col-sm-4 col-xs-12">
+													<label for="desc_ncm">Desc. NCM:</label>
+													<input type="text" class="form-control readonly" placeholder="IPI"" name="desc_ncm" id="desc_ncm" />			
+												</div>	
+												<div class="col-sm-2 col-xs-12">
+													<label for="ipi_item">IPI(%):</label>
+													<input type="text" class="form-control money readonly" placeholder="IPI"" name="ipi_item" id="ipi_item"/>			
+												</div>
+												<div class="col-sm-3 col-xs-12">
+													<label for="natOper_emitente">Valor Unit. Item:</label>
+													<input type="text" class="form-control money somatorio" placeholder="Valor"" name="valor_item" id="valor_item" />		
+												</div>
+											</div>									
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<div class="row">							
+							<div class="col-sm-9 col-xs-12 " align="right">
+								<label >&nbsp;</label><br/>
+								<button type="button" class="btn btn-primary divAddButton" data-toggle="button" onclick="addLinha('tb_itens_nota')">Adicionar Item</button>
+							</div>
+							<div class="col-sm-3 col-xs-12">
+								<label for="natOper_emitente">Total:</label>
+								<input type="text" class="form-control money readonly" placeholder="" name="total_nota" id="total_nota"/>
+							</div>
+						</div>
+						
+						<div class="row">
+							<div class="col-sm-3 col-xs-12">
+								<label for="matricula_solic">Solicitante:</label>
+								<input type="text" class="form-control readonly" placeholder="Matr&iacute;cula" name="matricula_solic" id="matricula_solic"/>
+							</div>
+							<div class="col-sm-6 col-xs-12">
+								<label for="user_solic">&nbsp;</label>
+								<input type="text" class="form-control readonly" placeholder="Responsavel" name="user_solic" id="user_solic"/>
+							</div>
+							<div class="col-sm-3 col-xs-12">
+								<label for="data_solic">Ramal</label>
+								<input type="text" class="form-control readonly" placeholder="Data" name="data_solic" id="data_solic"/>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="panel panel-primary" id="aprov_emis">
+					<div class="panel-heading" style="background-color: blue;">
+						<h3 class="panel-title">
+							<strong><i class="fluigicon fluigicon-file-default fluigicon-sm"></i>&nbsp; Aprova&ccedil;&atilde;o Superior Imediato</strong>
+						</h3>
+					</div>
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-sm-3 col-xs-12">
+								<label for="aprov_emissao">Aprovado?</label>
+								<br>							
+								<input type="radio" name="aprov_emissao" id="aprov_emissao" style="cursor: pointer" value="sim" checked="checked"/> Sim
+								<input type="radio" name="aprov_emissao" id="aprov_emissao" style="cursor: pointer" value="nao" /> N&atilde;o							
+							</div>						
+							<div class="col-sm-9 col-xs-12">
+								<label for="desc_aprov_emis">Observa&ccedil;&otilde;es:</label>
+								<textarea name="desc_aprov_emis" id="desc_aprov_emis" class="form-control" rows="3"></textarea>
+							</div>
+						</div>
+						<br/>
+						<div class="row">
+							<div class="col-sm-3 col-xs-12">
+								<label for="matricula_aprov_emis">Aprovador:</label>
+								<input type="text" class="form-control readonly" placeholder="Matr&iacute;cula" name="matricula_aprov_emis" id="matricula_aprov_emis"/>
+							</div>
+							<div class="col-sm-6 col-xs-12">
+								<label for="user_aprov_emis">&nbsp;</label>
+								<input type="text" class="form-control readonly" placeholder="Responsavel" name="user_aprov_emis" id="user_aprov_emis"/>
+							</div>
+							<div class="col-sm-3 col-xs-12">
+								<label for="data_aprov_emis">Data:</label>
+								<input type="text" class="form-control readonly" placeholder="Data" name="data_aprov_emis" id="data_aprov_emis"/>
+							</div>
+						</div>
+					</div>
+				</div>	
+				
+				<div class="panel panel-primary" id="emissao_nota">
+					<div class="panel-heading" style="background-color: blue;">
+						<h3 class="panel-title">
+							<strong><i class="fluigicon fluigicon-file-default fluigicon-sm"></i>&nbsp; Emiss&atilde;o Nota Fiscal</strong>
+						</h3>
+					</div>
+					<div class="panel-body">
+						<div class="row">							
+							<div class="col-sm-3 col-xs-12">
+								<label for="nrDocto">Documento:</label>
+								<input type="text" class="form-control readonly" placeholder="Nota Fiscal" name="nrDocto" id="nrDocto"/>
+								<br/>
+<!-- 								<button type="button" id="abrirFT" class="btn btn-primary" data-toggle="button">Iniciar FT4003</button>								 -->
+							</div>								
+							<div class="col-sm-9 col-xs-12">
+								<label for="desc_emissao_nota">Log. de gera&ccedil;&atilde;o:</label>
+								<textarea name="des_geraDocto" id="des_geraDocto" class="form-control readonly" rows="4"></textarea>
+							</div>
+						</div>
+						<br/>
+						<div class="row">							
+							<div class="col-sm-3 col-xs-12">
+								<label for="nota_emitida">Emitida?</label>
+								</br>							
+								<input type="radio" name="nota_emitida" id="nota_emitida" style="cursor: pointer" value="sim" /> Sim
+								<input type="radio" name="nota_emitida" id="nota_emitida" style="cursor: pointer" value="nao" /> N&atilde;o
+								</br>							
+								<label for="nrNota">Nr. Nota Fiscal</label>
+								<input type="text" class="form-control readonly soNumeros" placeholder="Nota Fiscal" name="nrNota" id="nrNota"/>
+							</div>								
+							<div class="col-sm-9 col-xs-12">
+								<label for="desc_emissao_nota">Observa&ccedil;&otilde;es:</label>
+								<textarea name="desc_emissao_nota" id="desc_emissao_nota" class="form-control" rows="4"></textarea>
+							</div>
+						</div>
+						<br/>
+						<div class="row">
+							<div class="col-sm-3 col-xs-12">
+								<label for="matricula_emissao_nota">Emissor:</label>
+								<input type="text" class="form-control readonly" placeholder="Matr&iacute;cula" name="matricula_emissao_nota" id="matricula_emissao_nota"/>
+							</div>
+							<div class="col-sm-6 col-xs-12">
+								<label for="user_emissao_nota">&nbsp;</label>
+								<input type="text" class="form-control readonly" placeholder="Responsavel" name="user_emissao_nota" id="user_emissao_nota"/>
+							</div>
+							<div class="col-sm-3 col-xs-12">
+								<label for="data_emissao_nota">Data:</label>
+								<input type="text" class="form-control readonly" placeholder="Data" name="data_emissao_nota" id="data_emissao_nota"/>
+							</div>
+						</div>
+					</div>
+				</div>	
+				
+			
+				
+			</form>
+		</div>
+	</body>
+</html>
