@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.23" id="1">
     <property name="author">Carla Tonon</property>
-    <property name="createdBy">Eclipse BIRT Designer Version 4.6.0.v201606072122</property>
+    <property name="createdBy">Eclipse BIRT Designer Version 4.4.2.v201410272105 Build &lt;4.4.2.v20150217-1805></property>
     <property name="units">in</property>
     <property name="iconFile">/templates/blank_report.gif</property>
     <property name="layoutPreference">auto layout</property>
@@ -1034,9 +1034,9 @@
                             <property name="verticalAlign">middle</property>
                             <text-data id="388">
                                 <property name="textAlign">center</property>
-                                <expression name="valueExpr">if (params["status"].value == 0) "Relatório de subatividades RNCs Encerrados" &#13;
-else if (params["status"].value == 1) "Relatório de subatividades RNCs em Aberto"&#13;
-else "Relatório de subatividades RNCs"</expression>
+                                <expression name="valueExpr">if (params["status"].value == 0) "Relatório de subatividades Encerrados" &#13;
+else if (params["status"].value == 1) "Relatório de subatividades em Aberto"&#13;
+else "Relatório de subatividades RNCs e SMCs"</expression>
                                 <property name="contentType">html</property>
                             </text-data>
                         </cell>

@@ -21,7 +21,7 @@
 						<tr>
 							<td rowspan="3" width="20%"><img src="/resources/logo_casp/logocasp.gif" width="204" height="79"></td>
 							<td rowspan="3"><div align="center" dir="ltr">
-									<h2><b>Informe de Reclamação / Sugestão do Cliente</b></h2>
+									<h2><b>Informe de Reclama&ccedil;&atilde;o / Sugest&atilde;o do Cliente</b></h2>
 								</div></td>
 							<td align="right"><label for="chamado_num">N&uacute;mero IRSC:&nbsp;&nbsp;&nbsp;&nbsp;</label></td>
 							<td width="15%"><input type="text" name="num_processo" id="num_processo" class="form-control" readonly="readonly" /></td>
@@ -80,16 +80,18 @@
 						<div class="col-xs-3">
 							<label for="tipo">Avali&ccedil;&atilde;o do atendimento:</label>
 							<br>							
-							<input type="radio" name="tipo" id="tipo" style="cursor: pointer" value="reclamacao" checked="checked"/> Reclamação
+							<input type="radio" name="tipo" id="tipo" style="cursor: pointer" value="reclamacao" checked="checked"/> Reclama&ccedil;&atilde;o
 							<br>
 							<input type="radio" name="tipo" id="tipo" style="cursor: pointer" value="consulta"/> Consulta							
 						</div>
 						<div class="col-xs-3">
 							<label for="tipo">&nbsp;</label>
 							<br>
-							<input type="radio" name="tipo" id="tipo" style="cursor: pointer" value="duvida"/> Dúvidas
+							<input type="radio" name="tipo" id="tipo" style="cursor: pointer" value="duvida"/> D&uacute;vidas
 							<br>
-							<input type="radio" name="tipo" id="tipo" style="cursor: pointer" value="sugestao"/> Sugestão
+							<input type="radio" name="tipo" id="tipo" style="cursor: pointer" value="sugestao"/> Sugest&atilde;o
+							<br>
+							<input type="radio" name="tipo" id="tipo" style="cursor: pointer" value="orcamento"/> Or�amento / Pe�as
 						</div>
 						<div class="col-xs-4">
 							<label for="motivo">Unidade de Neg&oacute;cio:</label>
@@ -125,20 +127,20 @@
 			<div class="panel panel-primary" id="disposicao">
 				<div class="panel-heading" style="background-color: blue;">
 					<h3 class="panel-title">
-						<strong><i class="fluigicon fluigicon-system-tools fluigicon-sm"></i>&nbsp;Definição da Disposição </strong>
+						<strong><i class="fluigicon fluigicon-system-tools fluigicon-sm"></i>&nbsp;Defini&ccedil;&atilde;o da Disposi&ccedil;&atilde;o </strong>
 					</h3>
 				</div>
 				
 				<div class="panel-body">
 					<div class="row">
 						<div class="col-xs-3">
-							<label for="disp">Avali&ccedil;&atilde;o do atendimento:</label>
+							<label for="disp">Decis&atilde;o do atendimento:</label>
 							<br>							
-							<input type="radio" name="disp" id="disp" style="cursor: pointer" value="visita" checked="checked"/> Visita técnica
+							<input type="radio" name="disp" id="disp" style="cursor: pointer" value="visita" checked="checked"/> Visita t&eacute;cnica
 							<br>
-							<input type="radio" name="disp" id="disp" style="cursor: pointer" value="enviar"/> Enviar peça
+							<input type="radio" name="disp" id="disp" style="cursor: pointer" value="enviar"/> Enviar pe&ccedil;a
 							<br>
-							<input type="radio" name="disp" id="disp" style="cursor: pointer" value="orientacao"/> Orientação técnica telefonica
+							<input type="radio" name="disp" id="disp" style="cursor: pointer" value="orientacao"/> Orienta&ccedil;&atilde;o t&eacute;cnica telefonica
 							<br>							
 							<input type="radio" name="disp" id="disp" style="cursor: pointer" value="manual" checked="checked"/> Enviar manual
 							
@@ -148,7 +150,9 @@
 							<br/>
 							<input type="radio" name="disp" id="disp" style="cursor: pointer" value="treinamento"/> Programar treinamento com operadores
 							<br>
-							<input type="radio" name="disp" id="disp" style="cursor: pointer" value="sem_acao"/> Não requer ação
+							<input type="radio" name="disp" id="disp" style="cursor: pointer" value="sem_acao"/> N&atilde;o requer a&ccedil;&atilde;o
+							<br>
+							<input type="radio" name="disp" id="disp" style="cursor: pointer" value="orcamento"/> Elaborar Or�amento
 							<br>
 							<input type="radio" name="disp" id="disp" style="cursor: pointer" value="outros"/> Outros
 							
@@ -158,7 +162,7 @@
 					<br/>
 					<div class="row">
 						<div class="col-xs-3">
-							<label for="matricula_resp">Responsável:</label>
+							<label for="matricula_resp">Respons&aacute;vel:</label>
 							<input type="text" class="form-control" placeholder="Matr&iacute;cula" name="matricula_resp" id="matricula_resp" readonly="readonly" />
 						</div>
 						<div class="col-xs-6">
@@ -184,8 +188,8 @@
 					
 					<div class="row">
 						<div class="col-xs-12">
-							<label for="obs_compl">Observações Complementares:</label>
-							<textarea name="obs_compl" id="obs_compl" rows="3" class="form-control" placeholder="Observações complementares"></textarea>
+							<label for="obs_compl">Observa&ccedil;&otilde;es Complementares:</label>
+							<textarea name="obs_compl" id="obs_compl" rows="3" class="form-control" placeholder="Observa&ccedil;&otilde;es complementares"></textarea>
 						</div>
 					</div>
 					<br/>					
@@ -211,23 +215,23 @@
 			<div class="panel panel-primary" id="Atendimento">
 				<div class="panel-heading" style="background-color: blue;">
 					<h3 class="panel-title">
-						<strong><i class="fluigicon fluigicon-school-note fluigicon-sm"></i>&nbsp;Detalhar Ações Realizadas no Atendimento </strong>
+						<strong><i class="fluigicon fluigicon-school-note fluigicon-sm"></i>&nbsp;Detalhar A&ccedil;&otilde;es Realizadas no Atendimento </strong>
 					</h3>
 				</div>
 				
 				<div class="panel-body">
 					<div class="row">
 						<div class="col-xs-3">
-							<label for="atend">Atendimento foi eficaz?</label>
+							<label for="atend">Atendimento foi Realizado?</label>
 							<br>							
 							<input type="radio" name="atend" id="atend" style="cursor: pointer" value="sim" checked="checked"/> Sim
 							<br>
-							<input type="radio" name="atend" id="atend" style="cursor: pointer" value="nao"/> Não
-							<br>
-							<input type="radio" name="atend" id="atend" style="cursor: pointer" value="outros"/> Outros
+							<input type="radio" name="atend" id="atend" style="cursor: pointer" value="nao"/> N&atilde;o
+							<!-- <br>
+							<input type="radio" name="atend" id="atend" style="cursor: pointer" value="outros"/> Outros -->
 						</div>
 						<div class="col-xs-9">
-							<label for="desc_acoes">Ações realizadas no atendimento:</label>
+							<label for="desc_acoes">A&ccedil;&otilde;es realizadas no atendimento:</label>
 							<textarea name="desc_acoes" id="desc_acoes" rows="3" class="form-control" placeholder="Informe os comentarios sobre o atendimento!"></textarea>
 						</div>
 					</div>
@@ -252,7 +256,7 @@
 			<div class="panel panel-primary" id="detalhar">
 				<div class="panel-heading" style="background-color: blue;">
 					<h3 class="panel-title">
-						<strong><i class="fluigicon fluigicon-school-note fluigicon-sm"></i>&nbsp;Conclusão sobre o atendimento </strong>
+						<strong><i class="fluigicon fluigicon-school-note fluigicon-sm"></i>&nbsp;Conclus&atilde;o sobre o atendimento </strong>
 					</h3>
 				</div>
 				<div class="panel-body">
@@ -260,7 +264,7 @@
 						<div class="col-xs-3">
 							<label for="rd_docto">Abrir algum documento?</label>
 							<br>							
-							<input type="radio" name="rd_docto" id="rd_docto" style="cursor: pointer" value="nao" checked="checked"/> Não
+							<input type="radio" name="rd_docto" id="rd_docto" style="cursor: pointer" value="nao" checked="checked"/> N&atilde;o
 						</div>
 						<div class="col-xs-4">
 							<label for="rd_docto">&nbsp;</label>
@@ -277,8 +281,8 @@
 					<br/>
 					<div class="row">
 						<div class="col-xs-12">
-							<label for="obs_compl">Observações:</label>
-							<textarea name="obs_conclu" id="obs_conclu" rows="3" class="form-control" placeholder="Observações complementares"></textarea>
+							<label for="obs_compl">Observa&ccedil;&otilde;es:</label>
+							<textarea name="obs_conclu" id="obs_conclu" rows="3" class="form-control" placeholder="Observa&ccedil;&otilde;es complementares"></textarea>
 						</div>
 					</div>
 					<br/>

@@ -7,9 +7,7 @@ function loadElementos(){
 	$(".NCM").each(function(){$(this).mask('0000.00.00', {reverse: true});});
 	setMoneyClass($(".money"));	
 	
-	for (i = 1; i <= $('#tb_itens_nota tr').length; i++){
-		initCompoents(i);		
-	}
+	
 	
 	$('#listaTransp').click(function() {
 		var thisModal = FLUIGC.modal({
@@ -267,7 +265,7 @@ function initCompoents(linha){
 		var subdataset = DatasetFactory.getDataset("TOTVSItem", null, subconstraints, null);		
 		if (subdataset.values.length > 0) {		
 			$("#desc_item___" + thisrow).val(subdataset.values[0]["desc_item"]);
-			$("#ncm_item___" + thisrow).val(subdataset.values[0]["ncm"]).trigger('keyup');
+			$("#ncm_item___" + thisrow).val(subdataset.values[0]["ncm"]).trigger('keyup').trigger('blur');
 			$("#ipi_item___" + thisrow).val(parseFloat(subdataset.values[0]["ipi"]).toFixed(2)).trigger('keyup');
 			var aux = parseFloat(subdataset.values[0]["m_mat"]) + parseFloat(subdataset.values[0]["m_mob"]) + parseFloat(subdataset.values[0]["m_ggf"]);
 			$("#valor_item___" + thisrow).val(aux.toFixed(2)).trigger('keyup');
@@ -376,6 +374,10 @@ function ativaPreencheCampos(modeView, numState, matricula, WKNumProces, documen
 		setInterval(function(){
 			token = DatasetFactory.getDataset('tokens', null, null, null).values[0]["tokenTOTVSDatasul"];			
 		}, 120000);
+		
+		for (i = 1; i <= $('#tb_itens_nota tr').length; i++){
+			initCompoents(i);		
+		}
 		
 		var filter = new Object();
 		filter["colleaguePK.colleagueId"] = matricula;

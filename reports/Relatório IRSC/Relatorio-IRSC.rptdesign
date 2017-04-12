@@ -132,32 +132,28 @@
             <property name="nullsOrdering">nulls lowest</property>
             <list-property name="columnHints">
                 <structure>
-                    <property name="columnName">NUM_PROCES</property>
+                    <property name="columnName">NR_DOCUMENTO</property>
                     <property name="analysis">measure</property>
-                    <text-property name="displayName">NUM_PROCES</text-property>
-                    <property name="onColumnLayout">false</property>
-                    <text-property name="heading">NUM_PROCES</text-property>
+                    <text-property name="displayName">NR_DOCUMENTO</text-property>
+                    <text-property name="heading">NR_DOCUMENTO</text-property>
                 </structure>
                 <structure>
-                    <property name="columnName">COD_DEF_PROCES</property>
+                    <property name="columnName">TABELA</property>
                     <property name="analysis">dimension</property>
-                    <text-property name="displayName">COD_DEF_PROCES</text-property>
-                    <property name="onColumnLayout">false</property>
-                    <text-property name="heading">COD_DEF_PROCES</text-property>
+                    <text-property name="displayName">TABELA</text-property>
+                    <text-property name="heading">TABELA</text-property>
                 </structure>
                 <structure>
-                    <property name="columnName">LOG_ATIV</property>
-                    <property name="analysis">measure</property>
-                    <text-property name="displayName">LOG_ATIV</text-property>
-                    <property name="onColumnLayout">false</property>
-                    <text-property name="heading">LOG_ATIV</text-property>
+                    <property name="columnName">DAT_ABERT</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">DAT_ABERT</text-property>
+                    <text-property name="heading">DAT_ABERT</text-property>
                 </structure>
                 <structure>
-                    <property name="columnName">NUM_SEQ_MOVTO</property>
-                    <property name="analysis">measure</property>
-                    <text-property name="displayName">NUM_SEQ_MOVTO</text-property>
-                    <property name="onColumnLayout">false</property>
-                    <text-property name="heading">NUM_SEQ_MOVTO</text-property>
+                    <property name="columnName">_STATUS</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">_STATUS</text-property>
+                    <text-property name="heading">_STATUS</text-property>
                 </structure>
                 <structure>
                     <property name="columnName">NOM_ESTADO</property>
@@ -167,23 +163,10 @@
                     <text-property name="heading">NOM_ESTADO</text-property>
                 </structure>
                 <structure>
-                    <property name="columnName">_STATUS</property>
+                    <property name="columnName">FULL_NAME</property>
                     <property name="analysis">dimension</property>
-                    <text-property name="displayName">_STATUS</text-property>
-                    <text-property name="heading">_STATUS</text-property>
-                </structure>
-                <structure>
-                    <property name="columnName">DAT_ABERT</property>
-                    <property name="analysis">dimension</property>
-                    <text-property name="displayName">DAT_ABERT</text-property>
-                    <text-property name="heading">DAT_ABERT</text-property>
-                </structure>
-                <structure>
-                    <property name="columnName">HORA_ABERT</property>
-                    <property name="analysis">dimension</property>
-                    <text-property name="displayName">HORA_ABERT</text-property>
-                    <property name="onColumnLayout">false</property>
-                    <text-property name="heading">HORA_ABERT</text-property>
+                    <text-property name="displayName">FULL_NAME</text-property>
+                    <text-property name="heading">FULL_NAME</text-property>
                 </structure>
                 <structure>
                     <property name="columnName">DAT_FIM_PRAZ</property>
@@ -193,167 +176,113 @@
                     <text-property name="heading">DAT_FIM_PRAZ</text-property>
                 </structure>
                 <structure>
-                    <property name="columnName">NUM_HORA_FIM_PRAZ</property>
+                    <property name="columnName">num_processo</property>
                     <property name="analysis">dimension</property>
-                    <text-property name="displayName">NUM_HORA_FIM_PRAZ</text-property>
-                    <property name="onColumnLayout">false</property>
-                    <text-property name="heading">NUM_HORA_FIM_PRAZ</text-property>
+                    <text-property name="displayName">num_processo</text-property>
+                    <text-property name="heading">num_processo</text-property>
                 </structure>
                 <structure>
-                    <property name="columnName">CD_MATRICULA</property>
+                    <property name="columnName">data_sol</property>
                     <property name="analysis">dimension</property>
-                    <text-property name="displayName">CD_MATRICULA</text-property>
-                    <property name="onColumnLayout">false</property>
-                    <text-property name="heading">CD_MATRICULA</text-property>
+                    <text-property name="displayName">data_sol</text-property>
+                    <text-property name="heading">data_sol</text-property>
                 </structure>
                 <structure>
-                    <property name="columnName">RESPONSAVEL</property>
+                    <property name="columnName">unid_negocio</property>
                     <property name="analysis">dimension</property>
-                    <text-property name="displayName">RESPONSAVEL</text-property>
-                    <property name="onColumnLayout">false</property>
-                    <text-property name="heading">RESPONSAVEL</text-property>
+                    <text-property name="displayName">unid_negocio</text-property>
+                    <text-property name="heading">unid_negocio</text-property>
                 </structure>
                 <structure>
-                    <property name="columnName">Origem</property>
+                    <property name="columnName">cliente</property>
                     <property name="analysis">dimension</property>
-                    <text-property name="displayName">Origem</text-property>
-                    <property name="onColumnLayout">false</property>
-                    <text-property name="heading">Origem</text-property>
+                    <text-property name="displayName">cliente</text-property>
+                    <text-property name="heading">cliente</text-property>
                 </structure>
                 <structure>
-                    <property name="columnName">Unidade_negocio</property>
+                    <property name="columnName">contato</property>
                     <property name="analysis">dimension</property>
-                    <text-property name="displayName">Unidade_negocio</text-property>
-                    <property name="onColumnLayout">false</property>
-                    <text-property name="heading">Unidade_negocio</text-property>
+                    <text-property name="displayName">contato</text-property>
+                    <text-property name="heading">contato</text-property>
                 </structure>
                 <structure>
-                    <property name="columnName">Descricao</property>
+                    <property name="columnName">telefone</property>
                     <property name="analysis">dimension</property>
-                    <text-property name="displayName">Descricao</text-property>
-                    <property name="onColumnLayout">false</property>
-                    <text-property name="heading">Descricao</text-property>
+                    <text-property name="displayName">telefone</text-property>
+                    <text-property name="heading">telefone</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">email</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">email</text-property>
+                    <text-property name="heading">email</text-property>
                 </structure>
                 <structure>
                     <property name="columnName">Tipo</property>
                     <property name="analysis">dimension</property>
-                    <text-property name="displayName">Tipo</text-property>
+                    <text-property name="displayName">tipo</text-property>
                     <property name="onColumnLayout">false</property>
-                    <text-property name="heading">Tipo</text-property>
+                    <text-property name="heading">tipo</text-property>
                 </structure>
                 <structure>
-                    <property name="columnName">Quant</property>
+                    <property name="columnName">desc_atend</property>
                     <property name="analysis">dimension</property>
-                    <text-property name="displayName">Quant</text-property>
-                    <property name="onColumnLayout">false</property>
-                    <text-property name="heading">Quant</text-property>
+                    <text-property name="displayName">desc_atend</text-property>
+                    <text-property name="heading">desc_atend</text-property>
                 </structure>
                 <structure>
-                    <property name="columnName">Cod_Prod</property>
+                    <property name="columnName">disp</property>
                     <property name="analysis">dimension</property>
-                    <text-property name="displayName">Cod_Prod</text-property>
-                    <property name="onColumnLayout">false</property>
-                    <text-property name="heading">Cod_Prod</text-property>
+                    <text-property name="displayName">disp</text-property>
+                    <text-property name="heading">disp</text-property>
                 </structure>
                 <structure>
-                    <property name="columnName">Nome_prod</property>
+                    <property name="columnName">obs_compl</property>
                     <property name="analysis">dimension</property>
-                    <text-property name="displayName">Nome_prod</text-property>
-                    <property name="onColumnLayout">false</property>
-                    <text-property name="heading">Nome_prod</text-property>
+                    <text-property name="displayName">obs_compl</text-property>
+                    <text-property name="heading">obs_compl</text-property>
                 </structure>
                 <structure>
-                    <property name="columnName">processo</property>
+                    <property name="columnName">resp_exec</property>
                     <property name="analysis">dimension</property>
-                    <text-property name="displayName">processo</text-property>
-                    <property name="onColumnLayout">false</property>
-                    <text-property name="heading">processo</text-property>
+                    <text-property name="displayName">resp_exec</text-property>
+                    <text-property name="heading">resp_exec</text-property>
                 </structure>
                 <structure>
-                    <property name="columnName">pedido</property>
+                    <property name="columnName">prazo</property>
                     <property name="analysis">dimension</property>
-                    <text-property name="displayName">pedido</text-property>
-                    <property name="onColumnLayout">false</property>
-                    <text-property name="heading">pedido</text-property>
+                    <text-property name="displayName">prazo</text-property>
+                    <text-property name="heading">prazo</text-property>
                 </structure>
                 <structure>
-                    <property name="columnName">referencia</property>
+                    <property name="columnName">atend</property>
                     <property name="analysis">dimension</property>
-                    <text-property name="displayName">referencia</text-property>
-                    <property name="onColumnLayout">false</property>
-                    <text-property name="heading">referencia</text-property>
+                    <text-property name="displayName">atend</text-property>
+                    <text-property name="heading">atend</text-property>
                 </structure>
                 <structure>
-                    <property name="columnName">reponsabilidade</property>
+                    <property name="columnName">desc_acoes</property>
                     <property name="analysis">dimension</property>
-                    <text-property name="displayName">reponsabilidade</text-property>
-                    <property name="onColumnLayout">false</property>
-                    <text-property name="heading">reponsabilidade</text-property>
+                    <text-property name="displayName">desc_acoes</text-property>
+                    <text-property name="heading">desc_acoes</text-property>
                 </structure>
                 <structure>
-                    <property name="columnName">desc_mod_falha</property>
+                    <property name="columnName">dt_atend</property>
                     <property name="analysis">dimension</property>
-                    <text-property name="displayName">desc_mod_falha</text-property>
-                    <property name="onColumnLayout">false</property>
-                    <text-property name="heading">desc_mod_falha</text-property>
+                    <text-property name="displayName">dt_atend</text-property>
+                    <text-property name="heading">dt_atend</text-property>
                 </structure>
                 <structure>
-                    <property name="columnName">fornec</property>
+                    <property name="columnName">rd_docto</property>
                     <property name="analysis">dimension</property>
-                    <text-property name="displayName">fornec</text-property>
-                    <property name="onColumnLayout">false</property>
-                    <text-property name="heading">fornec</text-property>
+                    <text-property name="displayName">rd_docto</text-property>
+                    <text-property name="heading">rd_docto</text-property>
                 </structure>
                 <structure>
-                    <property name="columnName">rot_rej</property>
+                    <property name="columnName">nr_docto</property>
                     <property name="analysis">dimension</property>
-                    <text-property name="displayName">rot_rej</text-property>
-                    <property name="onColumnLayout">false</property>
-                    <text-property name="heading">rot_rej</text-property>
-                </structure>
-                <structure>
-                    <property name="columnName">matr_falha</property>
-                    <property name="analysis">dimension</property>
-                    <text-property name="displayName">matr_falha</text-property>
-                    <property name="onColumnLayout">false</property>
-                    <text-property name="heading">matr_falha</text-property>
-                </structure>
-                <structure>
-                    <property name="columnName">colab_falha</property>
-                    <property name="analysis">dimension</property>
-                    <text-property name="displayName">colab_falha</text-property>
-                    <property name="onColumnLayout">false</property>
-                    <text-property name="heading">colab_falha</text-property>
-                </structure>
-                <structure>
-                    <property name="columnName">DISPOSICAO</property>
-                    <property name="analysis">dimension</property>
-                    <text-property name="displayName">DISPOSICAO</text-property>
-                    <text-property name="heading">DISPOSICAO</text-property>
-                </structure>
-                <structure>
-                    <property name="columnName">PARECER</property>
-                    <property name="analysis">dimension</property>
-                    <text-property name="displayName">PARECER</text-property>
-                    <text-property name="heading">PARECER</text-property>
-                </structure>
-                <structure>
-                    <property name="columnName">MODO_FALHA</property>
-                    <property name="analysis">dimension</property>
-                    <text-property name="displayName">MODO_FALHA</text-property>
-                    <text-property name="heading">MODO_FALHA</text-property>
-                </structure>
-                <structure>
-                    <property name="columnName">ACAO_TOMADA</property>
-                    <property name="analysis">dimension</property>
-                    <text-property name="displayName">ACAO_TOMADA</text-property>
-                    <text-property name="heading">ACAO_TOMADA</text-property>
-                </structure>
-                <structure>
-                    <property name="columnName">QUANT_ACAO</property>
-                    <property name="analysis">dimension</property>
-                    <text-property name="displayName">QUANT_ACAO</text-property>
-                    <text-property name="heading">QUANT_ACAO</text-property>
+                    <text-property name="displayName">nr_docto</text-property>
+                    <text-property name="heading">nr_docto</text-property>
                 </structure>
             </list-property>
             <list-property name="parameters">
@@ -412,23 +341,23 @@
                 <list-property name="resultSet">
                     <structure>
                         <property name="position">1</property>
-                        <property name="name">NUM_PROCES</property>
+                        <property name="name">NR_DOCUMENTO</property>
                         <property name="dataType">integer</property>
                     </structure>
                     <structure>
                         <property name="position">2</property>
-                        <property name="name">COD_DEF_PROCES</property>
+                        <property name="name">TABELA</property>
                         <property name="dataType">string</property>
                     </structure>
                     <structure>
                         <property name="position">3</property>
-                        <property name="name">LOG_ATIV</property>
-                        <property name="dataType">integer</property>
+                        <property name="name">DAT_ABERT</property>
+                        <property name="dataType">string</property>
                     </structure>
                     <structure>
                         <property name="position">4</property>
-                        <property name="name">NUM_SEQ_MOVTO</property>
-                        <property name="dataType">integer</property>
+                        <property name="name">_STATUS</property>
+                        <property name="dataType">string</property>
                     </structure>
                     <structure>
                         <property name="position">5</property>
@@ -437,142 +366,102 @@
                     </structure>
                     <structure>
                         <property name="position">6</property>
-                        <property name="name">_STATUS</property>
+                        <property name="name">FULL_NAME</property>
                         <property name="dataType">string</property>
                     </structure>
                     <structure>
                         <property name="position">7</property>
-                        <property name="name">DAT_ABERT</property>
-                        <property name="dataType">string</property>
-                    </structure>
-                    <structure>
-                        <property name="position">8</property>
-                        <property name="name">HORA_ABERT</property>
-                        <property name="dataType">time</property>
-                    </structure>
-                    <structure>
-                        <property name="position">9</property>
                         <property name="name">DAT_FIM_PRAZ</property>
                         <property name="dataType">string</property>
                     </structure>
                     <structure>
+                        <property name="position">8</property>
+                        <property name="name">num_processo</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">9</property>
+                        <property name="name">data_sol</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
                         <property name="position">10</property>
-                        <property name="name">NUM_HORA_FIM_PRAZ</property>
-                        <property name="dataType">time</property>
+                        <property name="name">unid_negocio</property>
+                        <property name="dataType">string</property>
                     </structure>
                     <structure>
                         <property name="position">11</property>
-                        <property name="name">CD_MATRICULA</property>
+                        <property name="name">cliente</property>
                         <property name="dataType">string</property>
                     </structure>
                     <structure>
                         <property name="position">12</property>
-                        <property name="name">RESPONSAVEL</property>
+                        <property name="name">contato</property>
                         <property name="dataType">string</property>
                     </structure>
                     <structure>
                         <property name="position">13</property>
-                        <property name="name">Origem</property>
+                        <property name="name">telefone</property>
                         <property name="dataType">string</property>
                     </structure>
                     <structure>
                         <property name="position">14</property>
-                        <property name="name">Unidade_negocio</property>
+                        <property name="name">email</property>
                         <property name="dataType">string</property>
                     </structure>
                     <structure>
                         <property name="position">15</property>
-                        <property name="name">Descricao</property>
-                        <property name="dataType">string</property>
-                    </structure>
-                    <structure>
-                        <property name="position">16</property>
                         <property name="name">Tipo</property>
                         <property name="dataType">string</property>
                     </structure>
                     <structure>
+                        <property name="position">16</property>
+                        <property name="name">desc_atend</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
                         <property name="position">17</property>
-                        <property name="name">Quant</property>
+                        <property name="name">disp</property>
                         <property name="dataType">string</property>
                     </structure>
                     <structure>
                         <property name="position">18</property>
-                        <property name="name">Cod_Prod</property>
+                        <property name="name">obs_compl</property>
                         <property name="dataType">string</property>
                     </structure>
                     <structure>
                         <property name="position">19</property>
-                        <property name="name">Nome_prod</property>
+                        <property name="name">resp_exec</property>
                         <property name="dataType">string</property>
                     </structure>
                     <structure>
                         <property name="position">20</property>
-                        <property name="name">processo</property>
+                        <property name="name">prazo</property>
                         <property name="dataType">string</property>
                     </structure>
                     <structure>
                         <property name="position">21</property>
-                        <property name="name">pedido</property>
+                        <property name="name">atend</property>
                         <property name="dataType">string</property>
                     </structure>
                     <structure>
                         <property name="position">22</property>
-                        <property name="name">referencia</property>
+                        <property name="name">desc_acoes</property>
                         <property name="dataType">string</property>
                     </structure>
                     <structure>
                         <property name="position">23</property>
-                        <property name="name">reponsabilidade</property>
+                        <property name="name">dt_atend</property>
                         <property name="dataType">string</property>
                     </structure>
                     <structure>
                         <property name="position">24</property>
-                        <property name="name">desc_mod_falha</property>
+                        <property name="name">rd_docto</property>
                         <property name="dataType">string</property>
                     </structure>
                     <structure>
                         <property name="position">25</property>
-                        <property name="name">fornec</property>
-                        <property name="dataType">string</property>
-                    </structure>
-                    <structure>
-                        <property name="position">26</property>
-                        <property name="name">rot_rej</property>
-                        <property name="dataType">string</property>
-                    </structure>
-                    <structure>
-                        <property name="position">27</property>
-                        <property name="name">matr_falha</property>
-                        <property name="dataType">string</property>
-                    </structure>
-                    <structure>
-                        <property name="position">28</property>
-                        <property name="name">colab_falha</property>
-                        <property name="dataType">string</property>
-                    </structure>
-                    <structure>
-                        <property name="position">29</property>
-                        <property name="name">DISPOSICAO</property>
-                        <property name="dataType">string</property>
-                    </structure>
-                    <structure>
-                        <property name="position">30</property>
-                        <property name="name">PARECER</property>
-                        <property name="dataType">string</property>
-                    </structure>
-                    <structure>
-                        <property name="position">31</property>
-                        <property name="name">MODO_FALHA</property>
-                        <property name="dataType">string</property>
-                    </structure>
-                    <structure>
-                        <property name="position">32</property>
-                        <property name="name">ACAO_TOMADA</property>
-                        <property name="dataType">string</property>
-                    </structure>
-                    <structure>
-                        <property name="position">33</property>
-                        <property name="name">QUANT_ACAO</property>
+                        <property name="name">nr_docto</property>
                         <property name="dataType">string</property>
                     </structure>
                 </list-property>
@@ -581,31 +470,31 @@
             <list-property name="resultSet">
                 <structure>
                     <property name="position">1</property>
-                    <property name="name">NUM_PROCES</property>
-                    <property name="nativeName">NUM_PROCES</property>
+                    <property name="name">NR_DOCUMENTO</property>
+                    <property name="nativeName">NR_DOCUMENTO</property>
                     <property name="dataType">integer</property>
                     <property name="nativeDataType">4</property>
                 </structure>
                 <structure>
                     <property name="position">2</property>
-                    <property name="name">COD_DEF_PROCES</property>
-                    <property name="nativeName">COD_DEF_PROCES</property>
+                    <property name="name">TABELA</property>
+                    <property name="nativeName">TABELA</property>
                     <property name="dataType">string</property>
                     <property name="nativeDataType">12</property>
                 </structure>
                 <structure>
                     <property name="position">3</property>
-                    <property name="name">LOG_ATIV</property>
-                    <property name="nativeName">LOG_ATIV</property>
-                    <property name="dataType">integer</property>
-                    <property name="nativeDataType">-7</property>
+                    <property name="name">DAT_ABERT</property>
+                    <property name="nativeName">DAT_ABERT</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
                 </structure>
                 <structure>
                     <property name="position">4</property>
-                    <property name="name">NUM_SEQ_MOVTO</property>
-                    <property name="nativeName">NUM_SEQ_MOVTO</property>
-                    <property name="dataType">integer</property>
-                    <property name="nativeDataType">4</property>
+                    <property name="name">_STATUS</property>
+                    <property name="nativeName">_STATUS</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
                 </structure>
                 <structure>
                     <property name="position">5</property>
@@ -616,508 +505,256 @@
                 </structure>
                 <structure>
                     <property name="position">6</property>
-                    <property name="name">_STATUS</property>
-                    <property name="nativeName">_STATUS</property>
+                    <property name="name">FULL_NAME</property>
+                    <property name="nativeName">FULL_NAME</property>
                     <property name="dataType">string</property>
                     <property name="nativeDataType">12</property>
                 </structure>
                 <structure>
                     <property name="position">7</property>
-                    <property name="name">DAT_ABERT</property>
-                    <property name="nativeName">DAT_ABERT</property>
-                    <property name="dataType">string</property>
-                    <property name="nativeDataType">12</property>
-                </structure>
-                <structure>
-                    <property name="position">8</property>
-                    <property name="name">HORA_ABERT</property>
-                    <property name="nativeName">HORA_ABERT</property>
-                    <property name="dataType">time</property>
-                    <property name="nativeDataType">92</property>
-                </structure>
-                <structure>
-                    <property name="position">9</property>
                     <property name="name">DAT_FIM_PRAZ</property>
                     <property name="nativeName">DAT_FIM_PRAZ</property>
                     <property name="dataType">string</property>
                     <property name="nativeDataType">12</property>
                 </structure>
                 <structure>
+                    <property name="position">8</property>
+                    <property name="name">num_processo</property>
+                    <property name="nativeName">num_processo</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">9</property>
+                    <property name="name">data_sol</property>
+                    <property name="nativeName">data_sol</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
                     <property name="position">10</property>
-                    <property name="name">NUM_HORA_FIM_PRAZ</property>
-                    <property name="nativeName">NUM_HORA_FIM_PRAZ</property>
-                    <property name="dataType">time</property>
-                    <property name="nativeDataType">92</property>
+                    <property name="name">unid_negocio</property>
+                    <property name="nativeName">unid_negocio</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
                 </structure>
                 <structure>
                     <property name="position">11</property>
-                    <property name="name">CD_MATRICULA</property>
-                    <property name="nativeName">CD_MATRICULA</property>
+                    <property name="name">cliente</property>
+                    <property name="nativeName">cliente</property>
                     <property name="dataType">string</property>
                     <property name="nativeDataType">12</property>
                 </structure>
                 <structure>
                     <property name="position">12</property>
-                    <property name="name">RESPONSAVEL</property>
-                    <property name="nativeName">RESPONSAVEL</property>
+                    <property name="name">contato</property>
+                    <property name="nativeName">contato</property>
                     <property name="dataType">string</property>
                     <property name="nativeDataType">12</property>
                 </structure>
                 <structure>
                     <property name="position">13</property>
-                    <property name="name">Origem</property>
-                    <property name="nativeName">Origem</property>
+                    <property name="name">telefone</property>
+                    <property name="nativeName">telefone</property>
                     <property name="dataType">string</property>
                     <property name="nativeDataType">12</property>
                 </structure>
                 <structure>
                     <property name="position">14</property>
-                    <property name="name">Unidade_negocio</property>
-                    <property name="nativeName">Unidade_negocio</property>
+                    <property name="name">email</property>
+                    <property name="nativeName">email</property>
                     <property name="dataType">string</property>
                     <property name="nativeDataType">12</property>
                 </structure>
                 <structure>
                     <property name="position">15</property>
-                    <property name="name">Descricao</property>
-                    <property name="nativeName">Descricao</property>
+                    <property name="name">Tipo</property>
+                    <property name="nativeName">tipo</property>
                     <property name="dataType">string</property>
                     <property name="nativeDataType">12</property>
                 </structure>
                 <structure>
                     <property name="position">16</property>
-                    <property name="name">Tipo</property>
-                    <property name="nativeName">Tipo</property>
+                    <property name="name">desc_atend</property>
+                    <property name="nativeName">desc_atend</property>
                     <property name="dataType">string</property>
                     <property name="nativeDataType">12</property>
                 </structure>
                 <structure>
                     <property name="position">17</property>
-                    <property name="name">Quant</property>
-                    <property name="nativeName">Quant</property>
+                    <property name="name">disp</property>
+                    <property name="nativeName">disp</property>
                     <property name="dataType">string</property>
                     <property name="nativeDataType">12</property>
                 </structure>
                 <structure>
                     <property name="position">18</property>
-                    <property name="name">Cod_Prod</property>
-                    <property name="nativeName">Cod_Prod</property>
+                    <property name="name">obs_compl</property>
+                    <property name="nativeName">obs_compl</property>
                     <property name="dataType">string</property>
                     <property name="nativeDataType">12</property>
                 </structure>
                 <structure>
                     <property name="position">19</property>
-                    <property name="name">Nome_prod</property>
-                    <property name="nativeName">Nome_prod</property>
+                    <property name="name">resp_exec</property>
+                    <property name="nativeName">resp_exec</property>
                     <property name="dataType">string</property>
                     <property name="nativeDataType">12</property>
                 </structure>
                 <structure>
                     <property name="position">20</property>
-                    <property name="name">processo</property>
-                    <property name="nativeName">processo</property>
+                    <property name="name">prazo</property>
+                    <property name="nativeName">prazo</property>
                     <property name="dataType">string</property>
                     <property name="nativeDataType">12</property>
                 </structure>
                 <structure>
                     <property name="position">21</property>
-                    <property name="name">pedido</property>
-                    <property name="nativeName">pedido</property>
+                    <property name="name">atend</property>
+                    <property name="nativeName">atend</property>
                     <property name="dataType">string</property>
                     <property name="nativeDataType">12</property>
                 </structure>
                 <structure>
                     <property name="position">22</property>
-                    <property name="name">referencia</property>
-                    <property name="nativeName">referencia</property>
+                    <property name="name">desc_acoes</property>
+                    <property name="nativeName">desc_acoes</property>
                     <property name="dataType">string</property>
                     <property name="nativeDataType">12</property>
                 </structure>
                 <structure>
                     <property name="position">23</property>
-                    <property name="name">reponsabilidade</property>
-                    <property name="nativeName">reponsabilidade</property>
+                    <property name="name">dt_atend</property>
+                    <property name="nativeName">dt_atend</property>
                     <property name="dataType">string</property>
                     <property name="nativeDataType">12</property>
                 </structure>
                 <structure>
                     <property name="position">24</property>
-                    <property name="name">desc_mod_falha</property>
-                    <property name="nativeName">desc_mod_falha</property>
+                    <property name="name">rd_docto</property>
+                    <property name="nativeName">rd_docto</property>
                     <property name="dataType">string</property>
                     <property name="nativeDataType">12</property>
                 </structure>
                 <structure>
                     <property name="position">25</property>
-                    <property name="name">fornec</property>
-                    <property name="nativeName">fornec</property>
-                    <property name="dataType">string</property>
-                    <property name="nativeDataType">12</property>
-                </structure>
-                <structure>
-                    <property name="position">26</property>
-                    <property name="name">rot_rej</property>
-                    <property name="nativeName">rot_rej</property>
-                    <property name="dataType">string</property>
-                    <property name="nativeDataType">12</property>
-                </structure>
-                <structure>
-                    <property name="position">27</property>
-                    <property name="name">matr_falha</property>
-                    <property name="nativeName">matr_falha</property>
-                    <property name="dataType">string</property>
-                    <property name="nativeDataType">12</property>
-                </structure>
-                <structure>
-                    <property name="position">28</property>
-                    <property name="name">colab_falha</property>
-                    <property name="nativeName">colab_falha</property>
-                    <property name="dataType">string</property>
-                    <property name="nativeDataType">12</property>
-                </structure>
-                <structure>
-                    <property name="position">29</property>
-                    <property name="name">DISPOSICAO</property>
-                    <property name="nativeName">DISPOSICAO</property>
-                    <property name="dataType">string</property>
-                    <property name="nativeDataType">12</property>
-                </structure>
-                <structure>
-                    <property name="position">30</property>
-                    <property name="name">PARECER</property>
-                    <property name="nativeName">PARECER</property>
-                    <property name="dataType">string</property>
-                    <property name="nativeDataType">12</property>
-                </structure>
-                <structure>
-                    <property name="position">31</property>
-                    <property name="name">MODO_FALHA</property>
-                    <property name="nativeName">MODO_FALHA</property>
-                    <property name="dataType">string</property>
-                    <property name="nativeDataType">12</property>
-                </structure>
-                <structure>
-                    <property name="position">32</property>
-                    <property name="name">ACAO_TOMADA</property>
-                    <property name="nativeName">ACAO_TOMADA</property>
-                    <property name="dataType">string</property>
-                    <property name="nativeDataType">12</property>
-                </structure>
-                <structure>
-                    <property name="position">33</property>
-                    <property name="name">QUANT_ACAO</property>
-                    <property name="nativeName">QUANT_ACAO</property>
+                    <property name="name">nr_docto</property>
+                    <property name="nativeName">nr_docto</property>
                     <property name="dataType">string</property>
                     <property name="nativeDataType">12</property>
                 </structure>
             </list-property>
-            <xml-property name="queryText"><![CDATA[select 
-	PROCES_WORKFLOW.NUM_PROCES,  
-	PROCES_WORKFLOW.COD_DEF_PROCES, 
-	PROCES_WORKFLOW.LOG_ATIV,
-	HISTOR_PROCES.NUM_SEQ_MOVTO, 
-	ESTADO_PROCES.NOM_ESTADO,
-    
-     IF (PROCES_WORKFLOW.LOG_ATIV, "EM ANDAMENTO", "FINALIZADO") AS _STATUS,
+            <xml-property name="queryText"><![CDATA[select distinct 
+	anexo_proces.NR_DOCUMENTO, 
+    concat("ml", lpad(documento.COD_EMPRESA, 3, '0'), lpad(documento.COD_LISTA, 3, '0')) AS TABELA,
 	
     DATE_FORMAT(ativ_inicial.DAT_CONCLUS_TAR,'%d/%m/%Y') as DAT_ABERT,
-    sec_to_time(ativ_inicial.NUM_HORA_CONCLUS_TAR) as HORA_ABERT,
-    
-    IF (PROCES_WORKFLOW.LOG_ATIV, DATE_FORMAT( ativ_atual.DAT_FIM_PRAZ,'%d/%m/%Y') , NULL) AS DAT_FIM_PRAZ,
-	IF (PROCES_WORKFLOW.LOG_ATIV, sec_to_time(ativ_atual.NUM_HORA_FIM_PRAZ), NULL) AS NUM_HORA_FIM_PRAZ ,
-	
-	 if (PROCES_WORKFLOW.LOG_ATIV, ativ_atual.CD_MATRICULA,
-		 (select FICHA.COD_VALOR
-			from FICHA 
-			where FICHA.COD_EMPRESA = ANEXO_PROCES.COD_EMPRESA AND
-				FICHA.NR_FICHA = ANEXO_PROCES.NR_DOCUMENTO and
-				FICHA.NR_VERSAO = ANEXO_PROCES.NR_VERSAO AND
-                FICHA.COD_VALOR is not null and
-				FICHA.COD_TABELA = "principal" AND
-				FICHA.COD_CAMPO = "mat_parecer") 
-    ) as CD_MATRICULA,
+    IF (PROCES_WORKFLOW.LOG_ATIV, "EM ANDAMENTO", "FINALIZADO") AS _STATUS,
     
     
-	if (PROCES_WORKFLOW.LOG_ATIV, (SELECT fdn_user.FULL_NAME
-			FROM fdn_user, fdn_usertenant
-            where (fdn_usertenant.USER_CODE = ativ_atual.CD_MATRICULA)
-				and (fdn_usertenant.USER_ID = fdn_user.USER_ID)
-        ), (select FICHA.COD_VALOR
-			from FICHA 
-			where FICHA.COD_EMPRESA = ANEXO_PROCES.COD_EMPRESA AND
-				FICHA.NR_FICHA = ANEXO_PROCES.NR_DOCUMENTO and
-				FICHA.NR_VERSAO = ANEXO_PROCES.NR_VERSAO AND
-                FICHA.COD_VALOR is not null and
-				FICHA.COD_TABELA = "principal" AND
-				FICHA.COD_CAMPO = "resp_parecer")
-        )        
-        AS RESPONSAVEL,    
+    ESTADO_PROCES.NOM_ESTADO,
+    fdn_user.FULL_NAME,
+    IF (PROCES_WORKFLOW.LOG_ATIV, DATE_FORMAT( TAR_PROCES.DAT_FIM_PRAZ,'%d/%m/%Y') , NULL) AS DAT_FIM_PRAZ, 
+    
+    ml001006.num_processo,
+    ml001006.data_sol,
+    ml001006.unid_negocio,
+    ml001006.cliente,
+    ml001006.contato,
+    ml001006.telefone,
+    ml001006.email,
+    case ml001006.tipo
+		when 'reclamacao' then 'Reclamação'
+		when 'consulta' then 'Consulta'							
+		when 'duvida' then 'Dúvidas'
+		when 'sugestao' then 'Sugestão'
+		when 'orcamento' then 'Orçamento / Peças'        
+	end as tipo,
+    ml001006.desc_atend,
+    case ml001006.disp
+		when 'enviar'       THEN 'Enviar pe&amp;ccedil;a'
+		when 'orientacao'   THEN 'Orientação técnica telefonica'
+		when 'manual'       THEN 'Enviar manual'
+		when 'treinamento'  THEN 'Programar treinamento com operadores'
+		when 'sem_acao'     THEN 'Não requer ação'
+		when 'orcamento'    THEN 'Elaborar Orçamento'
+        when 'outros'    	THEN 'Outros'
+	end as disp,
     
     
-    (select FICHA.COD_VALOR
-			from FICHA 
-			where FICHA.COD_EMPRESA = ANEXO_PROCES.COD_EMPRESA AND
-				FICHA.NR_FICHA = ANEXO_PROCES.NR_DOCUMENTO and
-				FICHA.NR_VERSAO = ANEXO_PROCES.NR_VERSAO AND
-                FICHA.COD_VALOR is not null and
-				FICHA.COD_TABELA = "principal" AND
-				FICHA.COD_CAMPO = "origem") as Origem,
-                
-	(select FICHA.COD_VALOR
-			from FICHA 
-			where FICHA.COD_EMPRESA = ANEXO_PROCES.COD_EMPRESA AND
-				FICHA.NR_FICHA = ANEXO_PROCES.NR_DOCUMENTO and
-				FICHA.NR_VERSAO = ANEXO_PROCES.NR_VERSAO AND
-                FICHA.COD_VALOR is not null and
-				FICHA.COD_TABELA = "principal" AND
-				FICHA.COD_CAMPO = "unid_negocio") as Unidade_negocio,
-                
-	(select FICHA.COD_VALOR
-			from FICHA 
-			where FICHA.COD_EMPRESA = ANEXO_PROCES.COD_EMPRESA AND
-				FICHA.NR_FICHA = ANEXO_PROCES.NR_DOCUMENTO and
-				FICHA.NR_VERSAO = ANEXO_PROCES.NR_VERSAO AND
-                FICHA.COD_VALOR is not null and
-				FICHA.COD_TABELA = "principal" AND
-				FICHA.COD_CAMPO = "descEmissao") as Descricao, 
-               
-	(select FICHA.COD_VALOR
-			from FICHA 
-			where FICHA.COD_EMPRESA = ANEXO_PROCES.COD_EMPRESA AND
-				FICHA.NR_FICHA = ANEXO_PROCES.NR_DOCUMENTO and
-				FICHA.NR_VERSAO = ANEXO_PROCES.NR_VERSAO AND
-                FICHA.COD_VALOR is not null and
-				FICHA.COD_TABELA = "principal" AND
-				FICHA.COD_CAMPO = "tipo") as Tipo, 
+    
+    ml001006.obs_compl,
+    ml001006.resp_exec,
+    ml001006.prazo,
+    ml001006.atend,
+    ml001006.desc_acoes,
+    ml001006.dt_atend,
+    ml001006.rd_docto,
+    ml001006.nr_docto
+    
+from  PROCES_WORKFLOW 
 
-	(select FICHA.COD_VALOR
-			from FICHA 
-			where FICHA.COD_EMPRESA = ANEXO_PROCES.COD_EMPRESA AND
-				FICHA.NR_FICHA = ANEXO_PROCES.NR_DOCUMENTO and
-				FICHA.NR_VERSAO = ANEXO_PROCES.NR_VERSAO AND
-                FICHA.COD_VALOR is not null and
-				FICHA.COD_TABELA = "principal" AND
-				FICHA.COD_CAMPO = "quant") as Quant,
-                
-		(select FICHA.COD_VALOR
-			from FICHA 
-			where FICHA.COD_EMPRESA = ANEXO_PROCES.COD_EMPRESA AND
-				FICHA.NR_FICHA = ANEXO_PROCES.NR_DOCUMENTO and
-				FICHA.NR_VERSAO = ANEXO_PROCES.NR_VERSAO AND
-                FICHA.COD_VALOR is not null and
-				FICHA.COD_TABELA = "principal" AND
-				FICHA.COD_CAMPO = "cod_prod") as Cod_Prod, 
-                
-		(select FICHA.COD_VALOR
-			from FICHA 
-			where FICHA.COD_EMPRESA = ANEXO_PROCES.COD_EMPRESA AND
-				FICHA.NR_FICHA = ANEXO_PROCES.NR_DOCUMENTO and
-				FICHA.NR_VERSAO = ANEXO_PROCES.NR_VERSAO AND
-                FICHA.COD_VALOR is not null and
-				FICHA.COD_TABELA = "principal" AND
-				FICHA.COD_CAMPO = "nome_prod") as Nome_prod, 
+INNER JOIN anexo_proces ON
 
-		(select FICHA.COD_VALOR
-			from FICHA 
-			where FICHA.COD_EMPRESA = ANEXO_PROCES.COD_EMPRESA AND
-				FICHA.NR_FICHA = ANEXO_PROCES.NR_DOCUMENTO and
-				FICHA.NR_VERSAO = ANEXO_PROCES.NR_VERSAO AND
-                FICHA.COD_VALOR is not null and
-				FICHA.COD_TABELA = "principal" AND
-				FICHA.COD_CAMPO = "processo") as processo,
-		
-        (select FICHA.COD_VALOR
-			from FICHA 
-			where FICHA.COD_EMPRESA = ANEXO_PROCES.COD_EMPRESA AND
-				FICHA.NR_FICHA = ANEXO_PROCES.NR_DOCUMENTO and
-				FICHA.NR_VERSAO = ANEXO_PROCES.NR_VERSAO AND
-                FICHA.COD_VALOR is not null and
-				FICHA.COD_TABELA = "principal" AND
-				FICHA.COD_CAMPO = "pedido") as pedido,
-                
-		 (select FICHA.COD_VALOR
-			from FICHA 
-			where FICHA.COD_EMPRESA = ANEXO_PROCES.COD_EMPRESA AND
-				FICHA.NR_FICHA = ANEXO_PROCES.NR_DOCUMENTO and
-				FICHA.NR_VERSAO = ANEXO_PROCES.NR_VERSAO AND
-                FICHA.COD_VALOR is not null and
-				FICHA.COD_TABELA = "principal" AND
-				FICHA.COD_CAMPO = "referencia") as referencia,
-                
-            case (select FICHA.COD_VALOR
-			from FICHA 
-			where FICHA.COD_EMPRESA = ANEXO_PROCES.COD_EMPRESA AND
-				FICHA.NR_FICHA = ANEXO_PROCES.NR_DOCUMENTO and
-				FICHA.NR_VERSAO = ANEXO_PROCES.NR_VERSAO AND
-                FICHA.COD_VALOR is not null and
-				FICHA.COD_TABELA = "principal" AND
-				FICHA.COD_CAMPO = "reponsabilidade")
-                    when 0 then ""
-					when 1 then "Assistência técnica"
-					when 2 then "Comercial"
-					when 3 then "Concessão"
-					when 4 then "Engenharia aplicação"
-					when 5 then "Engenharia de produto"
-					when 6 then "Fornecedor"
-					when 7 then "Improcedente"
-					when 8 then "Indefinido"
-					when 9 then "Logística"
-					when 10 then "Manufatura"
-					when 11 then "Montagem"
-					when 12 then "Qualidade"
-					when 13 then "Suprimentos" 
-         end     
-		as reponsabilidade,
-		
-        (select FICHA.COD_VALOR
-			from FICHA 
-			where FICHA.COD_EMPRESA = ANEXO_PROCES.COD_EMPRESA AND
-				FICHA.NR_FICHA = ANEXO_PROCES.NR_DOCUMENTO and
-				FICHA.NR_VERSAO = ANEXO_PROCES.NR_VERSAO AND
-                FICHA.COD_VALOR is not null and
-				FICHA.COD_TABELA = "principal" AND
-				FICHA.COD_CAMPO = "desc_mod_falha") as desc_mod_falha,
-                
-		(select FICHA.COD_VALOR
-			from FICHA 
-			where FICHA.COD_EMPRESA = ANEXO_PROCES.COD_EMPRESA AND
-				FICHA.NR_FICHA = ANEXO_PROCES.NR_DOCUMENTO and
-				FICHA.NR_VERSAO = ANEXO_PROCES.NR_VERSAO AND
-                FICHA.COD_VALOR is not null and
-				FICHA.COD_TABELA = "principal" AND
-				FICHA.COD_CAMPO = "fornec") as fornec,
-                
-		(select FICHA.COD_VALOR
-			from FICHA 
-			where FICHA.COD_EMPRESA = ANEXO_PROCES.COD_EMPRESA AND
-				FICHA.NR_FICHA = ANEXO_PROCES.NR_DOCUMENTO and
-				FICHA.NR_VERSAO = ANEXO_PROCES.NR_VERSAO AND
-                FICHA.COD_VALOR is not null and
-				FICHA.COD_TABELA = "principal" AND
-				FICHA.COD_CAMPO = "rot_rej") as rot_rej,
-
-		(select FICHA.COD_VALOR
-			from FICHA 
-			where FICHA.COD_EMPRESA = ANEXO_PROCES.COD_EMPRESA AND
-				FICHA.NR_FICHA = ANEXO_PROCES.NR_DOCUMENTO and
-				FICHA.NR_VERSAO = ANEXO_PROCES.NR_VERSAO AND
-                FICHA.COD_VALOR is not null and
-				FICHA.COD_TABELA = "principal" AND
-				FICHA.COD_CAMPO = "matr_falha") as matr_falha,
-                
-		(select FICHA.COD_VALOR
-			from FICHA 
-			where FICHA.COD_EMPRESA = ANEXO_PROCES.COD_EMPRESA AND
-				FICHA.NR_FICHA = ANEXO_PROCES.NR_DOCUMENTO and
-				FICHA.NR_VERSAO = ANEXO_PROCES.NR_VERSAO AND
-                FICHA.COD_VALOR is not null and
-				FICHA.COD_TABELA = "principal" AND
-				FICHA.COD_CAMPO = "colab_falha") as colab_falha,
-				
-                
-         (select FICHA.COD_VALOR
-			from FICHA 
-			where FICHA.COD_EMPRESA = ANEXO_PROCES.COD_EMPRESA AND
-				FICHA.NR_FICHA = ANEXO_PROCES.NR_DOCUMENTO and
-				FICHA.NR_VERSAO = ANEXO_PROCES.NR_VERSAO AND
-                FICHA.COD_VALOR is not null and
-				FICHA.COD_TABELA = "principal" AND
-				FICHA.COD_CAMPO = "disposocao") as DISPOSICAO,
-		       
-         (select FICHA.COD_VALOR
-			from FICHA 
-			where FICHA.COD_EMPRESA = ANEXO_PROCES.COD_EMPRESA AND
-				FICHA.NR_FICHA = ANEXO_PROCES.NR_DOCUMENTO and
-				FICHA.NR_VERSAO = ANEXO_PROCES.NR_VERSAO AND
-                FICHA.COD_VALOR is not null and
-				FICHA.COD_TABELA = "principal" AND
-				FICHA.COD_CAMPO = "desc_parecer") as PARECER,
-                
-		(select FICHA.COD_VALOR
-			from FICHA 
-			where FICHA.COD_EMPRESA = ANEXO_PROCES.COD_EMPRESA AND
-				FICHA.NR_FICHA = ANEXO_PROCES.NR_DOCUMENTO and
-				FICHA.NR_VERSAO = ANEXO_PROCES.NR_VERSAO AND
-                FICHA.COD_VALOR is not null and
-				FICHA.COD_TABELA = "principal" AND
-				FICHA.COD_CAMPO = "desc_falha") as MODO_FALHA, 
-        (select FICHA.COD_VALOR
-			from FICHA 
-			where FICHA.COD_EMPRESA = ANEXO_PROCES.COD_EMPRESA AND
-				FICHA.NR_FICHA = ANEXO_PROCES.NR_DOCUMENTO and
-				FICHA.NR_VERSAO = ANEXO_PROCES.NR_VERSAO AND
-                FICHA.COD_VALOR is not null and
-				FICHA.COD_TABELA = "principal" AND
-				FICHA.COD_CAMPO = "acao") as ACAO_TOMADA ,
-                
-		(select FICHA.COD_VALOR
-			from FICHA 
-			where FICHA.COD_EMPRESA = ANEXO_PROCES.COD_EMPRESA AND
-				FICHA.NR_FICHA = ANEXO_PROCES.NR_DOCUMENTO and
-				FICHA.NR_VERSAO = ANEXO_PROCES.NR_VERSAO AND
-                FICHA.COD_VALOR is not null and
-				FICHA.COD_TABELA = "principal" AND
-				FICHA.COD_CAMPO = "quant_disp") as QUANT_ACAO 
-
-  FROM PROCES_WORKFLOW 
-  INNER JOIN HISTOR_PROCES ON
-			(PROCES_WORKFLOW.COD_EMPRESA = PROCES_WORKFLOW.COD_EMPRESA AND
-			PROCES_WORKFLOW.NUM_PROCES >= ? and PROCES_WORKFLOW.NUM_PROCES <= ? and
-			PROCES_WORKFLOW.COD_DEF_PROCES = 'RNC' AND
-			PROCES_WORKFLOW.LOG_ATIV = case ? when 0 then false
+	(PROCES_WORKFLOW.COD_EMPRESA = PROCES_WORKFLOW.COD_EMPRESA AND
+	 PROCES_WORKFLOW.NUM_PROCES >= ? and PROCES_WORKFLOW.NUM_PROCES <= ? and
+	 PROCES_WORKFLOW.COD_DEF_PROCES = 'IRSC' AND
+	 PROCES_WORKFLOW.LOG_ATIV = case ? when 0 then false
 										when 1 then true
 										when 3 then PROCES_WORKFLOW.LOG_ATIV
-										end)
-        
-		and
-			(HISTOR_PROCES.COD_EMPRESA = PROCES_WORKFLOW.COD_EMPRESA AND 
-			HISTOR_PROCES.NUM_PROCES = PROCES_WORKFLOW.NUM_PROCES and
-			HISTOR_PROCES.NUM_SEQ_MOVTO = (select max(a.NUM_SEQ_MOVTO)
-															from HISTOR_PROCES a
-															where a.COD_EMPRESA = PROCES_WORKFLOW.COD_EMPRESA AND
-																  a.NUM_PROCES 	= PROCES_WORKFLOW.NUM_PROCES AND
-																  a.LOG_ATIV 	= PROCES_WORKFLOW.LOG_ATIV and
-                                                                  a.NUM_SEQ_MOVTO = a.NUM_SEQ_MOVTO) 
-			) 
+										end ) and
+	anexo_proces.NUM_PROCES = PROCES_WORKFLOW.NUM_PROCES 
+iNNER jOIN  documento ON
+	documento.NR_DOCUMENTO = anexo_proces.NR_DOCUMENTO and 
+	documento.VERSAO_ATIVA = 1 and 
+	documento.TP_DOCUMENTO = 5
+ 
+iNNER jOIN  ml001006 ON
+	documento.NR_DOCUMENTO = ml001006.documentid and
+	documento.NR_VERSAO = ml001006.version
+   
+INNER JOIN HISTOR_PROCES ON
+	(HISTOR_PROCES.COD_EMPRESA = PROCES_WORKFLOW.COD_EMPRESA AND 
+	HISTOR_PROCES.NUM_PROCES = PROCES_WORKFLOW.NUM_PROCES and
+	HISTOR_PROCES.NUM_SEQ_MOVTO = (select max(a.NUM_SEQ_MOVTO)
+													from HISTOR_PROCES a
+													where a.COD_EMPRESA = PROCES_WORKFLOW.COD_EMPRESA AND
+														  a.NUM_PROCES 	= PROCES_WORKFLOW.NUM_PROCES AND
+                                                          a.LOG_ATIV	= proces_workflow.LOG_ATIV AND
+														  a.NUM_SEQ_MOVTO = a.NUM_SEQ_MOVTO) 
+	) 
 	
-	iNNER jOIN  ESTADO_PROCES ON
-		(ESTADO_PROCES.COD_EMPRESA = PROCES_WORKFLOW.COD_EMPRESA AND
-		ESTADO_PROCES.COD_DEF_PROCES = PROCES_WORKFLOW.COD_DEF_PROCES AND
-        ESTADO_PROCES.NUM_VERS = PROCES_WORKFLOW.NUM_VERS AND
-        ESTADO_PROCES.NUM_SEQ = HISTOR_PROCES.NUM_SEQ_ESTADO)
-      
-	left oUTER jOIN  TAR_PROCES ativ_atual ON
-		(ativ_atual.COD_EMPRESA = PROCES_WORKFLOW.COD_EMPRESA and
-        ativ_atual.NUM_PROCES = PROCES_WORKFLOW.NUM_PROCES and
-		ativ_atual.NUM_SEQ_MOVTO = HISTOR_PROCES.NUM_SEQ_MOVTO and
-		ativ_atual.NUM_SEQ_TRANSF = ativ_atual.NUM_SEQ_TRANSF and
-        ativ_atual.CD_MATRICULA = ativ_atual.CD_MATRICULA and
-		ativ_atual.LOG_ATIV = HISTOR_PROCES.LOG_ATIV         
-        )
+iNNER jOIN  ESTADO_PROCES ON
+	(ESTADO_PROCES.COD_EMPRESA = PROCES_WORKFLOW.COD_EMPRESA AND
+	ESTADO_PROCES.COD_DEF_PROCES = PROCES_WORKFLOW.COD_DEF_PROCES AND
+	ESTADO_PROCES.NUM_VERS = PROCES_WORKFLOW.NUM_VERS AND
+	ESTADO_PROCES.NUM_SEQ = HISTOR_PROCES.NUM_SEQ_ESTADO)
+    
+left oUTER jOIN  TAR_PROCES ativ_inicial ON
+	(ativ_inicial.COD_EMPRESA = PROCES_WORKFLOW.COD_EMPRESA and
+	ativ_inicial.NUM_PROCES = PROCES_WORKFLOW.NUM_PROCES and
+	ativ_inicial.NUM_SEQ_MOVTO = 1 and
+	ativ_inicial.NUM_SEQ_TRANSF = ativ_inicial.NUM_SEQ_TRANSF and
+	ativ_inicial.CD_MATRICULA = ativ_inicial.CD_MATRICULA and
+	ativ_inicial.DAT_CONCLUS_TAR >= STR_TO_DATE(?, '%d/%m/%Y') and 
+	ativ_inicial.DAT_CONCLUS_TAR <= STR_TO_DATE(?, '%d/%m/%Y')
+	)  
+
+left oUTER jOIN  TAR_PROCES ON
+	(TAR_PROCES.COD_EMPRESA = PROCES_WORKFLOW.COD_EMPRESA and
+	 TAR_PROCES.NUM_PROCES = PROCES_WORKFLOW.NUM_PROCES and
+	 TAR_PROCES.NUM_SEQ_MOVTO = HISTOR_PROCES.NUM_SEQ_MOVTO and
+	 TAR_PROCES.NUM_SEQ_TRANSF = TAR_PROCES.NUM_SEQ_TRANSF and
+	 TAR_PROCES.CD_MATRICULA = TAR_PROCES.CD_MATRICULA and
+	 TAR_PROCES.LOG_ATIV = HISTOR_PROCES.LOG_ATIV         
+	)
         
-	left oUTER jOIN  TAR_PROCES ativ_inicial ON
-		(ativ_inicial.COD_EMPRESA = PROCES_WORKFLOW.COD_EMPRESA and
-        ativ_inicial.NUM_PROCES = PROCES_WORKFLOW.NUM_PROCES and
-		ativ_inicial.NUM_SEQ_MOVTO = 1 and
-		ativ_inicial.NUM_SEQ_TRANSF = ativ_inicial.NUM_SEQ_TRANSF and
-        ativ_inicial.CD_MATRICULA = ativ_inicial.CD_MATRICULA and
-        
-        ativ_inicial.DAT_CONCLUS_TAR >= STR_TO_DATE(?, '%d/%m/%Y') and 
-		ativ_inicial.DAT_CONCLUS_TAR <= STR_TO_DATE(?, '%d/%m/%Y')
-        )     	
-        
-    left oUTER jOIN  ANEXO_PROCES ON  
-		(ANEXO_PROCES.COD_EMPRESA = PROCES_WORKFLOW.COD_EMPRESA AND
-		ANEXO_PROCES.NUM_PROCES = PROCES_WORKFLOW.NUM_PROCES AND
-        ANEXO_PROCES.NUM_SEQ_ANEXO = PROCES_WORKFLOW.NUM_SEQ_ANEXO_PRINC and
-		ANEXO_PROCES.NR_VERSAO = (SELECT max(ANEXO_PROCES.NR_VERSAO) 
-								   FROM ANEXO_PROCES 
-								  WHERE ANEXO_PROCES.COD_EMPRESA = PROCES_WORKFLOW.COD_EMPRESA AND
-										ANEXO_PROCES.NUM_PROCES = PROCES_WORKFLOW.NUM_PROCES)
-	  )
-      
-     
-         ]]></xml-property>
+
+left oUTER jOIN  fdn_usertenant ON
+	(fdn_usertenant.USER_CODE = TAR_PROCES.CD_MATRICULA)
+    
+left oUTER jOIN  fdn_user ON   
+	(fdn_usertenant.USER_ID = fdn_user.USER_ID)]]></xml-property>
             <xml-property name="designerValues"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
 <model:DesignValues xmlns:design="http://www.eclipse.org/datatools/connectivity/oda/design" xmlns:model="http://www.eclipse.org/birt/report/model/adapter/odaModel">
   <Version>2.0</Version>
@@ -2434,7 +2071,7 @@
             <property name="type">custom</property>
             <property name="orientation">landscape</property>
             <property name="height">913mm</property>
-            <property name="width">1390mm</property>
+            <property name="width">1000mm</property>
             <page-header>
                 <grid id="188">
                     <property name="height">0.6041666666666666in</property>
@@ -2460,12 +2097,10 @@
                         <cell id="195">
                             <property name="textAlign">center</property>
                             <property name="verticalAlign">middle</property>
-                            <text-data id="388">
-                                <property name="textAlign">center</property>
-                                <expression name="valueExpr">if (params["status"].value == 0) "Relatório de RNCs Encerrados" &#13;
-else "Relatório de RNCs em Aberto"</expression>
-                                <property name="contentType">html</property>
-                            </text-data>
+                            <text id="629">
+                                <property name="contentType">auto</property>
+                                <text-property name="content"><![CDATA[Relatório de IRSC]]></text-property>
+                            </text>
                         </cell>
                     </row>
                 </grid>
@@ -2488,129 +2123,21 @@ else "Relatório de RNCs em Aberto"</expression>
             <property name="dataSet">Data Set</property>
             <list-property name="boundDataColumns">
                 <structure>
-                    <property name="name">NUM_PROCES</property>
-                    <text-property name="displayName">NUM_PROCES</text-property>
-                    <expression name="expression" type="javascript">dataSetRow["NUM_PROCES"]</expression>
+                    <property name="name">NR_DOCUMENTO</property>
+                    <text-property name="displayName">NR_DOCUMENTO</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["NR_DOCUMENTO"]</expression>
                     <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="name">TABELA</property>
+                    <text-property name="displayName">TABELA</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["TABELA"]</expression>
+                    <property name="dataType">string</property>
                 </structure>
                 <structure>
                     <property name="name">DAT_ABERT</property>
                     <text-property name="displayName">DAT_ABERT</text-property>
                     <expression name="expression" type="javascript">dataSetRow["DAT_ABERT"]</expression>
-                    <property name="dataType">string</property>
-                </structure>
-                <structure>
-                    <property name="name">Origem</property>
-                    <text-property name="displayName">Origem</text-property>
-                    <expression name="expression" type="javascript">dataSetRow["Origem"]</expression>
-                    <property name="dataType">string</property>
-                </structure>
-                <structure>
-                    <property name="name">Unidade_negocio</property>
-                    <text-property name="displayName">Unidade_negocio</text-property>
-                    <expression name="expression" type="javascript">dataSetRow["Unidade_negocio"]</expression>
-                    <property name="dataType">string</property>
-                </structure>
-                <structure>
-                    <property name="name">Descricao</property>
-                    <text-property name="displayName">Descricao</text-property>
-                    <expression name="expression" type="javascript">dataSetRow["Descricao"]</expression>
-                    <property name="dataType">string</property>
-                </structure>
-                <structure>
-                    <property name="name">Tipo</property>
-                    <text-property name="displayName">Tipo</text-property>
-                    <expression name="expression" type="javascript">dataSetRow["Tipo"]</expression>
-                    <property name="dataType">string</property>
-                </structure>
-                <structure>
-                    <property name="name">Quant</property>
-                    <text-property name="displayName">Quant</text-property>
-                    <expression name="expression" type="javascript">dataSetRow["Quant"]</expression>
-                    <property name="dataType">string</property>
-                </structure>
-                <structure>
-                    <property name="name">Cod_Prod</property>
-                    <text-property name="displayName">Cod_Prod</text-property>
-                    <expression name="expression" type="javascript">dataSetRow["Cod_Prod"]</expression>
-                    <property name="dataType">string</property>
-                </structure>
-                <structure>
-                    <property name="name">Nome_prod</property>
-                    <text-property name="displayName">Nome_prod</text-property>
-                    <expression name="expression" type="javascript">dataSetRow["Nome_prod"]</expression>
-                    <property name="dataType">string</property>
-                </structure>
-                <structure>
-                    <property name="name">processo</property>
-                    <text-property name="displayName">processo</text-property>
-                    <expression name="expression" type="javascript">dataSetRow["processo"]</expression>
-                    <property name="dataType">string</property>
-                </structure>
-                <structure>
-                    <property name="name">pedido</property>
-                    <text-property name="displayName">pedido</text-property>
-                    <expression name="expression" type="javascript">dataSetRow["pedido"]</expression>
-                    <property name="dataType">string</property>
-                </structure>
-                <structure>
-                    <property name="name">referencia</property>
-                    <text-property name="displayName">referencia</text-property>
-                    <expression name="expression" type="javascript">dataSetRow["referencia"]</expression>
-                    <property name="dataType">string</property>
-                </structure>
-                <structure>
-                    <property name="name">NOM_ESTADO</property>
-                    <text-property name="displayName">NOM_ESTADO</text-property>
-                    <expression name="expression" type="javascript">dataSetRow["NOM_ESTADO"]</expression>
-                    <property name="dataType">string</property>
-                </structure>
-                <structure>
-                    <property name="name">RESPONSAVEL</property>
-                    <text-property name="displayName">RESPONSAVEL</text-property>
-                    <expression name="expression" type="javascript">dataSetRow["RESPONSAVEL"]</expression>
-                    <property name="dataType">string</property>
-                </structure>
-                <structure>
-                    <property name="name">DAT_FIM_PRAZ</property>
-                    <text-property name="displayName">DAT_FIM_PRAZ</text-property>
-                    <expression name="expression" type="javascript">dataSetRow["DAT_FIM_PRAZ"]</expression>
-                    <property name="dataType">string</property>
-                </structure>
-                <structure>
-                    <property name="name">reponsabilidade</property>
-                    <text-property name="displayName">reponsabilidade</text-property>
-                    <expression name="expression" type="javascript">dataSetRow["reponsabilidade"]</expression>
-                    <property name="dataType">string</property>
-                </structure>
-                <structure>
-                    <property name="name">desc_mod_falha</property>
-                    <text-property name="displayName">desc_mod_falha</text-property>
-                    <expression name="expression" type="javascript">dataSetRow["desc_mod_falha"]</expression>
-                    <property name="dataType">string</property>
-                </structure>
-                <structure>
-                    <property name="name">fornec</property>
-                    <text-property name="displayName">fornec</text-property>
-                    <expression name="expression" type="javascript">dataSetRow["fornec"]</expression>
-                    <property name="dataType">string</property>
-                </structure>
-                <structure>
-                    <property name="name">rot_rej</property>
-                    <text-property name="displayName">rot_rej</text-property>
-                    <expression name="expression" type="javascript">dataSetRow["rot_rej"]</expression>
-                    <property name="dataType">string</property>
-                </structure>
-                <structure>
-                    <property name="name">colab_falha</property>
-                    <text-property name="displayName">colab_falha</text-property>
-                    <expression name="expression" type="javascript">dataSetRow["colab_falha"]</expression>
-                    <property name="dataType">string</property>
-                </structure>
-                <structure>
-                    <property name="name">matr_falha</property>
-                    <text-property name="displayName">matr_falha</text-property>
-                    <expression name="expression" type="javascript">dataSetRow["matr_falha"]</expression>
                     <property name="dataType">string</property>
                 </structure>
                 <structure>
@@ -2620,33 +2147,129 @@ else "Relatório de RNCs em Aberto"</expression>
                     <property name="dataType">string</property>
                 </structure>
                 <structure>
-                    <property name="name">DISPOSICAO</property>
-                    <text-property name="displayName">DISPOSICAO</text-property>
-                    <expression name="expression" type="javascript">dataSetRow["DISPOSICAO"]</expression>
+                    <property name="name">NOM_ESTADO</property>
+                    <text-property name="displayName">NOM_ESTADO</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["NOM_ESTADO"]</expression>
                     <property name="dataType">string</property>
                 </structure>
                 <structure>
-                    <property name="name">MODO_FALHA</property>
-                    <text-property name="displayName">MODO_FALHA</text-property>
-                    <expression name="expression" type="javascript">dataSetRow["MODO_FALHA"]</expression>
+                    <property name="name">FULL_NAME</property>
+                    <text-property name="displayName">FULL_NAME</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["FULL_NAME"]</expression>
                     <property name="dataType">string</property>
                 </structure>
                 <structure>
-                    <property name="name">PARECER</property>
-                    <text-property name="displayName">PARECER</text-property>
-                    <expression name="expression" type="javascript">dataSetRow["PARECER"]</expression>
+                    <property name="name">DAT_FIM_PRAZ</property>
+                    <text-property name="displayName">DAT_FIM_PRAZ</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["DAT_FIM_PRAZ"]</expression>
                     <property name="dataType">string</property>
                 </structure>
                 <structure>
-                    <property name="name">ACAO_TOMADA</property>
-                    <text-property name="displayName">ACAO_TOMADA</text-property>
-                    <expression name="expression" type="javascript">dataSetRow["ACAO_TOMADA"]</expression>
+                    <property name="name">num_processo</property>
+                    <text-property name="displayName">num_processo</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["num_processo"]</expression>
                     <property name="dataType">string</property>
                 </structure>
                 <structure>
-                    <property name="name">QUANT_ACAO</property>
-                    <text-property name="displayName">QUANT_ACAO</text-property>
-                    <expression name="expression" type="javascript">dataSetRow["QUANT_ACAO"]</expression>
+                    <property name="name">data_sol</property>
+                    <text-property name="displayName">data_sol</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["data_sol"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">unid_negocio</property>
+                    <text-property name="displayName">unid_negocio</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["unid_negocio"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">cliente</property>
+                    <text-property name="displayName">cliente</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["cliente"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">contato</property>
+                    <text-property name="displayName">contato</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["contato"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">telefone</property>
+                    <text-property name="displayName">telefone</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["telefone"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">email</property>
+                    <text-property name="displayName">email</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["email"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">Tipo</property>
+                    <text-property name="displayName">tipo</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["Tipo"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">desc_atend</property>
+                    <text-property name="displayName">desc_atend</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["desc_atend"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">disp</property>
+                    <text-property name="displayName">disp</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["disp"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">obs_compl</property>
+                    <text-property name="displayName">obs_compl</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["obs_compl"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">resp_exec</property>
+                    <text-property name="displayName">resp_exec</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["resp_exec"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">prazo</property>
+                    <text-property name="displayName">prazo</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["prazo"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">atend</property>
+                    <text-property name="displayName">atend</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["atend"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">desc_acoes</property>
+                    <text-property name="displayName">desc_acoes</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["desc_acoes"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">dt_atend</property>
+                    <text-property name="displayName">dt_atend</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["dt_atend"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">rd_docto</property>
+                    <text-property name="displayName">rd_docto</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["rd_docto"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">nr_docto</property>
+                    <text-property name="displayName">nr_docto</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["nr_docto"]</expression>
                     <property name="dataType">string</property>
                 </structure>
             </list-property>
@@ -2664,89 +2287,137 @@ else "Relatório de RNCs em Aberto"</expression>
             </column>
             <column id="534">
                 <property name="repeat">1</property>
-                <property name="width">2in</property>
+                <property name="width">1.4791666666666667in</property>
             </column>
             <column id="316">
+                <property name="fontFamily">"@Microsoft JhengHei UI"</property>
                 <property name="whiteSpace">nowrap</property>
-                <property name="width">1in</property>
+                <property name="width">2.8125in</property>
             </column>
             <column id="317">
                 <property name="whiteSpace">nowrap</property>
-                <property name="width">1.5in</property>
-            </column>
-            <column id="318">
-                <property name="width">4in</property>
+                <property name="width">2.0833333333333335in</property>
             </column>
             <column id="320">
                 <property name="repeat">1</property>
                 <property name="whiteSpace">nowrap</property>
-                <property name="width">1in</property>
+                <property name="width">1.7604166666666667in</property>
             </column>
             <column id="319">
                 <property name="whiteSpace">nowrap</property>
-                <property name="width">1in</property>
+                <property name="width">2.8020833333333335in</property>
             </column>
             <column id="437">
                 <property name="whiteSpace">nowrap</property>
-                <property name="width">1.5in</property>
+                <property name="width">1.8958333333333333in</property>
             </column>
             <column id="321">
-                <property name="width">2.5in</property>
-            </column>
-            <column id="322">
-                <property name="whiteSpace">normal</property>
-                <property name="width">2.5in</property>
-            </column>
-            <column id="323">
-                <property name="whiteSpace">normal</property>
-                <property name="width">1.5in</property>
+                <property name="width">2.3020833333333335in</property>
             </column>
             <column id="324">
-                <property name="whiteSpace">normal</property>
+                <property name="whiteSpace">nowrap</property>
                 <property name="width">2.5in</property>
             </column>
             <column id="325">
                 <property name="whiteSpace">normal</property>
-                <property name="width">1.5in</property>
-            </column>
-            <column id="326">
-                <property name="width">2in</property>
+                <property name="width">3.03125in</property>
             </column>
             <column id="465">
-                <property name="width">1in</property>
+                <property name="whiteSpace">nowrap</property>
+                <property name="width">3.1354166666666665in</property>
             </column>
             <column id="457">
-                <property name="width">4in</property>
+                <property name="whiteSpace">normal</property>
+                <property name="width">1.8645833333333333in</property>
             </column>
             <column id="461">
                 <property name="repeat">1</property>
-                <property name="width">2in</property>
+                <property name="whiteSpace">nowrap</property>
+                <property name="width">1.1770833333333333in</property>
             </column>
             <column id="540">
-                <property name="width">4in</property>
+                <property name="width">3.5416666666666665in</property>
             </column>
             <column id="546">
-                <property name="width">4in</property>
+                <property name="width">1.4791666666666667in</property>
             </column>
             <column id="453">
-                <property name="width">2in</property>
+                <property name="width">1.1458333333333333in</property>
             </column>
             <column id="490">
-                <property name="width">2in</property>
-            </column>
-            <column id="449">
-                <property name="width">1in</property>
-            </column>
-            <column id="479">
-                <property name="width">2in</property>
-            </column>
-            <column id="556">
-                <property name="width">2.8020833333333335in</property>
-            </column>
-            <column id="552">
-                <property name="width">1.1979166666666667in</property>
+                <property name="width">1.46875in</property>
             </column>
             <header>
+                <row id="561">
+                    <property name="borderBottomStyle">solid</property>
+                    <property name="borderBottomWidth">thin</property>
+                    <property name="borderLeftStyle">solid</property>
+                    <property name="borderLeftWidth">thin</property>
+                    <property name="borderRightStyle">solid</property>
+                    <property name="borderRightWidth">thin</property>
+                    <property name="borderTopStyle">solid</property>
+                    <property name="borderTopWidth">thin</property>
+                    <cell id="562">
+                        <property name="colSpan">10</property>
+                        <property name="rowSpan">1</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <label id="592">
+                            <text-property name="text">Informações referentes a primieira etapa - Abertura do chamado</text-property>
+                        </label>
+                    </cell>
+                    <cell id="574">
+                        <property name="colSpan">4</property>
+                        <property name="rowSpan">1</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <label id="616">
+                            <text-property name="text">2º Etapa - Definição da disposição</text-property>
+                        </label>
+                    </cell>
+                    <cell id="579">
+                        <property name="colSpan">3</property>
+                        <property name="rowSpan">1</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <label id="623">
+                            <text-property name="text">3º Etapa</text-property>
+                        </label>
+                    </cell>
+                    <cell id="582">
+                        <property name="colSpan">2</property>
+                        <property name="rowSpan">1</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <label id="628">
+                            <text-property name="text">4º Etapa</text-property>
+                        </label>
+                    </cell>
+                </row>
                 <row id="269">
                     <property name="borderBottomStyle">solid</property>
                     <property name="borderBottomWidth">thin</property>
@@ -2804,8 +2475,8 @@ else "Relatório de RNCs em Aberto"</expression>
                         <property name="borderRightWidth">thin</property>
                         <property name="borderTopStyle">solid</property>
                         <property name="borderTopWidth">thin</property>
-                        <label id="535">
-                            <text-property name="text">Parecer</text-property>
+                        <label id="594">
+                            <text-property name="text">Unidade de Negócio</text-property>
                         </label>
                     </cell>
                     <cell id="272">
@@ -2817,8 +2488,8 @@ else "Relatório de RNCs em Aberto"</expression>
                         <property name="borderRightWidth">thin</property>
                         <property name="borderTopStyle">solid</property>
                         <property name="borderTopWidth">thin</property>
-                        <label id="332">
-                            <text-property name="text">Origem</text-property>
+                        <label id="596">
+                            <text-property name="text">Cliente</text-property>
                         </label>
                     </cell>
                     <cell id="273">
@@ -2830,21 +2501,8 @@ else "Relatório de RNCs em Aberto"</expression>
                         <property name="borderRightWidth">thin</property>
                         <property name="borderTopStyle">solid</property>
                         <property name="borderTopWidth">thin</property>
-                        <label id="334">
-                            <text-property name="text">Unidade de Negócio</text-property>
-                        </label>
-                    </cell>
-                    <cell id="274">
-                        <property name="borderBottomStyle">solid</property>
-                        <property name="borderBottomWidth">thin</property>
-                        <property name="borderLeftStyle">solid</property>
-                        <property name="borderLeftWidth">thin</property>
-                        <property name="borderRightStyle">solid</property>
-                        <property name="borderRightWidth">thin</property>
-                        <property name="borderTopStyle">solid</property>
-                        <property name="borderTopWidth">thin</property>
-                        <label id="336">
-                            <text-property name="text">  Descrição da Falha</text-property>
+                        <label id="598">
+                            <text-property name="text">Contato</text-property>
                         </label>
                     </cell>
                     <cell id="276">
@@ -2856,8 +2514,8 @@ else "Relatório de RNCs em Aberto"</expression>
                         <property name="borderRightWidth">thin</property>
                         <property name="borderTopStyle">solid</property>
                         <property name="borderTopWidth">thin</property>
-                        <label id="340">
-                            <text-property name="text">Quant.</text-property>
+                        <label id="601">
+                            <text-property name="text">Telefone</text-property>
                         </label>
                     </cell>
                     <cell id="275">
@@ -2869,8 +2527,8 @@ else "Relatório de RNCs em Aberto"</expression>
                         <property name="borderRightWidth">thin</property>
                         <property name="borderTopStyle">solid</property>
                         <property name="borderTopWidth">thin</property>
-                        <label id="338">
-                            <text-property name="text">Tipo</text-property>
+                        <label id="602">
+                            <text-property name="text">E-mail</text-property>
                         </label>
                     </cell>
                     <cell id="434">
@@ -2882,8 +2540,8 @@ else "Relatório de RNCs em Aberto"</expression>
                         <property name="borderRightWidth">thin</property>
                         <property name="borderTopStyle">solid</property>
                         <property name="borderTopWidth">thin</property>
-                        <label id="438">
-                            <text-property name="text">Cod. Prod.</text-property>
+                        <label id="604">
+                            <text-property name="text">Tipo do Atendimento</text-property>
                         </label>
                     </cell>
                     <cell id="277">
@@ -2895,34 +2553,8 @@ else "Relatório de RNCs em Aberto"</expression>
                         <property name="borderRightWidth">thin</property>
                         <property name="borderTopStyle">solid</property>
                         <property name="borderTopWidth">thin</property>
-                        <label id="342">
-                            <text-property name="text">Nome produto</text-property>
-                        </label>
-                    </cell>
-                    <cell id="278">
-                        <property name="borderBottomStyle">solid</property>
-                        <property name="borderBottomWidth">thin</property>
-                        <property name="borderLeftStyle">solid</property>
-                        <property name="borderLeftWidth">thin</property>
-                        <property name="borderRightStyle">solid</property>
-                        <property name="borderRightWidth">thin</property>
-                        <property name="borderTopStyle">solid</property>
-                        <property name="borderTopWidth">thin</property>
-                        <label id="344">
-                            <text-property name="text">Nome Processo</text-property>
-                        </label>
-                    </cell>
-                    <cell id="279">
-                        <property name="borderBottomStyle">solid</property>
-                        <property name="borderBottomWidth">thin</property>
-                        <property name="borderLeftStyle">solid</property>
-                        <property name="borderLeftWidth">thin</property>
-                        <property name="borderRightStyle">solid</property>
-                        <property name="borderRightWidth">thin</property>
-                        <property name="borderTopStyle">solid</property>
-                        <property name="borderTopWidth">thin</property>
-                        <label id="346">
-                            <text-property name="text">Pedido</text-property>
+                        <label id="606">
+                            <text-property name="text">Descrição do Atendimento</text-property>
                         </label>
                     </cell>
                     <cell id="280">
@@ -2934,8 +2566,8 @@ else "Relatório de RNCs em Aberto"</expression>
                         <property name="borderRightWidth">thin</property>
                         <property name="borderTopStyle">solid</property>
                         <property name="borderTopWidth">thin</property>
-                        <label id="348">
-                            <text-property name="text">Cliente e/ou referencia</text-property>
+                        <label id="608">
+                            <text-property name="text">Decisão do Atendimento</text-property>
                         </label>
                     </cell>
                     <cell id="281">
@@ -2947,21 +2579,8 @@ else "Relatório de RNCs em Aberto"</expression>
                         <property name="borderRightWidth">thin</property>
                         <property name="borderTopStyle">solid</property>
                         <property name="borderTopWidth">thin</property>
-                        <label id="350">
-                            <text-property name="text">Atividade Atual</text-property>
-                        </label>
-                    </cell>
-                    <cell id="282">
-                        <property name="borderBottomStyle">solid</property>
-                        <property name="borderBottomWidth">thin</property>
-                        <property name="borderLeftStyle">solid</property>
-                        <property name="borderLeftWidth">thin</property>
-                        <property name="borderRightStyle">solid</property>
-                        <property name="borderRightWidth">thin</property>
-                        <property name="borderTopStyle">solid</property>
-                        <property name="borderTopWidth">thin</property>
-                        <label id="352">
-                            <text-property name="text">Responsavel</text-property>
+                        <label id="610">
+                            <text-property name="text">Informações Cmplementares</text-property>
                         </label>
                     </cell>
                     <cell id="462">
@@ -2973,8 +2592,8 @@ else "Relatório de RNCs em Aberto"</expression>
                         <property name="borderRightWidth">thin</property>
                         <property name="borderTopStyle">solid</property>
                         <property name="borderTopWidth">thin</property>
-                        <label id="466">
-                            <text-property name="text">Prazo</text-property>
+                        <label id="612">
+                            <text-property name="text">Responsável</text-property>
                         </label>
                     </cell>
                     <cell id="454">
@@ -2986,8 +2605,8 @@ else "Relatório de RNCs em Aberto"</expression>
                         <property name="borderRightWidth">thin</property>
                         <property name="borderTopStyle">solid</property>
                         <property name="borderTopWidth">thin</property>
-                        <label id="470">
-                            <text-property name="text">Observações</text-property>
+                        <label id="614">
+                            <text-property name="text">Prazo</text-property>
                         </label>
                     </cell>
                     <cell id="458">
@@ -2999,8 +2618,8 @@ else "Relatório de RNCs em Aberto"</expression>
                         <property name="borderRightWidth">thin</property>
                         <property name="borderTopStyle">solid</property>
                         <property name="borderTopWidth">thin</property>
-                        <label id="468">
-                            <text-property name="text">Responsabilidade</text-property>
+                        <label id="617">
+                            <text-property name="text">Eficaz</text-property>
                         </label>
                     </cell>
                     <cell id="537">
@@ -3012,8 +2631,8 @@ else "Relatório de RNCs em Aberto"</expression>
                         <property name="borderRightWidth">thin</property>
                         <property name="borderTopStyle">solid</property>
                         <property name="borderTopWidth">thin</property>
-                        <label id="541">
-                            <text-property name="text">Modo Falha</text-property>
+                        <label id="619">
+                            <text-property name="text">Ações realizadas no Atendimento</text-property>
                         </label>
                     </cell>
                     <cell id="543">
@@ -3025,8 +2644,8 @@ else "Relatório de RNCs em Aberto"</expression>
                         <property name="borderRightWidth">thin</property>
                         <property name="borderTopStyle">solid</property>
                         <property name="borderTopWidth">thin</property>
-                        <label id="547">
-                            <text-property name="text">Justificativa</text-property>
+                        <label id="621">
+                            <text-property name="text">Data</text-property>
                         </label>
                     </cell>
                     <cell id="450">
@@ -3038,8 +2657,8 @@ else "Relatório de RNCs em Aberto"</expression>
                         <property name="borderRightWidth">thin</property>
                         <property name="borderTopStyle">solid</property>
                         <property name="borderTopWidth">thin</property>
-                        <label id="472">
-                            <text-property name="text">Fornecedor</text-property>
+                        <label id="624">
+                            <text-property name="text">Abrir Documento</text-property>
                         </label>
                     </cell>
                     <cell id="487">
@@ -3051,60 +2670,8 @@ else "Relatório de RNCs em Aberto"</expression>
                         <property name="borderRightWidth">thin</property>
                         <property name="borderTopStyle">solid</property>
                         <property name="borderTopWidth">thin</property>
-                        <label id="491">
-                            <text-property name="text">Roteiro de Rejeição</text-property>
-                        </label>
-                    </cell>
-                    <cell id="446">
-                        <property name="borderBottomStyle">solid</property>
-                        <property name="borderBottomWidth">thin</property>
-                        <property name="borderLeftStyle">solid</property>
-                        <property name="borderLeftWidth">thin</property>
-                        <property name="borderRightStyle">solid</property>
-                        <property name="borderRightWidth">thin</property>
-                        <property name="borderTopStyle">solid</property>
-                        <property name="borderTopWidth">thin</property>
-                        <label id="474">
-                            <text-property name="text">Matricula</text-property>
-                        </label>
-                    </cell>
-                    <cell id="476">
-                        <property name="borderBottomStyle">solid</property>
-                        <property name="borderBottomWidth">thin</property>
-                        <property name="borderLeftStyle">solid</property>
-                        <property name="borderLeftWidth">thin</property>
-                        <property name="borderRightStyle">solid</property>
-                        <property name="borderRightWidth">thin</property>
-                        <property name="borderTopStyle">solid</property>
-                        <property name="borderTopWidth">thin</property>
-                        <label id="480">
-                            <text-property name="text">Colaborador</text-property>
-                        </label>
-                    </cell>
-                    <cell id="553">
-                        <property name="borderBottomStyle">solid</property>
-                        <property name="borderBottomWidth">thin</property>
-                        <property name="borderLeftStyle">solid</property>
-                        <property name="borderLeftWidth">thin</property>
-                        <property name="borderRightStyle">solid</property>
-                        <property name="borderRightWidth">thin</property>
-                        <property name="borderTopStyle">solid</property>
-                        <property name="borderTopWidth">thin</property>
-                        <label id="557">
-                            <text-property name="text">Ação a ser tomada</text-property>
-                        </label>
-                    </cell>
-                    <cell id="549">
-                        <property name="borderBottomStyle">solid</property>
-                        <property name="borderBottomWidth">thin</property>
-                        <property name="borderLeftStyle">solid</property>
-                        <property name="borderLeftWidth">thin</property>
-                        <property name="borderRightStyle">solid</property>
-                        <property name="borderRightWidth">thin</property>
-                        <property name="borderTopStyle">solid</property>
-                        <property name="borderTopWidth">thin</property>
-                        <label id="559">
-                            <text-property name="text">Quant.:</text-property>
+                        <label id="626">
+                            <text-property name="text">Nr. Docto.</text-property>
                         </label>
                     </cell>
                 </row>
@@ -3133,15 +2700,8 @@ else "Relatório de RNCs em Aberto"</expression>
                         <property name="borderRightWidth">thin</property>
                         <property name="borderTopStyle">dotted</property>
                         <property name="borderTopWidth">thin</property>
-                        <data id="414">
-                            <property name="resultSetColumn">NUM_PROCES</property>
-                            <list-property name="action">
-                                <structure>
-                                    <property name="linkType">hyperlink</property>
-                                    <expression name="uri" type="javascript">"/portal/p/Casp/pageworkflowview?app_ecm_workflowview_detailsProcessInstanceID=" + row["NUM_PROCES"]</expression>
-                                    <property name="targetWindow">_blank</property>
-                                </structure>
-                            </list-property>
+                        <data id="593">
+                            <property name="resultSetColumn">num_processo</property>
                         </data>
                     </cell>
                     <cell id="286">
@@ -3153,7 +2713,7 @@ else "Relatório de RNCs em Aberto"</expression>
                         <property name="borderRightWidth">thin</property>
                         <property name="borderTopStyle">dotted</property>
                         <property name="borderTopWidth">thin</property>
-                        <data id="501">
+                        <data id="589">
                             <property name="resultSetColumn">DAT_ABERT</property>
                         </data>
                     </cell>
@@ -3166,7 +2726,7 @@ else "Relatório de RNCs em Aberto"</expression>
                         <property name="borderRightWidth">thin</property>
                         <property name="borderTopStyle">dotted</property>
                         <property name="borderTopWidth">thin</property>
-                        <data id="526">
+                        <data id="591">
                             <property name="resultSetColumn">_STATUS</property>
                         </data>
                     </cell>
@@ -3179,8 +2739,8 @@ else "Relatório de RNCs em Aberto"</expression>
                         <property name="borderRightWidth">thin</property>
                         <property name="borderTopStyle">dotted</property>
                         <property name="borderTopWidth">thin</property>
-                        <data id="536">
-                            <property name="resultSetColumn">DISPOSICAO</property>
+                        <data id="595">
+                            <property name="resultSetColumn">unid_negocio</property>
                         </data>
                     </cell>
                     <cell id="287">
@@ -3192,8 +2752,8 @@ else "Relatório de RNCs em Aberto"</expression>
                         <property name="borderRightWidth">thin</property>
                         <property name="borderTopStyle">dotted</property>
                         <property name="borderTopWidth">thin</property>
-                        <data id="502">
-                            <property name="resultSetColumn">Origem</property>
+                        <data id="597">
+                            <property name="resultSetColumn">cliente</property>
                         </data>
                     </cell>
                     <cell id="288">
@@ -3205,21 +2765,8 @@ else "Relatório de RNCs em Aberto"</expression>
                         <property name="borderRightWidth">thin</property>
                         <property name="borderTopStyle">dotted</property>
                         <property name="borderTopWidth">thin</property>
-                        <data id="503">
-                            <property name="resultSetColumn">Unidade_negocio</property>
-                        </data>
-                    </cell>
-                    <cell id="289">
-                        <property name="borderBottomStyle">dotted</property>
-                        <property name="borderBottomWidth">thin</property>
-                        <property name="borderLeftStyle">dotted</property>
-                        <property name="borderLeftWidth">thin</property>
-                        <property name="borderRightStyle">dotted</property>
-                        <property name="borderRightWidth">thin</property>
-                        <property name="borderTopStyle">dotted</property>
-                        <property name="borderTopWidth">thin</property>
-                        <data id="504">
-                            <property name="resultSetColumn">Descricao</property>
+                        <data id="599">
+                            <property name="resultSetColumn">contato</property>
                         </data>
                     </cell>
                     <cell id="291">
@@ -3231,8 +2778,8 @@ else "Relatório de RNCs em Aberto"</expression>
                         <property name="borderRightWidth">thin</property>
                         <property name="borderTopStyle">dotted</property>
                         <property name="borderTopWidth">thin</property>
-                        <data id="506">
-                            <property name="resultSetColumn">Quant</property>
+                        <data id="600">
+                            <property name="resultSetColumn">telefone</property>
                         </data>
                     </cell>
                     <cell id="290">
@@ -3244,8 +2791,8 @@ else "Relatório de RNCs em Aberto"</expression>
                         <property name="borderRightWidth">thin</property>
                         <property name="borderTopStyle">dotted</property>
                         <property name="borderTopWidth">thin</property>
-                        <data id="505">
-                            <property name="resultSetColumn">Tipo</property>
+                        <data id="603">
+                            <property name="resultSetColumn">email</property>
                         </data>
                     </cell>
                     <cell id="435">
@@ -3257,8 +2804,8 @@ else "Relatório de RNCs em Aberto"</expression>
                         <property name="borderRightWidth">thin</property>
                         <property name="borderTopStyle">dotted</property>
                         <property name="borderTopWidth">thin</property>
-                        <data id="507">
-                            <property name="resultSetColumn">Cod_Prod</property>
+                        <data id="605">
+                            <property name="resultSetColumn">Tipo</property>
                         </data>
                     </cell>
                     <cell id="292">
@@ -3270,34 +2817,8 @@ else "Relatório de RNCs em Aberto"</expression>
                         <property name="borderRightWidth">thin</property>
                         <property name="borderTopStyle">dotted</property>
                         <property name="borderTopWidth">thin</property>
-                        <data id="508">
-                            <property name="resultSetColumn">Nome_prod</property>
-                        </data>
-                    </cell>
-                    <cell id="293">
-                        <property name="borderBottomStyle">dotted</property>
-                        <property name="borderBottomWidth">thin</property>
-                        <property name="borderLeftStyle">dotted</property>
-                        <property name="borderLeftWidth">thin</property>
-                        <property name="borderRightStyle">dotted</property>
-                        <property name="borderRightWidth">thin</property>
-                        <property name="borderTopStyle">dotted</property>
-                        <property name="borderTopWidth">thin</property>
-                        <data id="509">
-                            <property name="resultSetColumn">processo</property>
-                        </data>
-                    </cell>
-                    <cell id="294">
-                        <property name="borderBottomStyle">dotted</property>
-                        <property name="borderBottomWidth">thin</property>
-                        <property name="borderLeftStyle">dotted</property>
-                        <property name="borderLeftWidth">thin</property>
-                        <property name="borderRightStyle">dotted</property>
-                        <property name="borderRightWidth">thin</property>
-                        <property name="borderTopStyle">dotted</property>
-                        <property name="borderTopWidth">thin</property>
-                        <data id="510">
-                            <property name="resultSetColumn">pedido</property>
+                        <data id="607">
+                            <property name="resultSetColumn">desc_atend</property>
                         </data>
                     </cell>
                     <cell id="295">
@@ -3309,8 +2830,8 @@ else "Relatório de RNCs em Aberto"</expression>
                         <property name="borderRightWidth">thin</property>
                         <property name="borderTopStyle">dotted</property>
                         <property name="borderTopWidth">thin</property>
-                        <data id="511">
-                            <property name="resultSetColumn">referencia</property>
+                        <data id="609">
+                            <property name="resultSetColumn">disp</property>
                         </data>
                     </cell>
                     <cell id="296">
@@ -3322,21 +2843,8 @@ else "Relatório de RNCs em Aberto"</expression>
                         <property name="borderRightWidth">thin</property>
                         <property name="borderTopStyle">dotted</property>
                         <property name="borderTopWidth">thin</property>
-                        <data id="512">
-                            <property name="resultSetColumn">NOM_ESTADO</property>
-                        </data>
-                    </cell>
-                    <cell id="297">
-                        <property name="borderBottomStyle">dotted</property>
-                        <property name="borderBottomWidth">thin</property>
-                        <property name="borderLeftStyle">dotted</property>
-                        <property name="borderLeftWidth">thin</property>
-                        <property name="borderRightStyle">dotted</property>
-                        <property name="borderRightWidth">thin</property>
-                        <property name="borderTopStyle">dotted</property>
-                        <property name="borderTopWidth">thin</property>
-                        <data id="513">
-                            <property name="resultSetColumn">RESPONSAVEL</property>
+                        <data id="611">
+                            <property name="resultSetColumn">obs_compl</property>
                         </data>
                     </cell>
                     <cell id="463">
@@ -3348,8 +2856,8 @@ else "Relatório de RNCs em Aberto"</expression>
                         <property name="borderRightWidth">thin</property>
                         <property name="borderTopStyle">dotted</property>
                         <property name="borderTopWidth">thin</property>
-                        <data id="514">
-                            <property name="resultSetColumn">DAT_FIM_PRAZ</property>
+                        <data id="613">
+                            <property name="resultSetColumn">resp_exec</property>
                         </data>
                     </cell>
                     <cell id="455">
@@ -3361,8 +2869,8 @@ else "Relatório de RNCs em Aberto"</expression>
                         <property name="borderRightWidth">thin</property>
                         <property name="borderTopStyle">dotted</property>
                         <property name="borderTopWidth">thin</property>
-                        <data id="516">
-                            <property name="resultSetColumn">desc_mod_falha</property>
+                        <data id="615">
+                            <property name="resultSetColumn">prazo</property>
                         </data>
                     </cell>
                     <cell id="459">
@@ -3374,8 +2882,8 @@ else "Relatório de RNCs em Aberto"</expression>
                         <property name="borderRightWidth">thin</property>
                         <property name="borderTopStyle">dotted</property>
                         <property name="borderTopWidth">thin</property>
-                        <data id="515">
-                            <property name="resultSetColumn">reponsabilidade</property>
+                        <data id="618">
+                            <property name="resultSetColumn">atend</property>
                         </data>
                     </cell>
                     <cell id="538">
@@ -3387,8 +2895,8 @@ else "Relatório de RNCs em Aberto"</expression>
                         <property name="borderRightWidth">thin</property>
                         <property name="borderTopStyle">dotted</property>
                         <property name="borderTopWidth">thin</property>
-                        <data id="542">
-                            <property name="resultSetColumn">MODO_FALHA</property>
+                        <data id="620">
+                            <property name="resultSetColumn">desc_acoes</property>
                         </data>
                     </cell>
                     <cell id="544">
@@ -3400,8 +2908,8 @@ else "Relatório de RNCs em Aberto"</expression>
                         <property name="borderRightWidth">thin</property>
                         <property name="borderTopStyle">dotted</property>
                         <property name="borderTopWidth">thin</property>
-                        <data id="548">
-                            <property name="resultSetColumn">PARECER</property>
+                        <data id="622">
+                            <property name="resultSetColumn">dt_atend</property>
                         </data>
                     </cell>
                     <cell id="451">
@@ -3413,8 +2921,8 @@ else "Relatório de RNCs em Aberto"</expression>
                         <property name="borderRightWidth">thin</property>
                         <property name="borderTopStyle">dotted</property>
                         <property name="borderTopWidth">thin</property>
-                        <data id="517">
-                            <property name="resultSetColumn">fornec</property>
+                        <data id="625">
+                            <property name="resultSetColumn">rd_docto</property>
                         </data>
                     </cell>
                     <cell id="488">
@@ -3426,60 +2934,8 @@ else "Relatório de RNCs em Aberto"</expression>
                         <property name="borderRightWidth">thin</property>
                         <property name="borderTopStyle">dotted</property>
                         <property name="borderTopWidth">thin</property>
-                        <data id="518">
-                            <property name="resultSetColumn">rot_rej</property>
-                        </data>
-                    </cell>
-                    <cell id="447">
-                        <property name="borderBottomStyle">dotted</property>
-                        <property name="borderBottomWidth">thin</property>
-                        <property name="borderLeftStyle">dotted</property>
-                        <property name="borderLeftWidth">thin</property>
-                        <property name="borderRightStyle">dotted</property>
-                        <property name="borderRightWidth">thin</property>
-                        <property name="borderTopStyle">dotted</property>
-                        <property name="borderTopWidth">thin</property>
-                        <data id="520">
-                            <property name="resultSetColumn">matr_falha</property>
-                        </data>
-                    </cell>
-                    <cell id="477">
-                        <property name="borderBottomStyle">dotted</property>
-                        <property name="borderBottomWidth">thin</property>
-                        <property name="borderLeftStyle">dotted</property>
-                        <property name="borderLeftWidth">thin</property>
-                        <property name="borderRightStyle">dotted</property>
-                        <property name="borderRightWidth">thin</property>
-                        <property name="borderTopStyle">dotted</property>
-                        <property name="borderTopWidth">thin</property>
-                        <data id="519">
-                            <property name="resultSetColumn">colab_falha</property>
-                        </data>
-                    </cell>
-                    <cell id="554">
-                        <property name="borderBottomStyle">dotted</property>
-                        <property name="borderBottomWidth">thin</property>
-                        <property name="borderLeftStyle">dotted</property>
-                        <property name="borderLeftWidth">thin</property>
-                        <property name="borderRightStyle">dotted</property>
-                        <property name="borderRightWidth">thin</property>
-                        <property name="borderTopStyle">dotted</property>
-                        <property name="borderTopWidth">thin</property>
-                        <data id="558">
-                            <property name="resultSetColumn">ACAO_TOMADA</property>
-                        </data>
-                    </cell>
-                    <cell id="550">
-                        <property name="borderBottomStyle">dotted</property>
-                        <property name="borderBottomWidth">thin</property>
-                        <property name="borderLeftStyle">dotted</property>
-                        <property name="borderLeftWidth">thin</property>
-                        <property name="borderRightStyle">dotted</property>
-                        <property name="borderRightWidth">thin</property>
-                        <property name="borderTopStyle">dotted</property>
-                        <property name="borderTopWidth">thin</property>
-                        <data id="560">
-                            <property name="resultSetColumn">QUANT_ACAO</property>
+                        <data id="627">
+                            <property name="resultSetColumn">nr_docto</property>
                         </data>
                     </cell>
                 </row>
@@ -3558,16 +3014,6 @@ else "Relatório de RNCs em Aberto"</expression>
                         <property name="borderTopStyle">solid</property>
                         <property name="borderTopWidth">thin</property>
                     </cell>
-                    <cell id="304">
-                        <property name="borderBottomStyle">solid</property>
-                        <property name="borderBottomWidth">thin</property>
-                        <property name="borderLeftStyle">solid</property>
-                        <property name="borderLeftWidth">thin</property>
-                        <property name="borderRightStyle">solid</property>
-                        <property name="borderRightWidth">thin</property>
-                        <property name="borderTopStyle">solid</property>
-                        <property name="borderTopWidth">thin</property>
-                    </cell>
                     <cell id="306">
                         <property name="borderBottomStyle">solid</property>
                         <property name="borderBottomWidth">thin</property>
@@ -3608,26 +3054,6 @@ else "Relatório de RNCs em Aberto"</expression>
                         <property name="borderTopStyle">solid</property>
                         <property name="borderTopWidth">thin</property>
                     </cell>
-                    <cell id="308">
-                        <property name="borderBottomStyle">solid</property>
-                        <property name="borderBottomWidth">thin</property>
-                        <property name="borderLeftStyle">solid</property>
-                        <property name="borderLeftWidth">thin</property>
-                        <property name="borderRightStyle">solid</property>
-                        <property name="borderRightWidth">thin</property>
-                        <property name="borderTopStyle">solid</property>
-                        <property name="borderTopWidth">thin</property>
-                    </cell>
-                    <cell id="309">
-                        <property name="borderBottomStyle">solid</property>
-                        <property name="borderBottomWidth">thin</property>
-                        <property name="borderLeftStyle">solid</property>
-                        <property name="borderLeftWidth">thin</property>
-                        <property name="borderRightStyle">solid</property>
-                        <property name="borderRightWidth">thin</property>
-                        <property name="borderTopStyle">solid</property>
-                        <property name="borderTopWidth">thin</property>
-                    </cell>
                     <cell id="310">
                         <property name="borderBottomStyle">solid</property>
                         <property name="borderBottomWidth">thin</property>
@@ -3639,16 +3065,6 @@ else "Relatório de RNCs em Aberto"</expression>
                         <property name="borderTopWidth">thin</property>
                     </cell>
                     <cell id="311">
-                        <property name="borderBottomStyle">solid</property>
-                        <property name="borderBottomWidth">thin</property>
-                        <property name="borderLeftStyle">solid</property>
-                        <property name="borderLeftWidth">thin</property>
-                        <property name="borderRightStyle">solid</property>
-                        <property name="borderRightWidth">thin</property>
-                        <property name="borderTopStyle">solid</property>
-                        <property name="borderTopWidth">thin</property>
-                    </cell>
-                    <cell id="312">
                         <property name="borderBottomStyle">solid</property>
                         <property name="borderBottomWidth">thin</property>
                         <property name="borderLeftStyle">solid</property>
@@ -3719,46 +3135,6 @@ else "Relatório de RNCs em Aberto"</expression>
                         <property name="borderTopWidth">thin</property>
                     </cell>
                     <cell id="489">
-                        <property name="borderBottomStyle">solid</property>
-                        <property name="borderBottomWidth">thin</property>
-                        <property name="borderLeftStyle">solid</property>
-                        <property name="borderLeftWidth">thin</property>
-                        <property name="borderRightStyle">solid</property>
-                        <property name="borderRightWidth">thin</property>
-                        <property name="borderTopStyle">solid</property>
-                        <property name="borderTopWidth">thin</property>
-                    </cell>
-                    <cell id="448">
-                        <property name="borderBottomStyle">solid</property>
-                        <property name="borderBottomWidth">thin</property>
-                        <property name="borderLeftStyle">solid</property>
-                        <property name="borderLeftWidth">thin</property>
-                        <property name="borderRightStyle">solid</property>
-                        <property name="borderRightWidth">thin</property>
-                        <property name="borderTopStyle">solid</property>
-                        <property name="borderTopWidth">thin</property>
-                    </cell>
-                    <cell id="478">
-                        <property name="borderBottomStyle">solid</property>
-                        <property name="borderBottomWidth">thin</property>
-                        <property name="borderLeftStyle">solid</property>
-                        <property name="borderLeftWidth">thin</property>
-                        <property name="borderRightStyle">solid</property>
-                        <property name="borderRightWidth">thin</property>
-                        <property name="borderTopStyle">solid</property>
-                        <property name="borderTopWidth">thin</property>
-                    </cell>
-                    <cell id="555">
-                        <property name="borderBottomStyle">solid</property>
-                        <property name="borderBottomWidth">thin</property>
-                        <property name="borderLeftStyle">solid</property>
-                        <property name="borderLeftWidth">thin</property>
-                        <property name="borderRightStyle">solid</property>
-                        <property name="borderRightWidth">thin</property>
-                        <property name="borderTopStyle">solid</property>
-                        <property name="borderTopWidth">thin</property>
-                    </cell>
-                    <cell id="551">
                         <property name="borderBottomStyle">solid</property>
                         <property name="borderBottomWidth">thin</property>
                         <property name="borderLeftStyle">solid</property>

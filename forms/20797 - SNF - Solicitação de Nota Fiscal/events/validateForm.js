@@ -12,13 +12,14 @@ function validateForm(form){
 			
 			if (form.getValue("tipoNota") == "") message += "<br/>- Tipo de Nota;";
 			if (form.getValue("destNota") == "" || form.getValue("destNota") == "A" || form.getValue("destNota") == null) message += "<br/>- Tipo de destino;";
-			log.warn(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + form.getValue("destNota"));
 			if (form.getValue("estabNota") == "") message += "<br/>- Estabelecimento;";
 			if (form.getValue("espNota") == "") message += "<br/>- Espécie";
 			if (form.getValue("espNota") == "devolucao" && form.getValue("nfRef") == "") message += "<br/>- Nr. da Nota de referência";
-					
+			
+			
 			if (form.getValue("cod_emitente") == "") message += "<br/>- Codigo do destino;";
 			if (form.getValue("nome_emitente") == "") message += "<br/>- Nome do destino;";
+			
 			if (form.getValue("cep_emitente") == "") message += "<br/>- CEP do destino;";
 			else if (!validaCEP(form.getValue("cep_emitente"))) message += "<br/>- CEP não consta na base dos Correios";
 			
@@ -27,7 +28,7 @@ function validateForm(form){
 			
 			if (form.getValue("natOper_emitente") == "") message += "<br/>- Natureza da operação;";
 			else if (!validaNatureza(form.getValue("natOper_emitente"))) message += "<br/>- Natureza da operação inválida;";
-			
+		
 			var indexes = form.getChildrenIndexes("tb_itens_nota");
 			if (indexes.length == 0) message += "<br/>- Informe ao menos um item;";		
 			
@@ -108,9 +109,11 @@ function validateForm(form){
 	    return String(datasetTOTVSNaturOper.getValue(0, "denominacao")).toUpperCase() != "ERRO";
 	}
 	
-	function validaCEP(cep){		
+	function validaCEP(cep){	
+		log.warn(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>3 " + cep);
 		var constraintCEP = DatasetFactory.createConstraint('cep', cep, cep, ConstraintType.MUST);
 		var datasetCEP = DatasetFactory.getDataset('consultaCEP', null, new Array(constraintCEP), null);
+		log.warn(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>3 " + datasetCEP.getValue(0, "cep"));
 	    return datasetCEP.getValue(0, "cep") == cep;
 	}
 	

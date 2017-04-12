@@ -20,6 +20,7 @@ function createDataset(fields, constraints, sortFields) {
 	try{		
 		var clientService = fluigAPI.getAuthorizeClientService();
 		var data = {
+				companyId : getValue("WKCompany") + '',
 				serviceCode : 'viaCEP',
 				 endpoint : '/ws/' + cep.replace(/\D/g, '') + '/json/',
 				 method : 'get'

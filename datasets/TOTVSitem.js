@@ -10,7 +10,7 @@ function createDataset(fields, constraints, sortFields) {
 		}
 	}
 	if (cod_item == null){
-		cod_item = '';
+		cod_item = '31271083';
 		var estab = '1';
 		token = DatasetFactory.getDataset('tokens', null, null, null).getValue(0, "tokenTOTVSDatasul");
 	}
@@ -44,6 +44,31 @@ function createDataset(fields, constraints, sortFields) {
 	    desc_item.name = "desc_item";
 	    desc_item.label = "desc_item";
 	    
+	    var un = new Object();
+	    un.type = "character";
+	    un.name = "un";
+	    un.label = "un";
+	    
+	    var un_descricao = new Object();
+	    un_descricao.type = "character";
+	    un_descricao.name = "un_descricao";
+	    un_descricao.label = "un_descricao";
+	    
+	    var narrativa = new Object();
+	    narrativa.type = "character";
+	    narrativa.name = "narrativa";
+	    narrativa.label = "narrativa";
+	    
+	    var ge_codigo = new Object();
+	    ge_codigo.type = "integer";
+	    ge_codigo.name = "ge_codigo";
+	    ge_codigo.label = "ge_codigo";
+	    
+	    var ge_descricao = new Object();
+	    ge_descricao.type = "character";
+	    ge_descricao.name = "ge_descricao";
+	    ge_descricao.label = "ge_descricao";	    
+	    
 	    var ncm = new Object();
 	    ncm.type = "character";
 	    ncm.name = "ncm";
@@ -73,7 +98,7 @@ function createDataset(fields, constraints, sortFields) {
 	    var campos_tabela = new Object();
 	    campos_tabela.name = "tt-item";
 	    campos_tabela.records = new Array();
-	    campos_tabela.fields = [it_codigo_tt, desc_item, ncm, ipi, m_mat, m_mob, m_ggf];
+	    campos_tabela.fields = [it_codigo_tt, desc_item, un, un_descricao, narrativa, ge_codigo, ge_descricao,  ncm, ipi, m_mat, m_mob, m_ggf];
 	    
 	    var tt_itens = new Object();
 	    tt_itens.dataType = "temptable";
