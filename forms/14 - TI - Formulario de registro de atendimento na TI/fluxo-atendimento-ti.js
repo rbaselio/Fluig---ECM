@@ -1,87 +1,110 @@
-$(function(ready) {	
-	$('#tb_interacao').find('tr').each(function(indice){
-		indice--;
-	    $(this).find("label").eq(0).text("ATENDIMENTO nº" + ("0" + indice).substr(-2));	      
-	});	
-	
-	if ($("#tipo").val() =="") $("#desc_chamado").attr("readOnly", true); 
-	
-	$('#ramal').number( true, 0, ',' ,'', '');
-	$('#ramal_atend').number( true, 0, ',' ,'', '');
-	
-});
+var row, anexos, matr, process, isMobile, token;
 
-function zoomCriticidade() {
-	zoomEcmTipo("criticidade",
-			"Criticidade,Criticidade",
-			"Criticidade,Prazo", 
-			"Criticidade",
-			"setCriticidade");
-}
-function setCriticidade(selectedItem) {
-	$("#criticidade").val(selectedItem['Criticidade']);
-	$("#prazo").val(selectedItem['Prazo']);	
+function loadElementos(){	
+	
+	$('#tipo').change(function() {
+		if ($(this).val() == "sistema" ) $('#sel_sistema').show();
+		else {
+			$('#sistema').val("");
+			$('#sel_sistema').hide();
+		}		
+		if ($("#tipo").val() != "") $("#desc_chamado").removeAttr('readOnly');
+		else $("#desc_chamado").attr("readOnly", true).val("");		
+	});
+	
+	$('#criticidade').change(function() {
+		if ($(this).val() == "1" ){
+			FLUIGC.message.alert({
+			    message: "<strong>Utilize esta opção de criticidade somente se você não esta consgeuindo realizar suas oprações sob hipótese alguma",
+			    title: 'ATENÇÃO',
+			    label: 'OK'
+			});
+		}
+	});
+	
+	$("#ramal").on('keyup', function(){
+		if ($(this).val().length > 12) $(this).mask('(00)00000-0000');
+		else if ($(this).val().length > 3) $(this).mask('(00)0000-00000');
+		else $(this).mask('00000');
+	});
+	
+	$('#btZoomColab').click(function() {	
+		var param = {"datasetId" : "colleague", "limit" : "0", 
+				 "filterFields" : ["active", "true"]};
+		
+		var thisModal = FLUIGC.modal({
+		   title: 'Lista de Colaboradores',
+		   content: '<div id="postEmb"></div>',
+		   id: 'fluig-modal',
+		   actions: [{
+		       'label': 'Fechar',
+		       'autoClose': true
+		   }]
+		}, function(err, data) {			
+			var thisTable = FLUIGC.datatable('#postEmb', {
+			    dataRequest: {
+			        url: '/api/public/ecm/dataset/search',
+			        options: {
+			            contentType:"application/json",
+			            dataType: 'json',
+			            method: 'POST',
+			            data: JSON.stringify(param),
+			            crossDomain: true,
+			            cache: false
+			        },
+			        root: 'content'
+			    },
+			    renderContent: ['colleagueId', 'colleagueName'], 
+			    header: [{'title': 'Matricula', 'size': 'col-sm-2'},
+			             {'title': 'Nome', 'size': 'col-sm-5'}],
+			    multiSelect: false,
+			    search: {
+			        enabled: true,
+			        searchAreaStyle: 'col-md-9',
+			        onSearch: function(response) {
+			        	var param2 = {"datasetId" : "colleague", "limit" : "0", 
+								"filterFields" : ["active", "true"], 
+								"searchField" : "colleagueName", "searchValue" : response };
+			        	$.ajax({
+							  type: 'POST',
+							  contentType: 'application/json',
+							  dataType: 'json',
+							  url: '/api/public/ecm/dataset/search',
+							  data: JSON.stringify(param2),
+							  success: function(data) {
+								  thisTable.reload(data.content);
+							  }
+							});
+			        }
+			    },
+			    scroll: {
+			        target: '#postEmb',
+			        enabled: true			        
+		       },
+			    tableStyle: 'table-striped'
+			}).on('dblclick', function(ev) {
+				var index = thisTable.selectedRows()[0];
+			    var selected = thisTable.getRow(index);
+			    $("#matricula_user").val(selected.colleagueId);
+			    $("#solicitante").val(selected.colleagueName);	
+			    $("#ramal").val("");			    
+			    thisModal.remove();					    
+			});
+		});
+		$(".modal-body").css("max-height" , window.innerHeight/2 + 'px');	
+	});
+
 }
 
-//setar solicitante
-function zoomSolicitante() {
-	zoomEcmTipo("colleague",
-			"colleagueId,Matricula,colleagueName,Colaborador",
-			"colleagueId,colleagueName,extensionNr", 
-			"Zoom Colaborador",
-			"setColaborador",
-			"active,true");
-}
-function setColaborador(selectedItem) {
-	$("#matricula_user").val(selectedItem['colleagueId']);
-	$("#solicitante").val(selectedItem['colleagueName']);
-	$("#ramal").val(selectedItem['extensionNr']);
-}
 
-//setar tipo do chamado
-function zoomTipo() {
-	zoomEcmTipo("TipoDeChamado", "Classe,Classe,Tipo,Tipo",
-			"Classe,Tipo,Matricula,Texto", "Zoom Tipo de Chamado",
-			"setTipoDeChamado");
-}
-function setTipoDeChamado(selectedItem) {
-	
-	$("#classe").val(selectedItem['Classe']);
-	$("#tipo").val(selectedItem['Tipo']);
-	
-	$("#re_classe").val(selectedItem['Classe']);
-	$("#re_tipo").val(selectedItem['Tipo']);
-	
-	$("#responsavel").val(selectedItem['Matricula']);
-	
-	$("#desc_chamado").removeAttr('readOnly');
-	$("#desc_chamado").val(selectedItem['Texto']);
-	$("#desc_chamado").focus().select();
-	$("#desc_chamado").trigger('keyup');
-	
-	
-	if ($("#tipo").val().match(/divers/ig)){
-		myMessage = FLUIGC.message.alert({
-			message: 'Você selecionou a opção diversos. <br/>Para agilizar o atendimento, certifique-se que não existe uma opção mais aderente a sua necessidade',
-			title: 'Verifique o tipo: ',
-			label: 'OK'		    
-		});			
-	}	
-}
-
-//reclassificação do chamado	
-function zoomReclassificacao() {
-	zoomEcmTipo("TipoDeChamado", "Classe,Classe,Tipo,Tipo", "Classe,Tipo",
-			"Zoom Tipo de Chamado", "setReclassificacao");
-}
-function setReclassificacao(selectedItem) {
-	$("#re_classe").val(selectedItem['Classe']);
-	$("#re_tipo").val(selectedItem['Tipo']);
-}
 
 // prencimento e ativação dos campos
-function ativaPreencheCampos(modeView, numState, matricula, WKNumProces, documentId) {
-	blockAll();
+function ativaPreencheCampos(modeView, numState, matricula, WKNumProces, documentId, mobile) {
+	isMobile = mobile;
+	matr = matricula;
+	process = WKNumProces;
+	
+	blockAll(modeView);	
 	if (modeView == "ADD" || modeView == "MOD") {	
 		
 		var filter = new Object();
@@ -94,19 +117,16 @@ function ativaPreencheCampos(modeView, numState, matricula, WKNumProces, documen
 		var hora = getHora();		
 
 		if (numState == 0 || numState == 1) {	
-			showElemento($("#emissao"));			
+			showElemento($("#emissao"));	
+			$('#tipo').trigger("change");
 			
-			$('#matricula_user').attr("readOnly", true).val(matricula);
-			$('#solicitante').attr("readOnly", true).val(usuario);
-			$('#ramal').val(ramal);					
+			$('#matricula_user').val(matricula);
+			$('#solicitante').val(usuario);
+			$('#ramal').val("");					
 			
 			$('#num_processo').val(WKNumProces);
 			$('#data_sol').val(data);
-			$('#hora_sol').val(hora);	
-			
-			$('#classe').attr("readOnly", true);
-			$('#tipo').attr("readOnly", true);
-			$('#criticidade').attr("readOnly", true);
+			$('#hora_sol').val(hora);			
 			
 			var filterGroup = new Object();
 			filterGroup["colleagueGroupPK.groupId"] = 'TI';
@@ -117,122 +137,78 @@ function ativaPreencheCampos(modeView, numState, matricula, WKNumProces, documen
 			};
 		}
 		
-		if (numState == 2 || numState == 6 ) {	
-			
-			
-			$('#matricula_atend').val(matricula);
-			$('#atendente').val(usuario);
-			$('#ramal_atend').val(ramal);
-			
+		if (numState == 2  || numState == 4 ) {	
+			var tipo_intera;
+			showElemento($("#atendimento"));
 			$('#num_processo').val(WKNumProces);
-			$('#zoomCriticidade').css('pointer-events', 'all');
-			$('#re_busca_tipo').css('pointer-events', 'all');			
+			$("#desc_chamado").attr("readOnly", true);
 			
-			var ultimaLinhaTabela = $('#tb_interacao tr').last();
-			
-			if ( ultimaLinhaTabela.find("textarea[id^='desc_interacao_']").val() == ""){ $('#tb_interacao tr').last().remove();}			
-			
-			if ((numState == 2 && ultimaLinhaTabela.index() < 1)|| ultimaLinhaTabela.last().find("textarea[id^='desc_aceite_']").val() != ""){	
-				
-				wdkAddChild('tb_interacao');
-				ultimaLinhaTabela = $('#tb_interacao tr').last();			
+			if (numState == 2) {
+				tipo_intera = "Atendimento da TI:";
+				$('#avaliacao').hide();
 			}
+			if (numState == 4) {
+				tipo_intera = "Avaliação do usuário:"
+				$('#conclusao').val("");
+				$('#nota').val("1");
+				
+			}			
 			
-			ultimaLinhaTabela.find("input[id^='dt_intera']").val(getData());
-			ultimaLinhaTabela.find("input[id^='hr_intera']").val(getHora());
-			ultimaLinhaTabela.find("textarea[id^='desc_interacao']").removeAttr('readOnly');
-			
-			showElemento(ultimaLinhaTabela.find("textarea[id^='desc_interacao']"));
-					
-		}
-		
-		if (numState == 3) {
 			var ultimaLinhaTabela = $('#tb_interacao tr').last();
-			ultimaLinhaTabela.find("input[id^='dt_aceite']").val(data);
-			ultimaLinhaTabela.find("input[id^='hr_aceite']").val(hora);
-			ultimaLinhaTabela.find("textarea[id^='desc_aceite']").removeAttr('readOnly');
-			showElemento(ultimaLinhaTabela.find("textarea[id^='desc_aceite']"));
-		}			
-		
-		if (numState == 4) {	
-			showElemento($("#avaliacao"));	
-			$('#matricula_aceite').val(matricula).attr("readOnly", true);
-			$('#user_aceite').val(usuario).attr("readOnly", true);
-			$('#dt_final').val(data).attr("readOnly", true);
-					
-		}
+			if ( ultimaLinhaTabela.find("input[id^='matricula_interacao_']").val() != matricula ||
+				 ultimaLinhaTabela.find("input[id^='tipo_atend_']").val() != tipo_intera){
+				wdkAddChild('tb_interacao');
+				ultimaLinhaTabela = $('#tb_interacao tr').last();
+			}
+			ultimaLinhaTabela.find("input[id^='tipo_atend_']").val(tipo_intera);				
+			ultimaLinhaTabela.find("input[id^='matricula_interacao_']").val(matricula);
+			ultimaLinhaTabela.find("input[id^='solicitante_intereacao_']").val(usuario);
+			ultimaLinhaTabela.find("input[id^='data_interecao_']").val(data);
+			ultimaLinhaTabela.find("textarea[id^='desc_interacao']").removeAttr('readOnly');
+			showElemento(ultimaLinhaTabela.find("textarea[id^='desc_interacao']"));
+		}		
 	}
 }
 
 
-function showElemento(elemento){
-	
+//exibe um panel
+function showElemento(elemento){	
 	elemento.show()
 			.css('pointer-events', 'all')
-			.find('input[type=text], input[type=zoom], textarea').removeAttr('readOnly');
+			.find('input[type=text], input[type=zoom], textarea').each(function(i) {
+				if (!$(this).hasClass('readonly')) $(this).removeAttr('readOnly');
+			});
+	elemento.find('.table').find("tr").each(function(){
+				$(this).find("td:first").show();
+			})
+	elemento.find('.divAddButton').show();
 	
 	setTimeout(function () {
 		var offset = elemento.offset().top; 
-		$('html, body').animate({ scrollTop: offset + 150 }, offset);	
+		$('html, body').animate({ scrollTop: offset }, offset);	
 	}, 1000);
 }
-
-// bloquear todas os campos
-function blockAll() {	
+//bloqueia todos os panels para edição 
+function blockAll(modeView) {
+	$('html, body').animate({ scrollTop: 0 }, 5);
 	$('.panel').each(function(i) {
 		if ($(this).attr('id') != null) {			
 			$(this).hide()
-					.css('pointer-events', 'none') 
+					.css('pointer-events', 'none')
 					.find('input[type=text], input[type=zoom], textarea')
 					.attr("readOnly", true)
 					.css('pointer-events', 'all')
 					.each(function(){
-						if ($(this).val() != "") {
+						if ($(this).val() != "" && parseFloat($(this).val().replace(/[^0-9\,]+/g,"").replace(",",".")) != 0.00) {
 							$(this).closest('.panel').show();
-							return false;
 						}
 					});
 		}
+		if(modeView == "ADD" || modeView == "MOD"){
+			$(this).find('.table').find("tr").each(function(){
+				   $(this).find("td:first").hide();
+			});
+		}
+		$(this).find('.divAddButton').hide();
 	});
 }
-
-// validação dos campos
-var beforeSendValidate = function(numState) {
-	var message = "";	
-
-	if (numState == 0 || numState == 1) {
-		if ($("#ramal").val() == "") message += "<br/>Ramal";
-		if ($("#tipo").val() == "") message += "<br/>Tipo da Solicitação";
-		if ($("#criticidade").val() == "") message += "<br/>Criticidade da Solicitação";
-		if ($("#desc_chamado").val() == "") message += "<br/>Descrição do Chamado";	
-	}
-	
-	if (numState == 2 || numState == 6){		
-		if ($('#ramal_atend').val() == "") 	message += "<br/>Ramal do atendente";		
-		if ($('#tb_interacao tr').last().find("textarea[id^='desc_interacao']").val() == ""	) message += "<br/>Descrição da interação realizada";		
-	}
-	
-	if (numState == 3){		
-		if ($('#tb_interacao tr').last().find("textarea[id^='desc_aceite']").val() == "") message += "<br/>Descrição aceite/recusa do atendimento!";
-	}
-	
-	if (numState == 4){	
-		if($(':radio[id="nota"]').filter(':checked').val() == '2' || $(':radio[id="nota"]').filter(':checked').val() == '3'){
-			if ($('#comentarios').val() == ''){
-				message += "<br/>Descrição do motivo de sua avaliação!";
-			}
-		}		
-	}		
-
-	if (message != "") {
-		FLUIGC.message.alert({
-		    message: "<strong>Os campos abaixo são de preencimento obrigatório:</strong><br/>" + message,
-		    title: 'CAMPOS OBRIGATÓRIOS',
-		    label: 'OK'
-		});
-		return false;		
-	}
-
-}
-var beforeMovementOptions = beforeSendValidate;
-

@@ -33,21 +33,22 @@ function loadElementos(){
 	$("#placa").mask("SSS-9999");
 	$("#conta_cor").mask("000000000-0", {reverse: true});
 	
-	$(".integer").mask('000.000.000', {reverse: true})
+	/*$(".integer").mask('000.000.000', {reverse: true})
 				.on('blur', function(){
 		if ($(this).val() == '') $(this).val(0.00);					
-	}).trigger('blur');
+	}).trigger('blur');*/
 	
 	//atribui formatação numerica ao input text e seta o valor inicial 0.00
 	setMoneyClass($(".money"));
 	
 	//calcular km
-	$("#km_ini").on("keyup", function(e){
-		soma = 0.00;
-		soma += parseFloat($(this).val().replace(/[^0-9\,]+/g,"").replace(",",".")) ?  parseFloat($(this).val().replace(/[^0-9\,]+/g,"").replace(",",".")) : 0.00;
-		$('#vl_km_devido').val((soma * 0.86).toFixed(2).replace(".", ",").replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.")).trigger("keyup");
-		$(this).focus();		
-	}).trigger('keyup');
+	$("#km_ini").mask("000.000", {reverse: true})
+				.on("keyup", function(e){
+					soma = 0.00;
+					soma += parseFloat($(this).val().replace(/[^0-9\,]+/g,"").replace(",",".")) ?  parseFloat($(this).val().replace(/[^0-9\,]+/g,"").replace(",",".")) : 0.00;
+					$('#vl_km_devido').val((soma * 0.86).toFixed(2).replace(".", ",").replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.")).trigger("keyup");
+					$(this).focus();		
+				}).trigger('keyup');
 	
 	//contas para deposito para a CASP
 	$("#banco_acerto").on("change", function(e){

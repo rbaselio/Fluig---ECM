@@ -31,6 +31,22 @@ $(function(ready){
 		}				
 	}).trigger('change');
 	
+	
+	
+	
+	$("#cod_prod").on('blur', function(){
+		var token = DatasetFactory.getDataset('tokens', null, null, null).values[0]["tokenTOTVSDatasul"];
+		$("#nome_prod").val("");
+		var subc1 = DatasetFactory.createConstraint("cod_item", $(this).val(), null, ConstraintType.MUST);
+		var subc2 = DatasetFactory.createConstraint("estab", "1", null, ConstraintType.MUST);
+		var subc3 = DatasetFactory.createConstraint("token", token , null, ConstraintType.MUST);
+		var subconstraints   = new Array(subc1, subc2, subc3);
+		var subdataset = DatasetFactory.getDataset("TOTVSItem", null, subconstraints, null);
+		if (subdataset.values.length > 0) {		
+			$("#nome_prod").val(subdataset.values[0]["desc_item"]);			
+		}		
+	});
+	
 	// ativa/desativa campos quando o valor da reincidencia for modificado
 	$("#reincidencia").change(function () {	
 		if ($("#reincidencia").val() == "sim"){
@@ -87,62 +103,276 @@ $(function(ready){
 function zoomColaborador(linha) {
 	var nome = $(linha).attr("name");
 	row = nome.substring(nome.lastIndexOf("_") + 1);
-	zoomEcmTipo("colleague",
-			"colleagueId,Matricula,colleagueName,Colaborador",
-			"colleagueId,colleagueName,extensionNr", 
-			"Zoom Colaborador",
-			"setColaborador",
-			"active,true");	
-}
-function setColaborador(selectedItem) {
-	$("#mat_emer___" + row).val(selectedItem['colleagueId']);
-	$("#responsavel_emer___" + row).val(selectedItem['colleagueName']);		
+	
+	var param = {"datasetId" : "colleague", "limit" : "0", 
+			 "filterFields" : ["active", "true"]};
+
+	var thisModal = FLUIGC.modal({
+	    title: 'Lista de Colaboradores',
+	    content: '<div id="postEmb"></div>',
+	    id: 'fluig-modal',
+	    actions: [{
+	        'label': 'Fechar',
+	        'autoClose': true
+	    }]
+	}, function(err, data) {			
+		var thisTable = FLUIGC.datatable('#postEmb', {
+		    dataRequest: {
+		        url: '/api/public/ecm/dataset/search',
+		        options: {
+		            contentType:"application/json",
+		            dataType: 'json',
+		            method: 'POST',
+		            data: JSON.stringify(param),
+		            crossDomain: true,
+		            cache: false
+		        },
+		        root: 'content'
+		    },
+		    renderContent: ['colleagueId', 'colleagueName'], 
+		    header: [{'title': 'Matricula', 'size': 'col-sm-2'},
+		             {'title': 'Nome', 'size': 'col-sm-5'}],
+		    multiSelect: false,
+		    search: {
+		        enabled: true,
+		        searchAreaStyle: 'col-md-9',
+		        onSearch: function(response) {
+		        	var param2 = {"datasetId" : "colleague", "limit" : "0", 
+   							"filterFields" : ["active", "true"], 
+   							"searchField" : "colleagueName", "searchValue" : response };
+		        	$.ajax({
+						  type: 'POST',
+						  contentType: 'application/json',
+						  dataType: 'json',
+						  url: '/api/public/ecm/dataset/search',
+						  data: JSON.stringify(param2),
+						  success: function(data) {
+							  thisTable.reload(data.content);
+						  }
+						});
+		        }
+		    },
+		    scroll: {
+		        target: '#postEmb',
+		        enabled: true			        
+	        },
+		    tableStyle: 'table-striped'
+		}).on('dblclick', function(ev) {
+			var index = thisTable.selectedRows()[0];
+		    var selected = thisTable.getRow(index);	
+		    $("#mat_emer___" + row).val(selected.colleagueId);
+		    $("#responsavel_emer___" + row).val(selected.colleagueName);			   
+		    thisModal.remove();					    
+		});
+	});
+	$(".modal-body").css("max-height" , window.innerHeight/2 + 'px');
+	
 }
 
 //zoom de colaboradores para a tabela de ação corretiva
 function zoomColaborador_corr(linha) {
 	var nome = $(linha).attr("name");
 	row = nome.substring(nome.lastIndexOf("_") + 1);
-	zoomEcmTipo("colleague",
-			"colleagueId,Matricula,colleagueName,Colaborador",
-			"colleagueId,colleagueName,extensionNr", 
-			"Zoom Colaborador",
-			"setColaborador_corr",
-			"active,true");
-}
-function setColaborador_corr(selectedItem) {
-	$("#matricula_corr___" + row).val(selectedItem['colleagueId']);
-	$("#responsavel_corr___" + row).val(selectedItem['colleagueName']);	
+	
+	var param = {"datasetId" : "colleague", "limit" : "0", 
+			 "filterFields" : ["active", "true"]};
+
+	var thisModal = FLUIGC.modal({
+	    title: 'Lista de Colaboradores',
+	    content: '<div id="postEmb"></div>',
+	    id: 'fluig-modal',
+	    actions: [{
+	        'label': 'Fechar',
+	        'autoClose': true
+	    }]
+	}, function(err, data) {			
+		var thisTable = FLUIGC.datatable('#postEmb', {
+		    dataRequest: {
+		        url: '/api/public/ecm/dataset/search',
+		        options: {
+		            contentType:"application/json",
+		            dataType: 'json',
+		            method: 'POST',
+		            data: JSON.stringify(param),
+		            crossDomain: true,
+		            cache: false
+		        },
+		        root: 'content'
+		    },
+		    renderContent: ['colleagueId', 'colleagueName'], 
+		    header: [{'title': 'Matricula', 'size': 'col-sm-2'},
+		             {'title': 'Nome', 'size': 'col-sm-5'}],
+		    multiSelect: false,
+		    search: {
+		        enabled: true,
+		        searchAreaStyle: 'col-md-9',
+		        onSearch: function(response) {
+		        	var param2 = {"datasetId" : "colleague", "limit" : "0", 
+  							"filterFields" : ["active", "true"], 
+  							"searchField" : "colleagueName", "searchValue" : response };
+		        	$.ajax({
+						  type: 'POST',
+						  contentType: 'application/json',
+						  dataType: 'json',
+						  url: '/api/public/ecm/dataset/search',
+						  data: JSON.stringify(param2),
+						  success: function(data) {
+							  thisTable.reload(data.content);
+						  }
+						});
+		        }
+		    },
+		    scroll: {
+		        target: '#postEmb',
+		        enabled: true			        
+	        },
+		    tableStyle: 'table-striped'
+		}).on('dblclick', function(ev) {
+			var index = thisTable.selectedRows()[0];
+		    var selected = thisTable.getRow(index);	
+		    $("#matricula_corr___" + row).val(selected.colleagueId);
+		    $("#responsavel_corr___" + row).val(selected.colleagueName);			   
+		    thisModal.remove();					    
+		});
+	});
+	$(".modal-body").css("max-height" , window.innerHeight/2 + 'px');
+	
 }
 
 //zoom de colaboradores para a atribuição de responsavel por parecer
 function zoomColaborador_parecer() {
-	zoomEcmTipo("colleague",
-			"colleagueId,Matricula,colleagueName,Colaborador",
-			"colleagueId,colleagueName,extensionNr", 
-			"Zoom Colaborador",
-			"setColaborador_parecer",
-			"active,true");
-}
-function setColaborador_parecer(selectedItem) {
-	$("#matricula_parecer").val(selectedItem['colleagueId']);
-	$("#responsavel_parecer").val(selectedItem['colleagueName']);		
+	
+	var param = {"datasetId" : "colleague", "limit" : "0", 
+			 "filterFields" : ["active", "true"]};
+
+	var thisModal = FLUIGC.modal({
+	    title: 'Lista de Colaboradores',
+	    content: '<div id="postEmb"></div>',
+	    id: 'fluig-modal',
+	    actions: [{
+	        'label': 'Fechar',
+	        'autoClose': true
+	    }]
+	}, function(err, data) {			
+		var thisTable = FLUIGC.datatable('#postEmb', {
+		    dataRequest: {
+		        url: '/api/public/ecm/dataset/search',
+		        options: {
+		            contentType:"application/json",
+		            dataType: 'json',
+		            method: 'POST',
+		            data: JSON.stringify(param),
+		            crossDomain: true,
+		            cache: false
+		        },
+		        root: 'content'
+		    },
+		    renderContent: ['colleagueId', 'colleagueName'], 
+		    header: [{'title': 'Matricula', 'size': 'col-sm-2'},
+		             {'title': 'Nome', 'size': 'col-sm-5'}],
+		    multiSelect: false,
+		    search: {
+		        enabled: true,
+		        searchAreaStyle: 'col-md-9',
+		        onSearch: function(response) {
+		        	var param2 = {"datasetId" : "colleague", "limit" : "0", 
+ 							"filterFields" : ["active", "true"], 
+ 							"searchField" : "colleagueName", "searchValue" : response };
+		        	$.ajax({
+						  type: 'POST',
+						  contentType: 'application/json',
+						  dataType: 'json',
+						  url: '/api/public/ecm/dataset/search',
+						  data: JSON.stringify(param2),
+						  success: function(data) {
+							  thisTable.reload(data.content);
+						  }
+						});
+		        }
+		    },
+		    scroll: {
+		        target: '#postEmb',
+		        enabled: true			        
+	        },
+		    tableStyle: 'table-striped'
+		}).on('dblclick', function(ev) {
+			var index = thisTable.selectedRows()[0];
+		    var selected = thisTable.getRow(index);	
+		    $("#matricula_parecer").val(selected.colleagueId);
+		    $("#responsavel_parecer").val(selected.colleagueName);			   
+		    thisModal.remove();					    
+		});
+	});
+	$(".modal-body").css("max-height" , window.innerHeight/2 + 'px');	
+	
 }
 
 //zoom de colaboradores para a atribuição de responsavel por disposição
 function zoomColaborador_disp() {
-	zoomEcmTipo("colleague",
-			"colleagueId,Matricula,colleagueName,Colaborador",
-			"colleagueId,colleagueName,extensionNr", 
-			"Zoom Colaborador",
-			"setColaborador_disp",
-			"active,true");
+	 var param = {"datasetId" : "colleague", "limit" : "0", 
+				 "filterFields" : ["active", "true"]};
+	
+		var thisModal = FLUIGC.modal({
+		    title: 'Lista de Colaboradores',
+		    content: '<div id="postEmb"></div>',
+		    id: 'fluig-modal',
+		    actions: [{
+		        'label': 'Fechar',
+		        'autoClose': true
+		    }]
+		}, function(err, data) {			
+			var thisTable = FLUIGC.datatable('#postEmb', {
+			    dataRequest: {
+			        url: '/api/public/ecm/dataset/search',
+			        options: {
+			            contentType:"application/json",
+			            dataType: 'json',
+			            method: 'POST',
+			            data: JSON.stringify(param),
+			            crossDomain: true,
+			            cache: false
+			        },
+			        root: 'content'
+			    },
+			    renderContent: ['colleagueId', 'colleagueName'], 
+			    header: [{'title': 'Matricula', 'size': 'col-sm-2'},
+			             {'title': 'Nome', 'size': 'col-sm-5'}],
+			    multiSelect: false,
+			    search: {
+			        enabled: true,
+			        searchAreaStyle: 'col-md-9',
+			        onSearch: function(response) {
+			        	var param2 = {"datasetId" : "colleague", "limit" : "0", 
+        							"filterFields" : ["active", "true"], 
+        							"searchField" : "colleagueName", "searchValue" : response };
+			        	$.ajax({
+							  type: 'POST',
+							  contentType: 'application/json',
+							  dataType: 'json',
+							  url: '/api/public/ecm/dataset/search',
+							  data: JSON.stringify(param2),
+							  success: function(data) {
+								  thisTable.reload(data.content);
+							  }
+							});
+			        }
+			    },
+			    scroll: {
+			        target: '#postEmb',
+			        enabled: true			        
+		        },
+			    tableStyle: 'table-striped'
+			}).on('dblclick', function(ev) {
+				var index = thisTable.selectedRows()[0];
+			    var selected = thisTable.getRow(index);	
+			    $('#mat_disp').val(selected.colleagueId);
+			    $('#responsavel_disp').val(selected.colleagueName);			   
+			    thisModal.remove();					    
+			});
+		});
+		$(".modal-body").css("max-height" , window.innerHeight/2 + 'px');
 }
-function setColaborador_disp(selectedItem) {
-	$("#mat_disp").val(selectedItem['colleagueId']);
-	$("#responsavel_disp").val(selectedItem['colleagueName']);		
-}
-
+	
 //zoom de colaboradores para a atribuição de responsavel por disposição
 function zoomModFalha() {
 	zoomEcmTipo("mod_falha",
@@ -357,6 +587,9 @@ var beforeSendValidate = function(numState){
 		if ($("#acao").val() == "retrabalhar") {
 			if ($("#retrabalho").val() == "0") message += "</br>Verificação do retrabalho";
 			if ($("#resp_retrabalho").val() == "") message += "</br>Responsavel pelo retrabalho";			
+		}
+		if ($("#acao").val() == "aceitar com concessao") {
+			if ($("#conc_cliente").val() == "" && $("#conc_of").val() == "") message += "</br>Validade da concessão para o cliente ou OF";
 		}
 		
 		if ($("#quant_disp").val() == "") message += "</br>Quant.";	

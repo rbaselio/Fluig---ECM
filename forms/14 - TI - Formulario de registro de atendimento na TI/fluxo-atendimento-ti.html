@@ -5,12 +5,13 @@
 <script src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
 <script src="/portal/resources/js/mustache/mustache-min.js"></script>
 <script src="/portal/resources/style-guide/js/fluig-style-guide.min.js"></script>
+<script src="/portal/resources/js/jquery.mask.min.js"></script>
 <script src="/resources/casp_lib/js/utils.js"></script>
 <script type="text/javascript" src="fluxo-atendimento-ti.js"></script>
 <script src="../vcXMLRPC.js"></script>
 
 </head>
-<body>
+<body onload="loadElementos()">
 
 <div class="fluig-style-guide">
 		<form name="form" role="form">
@@ -20,7 +21,7 @@
 						<tr>
 							<td rowspan="3" width="20%"><img src="/resources/logo_casp/logocasp.gif" width="204" height="79"></td>
 							<td rowspan="3"><div align="center" dir="ltr">
-									<h2><b>REGISTRO DE ATENDIMENTO TÉCNICO</b></h2>
+									<h2><b>REGISTRO DE ATENDIMENTO T&Eacute;CNICO</b></h2>
 								</div></td>
 							<td align="right"><label for="chamado_num">N&uacute;mero RNC:&nbsp;&nbsp;&nbsp;&nbsp;</label></td>
 							<td width="15%"><input type="text" name="num_processo" id="num_processo" class="form-control" readonly="readonly" /></td>
@@ -48,55 +49,62 @@
 					<div class="row">
 						<div class="col-xs-3">
 							<label for="referencia">Solicitante:</label>
-							<input type="text" class="form-control" placeholder="Matr&iacute;cula" name="matricula_user" id="matricula_user"  />
+							<input type="text" class="form-control readonly" placeholder="Matr&iacute;cula" name="matricula_user" id="matricula_user"  />
 						</div>
 						<div class="col-xs-6">
 							<label>&nbsp;</label>
 							<div class="input-group">
-								<input type="text" name="solicitante" id="solicitante" class="form-control" />
-								<span class="input-group-addon fs-cursor-pointer" onclick='zoomSolicitante();' id="btZoomColab">
+								<input type="text" name="solicitante" id="solicitante" class="form-control readonly" />
+								<span class="input-group-addon fs-cursor-pointer" id="btZoomColab">
 									<span class="fluigicon fluigicon-user-search"></span>
 								</span>
 							</div>
 						</div>
 						<div class="col-xs-3">
-							<label for="referencia">Ramal:</label>
+							<label for="referencia">Ramal / Telefone:</label>
 							<input type="text" class="form-control" placeholder="Ramal" name="ramal" id="ramal" />
 						</div>						
 					</div>
 					<br/>
 					<div class="row">
-						<div class="col-xs-3">
-							<label for="cod_prod">Tipo:</label>
-							<input type="text" class="form-control" placeholder="Classe" name="classe" id="classe"  />
+						<div class="col-sm-3 col-xs-12">
+							<label for="tipo">Tipo da Solicita&ccedil;&atilde;o:</label>
+							<select name="tipo" id="tipo"  class="form-control">
+								<option value=""></option>	
+								<option value="acesso">Acesso</option>
+								<option value="sistema">Sistemas / Softwares</option>
+								<option value="hardware">Hardware / Equipamentos</option>																						
+							</select>
 						</div>
-						<div class="col-xs-6">
-							<label>&nbsp;</label>
-							<div class="input-group">
-								<input type="text" name="tipo" id="tipo" class="form-control"  />
-								<input type="hidden" name="responsavel" id="responsavel" />
-								<span class="input-group-addon fs-cursor-pointer" onclick='zoomTipo()' id="busca_tipo">
-									<span class="fluigicon fluigicon-user-search"></span>
-								</span>
-							</div>
-						</div>
+						<div class="col-sm-3 col-xs-12" id="sel_sistema">						
+							<label for="sistema">Sistema:</label>
+							<select name="sistema" id="sistema"  class="form-control">
+								<option value=""></option>	
+								<option value="buscador">Buscador</option>
+								<option value="chao">Ch&atilde;o de Fabrica</option>
+								<option value="fluig">Fluig</option>																						
+								<option value="jarvis">Jarvis</option>
+								<option value="telefonia">Telefonia</option>
+								<option value="totvs">TOTVS / Datasul</option>
+								<option value="rede">Rede</option>								
+							</select>
+						</div>	
 						<div class="col-xs-3">
-							<label for="criticidade">Criticidade da Solicitação:</label>
-							<div class="input-group">
-								<input type="text" name="criticidade" id="criticidade" class="form-control"  />
-								<input type="hidden" name="prazo" id="prazo" />
-								<span class="input-group-addon fs-cursor-pointer" onclick='zoomCriticidade()' id="zoomCriticidade">
-									<span class="fluigicon fluigicon-user-search"></span>
-								</span>
-							</div>
-							
+							<label for="criticidade">Criticidade da Solicita&ccedil;&atilde;o:</label>
+							<select name="criticidade" id="criticidade"  class="form-control">
+								<option value=""></option>	
+								<option value="32">Possui procedimento paliativo</option>
+								<option value="1">Impede o faturamento / produ&ccedil;&atilde;o</option>
+								<option value="240">Sugest&atilde;o de melhoria</option>
+								<option value="16">N&atilde;o possui procecdimento paliativo</option>
+							</select>
 						</div>
 					</div>
 					<br/>
 					<div class="row">
 						<div class="col-xs-12">
 							<label for="processo">Descri&ccedil;&atilde;o do Chamado:</label>
-							<textarea name="desc_chamado" id="desc_chamado" rows="3" class="form-control" placeholder="Para liberar este campo, informe o tipo do chamado!"></textarea>
+							<textarea name="desc_chamado" id="desc_chamado" rows="3" class="form-control readonly" placeholder="Para liberar este campo, informe o tipo do chamado!"></textarea>
 						</div>
 					</div>
 				</div>
@@ -111,123 +119,62 @@
 				</div>
 				
 				<div class="panel-body">
-					<div class="row">
-						<div class="col-xs-3">
-							<label for="acao">Atendente:</label> 
-							<input type="text" class="form-control" placeholder="Matr&iacute;cula" name="matricula_atend" id="matricula_atend"  />
-						</div>
-						<div class="col-xs-6">
-							<label>&nbsp;</label>
-							<input type="text" class="form-control" placeholder="Atendente" name="atendente" id="atendente"  />
-						</div>	
-						<div class="col-xs-3">
-							<label for="referencia">Ramal:</label>
-							<input type="text" class="form-control" placeholder="Ramal" name="ramal_atend" id="ramal_atend" />
-						</div>						
-					</div>	
-					<br>	
-					<div class="row">
-						<div class="col-xs-3">
-							<label for="acao">Reclassificação:</label> 
-							<input type="text" class="form-control" placeholder="Classe" name="re_classe" id="re_classe"  />
-						</div>
-						<div class="col-xs-6">
-							<label>&nbsp;</label>
-							<div class="input-group">
-								<input type="text" name="re_tipo" id="re_tipo" class="form-control"  />
-								<span class="input-group-addon fs-cursor-pointer" onclick='zoomReclassificacao()' id="re_busca_tipo">
-									<span class="fluigicon fluigicon-user-search"></span>
-								</span>
-							</div>
-						</div>
-											
-					</div>
-					<br/>
-					<div class="form-field table-responsive" data-type="table_" data-show-properties="" data-field-name="tabledetail">
-						<table tablename="tb_interacao" cellspacing="0" name="tb_interacao" id="tb_interacao" noaddbutton=true class="table" customFnDelete="removeTarefa(this)">
+					
+						<table tablename="tb_interacao" cellspacing="0" name="tb_interacao" id="tb_interacao" noaddbutton=true nodeletebutton=true class="table">
 							<thead>
 								<tr class="tableHeadRow">
-									<th class="tableColumn">Atendimento</th>									
+									<!-- <th class="tableColumn">Interações</th> -->									
 								</tr>
 							</thead>
 							<tbody>
 								<tr>
 									<td class="col-xs-12">
 										<div class="row">
-											<div class="col-xs-12" align="center">
-												<label  ></label>
-											</div>				
+											<div class="col-xs-12">
+												<label><input type="text" class="readonly" name="tipo_atend" id="tipo_atend" style="border:0;" /></label>
+												<textarea name="desc_interacao" id="desc_interacao" rows="4" class="form-control readonly" placeholder="Informe a atendimento prestado!"></textarea>
+											</div>
 										</div>
 										<div class="row">
 											<div class="col-xs-3">
-												<label for="dt_intera">Data do atendimento:</label>
-												<input type="text" name="dt_intera" id="dt_intera" placeholder="Data" class="form-control"/>
-												<label for="hr_intera">Hora do atendimento:</label>
-												<input type="text" name="hr_intera" id="hr_intera" placeholder="Hora" class="form-control"/>
+												<label for="referencia">Solicitante:</label>
+												<input type="text" class="form-control readonly" placeholder="Matr&iacute;cula" name="matricula_interacao" id="matricula_interacao"  />
 											</div>
-											<div class="col-xs-9">
-												<label for="desc_interacao">Descri&ccedil;&atilde;o:</label>
-												<textarea name="desc_interacao" id="desc_interacao" rows="4" class="form-control" placeholder="Informe a atendimento prestado!"></textarea>
+											<div class="col-xs-6">
+												<label>&nbsp;</label>
+												<input type="text" name="solicitante_intereacao" id="solicitante_intereacao" class="form-control readonly" />												
 											</div>
-										</div>
-										<br/>
-										<div class="row">
 											<div class="col-xs-3">
-												<label for="dt_intera">Data aceite/recusa:</label>
-												<input type="text" name="dt_aceite" id="dt_aceite" placeholder="Data" class="form-control"/>
-												<label for="hr_aceite">Hora do aceite/recusa:</label>
-												<input type="text" name="hr_aceite" id="hr_aceite" placeholder="Hora" class="form-control"/>
-											</div>
-											<div class="col-xs-9">
-												<label for="desc_interacao">Descrição:</label>
-												<textarea name="desc_aceite" id="desc_aceite" rows="4" class="form-control" placeholder="Informe o atendimento recebido!"></textarea>
-											</div>
-										</div>
+												<label for="referencia">Data:</label>
+												<input type="text" class="form-control readonly" placeholder="Data" name="data_interecao" id="data_interecao" />
+											</div>						
+										</div>										
 									</td>									
 								</tr>
 							</tbody>
 						</table>
-					</div>							
-				</div>
-			</div>
-			
-			<div class="panel panel-primary" id="avaliacao">
-				<div class="panel-heading" style="background-color: blue;">
-					<h3 class="panel-title">
-						<strong><i class="fluigicon fluigicon-school-note fluigicon-sm"></i>&nbsp;Avaliação do Antendimento </strong>
-					</h3>
-				</div>
-				<div class="panel-body">				
-				
-					<div class="row">
+											
+					<div class="row" id="avaliacao">
 						<div class="col-xs-3">
-							<label for="processo">Avali&ccedil;&atilde;o do atendimento:</label>
-							<br>							
-							<input type="radio" name="nota" id="nota" style="cursor: pointer" value="1" checked="checked"/> Atendido
-							<br>
-							<input type="radio" name="nota" id="nota" style="cursor: pointer" value="2"/>Parcialmente Atendido
-							<br>
-							<input type="radio" name="nota" id="nota" style="cursor: pointer" value="3"/>N&atilde;o Atendido
+							<label for="conclusao">Chamado conclu&iacute;do:</label>
+							<select name="conclusao" id="conclusao"  class="form-control">
+								<option value=""></option>	
+								<option value="sim">Sim</option>
+								<option value="nao">N&atilde;o</option>								
+							</select>
+							
+							<label for="nota">Avalia&ccedil;&atilde;o do Atendimento:</label>
+							<select name="nota" id="nota"  class="form-control">
+								<option value="1">Muito Satisfeito</option>
+								<option value="2">Satisfeito</option>
+								<option value="3">Pouco Satisfeito</option>
+								<option value="4">Insatisfeito</option>
+							</select>
 						</div>
 						<div class="col-xs-9">
-							<label for="processo">Coment&aacute;rios:</label>
-							<textarea name="comentarios" id="comentarios" rows="3" class="form-control" placeholder="Informe os comentarios sobre o atendimento!" style="resize: none;"></textarea>
-						</div>
-					</div>
-					
-					<div class="row">
-						<div class="col-xs-3">
-							<label for="matricula_emer">Usuario:</label>
-							<input type="text" class="form-control" placeholder="Matr&iacute;cula" name="matricula_aceite" id="matricula_aceite"  />								
-						</div>
-						<div class="col-xs-6">
-						<label for="resp_emer">&nbsp;</label>
-							<input type="text" class="form-control" placeholder="Responsavel" name="user_aceite" id="user_aceite"  />
-						</div>
-						<div class="col-xs-3">
-							<label for="data_emer">Data:</label>
-							<input type="text" class="form-control" placeholder="Data" name="dt_final" id="dt_final"  />
-						</div>
+							<label for="comentarios">Justifique:</label>
+							<textarea name="comentarios" id="comentarios" rows="4" class="form-control"></textarea>								
+						</div>						
 					</div>									
 				</div>
 			</div>	

@@ -7,6 +7,7 @@
 <script src="/portal/resources/style-guide/js/fluig-style-guide.min.js"></script>
 <script src="/resources/casp_lib/js/utils.js"></script>
 <script type="text/javascript" src="Formulario_de_Nao_Conformidadde.js"></script>
+<script src="../vcXMLRPC.js"></script>
 </head>
 <body>
 	<div class="fluig-style-guide">
@@ -57,13 +58,13 @@
 										<option value="montagem em campo">Montagem em Campo</option>
 										<option value="recebimento">Inspe&ccedil;&atilde;o Recebimento</option>
 										<option value="manufatura">Manufatura / Produ&ccedil;&atilde;o</option>
-										<option value="logistica">Logistica (Est/Exp)</option>
+										<option value="logistica">Log&icirc;stica (Est/Exp)</option>
 										<option value="auditoria">Auditoria</option>
 										<option value="outros">Outros</option>
 									</select>
 								</div>
 								<div class="col-xs-4">
-									<label for="referencia">Referência / Cliente:</label>
+									<label for="referencia">Refer&ecirc;ncia / Cliente:</label>
 									<input class="form-control" name="referencia" id="referencia" type="text" />
 								</div>
 								<div class="col-xs-3">
@@ -95,13 +96,13 @@
 										<option value="administracao">Administra&ccedil;&atilde;o</option>
 										<option value="comercial">Comercial</option>
 										<option value="engenharia de produto">Engenharia de Produto</option>
-										<option value="engenharia de aplica&ccedil;&atilde;o">Engenharia de Aplica&ccedil;&atilde;o</option>
+										<option value="engenharia de aplicacao">Engenharia de Aplica&ccedil;&atilde;o</option>
 										<option value="manufatura">Manufatura</option>
-										<option value="logistica">Logística</option>
+										<option value="logistica">Log&iacute;stica</option>
 										<option value="suprimento">Suprimento</option>
-										<option value="gest&atilde;o de recurso">Gest&atilde;o de Recursos</option>
-										<option value="medicao/analise/melhoria ">Medi&ccedil;&atilde;o/An&áacute;lise/Melhoria</option>
-										<option value="assistência tecnica">Assistência Técnica</option>
+										<option value="gestao de recurso">Gest&atilde;o de Recursos</option>
+										<option value="medicao/analise/melhoria ">Medi&ccedil;&atilde;o/An&aacute;lise/Melhoria</option>
+										<option value="assistencia tecnica">Assist&ecirc;ncia T&eacute;cnica</option>
 									</select>
 								</div>
 								<div class="col-xs-3">
@@ -110,13 +111,13 @@
 								<div class="col-xs-3">
 									<label for="criticidade">Criticidade:</label> <select class="form-control" name="criticidade" id="criticidade">
 										<option value="0"></option>
-										<option value="pouco critico">Pouco crítico</option>
-										<option value="critico">Crítico</option>
-										<option value="muito critico">Muito crítico</option>
+										<option value="pouco critico">Pouco cr&iacute;tico</option>
+										<option value="critico">Cr&iacute;tico</option>
+										<option value="muito critico">Muito cr&iacute;tico</option>
 									</select>
 								</div>
 								<div class="col-xs-2">
-									<label for="reincidencia">Reincidência:</label> <select class="form-control" name="reincidencia" id="reincidencia">
+									<label for="reincidencia">Reincid&ecirc;ncia:</label> <select class="form-control" name="reincidencia" id="reincidencia">
 										<option value="0"></option>
 										<option value="sim">Sim</option>
 										<option value="nao">N&atilde;o</option>
@@ -145,7 +146,8 @@
 										<div class="input-group">
 											<input type="text" name="responsavel_disp" id="responsavel_disp" class="form-control" readonly="readonly" />
 											<input type="hidden" name="mat_disp" id="mat_disp" />
-											<span class="input-group-addon fs-cursor-pointer" onclick='zoomColaborador_disp();' id="btZoomColab_disp"> <span class="fluigicon fluigicon-user-search"></span>
+											<span class="input-group-addon fs-cursor-pointer" onclick='zoomColaborador_disp();' id="btZoomColab_disp"> 
+												<span class="fluigicon fluigicon-user-search"></span>
 											</span>
 										</div>
 									</div>
@@ -155,7 +157,7 @@
 									<input class="form-control integer" name="quant" id="quant" type="text" />
 								</div>
 								<div class="col-xs-5">
-									<label for="desc_reinc">Desc. Reincidência:</label>
+									<label for="desc_reinc">Desc. Reincid&ecirc;ncia:</label>
 									<input class="form-control" name="desc_reinc" id="desc_reinc" type="text" />
 								</div>
 							</div>
@@ -190,7 +192,8 @@
 						<div class="panel-body">
 							<div class="row">
 								<div class="col-xs-3">
-									<label for="acao">A&ccedil;&atilde;o à ser tomada:</label> <select class="form-control" name="acao" id="acao">
+									<label for="acao">A&ccedil;&atilde;o &atilde;� ser tomada:</label> 
+									<select class="form-control" name="acao" id="acao">
 										<option value="0" selected="selected"></option>
 										<option value="rejeitar">Rejeitar</option>
 										<option value="retrabalhar">Retrabalhar</option>
@@ -203,7 +206,8 @@
 									<input class="form-control integer" name="quant_disp" id="quant_disp" type="text" />
 								</div>
 								<div class="col-xs-3">
-									<label for="retrabalho">Verifica&ccedil;&atilde;o do Retrabalho:</label> <select class="form-control" name="retrabalho" id="retrabalho">
+									<label for="retrabalho">Verifica&ccedil;&atilde;o do Retrabalho:</label> 
+									<select class="form-control" name="retrabalho" id="retrabalho">
 										<option value="0" selected="selected"></option>
 										<option value="aprovado">Aprovado</option>
 										<option value="reprovado">Reprovado</option>
@@ -215,7 +219,14 @@
 								</div>
 							</div>
 							<div class="row">
-								<div class="col-xs-12">
+								<div class="col-xs-3">
+									<label for="conc_cliente">Concess&atilde;o v&aacute;lida Cliente:</label>
+									<input type="text" class="form-control" name="conc_cliente" id="conc_cliente"/>
+									<label for="matricula_emissor">Concess&atilde;o v&aacute;lida para OF:</label>
+									<input type="text" class="form-control" name="conc_of" id="conc_of" />
+								
+								</div>
+								<div class="col-xs-9">
 									<label for="desc_disp">Descri&ccedil;&atilde;o:</label>
 									<textarea name="desc_disp" id="desc_disp" class="form-control" rows="3"></textarea>
 								</div>
@@ -249,7 +260,7 @@
 										<tr class="tableHeadRow">
 											<th class="tableColumn">Descri&ccedil;&atilde;o da Atividade</th>
 											<th class="tableColumn">Data de Conclus&atilde;o</th>
-											<th class="tableColumn">Respons&áacute;vel</th>
+											<th class="tableColumn">Respons&aacute;vel</th>
 											<th class="tableColumn">Processo</th>
 											<th class="tableColumn">Status/Data Conclus&atilde;o</th>
 										</tr>
@@ -363,7 +374,7 @@
 									</select>
 								</div>
 								<div class="col-xs-5">
-									<label for="responsavel_parecer">Respons&áacute;vel:</label>
+									<label for="responsavel_parecer">Respons&aacute;vel:</label>
 									<div class="input-group">
 										<input type="text" name="responsavel_parecer" id="responsavel_parecer" class="form-control" readonly="readonly" />
 										<input type="hidden" name="matricula_parecer" id="matricula_parecer" />
@@ -408,9 +419,9 @@
 											<td class="col-xs-4"><label>Cauzas Raizes</label> <textarea name="desc_causa" cols="40" class="form-control" rows="7" id="desc_causa"></textarea></td>
 											<td class="col-xs-6"><span> <label>&nbsp;&nbsp;&nbsp;<input type="checkbox" value="medida" name="c1" id="c1">Medida
 												</label> <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" value="materiais" name="c2" id="c2">Materiais
-												</label> <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" value="metodo" name="c3" id="c3">Método
+												</label> <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" value="metodo" name="c3" id="c3">M&eacute;todo
 												</label>
-											</span> <br /> <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="espinhapeixe.jpg"></label> <br /> <span> <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" value="maquinas" name="c4" id="c4">M&áacute;quinas
+											</span> <br /> <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="espinhapeixe.jpg"></label> <br /> <span> <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" value="maquinas" name="c4" id="c4">M&aacute;quinas
 												</label> <label>&nbsp;&nbsp;<input type="checkbox" value="meioAmbiente" name="c5" id="c5">Meio Ambiente
 												</label> <label>&nbsp;<input type="checkbox" value="maoObra" name="c6" id="c6">M&atilde;o de Obra
 												</label>
@@ -448,7 +459,7 @@
 										<tr class="tableHeadRow">
 											<th class="tableColumn">Descri&ccedil;&atilde;o da Atividade</th>
 											<th class="tableColumn">Data de Conclus&atilde;o</th>
-											<th class="tableColumn">Respons&áacute;vel</th>
+											<th class="tableColumn">Respons&aacute;vel</th>
 											<th class="tableColumn">Processo</th>
 											<th class="tableColumn">Status/Data Conclus&atilde;o</th>
 										</tr>
@@ -511,7 +522,7 @@
 					<div class="panel panel-primary" id="eficacia">
 						<div class="panel-heading" style="background-color: blue;">
 							<h3 class="panel-title">
-								<strong><i class="fluigicon fluigicon-verified fluigicon-sm"></i>&nbsp;Verifica&ccedil;&atilde;o da efic&áacute;cia </strong>
+								<strong><i class="fluigicon fluigicon-verified fluigicon-sm"></i>&nbsp;Verifica&ccedil;&atilde;o da efic&aacute;cia </strong>
 							</h3>
 						</div>
 						<div class="panel-body">
@@ -562,7 +573,7 @@
 									<label for="reponsabilidade">Responsabilidade:</label> 
 									<select class="form-control" name="reponsabilidade" size="1" id="reponsabilidade">
 										<option value="0"></option>
-										<option value='1'>Assistência técnica</option>
+										<option value='1'>Assist&ecirc;ncia t&eacute;cnica</option>
 										<option value='2'>Comercial</option>
 										<option value='3'>Concess&atilde;o</option>
 										<option value='4'>Engenharia aplica&ccedil;&atilde;o</option>
@@ -570,12 +581,12 @@
 										<option value='6'>Fornecedor</option>
 										<option value='7'>Improcedente</option>
 										<option value='8'>Indefinido</option>
-										<option value='9'>Logística</option>
+										<option value='9'>Log&iacute;stica</option>
 										<option value='10'>Manufatura</option>
 										<option value='11'>Montagem</option>
 										<option value='12'>Qualidade</option>
 										<option value='13'>Suprimentos</option>
-										<option value='99'>Sob An&áacute;lise</option>
+										<option value='99'>Sob An&aacute;lise</option>
 									</select>
 								</div>
 								<div class="col-xs-5">
@@ -608,7 +619,7 @@
 							<div class="row">
 								<div class="col-xs-3">
 									<label for="matr_falha">Matricula:</label>
-									<input type="text" class="form-control" placeholder="Matrícula" name="matr_falha" id="matr_falha" />
+									<input type="text" class="form-control" placeholder="Matr&iacute;cula" name="matr_falha" id="matr_falha" />
 								</div>
 								<div class="col-xs-5">
 									<label for="colab_falha">Colaborador:</label>
@@ -646,7 +657,7 @@
 														<option value="mao">M&atilde;o de obra</option>
 														<option value="servicos">Servi&ccedil;os</option>
 														<option value="troca">Troca em garantia</option>
-														<option value="visita">Visita técnica</option>
+														<option value="visita">Visita t&eacute;cnica</option>
 														<option value="outros">Outros</option>														
 													</select>
 												</td>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.23" id="1">
     <property name="author">Carla Tonon</property>
-    <property name="createdBy">Eclipse BIRT Designer Version 4.6.0.v201606072122</property>
+    <property name="createdBy">Eclipse BIRT Designer Version 4.4.2.v201410272105 Build &lt;4.4.2.v20150217-1805></property>
     <list-property name="propertyBindings">
         <structure>
             <property name="name">queryText</property>
@@ -499,7 +499,7 @@ iNNER jOIN  ml001019 ON
 	anexo_proces.NR_DOCUMENTO = ml001019.documentid and
 	anexo_proces.NR_VERSAO = ml001019.version
     
-iNNER jOIN  ml001020 ON
+left jOIN  ml001020 ON
 	anexo_proces.NR_DOCUMENTO = ml001020.documentid and
 	anexo_proces.NR_VERSAO = ml001020.version]]></xml-property>
             <xml-property name="designerValues"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
