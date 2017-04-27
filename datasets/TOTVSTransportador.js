@@ -1,17 +1,20 @@
 function defineStructure() {
 		
 	addColumn("cgc");
-	addColumn("cidade");
+	addColumn("via_transp");
+	addColumn("nat_operacao");
 	addColumn("bairro");
-	addColumn("estado");
+	addColumn("cidade");
 	addColumn("cep");
-	addColumn("natureza");
+	addColumn("estado");
 	addColumn("ins_estadual");
+	addColumn("natureza");
 	addColumn("tipo");
 	addColumn("cod_transp");
 	addColumn("nome_transp");
 	addColumn("endereco");
-	addColumn("nat_operacao");	
+		
+	
 	
 	setKey([ "cod_transp", "nome_transp" ]);
 	addIndex([ "cod_transp" ]);
@@ -89,6 +92,11 @@ function onSync(lastSyncDate) {
 	    tipo.name = "tipo";
 	    tipo.label = "tipo";
 	    
+	    var via_transp = new Object();
+	    via_transp.type = "character";
+	    via_transp.name = "via_transp";
+	    via_transp.label = "via_transp";
+	    
 	    var natureza = new Object();
 	    natureza.type = "character";
 	    natureza.name = "natureza";
@@ -103,7 +111,7 @@ function onSync(lastSyncDate) {
 	    var tt_transportador = new Object();
 	    tt_transportador.name = "tt-transportador";
 	    tt_transportador.records = new Array();
-	    tt_transportador.fields = [cod_transp, nome, cgc, cep, endereco, bairro, cidade, estado, ins_estadual, tipo, natureza, nat_operacao];
+	    tt_transportador.fields = [cod_transp, nome, cgc, cep, endereco, bairro, cidade, estado, ins_estadual, tipo, via_transp, natureza, nat_operacao];
 	    
 	    //array para receber os parametros input da chamada da função
 	   

@@ -2,7 +2,7 @@ function afterStateEntry(sequenceId){
 	
 	if (sequenceId == 6){
 		
-		try{
+		
 
 			log.warn(">>>>>>>>>>>>>>>>>>>>>>>>PASSO 1");
 			var serviceProvider = ServiceManager.getService('TOTVS');
@@ -56,22 +56,24 @@ function afterStateEntry(sequenceId){
 		    
 		    var tt_itens_fields = [it_codigo, quant, desc_item, class_fiscal, ipi, nat_operacao, vl_init];
 		    
-		    var tt_itens_valores = new Array() ;
-		    for (i = 0; i < 2; i++){
-		    	var valor = new Object();
-		    	valor.it_codigo    = "99980130";  
-				valor.quant        = i;      
-				valor.desc_item    = "desc teste";
-				valor.class_fiscal = "02102000";
-				valor.ipi          = 6.6;
-				valor.nat_operacao = "6999KD";    
-				valor.vl_init      = 1.00; 
-				tt_itens_valores[i] = valor;
-			}
+		    
+		    var sigla_emb = new Object();
+		    sigla_emb.type = "character";
+		    sigla_emb.name = "sigla_emb";
+		    sigla_emb.label = "sigla_emb";
+		    
+		    var qt_volumes = new Object();
+		    qt_volumes.type = "integer";
+		    qt_volumes.name = "qt_volumes";
+		    qt_volumes.label = "qt_volumes";
+		    
+		    var tt_embalagem_fields = [sigla_emb, qt_volumes];
 		    
 		    var process = getValue("WKNumProces");
 		    var tt_itens_valores = new Array() ;
+		    var tt_embalagem_valores = new Array() ;
 		    var i = 0;
+		    var j = 0;
 		    var cardData = new java.util.HashMap();
 			cardData = hAPI.getCardData(process);
 			var keys = cardData.keySet().toArray();
@@ -91,21 +93,39 @@ function afterStateEntry(sequenceId){
 					tt_itens_valores[i] = valor;
 					i++;
 				}
-			}
-		    
+				if (field.indexOf("embSigla___") > -1) {
+					var row = field.replace("embSigla___", "");
+					var valor = new Object();
+					valor.sigla_emb    = "" + hAPI.getCardValue("embSigla" + "___" + row);
+					valor.qt_volumes        = parseInt(String(hAPI.getCardValue("volumes" + "___" + row)).replace(/\./g,'').replace(',','.'));
+					tt_embalagem_valores[j] = valor;
+					j++;					
+				}
+			}		    
 		    
 		    //formador do paremetro value para temp-table
 		    var tt_itens_tabela = new Object();
 		    tt_itens_tabela.name = "tt_itens";
 		    tt_itens_tabela.fields = tt_itens_fields;
 		    tt_itens_tabela.records = tt_itens_valores;
-		   
+		    
+		    var tt_embalagem_tabela = new Object();
+		    tt_embalagem_tabela.name = "tt_embalagem";
+		    tt_embalagem_tabela.fields = tt_embalagem_fields;
+		    tt_embalagem_tabela.records = tt_embalagem_valores;		   
 		    
 		    var tt_itens = new Object();
 		    tt_itens.dataType = "temptable";
 		    tt_itens.name = "tt_itens";
 		    tt_itens.type = "input";
-		    tt_itens.value = tt_itens_tabela;	    
+		    tt_itens.value = tt_itens_tabela;
+		    
+		    var tt_embalagem = new Object();
+		    tt_embalagem.dataType = "temptable";
+		    tt_embalagem.name = "tt_embalagem";
+		    tt_embalagem.type = "input";
+		    tt_embalagem.value = tt_embalagem_tabela;	   
+		    
 		    
 		    
 		    
@@ -209,7 +229,7 @@ function afterStateEntry(sequenceId){
 		    obs_nota.type = "input";
 		    
 		    //array para receber os parametros input da chamada da função
-		    var params = [cod_estabe, serie, cod_emitente, nat_operacao, peso_liq, peso_bruto, cod_transp, qt_volumes, mod_frete, sigla_emb, obs_nota, tt_itens, tt_retorno, documento];
+		    var params = [cod_estabe, serie, cod_emitente, nat_operacao, peso_liq, peso_bruto, cod_transp, mod_frete, obs_nota, tt_itens, tt_embalagem, tt_retorno, documento];
 			
 			//conversor dos parametros de input para Json
 			var jsonParams = JSON.stringify(params);
@@ -237,11 +257,11 @@ function afterStateEntry(sequenceId){
 		    	aux = aux  + "\n";
 		    }
 		    hAPI.setCardValue('des_geraDocto', aux);
-		    
-		}catch (e) {
+		  
+		/*}catch (e) {
 			hAPI.setCardValue('des_geraDocto', e.message);
 			log.error(e.message);       
-	    }
+	    }*/
 		
 	} 
 	

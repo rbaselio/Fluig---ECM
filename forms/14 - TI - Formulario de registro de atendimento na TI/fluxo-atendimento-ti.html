@@ -21,7 +21,7 @@
 						<tr>
 							<td rowspan="3" width="20%"><img src="/resources/logo_casp/logocasp.gif" width="204" height="79"></td>
 							<td rowspan="3"><div align="center" dir="ltr">
-									<h2><b>REGISTRO DE ATENDIMENTO T&Eacute;CNICO</b></h2>
+									<h2><b>REGISTRO DE ATENDIMENTO TÉCNICO</b></h2>
 								</div></td>
 							<td align="right"><label for="chamado_num">N&uacute;mero RNC:&nbsp;&nbsp;&nbsp;&nbsp;</label></td>
 							<td width="15%"><input type="text" name="num_processo" id="num_processo" class="form-control" readonly="readonly" /></td>
@@ -68,7 +68,7 @@
 					<br/>
 					<div class="row">
 						<div class="col-sm-3 col-xs-12">
-							<label for="tipo">Tipo da Solicita&ccedil;&atilde;o:</label>
+							<label for="tipo">Tipo da Solicitação:</label>
 							<select name="tipo" id="tipo"  class="form-control">
 								<option value=""></option>	
 								<option value="acesso">Acesso</option>
@@ -81,7 +81,7 @@
 							<select name="sistema" id="sistema"  class="form-control">
 								<option value=""></option>	
 								<option value="buscador">Buscador</option>
-								<option value="chao">Ch&atilde;o de Fabrica</option>
+								<option value="chao">Chão de Fabrica</option>
 								<option value="fluig">Fluig</option>																						
 								<option value="jarvis">Jarvis</option>
 								<option value="telefonia">Telefonia</option>
@@ -90,13 +90,13 @@
 							</select>
 						</div>	
 						<div class="col-xs-3">
-							<label for="criticidade">Criticidade da Solicita&ccedil;&atilde;o:</label>
+							<label for="criticidade">Criticidade da Solicitação:</label>
 							<select name="criticidade" id="criticidade"  class="form-control">
 								<option value=""></option>	
-								<option value="32">Possui procedimento paliativo</option>
-								<option value="1">Impede o faturamento / produ&ccedil;&atilde;o</option>
-								<option value="240">Sugest&atilde;o de melhoria</option>
-								<option value="16">N&atilde;o possui procecdimento paliativo</option>
+								<option value="120">Sugestão de melhoria</option>
+								<option value="16">Com solução paliativa</option>
+								<option value="8">Sem solução paliativa</option>																						
+								<option value="1">Impede a operação</option>
 							</select>
 						</div>
 					</div>
@@ -156,14 +156,14 @@
 											
 					<div class="row" id="avaliacao">
 						<div class="col-xs-3">
-							<label for="conclusao">Chamado conclu&iacute;do:</label>
+							<label for="conclusao">Chamado concluído:</label>
 							<select name="conclusao" id="conclusao"  class="form-control">
 								<option value=""></option>	
 								<option value="sim">Sim</option>
-								<option value="nao">N&atilde;o</option>								
+								<option value="nao">Não</option>								
 							</select>
 							
-							<label for="nota">Avalia&ccedil;&atilde;o do Atendimento:</label>
+							<label for="nota">Avaliação do Atendimento:</label>
 							<select name="nota" id="nota"  class="form-control">
 								<option value="1">Muito Satisfeito</option>
 								<option value="2">Satisfeito</option>

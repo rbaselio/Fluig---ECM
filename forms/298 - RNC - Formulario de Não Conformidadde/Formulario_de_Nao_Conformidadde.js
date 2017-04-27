@@ -1,6 +1,7 @@
-var row;
-
 $(function(ready){
+	
+	$(".soNumeros").mask('000.000.000.000.000', {reverse: true});
+	setMoneyClass($(".money"));
 	
 	$(".status").each(function(i) {
 		if 	($(this).val() == "Cancelado") 	$(this).css({'background-color' : 'grey', 'color': 'black'});
@@ -79,23 +80,103 @@ $(function(ready){
 	}).trigger('change');
 	
 	
-	$("#reponsabilidade").change(function () {			
+	$("#reponsabilidade").change(function () {
+		$("#cod_fornec").attr("readOnly", true).val('');
+		$("#matr_falha").removeAttr('readOnly');
+		$("#colab_falha").removeAttr('readOnly');
 		if($(this).val() == 6){
-			$("#fornec").removeAttr('disabled');
-			$("#matr_falha").attr('disabled', 'disabled').val('');
-			$("#colab_falha").attr('disabled', 'disabled').val('');
-		}	
-		else if($(this).val() == 10){
-			$("#fornec").attr('disabled', 'disabled').val('');
-			$("#matr_falha").removeAttr('disabled');
-			$("#colab_falha").removeAttr('disabled');
-		}
-		else{
-			$("#fornec").attr('disabled', 'disabled').val('');
-			$("#matr_falha").attr('disabled', 'disabled').val('');
-			$("#colab_falha").attr('disabled', 'disabled').val('');			
-		}
+			$("#cod_fornec").removeAttr('readOnly');
+			$("#matr_falha").attr("readOnly", true).val('');
+			$("#colab_falha").attr("readOnly", true).val('');
+				
+		}		
 	}).trigger('change');	
+	
+	
+	$('#listaFamilia').click(function() {
+		var thisModal = FLUIGC.modal({
+		    title: 'Lista de Familias',
+		    content: '<div id="postTabela"></div>',
+		    id: 'fluig-modal',
+		    size: 'large',
+		    actions: [{
+		        'label': 'Fechar',
+		        'autoClose': true
+		    }]
+		}, function(err, data) {
+			var param = {"datasetId" : "TOTVSFamilias", "limit" : "0"};
+			console.log(JSON.stringify(param));
+			var thisTable = FLUIGC.datatable('#postTabela', {				
+			    dataRequest: {
+			        url: '/api/public/ecm/dataset/search',
+			        options: {
+			            contentType:"application/json",
+			            dataType: 'json',
+			            method: 'POST',
+			            data: JSON.stringify(param),
+			            crossDomain: true,
+			            cache: false
+			        },
+			        root: 'content'
+			    },
+			    renderContent: ['fm_codigo', 'fm_descricao'], 
+			    header: [{'title': 'Código', 'size': 'col-sm-2'},
+			             {'title': 'Descrição', 'size': 'col-sm-4'}],
+			    multiSelect: false,
+			    search: {
+			    	enabled: true,
+			        onSearch: function(response) {
+			        	$.ajax({
+							  type: 'POST',
+							  contentType: 'application/json',
+							  dataType: 'json',
+							  url: '/api/public/ecm/dataset/search',
+							  data: JSON.stringify({"datasetId" : "TOTVSFamilias","limit" : "0", "searchField" : "fm_descricao", "searchValue" : response }),
+							  success: function(data) {
+								  thisTable.reload(data.content);
+							  }
+							});
+			        }	        
+			    },
+			    scroll: {
+			        target: '#postTabela',
+			        enabled: true			        
+		        },
+			    tableStyle: 'table-striped'
+			}).on('dblclick', function(ev) {
+				var index = thisTable.selectedRows()[0];
+			    var selected = thisTable.getRow(index);	
+			    $('#equip').val(selected.fm_descricao);
+			    thisModal.remove();					    
+			});
+		});
+		$(".modal-body").css("max-height" , window.innerHeight/2 + 'px');
+	});
+	
+	$("#cod_fornec").on('blur', function(){
+		token = DatasetFactory.getDataset('tokens', null, null, null).values[0]["tokenTOTVSDatasul"];
+		var c1 = DatasetFactory.createConstraint("cod_emit", $(this).val().replace(/\D/g, ''), null, ConstraintType.MUST);
+		var c2 = DatasetFactory.createConstraint("token", token , null, ConstraintType.MUST);
+		var constraints   = new Array(c1, c2);
+		var dataset = DatasetFactory.getDataset("TOTVSEmitente", null, constraints, null);
+		
+		if (dataset.values.length > 0 && dataset.values[0]["nome_emit"] != 'ERRO' ) {		
+			$("#fornec").val(dataset.values[0]["nome_emit"]);
+			$("#cod_fornec").val(dataset.values[0]["cod_emitente"]);			
+		}
+		else FLUIGC.message.alert({
+				    message: "<strong>Cliente ou Fornecedor não cadastrado:</strong><br/>",
+					title: 'Emitente invalido',
+					label: 'OK'
+					}, function(el, ev) {
+						setTimeout(function() {
+							$("#fornec").val("");							
+							$("#cod_fornec").focus().val("");							
+						}, 100);
+					});
+	});
+	
+	
 	
 });
 
@@ -236,6 +317,74 @@ function zoomColaborador_corr(linha) {
 		});
 	});
 	$(".modal-body").css("max-height" , window.innerHeight/2 + 'px');
+	
+}
+
+//zoom de colaboradores para a atribuição de responsavel por parecer
+function zoomColaborador_falha() {
+	
+	var param = {"datasetId" : "colleague", "limit" : "0", 
+			 "filterFields" : ["active", "true"]};
+
+	var thisModal = FLUIGC.modal({
+	    title: 'Lista de Colaboradores',
+	    content: '<div id="postEmb"></div>',
+	    id: 'fluig-modal',
+	    actions: [{
+	        'label': 'Fechar',
+	        'autoClose': true
+	    }]
+	}, function(err, data) {			
+		var thisTable = FLUIGC.datatable('#postEmb', {
+		    dataRequest: {
+		        url: '/api/public/ecm/dataset/search',
+		        options: {
+		            contentType:"application/json",
+		            dataType: 'json',
+		            method: 'POST',
+		            data: JSON.stringify(param),
+		            crossDomain: true,
+		            cache: false
+		        },
+		        root: 'content'
+		    },
+		    renderContent: ['colleagueId', 'colleagueName'], 
+		    header: [{'title': 'Matricula', 'size': 'col-sm-2'},
+		             {'title': 'Nome', 'size': 'col-sm-5'}],
+		    multiSelect: false,
+		    search: {
+		        enabled: true,
+		        searchAreaStyle: 'col-md-9',
+		        onSearch: function(response) {
+		        	var param2 = {"datasetId" : "colleague", "limit" : "0", 
+ 							"filterFields" : ["active", "true"], 
+ 							"searchField" : "colleagueName", "searchValue" : response };
+		        	$.ajax({
+						  type: 'POST',
+						  contentType: 'application/json',
+						  dataType: 'json',
+						  url: '/api/public/ecm/dataset/search',
+						  data: JSON.stringify(param2),
+						  success: function(data) {
+							  thisTable.reload(data.content);
+						  }
+						});
+		        }
+		    },
+		    scroll: {
+		        target: '#postEmb',
+		        enabled: true			        
+	        },
+		    tableStyle: 'table-striped'
+		}).on('dblclick', function(ev) {
+			var index = thisTable.selectedRows()[0];
+		    var selected = thisTable.getRow(index);	
+		    $("#matr_falha").val(selected.colleagueId);
+		    $("#colab_falha").val(selected.colleagueName);			   
+		    thisModal.remove();					    
+		});
+	});
+	$(".modal-body").css("max-height" , window.innerHeight/2 + 'px');	
 	
 }
 
@@ -403,6 +552,66 @@ function addLinhaTabela(tabela) {
 	});
 }
 
+function addCustoNaoQualidade(tabela) {	
+	initCompoents(wdkAddChild(tabela));	
+}
+
+function setMoneyClass(elemento){
+	elemento.mask('000.000.000,00', {reverse: true})
+		.css("text-align", "right")
+		.on('focusin', function(){$(this).select();})
+		.on('blur', function(){
+			if ($(this).val() == '') $(this).val('0,00')
+			else if ($(this).val().substring($(this).val().lastIndexOf(",")).length <= 2) $(this).val($(this).val() + ',00');
+			somatorio();
+	}).on('keypress keyup', function(){
+		somatorio();
+	}).trigger('blur');
+}
+
+function somatorio(){		
+	var acumulado = 0.0; 
+	var valor;
+	var quant;
+	
+	
+	
+	$('.somatorio').each(function() {
+		valor = parseFloat($(this).val().replace(/[^\d\,\-]/g, "").replace(",","."));
+		row = $(this).attr('id').substring($(this).attr('id').lastIndexOf("_") + 1);
+		quant = $("#quant_item___" + row).val();		
+		if (!isNaN(valor) && quant) {
+			
+			if (quant == 0.00) quant = 1.00;
+			acumulado += (valor * parseFloat(quant.replace(/[^\d\,\-]/g, "").replace(",",".")));			
+		}		
+	});
+	$("#vl_tot").val(acumulado.toFixed(2));
+	$("#vl_tot").mask('000.000.000,00', {reverse: true});	
+}
+
+function initCompoents(row){	
+	setMoneyClass($(".money"));
+	$("#quant_item___" + row).val("0,00");
+	$("#cod_item___" + row).on('blur', function(){	
+		var thisrow = $(this).attr('id').substr($(this).attr('id').lastIndexOf("_") + 1);
+		$("#vl_mat___" + thisrow).val("0,00").trigger('keyup');
+		var token = DatasetFactory.getDataset('tokens', null, null, null).values[0]["tokenTOTVSDatasul"];
+		var subc1 = DatasetFactory.createConstraint("cod_item", $(this).val(), null, ConstraintType.MUST);
+		var subc2 = DatasetFactory.createConstraint("estab", "1", null, ConstraintType.MUST);
+		var subc3 = DatasetFactory.createConstraint("token", token , null, ConstraintType.MUST);
+		var subconstraints   = new Array(subc1, subc2, subc3);
+		var subdataset = DatasetFactory.getDataset("TOTVSItem", null, subconstraints, null);		
+		if (subdataset.values.length > 0) {		
+			$("#desc_mat___" + thisrow).val(subdataset.values[0]["desc_item"]);
+			var aux = parseFloat(subdataset.values[0]["m_mat"]) + parseFloat(subdataset.values[0]["m_mob"]) + parseFloat(subdataset.values[0]["m_ggf"]);
+			$("#vl_mat___" + thisrow).val(aux.toFixed(2)).trigger('keyup');
+		}		
+	});
+	
+}
+	
+
 //remove linha da tabela
 function removeTarefa(oElement){
 	var processo =  $(oElement).closest('tr').find("input").eq(3).val();
@@ -524,25 +733,45 @@ function ativaPreencheCampos(modeView, numState, WKNumProces, documentId){
 	}	
 }
 
-function showElemento(elemento){
-	elemento.show();
-	elemento.css('pointer-events', 'all');
-	var offset = elemento.offset().top * 0.50; 
-	$('html, body').animate({ scrollTop: offset - 150 }, offset);	
+//exibe um panel
+function showElemento(elemento){	
+	elemento.show()
+			.css('pointer-events', 'all')
+			.find('input[type=text], input[type=zoom], textarea').each(function(i) {
+				if (!$(this).hasClass('readonly')) $(this).removeAttr('readOnly');
+			});
+	elemento.find('.table').find("tr").each(function(){
+				$(this).find("td:first").show();
+			})
+	elemento.find('.divAddButton').show();
+	
+	setTimeout(function () {
+		var offset = elemento.offset().top; 
+		$('html, body').animate({ scrollTop: offset }, offset);	
+	}, 1000);
 }
-
-//bloquear todas os campos
-function blockAll() {
+//bloqueia todos os panels para edição 
+function blockAll(modeView) {
+	$('html, body').animate({ scrollTop: 0 }, 5);
 	$('.panel').each(function(i) {
-		if ($(this).attr('id') != null) {
-			$(this).hide();
-			$(this).css('pointer-events', 'none');
-			$(this).find('input[type=text]').each(function(){
-				if ($(this).val() != "") {
-					$(this).closest('.panel').show();
-				}
-			});		
+		if ($(this).attr('id') != null) {			
+			$(this).hide()
+					.css('pointer-events', 'none')
+					.find('input[type=text], input[type=zoom], textarea')
+					.attr("readOnly", true)
+					.css('pointer-events', 'all')
+					.each(function(){
+						if ($(this).val() != "" && parseFloat($(this).val().replace(/[^0-9\,]+/g,"").replace(",",".")) != 0.00) {
+							$(this).closest('.panel').show();
+						}
+					});
 		}
+		if(modeView == "ADD" || modeView == "MOD"){
+			$(this).find('.table').find("tr").each(function(){
+				   $(this).find("td:first").hide();
+			});
+		}
+		$(this).find('.divAddButton').hide();
 	});
 }
 

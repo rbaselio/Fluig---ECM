@@ -36,7 +36,7 @@ function validateForm(form){
 		
 	}
 	
-	if (message != "") throw "<br/><br/><strong>Os campos abaixo são de preencimento obrigatório:</strong><br/>" + message;	
+	if (message != "") throw "<br/><strong>Os campos abaixo são de preencimento obrigatório:</strong><br/>" + message;	
 	
 	
 	

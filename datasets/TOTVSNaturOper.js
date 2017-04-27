@@ -1,5 +1,5 @@
 function createDataset(fields, constraints, sortFields) {
-	
+	/**/
 	var nat_oper, token;
 	
 	if (constraints != null) {

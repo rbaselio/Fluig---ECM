@@ -8,6 +8,7 @@ function defineStructure() {
 }
 
 function onSync(lastSyncDate) {
+	/**/
 	var newDataset = DatasetBuilder.newDataset();	
 	try{
 		//log.warn(">>>>>>>>>>>>>>>>>>>>>>>>PASSO 1");

@@ -5,6 +5,7 @@
 <script src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
 <script src="/portal/resources/js/mustache/mustache-min.js"></script>
 <script src="/portal/resources/style-guide/js/fluig-style-guide.min.js"></script>
+<script src="/portal/resources/js/jquery.mask.min.js"></script>
 <script src="/resources/casp_lib/js/utils.js"></script>
 <script type="text/javascript" src="Formulario_de_Nao_Conformidadde.js"></script>
 <script src="../vcXMLRPC.js"></script>
@@ -192,7 +193,7 @@
 						<div class="panel-body">
 							<div class="row">
 								<div class="col-xs-3">
-									<label for="acao">A&ccedil;&atilde;o &atilde;� ser tomada:</label> 
+									<label for="acao">A&ccedil;&atilde;o &atilde;  ser tomada:</label> 
 									<select class="form-control" name="acao" id="acao">
 										<option value="0" selected="selected"></option>
 										<option value="rejeitar">Rejeitar</option>
@@ -600,15 +601,24 @@
 									</div>
 								</div>
 								<div class="col-xs-4">
-									<label for="equip">Equipamento:</label>
-									<input type="text" class="form-control" placeholder="Equipamento" name="equip" id="equip" />
+									<label for="equip">Família / Equipamento:</label>
+										<div class="input-group">
+										<input type="text" class="form-control readonly" placeholder="Família / Equipamento" name="equip" id="equip" />
+							            <span class="input-group-btn">
+							            	<button class="btn btn-default" type="button" id="listaFamilia">&nbsp;<span class="fluigicon fluigicon-search fluigicon-sm"></span></button>
+							            </span>						            
+							        </div>									
 								</div>
 							</div>
 							
 							<div class="row">
+								<div class="col-xs-2">
+									<label for="fornec">Cod. Fornecedor:</label>
+									<input type="text" class="form-control soNumeros" placeholder="Cod. fornecedor" name="cod_fornec" id="cod_fornec" />
+								</div>
 								<div class="col-xs-4">
-									<label for="fornec">Fornecedor:</label>
-									<input type="text" class="form-control" placeholder="Fornecedor" name="fornec" id="fornec" />
+									<label for="fornec">Nome Fornecedor:</label>
+									<input type="text" class="form-control readonly" placeholder="Fornecedor" name="fornec" id="fornec" />
 								</div>
 								<div class="col-xs-6">
 									<label for="fornec">Roteiro de rejei&ccedil;&atilde;o:</label>
@@ -623,7 +633,13 @@
 								</div>
 								<div class="col-xs-5">
 									<label for="colab_falha">Colaborador:</label>
-									<input type="text" class="form-control" placeholder="Colaborador" name="colab_falha" id="colab_falha" />
+									<input type="text" class="form-control  placeholder="Colaborador" name="colab_falha" id="colab_falha" />
+									<!-- <div class="input-group">										
+							            <span class="input-group-btn">
+							            	<button class="btn btn-default" type="button" id="listaColaborador" onclick='zoomColaborador_falha();'>&nbsp;<span class="fluigicon fluigicon-search fluigicon-sm"></span></button>
+							            </span>	
+						            </div> -->
+									
 								</div>
 							</div>
 							
@@ -638,35 +654,47 @@
 							<div class="row">
 								<div class="form-field table-responsive" data-type="tabledetail" data-show-properties="" data-field-name="tabledetail">
 									<table tablename="td_materiais" cellspacing="0" id="td_materiais" noaddbutton=true class="table" nodeletebutton=false>
-										<thead>
-											<tr class="tableHeadRow">
-												<th class="tableColumn">Tipo:</th>
-												<th class="tableColumn">Breve descri&ccedil;&atilde;o do custos</th>
-												<th class="tableColumn">Valor</th>												
-											</tr>
-										</thead>
+										<thead><tr><th ></th></tr></thead>
 										<tbody>
 											<tr>
-												<td class="col-xs-3">
-													<select name="orgao" id="orgao" class="form-control">
-														<option value="analise">Analise / Inspe&ccedil;&atilde;o / Medi&ccedil;&atilde;o</option>
-														<option value="bonificacao">Bonifica&ccedil;&atilde;o</option>
-														<option value="correio">Correio / Sedex</option>
-														<option value="estadia">Estadia</option>
-														<option value="frete">Frete</option>
-														<option value="mao">M&atilde;o de obra</option>
-														<option value="servicos">Servi&ccedil;os</option>
-														<option value="troca">Troca em garantia</option>
-														<option value="visita">Visita t&eacute;cnica</option>
-														<option value="outros">Outros</option>														
-													</select>
-												</td>
-												<td class="col-xs-6">
-													<input type="text" name="desc_mat" id="desc_mat" class="form-control" />
-												</td>
-												<td class="col-xs-3">
-													<input type="text" name="vl_mat" id="vl_mat" class="form-control money somar" />													
-												</td>												
+												<td>
+													<div class="row">
+														<div class="col-xs-4">
+															<label for="matr_falha">Tipo:</label>
+															<select name="orgao" id="orgao" class="form-control">
+																<option value="analise">Analise / Inspe&ccedil;&atilde;o / Medi&ccedil;&atilde;o</option>
+																<option value="bonificacao">Bonifica&ccedil;&atilde;o</option>
+																<option value="correio">Correio / Sedex</option>
+																<option value="estadia">Estadia</option>
+																<option value="frete">Frete</option>
+																<option value="mao">M&atilde;o de obra</option>
+																<option value="servicos">Servi&ccedil;os</option>
+																<option value="troca">Troca em garantia</option>
+																<option value="visita">Visita t&eacute;cnica</option>
+																<option value="outros">Outros</option>														
+															</select>
+														</div>
+														<div class="col-xs-4">
+															<label for="matr_falha">Quant Item:</label>
+															<input type="text" name="quant_item" id="quant_item" class="form-control money" />
+														</div>
+														
+														<div class="col-xs-4">
+															<label for="matr_falha">Valor:</label>
+															<input type="text" name="vl_mat" id="vl_mat" class="form-control money somatorio" />
+														</div>
+													</div>	
+													<div class="row" id="isItem">															
+														<div class="col-xs-3">
+															<label for="matr_falha">Cod. Item:</label>
+															<input type="text" name="cod_item" id="cod_item" class="form-control" />
+														</div>														
+														<div class="col-xs-9">
+															<label for="matr_falha">Descrição dos Custos:</label>
+															<input type="text" name="desc_mat" id="desc_mat" class="form-control" />
+														</div>														
+													</div>
+												</td>																							
 											</tr>
 										</tbody>
 									</table>
@@ -674,13 +702,13 @@
 							</div>
 							<div class="row">
 								<div class="col-xs-4">
-										<button type="button" class="btn btn-primary" data-toggle="button" onclick="addLinhaTabela('td_materiais')">Adicionar Custos</button>
+										<button type="button" class="btn btn-primary" data-toggle="button" onclick="addCustoNaoQualidade('td_materiais')">Adicionar Custos</button>
 									</div>
 								<div class="col-xs-5" align="right">
 									<label for="vl_tot" >Custo Total da N&atilde;o Qualidade:</label>
 								</div>	
 								<div class="col-xs-3">
-									<input class="form-control money" name="vl_tot" id="vl_tot" type="text" />
+									<input class="form-control money readonly" name="vl_tot" id="vl_tot" type="text" />
 								</div>												
 							</div>						
 							

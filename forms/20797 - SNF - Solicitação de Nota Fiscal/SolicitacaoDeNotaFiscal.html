@@ -82,8 +82,7 @@
 							<div class="col-sm-4 col-xs-12">
 								<label for="insc_emitente">Insc. Estadual:</label>
 								<input type="text" class="form-control" placeholder="Insc. Estadual" name="insc_emitente" id="insc_emitente" />
-							</div>
-														
+							</div>														
 						</div>
 						<div class="row">
 							<div class="col-sm-6 col-xs-12">
@@ -114,7 +113,7 @@
 									<option value=""></option>
 									<option value="devolucao">Devolu&ccedil;&atilde;o </option>
 									<option value="retorno">Retorno</option>
-									<option value="transferencia">Transfer&ecirc;ncia </option>
+									<option value="transferencia">Transfer&ecirc;ncia / Remessa</option>
 									<option value="outros">Outros</option>																	
 								</select>							
 							</div>	
@@ -148,19 +147,12 @@
 						<br/>
 						<div class="row">
 							<div class="alert alert-info" role="alert" align="center"><strong>Dados do transportador</strong></div>
-							<div class="col-sm-3 col-xs-12">
-								<label for="modNota">Tipo do Frete:</label>
-								<select class="form-control" name="modNota" id="modNota">
-									<option value=""></option>
-									<option value=0>CIF</option>
-									<option value=1>FOB</option>																	
-								</select>	
-							</div>
+							
 							<div class="col-sm-3 col-xs-12">
 								<label for="cod_transp">Cod. Tranportador:</label>
 								<input type="text" class="form-control readonly" placeholder="C&oacute;digo"" name="cod_transp" id="cod_transp" />
 							</div>
-							<div class="col-sm-6 col-xs-12">
+							<div class="col-sm-5 col-xs-12">
 								<label for="nome_transp">Nome transportador:</label>
 								<div class="input-group">
 									<input type="text" class="form-control readonly" placeholder="Nome" name="nome_transp" id="nome_transp" />
@@ -168,33 +160,68 @@
 						            	<button class="btn btn-default" type="button" id="listaTransp">&nbsp;<span class="fluigicon fluigicon-search fluigicon-sm"></span></button>
 						            </span>						            
 						        </div>																
-							</div>							
+							</div>
+							<div class="col-sm-4 col-xs-12">
+								<label for="nome_transp">Cidade:</label>
+								<input type="text" class="form-control readonly" placeholder="Cidade" name="cidade_transp" id="cidade_transp" />																								
+							</div>
 						</div>
+						<br/>
 						<div class="row">
-							<div class="col-sm-3 col-xs-12">
-								<label for="volumes">Quant. Volumes:</label>
-								<input type="text" class="form-control soNumeros" placeholder="" name="volumes" id="volumes"/>
-							</div>
-							<div class="col-sm-3 col-xs-12">
-								<label for="tpEmbalagem">Tipo Volumes/Embalagem:</label>
-								<div class="input-group">
-									<input type="hidden" name="embSigla" id="embSigla" />
-									<input type="text" class="form-control readonly" placeholder="Embalagem" name="tpEmbalagem" id="tpEmbalagem" />
-						            <span class="input-group-btn">
-						            	<button class="btn btn-default" type="button" id="listaEmb">&nbsp;<span class="fluigicon fluigicon-search fluigicon-sm"></span></button>
-						            </span>						            
-						        </div>								
-							</div>
-							<div class="col-sm-3 col-xs-12">
+							<div class="col-sm-4 col-xs-12">
+								<label for="modNota">Tipo do Frete:</label>
+								<select class="form-control" name="modNota" id="modNota">
+									<option value=""></option>
+									<option value=0>CIF</option>
+									<option value=1>FOB</option>																	
+								</select>	
+							</div>							
+													
+							<div class="col-sm-4 col-xs-12">
 								<label for="pesoBruto">Peso Bruto (Kg):</label>
 								<input type="text" class="form-control money" placeholder="" name="pesoBruto" id="pesoBruto"/>
 							</div>
-							<div class="col-sm-3 col-xs-12">
+							<div class="col-sm-4 col-xs-12">
 								<label for="pesoLiq">Peso L&iacute;quido (Kg):</label>
 								<input type="text" class="form-control money" placeholder="" name="pesoLiq" id="pesoLiq"/>
 							</div>
 						</div>
 						<br/>
+						<div class="row">
+							<table tablename="tb_embalagem" cellspacing="0" id="tb_embalagem" class="table" noaddbutton="true" nodeletebutton="false" customFnDelete="fnCustomDelete(this)">
+								<thead><tr><th></th></tr></thead>																
+								<tbody>
+									<tr>
+										<td>
+											<div class="col-sm-3 col-xs-12">
+												<label for="volumes">Quant. Volumes:</label>
+												<input type="text" class="form-control soNumeros" placeholder="" name="volumes" id="volumes"/>
+											</div>
+											<div class="col-sm-2 col-xs-12">
+												<label for="volumes">Sigla:</label>
+												<input type="text" class="form-control readonly" placeholder="" name="embSigla" id="embSigla"/>
+											</div>
+											<div class="col-sm-4 col-xs-12">
+												<label for="tpEmbalagem">Tipo Volumes/Embalagem:</label>
+												<div class="input-group">
+													<input type="text" class="form-control readonly" placeholder="Embalagem" name="tpEmbalagem" id="tpEmbalagem" />
+										            <span class="input-group-btn">
+										            	<button class="btn btn-default" type="button" id="listaEmb">&nbsp;<span class="fluigicon fluigicon-search fluigicon-sm"></span></button>
+										            </span>						            
+										        </div>								
+											</div>																			
+										</td>
+									</tr>
+								</tbody>
+							</table>							
+						</div>
+						
+						<div class="row">							
+							<div class="col-sm-12 col-xs-12 " align="right">
+								<label >&nbsp;</label><br/>
+								<button type="button" class="btn btn-primary divAddButton" data-toggle="button" onclick="addEmbalagem('tb_embalagem')">Adicionar Embalagem</button>
+							</div>							
+						</div>
 						<div class="row">
 							<div class="alert alert-info" role="alert" align="center"><strong>Dados da Nota Fiscal</strong></div>
 							<div class="col-sm-12 col-xs-12">
@@ -335,8 +362,6 @@
 							<div class="col-sm-3 col-xs-12">
 								<label for="nrDocto">Documento:</label>
 								<input type="text" class="form-control readonly" placeholder="Nota Fiscal" name="nrDocto" id="nrDocto"/>
-								<br/>
-<!-- 								<button type="button" id="abrirFT" class="btn btn-primary" data-toggle="button">Iniciar FT4003</button>								 -->
 							</div>								
 							<div class="col-sm-9 col-xs-12">
 								<label for="desc_emissao_nota">Log. de gera&ccedil;&atilde;o:</label>

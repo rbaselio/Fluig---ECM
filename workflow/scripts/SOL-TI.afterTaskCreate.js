@@ -3,7 +3,7 @@ function afterTaskCreate(colleagueId) {
     
     log.warn(">>>>>>>>>>>>>>>>>>>> atividade " +  atividade);
     
-    if (atividade == 2 || atividade == 4) {
+    if (atividade == 2) {
         // Recuperando a data informada no campo do formulário
         var prazoFormulario = hAPI.getCardValue('criticidade');
         if (prazoFormulario != undefined && prazoFormulario != '') {

@@ -64,70 +64,12 @@ function loadElementos(){
 			    var selected = thisTable.getRow(index);	
 			    $('#nome_transp').val(selected.nome_transp);
 			    $('#cod_transp').val(selected.cod_transp);
+			    $('#cidade_transp').val(selected.cidade);
 			    thisModal.remove();					    
 			});
 		});
 		$(".modal-body").css("max-height" , window.innerHeight/2 + 'px');
-	});
-	
-	
-	$('#listaEmb').click(function() {
-		var thisModal = FLUIGC.modal({
-		    title: 'Lista de bancos',
-		    content: '<div id="postEmb"></div>',
-		    id: 'fluig-modal',
-		    actions: [{
-		        'label': 'Fechar',
-		        'autoClose': true
-		    }]
-		}, function(err, data) {			
-			var thisTable = FLUIGC.datatable('#postEmb', {
-			    dataRequest: {
-			        url: '/api/public/ecm/dataset/search',
-			        options: {
-			            contentType:"application/json",
-			            dataType: 'json',
-			            method: 'POST',
-			            data: JSON.stringify({"datasetId" : "TOTVSEmbalagem","limit" : "0"}),
-			            crossDomain: true,
-			            cache: false
-			        },
-			        root: 'content'
-			    },
-			    renderContent: ['embalagem'], 
-			    header: [{'title': 'Descrição'}],
-			    multiSelect: false,
-			    search: {
-			        enabled: true,
-			        searchAreaStyle: 'col-md-9',
-			        onSearch: function(response) {
-			        	$.ajax({
-							  type: 'POST',
-							  contentType: 'application/json',
-							  dataType: 'json',
-							  url: '/api/public/ecm/dataset/search',
-							  data: JSON.stringify({"datasetId" : "TOTVSEmbalagem","limit" : "0", "searchField" : "embalagem", "searchValue" : response }),
-							  success: function(data) {
-								  thisTable.reload(data.content);
-							  }
-							});
-			        }
-			    },
-			    scroll: {
-			        target: '#postEmb',
-			        enabled: true			        
-		        },
-			    tableStyle: 'table-striped'
-			}).on('dblclick', function(ev) {
-				var index = thisTable.selectedRows()[0];
-			    var selected = thisTable.getRow(index);	
-			    $('#tpEmbalagem').val(selected.embalagem);
-			    $('#embSigla').val(selected.sigla_emb);			   
-			    thisModal.remove();					    
-			});
-		});
-		$(".modal-body").css("max-height" , window.innerHeight/2 + 'px');
-	});
+	});	
 	
 	$("#cod_emitente").on('blur', function(){
 		var c1 = DatasetFactory.createConstraint("cod_emit", $(this).val().replace(/\D/g, ''), null, ConstraintType.MUST);
@@ -310,12 +252,73 @@ function initCompoents(linha){
 	
 }
 
-function addLinha(tabela){
-	
+function addLinha(tabela){	
 	row = wdkAddChild(tabela);
 	$(".NCM").mask('0000.00.00', {reverse: true}).trigger('keyup');
 	setMoneyClass($(".money"));
 	initCompoents(row);
+}
+
+function addEmbalagem(tabela){	
+	row = wdkAddChild(tabela);
+	$('#listaEmb___' + row).click(function() {
+		var thisrow = $(this).attr('id').substr($(this).attr('id').lastIndexOf("_") + 1);
+		var thisModal = FLUIGC.modal({
+		    title: 'Lista de embalgens',
+		    content: '<div id="postEmb"></div>',
+		    id: 'fluig-modal',
+		    actions: [{
+		        'label': 'Fechar',
+		        'autoClose': true
+		    }]
+		}, function(err, data) {			
+			var thisTable = FLUIGC.datatable('#postEmb', {
+			    dataRequest: {
+			        url: '/api/public/ecm/dataset/search',
+			        options: {
+			            contentType:"application/json",
+			            dataType: 'json',
+			            method: 'POST',
+			            data: JSON.stringify({"datasetId" : "TOTVSEmbalagem","limit" : "0"}),
+			            crossDomain: true,
+			            cache: false
+			        },
+			        root: 'content'
+			    },
+			    renderContent: ['embalagem'], 
+			    header: [{'title': 'Descrição'}],
+			    multiSelect: false,
+			    search: {
+			        enabled: true,
+			        searchAreaStyle: 'col-md-9',
+			        onSearch: function(response) {
+			        	$.ajax({
+							  type: 'POST',
+							  contentType: 'application/json',
+							  dataType: 'json',
+							  url: '/api/public/ecm/dataset/search',
+							  data: JSON.stringify({"datasetId" : "TOTVSEmbalagem","limit" : "0", "searchField" : "embalagem", "searchValue" : response }),
+							  success: function(data) {
+								  thisTable.reload(data.content);
+							  }
+							});
+			        }
+			    },
+			    scroll: {
+			        target: '#postEmb',
+			        enabled: true			        
+		        },
+			    tableStyle: 'table-striped'
+			}).on('dblclick', function(ev) {
+				var index = thisTable.selectedRows()[0];
+			    var selected = thisTable.getRow(index);	
+			    $('#tpEmbalagem___' + thisrow).val(selected.embalagem);
+			    $('#embSigla___' + thisrow).val(selected.sigla_emb);			   
+			    thisModal.remove();					    
+			});
+		});
+		$(".modal-body").css("max-height" , window.innerHeight/2 + 'px');
+	});
 }
 
 function fnCustomDelete(oElement){

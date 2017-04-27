@@ -9,7 +9,7 @@ function defineStructure() {
 
 function onSync(lastSyncDate) {
 	var newDataset = DatasetBuilder.newDataset();	
-	
+	/**/
 	try{
 		//log.warn(">>>>>>>>>>>>>>>>>>>>>>>>PASSO 1");
 		var serviceProvider = ServiceManager.getService('TOTVS');

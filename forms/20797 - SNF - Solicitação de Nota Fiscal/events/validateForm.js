@@ -46,9 +46,15 @@ function validateForm(form){
 			
 			if (form.getValue("modNota") == "") message += "<br/>- Modalidade;";
 			if (form.getValue("cod_transp") == "" && form.getValue("nome_transp") == "") message += "<br/>- Código e/ nome do transportador";
-			if (form.getValue("tpEmbalagem") == "") message += "<br/>- Tipo da embalagem;";	
 			
-			if (form.getValue("volumes") == "") message += "<br/>- Volumes;";
+			
+			var indexes = form.getChildrenIndexes("tb_embalagem");
+			if (indexes.length == 0) message += "<br/>- Informe ao menos uma embalgem;";		
+			
+			for (var i = 0; i < indexes.length; i++) {
+				if (form.getValue("volumes___" + indexes[i]) == "0" || form.getValue("volumes___" + indexes[i]) == "") message += "<br/>- Quant. de volumes na linha " + ( i + 1);
+				if (form.getValue("tpEmbalagem___" + indexes[i]) == "") message += "<br/>- Tipo da embalagem na linha " + ( i + 1);
+			}
 			
 			if (form.getValue("pesoLiq") == "0,00") message += "<br/>- Peso líquido;";
 			if (form.getValue("pesoBruto") == "0,00") message += "<br/>- Peso bruto;";		
@@ -110,11 +116,9 @@ function validateForm(form){
 	}
 	
 	function validaCEP(cep){	
-		log.warn(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>3 " + cep);
 		var constraintCEP = DatasetFactory.createConstraint('cep', cep, cep, ConstraintType.MUST);
 		var datasetCEP = DatasetFactory.getDataset('consultaCEP', null, new Array(constraintCEP), null);
-		log.warn(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>3 " + datasetCEP.getValue(0, "cep"));
-	    return datasetCEP.getValue(0, "cep") == cep;
+		return datasetCEP.getValue(0, "cep") == cep;
 	}
 	
 	function validaItem(item, estab){		

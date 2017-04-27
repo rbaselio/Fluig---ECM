@@ -1,11 +1,10 @@
 function defineStructure() {
-	addColumn("embalagem");
-	addColumn("sigla_emb");
-	addColumn("descricao");
-	setKey([ "embalagem", "sigla_emb" ]);
-	addIndex([ "embalagem" ]);
-	addIndex([ "embalagem", "sigla_emb"]);
-	addIndex([ "embalagem", "sigla_emb", "descricao"]);
+	addColumn("fm_codigo");
+	addColumn("fm_descricao");
+	setKey([ "fm_codigo", "fm_descricao" ]);
+	addIndex([ "fm_codigo" ]);
+	addIndex([ "fm_codigo", "fm_descricao"]);
+	
 }
 
 function onSync(lastSyncDate) {
@@ -29,27 +28,21 @@ function onSync(lastSyncDate) {
 	    //array para receber os campos da tabela
 	    var tt_fields = new Array();
 	    //campos da tabelas
-	    var fields1 = new Object();
-	    fields1.type = "character";
-	    fields1.name = "embalagem";
-	    fields1.label = "embalagem";
-	    tt_fields[0] = fields1;
+	    var fm_codigo = new Object();
+	    fm_codigo.type = "character";
+	    fm_codigo.name = "fm_codigo";
+	    fm_codigo.label = "fm_codigo";	    
 	    
-	    var fields2 = new Object();
-	    fields2.type = "character";
-	    fields2.name = "sigla_emb";
-	    fields2.label = "sigla_emb";
-	    tt_fields[1] = fields2;
-	    
-	    var fields3 = new Object();
-	    fields3.type = "character";
-	    fields3.name = "descricao";
-	    fields3.label = "descricao";
-	    tt_fields[2] = fields3;
+	    var fm_descricao = new Object();
+	    fm_descricao.type = "character";
+	    fm_descricao.name = "fm_descricao";
+	    fm_descricao.label = "fm_descricao";
+	    tt_fields = [fm_codigo, fm_descricao];    
+	   
 	    
 	    //formador do paremetro value para temp-table
 	    var valores1 = new Object();
-	    valores1.name = "tt_embalagem";
+	    valores1.name = "tt_familia";
 	    valores1.records = new Array();
 	    valores1.fields = tt_fields;
 	    
@@ -57,8 +50,8 @@ function onSync(lastSyncDate) {
 	    var params = new Array();
 		var param1 = new Object();
 		param1.dataType = "temptable";
-		param1.name = "tt_embalagem";
-		param1.type = "input-output";
+		param1.name = "tt_familia";
+		param1.type = "output";
 		param1.value = valores1;
 		params[0] = param1;
 		
@@ -66,7 +59,7 @@ function onSync(lastSyncDate) {
 		var jsonParams = JSON.stringify(params);
     	
 	    //log.warn(">>>>>>>>>>>>>>>>>>>>>>>>PASSO 5");	
-	    var resp = service.callProcedureWithToken(token, "webservices/esws0001.r", "getEmbalagens", jsonParams);
+	    var resp = service.callProcedureWithToken(token, "webservices/esws0003.r", "getFamilias", jsonParams);
 	    
 	    //log.warn(">>>>>>>>>>>>>>>>>>>>>>>>PASSO 6");
 	    var respObj = JSON.parse(resp);
@@ -85,9 +78,12 @@ function onSync(lastSyncDate) {
 	    	newDataset.addOrUpdateRow(Arr);
 	    }
 	} catch (e) {
-		Arr[0] = "NOK"
-    	Arr[1] = e.message;
-		newDataset.addRow(Arr);       
+		for (i in e){
+			log.warn(e[i]);
+			
+		}
+		
+		      
     } 
     return newDataset;
 }

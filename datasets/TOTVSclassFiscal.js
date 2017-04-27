@@ -1,7 +1,7 @@
 function createDataset(fields, constraints, sortFields) {
 
 	var classFiscal, token;
-
+	/**/
 	if (constraints != null) {
 		for (var i = 0; i < constraints.length; i++) {
 			if (constraints[i].fieldName == 'classFiscal') classFiscal = String(constraints[i].initialValue).replace(/\D/g, ''); 

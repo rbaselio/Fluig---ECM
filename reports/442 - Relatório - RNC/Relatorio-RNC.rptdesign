@@ -355,6 +355,12 @@
                     <text-property name="displayName">QUANT_ACAO</text-property>
                     <text-property name="heading">QUANT_ACAO</text-property>
                 </structure>
+                <structure>
+                    <property name="columnName">VALOR_TOTAL</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">VALOR_TOTAL</text-property>
+                    <text-property name="heading">VALOR_TOTAL</text-property>
+                </structure>
             </list-property>
             <list-property name="parameters">
                 <structure>
@@ -573,6 +579,11 @@
                     <structure>
                         <property name="position">33</property>
                         <property name="name">QUANT_ACAO</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">34</property>
+                        <property name="name">VALOR_TOTAL</property>
                         <property name="dataType">string</property>
                     </structure>
                 </list-property>
@@ -807,6 +818,13 @@
                     <property name="position">33</property>
                     <property name="name">QUANT_ACAO</property>
                     <property name="nativeName">QUANT_ACAO</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">34</property>
+                    <property name="name">VALOR_TOTAL</property>
+                    <property name="nativeName">VALOR_TOTAL</property>
                     <property name="dataType">string</property>
                     <property name="nativeDataType">12</property>
                 </structure>
@@ -1057,7 +1075,16 @@
 				FICHA.NR_VERSAO = ANEXO_PROCES.NR_VERSAO AND
                 FICHA.COD_VALOR is not null and
 				FICHA.COD_TABELA = "principal" AND
-				FICHA.COD_CAMPO = "quant_disp") as QUANT_ACAO 
+				FICHA.COD_CAMPO = "quant_disp") as QUANT_ACAO,
+				
+		(select FICHA.COD_VALOR
+			from FICHA 
+			where FICHA.COD_EMPRESA = ANEXO_PROCES.COD_EMPRESA AND
+				FICHA.NR_FICHA = ANEXO_PROCES.NR_DOCUMENTO and
+				FICHA.NR_VERSAO = ANEXO_PROCES.NR_VERSAO AND
+                FICHA.COD_VALOR is not null and
+				FICHA.COD_TABELA = "principal" AND
+				FICHA.COD_CAMPO = "vl_tot") as VALOR_TOTAL
 
   FROM PROCES_WORKFLOW 
   INNER JOIN HISTOR_PROCES ON
@@ -2434,7 +2461,7 @@
             <property name="type">custom</property>
             <property name="orientation">landscape</property>
             <property name="height">913mm</property>
-            <property name="width">1390mm</property>
+            <property name="width">1425mm</property>
             <page-header>
                 <grid id="188">
                     <property name="height">0.6041666666666666in</property>
@@ -2484,7 +2511,7 @@ else "Relatório de RNCs em Aberto"</expression>
             <property name="borderTopStyle">solid</property>
             <property name="borderTopWidth">thin</property>
             <property name="textAlign">center</property>
-            <property name="width">38.854166666666664in</property>
+            <property name="width">55.604166666666664in</property>
             <property name="dataSet">Data Set</property>
             <list-property name="boundDataColumns">
                 <structure>
@@ -2649,6 +2676,12 @@ else "Relatório de RNCs em Aberto"</expression>
                     <expression name="expression" type="javascript">dataSetRow["QUANT_ACAO"]</expression>
                     <property name="dataType">string</property>
                 </structure>
+                <structure>
+                    <property name="name">VALOR_TOTAL</property>
+                    <text-property name="displayName">VALOR_TOTAL</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["VALOR_TOTAL"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
             </list-property>
             <column id="314">
                 <property name="whiteSpace">nowrap</property>
@@ -2745,6 +2778,9 @@ else "Relatório de RNCs em Aberto"</expression>
             </column>
             <column id="552">
                 <property name="width">1.1979166666666667in</property>
+            </column>
+            <column id="564">
+                <property name="width">1.5208333333333333in</property>
             </column>
             <header>
                 <row id="269">
@@ -3105,6 +3141,19 @@ else "Relatório de RNCs em Aberto"</expression>
                         <property name="borderTopWidth">thin</property>
                         <label id="559">
                             <text-property name="text">Quant.:</text-property>
+                        </label>
+                    </cell>
+                    <cell id="561">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <label id="565">
+                            <text-property name="text">Custo Não Qualidade:</text-property>
                         </label>
                     </cell>
                 </row>
@@ -3482,6 +3531,19 @@ else "Relatório de RNCs em Aberto"</expression>
                             <property name="resultSetColumn">QUANT_ACAO</property>
                         </data>
                     </cell>
+                    <cell id="562">
+                        <property name="borderBottomStyle">dotted</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">dotted</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">dotted</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">dotted</property>
+                        <property name="borderTopWidth">thin</property>
+                        <data id="566">
+                            <property name="resultSetColumn">VALOR_TOTAL</property>
+                        </data>
+                    </cell>
                 </row>
             </detail>
             <footer>
@@ -3759,6 +3821,16 @@ else "Relatório de RNCs em Aberto"</expression>
                         <property name="borderTopWidth">thin</property>
                     </cell>
                     <cell id="551">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                    </cell>
+                    <cell id="563">
                         <property name="borderBottomStyle">solid</property>
                         <property name="borderBottomWidth">thin</property>
                         <property name="borderLeftStyle">solid</property>

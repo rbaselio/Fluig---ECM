@@ -1,5 +1,5 @@
 function createDataset(fields, constraints, sortFields) {
-		
+		/**/
 	var cod_emit, cnpj, token, programa;
 	
 	if (constraints != null) {

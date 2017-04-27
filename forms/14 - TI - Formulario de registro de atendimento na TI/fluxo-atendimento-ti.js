@@ -7,19 +7,11 @@ function loadElementos(){
 		else {
 			$('#sistema').val("");
 			$('#sel_sistema').hide();
-		}		
-		if ($("#tipo").val() != "") $("#desc_chamado").removeAttr('readOnly');
-		else $("#desc_chamado").attr("readOnly", true).val("");		
-	});
-	
-	$('#criticidade').change(function() {
-		if ($(this).val() == "1" ){
-			FLUIGC.message.alert({
-			    message: "<strong>Utilize esta opção de criticidade somente se você não esta consgeuindo realizar suas oprações sob hipótese alguma",
-			    title: 'ATENÇÃO',
-			    label: 'OK'
-			});
 		}
+		
+		if ($("#tipo").val() != "") $("#desc_chamado").removeAttr('readOnly');
+		else $("#desc_chamado").attr("readOnly", true).val("");
+		
 	});
 	
 	$("#ramal").on('keyup', function(){
@@ -117,8 +109,7 @@ function ativaPreencheCampos(modeView, numState, matricula, WKNumProces, documen
 		var hora = getHora();		
 
 		if (numState == 0 || numState == 1) {	
-			showElemento($("#emissao"));	
-			$('#tipo').trigger("change");
+			showElemento($("#emissao"));			
 			
 			$('#matricula_user').val(matricula);
 			$('#solicitante').val(usuario);
