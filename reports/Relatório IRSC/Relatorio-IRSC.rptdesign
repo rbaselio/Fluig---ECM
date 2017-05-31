@@ -176,8 +176,8 @@
                     <text-property name="heading">DAT_FIM_PRAZ</text-property>
                 </structure>
                 <structure>
-                    <property name="columnName">num_processo</property>
-                    <property name="analysis">dimension</property>
+                    <property name="columnName">NUM_PROCES</property>
+                    <property name="analysis">measure</property>
                     <text-property name="displayName">num_processo</text-property>
                     <text-property name="heading">num_processo</text-property>
                 </structure>
@@ -284,6 +284,12 @@
                     <text-property name="displayName">nr_docto</text-property>
                     <text-property name="heading">nr_docto</text-property>
                 </structure>
+                <structure>
+                    <property name="columnName">repres</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">repres</text-property>
+                    <text-property name="heading">repres</text-property>
+                </structure>
             </list-property>
             <list-property name="parameters">
                 <structure>
@@ -376,8 +382,8 @@
                     </structure>
                     <structure>
                         <property name="position">8</property>
-                        <property name="name">num_processo</property>
-                        <property name="dataType">string</property>
+                        <property name="name">NUM_PROCES</property>
+                        <property name="dataType">integer</property>
                     </structure>
                     <structure>
                         <property name="position">9</property>
@@ -464,6 +470,11 @@
                         <property name="name">nr_docto</property>
                         <property name="dataType">string</property>
                     </structure>
+                    <structure>
+                        <property name="position">26</property>
+                        <property name="name">repres</property>
+                        <property name="dataType">string</property>
+                    </structure>
                 </list-property>
             </structure>
             <property name="dataSource">Data Source</property>
@@ -519,10 +530,10 @@
                 </structure>
                 <structure>
                     <property name="position">8</property>
-                    <property name="name">num_processo</property>
-                    <property name="nativeName">num_processo</property>
-                    <property name="dataType">string</property>
-                    <property name="nativeDataType">12</property>
+                    <property name="name">NUM_PROCES</property>
+                    <property name="nativeName">NUM_PROCES</property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
                 </structure>
                 <structure>
                     <property name="position">9</property>
@@ -643,6 +654,13 @@
                     <property name="dataType">string</property>
                     <property name="nativeDataType">12</property>
                 </structure>
+                <structure>
+                    <property name="position">26</property>
+                    <property name="name">repres</property>
+                    <property name="nativeName">repres</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
             </list-property>
             <xml-property name="queryText"><![CDATA[select distinct 
 	anexo_proces.NR_DOCUMENTO, 
@@ -656,7 +674,7 @@
     fdn_user.FULL_NAME,
     IF (PROCES_WORKFLOW.LOG_ATIV, DATE_FORMAT( TAR_PROCES.DAT_FIM_PRAZ,'%d/%m/%Y') , NULL) AS DAT_FIM_PRAZ, 
     
-    ml001006.num_processo,
+    PROCES_WORKFLOW.NUM_PROCES num_processo,
     ml001006.data_sol,
     ml001006.unid_negocio,
     ml001006.cliente,
@@ -690,28 +708,33 @@
     ml001006.desc_acoes,
     ml001006.dt_atend,
     ml001006.rd_docto,
-    ml001006.nr_docto
+    ml001006.nr_docto,
+    ml001006.repres
     
-from  PROCES_WORKFLOW 
+from  ml001006 
 
-INNER JOIN anexo_proces ON
+iNNER jOIN  documento ON
+	documento.COD_EMPRESA = ml001006.companyid and 
+	documento.NR_DOCUMENTO = ml001006.documentid and 
+    documento.NR_VERSAO = ml001006.version and 
+	documento.VERSAO_ATIVA = 1 and 
+	documento.TP_DOCUMENTO = 5 
+    
 
+iNNER jOIN  anexo_proces ON
+	anexo_proces.COD_EMPRESA = documento.COD_EMPRESA and
+    anexo_proces.NUM_PROCES >= ? and anexo_proces.NUM_PROCES <= ? and
+    anexo_proces.NR_DOCUMENTO = documento.NR_DOCUMENTO and
+    anexo_proces.NR_VERSAO = documento.NR_VERSAO
+
+INNER JOIN PROCES_WORKFLOW ON
 	(PROCES_WORKFLOW.COD_EMPRESA = PROCES_WORKFLOW.COD_EMPRESA AND
-	 PROCES_WORKFLOW.NUM_PROCES >= ? and PROCES_WORKFLOW.NUM_PROCES <= ? and
-	 PROCES_WORKFLOW.COD_DEF_PROCES = 'IRSC' AND
+	 PROCES_WORKFLOW.NUM_PROCES = anexo_proces.NUM_PROCES and
 	 PROCES_WORKFLOW.LOG_ATIV = case ? when 0 then false
 										when 1 then true
 										when 3 then PROCES_WORKFLOW.LOG_ATIV
-										end ) and
-	anexo_proces.NUM_PROCES = PROCES_WORKFLOW.NUM_PROCES 
-iNNER jOIN  documento ON
-	documento.NR_DOCUMENTO = anexo_proces.NR_DOCUMENTO and 
-	documento.VERSAO_ATIVA = 1 and 
-	documento.TP_DOCUMENTO = 5
- 
-iNNER jOIN  ml001006 ON
-	documento.NR_DOCUMENTO = ml001006.documentid and
-	documento.NR_VERSAO = ml001006.version
+										end ) 
+
    
 INNER JOIN HISTOR_PROCES ON
 	(HISTOR_PROCES.COD_EMPRESA = PROCES_WORKFLOW.COD_EMPRESA AND 
@@ -723,7 +746,8 @@ INNER JOIN HISTOR_PROCES ON
                                                           a.LOG_ATIV	= proces_workflow.LOG_ATIV AND
 														  a.NUM_SEQ_MOVTO = a.NUM_SEQ_MOVTO) 
 	) 
-	
+
+
 iNNER jOIN  ESTADO_PROCES ON
 	(ESTADO_PROCES.COD_EMPRESA = PROCES_WORKFLOW.COD_EMPRESA AND
 	ESTADO_PROCES.COD_DEF_PROCES = PROCES_WORKFLOW.COD_DEF_PROCES AND
@@ -754,7 +778,9 @@ left oUTER jOIN  fdn_usertenant ON
 	(fdn_usertenant.USER_CODE = TAR_PROCES.CD_MATRICULA)
     
 left oUTER jOIN  fdn_user ON   
-	(fdn_usertenant.USER_ID = fdn_user.USER_ID)]]></xml-property>
+	(fdn_usertenant.USER_ID = fdn_user.USER_ID)
+    
+order by anexo_proces.NUM_PROCES]]></xml-property>
             <xml-property name="designerValues"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
 <model:DesignValues xmlns:design="http://www.eclipse.org/datatools/connectivity/oda/design" xmlns:model="http://www.eclipse.org/birt/report/model/adapter/odaModel">
   <Version>2.0</Version>
@@ -2071,7 +2097,7 @@ left oUTER jOIN  fdn_user ON
             <property name="type">custom</property>
             <property name="orientation">landscape</property>
             <property name="height">913mm</property>
-            <property name="width">1000mm</property>
+            <property name="width">1135mm</property>
             <page-header>
                 <grid id="188">
                     <property name="height">0.6041666666666666in</property>
@@ -2162,12 +2188,6 @@ left oUTER jOIN  fdn_user ON
                     <property name="name">DAT_FIM_PRAZ</property>
                     <text-property name="displayName">DAT_FIM_PRAZ</text-property>
                     <expression name="expression" type="javascript">dataSetRow["DAT_FIM_PRAZ"]</expression>
-                    <property name="dataType">string</property>
-                </structure>
-                <structure>
-                    <property name="name">num_processo</property>
-                    <text-property name="displayName">num_processo</text-property>
-                    <expression name="expression" type="javascript">dataSetRow["num_processo"]</expression>
                     <property name="dataType">string</property>
                 </structure>
                 <structure>
@@ -2272,6 +2292,18 @@ left oUTER jOIN  fdn_user ON
                     <expression name="expression" type="javascript">dataSetRow["nr_docto"]</expression>
                     <property name="dataType">string</property>
                 </structure>
+                <structure>
+                    <property name="name">NUM_PROCES</property>
+                    <text-property name="displayName">num_processo</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["NUM_PROCES"]</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="name">repres</property>
+                    <text-property name="displayName">repres</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["repres"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
             </list-property>
             <column id="314">
                 <property name="whiteSpace">nowrap</property>
@@ -2285,6 +2317,18 @@ left oUTER jOIN  fdn_user ON
                 <property name="whiteSpace">nowrap</property>
                 <property name="width">1in</property>
             </column>
+            <column id="644">
+                <property name="repeat">1</property>
+                <property name="width">1.4791666666666667in</property>
+            </column>
+            <column id="639">
+                <property name="repeat">1</property>
+                <property name="width">1.6354166666666667in</property>
+            </column>
+            <column id="634">
+                <property name="repeat">1</property>
+                <property name="width">1.3229166666666667in</property>
+            </column>
             <column id="534">
                 <property name="repeat">1</property>
                 <property name="width">1.4791666666666667in</property>
@@ -2293,6 +2337,10 @@ left oUTER jOIN  fdn_user ON
                 <property name="fontFamily">"@Microsoft JhengHei UI"</property>
                 <property name="whiteSpace">nowrap</property>
                 <property name="width">2.8125in</property>
+            </column>
+            <column id="656">
+                <property name="whiteSpace">nowrap</property>
+                <property name="width">2.0833333333333335in</property>
             </column>
             <column id="317">
                 <property name="whiteSpace">nowrap</property>
@@ -2358,7 +2406,7 @@ left oUTER jOIN  fdn_user ON
                     <property name="borderTopStyle">solid</property>
                     <property name="borderTopWidth">thin</property>
                     <cell id="562">
-                        <property name="colSpan">10</property>
+                        <property name="colSpan">14</property>
                         <property name="rowSpan">1</property>
                         <property name="borderBottomStyle">solid</property>
                         <property name="borderBottomWidth">thin</property>
@@ -2466,6 +2514,45 @@ left oUTER jOIN  fdn_user ON
                             <text-property name="text">Status</text-property>
                         </label>
                     </cell>
+                    <cell id="641">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <label id="648">
+                            <text-property name="text">Atividade Atual</text-property>
+                        </label>
+                    </cell>
+                    <cell id="636">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <label id="649">
+                            <text-property name="text">Responsavel</text-property>
+                        </label>
+                    </cell>
+                    <cell id="631">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <label id="650">
+                            <text-property name="text">Prazo</text-property>
+                        </label>
+                    </cell>
                     <cell id="531">
                         <property name="borderBottomStyle">solid</property>
                         <property name="borderBottomWidth">thin</property>
@@ -2490,6 +2577,19 @@ left oUTER jOIN  fdn_user ON
                         <property name="borderTopWidth">thin</property>
                         <label id="596">
                             <text-property name="text">Cliente</text-property>
+                        </label>
+                    </cell>
+                    <cell id="653">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <label id="658">
+                            <text-property name="text">Representante</text-property>
                         </label>
                     </cell>
                     <cell id="273">
@@ -2700,8 +2800,15 @@ left oUTER jOIN  fdn_user ON
                         <property name="borderRightWidth">thin</property>
                         <property name="borderTopStyle">dotted</property>
                         <property name="borderTopWidth">thin</property>
-                        <data id="593">
-                            <property name="resultSetColumn">num_processo</property>
+                        <data id="651">
+                            <property name="resultSetColumn">NUM_PROCES</property>
+                            <list-property name="action">
+                                <structure>
+                                    <property name="linkType">hyperlink</property>
+                                    <expression name="uri" type="javascript">"/portal/p/Casp/pageworkflowview?app_ecm_workflowview_detailsProcessInstanceID=" + row["NUM_PROCES"]</expression>
+                                    <property name="targetWindow">_blank</property>
+                                </structure>
+                            </list-property>
                         </data>
                     </cell>
                     <cell id="286">
@@ -2730,6 +2837,45 @@ left oUTER jOIN  fdn_user ON
                             <property name="resultSetColumn">_STATUS</property>
                         </data>
                     </cell>
+                    <cell id="642">
+                        <property name="borderBottomStyle">dotted</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">dotted</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">dotted</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">dotted</property>
+                        <property name="borderTopWidth">thin</property>
+                        <data id="646">
+                            <property name="resultSetColumn">NOM_ESTADO</property>
+                        </data>
+                    </cell>
+                    <cell id="637">
+                        <property name="borderBottomStyle">dotted</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">dotted</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">dotted</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">dotted</property>
+                        <property name="borderTopWidth">thin</property>
+                        <data id="645">
+                            <property name="resultSetColumn">FULL_NAME</property>
+                        </data>
+                    </cell>
+                    <cell id="632">
+                        <property name="borderBottomStyle">dotted</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">dotted</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">dotted</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">dotted</property>
+                        <property name="borderTopWidth">thin</property>
+                        <data id="647">
+                            <property name="resultSetColumn">DAT_FIM_PRAZ</property>
+                        </data>
+                    </cell>
                     <cell id="532">
                         <property name="borderBottomStyle">dotted</property>
                         <property name="borderBottomWidth">thin</property>
@@ -2754,6 +2900,19 @@ left oUTER jOIN  fdn_user ON
                         <property name="borderTopWidth">thin</property>
                         <data id="597">
                             <property name="resultSetColumn">cliente</property>
+                        </data>
+                    </cell>
+                    <cell id="654">
+                        <property name="borderBottomStyle">dotted</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">dotted</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">dotted</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">dotted</property>
+                        <property name="borderTopWidth">thin</property>
+                        <data id="657">
+                            <property name="resultSetColumn">repres</property>
                         </data>
                     </cell>
                     <cell id="288">
@@ -2984,6 +3143,36 @@ left oUTER jOIN  fdn_user ON
                         <property name="borderTopStyle">solid</property>
                         <property name="borderTopWidth">thin</property>
                     </cell>
+                    <cell id="643">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                    </cell>
+                    <cell id="638">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                    </cell>
+                    <cell id="633">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                    </cell>
                     <cell id="533">
                         <property name="borderBottomStyle">solid</property>
                         <property name="borderBottomWidth">thin</property>
@@ -2995,6 +3184,16 @@ left oUTER jOIN  fdn_user ON
                         <property name="borderTopWidth">thin</property>
                     </cell>
                     <cell id="302">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                    </cell>
+                    <cell id="655">
                         <property name="borderBottomStyle">solid</property>
                         <property name="borderBottomWidth">thin</property>
                         <property name="borderLeftStyle">solid</property>

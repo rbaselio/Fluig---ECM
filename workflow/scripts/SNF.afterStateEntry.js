@@ -29,6 +29,11 @@ function afterStateEntry(sequenceId){
 		    quant.name = "quant";
 		    quant.label = "quant";
 		    
+		    var un_fat = new Object();
+		    un_fat.type = "character";
+		    un_fat.name = "un_fat";
+		    un_fat.label = "un_fat";
+		    
 		    var desc_item = new Object();
 		    desc_item.type = "character";
 		    desc_item.name = "desc_item";
@@ -54,7 +59,7 @@ function afterStateEntry(sequenceId){
 		    vl_init.name = "vl_init";
 		    vl_init.label = "vl_init";
 		    
-		    var tt_itens_fields = [it_codigo, quant, desc_item, class_fiscal, ipi, nat_operacao, vl_init];
+		    var tt_itens_fields = [it_codigo, quant, un_fat, desc_item, class_fiscal, ipi, nat_operacao, vl_init];
 		    
 		    
 		    var sigla_emb = new Object();
@@ -84,6 +89,7 @@ function afterStateEntry(sequenceId){
 					var row = field.replace("quant_item___", "");
 					var valor = new Object();
 			    	valor.it_codigo    = "" + hAPI.getCardValue("cod_item" + "___" + row);
+			    	valor.un_fat       = "" + hAPI.getCardValue("un_item" + "___" + row);
 					valor.quant        = parseFloat(String(hAPI.getCardValue("quant_item" + "___" + row)).replace(/\./g,'').replace(',','.'));
 					valor.desc_item    = "" + hAPI.getCardValue("desc_item" + "___" + row);
 					valor.class_fiscal = String(hAPI.getCardValue("ncm_item" + "___" + row)).replace(/\./g,'');

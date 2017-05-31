@@ -30,10 +30,7 @@ $(function(ready){
 			$("#cod_prod").attr('disabled', 'disabled').val(''); 
 			$("#nome_prod").attr('disabled', 'disabled').val('');
 		}				
-	}).trigger('change');
-	
-	
-	
+	}).trigger('change');	
 	
 	$("#cod_prod").on('blur', function(){
 		var token = DatasetFactory.getDataset('tokens', null, null, null).values[0]["tokenTOTVSDatasul"];
@@ -80,16 +77,18 @@ $(function(ready){
 	}).trigger('change');
 	
 	
-	$("#reponsabilidade").change(function () {
-		$("#cod_fornec").attr("readOnly", true).val('');
-		$("#matr_falha").removeAttr('readOnly');
-		$("#colab_falha").removeAttr('readOnly');
+	$("#reponsabilidade").change(function () {	
 		if($(this).val() == 6){
 			$("#cod_fornec").removeAttr('readOnly');
-			$("#matr_falha").attr("readOnly", true).val('');
-			$("#colab_falha").attr("readOnly", true).val('');
-				
-		}		
+			$("#listaColaborador").css('pointer-events', 'none');
+			$("#listaColaborador").attr('disabled', 'disabled');
+		}
+		else{
+			$("#cod_fornec").attr("readOnly", true).val('');
+			$("#fornec").val('');
+			$("#listaColaborador").css('pointer-events', 'all');
+			$("#listaColaborador").removeAttr('disabled');
+		}
 	}).trigger('change');	
 	
 	
@@ -154,26 +153,28 @@ $(function(ready){
 	});
 	
 	$("#cod_fornec").on('blur', function(){
-		token = DatasetFactory.getDataset('tokens', null, null, null).values[0]["tokenTOTVSDatasul"];
-		var c1 = DatasetFactory.createConstraint("cod_emit", $(this).val().replace(/\D/g, ''), null, ConstraintType.MUST);
-		var c2 = DatasetFactory.createConstraint("token", token , null, ConstraintType.MUST);
-		var constraints   = new Array(c1, c2);
-		var dataset = DatasetFactory.getDataset("TOTVSEmitente", null, constraints, null);
-		
-		if (dataset.values.length > 0 && dataset.values[0]["nome_emit"] != 'ERRO' ) {		
-			$("#fornec").val(dataset.values[0]["nome_emit"]);
-			$("#cod_fornec").val(dataset.values[0]["cod_emitente"]);			
+		if (!$(this).attr("readonly")){
+			token = DatasetFactory.getDataset('tokens', null, null, null).values[0]["tokenTOTVSDatasul"];
+			var c1 = DatasetFactory.createConstraint("cod_emit", $(this).val().replace(/\D/g, ''), null, ConstraintType.MUST);
+			var c2 = DatasetFactory.createConstraint("token", token , null, ConstraintType.MUST);
+			var constraints   = new Array(c1, c2);
+			var dataset = DatasetFactory.getDataset("TOTVSEmitente", null, constraints, null);
+			
+			if (dataset.values.length > 0 && dataset.values[0]["nome_emit"] != 'ERRO' ) {		
+				$("#fornec").val(dataset.values[0]["nome_emit"]);
+				$("#cod_fornec").val(dataset.values[0]["cod_emitente"]);			
+			}
+			else FLUIGC.message.alert({
+					    message: "<strong>Cliente ou Fornecedor não cadastrado:</strong><br/>",
+						title: 'Emitente invalido',
+						label: 'OK'
+						}, function(el, ev) {
+							setTimeout(function() {
+								$("#fornec").val("");							
+								$("#cod_fornec").focus().val("");							
+							}, 100);
+						});
 		}
-		else FLUIGC.message.alert({
-				    message: "<strong>Cliente ou Fornecedor não cadastrado:</strong><br/>",
-					title: 'Emitente invalido',
-					label: 'OK'
-					}, function(el, ev) {
-						setTimeout(function() {
-							$("#fornec").val("");							
-							$("#cod_fornec").focus().val("");							
-						}, 100);
-					});
 	});
 	
 	
@@ -323,8 +324,8 @@ function zoomColaborador_corr(linha) {
 //zoom de colaboradores para a atribuição de responsavel por parecer
 function zoomColaborador_falha() {
 	
-	var param = {"datasetId" : "colleague", "limit" : "0", 
-			 "filterFields" : ["active", "true"]};
+	var param = {"datasetId" : "TOTVSColaboradores", "limit" : "0", 
+			 	 "filterFields" : ["ativo", "true"]};
 
 	var thisModal = FLUIGC.modal({
 	    title: 'Lista de Colaboradores',
@@ -348,7 +349,7 @@ function zoomColaborador_falha() {
 		        },
 		        root: 'content'
 		    },
-		    renderContent: ['colleagueId', 'colleagueName'], 
+		    renderContent: ['matricula', 'nome'], 
 		    header: [{'title': 'Matricula', 'size': 'col-sm-2'},
 		             {'title': 'Nome', 'size': 'col-sm-5'}],
 		    multiSelect: false,
@@ -356,9 +357,9 @@ function zoomColaborador_falha() {
 		        enabled: true,
 		        searchAreaStyle: 'col-md-9',
 		        onSearch: function(response) {
-		        	var param2 = {"datasetId" : "colleague", "limit" : "0", 
- 							"filterFields" : ["active", "true"], 
- 							"searchField" : "colleagueName", "searchValue" : response };
+		        	var param2 = {"datasetId" : "TOTVSColaboradores", "limit" : "0", 
+ 							"filterFields" : ["ativo", "true"], 
+ 							"searchField" : "nome", "searchValue" : response };
 		        	$.ajax({
 						  type: 'POST',
 						  contentType: 'application/json',
@@ -379,8 +380,8 @@ function zoomColaborador_falha() {
 		}).on('dblclick', function(ev) {
 			var index = thisTable.selectedRows()[0];
 		    var selected = thisTable.getRow(index);	
-		    $("#matr_falha").val(selected.colleagueId);
-		    $("#colab_falha").val(selected.colleagueName);			   
+		    $("#matr_falha").val(selected.matricula);
+		    $("#colab_falha").val(selected.nome);			   
 		    thisModal.remove();					    
 		});
 	});

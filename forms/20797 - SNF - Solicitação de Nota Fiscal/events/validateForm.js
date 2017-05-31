@@ -36,7 +36,7 @@ function validateForm(form){
 				if (form.getValue("quant_item___" + indexes[i]) == "0,00") message += "<br/>- Quantidade do item na linha " + ( i + 1);
 				if(!validaItem(form.getValue("cod_item___" + indexes[i]), form.getValue("estabNota"))) message += "<br/>- Item inválido na linha " + ( i + 1);
 				if(form.getValue("desc_item___" + indexes[i]) == "") message += "<br/>- Descrição do item na linha " + ( i + 1);
-				if (form.getValue("valor_item___" + indexes[i]) == "0,00") message += "<br/>- Valor unitário na linha " + ( i + 1);
+				//if (form.getValue("valor_item___" + indexes[i]) == "0,00") message += "<br/>- Valor unitário na linha " + ( i + 1);
 				
 				if (form.getValue("natOper_item___" + indexes[i]) == "") message += "<br/>- Natureza da operação na linha " + ( i + 1);
 				else if(!validaNatureza(form.getValue("natOper_item___" + indexes[i]))) message += "<br/>- Natureza é invalida na linha " + ( i + 1);

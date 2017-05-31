@@ -14,6 +14,28 @@ function loadElementos(){
 		
 	});
 	
+	$('#criticidade').change(function() {
+		if ($(this).val() == "1" ) {
+			FLUIGC.message.alert({
+			    message: "<strong>Utilize esta opção, somente se o faturamento ou a área produtiva for comprometida</strong><br/>",
+			    title: 'ATENÇÃO!!!!',
+			    label: 'OK'
+			}, function(el, ev) {
+				setTimeout(function() {
+					$('#desc_chamado').focus();
+				}, 100);
+			});
+		}
+		
+		
+	});
+	
+	
+	$('#nota').change(function() {
+		if ($(this).val() == "3" || $(this).val() == "4") $("#comentarios").removeAttr('readOnly');
+		else $("#comentarios").attr("readOnly", true).val("");
+	}).trigger("change");	
+	
 	$("#ramal").on('keyup', function(){
 		if ($(this).val().length > 12) $(this).mask('(00)00000-0000');
 		else if ($(this).val().length > 3) $(this).mask('(00)0000-00000');
@@ -141,8 +163,7 @@ function ativaPreencheCampos(modeView, numState, matricula, WKNumProces, documen
 			if (numState == 4) {
 				tipo_intera = "Avaliação do usuário:"
 				$('#conclusao').val("");
-				$('#nota').val("1");
-				
+				$('#nota').val("1").trigger("change");				
 			}			
 			
 			var ultimaLinhaTabela = $('#tb_interacao tr').last();

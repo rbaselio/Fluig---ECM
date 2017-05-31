@@ -180,6 +180,12 @@
                     <text-property name="heading">resp_preAnal</text-property>
                 </structure>
                 <structure>
+                    <property name="columnName">atend</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">atend</text-property>
+                    <text-property name="heading">atend</text-property>
+                </structure>
+                <structure>
                     <property name="columnName">decisao_anal</property>
                     <property name="analysis">dimension</property>
                     <text-property name="displayName">decisao_anal</text-property>
@@ -308,26 +314,31 @@
                     </structure>
                     <structure>
                         <property name="position">9</property>
-                        <property name="name">decisao_anal</property>
+                        <property name="name">atend</property>
                         <property name="dataType">string</property>
                     </structure>
                     <structure>
                         <property name="position">10</property>
-                        <property name="name">urgencia</property>
+                        <property name="name">decisao_anal</property>
                         <property name="dataType">string</property>
                     </structure>
                     <structure>
                         <property name="position">11</property>
-                        <property name="name">NOM_ESTADO</property>
+                        <property name="name">urgencia</property>
                         <property name="dataType">string</property>
                     </structure>
                     <structure>
                         <property name="position">12</property>
-                        <property name="name">FULL_NAME</property>
+                        <property name="name">NOM_ESTADO</property>
                         <property name="dataType">string</property>
                     </structure>
                     <structure>
                         <property name="position">13</property>
+                        <property name="name">FULL_NAME</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">14</property>
                         <property name="name">DAT_FIM_PRAZ</property>
                         <property name="dataType">string</property>
                     </structure>
@@ -393,34 +404,41 @@
                 </structure>
                 <structure>
                     <property name="position">9</property>
+                    <property name="name">atend</property>
+                    <property name="nativeName">atend</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">10</property>
                     <property name="name">decisao_anal</property>
                     <property name="nativeName">decisao_anal</property>
                     <property name="dataType">string</property>
                     <property name="nativeDataType">12</property>
                 </structure>
                 <structure>
-                    <property name="position">10</property>
+                    <property name="position">11</property>
                     <property name="name">urgencia</property>
                     <property name="nativeName">urgencia</property>
                     <property name="dataType">string</property>
                     <property name="nativeDataType">12</property>
                 </structure>
                 <structure>
-                    <property name="position">11</property>
+                    <property name="position">12</property>
                     <property name="name">NOM_ESTADO</property>
                     <property name="nativeName">NOM_ESTADO</property>
                     <property name="dataType">string</property>
                     <property name="nativeDataType">12</property>
                 </structure>
                 <structure>
-                    <property name="position">12</property>
+                    <property name="position">13</property>
                     <property name="name">FULL_NAME</property>
                     <property name="nativeName">FULL_NAME</property>
                     <property name="dataType">string</property>
                     <property name="nativeDataType">12</property>
                 </structure>
                 <structure>
-                    <property name="position">13</property>
+                    <property name="position">14</property>
                     <property name="name">DAT_FIM_PRAZ</property>
                     <property name="nativeName">DAT_FIM_PRAZ</property>
                     <property name="dataType">string</property>
@@ -436,6 +454,7 @@
     ml001010.sitAtual,
     ml001010.sitPretendida,
     ml001010.resp_preAnal,
+    ml001010.atend,
     if(ml001010.decisao_anal = '0', '', ml001010.decisao_anal) as decisao_anal,
     
     case ml001010.urgencia
@@ -1892,7 +1911,7 @@ left oUTER jOIN  fdn_user ON
             <property name="type">custom</property>
             <property name="orientation">landscape</property>
             <property name="height">913mm</property>
-            <property name="width">600mm</property>
+            <property name="width">640mm</property>
             <page-header>
                 <grid id="188">
                     <property name="height">0.6041666666666666in</property>
@@ -2021,6 +2040,12 @@ left oUTER jOIN  fdn_user ON
                     <expression name="expression" type="javascript">dataSetRow["resp_preAnal"]</expression>
                     <property name="dataType">string</property>
                 </structure>
+                <structure>
+                    <property name="name">atend</property>
+                    <text-property name="displayName">atend</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["atend"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
             </list-property>
             <column id="314">
                 <property name="whiteSpace">nowrap</property>
@@ -2063,6 +2088,10 @@ left oUTER jOIN  fdn_user ON
                 <property name="width">2in</property>
             </column>
             <column id="322">
+                <property name="whiteSpace">normal</property>
+                <property name="width">1.5in</property>
+            </column>
+            <column id="578">
                 <property name="whiteSpace">normal</property>
                 <property name="width">1.5in</property>
             </column>
@@ -2230,6 +2259,19 @@ left oUTER jOIN  fdn_user ON
                         <property name="borderTopWidth">thin</property>
                         <label id="344">
                             <text-property name="text">Prazo</text-property>
+                        </label>
+                    </cell>
+                    <cell id="575">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <label id="579">
+                            <text-property name="text">Implementado</text-property>
                         </label>
                     </cell>
                 </row>
@@ -2412,6 +2454,19 @@ left oUTER jOIN  fdn_user ON
                             <property name="resultSetColumn">DAT_FIM_PRAZ</property>
                         </data>
                     </cell>
+                    <cell id="576">
+                        <property name="borderBottomStyle">dotted</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">dotted</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">dotted</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">dotted</property>
+                        <property name="borderTopWidth">thin</property>
+                        <data id="580">
+                            <property name="resultSetColumn">atend</property>
+                        </data>
+                    </cell>
                 </row>
             </detail>
             <footer>
@@ -2539,6 +2594,16 @@ left oUTER jOIN  fdn_user ON
                         <property name="borderTopWidth">thin</property>
                     </cell>
                     <cell id="308">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                    </cell>
+                    <cell id="577">
                         <property name="borderBottomStyle">solid</property>
                         <property name="borderBottomWidth">thin</property>
                         <property name="borderLeftStyle">solid</property>

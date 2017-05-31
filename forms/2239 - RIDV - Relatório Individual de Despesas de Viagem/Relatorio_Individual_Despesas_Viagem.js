@@ -490,27 +490,33 @@ var beforeSendValidate = function(numState){
 				}
 			});
 			
+			$("input[id^='desc_despesa___']").each(function(i) {
+				if ($(this).closest('tr').attr('style') != "display:none" && $(this).val() == ""){
+					message += "<br/>- Descreva a despesa na linha " + $(this).closest('tr').index();
+					$(this).focus();
+				}
+			});	
+			
 			if ($('#quemReembolsa').val() == "casp"){
 				if ($('#cpf_cnpj').val() == "") message += "<br/>- Informe o CPF / CNPJ para reembolso;";
 				if ($('#banco').val() == "") message += "<br/>- Informe o banco para reembolso;";
 				if ($('#agencia').val() == "") message += "<br/>- Informe o agencia para reembolso;";
 				if ($('#conta_cor').val() == "") message += "<br/>- Informe o conta corrente para reembolso;";
 			}		
-		}
-			
+		}			
 	}
 	
 	if (numState == 9){
-		if ($('#aprov_contabil:checked').val() == "nao" && $("#desc_aprov_contabil").val() == '') message += "<br/>- Informe motivo da rejeição;";
+		if ($("#desc_aprov_contabil").val() == '') message += "<br/>- Informe motivo da aprovação / rejeição;";
 	}
 	if (numState == 15){
-		if ($('#aprov_imediato:checked').val() == "nao" && $("#desc_aprov_imediato").val() == '') message += "<br/>- Informe motivo da rejeição;";
+		if ($("#desc_aprov_imediato").val() == '') message += "<br/>- Informe motivo da aprovação / rejeição;";
 	}
 	if (numState == 21){
-		if ($('#aprov_dir_fin:checked').val() == "nao" && $("#desc_aprov_dir_fin").val() == '') message += "<br/>- Informe motivo da rejeição;";
+		if ($("#desc_aprov_dir_fin").val() == '') message += "<br/>- Informe motivo da aprovação / rejeição";
 	}
 	if (numState == 27){
-		if ($('#aprov_finaceira:checked').val() == "nao" && $("#desc_rembolsa").val() == '') message += "<br/>- Informe motivo da rejeição;";
+		if ($("#desc_rembolsa").val() == '') message += "<br/>- Informe motivo da aprovação / rejeição";
 		if ($('#aprov_finaceira:checked').val() == "sim" && $('#quemReembolsa').val() == "casp"){
 			if (getInteracoes(process, numState) <= 1 && 
 				anexos >= getAnexos(process)){

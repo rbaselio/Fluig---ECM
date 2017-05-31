@@ -162,11 +162,16 @@ var beforeSendValidate = function(numState) {
 	}
 	
 	if (numState == 7) {
+		if(!$('#atend:checked').val()) message += "<br/>- Informe atendimento;";
 		if ($("#desc_acoes").val() == "") message += "</br>Observações Complementares";		
 	}
 	
 	if (numState == 8) {
-		if ( $('#nr_docto').prop("disabled") == false &&  $("#nr_docto").val() == "") message += "</br>Descrições das ações";		
+		if(!$('#atendeficaz:checked').val()) message += "<br/>- Informe atendimento;";
+		
+		if($('#atendeficaz:checked').val() == "sim"){
+			if(!$('#rd_docto:checked').val()) message += "<br/>- Informe necessidade de documento;";
+			if ( $('#nr_docto').prop("disabled") == false &&  $("#nr_docto").val() == "") message += "</br>Descrições das ações";		
 	}
 			
 

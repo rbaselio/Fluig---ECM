@@ -5,8 +5,8 @@ function loadElementos(){
 	
 	$(".soNumeros").each(function(){$(this).mask('000.000.000', {reverse: true});});
 	$(".NCM").each(function(){$(this).mask('0000.00.00', {reverse: true});});
-	setMoneyClass($(".money"));	
-	
+	setMoneyClass($(".money"));
+	setMoneyClass2($(".money2"));	
 	
 	
 	$('#listaTransp').click(function() {
@@ -207,10 +207,11 @@ function initCompoents(linha){
 		var subdataset = DatasetFactory.getDataset("TOTVSItem", null, subconstraints, null);		
 		if (subdataset.values.length > 0) {		
 			$("#desc_item___" + thisrow).val(subdataset.values[0]["desc_item"]);
+			$("#un_item___" + thisrow).val(subdataset.values[0]["un"]);
 			$("#ncm_item___" + thisrow).val(subdataset.values[0]["ncm"]).trigger('keyup').trigger('blur');
 			$("#ipi_item___" + thisrow).val(parseFloat(subdataset.values[0]["ipi"]).toFixed(2)).trigger('keyup');
 			var aux = parseFloat(subdataset.values[0]["m_mat"]) + parseFloat(subdataset.values[0]["m_mob"]) + parseFloat(subdataset.values[0]["m_ggf"]);
-			$("#valor_item___" + thisrow).val(aux.toFixed(2)).trigger('keyup');
+			$("#valor_item___" + thisrow).val(aux.toFixed(4)).trigger('keyup');
 		}		
 	});
 	
@@ -256,6 +257,7 @@ function addLinha(tabela){
 	row = wdkAddChild(tabela);
 	$(".NCM").mask('0000.00.00', {reverse: true}).trigger('keyup');
 	setMoneyClass($(".money"));
+	setMoneyClass2($(".money2"));
 	initCompoents(row);
 }
 
@@ -338,11 +340,11 @@ function somatorio(){
 		icms = $("#icms_item___" + row).val() ;
 		quant = $("#quant_item___" + row).val();		
 		if (!isNaN(valor) && quant && icms) {
-			acumulado += (valor * parseFloat(quant.replace(/[^\d\,\-]/g, "").replace(",","."))) / (1 - parseFloat(icms.replace(/[^\d\,\-]/g, "").replace(",",".")) / 100);			
+			acumulado += (valor * parseFloat(quant.replace(/[^\d\,\-]/g, "").replace(",","."))); /// (1 - parseFloat(icms.replace(/[^\d\,\-]/g, "").replace(",",".")) / 100);			
 		}		
 	});
-	$("#total_nota").val(acumulado.toFixed(2));
-	$("#total_nota").mask('000.000.000,00', {reverse: true});	
+	$("#total_nota").val(acumulado.toFixed(4));
+	$("#total_nota").mask('000.000.000,0000', {reverse: true});	
 }
 
 function setMoneyClass(elemento){
@@ -350,8 +352,21 @@ function setMoneyClass(elemento){
 		.css("text-align", "right")
 		.on('focusin', function(){$(this).select();})
 		.on('blur', function(){
-			if ($(this).val() == '') $(this).val('0,00')
+			if ($(this).val() == '') $(this).val('0,00');
 			else if ($(this).val().substring($(this).val().lastIndexOf(",")).length <= 2) $(this).val($(this).val() + ',00');
+			somatorio();
+	}).on('keypress keyup', function(){
+		somatorio();
+	}).trigger('blur');
+}
+
+function setMoneyClass2(elemento){
+	elemento.mask('000.000.000,0000', {reverse: true})
+		.css("text-align", "right")
+		.on('focusin', function(){$(this).select();})
+		.on('blur', function(){
+			if ($(this).val() == '') $(this).val('0,0000');
+			//else if ($(this).val().substring($(this).val().lastIndexOf(",")).length <= 2) $(this).val($(this).val() + ',00');
 			somatorio();
 	}).on('keypress keyup', function(){
 		somatorio();
