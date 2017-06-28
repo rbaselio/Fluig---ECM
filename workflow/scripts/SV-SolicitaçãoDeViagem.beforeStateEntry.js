@@ -13,7 +13,7 @@ function beforeStateEntry(sequenceId){
 	//log.warn("----------------------numAtividade: " + numAtividade);
 	//log.warn("----------------------colleagueId: " + colleagueId);
 	
-	if(numAtividade == 28){ 
+	if(numAtividade == 26 && hAPI.getCardValue("nec_adiant") == "sim" ){ 
 		var userList = new java.util.ArrayList();
 		userList.add(hAPI.getCardValue("matricula_emissor"));
 		
@@ -35,7 +35,7 @@ function beforeStateEntry(sequenceId){
 		hpForm.put("conta_cor", hAPI.getCardValue("conta_cor"));			
 		
 		var resposta = hAPI.startProcess("RDV", 5, userList, "Iniciado pela solicitação de viagem nr.: " + numProcesso, true, hpForm, false);
-		hAPI.setCardValue("desc_entregue", hAPI.getCardValue("desc_entregue") + "\nIniciado processo de RDV nr.: " + resposta.get("iProcess"));
+		hAPI.setCardValue("desc_entregue", hAPI.getCardValue("desc_entregue") + "\n\nIniciado processo de RDV nr.: " + resposta.get("iProcess"));
 	}
 
 

@@ -171,7 +171,8 @@ var beforeSendValidate = function(numState) {
 		
 		if($('#atendeficaz:checked').val() == "sim"){
 			if(!$('#rd_docto:checked').val()) message += "<br/>- Informe necessidade de documento;";
-			if ( $('#nr_docto').prop("disabled") == false &&  $("#nr_docto").val() == "") message += "</br>Descrições das ações";		
+			if ( $('#nr_docto').prop("disabled") == false &&  $("#nr_docto").val() == "") message += "</br>Descrições das ações";
+		}
 	}
 			
 
@@ -182,5 +183,6 @@ var beforeSendValidate = function(numState) {
 	}
 
 }
+	
 var beforeMovementOptions = beforeSendValidate;
 

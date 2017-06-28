@@ -17,6 +17,7 @@ function afterTaskCreate(colleagueId) {
 	        
 	        // Altera o prazo de conclusão
 	        hAPI.setDueDate(numeroDaSolicitacao, threadDaSolicitacao, colleagueId, data, 28800);
-	    }
+	    } 
+	    
     }  
 }

@@ -1,0 +1,619 @@
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="/portal/resources/style-guide/css/fluig-style-guide.min.css">
+		<script src="/portal/resources/js/jquery/jquery.js"></script>
+		<script src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+		<script src="/portal/resources/js/mustache/mustache-min.js"></script>
+		<script src="/portal/resources/style-guide/js/fluig-style-guide.min.js"></script>
+		<script src="/resources/casp_lib/js/utils.js"></script>
+		<script src="/portal/resources/js/jquery.mask.min.js"></script>
+		<script type="text/javascript"	src="CheckListTransporte.js"></script>
+		<script src="../vcXMLRPC.js"></script>
+	</head>
+	<body onload="loadElementos()">
+		<div class="fluig-style-guide">
+			<form name="form" role="form">
+				<div class="row">
+					<div class="col-sm-3 col-xs-12 text-center">
+						<img src="/resources/logo_casp/logocasp.gif" width="204" height="79">
+					</div>
+					<div class="col-sm-5 col-xs-12">
+						<h2 class="text-center">
+							<b>CHECK LIST PARA TRANSPORTE</b>
+						</h2>						
+					</div>
+					<div class="col-sm-4 col-xs-12">
+						<div class="row form-group">
+							<label for="chamado_num" class="col-sm-6 col-xs-12 text-right">Solicita&ccedil;&atilde;o n&deg;:</label>
+							<div class="col-sm-6 col-xs-12 controls">
+								<input type="text" name="num_processo" id="num_processo" class="form-control readonly" readonly="readonly" />
+							</div>
+							<br/>
+							<label for="data_sol" class="col-sm-6 col-xs-12 text-right">Data:</label>
+							<div class="col-sm-6 col-xs-12 controls">
+								<input type="text" name="data_sol" id="data_sol" class="form-control readonly" size="15"readonly="readonly"/>
+							</div>
+							<br/>						
+							<label for="hora_sol" class="col-sm-6 col-xs-12 text-right">Hora:</label>
+							<div class="col-sm-6 col-xs-12 controls">
+								<input type="text" name="hora_sol" id="hora_sol" class="form-control readonly"readonly="readonly"/>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="panel panel-primary" id="identificacao">				
+					<div class="panel-heading" style="background-color: blue;">
+						<h3 class="panel-title">
+							<strong><i class="fluigicon fluigicon-file-default fluigicon-sm"></i>&nbsp; Identifica&ccedil;&atilde;o:</strong>
+						</h3>
+					</div>
+					<div class="panel-body">
+						<div class="row">							
+							<div class="col-sm-3 col-xs-12">
+								<label for="cod_transp">Cod. Transportador:</label>
+								<input type="text" class="form-control readonly" placeholder="C&oacute;digo"" name="cod_transp" id="cod_transp" />
+							</div>
+							<div class="col-sm-6 col-xs-12">
+								<label for="nome_transp">Nome Transportador:</label>
+								<div class="input-group">
+									<input type="text" class="form-control readonly" placeholder="Nome" name="nome_transp" id="nome_transp" />
+						            <span class="input-group-btn">
+						            	<button class="btn btn-default" type="button" id="listaTransp">&nbsp;<span class="fluigicon fluigicon-search fluigicon-sm"></span></button>
+						            </span>						            
+						        </div>
+							</div>
+							<div class="col-sm-3 col-xs-12">
+								<label for="cnpj_transp">CNPJ Transportador:</label>
+								<input type="text" class="form-control cnpj readOnly" placeholder="CNPJ / CPF"" name="cnpj_transp" id="cnpj_transp" />
+							</div>															
+						</div>
+						<div class="row">
+							<div class="col-sm-3 col-xs-12">
+								<label for="cpf_motorista">CPF Motorista:</label>
+								<input type="text" class="form-control cpf" placeholder="CPF" name="cpf_motorista" id="cpf_motorista" />
+							</div>							
+							<div class="col-sm-6 col-xs-12">
+								<label for="nome_motorista">Nome Motorista:</label>
+								<input type="text" class="form-control" placeholder="Nome"" name="nome_motorista" id="nome_motorista" />
+							</div>
+							<div class="col-sm-3 col-xs-12">
+								<label for="cnh_motorista">Tel. Contato:</label>
+								<input type="text" class="form-control tel" placeholder="Celular" name="tel_motorista" id="tel_motorista"/>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-3 col-xs-12">
+								<label for="cnh_motorista">CNH:</label>
+								<input type="text" class="form-control soNumeros" placeholder="CNH" name="cnh_motorista" id="cnh_motorista"/>
+							</div>
+							<div class="col-sm-3 col-xs-12">
+								<label for="cnh_validade">Validade:CNH</label>
+								<div class="form-group ">
+									<div class="input-group date" id="dtPickerPrazo_cnh_validade">
+										<input type="text" class="form-control readonly" placeholder="UF" name="cnh_validade" id="cnh_validade"/>
+										<span class="input-group-addon fs-cursor-pointer"> <span class="fluigicon fluigicon-calendar"></span>
+										</span>
+									</div>
+								</div>								
+							</div>
+							<div class="col-sm-2 col-xs-12">
+								<label for="cat_cnh">Categoria:</label>
+								<select name="cat_cnh" id="cat_cnh"  class="form-control">
+									<option value="">N&atilde;o Consta</option>	
+									<option value="A">A</option>
+									<option value="B">B</option>
+									<option value="C">C</option>		
+									<option value="D">D</option>
+									<option value="E">E</option>
+									<option value="AB">AB</option>
+									<option value="AC">AC</option>
+									<option value="AD">AD</option>
+									<option value="AE">AE</option>																																				
+								</select>
+							</div>	
+							<div class="col-sm-2 col-xs-12">
+								<label for="modNota">Pagamento:</label>
+								<select class="form-control" name="modNota" id="modNota">
+									<option value=""></option>
+									<option value="CIF">CIF</option>
+									<option value="FOB">FOB</option>																	
+								</select>	
+							</div>	
+							<div class="col-sm-2 col-xs-12">
+								<label for="modNota">Contrata&ccedil;&atilde;o:</label>
+								<select class="form-control" name="contratante" id="contratante">
+									<option value=""></option>
+									<option value="Casp">CASP</option>
+									<option value="Destinatario">Destinatario</option>																	
+								</select>	
+							</div>	
+						</div>
+						<div class="row">
+							<div class="col-sm-3 col-xs-12">
+								<label for="end_transp ">Placa Cavalo:</label>
+								<input type="text" class="form-control placa" placeholder="Placa"" name="placa_cavalo" id="placa_cavalo" />
+							</div>
+							<div class="col-sm-3 col-xs-12">
+								<label for="end_transp placa">Placa Carreta:</label>
+								<input type="text" class="form-control placa" placeholder="Placa"" name="placa_carreta" id="placa_carreta" />
+							</div>
+							<div class="col-sm-4 col-xs-12">
+								<label for="cid_transp">Cidade Veiculo:</label>
+								<input type="text" class="form-control readonly" placeholder="Cidade" name="cid_cavalo" id="cid_cavalo" />
+							</div>
+							<div class="col-sm-2 col-xs-12">
+								<label for="uf_transp">UF Veiculo:</label>
+								<div class="input-group">
+									<input type="text" class="form-control readonly" placeholder="UF" name="uf_cavalo" id="uf_cavalo"/>
+						            <span class="input-group-btn">
+						            	<button class="btn btn-default" type="button" id="listaCidadeVeiculo">&nbsp;<span class="fluigicon fluigicon-search fluigicon-sm"></span></button>
+						            </span>						            
+						        </div>
+								
+							</div>
+						</div>						
+						<div class="row">
+							<div class="col-sm-2 col-xs-12">
+								<label for="estab">Estabelecimento:</label>
+								<select class="form-control" name="estab" id="estab">
+									<option value=""></option>
+									<option value="1">Un. 1</option>
+									<option value="8">Un. 8</option>																	
+								</select>							
+							</div>
+							<div class="col-sm-3 col-xs-12">
+								<label for="user_entrega">Tipo Ve&iacute;culo:</label>
+								<select name="tipoVeiculo" id="tipoVeiculo"  class="form-control">
+									<option value="">N&atilde;o Consta</option>	
+									<option value="0">Truck</option>
+									<option value="1">Carreta</option>
+									<option value="2">Ba&Uacute;</option>		
+									<option value="3">Container</option>																											
+								</select>
+							</div>		
+							<div class="col-sm-3 col-xs-12">
+								<label for="prop_veic">Prop. Ve&iacute;culo:</label>
+								<select name="prop_veic" id="prop_veic"  class="form-control">
+									<option value=""></option>
+									<option value="Pr&oacute;prio">Pr&oacute;prio</option>	
+									<option value="Transportadora">Transportadora</option>
+									<option value="Alugado">Alugado</option>
+									<option value="Terceiro">Terceiro</option>																
+								</select>
+							</div>
+							<div class="col-sm-4 col-xs-12">
+								<label for="email_transp">E-mail transportadora:</label>
+								<input type="email" class="form-control" placeholder="e-mail"" name="email_transp" id="email_transp" />
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-xs-2">
+								<label for="motivo">Linha Prod.:</label>
+								<select name="unid_negocio" id="unid_negocio" dataset="unidades_de_negocio" datasetkey="Unidade_de_negocio" datasetvalue="Unidade_de_negocio" addBlankLine="true" class="form-control"></select>
+							</div>																
+							<div class="col-sm-3 col-xs-12">
+								<label for="cnh_motorista">Data Chegada:</label>
+								<div class="form-group ">
+									<div class="input-group date" id="dtPickerPrazo_dt_chegada">
+										<input type="text" class="form-control readonly" placeholder="UF" name="dt_chegada" id="dt_chegada"/>
+										<span class="input-group-addon fs-cursor-pointer"> <span class="fluigicon fluigicon-calendar"></span>
+										</span>
+									</div>
+								</div>								
+							</div>
+							<div class="col-sm-2 col-xs-12">
+								<label for="cnh_motorista">Hora Chegada:</label>
+								<input type="text" class="form-control time" placeholder="Hora" name="hora_chegada" id="hora_chegada"/>
+							</div>
+							<div class="col-sm-3 col-xs-12">
+								<label for="cnh_motorista">Data Entrada:</label>
+								<div class="form-group ">
+									<div class="input-group date" id="dtPickerPrazo_dt_entrada">
+										<input type="text" class="form-control readonly" placeholder="UF" name="dt_entrada" id="dt_entrada"/>
+										<span class="input-group-addon fs-cursor-pointer"> <span class="fluigicon fluigicon-calendar"></span>
+										</span>
+									</div>
+								</div>
+								
+							</div>
+							<div class="col-sm-2 col-xs-12">
+								<label for="cnh_motorista">Hora Entrada:</label>
+								<input type="text" class="form-control time" placeholder="Hora" name="hora_entrada" id="hora_entrada"/>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-xs-12">
+								<label for="processo">Observa&ccedil;&otilde;es:</label>
+								<textarea name="obs_entrada" id="obs_entrada" rows="3" class="form-control" ></textarea>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-3 col-xs-12">
+								<label for="matricula_emit">Emitente:</label>
+								<input type="text" class="form-control readonly" placeholder="Matr&iacute;cula" name="matricula_emit" id="matricula_emit"/>
+							</div>
+							<div class="col-sm-6 col-xs-12">
+								<label for="user_emit">&nbsp;</label>
+								<input type="text" class="form-control readonly" placeholder="Responsavel" name="user_emit" id="user_emit"/>
+							</div>
+							<div class="col-sm-3 col-xs-12">
+								<label for="data_emit">Ramal:</label>
+								<input type="text" class="form-control readonly" placeholder="Data" name="data_emit" id="data_emit"/>
+							</div>
+						</div>
+					</div>
+				</div>
+			
+			
+				<div class="panel panel-primary" id="inspecao">				
+					<div class="panel-heading" style="background-color: blue;">
+						<h3 class="panel-title">
+							<strong><i class="fluigicon fluigicon-file-default fluigicon-sm"></i>&nbsp; Inspe&ccedil;&atilde;o:</strong>
+						</h3>
+					</div>
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-sm-3 col-xs-12">
+								<label for="cod_transp">Cod. Cliente:</label>
+								<input type="text" class="form-control soNumeros " placeholder="C&oacute;digo"" name="cod_dest" id="cod_dest" />
+							</div>
+							<div class="col-sm-6 col-xs-12">
+								<label for="nome_transp">Nome Cliente:</label>
+								<input type="text" class="form-control readonly" placeholder="Nome" name="nome_dest" id="nome_dest" />
+							</div>
+							<div class="col-sm-3 col-xs-12">
+								<label for="nome_transp">Pedido:</label>
+								<div class="input-group">
+									<input type="text" class="form-control" placeholder="Nr. Pedido" name="nr_pedcli" id="nr_pedcli" />
+						            <span class="input-group-btn">
+						            	<button class="btn btn-default" type="button" id="listaPedido">&nbsp;<span class="fluigicon fluigicon-search fluigicon-sm"></span></button>
+						            </span>						            
+						        </div>
+							</div>																			
+						</div>
+						<br/>
+						<div class="row">
+							<div class="col-sm-6 col-xs-12">
+								<label for="cidade_cli">Cidade:</label>
+								<input type="text" class="form-control readonly" placeholder="C&oacute;digo"" name="cidade_cli" id="cidade_cli" />
+							</div>
+							<div class="col-sm-3 col-xs-12">
+								<label for="uf_cliente">UF</label>
+								<div class="input-group">
+									<input type="text" class="form-control readonly" placeholder="UF" name="uf_cliente" id="uf_cliente"/>
+						            <span class="input-group-btn">
+						            	<button class="btn btn-default" type="button" id="listaCidadeCliente">&nbsp;<span class="fluigicon fluigicon-search fluigicon-sm"></span></button>
+						            </span>						            
+						        </div>
+								
+							</div>
+							<div class="col-sm-3 col-xs-12">
+								<label for=""ord_coleta"">Ordem de coleta:</label>
+								<input type="text" class="form-control" placeholder="C&oacute;digo"" name="ord_coleta" id="ord_coleta" />
+							</div>
+							
+						</div>
+						<br/>
+						<div class="row" >	
+							<div class="alert alert-info" role="alert" align="center"><strong>Check List Ve&iacute;culo</strong></div>					
+							<table class="table">
+								<thead>
+									<tr>
+										<th>Item:</th>
+										<th>Caracteristica:</th>
+										<th>Condi&ccedil;&otilde;es:</th>
+										<th>Observa&ccedil;&otilde;es:</th>								
+									</tr>
+								</thead>																
+								<tbody>
+								
+									<tr>
+									    <td style="vertical-align:middle"  class="col-sm-1" style="vertical-align:middle" nowrap>1 - Pneus</td>
+									    <td style="vertical-align:middle"  class="col-sm-2">Est&atilde;o em condi&ccedil;&otilde;es</td>
+									    <td style="vertical-align:middle"  class="col-sm-3" nowrap>
+									    	<input type="radio" name="pneus" id="pneus" style="cursor: pointer" value="sim" /> Sim
+											<input type="radio" name="pneus" id="pneus" style="cursor: pointer" value="nao" /> N&atilde;o
+											<input type="radio" name="pneus" id="pneus" style="cursor: pointer" value="n_a" /> N/A
+									    </td>
+									    <td style="vertical-align:middle"  class="col-sm-6">
+									    	<input type="text" class="form-control" placeholder="Observa&ccedil;&otilde;es" name="obs_pneus" id="obs_pneus" />
+								    	</td>
+								  	</tr>
+								  	<tr>
+									    <td style="vertical-align:middle"  class="col-sm-1" rowspan="5" style="vertical-align:middle" nowrap>2 - Assoalho</td>
+									    <td style="vertical-align:middle"  class="col-sm-2">Tem frestas?</td>
+									    <td style="vertical-align:middle"  class="col-sm-3" nowrap>
+									    	<input type="radio" name="i_assoalho" id="i_assoalho" style="cursor: pointer" value="sim" /> Sim
+											<input type="radio" name="i_assoalho" id="i_assoalho" style="cursor: pointer" value="nao" /> N&atilde;o
+											<input type="radio" name="i_assoalho" id="i_assoalho" style="cursor: pointer" value="n_a" /> N/A
+									    </td>
+									    <td style="vertical-align:middle"  class="col-sm-6">
+									    	<input type="text" class="form-control" placeholder="Observa&ccedil;&otilde;es" name="obs_assoalho" id="obs_assoalho" />
+								    	</td>
+								 	 </tr>
+								  	<tr>
+									   <td style="vertical-align:middle"  class="col-sm-2">Tem buracos?</td>
+									   <td style="vertical-align:middle"  class="col-sm-3" nowrap>
+									    	<input type="radio" name="i_assoalho_buraco" id="i_assoalho_buraco" style="cursor: pointer" value="sim" /> Sim
+											<input type="radio" name="i_assoalho_buraco" id="i_assoalho_buraco" style="cursor: pointer" value="nao" /> N&atilde;o
+											<input type="radio" name="i_assoalho_buraco" id="i_assoalho_buraco" style="cursor: pointer" value="n_a" /> N/A
+									    </td>
+									    <td style="vertical-align:middle"  class="col-sm-6">
+									    	<input type="text" class="form-control" placeholder="Observa&ccedil;&otilde;es" name="obs_i_assoalho_buraco" id="obs_i_assoalho_buraco" />
+								    	</td>
+								  	</tr>
+								  	<tr>
+									    <td style="vertical-align:middle"  class="col-sm-2">Esta limpo?</td>
+									    <td style="vertical-align:middle"  class="col-sm-3" nowrap>
+									    	<input type="radio" name="i_assoalho_limpo" id="i_assoalho_limpo" style="cursor: pointer" value="sim" /> Sim
+											<input type="radio" name="i_assoalho_limpo" id="i_assoalho_limpo" style="cursor: pointer" value="nao" /> N&atilde;o
+											<input type="radio" name="i_assoalho_limpo" id="i_assoalho_limpo" style="cursor: pointer" value="n_a" /> N/A
+									    </td>
+									    <td style="vertical-align:middle"  class="col-sm-6">
+									    	<input type="text" class="form-control" placeholder="Observa&ccedil;&otilde;es" name="obs_i_assoalho_limpo" id="obs_i_assoalho_limpo" />
+								    	</td>
+								  	</tr>
+								  	<tr>
+									    <td style="vertical-align:middle"  class="col-sm-2">Esta molhado?</td>
+									    <td style="vertical-align:middle"  class="col-sm-3" nowrap>
+									    	<input type="radio" name="i_assoalho_molhado" id="i_assoalho_molhado" style="cursor: pointer" value="sim" /> Sim
+											<input type="radio" name="i_assoalho_molhado" id="i_assoalho_molhado" style="cursor: pointer" value="nao" /> N&atilde;o
+											<input type="radio" name="i_assoalho_molhado" id="i_assoalho_molhado" style="cursor: pointer" value="n_a" /> N/A
+									    </td>
+									    <td style="vertical-align:middle"  class="col-sm-6">
+									    	<input type="text" class="form-control" placeholder="Observa&ccedil;&otilde;es" name="obs_i_assoalho_molhado" id="obs_i_assoalho_molhado" />
+								    	</td>
+								  	</tr>
+								  	<tr>
+									    <td style="vertical-align:middle"  class="col-sm-2">Esta com falta de tampas?</td>
+									    <td style="vertical-align:middle"  class="col-sm-3" nowrap>
+									    	<input type="radio" name="i_assoalho_tampas" id="i_assoalho_tampas" style="cursor: pointer" value="sim" /> Sim
+											<input type="radio" name="i_assoalho_tampas" id="i_assoalho_tampas" style="cursor: pointer" value="nao" /> N&atilde;o
+											<input type="radio" name="i_assoalho_tampas" id="i_assoalho_tampas" style="cursor: pointer" value="n_a" /> N/A
+									    </td>
+									    <td style="vertical-align:middle"  class="col-sm-6">
+									    	<input type="text" class="form-control" placeholder="Observa&ccedil;&otilde;es" name="obs_i_assoalho_tampas" id="obs_i_assoalho_tampas" />
+								    	</td>
+								  	</tr>
+								  	<tr>
+									    <td style="vertical-align:middle"  class="col-sm-1" rowspan="4" style="vertical-align:middle" nowrap>3 - Cobertura</br>(lona / bau / container)</td>
+									    <td style="vertical-align:middle"  class="col-sm-2">Imperme&aacute;vel?</td>
+									    <td style="vertical-align:middle"  class="col-sm-3" nowrap>
+									    	<input type="radio" name="i_cobertura_imper" id="i_cobertura_imper" style="cursor: pointer" value="sim" /> Sim
+											<input type="radio" name="i_cobertura_imper" id="i_cobertura_imper" style="cursor: pointer" value="nao" /> N&atilde;o
+											<input type="radio" name="i_cobertura_imper" id="i_cobertura_imper" style="cursor: pointer" value="n_a" /> N/A
+									    </td>
+									    <td style="vertical-align:middle"  class="col-sm-6">
+									    	<input type="text" class="form-control" placeholder="Observa&ccedil;&otilde;es" name="obs_i_cobertura_imper" id="obs_i_cobertura_imper" />
+								    	</td>
+								  	</tr>
+								  	<tr>
+									    <td style="vertical-align:middle"  class="col-sm-2">Tem Furos, rasgos ou frestas?</td>
+									    <td style="vertical-align:middle"  class="col-sm-3" nowrap>
+									    	<input type="radio" name="i_cobertura_furo" id="i_cobertura_furo" style="cursor: pointer" value="sim" /> Sim
+											<input type="radio" name="i_cobertura_furo" id="i_cobertura_furo" style="cursor: pointer" value="nao" /> N&atilde;o
+											<input type="radio" name="i_cobertura_furo" id="i_cobertura_furo" style="cursor: pointer" value="n_a" /> N/A
+									    </td>
+									    <td style="vertical-align:middle"  class="col-sm-6">
+									    	<input type="text" class="form-control" placeholder="Observa&ccedil;&otilde;es" name="obs_i_cobertura_furo" id="obs_i_cobertura_furo" />
+								    	</td>
+								  	</tr>
+								  	<tr>
+									    <td style="vertical-align:middle"  class="col-sm-2">Esta limpo?</td>
+									    <td style="vertical-align:middle"  class="col-sm-3" nowrap>
+									    	<input type="radio" name="i_cobertura_limpo" id="i_cobertura_limpo" style="cursor: pointer" value="sim" /> Sim
+											<input type="radio" name="i_cobertura_limpo" id="i_cobertura_limpo" style="cursor: pointer" value="nao" /> N&atilde;o
+											<input type="radio" name="i_cobertura_limpo" id="i_cobertura_limpo" style="cursor: pointer" value="n_a" /> N/A
+									    </td>
+									    <td style="vertical-align:middle"  class="col-sm-6">
+									    	<input type="text" class="form-control" placeholder="Observa&ccedil;&otilde;es" name="obs_i_cobertura_limpo" id="obs_i_cobertura_limpo" />
+								    	</td>
+								  	</tr>
+								  	<tr>
+									    <td style="vertical-align:middle"  class="col-sm-2">Est&aacute; molhado?</td>
+									    <td style="vertical-align:middle"  class="col-sm-3" nowrap>
+									    	<input type="radio" name="i_cobertura_molhado" id="i_cobertura_molhado" style="cursor: pointer" value="sim" /> Sim
+											<input type="radio" name="i_cobertura_molhado" id="i_cobertura_molhado" style="cursor: pointer" value="nao" /> N&atilde;o
+											<input type="radio" name="i_cobertura_molhado" id="i_cobertura_molhado" style="cursor: pointer" value="n_a" /> N/A
+									    </td>
+									    <td style="vertical-align:middle"  class="col-sm-6">
+									    	<input type="text" class="form-control" placeholder="Observa&ccedil;&otilde;es" name="obs_i_cobertura_molhado" id="obs_i_cobertura_molhado" />
+								    	</td>
+								  	</tr>
+								  	<tr>
+									    <td style="vertical-align:middle"  class="col-sm-1" style="vertical-align:middle" nowrap>4 - Corda</td>
+									    <td style="vertical-align:middle"  class="col-sm-2">Suficiente?</td>
+									    <td style="vertical-align:middle"  class="col-sm-3" nowrap>
+									    	<input type="radio" name="i_corda" id="i_corda" style="cursor: pointer" value="sim" /> Sim
+											<input type="radio" name="i_corda" id="i_corda" style="cursor: pointer" value="nao" /> N&atilde;o
+											<input type="radio" name="i_corda" id="i_corda" style="cursor: pointer" value="n_a" /> N/A
+									    </td>
+									    <td style="vertical-align:middle"  class="col-sm-6">
+									    	<input type="text" class="form-control" placeholder="Observa&ccedil;&otilde;es" name="obs_i_corda" id="obs_i_corda" />
+								    	</td>
+								  	</tr>
+							  	</tbody>						  	
+							</table>
+						</div>
+						<div class="row">
+							<div class="col-xs-12">
+								<label for="processo">Observa&ccedil;&otilde;es:</label>
+								<textarea name="obs_inspecao" id="obs_inspecao" rows="3" class="form-control" ></textarea>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-3 col-xs-12">
+								<label for="matricula_checklist">Emitente:</label>
+								<input type="text" class="form-control readonly" placeholder="Matr&iacute;cula" name="matricula_checklist" id="matricula_checklist"/>
+							</div>
+							<div class="col-sm-6 col-xs-12">
+								<label for="user_checklist">&nbsp;</label>
+								<input type="text" class="form-control readonly" placeholder="Responsavel" name="user_checklist" id="user_checklist"/>
+							</div>
+							<div class="col-sm-3 col-xs-12">
+								<label for="data_checklist">Data:</label>
+								<input type="text" class="form-control readonly" placeholder="Data" name="data_checklist" id="data_checklist"/>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="panel panel-primary" id="carregamento">				
+					<div class="panel-heading" style="background-color: blue;">
+						<h3 class="panel-title">
+							<strong><i class="fluigicon fluigicon-file-default fluigicon-sm"></i>&nbsp; Avalia&ccedil;&atilde;o do Transporte</strong>
+						</h3>
+					</div>
+					<div class="panel-body">
+						<div class="row" >	
+							<div class="alert alert-info" role="alert" align="center"><strong>Check List Carregamento</strong></div>					
+							<table class="table">
+								<thead>
+									<tr>
+										<th>Caracteristica:</th>
+										<th>Condi&ccedil;&otilde;es:</th>
+										<th>Observa&ccedil;&otilde;es:</th>								
+									</tr>
+								</thead>																
+								<tbody style="vertical-align:middle">
+								
+									<tr>
+									    <td style="vertical-align:middle"  class="col-sm-2">Entrega para cliente &Uacute;nico?</td>
+									    <td style="vertical-align:middle"  class="col-sm-3" nowrap>
+									    	<input type="radio" name="entrega" id="entrega" style="cursor: pointer" value="sim" /> Sim
+											<input type="radio" name="entrega" id="entrega" style="cursor: pointer" value="nao" /> N&atilde;o
+											
+									    </td>
+									    <td style="vertical-align:middle"  class="col-sm-6">
+									    	<input type="text" class="form-control" placeholder="Observa&ccedil;&otilde;es" name="obs_entrega" id="obs_entrega" />
+								    	</td>
+								  	</tr>
+								  	<tr>
+									    <td style="vertical-align:middle"  class="col-sm-2">Local de carrregamento?</td>
+									    <td style="vertical-align:middle"  class="col-sm-3" nowrap>
+									    	<input type="radio" name="i_carregamento" id="i_carregamento" style="cursor: pointer" value="cob_fec" /> Coberto fechado</br>
+											<input type="radio" name="i_carregamento" id="i_carregamento" style="cursor: pointer" value="cob_ab" /> Coberto aberto</br>
+											<input type="radio" name="i_carregamento" id="i_carregamento" style="cursor: pointer" value="relento" /> Relento
+									    </td>
+									    <td style="vertical-align:middle"  class="col-sm-6">
+									    	<input type="text" class="form-control" placeholder="Observa&ccedil;&otilde;es" name="obs_carregamento" id="obs_carregamento" />
+								    	</td>
+								 	 </tr>
+								  	<tr>
+									   <td style="vertical-align:middle"  class="col-sm-2">Clima?</td>
+									   <td style="vertical-align:middle"  class="col-sm-3" nowrap>
+									    	<input type="radio" name="i_clima" id="i_clima" style="cursor: pointer" value="chuv" /> Chuvoso
+											<input type="radio" name="i_clima" id="i_clima" style="cursor: pointer" value="semChuv" /> Sem Chuva
+											
+									    </td>
+									    <td style="vertical-align:middle"  class="col-sm-6">
+									    	<input type="text" class="form-control" placeholder="Observa&ccedil;&otilde;es" name="obs_i_clima" id="obs_i_clima" />
+								    	</td>
+								  	</tr>
+								  	<tr>
+									    <td style="vertical-align:middle"  class="col-sm-2">Fechamento da carga?</td>
+									    <td style="vertical-align:middle"  class="col-sm-3" nowrap>
+									    	<input type="radio" name="i_fechamento" id="i_fechamento" style="cursor: pointer" value="lona" /> Enlonado
+											<input type="radio" name="i_fechamento" id="i_fechamento" style="cursor: pointer" value="corda" /> Amarrado											
+									    </td>
+									    <td style="vertical-align:middle"  class="col-sm-6">
+									    	<input type="text" class="form-control" placeholder="Observa&ccedil;&otilde;es" name="obs_i_fechamento" id="obs_i_fechamento" />
+								    	</td>
+								  	</tr>
+								  	<tr>
+									    <td style="vertical-align:middle"  class="col-sm-2">Documentos entregues:</td>
+									    <td style="vertical-align:middle"  class="col-sm-3" colspan="2" nowrap>
+									    	<input type="checkbox" class="docto" name="ch_nf" id="ch_nf"  value="Nota Fiscal">&nbsp;Nota Fiscal&nbsp;&nbsp;&nbsp;&nbsp;
+									    	<input type="checkbox" class="docto" name="ch_cte" id="ch_cte" value="CT-e">&nbsp;CT-e&nbsp;&nbsp;&nbsp;&nbsp;
+									    	<input type="checkbox" class="docto" name="ch_roma" id="ch_roma" value="Romaneio">&nbsp;Romaneio&nbsp;&nbsp;&nbsp;&nbsp;
+									    	<input type="checkbox" class="docto" name="ch_mani" id="ch_mani" value="Manifesto">&nbsp;Manifesto&nbsp;&nbsp;&nbsp;&nbsp;
+									    	</br>
+									    	<input type="checkbox" class="docto" name="ch_guia" id="ch_guia" value="Guia / Pagto Impostos">&nbsp;Guia / Pagto impostos
+									    	<input type="checkbox" class="docto" name="ch_instr" id="ch_instr" value="Instru&ccedil;&otilde;es Descarga e Amazenagem">&nbsp;Instru&ccedil;&otilde;es Descarga e Armazernagem&nbsp;&nbsp;&nbsp;&nbsp;
+									    	<button type="button" id="abrirFT" class="btn btn-primary" data-toggle="button">Imprimir</button>
+									    </td>
+									    								    
+								  	</tr>
+								  	
+							  	</tbody>						  	
+							</table>
+						</div>
+						<div class="row">
+							<div class="col-xs-12">
+								<label for="processo">Observa&ccedil;&otilde;es:</label>
+								<textarea name="obs_faturamento" id="obs_faturamento" rows="3" class="form-control" ></textarea>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-3 col-xs-12">
+								<label for="matricula_fatur">Emitente:</label>
+								<input type="text" class="form-control readonly" placeholder="Matr&iacute;cula" name="matricula_fatur" id="matricula_fatur"/>
+							</div>
+							<div class="col-sm-6 col-xs-12">
+								<label for="user_fatur">&nbsp;</label>
+								<input type="text" class="form-control readonly" placeholder="Responsavel" name="user_fatur" id="user_fatur"/>
+							</div>
+							<div class="col-sm-3 col-xs-12">
+								<label for="data_fatur">Data:</label>
+								<input type="text" class="form-control readonly" placeholder="Data" name="data_fatur" id="data_fatur"/>
+							</div>
+						</div>
+					</div>
+				</div>	
+			
+			
+				<div class="panel panel-primary" id="saida">				
+					<div class="panel-heading" style="background-color: blue;">
+						<h3 class="panel-title">
+							<strong><i class="fluigicon fluigicon-file-default fluigicon-sm"></i>&nbsp; Sa&iacute;da do Ve&iacute;culo:</strong>
+						</h3>
+					</div>
+					<div class="panel-body">
+						<div class="row">	
+							<div class="col-sm-4 col-xs-12">
+								<label for="dt_saida">Data Sa&iacute;da:</label>
+								<div class="input-group date" id="dtPickerPrazo_dt_saida">
+									<input type="text" class="form-control readonly" placeholder="UF" name="dt_saida" id="dt_saida"/>
+									<span class="input-group-addon fs-cursor-pointer"> <span class="fluigicon fluigicon-calendar"></span>
+									</span>
+								</div>								
+							</div>
+							<div class="col-sm-4 col-xs-12">
+								<label for="hora_saida">Hora Sa&iacute;da:</label>
+								<input type="text" class="form-control time" placeholder="Hora" name="hora_saida" id="hora_saida"/>
+							</div>	
+							<div class="col-sm-4 col-xs-12">
+								<label for=""ord_coleta"">Nota Fiscal:</label>
+								<input type="text" class="form-control soNumeros" placeholder="Nota Fiscal"" name="nr_nf" id="nr_nf" />
+							</div>						
+							
+						</div>
+						<div class="row">
+							<div class="col-xs-12">
+								<label for="processo">Observa&ccedil;&otilde;es:</label>
+								<textarea name="obs_saida" id="obs_saida" rows="3" class="form-control" ></textarea>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-3 col-xs-12">
+								<label for="matricula_emit">Emitente:</label>
+								<input type="text" class="form-control readonly" placeholder="Matr&iacute;cula" name="matricula_saida" id="matricula_saida"/>
+							</div>
+							<div class="col-sm-6 col-xs-12">
+								<label for="user_emit">&nbsp;</label>
+								<input type="text" class="form-control readonly" placeholder="Responsavel" name="user_saida" id="user_saida"/>
+							</div>
+							<div class="col-sm-3 col-xs-12">
+								<label for="data_emit">Ramal:</label>
+								<input type="text" class="form-control readonly" placeholder="Data" name="data_saida" id="data_saida"/>
+							</div>
+						</div>					
+						
+					</div>
+				</div>
+			
+			
+			</form>
+		</div>
+	</body>
+</html>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.23" id="1">
     <property name="author">Carla Tonon</property>
-    <property name="createdBy">Eclipse BIRT Designer Version 4.6.0.v201606072122</property>
+    <property name="createdBy">Eclipse BIRT Designer Version 4.4.2.v201410272105 Build &lt;4.4.2.v20150217-1805></property>
     <property name="units">cm</property>
     <property name="iconFile">/templates/blank_report.gif</property>
     <property name="layoutPreference">auto layout</property>
@@ -99,7 +99,7 @@
                     <expression name="labelExpr">row["upper(ml001007.origem )"]</expression>
                     <property name="dataType">string</property>
                     <simple-property-list name="defaultValue">
-                        <value type="constant">TODOS</value>
+                        <value type="constant">CORTE</value>
                     </simple-property-list>
                     <property name="controlType">list-box</property>
                     <property name="fixedOrder">true</property>

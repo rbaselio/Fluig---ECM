@@ -31,10 +31,17 @@ function loadElementos(){
 	});
 	
 	
+	
+	
 	$('#nota').change(function() {
-		if ($(this).val() == "3" || $(this).val() == "4") $("#comentarios").removeAttr('readOnly');
+		if ( $('#conclusao').val() == "sim" && ($(this).val() == "3" || $(this).val() == "4")) $("#comentarios").removeAttr('readOnly');
 		else $("#comentarios").attr("readOnly", true).val("");
-	}).trigger("change");	
+	}).trigger("change");
+	
+	$('#conclusao').change(function() {
+		$('#nota').val("1").trigger("change");
+	}).trigger("change");
+	
 	
 	$("#ramal").on('keyup', function(){
 		if ($(this).val().length > 12) $(this).mask('(00)00000-0000');

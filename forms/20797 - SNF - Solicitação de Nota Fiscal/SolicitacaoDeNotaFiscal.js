@@ -158,7 +158,7 @@ function loadElementos(){
 	
 	$("#cnpj_emitente").on('focusin', function(){$(this).select();})
 	.on('blur', function(){	
-		if($(this).val() == "") return true;
+		if ($("#uf_emitente").val() == "EX" || $(this).val() == "") return true;
 		if (($("#pessoaNota").val() == "juridica" && !isCNPJValid($(this).val()))
 				||
 			($("#pessoaNota").val() == "fisica" && !isCPFValid($(this).val()))

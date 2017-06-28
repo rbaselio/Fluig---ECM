@@ -1,7 +1,8 @@
-var row, anexos, isMobile, thisProcesso, moeda;
+var row, isMobile, thisProcesso, moeda;
 
 function loadElementos(){ 
 		
+	$("#agencia").mask("000000000", {reverse: true});
 	$("#conta_cor").mask("000000000-0", {reverse: true});
 	
 	//atribui formatação numerica ao input text e seta o valor inicial 0.00
@@ -20,19 +21,281 @@ function loadElementos(){
 	    language: 'pt-br'
 	});
 	
+	$('#btZoomColab').click(function() {	
+		var param = {"datasetId" : "colleague", "limit" : "0", 
+				 "filterFields" : ["active", "true"]};
+		
+		var thisModal = FLUIGC.modal({
+		   title: 'Lista de Colaboradores',
+		   content: '<div id="postEmb"></div>',
+		   id: 'fluig-modal',
+		   actions: [{
+		       'label': 'Fechar',
+		       'autoClose': true
+		   }]
+		}, function(err, data) {			
+			var thisTable = FLUIGC.datatable('#postEmb', {
+			    dataRequest: {
+			        url: '/api/public/ecm/dataset/search',
+			        options: {
+			            contentType:"application/json",
+			            dataType: 'json',
+			            method: 'POST',
+			            data: JSON.stringify(param),
+			            crossDomain: true,
+			            cache: false
+			        },
+			        root: 'content'
+			    },
+			    renderContent: ['colleagueId', 'colleagueName'], 
+			    header: [{'title': 'Matricula', 'size': 'col-sm-2'},
+			             {'title': 'Nome', 'size': 'col-sm-5'}],
+			    multiSelect: false,
+			    search: {
+			        enabled: true,
+			        searchAreaStyle: 'col-md-9',
+			        onSearch: function(response) {
+			        	var param2 = {"datasetId" : "colleague", "limit" : "0", 
+								"filterFields" : ["active", "true"], 
+								"searchField" : "colleagueName", "searchValue" : response };
+			        	$.ajax({
+							  type: 'POST',
+							  contentType: 'application/json',
+							  dataType: 'json',
+							  url: '/api/public/ecm/dataset/search',
+							  data: JSON.stringify(param2),
+							  success: function(data) {
+								  thisTable.reload(data.content);
+							  }
+							});
+			        }
+			    },
+			    scroll: {
+			        target: '#postEmb',
+			        enabled: true			        
+		       },
+			    tableStyle: 'table-striped'
+			}).on('dblclick', function(ev) {
+				var index = thisTable.selectedRows()[0];
+			    var selected = thisTable.getRow(index);
+			    $("#matricula_user").val(selected.colleagueId);
+			    $("#solicitante").val(selected.colleagueName);	
+			    $("#ramal").val("");			    
+			    thisModal.remove();					    
+			});
+		});
+		$(".modal-body").css("max-height" , window.innerHeight/2 + 'px');	
+	});
+	
+	$('#listaCidade').click(function() {
+		var thisModal = FLUIGC.modal({
+		    title: 'Lista de Cidades',
+		    content: '<div id="postTabela"></div>',
+		    id: 'fluig-modal',
+		    size: 'large',
+		    actions: [{
+		        'label': 'Fechar',
+		        'autoClose': true
+		    }]
+		}, function(err, data) {			
+			var thisTable = FLUIGC.datatable('#postTabela', {
+			    dataRequest: {
+			        url: '/api/public/ecm/dataset/search',
+			        options: {
+			            contentType:"application/json",
+			            dataType: 'json',
+			            method: 'POST',
+			            data: JSON.stringify({"datasetId" : "TOTVSCidadeEstado","limit" : "0"}),
+			            crossDomain: true,
+			            cache: false
+			        },
+			        root: 'content'
+			    },
+			    renderContent: ['cidade', 'estado'], 
+			    header: [{'title': 'Cidade', 'size': 'col-sm-5'},
+			             {'title': 'Estado', 'size': 'col-sm-3'}],
+			    multiSelect: false,
+			    search: {
+			        enabled: true,
+			        onSearch: function(response) {
+			        	$.ajax({
+							  type: 'POST',
+							  contentType: 'application/json',
+							  dataType: 'json',
+							  url: '/api/public/ecm/dataset/search',
+							  data: JSON.stringify({"datasetId" : "TOTVSCidadeEstado","limit" : "0", "searchField" : "cidade", "searchValue" : response }),
+							  success: function(data) {
+								  thisTable.reload(data.content);
+							  }
+							});
+			        }
+			    },
+			    scroll: {
+			        target: '#postTabela',
+			        enabled: true			        
+		        },
+			    tableStyle: 'table-striped'
+			}).on('dblclick', function(ev) {
+				var index = thisTable.selectedRows()[0];
+			    var selected = thisTable.getRow(index);	
+			    $('#cidade').val(selected.cidade);
+			    $('#estado_pais').val(selected.estado);
+			    thisModal.remove();					    
+			});
+		});
+		$(".modal-body").css("max-height" , window.innerHeight/2 + 'px');
+	});
+	
+	$('#listCcusto').click(function() {
+		var thisModal = FLUIGC.modal({
+		    title: 'Lista de Centros de Custos',
+		    content: '<div id="postEmb"></div>',
+		    id: 'fluig-modal',
+		    actions: [{
+		        'label': 'Fechar',
+		        'autoClose': true
+		    }]
+		}, function(err, data) {			
+			var thisTable = FLUIGC.datatable('#postEmb', {
+			    dataRequest: {
+			        url: '/api/public/ecm/dataset/search',
+			        options: {
+			            contentType:"application/json",
+			            dataType: 'json',
+			            method: 'POST',
+			            data: JSON.stringify({"datasetId" : "TOTVSCentroDeCusto","limit" : "0"}),
+			            crossDomain: true,
+			            cache: false
+			        },
+			        root: 'content'
+			    },
+			    renderContent: ['cod_ccusto', 'descricao'], 
+			    header: [{'title': 'Cod.'},
+			             {'title': 'Descição'}],
+			    multiSelect: false,
+			    search: {
+			        enabled: true,
+			        onSearch: function(response) {
+			        	$.ajax({
+							  type: 'POST',
+							  contentType: 'application/json',
+							  dataType: 'json',
+							  url: '/api/public/ecm/dataset/search',
+							  data: JSON.stringify({"datasetId" : "TOTVSCentroDeCusto","limit" : "0", "searchField" : "descricao", "searchValue" : response }),
+							  success: function(data) {
+								  thisTable.reload(data.content);
+							  }
+							});
+			        }
+			    },
+			    scroll: {
+			        target: '#postEmb',
+			        enabled: true			        
+		        },
+			    tableStyle: 'table-striped'
+			}).on('dblclick', function(ev) {
+				var index = thisTable.selectedRows()[0];
+			    var selected = thisTable.getRow(index);	
+			    $('#ccusto').val(selected.cod_ccusto + " - " + selected.descricao);
+			    thisModal.remove();					    
+			});
+		});
+		$(".modal-body").css("max-height" , window.innerHeight/2 + 'px');
+	});
+	
+	$('#listBancos').click(function() {
+		var thisModal = FLUIGC.modal({
+		    title: 'Lista de Bancos FEBRABAN',
+		    content: '<div id="postEmb"></div>',
+		    id: 'fluig-modal',
+		    actions: [{
+		        'label': 'Fechar',
+		        'autoClose': true
+		    }]
+		}, function(err, data) {			
+			var thisTable = FLUIGC.datatable('#postEmb', {
+			    dataRequest: {
+			        url: '/api/public/ecm/dataset/search',
+			        options: {
+			            contentType:"application/json",
+			            dataType: 'json',
+			            method: 'POST',
+			            data: JSON.stringify({"datasetId" : "bancosWebservice","limit" : "0"}),
+			            crossDomain: true,
+			            cache: false
+			        },
+			        root: 'content'
+			    },
+			    renderContent: ['Cod_banco', 'Banco'], 
+			    header: [{'title': 'Cod.'},
+			             {'title': 'Descrição'}],
+			    multiSelect: false,
+			    search: {
+			        enabled: true,
+			        onSearch: function(response) {
+			        	$.ajax({
+							  type: 'POST',
+							  contentType: 'application/json',
+							  dataType: 'json',
+							  url: '/api/public/ecm/dataset/search',
+							  data: JSON.stringify({"datasetId" : "bancosWebservice","limit" : "0", "searchField" : "Banco", "searchValue" : response }),
+							  success: function(data) {
+								  thisTable.reload(data.content);
+							  }
+							});
+			        }
+			    },
+			    scroll: {
+			        target: '#postEmb',
+			        enabled: true			        
+		        },
+			    tableStyle: 'table-striped'
+			}).on('dblclick', function(ev) {
+				var index = thisTable.selectedRows()[0];
+			    var selected = thisTable.getRow(index);	
+			    $('#banco').val(selected.Cod_banco + " - " + selected.Banco);
+			    thisModal.remove();					    
+			});
+		});
+		$(".modal-body").css("max-height" , window.innerHeight/2 + 'px');
+	});
+	
 	
 	$("#div_verba").hide()
 	$(':radio[id="nec_adiant"]').change(function() {
 		if ($(this).filter(':checked').val() == 'sim'){
-			$("#div_verba").show();			
+			$("#div_verba").show();		
+			if ($('#cpf_cnpj').val() == "") {
+				FLUIGC.message.alert({
+				    message: "Caso necessite de valores em espécie, preencha os dados normalmente e em seguida clique em recibo, imprima e encaminhe o documento a tesouraria",
+				    title: 'Emissão de recibo',
+				    label: 'OK'
+				});
+			}
 		}
 		if ($(this).filter(':checked').val() == 'nao') $("#div_verba").hide();
 	}).trigger('change');
 	
-	$(':radio[id="nec_adiant"]').change(function() {
-		if ($(this).filter(':checked').val() == 'sim')$("#div_verba").show();
-		if ($(this).filter(':checked').val() == 'nao') $("#div_verba").hide();
+	$("#viagem").hide()
+	$(':radio[id="nec_hosp"]').change(function() {
+		showViagem()	
 	}).trigger('change');
+	$(':radio[id="nec_voo"]').change(function() {
+		showViagem()	
+	}).trigger('change');
+	$(':radio[id="nec_veiculo"]').change(function() {
+		showViagem()	
+	}).trigger('change');
+	
+	function showViagem(){
+		if ($(':radio[id="nec_hosp"]').filter(':checked').val() == 'sim' ||
+			$(':radio[id="nec_voo"]').filter(':checked').val() == 'sim' ||
+			$(':radio[id="nec_veiculo"]').filter(':checked').val() == 'sim'){
+				$("#viagem").show();				
+			}
+		else $("#viagem").hide();
+	}
+	
 	
 	//verifica a necessidade de veiculo e oculta ou exibe a div de acordo com a necessidade
 	$("#div_veiculo").hide();
@@ -63,6 +326,18 @@ function loadElementos(){
 		if ($(this).filter(':checked').val() == 'nao'){
 			$("#tabela_voo").hide();
 			$("#selecao_voo").hide();
+		}
+	}).trigger('change');
+	
+	$(':radio[id="nec_veiculo"]').change(function() {		
+		
+		if ($(this).filter(':checked').val() == 'sim' && $("#origem").val() == 'locacao'){
+			$("#tabela_veiculo").show();
+			$("#selecao_veiculo").show();
+		} 
+		if ($("#origem").val() != 'locacao'){
+			$("#tabela_veiculo").hide();
+			$("#selecao_veiculo").hide();
 		}
 	}).trigger('change');
 	
@@ -111,13 +386,12 @@ function loadElementos(){
 		}		
 		var date = somaDiasUteis(dataAtual, diasUteis);
 		myCalendar.setMinDate(date);
-		myCalendar.setDate(date);		
-		
+		myCalendar.setDate(date);			
 	});
 	
 	//quando se trata de reserva de veiculo da frota, seta a mascara para placa do veiculo
 	$('#origem').change(function() {
-		if ($(this).val() == 'frota') $("#veiculo").mask('SSS-0000');			
+		if ($(this).val() == 'frota') $("#veiculo").mask('SSS-0000').css('text-transform', 'uppercase');			
 		else $("#veiculo").unmask();		
 	}).trigger('change');
 	
@@ -136,7 +410,7 @@ function loadElementos(){
 			    label: 'OK'
 			}, function(el, ev) {
 				setTimeout(function() {
-					$('#cpf_cnpj').focus();
+					$('#cpf_cnpj').focus().val("");
 				}, 100);
 			});
 		} 
@@ -206,25 +480,18 @@ function addOpcoes(tabela){
 	
 }
 
-//obter a quantidade de anexos atual
-function getAnexos(process) {	
-	var c1 = DatasetFactory.createConstraint("processAttachmentPK.processInstanceId", process, process, ConstraintType.MUST);
-    var constraints   = new Array(c1);
-    //Busca o dataset
-    var dataset = DatasetFactory.getDataset("processAttachment", null, constraints, null);
-    return dataset.values.length;
-}
 
 
 //prencimento e ativação dos campos
 function ativaPreencheCampos(modeView, numState, matricula, WKNumProces, documentId, mobile) {
 	isMobile = mobile;
 	thisProcesso = WKNumProces;
-	blockAll();
 	
-	$('#recibo').css('pointer-events', 'all');
+	blockAll();	
 	
-	$('#myTab a:first').tab('show');
+	//$('#recibo').css('pointer-events', 'all');
+	//$('#myTab a:first').tab('show');
+	
 	if(modeView == "ADD" || modeView == "MOD"){	
 		
 		var filter = new Object();
@@ -236,52 +503,46 @@ function ativaPreencheCampos(modeView, numState, matricula, WKNumProces, documen
 		var data = getData();
 		var hora = getHora();
 		
-		anexos = getAnexos(WKNumProces);
+		
 		
 		if (numState == 0 || numState == 1){
-			showElemento($("#emissao"));
+			showElemento($("#emissao"));			
 			
 			$("#data_sol").val(data);
 			$("#hora_sol").val(hora);
 			
-			$('#matricula_emissor').attr("readOnly", true).val(matricula);
-			$('#user_emissor').attr("readOnly", true).val(usuario);
-			$("#ramal_emissor").attr("readOnly", true).val(ramal);
+			$('#matricula_emissor').val(matricula);
+			$('#user_emissor').val(usuario);
+			$("#ramal_emissor").val(ramal);
 			
-			$('#dtprazoativ_partida').attr("readOnly", true);
-			$('#dtprazoativ_retorno').attr("readOnly", true);
-			$('#data_retirada').attr("readOnly", true);
-			
-			setTimeout(function () {
-				FLUIGC.message.alert({
-				    message: "Caso necessite de valores em espécie, preencha os dados normalmente e em seguida clique em recibo, imprima e encaminhe o documento a tesouraria",
-				    title: 'Emissão de recibo',
-				    label: 'OK'
-				});
-			}, 2000);			
+			if ($('#matricula_user').val() == ""){
+				$('#matricula_user').val(matricula);
+				$('#solicitante').val(usuario);	
+				$("#ramal").val(ramal);
+			}			
 		}
 		
 		if (numState == 4){
 			showElemento($("#aprov_imediato"));			
 			$("#num_processo").val(WKNumProces);
 			
-			$('#matricula_aprov_imediato').attr("readOnly", true).val(matricula);
-			$('#user_aprov_imediato').attr("readOnly", true).val(usuario);
-			$("#data_aprov_imediato").attr("readOnly", true).val(data);
+			$('#matricula_aprov_imediato').val(matricula);
+			$('#user_aprov_imediato').val(usuario);
+			$("#data_aprov_imediato").val(data);
 			
 		}
 		
 		if (numState == 8){
 			showElemento($("#aprov_diretoria"));
 			
-			$('#matricula_aprov_diretoria').attr("readOnly", true).val(matricula);
-			$('#user_aprov_diretoria').attr("readOnly", true).val(usuario);
-			$("#data_aprov_diretoria").attr("readOnly", true).val(data);
+			$('#matricula_aprov_diretoria').val(matricula);
+			$('#user_aprov_diretoria').val(usuario);
+			$("#data_aprov_diretoria").val(data);
 			
 		}
 		
 		if (numState == 71){
-			anexos = getAnexos(WKNumProces);
+			
 			showElemento($("#entrega_verba"));
 			$("#cotacao").hide();
 			$("#selecao").hide();
@@ -289,27 +550,30 @@ function ativaPreencheCampos(modeView, numState, matricula, WKNumProces, documen
 			$("#compra").hide();
 			
 			$("#num_processo").val(WKNumProces);
-			$('#matricula_entrega').attr("readOnly", true).val(matricula);
-			$('#user_entrega').attr("readOnly", true).val(usuario);
-			$("#data_entrega").attr("readOnly", true).val(data);			
+			$('#matricula_entrega').val(matricula);
+			$('#user_entrega').val(usuario);
+			$("#data_entrega").val(data);
+			
+			
+			
 		}
 		
 		if (numState == 12){
 			
 			showElemento($("#cotacao"));
 			$("#entrega_verba").hide();
-			$('#matricula_cotacao').attr("readOnly", true).val(matricula);
-			$('#user_cotacao').attr("readOnly", true).val(usuario);
-			$("#data_cotacao").attr("readOnly", true).val(data);
+			$('#matricula_cotacao').val(matricula);
+			$('#user_cotacao').val(usuario);
+			$("#data_cotacao").val(data);
 			
 		}
 		
 		if (numState == 14){
 			showElemento($("#selecao"));
 			$("#entrega_verba").hide();
-			$('#matricula_selecao').attr("readOnly", true).val(matricula);
-			$('#user_selecao').attr("readOnly", true).val(usuario);
-			$("#data_selecao").attr("readOnly", true).val(data);
+			$('#matricula_selecao').val(matricula);
+			$('#user_selecao').val(usuario);
+			$("#data_selecao").val(data);
 			
 		}
 		
@@ -317,9 +581,9 @@ function ativaPreencheCampos(modeView, numState, matricula, WKNumProces, documen
 			showElemento($("#aprov_imediato2"));
 			$("#entrega_verba").hide();
 			
-			$('#matricula_aprov_imediato2').attr("readOnly", true).val(matricula);
-			$('#user_aprov_imediato2').attr("readOnly", true).val(usuario);
-			$("#data_aprov_imediato2").attr("readOnly", true).val(data);
+			$('#matricula_aprov_imediato2').val(matricula);
+			$('#user_aprov_imediato2').val(usuario);
+			$("#data_aprov_imediato2").val(data);
 			
 		}		
 		
@@ -327,47 +591,77 @@ function ativaPreencheCampos(modeView, numState, matricula, WKNumProces, documen
 			showElemento($("#compra"));
 			if($('#origem').val() == 'locacao') {
 				showElemento($("#veiculos"));
-				$('#matricula_compra_veic').attr("readOnly", true).val(matricula);
-				$('#user_compra_veic').attr("readOnly", true).val(usuario);
-				$("#data_compra_veic").attr("readOnly", true).val(data);
+				$('#matricula_compra_veic').val(matricula);
+				$('#user_compra_veic').val(usuario);
+				$("#data_compra_veic").val(data);
 			}
 			$("#entrega_verba").hide();
-			$('#matricula_compra').attr("readOnly", true).val(matricula);
-			$('#user_compra').attr("readOnly", true).val(usuario);
-			$("#data_compra").attr("readOnly", true).val(data);
+			$('#matricula_compra').val(matricula);
+			$('#user_compra').val(usuario);
+			$("#data_compra").val(data);
 			
 		}
 		
-		if (numState == 98 && $('#origem').val() == 'frota') {
+		if (numState == 98) {
 			showElemento($("#veiculos"));
-			$('#matricula_compra_veic').attr("readOnly", true).val(matricula);
-			$('#user_compra_veic').attr("readOnly", true).val(usuario);
-			$("#data_compra_veic").attr("readOnly", true).val(data);
+			$('#matricula_compra_veic').val(matricula);
+			$('#user_compra_veic').val(usuario);
+			$("#data_compra_veic").val(data);
 			$("#entrega_verba").hide();			
 		}
+		
+		
+		if (numState == 26) {
+			
+			setTimeout(function () {
+				var offset = $("#entrega_verba").offset().top; 
+				$('html, body').animate({ scrollTop: offset }, offset);	
+			}, 1000);
+			
+			
+			var vl_adiant = parseFloat($('#vl_adiant').val().replace(/[^0-9\,]+/g,"").replace(",","."));
+			var vl_adiant_dep = parseFloat($('#vl_adiant_dep').val().replace(/[^0-9\,]+/g,"").replace(",","."));
+			var adiantamento = parseFloat($("#vl_fornec").val().replace(/[^0-9\,]+/g,"").replace(",","."));
+		
+		   if (adiantamento  != (vl_adiant + vl_adiant_dep)) {
+			   $('#desc_entregue').val( "Valor entregue difere do valor solicitado.\n\n" + $('#desc_entregue').val());
+		   }
+		   
+		}
+		
+		
+		
+		
+		
 	}	
 }
 
 //posiciona o tela de acordo com a posição do elemento
 //habilita elementos do panel para edição
 function showElemento(elemento){	
-	elemento.show();
-	elemento.css('pointer-events', 'all');
-	elemento.find('input[type=text], input[type=zoom], textarea').removeAttr('readOnly');
+	elemento.show()
+			.css('pointer-events', 'all')
+			.find('input[type=text], input[type=zoom], textarea').each(function(i) {
+				if (!$(this).hasClass('readonly')) $(this).removeAttr('readOnly');
+			});
+	elemento.find('.table').find("tr").each(function(){
+				$(this).find("td:first").show();
+			})
+	elemento.find('.divAddButton').show();
 	
 	setTimeout(function () {
 		var offset = elemento.offset().top; 
-		$('html, body').animate({ scrollTop: offset + 100 }, offset);	
+		$('html, body').animate({ scrollTop: offset }, offset);	
 	}, 1000);
 }
-
-//oculta painels vazio e no preenchidos inpede a edição
-function blockAll() {	
+//bloqueia todos os panels para edição 
+function blockAll(modeView) {
+	$('html, body').animate({ scrollTop: 0 }, 5);
 	$('.panel').each(function(i) {
 		if ($(this).attr('id') != null) {			
-			$(this).hide();
-			$(this).css('pointer-events', 'none'); 
-			$(this).find('input[type=text], input[type=zoom], textarea')
+			$(this).hide()
+					.css('pointer-events', 'none')
+					.find('input[type=text], input[type=zoom], textarea')
 					.attr("readOnly", true)
 					.css('pointer-events', 'all')
 					.each(function(){
@@ -375,11 +669,12 @@ function blockAll() {
 							$(this).closest('.panel').show();
 						}
 					});
-		}
+		}		
 	});
-	
 }
 
+
+/*
 //validação dos campos
 var beforeSendValidate = function(numState){
 	var message = "";
@@ -392,10 +687,9 @@ var beforeSendValidate = function(numState){
 		if ($("#estado_pais").val() == '') message += "<br/>- Informe o estado destino da viagem;";
 		
 		if(!$('#motivo:checked').val()) message += "<br/>- Informe o motivo da viagem;";
-		/*if ($("#nr_pedido").val() == '' && ($('#motivo:checked').val() == "comercial" || $('#motivo:checked').val() == "tecnica") ) message += "<br/>- Informe o numero do pedido;";*/ 
-		/*if (parseFloat($("#vl_pedido").val().replace(/[^0-9\,]+/g,"").replace(",",".")) == 0 && $('#motivo:checked').val() == "tecnica")  message += "<br/>- Informe o valor do Pedido;";*/
-		
-		if ($("#ccusto").val() == '') message += "<br/>- Informe o centro de custo;";
+				
+	
+if ($("#ccusto").val() == '') message += "<br/>- Informe o centro de custo;";
 		
 		if ($("#descricao").val() == '') message += "<br/>- Descreva o motivo da viagem;"; 
 		
@@ -577,4 +871,4 @@ var beforeSendValidate = function(numState){
 	
 	
 }
-var beforeMovementOptions = beforeSendValidate;
+var beforeMovementOptions = beforeSendValidate;*/

@@ -20,12 +20,12 @@
 				</div>
 				<div class="col-sm-5 col-xs-12">
 					<h2 class="text-center">
-						<b>SOLICITA&Ccedil;&Atilde;O DE VIAGEM</b>
+						<b>SOLICITA&Ccedil;&Atilde;O DE VIAGEM, VERBA E/OU VE&Iacute;CULO</b>
 					</h2>
 				</div>
 				<div class="col-sm-4 col-xs-12">
 					<div class="row form-group">
-						<label for="chamado_num" class="col-sm-6 col-xs-12 text-right">Solicita&ccedil;&atilde;o nº:</label>
+						<label for="chamado_num" class="col-sm-6 col-xs-12 text-right">Solicita&ccedil;&atilde;o n&ordm;:</label>
 						<div class="col-sm-6 col-xs-12 controls">
 							<input type="text" name="num_processo" id="num_processo" class="form-control" readonly="readonly" />
 						</div>
@@ -43,10 +43,6 @@
 				</div>
 			</div>
 			<br/>
-			
-			
-			
-			
 	
 			<div class="panel panel-primary" id="emissao">
 				<div class="panel-heading" style="background-color: blue;">
@@ -56,93 +52,27 @@
 				</div>
 				<div class="panel-body">
 					<div class="row">
-						<div class="col-sm-5 col-xs-12">
-							<label for="cliente">Destino:</label>
-							<input class="form-control" name="destino" id="destino" type="text" placeholder="Evento, Cliente, etc."/>
+						<div class="col-xs-3">
+							<label for="referencia">Usuário:</label>
+							<input type="text" class="form-control readonly" placeholder="Matr&iacute;cula" name="matricula_user" id="matricula_user"  />
 						</div>
-						<div class="col-sm-4 col-xs-12">
-							<label for="cliente">Cidade:</label>
-							<input class="form-control" name="cidade" id="cidade" type="text" placeholder="Cidade"/>
-						</div>
-						<div class="col-sm-3 col-xs-12">
-							<label for="cliente">Estado/Pa&iacute;s:</label>
-							<input class="form-control" name="estado_pais" id="estado_pais" type="text" placeholder="Estado / Pa&iacute;s"/>
-						</div>
-					</div>
-					<br/>
-					<div class="row">
-						<div class="col-sm-6 col-xs-12">
-							<label for="cliente">Endere&ccedil;o:</label>
-							<input class="form-control" name="endereco" id="endereco" type="text" placeholder="Endere&ccedil;o"/>
-						</div>
-						<div class="col-sm-3 col-xs-12">
-							<label for="cidade">Data Partida:</label>
-							<div class="form-group ">
-								<div class="input-group date" id="dtPickerPrazo_partida">
-									<input type="text" name="dtprazoativ_partida" id="dtprazoativ_partida" class="form-control" readonly="readonly"/>
-									<span class="input-group-addon fs-cursor-pointer"> <span class="fluigicon fluigicon-calendar"></span>
-									</span>
-								</div>
+						<div class="col-xs-6">
+							<label>&nbsp;</label>
+							<div class="input-group">
+								<input type="text" name="solicitante" id="solicitante" class="form-control readonly" />
+								<span class="input-group-addon fs-cursor-pointer" id="btZoomColab">
+									<span class="fluigicon fluigicon-user-search"></span>
+								</span>
 							</div>
 						</div>
-						<div class="col-sm-3 col-xs-12">
-							<label for="cidade">Data Retorno:</label>
-							<div class="form-group ">
-								<div class="input-group date" id="dtPickerPrazo_retorno">
-									<input type="text" name="dtprazoativ_retorno" id="dtprazoativ_retorno" class="form-control" readonly="readonly"/>
-									<span class="input-group-addon fs-cursor-pointer"> <span class="fluigicon fluigicon-calendar"></span>
-									</span>
-								</div>
-							</div>
+						<div class="col-xs-3">
+							<label for="referencia">Ramal / Telefone:</label>
+							<input type="text" class="form-control" placeholder="Ramal" name="ramal" id="ramal" />
 						</div>						
 					</div>
-					<br/>
+					</br>
 					<div class="row">
-						<div class="col-sm-3 col-xs-12">							
-							<label for="urgencia">Motivo:</label>
-							<br/>
-							<input type="radio" name="motivo" id="motivo" style="cursor: pointer" value="comercial"/> Comercial
-							<br/>
-							<input type="radio" name="motivo" id="motivo" style="cursor: pointer" value="tecnica"/> Visita T&eacute;cnica	
-							<br/>
-							<input type="radio" name="motivo" id="motivo" style="cursor: pointer" value="outros"/> Outros (Descrever)
-						</div>
-						<div class="col-sm-3 col-xs-12">							
-							<label for="urgencia">Pedido:</label>
-							<input class="form-control" name="nr_pedido" id="nr_pedido" type="text" />
-						</div>							 							
-						<div class="col-sm-3 col-xs-12">							
-							<label for="urgencia">Valor:</label>
-							<input class="form-control money" name="vl_pedido" id="vl_pedido" type="text" />
-						</div>
-						<div class="col-sm-3 col-xs-12">							
-							<label for="urgencia">Centro de Custo:</label>
-							<input type="zoom" name="ccusto" id="ccusto" class="form-control"
-								data-zoom="{
-									        'displayKey':'Descricao',
-									        'datasetId':'centros_de_custos',
-									        'fields':[
-									            {
-									               'field':'Descricao',
-									               'label':'Centros de Custos',
-									               'search':'true'
-									            }
-									        ]
-									     }"
- 							/>	
-						</div>
-					</div>
-					<br/>
-					<div class="row">
-						<div class="col-sm-12 col-xs-12">							
-							<label for="urgencia">Descri&ccedil;&atilde;o do motivo:</label>
-							<textarea name="descricao" id="descricao" class="form-control" rows="3"></textarea>
-						</div>
-					</div>
-					<br/>
-					
-					<div class="row">
-						<div class="col-sm-2 col-xs-12">
+						<div class="col-sm-3 col-xs-12">
 							<label for="nec_adiant">Necessita Adiantamento?</label> 
 							<br>
 							<input type="radio" name="nec_adiant" id="nec_adiant" style="cursor: pointer" value="sim" /> Sim							
@@ -170,13 +100,95 @@
 							<label for="tipoFornec">Tipo do Ve&iacute;culo:</label> 
 							<select class="form-control" name="origem" id="origem">
 								<option value=""></option>
-								<option value="frota">Frota</option>
+								<option value="frota">Frota CASP</option>
 								<option value="locacao">Loca&ccedil;&atilde;o</option>								
 							</select>
 						</div>
 					</div>
+					</br>
+					<div class="row">
+						<div class="col-sm-12 col-xs-12">							
+							<label for="urgencia">Descri&ccedil;&atilde;o do motivo:</label>
+							<textarea name="descricao" id="descricao" class="form-control" rows="3"></textarea>
+						</div>
+					</div>
+					</br>
+					<div class="row">
+						<div class="col-sm-3 col-xs-12">							
+							<label for="urgencia">Motivo:</label>
+							<br/>
+							<input type="radio" name="motivo" id="motivo" style="cursor: pointer" value="atend"/> Atendimento T&eacute;cnico/Comercial
+							<br/>
+							<input type="radio" name="motivo" id="motivo" style="cursor: pointer" value="visita"/> Visita T&eacute;cnica/Comercial	
+							<br/>
+							<input type="radio" name="motivo" id="motivo" style="cursor: pointer" value="outros"/> Outros (Descrever)
+						</div>
+						<div class="col-sm-3 col-xs-12">							
+							<label for="urgencia">Pedido:</label>
+							<input class="form-control" name="nr_pedido" id="nr_pedido" type="text" />
+						</div>							 							
+						<div class="col-sm-3 col-xs-12">							
+							<label for="urgencia">Valor:</label>
+							<input class="form-control money" name="vl_pedido" id="vl_pedido" type="text" />
+						</div>
+						<div class="col-sm-3 col-xs-12">							
+							<label for="urgencia">Centro de Custo:</label>
+							<div class="input-group">
+								<input type="text" class="form-control readonly" placeholder="Centro de Custo" name="ccusto" id="ccusto" />
+					            <span class="input-group-btn">
+					            	<button class="btn btn-default" type="button" id="listCcusto">&nbsp;<span class="fluigicon fluigicon-search fluigicon-sm"></span></button>
+					            </span>						            
+					        </div>
+						</div>
+					</div>					
+					<div id="viagem">
+						<div class="row">
+							<div class="col-sm-5 col-xs-12">
+								<label for="cliente">Destino:</label>
+								<input class="form-control" name="destino" id="destino" type="text" placeholder="Evento, Cliente, etc."/>
+							</div>
+							<div class="col-sm-4 col-xs-12">
+								<label for="cid_transp">Cidade:</label>
+								<input type="text" class="form-control " placeholder="Cidade" name="cidade" id="cidade" />
+							</div>
+							<div class="col-sm-3 col-xs-12">
+								<label for="uf_transp">UF/Pa&iacute;s:</label>
+								<div class="input-group">
+									<input type="text" class="form-control " placeholder="UF / Pais" name="estado_pais" id="estado_pais"/>
+						            <span class="input-group-btn">
+						            	<button class="btn btn-default" type="button" id="listaCidade">&nbsp;<span class="fluigicon fluigicon-search fluigicon-sm"></span></button>
+						            </span>						            
+						        </div>								
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-6 col-xs-12">
+								<label for="cliente">Endere&ccedil;o:</label>
+								<input class="form-control" name="endereco" id="endereco" type="text" placeholder="Endere&ccedil;o"/>
+							</div>
+							<div class="col-sm-3 col-xs-12">
+								<label for="cidade">Data Partida:</label>
+								<div class="form-group ">
+									<div class="input-group date" id="dtPickerPrazo_partida">
+										<input type="text" name="dtprazoativ_partida" id="dtprazoativ_partida" class="form-control readonly"/>
+										<span class="input-group-addon fs-cursor-pointer"> <span class="fluigicon fluigicon-calendar"></span>
+										</span>
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-3 col-xs-12">
+								<label for="cidade">Data Retorno:</label>
+								<div class="form-group ">
+									<div class="input-group date" id="dtPickerPrazo_retorno">
+										<input type="text" name="dtprazoativ_retorno" id="dtprazoativ_retorno" class="form-control readonly"/>
+										<span class="input-group-addon fs-cursor-pointer"> <span class="fluigicon fluigicon-calendar"></span>
+										</span>
+									</div>
+								</div>
+							</div>						
+						</div>
+					</div>					
 					<br/>
-					
 					<div id="div_verba">
 						<div class="row">
 							<div class="col-sm-12 col-xs-12">
@@ -196,9 +208,9 @@
 							<div class="col-sm-2 col-xs-12">
 								<label for="nec_tipo">Moeda?</label> 
 								<br>							
-								<input type="radio" name="moeda" id="moeda" style="cursor: pointer" value="real" checked="checked"/> Real
+								<input type="radio" name="moeda" id="moeda" style="cursor: pointer" value="real"/> Real
 								<br/>
-								<input type="radio" name="moeda" id="moeda" style="cursor: pointer" value="dolar" /> D&oacute;lar								
+								<input type="radio" name="moeda" id="moeda" style="cursor: pointer" value="dolar" /> Extrangeira </br> (descreva nas observa&ccedil;&otilde;es)								
 							</div>
 							<div class="col-sm-3 col-xs-12">
 								<label for="vl_adiant">Valor do Adiantamento:</label> 
@@ -212,7 +224,7 @@
 								<label for="data_retirada">Data a ser liberada:</label> 
 								<div class="form-group ">
 									<div class="input-group" id="dtPicker_retirada">
-										<input type="text" name="data_retirada" id="data_retirada" class="form-control" readonly="readonly"/>
+										<input type="text" name="data_retirada" id="data_retirada" class="form-control readonly"/>
 										<span class="input-group-addon fs-cursor-pointer"> <span class="fluigicon fluigicon-calendar"></span>
 										</span>
 									</div>
@@ -221,41 +233,29 @@
 						</div>						
 						<br/>
 						<div class="row">
-							<div class="col-sm-4 col-xs-12">
+							<div class="col-sm-3 col-xs-12">
 								<label for="user_entrega">CPF / CNPJ:</label>
 								<input type="text" name="cpf_cnpj" id="cpf_cnpj" class="form-control"/>								
+							</div>						
+							<div id="dados_deposito">
+								<div class="col-sm-3 col-xs-12">							
+									<label for="urgencia">Banco:</label>
+									<div class="input-group">
+										<input type="text" class="form-control readonly" placeholder="Banco Febraban" name="banco" id="banco" />
+							            <span class="input-group-btn">
+							            	<button class="btn btn-default" type="button" id="listBancos">&nbsp;<span class="fluigicon fluigicon-search fluigicon-sm"></span></button>
+							            </span>						            
+							        </div>
+								</div>	
+								<div class="col-sm-3 col-xs-12">
+									<label for="agencia">Ag&ecirc;ncia:</label> 
+									<input type="text" name="agencia" id="agencia" class="form-control" />
+								</div>
+								<div class="col-sm-3 col-xs-12">
+									<label for="conta_cor">Conta Corrente:</label> 
+									<input type="text" name="conta_cor" id="conta_cor" class="form-control" />
+								</div>							
 							</div>
-						</div>						
-						<br/>
-						<div class="row" id="dados_deposito">
-							<div class="col-sm-4 col-xs-12">
-								<label for="banco">Banco para deposito:</label> 
-								<input type="zoom" name="banco" id="banco" class="form-control"
-								data-zoom="{
-									        'displayKey':'Banco',
-									        'datasetId':'bancos',
-									        'fields':[
-									            {
-									               'field':'Cod_banco',
-									               'label':'C&Atilde;³digo',
-									               'search':'true'
-									            },{
-									              'field':'Banco',
-									              'label':'Banco',
-									              'search':'true'
-									            }
-									        ]
-									     }"
-								/>																
-							</div>
-							<div class="col-sm-3 col-xs-12">
-								<label for="agencia">Agencia:</label> 
-								<input type="text" name="agencia" id="agencia" class="form-control" />
-							</div>
-							<div class="col-sm-4 col-xs-12">
-								<label for="conta_cor">Conta Corrente:</label> 
-								<input type="text" name="conta_cor" id="conta_cor" class="form-control" />
-							</div>							
 						</div>
 					</div>
 					<br/>
@@ -264,20 +264,18 @@
 							<button class="form-control" name="recibo" id="recibo" >Gerar Recibo</button>	
 						</div>
 					</div>
-										
-					
 					<div class="row">
 						<div class="col-sm-3 col-xs-12">
-							<label for="matricula_emissor">Solicitante:</label>
-							<input type="text" class="form-control" placeholder="Matr&iacute;cula" name="matricula_emissor" id="matricula_emissor" readonly="readonly" />
+							<label for="matricula_emissor">Responsav&eacute;l:</label>
+							<input type="text" class="form-control readonly" placeholder="Matr&iacute;cula" name="matricula_emissor" id="matricula_emissor"/> 
 						</div>
 						<div class="col-sm-6 col-xs-12">
 							<label for="matricula_emissor">&nbsp;</label>
-							<input type="text" class="form-control" placeholder="Responsavel" name="user_emissor" id="user_emissor" readonly="readonly" />
+							<input type="text" class="form-control readonly" placeholder="Responsavel" name="user_emissor" id="user_emissor"  />
 						</div>
 						<div class="col-sm-3 col-xs-12">
 							<label for="data_emissor">Ramal:</label>
-							<input type="text" class="form-control" placeholder="Data" name="ramal_emissor" id="ramal_emissor" readonly="readonly" />
+							<input type="text" class="form-control readonly" placeholder="Data" name="ramal_emissor" id="ramal_emissor"  />
 						</div>
 					</div>
 					
@@ -307,15 +305,15 @@
 					<div class="row">
 						<div class="col-sm-3 col-xs-12">
 							<label for="matricula_aprov_imediato">Aprovador:</label>
-							<input type="text" class="form-control" placeholder="Matr&iacute;cula" name="matricula_aprov_imediato" id="matricula_aprov_imediato" readonly="readonly" />
+							<input type="text" class="form-control readonly" placeholder="Matr&iacute;cula" name="matricula_aprov_imediato" id="matricula_aprov_imediato"  />
 						</div>
 						<div class="col-sm-6 col-xs-12">
 							<label for="user_aprov_imediato">&nbsp;</label>
-							<input type="text" class="form-control" placeholder="Responsavel" name="user_aprov_imediato" id="user_aprov_imediato" readonly="readonly" />
+							<input type="text" class="form-control readonly" placeholder="Responsavel" name="user_aprov_imediato" id="user_aprov_imediato"  />
 						</div>
 						<div class="col-sm-3 col-xs-12">
 							<label for="data_aprov_imediato">Data:</label>
-							<input type="text" class="form-control" placeholder="Data" name="data_aprov_imediato" id="data_aprov_imediato" readonly="readonly" />
+							<input type="text" class="form-control readonly" placeholder="Data" name="data_aprov_imediato" id="data_aprov_imediato"  />
 						</div>
 					</div>
 				</div>
@@ -344,15 +342,15 @@
 					<div class="row">
 						<div class="col-sm-3 col-xs-12">
 							<label for="matricula_aprov_diretoria">Aprovador:</label>
-							<input type="text" class="form-control" placeholder="Matr&iacute;cula" name="matricula_aprov_diretoria" id="matricula_aprov_diretoria" readonly="readonly" />
+							<input type="text" class="form-control readonly" placeholder="Matr&iacute;cula" name="matricula_aprov_diretoria" id="matricula_aprov_diretoria"  />
 						</div>
 						<div class="col-sm-6 col-xs-12">
 							<label for="user_aprov_diretoria">&nbsp;</label>
-							<input type="text" class="form-control" placeholder="Responsavel" name="user_aprov_diretoria" id="user_aprov_diretoria" readonly="readonly" />
+							<input type="text" class="form-control readonly" placeholder="Responsavel" name="user_aprov_diretoria" id="user_aprov_diretoria"  />
 						</div>
 						<div class="col-sm-3 col-xs-12">
 							<label for="data_aprov_diretoria">Data:</label>
-							<input type="text" class="form-control" placeholder="Data" name="data_aprov_diretoria" id="data_aprov_diretoria" readonly="readonly" />
+							<input type="text" class="form-control readonly" placeholder="Data" name="data_aprov_diretoria" id="data_aprov_diretoria"  />
 						</div>
 					</div>
 				</div>
@@ -381,8 +379,8 @@
 												<input type="text" class="form-control" placeholder="Hotel" name="hotel" id="hotel" />							
 											</div>	
 											<div class="col-sm-6 col-xs-12">
-												<label for="atend">Endereço</label>
-												<input type="text" class="form-control" placeholder="Endereço do Hotel" name="end_hotel" id="end_hotel" />							
+												<label for="atend">Endere&ccedil;o</label>
+												<input type="text" class="form-control" placeholder="Endere&ccedil;o do Hotel" name="end_hotel" id="end_hotel" />							
 											</div>						
 											<div class="col-sm-3 col-xs-12">
 												<label for="desc_parecer">Valor:</label>
@@ -451,20 +449,53 @@
 						<div class="col-sm-12 col-xs-12" align="right">
 							<button type="button" class="btn btn-primary" data-toggle="button" onclick="addOpcoes('tbVoo')" id="bntAddVoo">Adicionar V&ocirc;o</button>
 						</div>	
+					</div>
+					<div id="tabela_veiculo">
+						<table tablename="tbVeiculo" cellspacing="0" id="tbVeiculo" noaddbutton=true class="table">
+							<thead>
+								<tr class="tableHeadRow">
+									<td><label>Melhor op&ccedil;&atilde;o de ve&iacute;culo</label></td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>
+										<div class="row">
+											<div class="col-sm-3 col-xs-12">
+												<label for="atend">Locadora</label>
+												<input type="text" class="form-control" placeholder="Locadora" name="locador" id="locador" />							
+											</div>	
+											<div class="col-sm-6 col-xs-12">
+												<label for="atend">Ve&iacute;culo</label>
+												<input type="text" class="form-control" placeholder="Ve&iacute;culo" name="veiculoLoc" id="veiculoLoc" />							
+											</div>						
+											<div class="col-sm-3 col-xs-12">
+												<label for="desc_parecer">Valor:</label>
+												<input type="text" class="form-control money" placeholder="Valor veiculo" name="val_veic" id="val_veic" />
+											</div>
+										</div>								
+									</td>
+								</tr>
+							</tbody>
+							
+						</table>
+						<div class="col-sm-12 col-xs-12" align="right">
+							<button type="button" class="btn btn-primary" data-toggle="button" onclick="addOpcoes('tbVeiculo')" id="bntAddVeic">Adicionar Veiculo</button>
+						</div>
 					</div>						
 					<br/>
 					<div class="row">
 						<div class="col-sm-3 col-xs-12">
 							<label for="matricula_cotacao">Executor:</label>
-							<input type="text" class="form-control" placeholder="Matr&iacute;cula" name="matricula_cotacao" id="matricula_cotacao" readonly="readonly" />
+							<input type="text" class="form-control readonly" placeholder="Matr&iacute;cula" name="matricula_cotacao" id="matricula_cotacao"  />
 						</div>
 						<div class="col-sm-6 col-xs-12">
 							<label for="user_cotacao">&nbsp;</label>
-							<input type="text" class="form-control" placeholder="Responsavel" name="user_cotacao" id="user_cotacao" readonly="readonly" />
+							<input type="text" class="form-control readonly" placeholder="Responsavel" name="user_cotacao" id="user_cotacao"  />
 						</div>
 						<div class="col-sm-3 col-xs-12">
 							<label for="data_cotacao">Data:</label>
-							<input type="text" class="form-control" placeholder="Data" name="data_cotacao" id="data_cotacao" readonly="readonly" />
+							<input type="text" class="form-control readonly" placeholder="Data" name="data_cotacao" id="data_cotacao"  />
 						</div>
 					</div>
 				</div>
@@ -484,7 +515,7 @@
 						</div>	
 						<div class="col-sm-3 col-xs-12">
 							<label for="desc_parecer">Valor:</label>
-							<input type="text" class="form-control money" placeholder="Valor do Hotel" name="val_hotel_select" id="val_hotel_select" readonly="readonly"/>
+							<input type="text" class="form-control money" placeholder="Valor do Hotel" name="val_hotel_select" id="val_hotel_select"/>
 						</div>
 						<div class="col-sm-6 col-xs-12">
 							<label for="just_hotel">Justificativa:</label>
@@ -501,9 +532,9 @@
 						</div>
 						<div class="col-sm-3 col-xs-12">
 							<label for="desc_parecer">Valor ida:</label>
-							<input type="text" class="form-control money" placeholder="Valor do v&ocirc;o" name="val_voo_select" id="val_voo_select" readonly="readonly"/>
+							<input type="text" class="form-control money" placeholder="Valor do v&ocirc;o" name="val_voo_select" id="val_voo_select" />
 							<label for="desc_parecer">Valor volta:</label>
-							<input type="text" class="form-control money" placeholder="Valor do v&ocirc;o" name="val_voo_select_volta" id="val_voo_select_volta" readonly="readonly"/>
+							<input type="text" class="form-control money" placeholder="Valor do v&ocirc;o" name="val_voo_select_volta" id="val_voo_select_volta" />
 						</div>
 						<div class="col-sm-2 col-xs-12">
 							<label for="hr_volta_sel">Hor&aacute;rio Ida</label>
@@ -517,19 +548,34 @@
 							<textarea name="just_voo" id="just_voo" class="form-control" rows="4"></textarea>
 						</div>
 					</div>
+					<div class="row" id="selecao_veiculo">
+						<div class="col-sm-3 col-xs-12">
+							<label for="matricula_aprov_diretoria">Op&ccedil;&atilde;o de veiculo:</label>
+							<input type="text" class="form-control" name="veic_select" id="veic_select">					        													
+						</div>	
+						<div class="col-sm-3 col-xs-12">
+							<label for="desc_parecer">Valor:</label>
+							<input type="text" class="form-control money" placeholder="Valor do Hotel" name="val_veic_select" id="val_veic_select" />
+						</div>
+						<div class="col-sm-6 col-xs-12">
+							<label for="just_hotel">Justificativa:</label>
+							<textarea name="just_veic" id="just_veic" class="form-control" rows="3"></textarea>
+						</div>
+					</div>
+					<br>
 					<br/>
 					<div class="row">
 						<div class="col-sm-3 col-xs-12">
 							<label for="matricula_selecao">Solicitante:</label>
-							<input type="text" class="form-control" placeholder="Matr&iacute;cula" name="matricula_selecao" id="matricula_selecao" readonly="readonly" />
+							<input type="text" class="form-control readonly" placeholder="Matr&iacute;cula" name="matricula_selecao" id="matricula_selecao"  />
 						</div>
 						<div class="col-sm-6 col-xs-12">
 							<label for="user_selecao">&nbsp;</label>
-							<input type="text" class="form-control" placeholder="Responsavel" name="user_selecao" id="user_selecao" readonly="readonly" />
+							<input type="text" class="form-control readonly" placeholder="Responsavel" name="user_selecao" id="user_selecao"  />
 						</div>
 						<div class="col-sm-3 col-xs-12">
 							<label for="data_selecao">Data:</label>
-							<input type="text" class="form-control" placeholder="Data" name="data_selecao" id="data_selecao" readonly="readonly" />
+							<input type="text" class="form-control readonly" placeholder="Data" name="data_selecao" id="data_selecao"  />
 						</div>
 					</div>
 				</div>
@@ -558,15 +604,15 @@
 					<div class="row">
 						<div class="col-sm-3 col-xs-12">
 							<label for="matricula_aprov_imediato2">Aprovador:</label>
-							<input type="text" class="form-control" placeholder="Matr&iacute;cula" name="matricula_aprov_imediato2" id="matricula_aprov_imediato2" readonly="readonly" />
+							<input type="text" class="form-control readonly" placeholder="Matr&iacute;cula" name="matricula_aprov_imediato2" id="matricula_aprov_imediato2"  />
 						</div>
 						<div class="col-sm-6 col-xs-12">
 							<label for="user_aprov_imediato2">&nbsp;</label>
-							<input type="text" class="form-control" placeholder="Responsavel" name="user_aprov_imediato2" id="user_aprov_imediato2" readonly="readonly" />
+							<input type="text" class="form-control readonly" placeholder="Responsavel" name="user_aprov_imediato2" id="user_aprov_imediato2"  />
 						</div>
 						<div class="col-sm-3 col-xs-12">
 							<label for="data_aprov_imediato2">Data:</label>
-							<input type="text" class="form-control" placeholder="Data" name="data_aprov_imediato2" id="data_aprov_imediato2" readonly="readonly" />
+							<input type="text" class="form-control readonly" placeholder="Data" name="data_aprov_imediato2" id="data_aprov_imediato2"  />
 						</div>
 					</div>
 				</div>
@@ -589,15 +635,15 @@
 					<div class="row">
 						<div class="col-sm-3 col-xs-12">
 							<label for="matricula_compra">Comprador:</label>
-							<input type="text" class="form-control" placeholder="Matr&iacute;cula" name="matricula_compra" id="matricula_compra" readonly="readonly" />
+							<input type="text" class="form-control readonly" placeholder="Matr&iacute;cula" name="matricula_compra" id="matricula_compra"  />
 						</div>
 						<div class="col-sm-6 col-xs-12">
 							<label for="user_compra">&nbsp;</label>
-							<input type="text" class="form-control" placeholder="Responsavel" name="user_compra" id="user_compra" readonly="readonly" />
+							<input type="text" class="form-control readonly" placeholder="Responsavel" name="user_compra" id="user_compra"  />
 						</div>
 						<div class="col-sm-3 col-xs-12">
 							<label for="data_compra">Data:</label>
-							<input type="text" class="form-control" placeholder="Data" name="data_compra" id="data_compra" readonly="readonly" />
+							<input type="text" class="form-control readonly" placeholder="Data" name="data_compra" id="data_compra"  />
 						</div>
 					</div>
 				</div>
@@ -631,15 +677,15 @@
 					<div class="row">
 						<div class="col-sm-3 col-xs-12">
 							<label for="matricula_compra_veic">Comprador:</label>
-							<input type="text" class="form-control" placeholder="Matr&iacute;cula" name="matricula_compra_veic" id="matricula_compra_veic" readonly="readonly" />
+							<input type="text" class="form-control readonly" placeholder="Matr&iacute;cula" name="matricula_compra_veic" id="matricula_compra_veic"  />
 						</div>
 						<div class="col-sm-6 col-xs-12">
 							<label for="user_compra_veic">&nbsp;</label>
-							<input type="text" class="form-control" placeholder="Responsavel" name="user_compra_veic" id="user_compra_veic" readonly="readonly" />
+							<input type="text" class="form-control readonly" placeholder="Responsavel" name="user_compra_veic" id="user_compra_veic"  />
 						</div>
 						<div class="col-sm-3 col-xs-12">
 							<label for="data_compra">Data:</label>
-							<input type="text" class="form-control" placeholder="Data" name="data_compra_veic" id="data_compra_veic" readonly="readonly" />
+							<input type="text" class="form-control readonly" placeholder="Data" name="data_compra_veic" id="data_compra_veic"  />
 						</div>
 					</div>
 				</div>
@@ -654,7 +700,7 @@
 				<div class="panel-body">
 					<div class="row">
 						<div class="col-sm-12 col-xs-12">
-							<div class="alert alert-info" role="alert" align="center"><strong>Aten&ccedil;&atilde;o!</strong> Anexar comprovante de entrega / dep&Atilde;Â³sito</div>
+							<div class="alert alert-info" role="alert" align="center"><strong>Aten&ccedil;&atilde;o!</strong> Anexar comprovante de entrega / dep&oacute;sito</div>
 						</div>
 					</div>
 					<div class="row">
@@ -662,7 +708,7 @@
 							<label for="vl_fornec">Valor Fornecido:</label> 
 							<input class="form-control money" name="vl_fornec" id="vl_fornec" type="text" />
 							<br/>
-							<input type="checkbox" name="especie" id="especie" value="especie"> Entregue em espécie	
+							<input type="checkbox" name="especie" id="especie" value="especie"> Entregue em esp&eacute;cie	
 						</div>
 						<div class="col-sm-9 col-xs-12">
 							<label for="desc_parecer">Observa&ccedil;&otilde;es:</label>
@@ -673,15 +719,15 @@
 					<div class="row">
 						<div class="col-sm-3 col-xs-12">
 							<label for="matricula_entrega">Aprovador:</label>
-							<input type="text" class="form-control" placeholder="Matr&iacute;cula" name="matricula_entrega" id="matricula_entrega" readonly="readonly" />
+							<input type="text" class="form-control readonly" placeholder="Matr&iacute;cula" name="matricula_entrega" id="matricula_entrega"  />
 						</div>
 						<div class="col-sm-6 col-xs-12">
 							<label for="user_entrega">&nbsp;</label>
-							<input type="text" class="form-control" placeholder="Responsavel" name="user_entrega" id="user_entrega" readonly="readonly" />
+			 				<input type="text" class="form-control readonly" placeholder="Responsavel" name="user_entrega" id="user_entrega"  />
 						</div>
 						<div class="col-sm-3 col-xs-12">
 							<label for="data_entrega">Data:</label>
-							<input type="text" class="form-control" placeholder="Data" name="data_entrega" id="data_entrega" readonly="readonly" />
+							<input type="text" class="form-control readonly" placeholder="Data" name="data_entrega" id="data_entrega"  />
 						</div>
 					</div>
 				</div>
