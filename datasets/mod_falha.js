@@ -7,6 +7,7 @@ function createDataset(fields, constraints, sortFields) {
 	    newDataset.addRow(new Array('Aquisição em desacordo com especificações do produto'));
 	    newDataset.addRow(new Array('Armazenamento inadequado / incorreto'));
 	    newDataset.addRow(new Array('Atendimento ineficaz ao cliente'));
+	    newDataset.addRow(new Array('Autorização para desvio'));
 	    newDataset.addRow(new Array('Chapas/peças armazenadas em obra de maneira inadequada'));
 	    newDataset.addRow(new Array('Concessão'));
 	    newDataset.addRow(new Array('Danos na montagem'));

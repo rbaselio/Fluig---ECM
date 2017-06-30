@@ -1,11 +1,11 @@
 function resolve(process,colleague){
 	
-	log.warn(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>USUARIO");
+	//log.warn(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>USUARIO");
 	
 	
 	var user = hAPI.getCardValue("matricula_user");
 	/*var user = 4599;*/
-	log.warn(user);
+	//log.warn(user);
 	var userList = new java.util.ArrayList();
 	userList.add(null);
 	
@@ -14,9 +14,9 @@ function resolve(process,colleague){
 	var dataset = DatasetFactory.getDataset("aprovadores", null, constraints, null);
 		
 	for(var i = 0; i < dataset.rowsCount; i++) {
-		log.warn(dataset.getValue(i, "DATA_VALUE"));
+		//log.warn(dataset.getValue(i, "DATA_VALUE"));
 		userList.add(dataset.getValue(i, "DATA_VALUE"));
 	}
-	log.warn(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>USUARIO");
+	//log.warn(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>USUARIO");
 	return userList;
 }
