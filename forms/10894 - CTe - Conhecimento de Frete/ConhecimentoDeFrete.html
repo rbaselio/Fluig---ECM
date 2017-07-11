@@ -13,9 +13,6 @@
 	<body onload="loadElementos()">
 		<div class="fluig-style-guide">
 			<form name="form" role="form">
-				
-				<input type="hidden" name="ChaveCTe" id="ChaveCTe" />											
-				
 				<div class="row">
 					<div class="col-sm-3 col-xs-12 text-center">
 						<img src="/resources/logo_casp/logocasp.gif" width="204" height="79">
@@ -29,17 +26,17 @@
 						<div class="row form-group">
 							<label for="chamado_num" class="col-sm-6 col-xs-12 text-right">Solicita&ccedil;&atilde;o n&deg;:</label>
 							<div class="col-sm-6 col-xs-12 controls">
-								<input type="text" name="num_processo" id="num_processo" class="form-control" readonly="readonly" />
+								<input type="text" name="num_processo" id="num_processo" class="form-control" />
 							</div>
 							<br/>
 							<label for="data_sol" class="col-sm-6 col-xs-12 text-right">Data:</label>
 							<div class="col-sm-6 col-xs-12 controls">
-								<input type="text" name="data_sol" id="data_sol" class="form-control" size="15" readonly="readonly" />
+								<input type="text" name="data_sol" id="data_sol" class="form-control" size="15" />
 							</div>
 							<br/>						
 							<label for="hora_sol" class="col-sm-6 col-xs-12 text-right">Hora:</label>
 							<div class="col-sm-6 col-xs-12 controls">
-								<input type="text" name="hora_sol" id="hora_sol" class="form-control" readonly="readonly" />
+								<input type="text" name="hora_sol" id="hora_sol" class="form-control" />
 							</div>
 						</div>
 					</div>
@@ -57,39 +54,37 @@
 								<label for="user_entrega">Cod. Cliente/Destino:</label>
 								<input type="text" name="codEmitente" id="codEmitente" class="form-control"/>
 							</div>
-							<div class="col-sm-6 col-xs-12">
+							<div class="col-sm-9 col-xs-12">
 								<label for="user_entrega">Nome Cliente/Destino:</label>
 								<input type="text" name="nomeEmit" id="nomeEmit" class="form-control"/>
-							</div>	
-							<div class="col-xs-3">
-								<label for="data_aval">Tipo do Pedido:</label>
-								<select name="tipoPedido" id="tipoPedido"  class="form-control">
-									<option value="armazenagem">Armazenagem</option>
-									<option value="avicola">Avicola</option>
-									<option value="exportacao">Exporta&ccedil;&atilde;o</option>
-									<option value="pecasAvi">Pe&ccedil;as</option>
-									<option value="">Geral</option>									
-								</select>
-							</div>													
+							</div>																											
 						</div>
 						<div class="row">
 							<div class="col-sm-3 col-xs-12">
 								<label for="user_entrega">Nr. CTe:</label>
+								<input type="hidden" name="ChaveCTe" id="ChaveCTe" />
 								<input type="text" name="nrCTe" id="nrCTe" class="form-control"/>
 							</div>
-							<div class="col-sm-3 col-xs-12">
+							<div class="col-sm-2 col-xs-12">
 								<label for="user_entrega">S&eacute;rie:</label>
 								<input type="text" name="SerieCTe" id="SerieCTe" class="form-control"/>
 							</div>
-							<div class="col-sm-3 col-xs-12">
+							<div class="col-sm-2 col-xs-12">
 								<label for="user_entrega">Estabelecimento:</label>
 								<input type="text" name="codEstab" id="codEstab" class="form-control"/>								
 							</div>
-							
 							<div class="col-sm-3 col-xs-12">
 								<label for="user_entrega">Data CTe:</label>
 								<input type="text" name="dataCTe" id="dataCTe" class="form-control"/>
-							</div>					
+							</div>
+							<div class="col-sm-2 col-xs-12">
+								<label for="user_entrega">Tipo Ve&iacute;culo:</label>
+								<select name="tipoVeiculo" id="tipoVeiculo"  class="form-control">
+									<option value="">N&atilde;o Consta</option>	
+									<option value="0">Truck</option>
+									<option value="1">Carreta</option>																										
+								</select>
+							</div>													
 						</div>
 						<div class="row">
 							<div class="col-sm-3 col-xs-12">
@@ -121,12 +116,18 @@
 									<option value="1">&Agrave; pagar</option>
 									<option value="2">Outros</option>																		
 								</select>
-							</div>	
+							</div>
 							<div class="col-sm-3 col-xs-12">
-								<label for="user_entrega">Valor Frete:</label>
-								<input type="text" name="ValorCTe" id="ValorCTe" class="form-control money"/>
-							</div>											
-							
+								<label for="user_entrega">Tomador:</label>
+								<select name="tomador" id="tomador"  class="form-control">
+									<option value="0">Remetente</option>
+									<option value="1">Expedidor</option>
+									<option value="2">Recebedor</option>
+									<option value="3">Destinatário</option>
+									<option value="4">Outros</option>
+									<option value="">Não consta</option>																		
+								</select>
+							</div>	
 						</div>
 						<div class="row">
 							<div class="col-sm-4 col-xs-12">
@@ -137,14 +138,6 @@
 								<label for="user_entrega">Estado:</label>
 								<input type="text" name="estado" id="estado" class="form-control"/>
 							</div>
-							<div class="col-sm-3 col-xs-12">
-								<label for="user_entrega">Tipo Ve&iacute;culo:</label>
-								<select name="tipoVeiculo" id="tipoVeiculo"  class="form-control">
-									<option value="">N&atilde;o Consta</option>	
-									<option value="0">Truck</option>
-									<option value="1">Carreta</option>																										
-								</select>
-							</div>	
 							<div class="col-sm-3 col-xs-12">
 								<label for="user_entrega">Tipo de rodado:</label>
 								<select name="tpRod" id="tpRod"  class="form-control">
@@ -157,10 +150,12 @@
 									<option value="05">Utilit&aacute;rio</option> 
 									<option value="06">Outros</option>																																			
 								</select>
-							</div>				
-							
-							
-						</div>
+							</div>	
+							<div class="col-sm-3 col-xs-12">
+								<label for="user_entrega">Valor Frete:</label>
+								<input type="text" name="ValorCTe" id="ValorCTe" class="form-control money"/>
+							</div>							
+						</div>						
 						<div class="row">
 							<div class="col-sm-3 col-xs-12">
 								<label for="user_entrega">Cod. Transp:</label>
@@ -175,20 +170,22 @@
 								<input type="text" name="vlCotacao" id="vlCotacao" class="form-control money"/>
 							</div>	
 						</div>
-						<div class="row">
-							<div class="col-sm-3 col-xs-12">
-								<label for="user_entrega">Melhor Cota&ccedil;&atilde;o:</label>
-								<input type="text" name="codMelhorTransp" id="codMelhorTransp" class="form-control"/>
-							</div>
-							<div class="col-sm-6 col-xs-12">
-								<label for="user_entrega">Transportador:</label>
-								<input type="text" name="melhorTransp" id="melhorTransp" class="form-control"/>
-							</div>								
-							<div class="col-sm-3 col-xs-12">
-								<label for="user_entrega">Vl. Melhor Valor:</label>
-								<input type="text" name="vlMelhor" id="vlMelhor" class="form-control money"/>
-							</div>									
-						</div>											
+						<div id="transportador">
+							<div class="row">
+								<div class="col-sm-3 col-xs-12">
+									<label for="user_entrega">Melhor Cota&ccedil;&atilde;o:</label>
+									<input type="text" name="codMelhorTransp" id="codMelhorTransp" class="form-control"/>
+								</div>
+								<div class="col-sm-6 col-xs-12">
+									<label for="user_entrega">Transportador:</label>
+									<input type="text" name="melhorTransp" id="melhorTransp" class="form-control"/>
+								</div>								
+								<div class="col-sm-3 col-xs-12">
+									<label for="user_entrega">Vl. Melhor Valor:</label>
+									<input type="text" name="vlMelhor" id="vlMelhor" class="form-control money"/>
+								</div>									
+							</div>	
+						</div>										
 						<br/>
 						<div class="row">
 							<table tablename="tb_cotacoes" id="tb_cotacoes" cellspacing="0"  class="table" noaddbutton="true" nodeletebutton="false">
@@ -201,7 +198,6 @@
 									<tr>
 										<td >
 											<div class = "nota_fiscal">
-												<input type="hidden" name="ChaveNF" id="ChaveNF" />
 												<div class="row">
 													<br/>
 													<div class="col-sm-12 col-xs-12">
@@ -211,26 +207,34 @@
 												<div class="row">						
 													<div class="col-sm-3 col-xs-12">
 														<label for="user_entrega">Nr. Nota Fiscal:</label>
+														<input type="hidden" name="ChaveNF" id="ChaveNF" class="chave1"/>
 														<input type="text" name="nrNota" id="nrNota" class="form-control"/>
 													</div>
-													<div class="col-sm-3 col-xs-12">
+													<div class="col-sm-2 col-xs-12">
 														<label for="user_entrega">S&eacute;rie:</label>
 														<input type="text" name="SerieNF" id="SerieNF" class="form-control"/>
 													</div>
+													<div class="col-sm-2 col-xs-12">
+														<label for="user_entrega">Cliente:</label>
+														<input type="text" name="codEmitNF" id="codEmitNF" class="form-control"/>
+													</div>
+													<div class="col-sm-5 col-xs-12">
+														<label for="user_entrega">Nome Cliente/Destino:</label>
+														<input type="text" name="nomeEmitNF" id="nomeEmitNF" class="form-control"/>
+													</div>													
+																			
+												</div>
+												<div class="row">
 													<div class="col-sm-3 col-xs-12">
 														<label for="user_entrega">Data NF:</label>
 														<input type="text" name="DateNF" id="DateNF" class="form-control"/>
-													</div>		
-													<div class="col-sm-3 col-xs-12">
 														<label for="user_entrega">Valor Frete NF:</label>
-														<input type="text" name="freteNF" id="freteNF" class="form-control money"/>
-													</div>	
-																			
-												</div>
-												<div class="row">						
-													<div class="col-xs-12">
-															<label for="desc_conclu">Coment&aacute;rios:</label>
-															<textarea class="form-control" name="narrativaNF" id="narrativaNF" rows="3"></textarea>		
+														<input type="text" name="VlfreteNF" id="VlfreteNF" class="form-control money"/>
+													
+													</div>						
+													<div class="col-xs-9">
+														<label for="desc_conclu">Coment&aacute;rios:</label>
+														<textarea class="form-control" name="narrativaNF" id="narrativaNF" rows="5"></textarea>		
 													</div>
 												</div>	
 											</div>												
@@ -238,67 +242,63 @@
 												<div class="row">
 													<div class="col-sm-2 col-xs-12">
 														<label for="user_entrega">Nr. Pedido:</label>
-														<input type="text" name="nrPedido" id="nrPedido" class="form-control"/>
+														<input type="hidden" name="chavePedido" id="chavePedido" class="chave2"/>
+														<input type="text" name="nrPedido" id="nrPedido" class="form-control" />
 													</div>
 													<div class="col-sm-1 col-xs-12">
 														<label for="user_entrega">Tipo:</label>
+														<input type="hidden" name="tipoPedido" id="tipoPedido"/>
 														<input type="text" name="tp_pedido" id="tp_pedido" class="form-control"/>
 													</div>
 													<div class="col-sm-3 col-xs-12">
-														<label for="user_entrega">Cliente:</label>
-														<input type="text" name="codEmitentePed" id="codEmitentePed" class="form-control"/>
+														<label for="user_entrega">vl. Frete no Pedido:</label>
+														<input type="text" name="VlFretePed" id="VlFretePed" class="form-control money"/>
+													</div>	
+													<div class="col-sm-3 col-xs-12">
+														<label for="user_entrega">vl. Frete Rateio:</label>
+														<input type="text" name="VlFreteRefPed" id="VlFreteRefPed" class="form-control money"/>
 													</div>
-													<div class="col-sm-6 col-xs-12">
-														<label for="user_entrega">Nome Cliente/Destino:</label>
-														<input type="text" name="nomeEmitPed" id="nomeEmitPed" class="form-control"/>
-													</div>
-												</div>												
+													<div class="col-sm-3 col-xs-12">
+														<label for="user_entrega">vl. Frete Consumido:</label>
+														<input type="text" name="VlFreteConsPed" id="VlFreteConsPed" class="form-control money"/>
+													</div>																									
+												</div>								
 											</div>											
 											<div class="row">
 												<div class="col-sm-3 col-xs-12">
 													<label for="user_entrega">Cod.Item:</label>
-													<input type="text" name="codItem" id="codItem" class="form-control"/>
+													<input type="text" name="codItem" id="codItem" class="form-control chave3"/>
 												</div>
 												<div class="col-sm-6 col-xs-12">
 													<label for="user_entrega">Descri&ccedil;&atilde;o:</label>
 													<input type="text" name="descItem" id="descItem" class="form-control"/>
 												</div>
 												<div class="col-sm-3 col-xs-12">
-													<label for="user_entrega">vl. Frete Item:</label>
-													<input type="text" name="freteItNf" id="freteItNf" class="form-control money"/>
-												</div>													
-											</div>
-											<div class="row">
-												<div class="col-sm-2 col-xs-12">
-													<label for="user_entrega">Qt. Fat:</label>
-													<input type="text" name="qtFat" id="qtFat" class="form-control"/>
-												</div>
-												<div class="col-sm-2 col-xs-12">
-													<label for="user_entrega">Qt. Ped:</label>
-													<input type="text" name="qtPed" id="qtPed" class="form-control"/>
-												</div>
-												<div class="col-sm-2 col-xs-12">
-													<label for="user_entrega">Qt. Pend.:</label>
-													<input type="text" name="qtPendt" id="qtPendt" class="form-control"/>
-												</div>
-												<div class="col-sm-3 col-xs-12">
 													<label for="user_entrega">Vl. Item:</label>
 													<input type="text" name="vlItem" id="vlItem" class="form-control money"/>
 												</div>
-												<div class="col-sm-3 col-xs-12">
-													<label for="user_entrega">vl. Frete Pedido:</label>
-													<input type="text" name="fretePed" id="fretePed" class="form-control money"/>
-												</div>												
-											</div>																					
-											
+											</div>											
+											<div class="row">
+												<div class="col-sm-2 col-xs-12">
+													<label for="user_entrega">Qt. Fat:</label>
+													<input type="text" name="qtFat" id="qtFat" class="form-control quant"/>
+												</div>
+												<div class="col-sm-2 col-xs-12">
+													<label for="user_entrega">Qt. Ped:</label>
+													<input type="text" name="qtPed" id="qtPed" class="form-control quant"/>
+												</div>
+												<div class="col-sm-2 col-xs-12">
+													<label for="user_entrega">Qt. Pend.:</label>
+													<input type="text" name="qtPendt" id="qtPendt" class="form-control quant"/>
+												</div>																								
+											</div>											
 										</td>								
 									</tr>
-								</tbody>
-								
+								</tbody>								
 							</table>							
 						
 						</div>
-						<div class="row divAddButton cotacoesButton">
+						<div class="row divAddButton">
 							<div class="col-sm-12 col-xs-12" align="right">
 								<button type="button" class="btn btn-primary" data-toggle="button" onclick="addLinha('tb_cotacoes')">Adicionar Item</button>
 							</div>
@@ -306,15 +306,15 @@
 						<div class="row">
 							<div class="col-sm-3 col-xs-12">
 								<label for="matricula_analista">Analista:</label>
-								<input type="text" class="form-control" placeholder="Matr&iacute;cula" name="matricula_emissao" id="matricula_emissao" readonly="readonly" />
+								<input type="text" class="form-control" placeholder="Matr&iacute;cula" name="matricula_emissao" id="matricula_emissao" />
 							</div>
 							<div class="col-sm-6 col-xs-12">
 								<label for="user_analista">&nbsp;</label>
-								<input type="text" class="form-control" placeholder="Responsavel" name="user_amissao" id="user_amissao" readonly="readonly" />
+								<input type="text" class="form-control" placeholder="Responsavel" name="user_amissao" id="user_amissao" />
 							</div>
 							<div class="col-sm-3 col-xs-12">
 								<label for="data_analista">Data:</label>
-								<input type="text" class="form-control" placeholder="Data" name="data_emissao" id="data_emissao" readonly="readonly" />
+								<input type="text" class="form-control" placeholder="Data" name="data_emissao" id="data_emissao" />
 							</div>
 						</div>	
 					</div>
@@ -338,15 +338,15 @@
 						<div class="row">
 							<div class="col-sm-3 col-xs-12">
 								<label for="matricula_analista">Analista:</label>
-								<input type="text" class="form-control" placeholder="Matr&iacute;cula" name="matricula_analista" id="matricula_analista" readonly="readonly" />
+								<input type="text" class="form-control" placeholder="Matr&iacute;cula" name="matricula_analista" id="matricula_analista" />
 							</div>
 							<div class="col-sm-6 col-xs-12">
 								<label for="user_analista">&nbsp;</label>
-								<input type="text" class="form-control" placeholder="Responsavel" name="user_analista" id="user_analista" readonly="readonly" />
+								<input type="text" class="form-control" placeholder="Responsavel" name="user_analista" id="user_analista" />
 							</div>
 							<div class="col-sm-3 col-xs-12">
 								<label for="data_analista">Data:</label>
-								<input type="text" class="form-control" placeholder="Data" name="data_analista" id="data_analista" readonly="readonly" />
+								<input type="text" class="form-control" placeholder="Data" name="data_analista" id="data_analista" />
 							</div>
 						</div>	
 					</div>
@@ -368,19 +368,12 @@
 								
 								<div id="ccusto_contratante">
 									<label for="ccusto">C. Custo:</label>
-									<input type="zoom"  placeholder="Centro de Custo" name="ccusto_contrat" id="ccusto_contrat" class="form-control"
-																data-zoom="{
-																	        'displayKey':'Descricao',
-																	        'datasetId':'centros_de_custos',
-																	        'fields':[
-																	            {
-																	               'field':'Descricao',
-																	               'label':'Centros de Custos',
-																	               'search':'true'
-																	            }
-																	        ]
-																	     }"
-		 							/>									
+									<div class="input-group">
+										<input type="text" class="form-control readonly" placeholder="Centro de Custo" name="ccusto_contrat" id="ccusto_contrat" />
+							            <span class="input-group-btn">
+							            	<button class="btn btn-default" type="button" id="listCcusto">&nbsp;<span class="fluigicon fluigicon-search fluigicon-sm"></span></button>
+							            </span>						            
+							        </div>																	
 								</div>						
 															
 							</div>						
@@ -393,15 +386,15 @@
 						<div class="row">
 							<div class="col-sm-3 col-xs-12">
 								<label for="matricula_contratante">Aprovador:</label>
-								<input type="text" class="form-control" placeholder="Matr&iacute;cula" name="matricula_contratante" id="matricula_contratante" readonly="readonly" />
+								<input type="text" class="form-control" placeholder="Matr&iacute;cula" name="matricula_contratante" id="matricula_contratante" />
 							</div>
 							<div class="col-sm-6 col-xs-12">
 								<label for="user_contratante">&nbsp;</label>
-								<input type="text" class="form-control" placeholder="Responsavel" name="user_contratante" id="user_contratante" readonly="readonly" />
+								<input type="text" class="form-control" placeholder="Responsavel" name="user_contratante" id="user_contratante" />
 							</div>
 							<div class="col-sm-3 col-xs-12">
 								<label for="data_contratante">Data:</label>
-								<input type="text" class="form-control" placeholder="Data" name="data_contratante" id="data_contratante" readonly="readonly" />
+								<input type="text" class="form-control" placeholder="Data" name="data_contratante" id="data_contratante" />
 							</div>
 						</div>
 					</div>
@@ -430,15 +423,15 @@
 						<div class="row">
 							<div class="col-sm-3 col-xs-12">
 								<label for="matricula_cancelamento">Aprovador:</label>
-								<input type="text" class="form-control" placeholder="Matr&iacute;cula" name="matricula_cancelamento" id="matricula_cancelamento" readonly="readonly" />
+								<input type="text" class="form-control" placeholder="Matr&iacute;cula" name="matricula_cancelamento" id="matricula_cancelamento" />
 							</div>
 							<div class="col-sm-6 col-xs-12">
 								<label for="user_cancelamento">&nbsp;</label>
-								<input type="text" class="form-control" placeholder="Responsavel" name="user_cancelamento" id="user_cancelamento" readonly="readonly" />
+								<input type="text" class="form-control" placeholder="Responsavel" name="user_cancelamento" id="user_cancelamento" />
 							</div>
 							<div class="col-sm-3 col-xs-12">
 								<label for="data_cancelamento">Data:</label>
-								<input type="text" class="form-control" placeholder="Data" name="data_cancelamento" id="data_cancelamento" readonly="readonly" />
+								<input type="text" class="form-control" placeholder="Data" name="data_cancelamento" id="data_cancelamento" />
 							</div>
 						</div>
 					</div>
@@ -467,21 +460,13 @@
 								<tbody>
 									<tr>
 										<td class="col-sm-1 col-xs-12 numeracao_rateio"></td>
-										<td class="col-sm-3 col-xs-12">											
-											<input type="zoom"  placeholder="Centro de Custo" name="ccusto_rateio" id="ccusto_rateio" class="form-control"
-																		data-zoom="{
-																			        'displayKey':'Descricao',
-																			        'datasetId':'centros_de_custos',
-																			        'fields':[
-																			            {
-																			               'field':'Descricao',
-																			               'label':'Centros de Custos',
-																			               'search':'true'
-																			            }
-																			        ]
-																			     }"
-				 							/>		
-											
+										<td class="col-sm-3 col-xs-12">
+											<div class="input-group">
+												<input type="text" class="form-control readonly" placeholder="Centro de Custo" name="ccusto_rateio" id="ccusto_rateio" />
+									            <span class="input-group-btn">
+									            	<button class="btn btn-default" type="button" onclick='zoomCCustoLinha(this);' id="listCcustoRateio">&nbsp;<span class="fluigicon fluigicon-search fluigicon-sm"></span></button>
+									            </span>						            
+									        </div>
 										</td>
 										<td class="col-sm-6 col-xs-12">
 											<input type="text" name="desc_rateio" id="desc_rateio" class="form-control"/>											
@@ -512,15 +497,15 @@
 						<div class="row">
 							<div class="col-sm-3 col-xs-12">
 								<label for="matricula_checkDados">Analista:</label>
-								<input type="text" class="form-control" placeholder="Matr&iacute;cula" name="matricula_checkDados" id="matricula_checkDados" readonly="readonly" />
+								<input type="text" class="form-control" placeholder="Matr&iacute;cula" name="matricula_checkDados" id="matricula_checkDados" />
 							</div>
 							<div class="col-sm-6 col-xs-12">
 								<label for="user_checkDados">&nbsp;</label>
-								<input type="text" class="form-control" placeholder="Responsavel" name="user_checkDados" id="user_checkDados" readonly="readonly" />
+								<input type="text" class="form-control" placeholder="Responsavel" name="user_checkDados" id="user_checkDados" />
 							</div>
 							<div class="col-sm-3 col-xs-12">
 								<label for="data_checkDados">Data:</label>
-								<input type="text" class="form-control" placeholder="Data" name="data_checkDados" id="data_checkDados" readonly="readonly" />
+								<input type="text" class="form-control" placeholder="Data" name="data_checkDados" id="data_checkDados" />
 							</div>
 						</div>	
 					</div>
@@ -549,15 +534,15 @@
 						<div class="row">
 							<div class="col-sm-3 col-xs-12">
 								<label for="matricula_aprov_checkDados">Aprovador:</label>
-								<input type="text" class="form-control" placeholder="Matr&iacute;cula" name="matricula_aprov_checkDados" id="matricula_aprov_checkDados" readonly="readonly" />
+								<input type="text" class="form-control" placeholder="Matr&iacute;cula" name="matricula_aprov_checkDados" id="matricula_aprov_checkDados" />
 							</div>
 							<div class="col-sm-6 col-xs-12">
 								<label for="user_aprov_checkDados">&nbsp;</label>
-								<input type="text" class="form-control" placeholder="Responsavel" name="user_aprov_checkDados" id="user_aprov_checkDados" readonly="readonly" />
+								<input type="text" class="form-control" placeholder="Responsavel" name="user_aprov_checkDados" id="user_aprov_checkDados" />
 							</div>
 							<div class="col-sm-3 col-xs-12">
 								<label for="data_aprov_checkDados">Data:</label>
-								<input type="text" class="form-control" placeholder="Data" name="data_aprov_checkDados" id="data_aprov_checkDados" readonly="readonly" />
+								<input type="text" class="form-control" placeholder="Data" name="data_aprov_checkDados" id="data_aprov_checkDados" />
 							</div>
 						</div>
 					</div>
@@ -586,15 +571,15 @@
 						<div class="row">
 							<div class="col-sm-3 col-xs-12">
 								<label for="matricula_aprov_final">Aprovador:</label>
-								<input type="text" class="form-control" placeholder="Matr&iacute;cula" name="matricula_aprov_final" id="matricula_aprov_final" readonly="readonly" />
+								<input type="text" class="form-control" placeholder="Matr&iacute;cula" name="matricula_aprov_final" id="matricula_aprov_final" />
 							</div>
 							<div class="col-sm-6 col-xs-12">
 								<label for="user_aprov_final">&nbsp;</label>
-								<input type="text" class="form-control" placeholder="Responsavel" name="user_aprov_final" id="user_aprov_final" readonly="readonly" />
+								<input type="text" class="form-control" placeholder="Responsavel" name="user_aprov_final" id="user_aprov_final" />
 							</div>
 							<div class="col-sm-3 col-xs-12">
 								<label for="data_aprov_final">Data:</label>
-								<input type="text" class="form-control" placeholder="Data" name="data_aprov_final" id="data_aprov_final" readonly="readonly" />
+								<input type="text" class="form-control" placeholder="Data" name="data_aprov_final" id="data_aprov_final" />
 							</div>
 						</div>
 					</div>
@@ -618,15 +603,15 @@
 						<div class="row">
 							<div class="col-sm-3 col-xs-12">
 								<label for="matricula_lancDatasul">lancDatasul:</label>
-								<input type="text" class="form-control" placeholder="Matr&iacute;cula" name="matricula_lancDatasul" id="matricula_lancDatasul" readonly="readonly" />
+								<input type="text" class="form-control" placeholder="Matr&iacute;cula" name="matricula_lancDatasul" id="matricula_lancDatasul" />
 							</div>
 							<div class="col-sm-6 col-xs-12">
 								<label for="user_lancDatasul">&nbsp;</label>
-								<input type="text" class="form-control" placeholder="Responsavel" name="user_lancDatasul" id="user_lancDatasul" readonly="readonly" />
+								<input type="text" class="form-control" placeholder="Responsavel" name="user_lancDatasul" id="user_lancDatasul" />
 							</div>
 							<div class="col-sm-3 col-xs-12">
 								<label for="data_lancDatasul">Data:</label>
-								<input type="text" class="form-control" placeholder="Data" name="data_lancDatasul" id="data_lancDatasul" readonly="readonly" />
+								<input type="text" class="form-control" placeholder="Data" name="data_lancDatasul" id="data_lancDatasul" />
 							</div>
 						</div>	
 					</div>

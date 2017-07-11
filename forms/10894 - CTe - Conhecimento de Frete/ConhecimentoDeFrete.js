@@ -1,36 +1,196 @@
 var row, anexos, matr, process, isMobile;
 
+var chaveNF;
+
 //comportamento do form
 function loadElementos(){
+	
+	// get rows as array and detach them from the table
+    var rows = $('#tb_cotacoes tr:not(:first)').detach();
+    // sort rows by the number in the td with class "pts"
+    rows.sort(function (row1, row2) {
+    	if ($(row1).find('.chave1').val() < $(row2).find('.chave1').val()) return -1;
+    	if ($(row1).find('.chave1').val() > $(row2).find('.chave1').val()) return 1;
+    	if ($(row1).find('.chave2').val() < $(row2).find('.chave2').val()) return -1;
+    	if ($(row1).find('.chave2').val() > $(row2).find('.chave2').val()) return 1;
+    	if ($(row1).find('.chave3').val() < $(row2).find('.chave3').val()) return -1;
+    	if ($(row1).find('.chave3').val() > $(row2).find('.chave3').val()) return 1;
+    	return 0;
+    	
+	});
+    // add each row back to the table in the sorted order (and update the rank)
+    rows.each(function () {
+    	$(this).appendTo('#tb_cotacoes');
+    });
+	
+	$("input[id^='ChaveNF']").each(function(i) {
+		var chaveNF = $(this);
+		$("input[id^='ChaveNF']").each(function(i) {
+			if ($(this).val() == chaveNF.val() && !$(this).is(chaveNF)) {
+				$(this).closest('div.nota_fiscal').hide();
+			}				
+		});
+		chaveNF.val(chaveNF.val() + " - " + i);	
+	});
+	
+	$("input[id^='chavePedido']").each(function(i) {
+		var nrPedido = $(this);
+		$("input[id^='chavePedido']").each(function(i) {
+			if ($(this).val() == nrPedido.val() && !$(this).is(nrPedido)) {
+				$(this).closest('div.pedido').hide();
+			}				
+		});
+		nrPedido.val(nrPedido.val() + " - " + i);	
+	});
+	
+	
+	$('#tipoVeiculo').change(function() {
+		if ($(this).val() != '') $("#transportador").show();
+		else $("#transportador").hide();		
+	}).trigger('change');
 	
 	
 	
 	if ($('#tipoPedido').val() != "" ) {
 		$("#ccusto_contratante").hide();				
-	}	
-	
-	$(':radio[id="aprov_contratante"]').change(function() {
-		if ($(this).filter(':checked').val() == 'nao'){
-			FLUIGC.message.alert({
-			    message: "<strong>Antes de enviar para a etapa de cancelamento, certifique-se de ter realizado a negociações necessarias junto a transportadora:</strong>",
-			    title: 'CANCELAMENTO',
-			    label: 'OK'
-			});
-					
-		}		
-	}).trigger('change');
+	}
 	
 	setTimeout(function () {
 		$("textarea").trigger('keyup');		
 	}, 100);
 	
-	$(".money").mask('000.000.000,00', {reverse: true})
+	$(".money").mask('#000.000.000,00', {reverse: true})
 		.on('blur', function(){
 			if ($(this).val() == '') $(this).val('0,00')
 			else if ($(this).val().substring($(this).val().lastIndexOf(",")).length <= 2) $(this).val($(this).val() + ',00');
 	}).trigger('blur');
 	
+	$(".quant").mask('000.000.000,0000', {reverse: true})
+	.on('blur', function(){
+		if ($(this).val() == '') $(this).val('0,0000')
+		else if ($(this).val().substring($(this).val().lastIndexOf(",")).length <= 4) $(this).val($(this).val() + ',0000');
+	}).trigger('blur');
+	
+	
+	$('#listCcusto').click(function() {
+		var thisModal = FLUIGC.modal({
+		    title: 'Lista de Centros de Custos',
+		    content: '<div id="postEmb"></div>',
+		    id: 'fluig-modal',
+		    actions: [{
+		        'label': 'Fechar',
+		        'autoClose': true
+		    }]
+		}, function(err, data) {			
+			var thisTable = FLUIGC.datatable('#postEmb', {
+			    dataRequest: {
+			        url: '/api/public/ecm/dataset/search',
+			        options: {
+			            contentType:"application/json",
+			            dataType: 'json',
+			            method: 'POST',
+			            data: JSON.stringify({"datasetId" : "TOTVSCentroDeCusto","limit" : "0"}),
+			            crossDomain: true,
+			            cache: false
+			        },
+			        root: 'content'
+			    },
+			    renderContent: ['cod_ccusto', 'descricao'], 
+			    header: [{'title': 'Cod.'},
+			             {'title': 'Descição'}],
+			    multiSelect: false,
+			    search: {
+			        enabled: true,
+			        onSearch: function(response) {
+			        	$.ajax({
+							  type: 'POST',
+							  contentType: 'application/json',
+							  dataType: 'json',
+							  url: '/api/public/ecm/dataset/search',
+							  data: JSON.stringify({"datasetId" : "TOTVSCentroDeCusto","limit" : "0", "searchField" : "descricao", "searchValue" : response }),
+							  success: function(data) {
+								  thisTable.reload(data.content);
+							  }
+							});
+			        }
+			    },
+			    scroll: {
+			        target: '#postEmb',
+			        enabled: true			        
+		        },
+			    tableStyle: 'table-striped'
+			}).on('dblclick', function(ev) {
+				var index = thisTable.selectedRows()[0];
+			    var selected = thisTable.getRow(index);	
+			    $('#ccusto_contrat').val(selected.cod_ccusto + " - " + selected.descricao);
+			    thisModal.remove();					    
+			});
+		});
+		$(".modal-body").css("max-height" , window.innerHeight/2 + 'px');
+	});
 	 numerarLinha();
+}
+
+function zoomCCustoLinha(linha){
+	var nome = $(linha).attr("name");
+	row = nome.substring(nome.lastIndexOf("_") + 1);
+	
+	var thisModal = FLUIGC.modal({
+	    title: 'Lista de Centros de Custos',
+	    content: '<div id="postEmb"></div>',
+	    id: 'fluig-modal',
+	    actions: [{
+	        'label': 'Fechar',
+	        'autoClose': true
+	    }]
+	}, function(err, data) {			
+		var thisTable = FLUIGC.datatable('#postEmb', {
+		    dataRequest: {
+		        url: '/api/public/ecm/dataset/search',
+		        options: {
+		            contentType:"application/json",
+		            dataType: 'json',
+		            method: 'POST',
+		            data: JSON.stringify({"datasetId" : "TOTVSCentroDeCusto","limit" : "0"}),
+		            crossDomain: true,
+		            cache: false
+		        },
+		        root: 'content'
+		    },
+		    renderContent: ['cod_ccusto', 'descricao'], 
+		    header: [{'title': 'Cod.'},
+		             {'title': 'Descição'}],
+		    multiSelect: false,
+		    search: {
+		        enabled: true,
+		        onSearch: function(response) {
+		        	$.ajax({
+						  type: 'POST',
+						  contentType: 'application/json',
+						  dataType: 'json',
+						  url: '/api/public/ecm/dataset/search',
+						  data: JSON.stringify({"datasetId" : "TOTVSCentroDeCusto","limit" : "0", "searchField" : "descricao", "searchValue" : response }),
+						  success: function(data) {
+							  thisTable.reload(data.content);							  
+		        		  }
+					});		        		
+		        }
+		    },
+		    scroll: {
+		        target: '#postEmb',
+		        enabled: true			        
+	        },
+		    tableStyle: 'table-striped'
+		}).on('dblclick', function(ev) {
+			var index = thisTable.selectedRows()[0];
+		    var selected = thisTable.getRow(index);	
+		    $("#ccusto_rateio___" + row).val(selected.cod_ccusto + " - " + selected.descricao);
+		    thisModal.remove();					    
+		});
+	});
+	$(".modal-body").css("max-height" , window.innerHeight/2 + 'px');
+	
+	
 }
 
 function numerarLinha(){
@@ -128,8 +288,7 @@ function ativaPreencheCampos(modeView, numState, matricula, WKNumProces, documen
 			showElemento($("#pn_contratante"));	
 			$('#matricula_contratante').attr("readOnly", true).val(matricula);
 			$('#user_contratante').attr("readOnly", true).val(usuario);
-			$("#data_contratante").attr("readOnly", true).val(data);		
-					
+			$("#data_contratante").attr("readOnly", true).val(data);
 		}
 		
 		if (numState == 38){
@@ -171,11 +330,12 @@ function ativaPreencheCampos(modeView, numState, matricula, WKNumProces, documen
 function showElemento(elemento){	
 	elemento.show()
 			.css('pointer-events', 'all')
-			.find('input[type=text], input[type=zoom], textarea').removeAttr('readOnly');	
-	
+			.find('input[type=text], input[type=zoom], textarea').each(function(i) {
+				if (!$(this).hasClass('readonly')) $(this).removeAttr('readOnly');
+			});
 	elemento.find('.table').find("tr").each(function(){
-		   $(this).find("td:first").show();
-	});
+				$(this).find("td:first").show();
+			})
 	elemento.find('.divAddButton').show();
 	
 	setTimeout(function () {
@@ -195,7 +355,7 @@ function blockAll(modeView) {
 					.css('pointer-events', 'all')
 					.each(function(){
 						if ($(this).val() != "" && parseFloat($(this).val().replace(/[^0-9\,]+/g,"").replace(",",".")) != 0.00) {
-							$(this).closest('.panel').show();							
+							$(this).closest('.panel').show();
 						}
 					});
 		}
@@ -204,29 +364,12 @@ function blockAll(modeView) {
 				   $(this).find("td:first").hide();
 			});
 		}
-		$(this).find('.divAddButton').hide();		
+		$(this).find('.divAddButton').hide();
 	});
-	
-	$('.nota_fiscal').each(function(i) {				
-		$(this).hide()
-				.find('input[type=text]')
-				.each(function(){
-					if ($(this).val() != "" && parseFloat($(this).val().replace(/[^0-9\,]+/g,"").replace(",",".")) != 0.00) {
-						$(this).closest('.nota_fiscal').show();							
-					}
-				});
-		
-	});
-	$('.pedido').each(function(i) {				
-		$(this).hide()
-				.find('input[type=text]')
-				.each(function(){
-					if ($(this).val() != "" && parseFloat($(this).val().replace(/[^0-9\,]+/g,"").replace(",",".")) != 0.00) {
-						$(this).closest('.pedido').show();							
-					}
-				});		
-	});
-	
 }
+	
+	
+	
+
 
 

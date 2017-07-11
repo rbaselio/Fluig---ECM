@@ -666,13 +666,13 @@
 	anexo_proces.NR_DOCUMENTO, 
     concat("ml", lpad(documento.COD_EMPRESA, 3, '0'), lpad(documento.COD_LISTA, 3, '0')) AS TABELA,
 	
-    DATE_FORMAT(ativ_inicial.DAT_CONCLUS_TAR,'%d/%m/%Y') as DAT_ABERT,
+    DATE_FORMAT(PROCES_WORKFLOW.START_DATE,'%d/%m/%Y') as DAT_ABERT,
     IF (PROCES_WORKFLOW.LOG_ATIV, "EM ANDAMENTO", "FINALIZADO") AS _STATUS,
     
     
     ESTADO_PROCES.NOM_ESTADO,
     fdn_user.FULL_NAME,
-    IF (PROCES_WORKFLOW.LOG_ATIV, DATE_FORMAT( TAR_PROCES.DAT_FIM_PRAZ,'%d/%m/%Y') , NULL) AS DAT_FIM_PRAZ, 
+    IF (PROCES_WORKFLOW.LOG_ATIV, if( TAR_PROCES.DAT_FIM_PRAZ != null, DATE_FORMAT( TAR_PROCES.DAT_FIM_PRAZ,'%d/%m/%Y'), DATE_FORMAT( TAR_PROCES.DEADLINE,'%d/%m/%Y')) , NULL) AS DAT_FIM_PRAZ, 
     
     PROCES_WORKFLOW.NUM_PROCES num_processo,
     ml001006.data_sol,
@@ -703,7 +703,7 @@
     
     ml001006.obs_compl,
     ml001006.resp_exec,
-    ml001006.prazo,
+    if (ml001006.prazo = '',DATE_FORMAT( TAR_PROCES.DAT_FIM_PRAZ,'%d/%m/%Y'), ml001006.prazo) as prazo,
     ml001006.atend,
     ml001006.desc_acoes,
     ml001006.dt_atend,

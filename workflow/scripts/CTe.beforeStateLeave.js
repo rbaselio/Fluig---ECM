@@ -2,7 +2,7 @@ function beforeStateLeave(sequenceId){
 	
 	hAPI.setCardValue("num_processo", getValue("WKNumProces"));
 	
-	if (sequenceId == 29) {
+	if (sequenceId == 3) {
 		var calendar = java.util.Calendar.getInstance().getTime();
         var docs = hAPI.listAttachments();
         for (var i = 0; i < docs.size(); i++) {

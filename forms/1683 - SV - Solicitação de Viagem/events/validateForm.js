@@ -90,7 +90,7 @@ function validateForm(form){
 			var dataSaida = new Date(dt_saida[2], dt_saida[1] - 1, dt_saida[0]);
 			if (isNaN(dataSaida.getTime()))  message += "<br/>- Informe a data prevista de retirada;"; 
 			
-			if (dataEntrada > dataSaida) message += "<br/>- A data de retirada não pode ser menor que hoje ou que a data de partida;";
+			//if (dataSaida > dataEntrada ) message += "<br/>- A data de retirada não pode ser menor que hoje ou que a data de partida;";
 		}
 	}
 	

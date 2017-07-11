@@ -10,7 +10,7 @@ function validateForm(form){
 	
 	
 	for(var i = 0; i < datasetProcessAttachment.rowsCount; i++) {
-		//log.warn(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
+		log.warn(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
 		var constraintProcessHistory1 = DatasetFactory.createConstraint('processHistoryPK.movementSequence', datasetProcessAttachment.getValue(i, "originalMovementSequence"), datasetProcessAttachment.getValue(i, "originalMovementSequence"), ConstraintType.MUST);
 		var constraintProcessHistory2 = DatasetFactory.createConstraint('processHistoryPK.processInstanceId', datasetProcessAttachment.getValue(i, "processAttachmentPK.processInstanceId"), datasetProcessAttachment.getValue(i, "processAttachmentPK.processInstanceId"), ConstraintType.MUST);
 		var constraintProcessHistory3 = DatasetFactory.createConstraint('processHistoryPK.companyId', datasetProcessAttachment.getValue(i, "processAttachmentPK.companyId"), datasetProcessAttachment.getValue(i, "processAttachmentPK.companyId"), ConstraintType.MUST);
@@ -18,7 +18,7 @@ function validateForm(form){
 		var datasetProcessHistory = DatasetFactory.getDataset('processHistory', null, new Array(constraintProcessHistory1, constraintProcessHistory2, constraintProcessHistory3, constraintProcessHistory4), null);
 		
 		for(var j = 0; j < datasetProcessHistory.rowsCount; j++) {
-			//log.warn("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<")
+			log.warn("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<")
 			anexado = true;			
 		}		
 	}
@@ -100,9 +100,11 @@ function validateForm(form){
 		
 	}
 	if (numState == 52){
+		if (form.getValue("aprovcheckDados") == "") message += "<br/>- Informe condição da aprovação;";
 		if (form.getValue("aprovcheckDados") == "nao" && form.getValue("desc_aprov_checkDados") == "") message += "<br/>- Informe motivo da rejeição;";
 	}
 	if (numState == 59){
+		if (form.getValue("aprovfinal") == "") message += "<br/>- Informe condição da aprovação;";
 		if (form.getValue("aprovfinal") == "nao" && form.getValue("desc_aprov_final") == "") message += "<br/>- Informe motivo da rejeição;";
 	}
 	if (numState == 29){

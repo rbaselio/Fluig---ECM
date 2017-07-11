@@ -9,19 +9,19 @@ function defineStructure() {
 
 function onSync(lastSyncDate) {
 	var newDataset = DatasetBuilder.newDataset();	
-	/**/
+	
 	try{
-		//log.warn(">>>>>>>>>>>>>>>>>>>>>>>>PASSO 1");
+		log.warn(">>>>>>>>>>>>>>>>>>>>>>>>PASSO 1");
 		var serviceProvider = ServiceManager.getService('TOTVS');
 		
-		//log.warn(">>>>>>>>>>>>>>>>>>>>>>>>PASSO 2");
+		log.warn(">>>>>>>>>>>>>>>>>>>>>>>>PASSO 2");
 	    var serviceLocator = serviceProvider.instantiate('com.totvs.framework.ws.execbo.service.WebServiceExecBO');
 	    
-	    //log.warn(">>>>>>>>>>>>>>>>>>>>>>>>PASSO 3");
+	    log.warn(">>>>>>>>>>>>>>>>>>>>>>>>PASSO 3");
 	    var service = serviceLocator.getWebServiceExecBOPort();
 	     
-	    //log.warn(">>>>>>>>>>>>>>>>>>>>>>>>PASSO 4");
-	    //log.warn(token);	    
+	    log.warn(">>>>>>>>>>>>>>>>>>>>>>>>PASSO 4");
+	    log.warn(token);	    
 	    
 	    //array para receber os campos da tabela
 	   
@@ -56,10 +56,10 @@ function onSync(lastSyncDate) {
 		
 		var token = DatasetFactory.getDataset('tokens', null, null, null).getValue(0, "tokenTOTVSDatasul");
     	
-	    //log.warn(">>>>>>>>>>>>>>>>>>>>>>>>PASSO 5");	
+	    log.warn(">>>>>>>>>>>>>>>>>>>>>>>>PASSO 5");	
 	    var resp = service.callProcedureWithToken(token, "webservices/esws0003.r", "getCidades", jsonParams);
 	    
-	    //log.warn(">>>>>>>>>>>>>>>>>>>>>>>>PASSO 6");
+	    log.warn(">>>>>>>>>>>>>>>>>>>>>>>>PASSO 6");
 	    var respObj = JSON.parse(resp);
 	    var callProcedureWithTokenResponse = JSON.parse(respObj[0].value);    
 	   	   
@@ -73,7 +73,7 @@ function onSync(lastSyncDate) {
 		    		newDataset.addColumn("" + j);
 		    	}
 	    		Arr[p] = '' + callProcedureWithTokenResponse.records[i][j];
-	    		//log.warn(callProcedureWithTokenResponse.records[i][j]);
+	    		log.warn(callProcedureWithTokenResponse.records[i][j]);
 	    		p++;    		
 	    	}
 	    	created = true;
@@ -86,7 +86,7 @@ function onSync(lastSyncDate) {
 		Arr[0] = "NOK"
     	Arr[1] = e.message;
 		newDataset.addRow(Arr);
-		//log.error(e.message);       
+		log.error(e.message);       
     }    
 
 	return newDataset;
