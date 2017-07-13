@@ -23,10 +23,25 @@ function validateForm(form){
 			var indexes = form.getChildrenIndexes("tb_rep_avail");
 			if (indexes.length == 0) message += "<br/>- Informe ao menos um reporte de tempo;";
 			
+			var horas = 0;
+			var minutos = 0;
 			for (var i = 0; i < indexes.length; i++) {
-		    	if (form.getValue("data_ini_aval___" + indexes[i]) == "") message += "<br/>- Data de inicio da avaliação na linha " + ( i + 1);
-				if (form.getValue("data_fim_aval___" + indexes[i]) == "") message += "<br/>- Data de termino da avaliação na linha " + ( i + 1);
-			}		
+		    	var dt_inicio = form.getValue("data_ini_aval___" + indexes[i]).split("/");
+				var hora_inicio = form.getValue("hora_ini_aval___" + indexes[i]).split(":");		
+				var dataInicio = new Date(dt_inicio[2], dt_inicio[1] - 1, dt_inicio[0], hora_inicio[0], hora_inicio[1], '00')
+				if (isNaN(dataInicio.getTime()))  message += "<br/>- Data e hora de inicio na linha " + (i + 1);
+				
+				var dt_final = form.getValue("data_fim_aval___" + indexes[i]).split("/");
+				var hora_final = form.getValue("hora_fim_aval___" + indexes[i]).split(":");		
+				var dataFinal = new Date(dt_final[2], dt_final[1] - 1, dt_final[0], hora_final[0], hora_final[1], '00')
+				if (isNaN(dataFinal.getTime()))  message += "<br/>- Data e hora de encerramento na linha " + (i + 1);
+				
+				var diferenca = (dataFinal - dataInicio);
+				horas = (diferenca / (60 * 60 * 1000)) | 0;
+				minutos = (((diferenca / (60 * 60 * 1000)) - horas) * 60);				
+				form.setValue("tempo_rep_aval___" + indexes[i], ("0" + horas).substr(-2) + ":" + ("0" + minutos).substr(-2));
+			}
+			
 			
 			if (form.getValue('nec_material') == "sim"){
 				var indexes = form.getChildrenIndexes("tb_pecas");
@@ -59,14 +74,33 @@ function validateForm(form){
 			
 			if (form.getValue("tp_manut") == "") message += "<br/>- Informe se é manutenção preventiva;";
 			var indexes = form.getChildrenIndexes("tb_rep_horas");
-			
-			
 			if (indexes.length == 0) message += "<br/>- Informe ao menos um reporte de tempo;";
-			
+			var diferencaTotal = 0;
+			var horas = 0;
+			var minutos = 0;
 			for (var i = 0; i < indexes.length; i++) {
-				if (form.getValue("tempo_rep_manut___" + indexes[i]) == "00:00" || 
-						form.getValue("tempo_rep_manut___" + indexes[i]) == "")  message += "<br/>- Informe o reporte de tempo na " + (i + 1);
+				var dt_inicio = form.getValue("data_ini_manut___" + indexes[i]).split("/");
+				var hora_inicio = form.getValue("hora_ini_manut___" + indexes[i]).split(":");		
+				var dataInicio = new Date(dt_inicio[2], dt_inicio[1] - 1, dt_inicio[0], hora_inicio[0], hora_inicio[1], '00')
+				if (isNaN(dataInicio.getTime()))  message += "<br/>- Data e hora de inicio na linha " + (i + 1);
+				
+				var dt_final = form.getValue("data_fim_manut___" + indexes[i]).split("/");
+				var hora_final = form.getValue("hora_fim_manut___" + indexes[i]).split(":");		
+				var dataFinal = new Date(dt_final[2], dt_final[1] - 1, dt_final[0], hora_final[0], hora_final[1], '00')
+				if (isNaN(dataFinal.getTime()))  message += "<br/>- Data e hora de encerramento na linha " + (i + 1);
+				
+				var diferenca = (dataFinal - dataInicio);
+				diferencaTotal += diferenca;
+				horas = (diferenca / (60 * 60 * 1000)) | 0;
+				minutos = (((diferenca / (60 * 60 * 1000)) - horas) * 60);				
+				form.setValue("tempo_rep_manut___" + indexes[i], ("0" + horas).substr(-2) + ":" + ("0" + minutos).substr(-2));
+				
+			
 			}
+			horas = (diferencaTotal / (60 * 60 * 1000)) | 0;
+			minutos = (((diferencaTotal / (60 * 60 * 1000)) - horas) * 60);	
+			form.setValue("tempo_manut", ("0" + horas).substr(-2) + ":" + ("0" + minutos).substr(-2));
+			
 			
 			var indexes = form.getChildrenIndexes("tb_pecas_utilizadas");
 			for (var i = 0; i < indexes.length; i++) {

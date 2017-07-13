@@ -130,23 +130,26 @@ function setTimeFinal(elemento){
 	});	
 }
 
-function somaHoras() {
-	var acum = 0;
+function somaHoras() {	
+	var diferenca = 0;
 	$("#tempo_manut").val("00:00");
 	$("input[id^='tempo_rep_aval___']").each(function(i) {
-		var tempo = $(this).val().split(':');
-		var minTot = parseInt(tempo[1]) + (tempo[0] * 60);
-		minTot = minTot ? minTot : 0;
-		acum += minTot;		
-	});	
-	$("input[id^='tempo_rep_manut___']").each(function(i) {
-		var tempo = $(this).val().split(':');
-		var minTot = parseInt(tempo[1]) + (tempo[0] * 60);
-		minTot = minTot ? minTot : 0;
-		acum += minTot;
-	});	
-	var horas = Math.trunc(acum / 60);
-	var minutos = acum - (horas * 60)
+		var aux = $(this).closest('tr').find("input").eq(1).attr('id').indexOf('___');
+		var thisRow = $(this).closest('tr').find('input').attr('id').substring(aux + 3);
+		
+		var dt_inicio = $("#data_ini_manut___" + thisRow).val().split("/");
+		var hora_inicio = $("#hora_ini_manut___" + thisRow).val().split(":");		
+		var dataInicio = new Date(dt_inicio[2], dt_inicio[1] - 1, dt_inicio[0], hora_inicio[0], hora_inicio[1], '00')
+		
+		var dt_final = $("#data_fim_manut___" + thisRow).val().split("/");
+		var hora_final = $("#hora_fim_manut___" + thisRow).val().split(":");		
+		var dataFinal = new Date(dt_final[2], dt_final[1] - 1, dt_final[0], hora_final[0], hora_final[1], '00')
+		
+		diferenca += (dataFinal - dataInicio);
+		
+	});
+	horas = (diferenca / (60 * 60 * 1000)) | 0;
+	minutos = (((diferenca / (60 * 60 * 1000)) - horas) * 60);		
 	$("#tempo_manut").val(("0" + horas).substr(-2) + ":" + ("0" + minutos).substr(-2));	
 }
 
@@ -169,15 +172,11 @@ function setAvalInicial(elemento){
 	});
 }
 
-function setAvalFinal(elemento){
-	
+function setAvalFinal(elemento){	
 	elemento.on('click', function(){
 		var aux = $(this).closest('tr').find("input").eq(1).attr('id').indexOf('___');
-		var thisRow = $(this).closest('tr').find("input").eq(1).attr('id').substring(aux + 3);
-		
+		var thisRow = $(this).closest('tr').find("input").eq(1).attr('id').substring(aux + 3);		
 		if($("#data_ini_aval___" + thisRow).val() != ''){
-			console.log("ssssssssssssssssssssssssssssssssssss");
-			
 			var dataini = $("#data_ini_aval___" + thisRow).val().split("/");
 			var horaini = $("#hora_ini_aval___" + thisRow).val().split(":");
 			var inicio = new Date(dataini[2], dataini[1] - 1, dataini[0], horaini[0], horaini[1], 0, 0);
@@ -311,12 +310,6 @@ function ativaPreencheCampos(modeView, numState, matricula, WKNumProces, documen
 			$("#data_aprov_manut").attr("readOnly", true).val(ramal);	
 			
 			alert("Para valores e custos, favor consultar as cotações em anexo");
-			
-			
-			
-			
-			
-			
 		}
 		
 		
