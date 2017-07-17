@@ -89,6 +89,11 @@ function createDataset(fields, constraints, sortFields) {
 	    fm_descricao.name = "fm_descricao";
 	    fm_descricao.label = "fm_descricao";
 	    
+	    var contr_qualid = new Object();
+	    contr_qualid.type = "logical";
+	    contr_qualid.name = "contr_qualid";
+	    contr_qualid.label = "contr_qualid";
+	    
 	    var ipi = new Object();
 	    ipi.type = "decimal";
 	    ipi.name = "ipi";
@@ -113,7 +118,7 @@ function createDataset(fields, constraints, sortFields) {
 	    var campos_tabela = new Object();
 	    campos_tabela.name = "tt-item";
 	    campos_tabela.records = new Array();
-	    campos_tabela.fields = [it_codigo_tt, desc_item, un, un_descricao, narrativa, ge_codigo, ge_descricao,  ncm, ncm_descricao, fm_codigo, fm_descricao, ipi, m_mat, m_mob, m_ggf];
+	    campos_tabela.fields = [it_codigo_tt, desc_item, un, un_descricao, narrativa, ge_codigo, ge_descricao,  ncm, ncm_descricao, fm_codigo, fm_descricao, contr_qualid, ipi, m_mat, m_mob, m_ggf];
 	    
 	    var tt_itens = new Object();
 	    tt_itens.dataType = "temptable";

@@ -361,6 +361,18 @@
                     <text-property name="displayName">VALOR_TOTAL</text-property>
                     <text-property name="heading">VALOR_TOTAL</text-property>
                 </structure>
+                <structure>
+                    <property name="columnName">nome_rep</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">nome_rep</text-property>
+                    <text-property name="heading">nome_rep</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">contrQualidade</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">contrQualidade</text-property>
+                    <text-property name="heading">contrQualidade</text-property>
+                </structure>
             </list-property>
             <list-property name="parameters">
                 <structure>
@@ -584,6 +596,16 @@
                     <structure>
                         <property name="position">34</property>
                         <property name="name">VALOR_TOTAL</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">35</property>
+                        <property name="name">nome_rep</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">36</property>
+                        <property name="name">contrQualidade</property>
                         <property name="dataType">string</property>
                     </structure>
                 </list-property>
@@ -828,6 +850,20 @@
                     <property name="dataType">string</property>
                     <property name="nativeDataType">12</property>
                 </structure>
+                <structure>
+                    <property name="position">35</property>
+                    <property name="name">nome_rep</property>
+                    <property name="nativeName">nome_rep</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">36</property>
+                    <property name="name">contrQualidade</property>
+                    <property name="nativeName">contrQualidade</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
             </list-property>
             <xml-property name="queryText"><![CDATA[select 
 	PROCES_WORKFLOW.NUM_PROCES,  
@@ -838,7 +874,7 @@
     
      IF (PROCES_WORKFLOW.LOG_ATIV, "EM ANDAMENTO", "FINALIZADO") AS _STATUS,
 	
-    DATE_FORMAT(ativ_inicial.DAT_CONCLUS_TAR,'%d/%m/%Y') as DAT_ABERT,
+    DATE_FORMAT(if(ativ_inicial.DAT_CONCLUS_TAR != null,ativ_inicial.DAT_CONCLUS_TAR , PROCES_WORKFLOW.Start_DATE),'%d/%m/%Y') as DAT_ABERT,
     sec_to_time(ativ_inicial.NUM_HORA_CONCLUS_TAR) as HORA_ABERT,
     
     IF (PROCES_WORKFLOW.LOG_ATIV, DATE_FORMAT( ativ_atual.DAT_FIM_PRAZ,'%d/%m/%Y') , NULL) AS DAT_FIM_PRAZ,
@@ -1084,7 +1120,25 @@
 				FICHA.NR_VERSAO = ANEXO_PROCES.NR_VERSAO AND
                 FICHA.COD_VALOR is not null and
 				FICHA.COD_TABELA = "principal" AND
-				FICHA.COD_CAMPO = "vl_tot") as VALOR_TOTAL
+				FICHA.COD_CAMPO = "vl_tot") as VALOR_TOTAL,
+				
+		(select FICHA.COD_VALOR
+			from FICHA 
+			where FICHA.COD_EMPRESA = ANEXO_PROCES.COD_EMPRESA AND
+				FICHA.NR_FICHA = ANEXO_PROCES.NR_DOCUMENTO and
+				FICHA.NR_VERSAO = ANEXO_PROCES.NR_VERSAO AND
+                FICHA.COD_VALOR is not null and
+				FICHA.COD_TABELA = "principal" AND
+				FICHA.COD_CAMPO = "nome_rep") as nome_rep, 
+                
+		(select if(FICHA.COD_VALOR = 'true', 'Sim', 'Não')
+			from FICHA 
+			where FICHA.COD_EMPRESA = ANEXO_PROCES.COD_EMPRESA AND
+				FICHA.NR_FICHA = ANEXO_PROCES.NR_DOCUMENTO and
+				FICHA.NR_VERSAO = ANEXO_PROCES.NR_VERSAO AND
+                FICHA.COD_VALOR is not null and
+				FICHA.COD_TABELA = "principal" AND
+				FICHA.COD_CAMPO = "contrQualidade") as contrQualidade
 
   FROM PROCES_WORKFLOW 
   INNER JOIN HISTOR_PROCES ON
@@ -2461,7 +2515,7 @@
             <property name="type">custom</property>
             <property name="orientation">landscape</property>
             <property name="height">913mm</property>
-            <property name="width">1425mm</property>
+            <property name="width">1560mm</property>
             <page-header>
                 <grid id="188">
                     <property name="height">0.6041666666666666in</property>
@@ -2511,7 +2565,7 @@ else "Relatório de RNCs em Aberto"</expression>
             <property name="borderTopStyle">solid</property>
             <property name="borderTopWidth">thin</property>
             <property name="textAlign">center</property>
-            <property name="width">55.604166666666664in</property>
+            <property name="width">60.739583333333336in</property>
             <property name="dataSet">Data Set</property>
             <list-property name="boundDataColumns">
                 <structure>
@@ -2682,6 +2736,18 @@ else "Relatório de RNCs em Aberto"</expression>
                     <expression name="expression" type="javascript">dataSetRow["VALOR_TOTAL"]</expression>
                     <property name="dataType">string</property>
                 </structure>
+                <structure>
+                    <property name="name">contrQualidade</property>
+                    <text-property name="displayName">contrQualidade</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["contrQualidade"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">nome_rep</property>
+                    <text-property name="displayName">nome_rep</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["nome_rep"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
             </list-property>
             <column id="314">
                 <property name="whiteSpace">nowrap</property>
@@ -2726,15 +2792,23 @@ else "Relatório de RNCs em Aberto"</expression>
             <column id="321">
                 <property name="width">2.5in</property>
             </column>
+            <column id="570">
+                <property name="whiteSpace">normal</property>
+                <property name="width">1.5833333333333333in</property>
+            </column>
             <column id="322">
                 <property name="whiteSpace">normal</property>
-                <property name="width">2.5in</property>
+                <property name="width">3.4166666666666665in</property>
             </column>
             <column id="323">
                 <property name="whiteSpace">normal</property>
                 <property name="width">1.5in</property>
             </column>
             <column id="324">
+                <property name="whiteSpace">normal</property>
+                <property name="width">2.5in</property>
+            </column>
+            <column id="576">
                 <property name="whiteSpace">normal</property>
                 <property name="width">2.5in</property>
             </column>
@@ -2780,10 +2854,11 @@ else "Relatório de RNCs em Aberto"</expression>
                 <property name="width">1.1979166666666667in</property>
             </column>
             <column id="564">
-                <property name="width">1.5208333333333333in</property>
+                <property name="width">1.65625in</property>
             </column>
             <header>
                 <row id="269">
+                    <property name="fontWeight">bold</property>
                     <property name="borderBottomStyle">solid</property>
                     <property name="borderBottomWidth">thin</property>
                     <property name="borderLeftStyle">solid</property>
@@ -2935,6 +3010,19 @@ else "Relatório de RNCs em Aberto"</expression>
                             <text-property name="text">Nome produto</text-property>
                         </label>
                     </cell>
+                    <cell id="567">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <label id="572">
+                            <text-property name="text">Controla Qualidade?</text-property>
+                        </label>
+                    </cell>
                     <cell id="278">
                         <property name="borderBottomStyle">solid</property>
                         <property name="borderBottomWidth">thin</property>
@@ -2972,6 +3060,19 @@ else "Relatório de RNCs em Aberto"</expression>
                         <property name="borderTopWidth">thin</property>
                         <label id="348">
                             <text-property name="text">Cliente e/ou referencia</text-property>
+                        </label>
+                    </cell>
+                    <cell id="573">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <label id="577">
+                            <text-property name="text">Representante:</text-property>
                         </label>
                     </cell>
                     <cell id="281">
@@ -3323,6 +3424,19 @@ else "Relatório de RNCs em Aberto"</expression>
                             <property name="resultSetColumn">Nome_prod</property>
                         </data>
                     </cell>
+                    <cell id="568">
+                        <property name="borderBottomStyle">dotted</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">dotted</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">dotted</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">dotted</property>
+                        <property name="borderTopWidth">thin</property>
+                        <data id="571">
+                            <property name="resultSetColumn">contrQualidade</property>
+                        </data>
+                    </cell>
                     <cell id="293">
                         <property name="borderBottomStyle">dotted</property>
                         <property name="borderBottomWidth">thin</property>
@@ -3360,6 +3474,19 @@ else "Relatório de RNCs em Aberto"</expression>
                         <property name="borderTopWidth">thin</property>
                         <data id="511">
                             <property name="resultSetColumn">referencia</property>
+                        </data>
+                    </cell>
+                    <cell id="574">
+                        <property name="borderBottomStyle">dotted</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">dotted</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">dotted</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">dotted</property>
+                        <property name="borderTopWidth">thin</property>
+                        <data id="578">
+                            <property name="resultSetColumn">nome_rep</property>
                         </data>
                     </cell>
                     <cell id="296">
@@ -3670,6 +3797,16 @@ else "Relatório de RNCs em Aberto"</expression>
                         <property name="borderTopStyle">solid</property>
                         <property name="borderTopWidth">thin</property>
                     </cell>
+                    <cell id="569">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                    </cell>
                     <cell id="308">
                         <property name="borderBottomStyle">solid</property>
                         <property name="borderBottomWidth">thin</property>
@@ -3691,6 +3828,16 @@ else "Relatório de RNCs em Aberto"</expression>
                         <property name="borderTopWidth">thin</property>
                     </cell>
                     <cell id="310">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                    </cell>
+                    <cell id="575">
                         <property name="borderBottomStyle">solid</property>
                         <property name="borderBottomWidth">thin</property>
                         <property name="borderLeftStyle">solid</property>
