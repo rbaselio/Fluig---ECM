@@ -41,7 +41,8 @@ $(function(ready){
 		var subconstraints   = new Array(subc1, subc2, subc3);
 		var subdataset = DatasetFactory.getDataset("TOTVSItem", null, subconstraints, null);
 		if (subdataset.values.length > 0) {		
-			$("#nome_prod").val(subdataset.values[0]["desc_item"]);			
+			$("#contrQualidade").val(subdataset.values[0]["contr_qualid"]);
+			$("#nome_prod").val(subdataset.values[0]["desc_item"]);	
 		}		
 	});
 	
@@ -104,7 +105,7 @@ $(function(ready){
 		    }]
 		}, function(err, data) {
 			var param = {"datasetId" : "TOTVSFamilias", "limit" : "0"};
-			console.log(JSON.stringify(param));
+			
 			var thisTable = FLUIGC.datatable('#postTabela', {				
 			    dataRequest: {
 			        url: '/api/public/ecm/dataset/search',
@@ -150,6 +151,69 @@ $(function(ready){
 			});
 		});
 		$(".modal-body").css("max-height" , window.innerHeight/2 + 'px');
+	});
+	
+	$('#btZoomRep').click(function() {	
+		var param = {"datasetId" : "TOTVSRepresentantes", "limit" : "0"};
+		
+		var thisModal = FLUIGC.modal({
+		   title: 'Lista de Colaboradores',
+		   content: '<div id="postEmb"></div>',
+		   size: 'large',
+		   id: 'fluig-modal',
+		   actions: [{
+		       'label': 'Fechar',
+		       'autoClose': true
+		   }]
+		}, function(err, data) {			
+			var thisTable = FLUIGC.datatable('#postEmb', {
+			    dataRequest: {
+			        url: '/api/public/ecm/dataset/search',
+			        options: {
+			            contentType:"application/json",
+			            dataType: 'json',
+			            method: 'POST',
+			            data: JSON.stringify(param),
+			            crossDomain: true,
+			            cache: false
+			        },
+			        root: 'content'
+			    },
+			    renderContent: ['cod_rep', 'nome', 'estado'], 
+			    header: [{'title': 'Código', 'size': 'col-sm-2'},
+			             {'title': 'Nome', 'size': 'col-sm-7'},
+			             {'title': 'Estado', 'size': 'col-sm-2'}],
+			    multiSelect: false,
+			    search: {
+			        enabled: true,
+			        searchAreaStyle: 'col-md-9',
+			        onSearch: function(response) {
+			        	$.ajax({
+							  type: 'POST',
+							  contentType: 'application/json',
+							  dataType: 'json',
+							  url: '/api/public/ecm/dataset/search',
+							  data: JSON.stringify({"datasetId" : "TOTVSRepresentantes","limit" : "0", "searchField" : "nome", "searchValue" : response }),
+							  success: function(data) {
+								  thisTable.reload(data.content);
+							  }
+							});
+			        }
+			    },
+			    scroll: {
+			        target: '#postEmb',
+			        enabled: true			        
+		       },
+			    tableStyle: 'table-striped'
+			}).on('dblclick', function(ev) {
+				var index = thisTable.selectedRows()[0];
+			    var selected = thisTable.getRow(index);
+			    $("#cod_rep").val(selected.cod_rep);
+			    $("#nome_rep").val(selected.nome);	
+			    thisModal.remove();					    
+			});
+		});
+		$(".modal-body").css("max-height" , window.innerHeight/2 + 'px');	
 	});
 	
 	$("#cod_fornec").on('blur', function(){

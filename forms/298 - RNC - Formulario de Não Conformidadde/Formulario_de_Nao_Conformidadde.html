@@ -64,13 +64,25 @@
 										<option value="outros">Outros</option>
 									</select>
 								</div>
-								<div class="col-xs-4">
+								<div class="col-xs-3">
 									<label for="referencia">Refer&ecirc;ncia / Cliente:</label>
 									<input class="form-control" name="referencia" id="referencia" type="text" />
 								</div>
 								<div class="col-xs-3">
 									<label for="referencia">Pedido:</label>
 									<input class="form-control" name="pedido" id="pedido" type="text" />
+								</div>
+								<div class="col-xs-3">
+									<label for="desc_reinc">Respresentante:</label>
+									<div class="form-group">
+										<div class="input-group">
+											<input type="text" name="nome_rep" id="nome_rep" class="form-control readonly"/>
+											<input type="hidden" name="cod_rep" id="cod_rep" />
+											<span class="input-group-addon fs-cursor-pointer" id="btZoomRep"> 
+												<span class="fluigicon fluigicon-user-search"></span>
+											</span>
+										</div>
+									</div>
 								</div>
 							</div>
 							<div class="row">
@@ -81,11 +93,19 @@
 										<option value="produto">Produto</option>
 									</select>
 								</div>
-								<div class="col-xs-4">
+								<div class="col-xs-3">
 									<label for="cod_prod">C&oacute;digo Produto:</label>
 									<input class="form-control" name="cod_prod" id="cod_prod" type="text" />
 								</div>
-								<div class="col-xs-6">
+								<div class="col-xs-2">
+									<label for="tipo">Contr. Qual.:</label> 
+									<select class="form-control" name="contrQualidade" size="1" id="contrQualidade">
+										<option value="0"></option>
+										<option value="true">Sim</option>
+										<option value="false">Não</option>
+									</select>
+								</div>
+								<div class="col-xs-5">
 									<label for="nome_prod">Nome Produto:</label>
 									<input class="form-control" name="nome_prod" id="nome_prod" type="text" />
 								</div>
@@ -126,21 +146,6 @@
 								</div>
 							</div>
 							<div class="row">
-<!-- 								<div class="col-xs-3"> -->
-<!-- 									<label for="local_detec">Local detec&ccedil;&atilde;o:</label> 
-											<select class="form-control" name="local_detec" id="local_detec"> -->
-<!-- 										<option value="0"></option> -->
-<!-- 										<option value="Recebimento/CQ">Recebimento/CQ</option> -->
-<!-- 										<option value="Estoque">Estoque</option> -->
-<!-- 										<option value="Producao">Produ&ccedil;&atilde;o</option> -->
-<!-- 										<option value="Expedicao">Expedi&ccedil;&atilde;o</option> -->
-<!-- 										<option value="Outros">Outros</option> -->
-<!-- 									</select> -->
-<!-- 								</div> -->
-<!-- 								<div class="col-xs-4"> -->
-<!-- 									<label for="especific">Detalhar:</label> -->
-<!-- 									<input class="form-control" name="especific" id="especific" type="text" /> -->
-<!-- 								</div> -->
 								<div class="col-xs-5">
 									<label for="desc_reinc">Resp. Disposi&ccedil;&atilde;o:</label>
 									<div class="form-group">
