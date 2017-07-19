@@ -1,5 +1,31 @@
 function defineStructure() {
 	addColumn("Cod_banco");
+	addColumn("Nome_est");
+	addColumn("Banco");
+	addColumn("chave_pesquisa");
+	setKey([ "Cod_banco", "Banco"]);
+	addIndex([ "Cod_banco" ]);
+	addIndex([ "chave_pesquisa"]);
+}
+
+function onSync(lastSyncDate) {
+	
+	var dataset = DatasetBuilder.newDataset();	
+	var datasetBancos = DatasetFactory.getDataset('bancos', null, null, null);
+	for (var i = 0; i < datasetBancos.rowsCount; i++) {
+		dataset.addOrUpdateRow([datasetBancos.getValue(i, "Cod_banco"),
+		                        datasetBancos.getValue(i, "Nome_ext"),
+		                        datasetBancos.getValue(i, "Banco"),
+		                        datasetBancos.getValue(i, "Cod_banco") + datasetBancos.getValue(i, "Banco")
+		                        
+		                        ]);
+	}	
+	return dataset;	
+}
+
+
+/*function defineStructure() {
+	addColumn("Cod_banco");
 	addColumn("Banco");
 	setKey([ "Cod_banco", "Banco"]);
 	addIndex([ "Cod_banco" ]);
@@ -32,3 +58,4 @@ function onSync(lastSyncDate) {
 	}
 	return dataset;	
 }
+*/
