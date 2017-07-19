@@ -1,0 +1,185 @@
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="/portal/resources/style-guide/css/fluig-style-guide.min.css">
+		<script src="/portal/resources/js/jquery/jquery.js"></script>
+		<script src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+		<script src="/portal/resources/js/mustache/mustache-min.js"></script>
+		<script src="/portal/resources/style-guide/js/fluig-style-guide.min.js"></script>
+		<script src="/portal/resources/js/jquery.mask.min.js"></script>
+		<script src="/resources/casp_lib/js/utils.js"></script>
+		<script type="text/javascript"	src="LancamentoNotasFiscais.js"></script>
+		<script src="../vcXMLRPC.js"></script>
+	</head>
+	<body onload="loadElementos()">
+		<div class="fluig-style-guide">
+			<form name="form" role="form">
+				<div class="row">
+					<div class="col-sm-3 col-xs-12 text-center">
+						<img src="/resources/logo_casp/logocasp.gif" width="204" height="79">
+					</div>
+					<div class="col-sm-5 col-xs-12">
+						<h2 class="text-center">
+							<b>LANÇAMENTO DE NOTAS FISCAIS</b>
+						</h2>
+					</div>
+					<div class="col-sm-4 col-xs-12">
+						<div class="row form-group">
+							<label for="chamado_num" class="col-sm-6 col-xs-12 text-right">Solicita&ccedil;&atilde;o n&deg;:</label>
+							<div class="col-sm-6 col-xs-12 controls">
+								<input type="text" name="num_processo" id="num_processo" class="form-control" />
+							</div>
+							<br/>
+							<label for="data_sol" class="col-sm-6 col-xs-12 text-right">Data:</label>
+							<div class="col-sm-6 col-xs-12 controls">
+								<input type="text" name="data_sol" id="data_sol" class="form-control" size="15" />
+							</div>
+							<br/>						
+							<label for="hora_sol" class="col-sm-6 col-xs-12 text-right">Hora:</label>
+							<div class="col-sm-6 col-xs-12 controls">
+								<input type="text" name="hora_sol" id="hora_sol" class="form-control" />
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="panel panel-primary" id="emissao">
+					<div class="panel-heading" style="background-color: blue;">
+						<h3 class="panel-title">
+							<strong><i class="fluigicon fluigicon-file-default fluigicon-sm"></i>&nbsp; Emiss&atilde;o:</strong>
+						</h3>
+					</div>
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-sm-2 col-xs-12">
+								<label for="user_entrega">Tipo do Lançamento:</label>
+								<select name="tpLanc" id="tpLanc"  class="form-control">
+									<option value=""></option>
+									<option value="credito">Crédido</option>
+									<option value="despesa">Despesa</option>																											
+								</select>
+							</div>
+							<div class="col-sm-3 col-xs-12">
+								<label for="user_entrega">Pedido nº:</label>
+								<input type="text" name="nrPedCli" id="nrPedCli" class="form-control"/>
+							</div>
+							<div class="col-sm-3 col-xs-12">
+								<label for="user_entrega">Cod. Cliente/Destino:</label>
+								<input type="text" name="codCliente" id="codCliente" class="form-control"/>
+							</div>
+							<div class="col-sm-4 col-xs-12">
+								<label for="user_entrega">Nome Cliente/Destino:</label>
+								<input type="text" name="nomeCliente" id="nomeCliente" class="form-control"/>
+							</div>																											
+						</div>
+						<div class="row">
+							<div class="col-xs-3">
+								<label for="unid_negocio">Un. de Neg&oacute;cio:</label> 
+								<select name="unid_negocio" id="unid_negocio" dataset="unidades_de_negocio" datasetkey="Unidade_de_negocio" datasetvalue="Unidade_de_negocio" addBlankLine="true" class="form-control">
+								</select>
+							</div>
+							<div class="col-sm-3 col-xs-12">
+								<label for="user_entrega">Tipo Docto:</label>
+								<select name="tipoDocto" id="tipoDocto"  class="form-control">
+									<option value=""></option>	
+									<option value="montagem">Serviço de Montagem</option>
+									<option value="assitencia">Serviço de Assitência</option>
+									<option value="hotel">Hotel</option>
+									<option value="diversos">Diversos</option>
+									<option value="4">Servi&ccedil;o Vinculado a Multimodal</option>																	
+								</select>
+							</div>
+							<div class="col-sm-3 col-xs-12">
+								<label for="user_entrega">Nº Docto</label>
+								<input type="text" name="nrDocto" id="nrDocto" class="form-control"/>
+							</div>
+							<div class="col-sm-3 col-xs-12">
+								<label for="user_entrega">Docto Auxiliar</label>
+								<input type="text" name="DoctoAux" id="DoctoAux" class="form-control"/>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-2 col-xs-12">
+								<label for="user_entrega">Prazo Pagto. (Dias):</label>
+								<input type="text" name="prazo_pagto" id="prazo_pagto" class="form-control"/>
+							</div>						
+							<div class="col-sm-3 col-xs-12">
+								<label for="user_entrega">Cod. Emitente:</label>
+								<input type="text" name="codEmitente" id="codEmitente" class="form-control"/>
+							</div>
+							<div class="col-sm-4 col-xs-12">
+								<label for="user_entrega">Nome Emitente:</label>
+								<input type="text" name="nomeEmit" id="nomeEmit" class="form-control"/>
+							</div>
+							<div class="col-sm-3 col-xs-12">
+								<label for="user_entrega">Vl. Docto.:</label>
+								<input type="text" name="vlDocto" id="vlDocto" class="form-control"/>
+							</div>							
+						</div>
+						<div class="row">
+							<div class="col-sm-3 col-xs-12">
+								<label for="matricula_analista">Emissor:</label>
+								<input type="text" class="form-control readonly" placeholder="Matr&iacute;cula" name="matricula_emissao" id="matricula_emissao" />
+							</div>
+							<div class="col-sm-6 col-xs-12">
+								<label for="user_analista">&nbsp;</label>
+								<input type="text" class="form-control readonly" placeholder="Responsavel" name="user_amissao" id="user_amissao" />
+							</div>
+							<div class="col-sm-3 col-xs-12">
+								<label for="data_analista">Data:</label>
+								<input type="text" class="form-control readonly" placeholder="Data" name="data_emissao" id="data_emissao" />
+							</div>
+						</div>	
+					</div>
+				</div>
+				
+				<div class="panel panel-primary" id="controlePagto">
+					<div class="panel-heading" style="background-color: blue;">
+						<h3 class="panel-title">
+							<strong><i class="fluigicon fluigicon-file-default fluigicon-sm"></i>&nbsp; Emiss&atilde;o:</strong>
+						</h3>
+					</div>
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-sm-3 col-xs-12">
+								<label for="user_entrega">Pagamento Efetuado?</label>
+								<select name="pagto" id="pagto"  class="form-control">
+									<option value=""></option>
+									<option value="sim">Sim</option>
+									<option value="nao">Não</option>																											
+								</select>								
+								<label for="cidade">Data:</label>
+								<div class="form-group ">
+									<div class="input-group" id="data">
+										<input type="text" name="data_pagto" id="data_pagto" class="form-control readonly"/>
+										<span class="input-group-addon fs-cursor-pointer"> <span class="fluigicon fluigicon-calendar"></span>
+										</span>
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-9 col-xs-12">
+								<label for="user_entrega">Observações:</label>
+								<textarea name="obs1" id="obs1" class="form-control" rows="3"></textarea>
+							</div>																																	
+						</div>						
+						<div class="row">
+							<div class="col-sm-3 col-xs-12">
+								<label for="matricula_analista">Responsável:</label>
+								<input type="text" class="form-control readonly" placeholder="Matr&iacute;cula" name="matricula_resp" id="matricula_resp" />
+							</div>
+							<div class="col-sm-6 col-xs-12">
+								<label for="user_analista">&nbsp;</label>
+								<input type="text" class="form-control readonly" placeholder="Responsavel" name="user_resp" id="user_resp" />
+							</div>
+							<div class="col-sm-3 col-xs-12">
+								<label for="data_analista">Data:</label>
+								<input type="text" class="form-control readonly" placeholder="Data" name="data_resp" id="data_resp" />
+							</div>
+						</div>	
+					</div>
+				</div>
+				
+				
+			</form>
+		</div>
+	</body>
+</html>
