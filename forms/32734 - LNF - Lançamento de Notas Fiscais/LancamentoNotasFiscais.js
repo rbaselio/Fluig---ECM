@@ -2,7 +2,6 @@ var row, anexos, matr, process, isMobile, token;
 
 function loadElementos(){
 	$("#nrPedCli").mask("000.000.000", {reverse: true});
-	$("#prazo_pagto").mask("000", {reverse: true});
 	$("#vlDocto").mask('000.000.000,00', {reverse: true})
 				.on('blur', function(){
 					if ($(this).val() == '') $(this).val('0,00')
@@ -32,7 +31,7 @@ function loadElementos(){
 	
 	
 	//inicia campo como calendario
-	FLUIGC.calendar($("#data"), {
+	FLUIGC.calendar($(".date"), {
 		pickDate: true,
 	    defaultDate: new Date(dataAtual.getTime() + (1 * 24 * 60 * 60 * 1000)),
 		showToday: true,

@@ -1,24 +1,21 @@
 function afterTaskCreate(colleagueId){
-var atividade = getValue('WKCurrentState');
+	var atividade = getValue('WKCurrentState');
     
     if (atividade == 2) {
-        // Recuperando a data informada no campo do formulário
-        var prazoFormulario = hAPI.getCardValue('prazo_pagto');
-        if (prazoFormulario != undefined && prazoFormulario != '') {
-            var numeroDaSolicitacao = getValue('WKNumProces');
-            var threadDaSolicitacao = 0; // Normalmente 0, quando não for atividade paralela
-            var responsavelPelaTarefa = colleagueId;
+    	
+    	var dataStr = hAPI.getCardValue("prazo_pagto").split("/");
+ 	    if (dataStr != undefined && dataStr != '') { 	   
+            var data = new Date();
+ 	    	data.setDate(dataStr[0]);
+ 			data.setMonth(dataStr[1] - 1);
+ 			data.setFullYear(dataStr[2]);        
             
-            var data = new Date();            
-            
-			var obj = hAPI.calculateDeadLineHours(data, 28800, prazoFormulario * 8, "Default");
-			var dt = obj[0];
-			var segundos = obj[1];
-			//log.warn("-----------------------NOVA DATA: " + dt);
-			//log.warn("------------------------SEGUNDOS: " + segundos);	   
-             
-            // Altera o prazo de conclusão
-            hAPI.setDueDate(numeroDaSolicitacao, threadDaSolicitacao, responsavelPelaTarefa, dt, segundos);
+ 			var numEmpresa = getValue("WKCompany");
+	        var numeroDaSolicitacao = getValue('WKNumProces');
+	        var threadDaSolicitacao = hAPI.getActualThread(numEmpresa, numeroDaSolicitacao, atividade);
+	        
+	        // Altera o prazo de conclusão
+	        hAPI.setDueDate(numeroDaSolicitacao, threadDaSolicitacao, colleagueId, data, 28800);
         }
     } 
 }
