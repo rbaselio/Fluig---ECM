@@ -86,6 +86,36 @@
                 <property name="category">Unformatted</property>
             </structure>
         </scalar-parameter>
+        <scalar-parameter name="Grupo" id="723">
+            <property name="valueType">static</property>
+            <property name="isRequired">true</property>
+            <property name="dataType">string</property>
+            <property name="distinct">true</property>
+            <simple-property-list name="defaultValue">
+                <value type="constant">TecAsisttec</value>
+            </simple-property-list>
+            <list-property name="selectionList">
+                <structure>
+                    <property name="value">TecAsisttec</property>
+                    <property name="label">Técnicos de Campo</property>
+                </structure>
+                <structure>
+                    <property name="value">mbrGesContr</property>
+                    <property name="label">Membros da Gestão de Contratos</property>
+                </structure>
+                <structure>
+                    <property name="value">ComlARM</property>
+                    <property name="label">Membros Armazenagem Comercial</property>
+                </structure>
+            </list-property>
+            <property name="paramType">simple</property>
+            <property name="controlType">list-box</property>
+            <property name="mustMatch">true</property>
+            <property name="fixedOrder">true</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
         <scalar-parameter name="Data da Solicitação Inicial" id="533">
             <property name="valueType">static</property>
             <property name="isRequired">true</property>
@@ -103,38 +133,6 @@
             </structure>
         </scalar-parameter>
         <scalar-parameter name="Data da Solicitação Final" id="534">
-            <property name="valueType">static</property>
-            <property name="isRequired">true</property>
-            <property name="dataType">string</property>
-            <property name="distinct">true</property>
-            <simple-property-list name="defaultValue">
-                <value type="constant">31/12/9999</value>
-            </simple-property-list>
-            <list-property name="selectionList"/>
-            <property name="paramType">simple</property>
-            <property name="concealValue">false</property>
-            <property name="controlType">text-box</property>
-            <structure name="format">
-                <property name="category">Unformatted</property>
-            </structure>
-        </scalar-parameter>
-        <scalar-parameter name="Data do Reembolso Inicial" id="535">
-            <property name="valueType">static</property>
-            <property name="isRequired">true</property>
-            <property name="dataType">string</property>
-            <property name="distinct">true</property>
-            <simple-property-list name="defaultValue">
-                <value type="constant">01/01/1900</value>
-            </simple-property-list>
-            <list-property name="selectionList"/>
-            <property name="paramType">simple</property>
-            <property name="concealValue">false</property>
-            <property name="controlType">text-box</property>
-            <structure name="format">
-                <property name="category">Unformatted</property>
-            </structure>
-        </scalar-parameter>
-        <scalar-parameter name="Data do Reembolso Final" id="536">
             <property name="valueType">static</property>
             <property name="isRequired">true</property>
             <property name="dataType">string</property>
@@ -298,6 +296,16 @@
                     <property name="dataType">string</property>
                     <property name="nativeDataType">-1</property>
                     <property name="position">3</property>
+                    <property name="isInput">true</property>
+                    <property name="isOutput">false</property>
+                </structure>
+                <structure>
+                    <property name="name">param_4</property>
+                    <property name="paramName">Grupo</property>
+                    <property name="nativeName"></property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">-1</property>
+                    <property name="position">4</property>
                     <property name="isInput">true</property>
                     <property name="isOutput">false</property>
                 </structure>
@@ -558,7 +566,7 @@ inner join fdn_usertenant on
     
 inner join fdn_groupuserrole on 
 	fdn_usertenant.login = fdn_groupuserrole.login and
-	fdn_groupuserrole.GROUP_CODE = 'TecAsisttec'	
+	fdn_groupuserrole.GROUP_CODE = ?	
    
 order by PROCES_WORKFLOW.LOG_ATIV desc, ml001019.user_aprov_imediato, ml001019.nome_resp, ml001019.num_processo, STR_TO_DATE(ml001020.data_despesa, '%d/%m/%Y') ]]></xml-property>
             <xml-property name="designerValues"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
@@ -602,6 +610,21 @@ order by PROCES_WORKFLOW.LOG_ATIV desc, ml001019.user_aprov_imediato, ml001019.n
           <design:identifier>
             <design:name></design:name>
             <design:position>3</design:position>
+          </design:identifier>
+          <design:nativeDataTypeCode>-1</design:nativeDataTypeCode>
+          <design:precision>0</design:precision>
+          <design:scale>0</design:scale>
+          <design:nullability>Unknown</design:nullability>
+        </design:attributes>
+      </design:ParameterDefinition>
+    </parameter>
+    <parameter>
+      <design:ParameterDefinition>
+        <design:inOutMode>In</design:inOutMode>
+        <design:attributes>
+          <design:identifier>
+            <design:name></design:name>
+            <design:position>4</design:position>
           </design:identifier>
           <design:nativeDataTypeCode>-1</design:nativeDataTypeCode>
           <design:precision>0</design:precision>
@@ -1032,12 +1055,7 @@ order by PROCES_WORKFLOW.LOG_ATIV desc, ml001019.user_aprov_imediato, ml001019.n
                                     </cell>
                                 </row>
                                 <row id="697">
-                                    <cell id="698">
-                                        <text-data id="703">
-                                            <expression name="valueExpr">"Rembolsado de: " + params["Data do Reembolso Inicial"].value + " até " + params["Data do Reembolso Final"].value</expression>
-                                            <property name="contentType">html</property>
-                                        </text-data>
-                                    </cell>
+                                    <cell id="698"/>
                                 </row>
                                 <row id="699">
                                     <cell id="700"/>
