@@ -38,6 +38,63 @@ function loadElementos(){
 	    language: 'pt-br'
 	});
 	
+	$('#listCcusto').click(function() {
+		var thisModal = FLUIGC.modal({
+		    title: 'Lista de Centros de Custos',
+		    content: '<div id="postEmb"></div>',
+		    id: 'fluig-modal',
+		    actions: [{
+		        'label': 'Fechar',
+		        'autoClose': true
+		    }]
+		}, function(err, data) {			
+			var thisTable = FLUIGC.datatable('#postEmb', {
+			    dataRequest: {
+			        url: '/api/public/ecm/dataset/search',
+			        options: {
+			            contentType:"application/json",
+			            dataType: 'json',
+			            method: 'POST',
+			            data: JSON.stringify({"datasetId" : "TOTVSCentroDeCusto","limit" : "0"}),
+			            crossDomain: true,
+			            cache: false
+			        },
+			        root: 'content'
+			    },
+			    renderContent: ['cod_ccusto', 'descricao'], 
+			    header: [{'title': 'Cod.'},
+			             {'title': 'Descição'}],
+			    multiSelect: false,
+			    search: {
+			        enabled: true,
+			        onSearch: function(response) {
+			        	$.ajax({
+							  type: 'POST',
+							  contentType: 'application/json',
+							  dataType: 'json',
+							  url: '/api/public/ecm/dataset/search',
+							  data: JSON.stringify({"datasetId" : "TOTVSCentroDeCusto","limit" : "0", "searchField" : "descricao", "searchValue" : response }),
+							  success: function(data) {
+								  thisTable.reload(data.content);
+							  }
+							});
+			        }
+			    },
+			    scroll: {
+			        target: '#postEmb',
+			        enabled: true			        
+		        },
+			    tableStyle: 'table-striped'
+			}).on('dblclick', function(ev) {
+				var index = thisTable.selectedRows()[0];
+			    var selected = thisTable.getRow(index);	
+			    $('#ccusto').val(selected.cod_ccusto + " - " + selected.descricao);
+			    thisModal.remove();					    
+			});
+		});
+		$(".modal-body").css("max-height" , window.innerHeight/2 + 'px');
+	});
+	
 	
 }
 
