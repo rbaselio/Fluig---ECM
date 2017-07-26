@@ -264,6 +264,12 @@
                     <text-property name="heading">moeda</text-property>
                 </structure>
                 <structure>
+                    <property name="columnName">vl_prestacao</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">vl_prestacao</text-property>
+                    <text-property name="heading">vl_prestacao</text-property>
+                </structure>
+                <structure>
                     <property name="columnName">data_rembolsa</property>
                     <property name="analysis">dimension</property>
                     <text-property name="displayName">data_rembolsa</text-property>
@@ -393,16 +399,21 @@
                     </structure>
                     <structure>
                         <property name="position">10</property>
-                        <property name="name">data_rembolsa</property>
+                        <property name="name">vl_prestacao</property>
                         <property name="dataType">string</property>
                     </structure>
                     <structure>
                         <property name="position">11</property>
-                        <property name="name">aprovador</property>
+                        <property name="name">data_rembolsa</property>
                         <property name="dataType">string</property>
                     </structure>
                     <structure>
                         <property name="position">12</property>
+                        <property name="name">aprovador</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">13</property>
                         <property name="name">vl_tot_despesa</property>
                         <property name="dataType">string</property>
                     </structure>
@@ -475,20 +486,27 @@
                 </structure>
                 <structure>
                     <property name="position">10</property>
+                    <property name="name">vl_prestacao</property>
+                    <property name="nativeName">vl_prestacao</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">11</property>
                     <property name="name">data_rembolsa</property>
                     <property name="nativeName">data_rembolsa</property>
                     <property name="dataType">string</property>
                     <property name="nativeDataType">12</property>
                 </structure>
                 <structure>
-                    <property name="position">11</property>
+                    <property name="position">12</property>
                     <property name="name">aprovador</property>
                     <property name="nativeName">aprovador</property>
                     <property name="dataType">string</property>
                     <property name="nativeDataType">12</property>
                 </structure>
                 <structure>
-                    <property name="position">12</property>
+                    <property name="position">13</property>
                     <property name="name">vl_tot_despesa</property>
                     <property name="nativeName">vl_tot_despesa</property>
                     <property name="dataType">string</property>
@@ -510,6 +528,7 @@ select distinct
    
 
     ml001019.moeda,
+    ml001019.vl_prestacao,
     ml001019.data_rembolsa,
     if (ml001019.user_aprov_imediato != '', ml001019.user_aprov_imediato, aprovador.FULL_NAME) as aprovador,
         
@@ -1255,6 +1274,12 @@ order by ml001019.nome_resp, ml001019.num_processo ]]></xml-property>
                     <expression name="expression" type="javascript">dataSetRow["vl_tot_despesa"]</expression>
                     <property name="dataType">string</property>
                 </structure>
+                <structure>
+                    <property name="name">vl_prestacao</property>
+                    <text-property name="displayName">vl_prestacao</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["vl_prestacao"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
             </list-property>
             <column id="616">
                 <property name="textAlign">center</property>
@@ -1295,6 +1320,11 @@ order by ml001019.nome_resp, ml001019.num_processo ]]></xml-property>
                 <property name="textAlign">right</property>
                 <property name="whiteSpace">nowrap</property>
                 <property name="width">3cm</property>
+            </column>
+            <column id="727">
+                <property name="textAlign">right</property>
+                <property name="whiteSpace">nowrap</property>
+                <property name="width">4cm</property>
             </column>
             <column id="624">
                 <property name="textAlign">right</property>
@@ -1347,6 +1377,11 @@ order by ml001019.nome_resp, ml001019.num_processo ]]></xml-property>
                     <cell id="711">
                         <label id="715">
                             <text-property name="text">Moeda</text-property>
+                        </label>
+                    </cell>
+                    <cell id="724">
+                        <label id="728">
+                            <text-property name="text">Valor adiantado:</text-property>
                         </label>
                     </cell>
                     <cell id="555">
@@ -1410,6 +1445,11 @@ order by ml001019.nome_resp, ml001019.num_processo ]]></xml-property>
                             <property name="resultSetColumn">moeda</property>
                         </data>
                     </cell>
+                    <cell id="725">
+                        <data id="729">
+                            <property name="resultSetColumn">vl_prestacao</property>
+                        </data>
+                    </cell>
                     <cell id="586">
                         <data id="717">
                             <property name="resultSetColumn">vl_tot_despesa</property>
@@ -1432,6 +1472,7 @@ order by ml001019.nome_resp, ml001019.num_processo ]]></xml-property>
                     <cell id="607"/>
                     <cell id="608"/>
                     <cell id="713"/>
+                    <cell id="726"/>
                     <cell id="609"/>
                     <cell id="610"/>
                 </row>
