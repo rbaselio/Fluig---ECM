@@ -178,16 +178,16 @@
             <property name="nullsOrdering">nulls lowest</property>
             <list-property name="columnHints">
                 <structure>
+                    <property name="columnName">NUM_PROCES</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">num_processo</text-property>
+                    <text-property name="heading">num_processo</text-property>
+                </structure>
+                <structure>
                     <property name="columnName">_STATUS</property>
                     <property name="analysis">dimension</property>
                     <text-property name="displayName">_STATUS</text-property>
                     <text-property name="heading">_STATUS</text-property>
-                </structure>
-                <structure>
-                    <property name="columnName">num_processo</property>
-                    <property name="analysis">dimension</property>
-                    <text-property name="displayName">num_processo</text-property>
-                    <text-property name="heading">num_processo</text-property>
                 </structure>
                 <structure>
                     <property name="columnName">data_sol</property>
@@ -314,12 +314,12 @@
                 <list-property name="resultSet">
                     <structure>
                         <property name="position">1</property>
-                        <property name="name">_STATUS</property>
-                        <property name="dataType">string</property>
+                        <property name="name">NUM_PROCES</property>
+                        <property name="dataType">integer</property>
                     </structure>
                     <structure>
                         <property name="position">2</property>
-                        <property name="name">num_processo</property>
+                        <property name="name">_STATUS</property>
                         <property name="dataType">string</property>
                     </structure>
                     <structure>
@@ -393,15 +393,15 @@
             <list-property name="resultSet">
                 <structure>
                     <property name="position">1</property>
-                    <property name="name">_STATUS</property>
-                    <property name="nativeName">_STATUS</property>
-                    <property name="dataType">string</property>
-                    <property name="nativeDataType">12</property>
+                    <property name="name">NUM_PROCES</property>
+                    <property name="nativeName">NUM_PROCES</property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
                 </structure>
                 <structure>
                     <property name="position">2</property>
-                    <property name="name">num_processo</property>
-                    <property name="nativeName">num_processo</property>
+                    <property name="name">_STATUS</property>
+                    <property name="nativeName">_STATUS</property>
                     <property name="dataType">string</property>
                     <property name="nativeDataType">12</property>
                 </structure>
@@ -499,9 +499,9 @@
             </list-property>
             <xml-property name="queryText"><![CDATA[select distinct 
 	
+    PROCES_WORKFLOW.NUM_PROCES as num_processo,
 	IF (PROCES_WORKFLOW.LOG_ATIV, 'EM ANDAMENTO', 'FINALIZADO') AS _STATUS,
-	ml001019.num_processo,
-    ml001019.data_sol,
+    DATE_FORMAT(PROCES_WORKFLOW.start_Date,'%d/%m/%Y') as data_sol,
     ml001019.matricula_resp,
     ml001019.nome_resp,
     ml001019.moeda,
@@ -509,7 +509,7 @@
     ml001019.user_aprov_imediato,
     ml001019.vl_tot_despesa,
     
-	ml001020.ccontabil,
+    ml001020.ccontabil,
     CASE ml001020.tipo_despesa    
 		when '5102470000' then 'Combustivel'
 		when '5102110000' then 'Correio'
@@ -526,49 +526,37 @@
     ml001020.ccusto,
     ml001020.pedido
     
-from  PROCES_WORKFLOW  
+    from  PROCES_WORKFLOW  
 
 INNER JOIN anexo_proces ON
 
 	 PROCES_WORKFLOW.NUM_PROCES = PROCES_WORKFLOW.NUM_PROCES and
 	 PROCES_WORKFLOW.COD_DEF_PROCES = 'RDV' AND 
-	 (PROCES_WORKFLOW.LOG_ATIV = case ? when 0 then false
+	 PROCES_WORKFLOW.LOG_ATIV = case ? when 0 then false
 										when 1 then true
 										when 3 then PROCES_WORKFLOW.LOG_ATIV
-										end ) and
-	 (anexo_proces.COD_EMPRESA = PROCES_WORKFLOW.COD_EMPRESA AND
-	  anexo_proces.NUM_PROCES = PROCES_WORKFLOW.NUM_PROCES )
-   
-inner join tar_proces on
-	tar_proces.COD_EMPRESA = PROCES_WORKFLOW.COD_EMPRESA AND
-	tar_proces.NUM_PROCES = PROCES_WORKFLOW.NUM_PROCES and
-    tar_proces.IDI_STATUS != 4
-	
- 
-iNNER jOIN  ml001019 ON
+										end  and
+	PROCES_WORKFLOW.start_Date >= STR_TO_DATE(?, '%d/%m/%Y') and
+    PROCES_WORKFLOW.start_Date <= STR_TO_DATE(?, '%d/%m/%Y') and
+	 anexo_proces.COD_EMPRESA = PROCES_WORKFLOW.COD_EMPRESA AND
+	 anexo_proces.NUM_PROCES = PROCES_WORKFLOW.NUM_PROCES 
+      
+left jOIN  ml001019 ON
 	anexo_proces.NR_DOCUMENTO = ml001019.documentid and
-	anexo_proces.NR_VERSAO = ml001019.version and 
-	
-    STR_TO_DATE(ml001019.data_sol, '%d/%m/%Y') >= STR_TO_DATE(?, '%d/%m/%Y') and 
-	STR_TO_DATE(ml001019.data_sol, '%d/%m/%Y') <= STR_TO_DATE(?, '%d/%m/%Y') and
-	
-	(ml001019.data_rembolsa = '' or (
-    	STR_TO_DATE(ml001019.data_rembolsa, '%d/%m/%Y') >= STR_TO_DATE('01/01/1900', '%d/%m/%Y') and 
-		STR_TO_DATE(ml001019.data_rembolsa, '%d/%m/%Y') <= STR_TO_DATE('31/12/9999', '%d/%m/%Y'))
-	)
-    
-iNNER jOIN  ml001020 ON
+	anexo_proces.NR_VERSAO = ml001019.version 
+
+left jOIN  ml001020 ON
 	anexo_proces.NR_DOCUMENTO = ml001020.documentid and
 	anexo_proces.NR_VERSAO = ml001020.version
-  
+	
 inner join fdn_usertenant on 
 	fdn_usertenant.User_code = ml001019.matricula_resp
     
 inner join fdn_groupuserrole on 
 	fdn_usertenant.login = fdn_groupuserrole.login and
-	fdn_groupuserrole.GROUP_CODE = ?	
+	fdn_groupuserrole.GROUP_CODE = ?
    
-order by PROCES_WORKFLOW.LOG_ATIV desc, ml001019.user_aprov_imediato, ml001019.nome_resp, ml001019.num_processo, STR_TO_DATE(ml001020.data_despesa, '%d/%m/%Y') ]]></xml-property>
+order by PROCES_WORKFLOW.LOG_ATIV desc, ml001019.user_aprov_imediato, ml001019.nome_resp, ml001019.num_processo, PROCES_WORKFLOW.start_Date	]]></xml-property>
             <xml-property name="designerValues"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
 <model:DesignValues xmlns:design="http://www.eclipse.org/datatools/connectivity/oda/design" xmlns:model="http://www.eclipse.org/birt/report/model/adapter/odaModel">
   <Version>2.0</Version>
@@ -1125,15 +1113,15 @@ order by PROCES_WORKFLOW.LOG_ATIV desc, ml001019.user_aprov_imediato, ml001019.n
             <property name="dataSet">Data Set</property>
             <list-property name="boundDataColumns">
                 <structure>
+                    <property name="name">NUM_PROCES</property>
+                    <text-property name="displayName">num_processo</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["NUM_PROCES"]</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
                     <property name="name">_STATUS</property>
                     <text-property name="displayName">_STATUS</text-property>
                     <expression name="expression" type="javascript">dataSetRow["_STATUS"]</expression>
-                    <property name="dataType">string</property>
-                </structure>
-                <structure>
-                    <property name="name">num_processo</property>
-                    <text-property name="displayName">num_processo</text-property>
-                    <expression name="expression" type="javascript">dataSetRow["num_processo"]</expression>
                     <property name="dataType">string</property>
                 </structure>
                 <structure>
@@ -1284,13 +1272,13 @@ order by PROCES_WORKFLOW.LOG_ATIV desc, ml001019.user_aprov_imediato, ml001019.n
                 <row id="538">
                     <property name="fontWeight">bold</property>
                     <cell id="539">
-                        <label id="540">
-                            <text-property name="text">Status:</text-property>
+                        <label id="542">
+                            <text-property name="text">Processo:</text-property>
                         </label>
                     </cell>
                     <cell id="541">
-                        <label id="542">
-                            <text-property name="text">Processo:</text-property>
+                        <label id="540">
+                            <text-property name="text">Status:</text-property>
                         </label>
                     </cell>
                     <cell id="543">
@@ -1358,13 +1346,13 @@ order by PROCES_WORKFLOW.LOG_ATIV desc, ml001019.user_aprov_imediato, ml001019.n
             <detail>
                 <row id="569">
                     <cell id="570">
-                        <data id="571">
-                            <property name="resultSetColumn">_STATUS</property>
+                        <data id="724">
+                            <property name="resultSetColumn">NUM_PROCES</property>
                         </data>
                     </cell>
                     <cell id="572">
-                        <data id="573">
-                            <property name="resultSetColumn">num_processo</property>
+                        <data id="725">
+                            <property name="resultSetColumn">_STATUS</property>
                         </data>
                     </cell>
                     <cell id="574">
