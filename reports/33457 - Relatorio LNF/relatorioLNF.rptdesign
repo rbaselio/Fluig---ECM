@@ -578,7 +578,7 @@
 	ML001056.data_emissao,
 	
     ML001056.nrDocto,
-	ML001056.vlDocto,
+	concat(if(tpLanc = 'credito', '','-'), ML001056.vlDocto) as vlDocto,
 	ML001056.nomeEmit,
 	ML001056.DoctoAux,
 	ML001056.obs2 as obsLacnto,
@@ -1066,7 +1066,7 @@ INNER JOIN anexo_proces ON
             <property name="type">custom</property>
             <property name="orientation">auto</property>
             <property name="height">1000mm</property>
-            <property name="width">710mm</property>
+            <property name="width">740mm</property>
             <property name="headerHeight">4cm</property>
             <page-header>
                 <grid id="631">
@@ -1335,6 +1335,10 @@ INNER JOIN anexo_proces ON
                 <property name="textAlign">center</property>
                 <property name="width">3cm</property>
             </column>
+            <column id="784">
+                <property name="textAlign">right</property>
+                <property name="width">3cm</property>
+            </column>
             <column id="627">
                 <property name="textAlign">left</property>
                 <property name="width">7cm</property>
@@ -1414,6 +1418,11 @@ INNER JOIN anexo_proces ON
                     <cell id="559">
                         <label id="745">
                             <text-property name="text">Nr. Docto.</text-property>
+                        </label>
+                    </cell>
+                    <cell id="781">
+                        <label id="785">
+                            <text-property name="text">Valor</text-property>
                         </label>
                     </cell>
                     <cell id="561">
@@ -1512,6 +1521,11 @@ INNER JOIN anexo_proces ON
                             <property name="resultSetColumn">nrDocto</property>
                         </data>
                     </cell>
+                    <cell id="782">
+                        <data id="786">
+                            <property name="resultSetColumn">vlDocto</property>
+                        </data>
+                    </cell>
                     <cell id="592">
                         <data id="748">
                             <property name="resultSetColumn">nomeEmit</property>
@@ -1561,6 +1575,7 @@ INNER JOIN anexo_proces ON
                     <cell id="609"/>
                     <cell id="610"/>
                     <cell id="611"/>
+                    <cell id="783"/>
                     <cell id="612"/>
                     <cell id="613"/>
                     <cell id="753"/>
