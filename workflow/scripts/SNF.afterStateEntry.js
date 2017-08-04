@@ -1,8 +1,6 @@
 function afterStateEntry(sequenceId){
 	
-	if (sequenceId == 6){
-		
-		
+	if (sequenceId == 6 && hAPI.getCardValue("nrDocto") == "" ){		
 
 			log.warn(">>>>>>>>>>>>>>>>>>>>>>>>PASSO 1");
 			var serviceProvider = ServiceManager.getService('TOTVS');

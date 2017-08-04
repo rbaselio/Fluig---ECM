@@ -149,11 +149,10 @@ function loadElementos(){
 						 $("#end_emitente").val(subdataset.values[0]["logradouro"] + (subdataset.values[0]["complemento"] ? ", " + subdataset.values[0]["complemento"] : '') );
 			             $("#cid_emitente").val(subdataset.values[0]["localidade"]);
 			             $("#uf_emitente").val(subdataset.values[0]["uf"]);
-					}					
+					}
+					$("#end_emitente").focus();
 					this.close();	
 				}
-				$("#end_emitente").focus();
-				
 			});
 	});
 	
