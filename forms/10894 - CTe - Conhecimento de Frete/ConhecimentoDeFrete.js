@@ -33,14 +33,20 @@ function loadElementos(){
 		chaveNF.val(chaveNF.val() + " - " + i);	
 	});
 	
-	$("input[id^='chavePedido']").each(function(i) {
-		var nrPedido = $(this);
-		$("input[id^='chavePedido']").each(function(i) {
-			if ($(this).val() == nrPedido.val() && !$(this).is(nrPedido)) {
-				$(this).closest('div.pedido').hide();
-			}				
-		});
-		nrPedido.val(nrPedido.val() + " - " + i);	
+	var aux = "";
+	$("input[id^='nrPedido']").each(function(i) {
+		if (!(aux == "" || aux != $(this).val())){
+			$(this).closest('div.pedido').hide();
+		}
+		aux = $(this).val();
+	});
+	
+	var aux = "";
+	$("input[id^='nrNota']").each(function(i) {
+		if (!(aux == "" || aux != $(this).val())){
+			$(this).closest('div.nota_fiscal').hide();
+		}
+		aux = $(this).val();
 	});
 	
 	
