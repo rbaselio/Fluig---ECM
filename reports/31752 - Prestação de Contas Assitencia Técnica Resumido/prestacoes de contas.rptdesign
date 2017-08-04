@@ -470,7 +470,7 @@
     fdn_user.FULL_NAME as resp_atual,
     IF (PROCES_WORKFLOW.LOG_ATIV, if( TAR_PROCES.DAT_FIM_PRAZ != null, DATE_FORMAT( TAR_PROCES.DAT_FIM_PRAZ,'%d/%m/%Y'), DATE_FORMAT( TAR_PROCES.DEADLINE,'%d/%m/%Y')) , NULL) AS DAT_FIM_PRAZ, 
     
-    ml001019.matricula_resp,
+    if (ml001019.matricula_resp is null, ml001019.matricula_user, ml001019.matricula_resp) matricula_resp,  
     ml001019.nome_resp,   
 
     ml001019.moeda,
@@ -525,7 +525,7 @@ INNER jOIN  ml001019 ON
 	anexo_proces.NR_VERSAO = ml001019.version 	
   
 inner join fdn_usertenant on 
-	fdn_usertenant.User_code = ml001019.matricula_resp
+	fdn_usertenant.User_code = ml001019.matricula_resp or fdn_usertenant.User_code = ml001019.matricula_user
     
 inner join fdn_groupuserrole on 
 	fdn_usertenant.login = fdn_groupuserrole.login and

@@ -86,8 +86,8 @@ function addLinha(tabela){
 
 
 function zoomResponsavelFP(linha) {
-	var nome = $(linha).attr("name");
-	row = nome.substring(nome.lastIndexOf("_") + 1);
+	row = $(linha).closest('div').find('input').attr("id").split('___')[1];
+	if(isNaN(row)) thisRow = "1";
 	zoomEcmTipo("colleague",
 			"colleagueId,Matricula,colleagueName,Colaborador",
 			"colleagueId,colleagueName,extensionNr", 
