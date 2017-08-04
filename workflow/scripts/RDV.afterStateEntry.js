@@ -6,12 +6,12 @@ function afterStateEntry(sequenceId){
 	var numThread = hAPI.getActualThread(numEmpresa, numProcesso, numAtividade);
 	var colleagueId = getValue("WKUser");
 	
-	//log.warn("----------------------AFTER STATE ENTRY 2 update-------------------------------")
-	//log.warn("----------------------numEmpresa: " + numEmpresa);
-	//log.warn("----------------------numProcesso: " + numProcesso);
-	//log.warn("----------------------numThread: " + numThread);
-	//log.warn("----------------------numAtividade: " + numAtividade);
-	//log.warn("----------------------colleagueId: " + colleagueId);
+	log.info("----------------------AFTER STATE ENTRY 2 update-------------------------------")
+	log.info("----------------------numEmpresa: " + numEmpresa);
+	log.info("----------------------numProcesso: " + numProcesso);
+	log.info("----------------------numThread: " + numThread);
+	log.info("----------------------numAtividade: " + numAtividade);
+	log.info("----------------------colleagueId: " + colleagueId);
 	
 
 	if(numAtividade == 5){  //implementar plano e ação
@@ -23,24 +23,24 @@ function afterStateEntry(sequenceId){
 			var dt_planejada;			
 			if (prazo.indexOf("-") > 0){
 				dt_planejada = new java.lang.String(prazo).split("-");
-				//log.warn("----------------------DIA: " + dt_planejada[2]);
-				//log.warn("----------------------MES: " + (dt_planejada[1] - 1));
-				//log.warn("----------------------ANO: " + dt_planejada[0]);	
+				log.info("----------------------DIA: " + dt_planejada[2]);
+				log.info("----------------------MES: " + (dt_planejada[1] - 1));
+				log.info("----------------------ANO: " + dt_planejada[0]);	
 				//seta o dia, mês (Janeiro é 0) e ano
 				data.setDate(dt_planejada[2]);
 				data.setMonth(dt_planejada[1] - 1);
 				data.setFullYear(dt_planejada[0]);
-				//log.warn("----------------------DATA: " + data);
+				log.info("----------------------DATA: " + data);
 			} else{
 				dt_planejada = new java.lang.String(prazo).split("/");
-				//log.warn("----------------------DIA: " + dt_planejada[0]);
-				//log.warn("----------------------MES: " + (dt_planejada[1] - 1));
-				//log.warn("----------------------ANO: " + dt_planejada[2]);
+				log.info("----------------------DIA: " + dt_planejada[0]);
+				log.info("----------------------MES: " + (dt_planejada[1] - 1));
+				log.info("----------------------ANO: " + dt_planejada[2]);
 				//seta o dia, mês (Janeiro é 0) e ano
 				data.setDate(dt_planejada[0]);
 				data.setMonth(dt_planejada[1] - 1);
 				data.setFullYear(dt_planejada[2]);
-				//log.warn("----------------------DATA: " + data);
+				log.info("----------------------DATA: " + data);
 			}
 			
 			var obj = hAPI.calculateDeadLineTime(data, 28800, 960, "Default");

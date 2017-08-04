@@ -3,142 +3,23 @@ var row, anexos, matr, process, soma;
 //comportamento do form
 function loadElementos(){
 	
-	$(".tipo_despesa").on('change', function(e) {
-		var thisRow = $(this).attr('id').replace("tipo_despesa___", '');
-		if ($(this).val() == 'outros' ) $("#ccontabil___" + thisRow).val('').removeAttr('readOnly');
-		else $("#ccontabil___" + thisRow).val($(this).val()).attr("readOnly", true);		
-	}).trigger('click');
-	
-	$('#origem_desp').change(function() {
-		$("#possui_cartao").val('nao');
-		if ($(this).val() == 'cart_corp') {
-			$('#div_possui_cartao').hide();
-		}		
-		else {
-			$('#div_possui_cartao').show();
-		}
-		$("#possui_cartao").trigger('change');
-	}).trigger('change');
-	
-	$('#possui_cartao').change(function() {
-		if ($(this).val() == 'sim') {
-			$("#div_total_despesas").hide();
-		}else {
-			$("#div_total_despesas").show();
-		}		
-	}).trigger('change');
-	
-	
-	
-	$("#placa").mask("SSS-9999");
-	$("#conta_cor").mask("000000000-0", {reverse: true});
-	
-	/*$(".integer").mask('000.000.000', {reverse: true})
+	$('.money').unbind().mask('000.000.000,00', {reverse: true})
 				.on('blur', function(){
-		if ($(this).val() == '') $(this).val(0.00);					
-	}).trigger('blur');*/
+					if ($(this).val() == '') $(this).val('0,00')
+					else if ($(this).val().substring($(this).val().lastIndexOf(",")).length <= 2) $(this).val($(this).val() + ',00');
+				}).on('keypress keyup', function(){
+					somatorio();					
+				}).trigger('blur');
 	
-	//atribui formatação numerica ao input text e seta o valor inicial 0.00
-	setMoneyClass($(".money"));
+	$('.numerico').unbind().mask('000.000.000', {reverse: true})
+				  .on('keypress keyup', function(){
+					somatorio();					
+				  });
+	$("#placa").unbind().mask('SSS-0000').css('text-transform', 'uppercase');
 	
-	//calcular km
-	$("#km_ini").mask("000.000", {reverse: true})
-				.on("keyup", function(e){
-					soma = 0.00;
-					soma += parseFloat($(this).val().replace(/[^0-9\,]+/g,"").replace(",",".")) ?  parseFloat($(this).val().replace(/[^0-9\,]+/g,"").replace(",",".")) : 0.00;
-					$('#vl_km_devido').val((soma * 0.86).toFixed(2).replace(".", ",").replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.")).trigger("keyup");
-					$(this).focus();		
-				}).trigger('keyup');
+	numerarLinhas();
 	
-	//contas para deposito para a CASP
-	$("#banco_acerto").on("change", function(e){
-		switch($(this).val()) {
-		    case '001':
-		    	$("#agencia_acerto").val('3362-6');
-		    	$("#conta_cor_acerto").val('2168-7');
-		        break;
-		    case '237':
-		    	$("#agencia_acerto").val('0453-7');
-		    	$("#conta_cor_acerto").val('2735-9');
-		        break;
-		    case '033':
-		    	$("#agencia_acerto").val('0029');
-		    	$("#conta_cor_acerto").val('013.000023-2');
-		        break;
-		    case '341':
-		    	$("#agencia_acerto").val('0014');
-		    	$("#conta_cor_acerto").val('2730-4');
-		        break;
-		}	
-	}).trigger('change');
-	
-	
-	
-	//formata campo para cpf ou cnpj e valida o dado
-	//a função de validação esta na lib utils.js na pasta resources do fluig
-	$('#cpf_cnpj').on('focusin blur keyup', function() {
-		$(this).unmask();
-		var dado = $(this).val().replace(/[^\d]+/g,'');
-		if (dado.length > 11 ) $(this).mask('00.000.000/0000-00', {reverse: true});
-		else $(this).mask('0000.000.000-00', {reverse: true});
-	}).on('blur', function() {
-		if(!isCNPJValid($(this).val()) && !isCPFValid($(this).val())){
-			FLUIGC.message.alert({
-			    message: "<strong>Informe um CPF ou CNPJ válidos:</strong><br/>",
-			    title: 'CPF / CNPJ inválido',
-			    label: 'OK'
-			}, function(el, ev) {
-				setTimeout(function() {
-					$('#cpf_cnpj').focus();
-				}, 100);
-			});
-		} 
-	});	
-	
-	 numerarLinha();
-}
-
-function setSelectedZoomItem(selectedItem) {
-	if (selectedItem.inputId == "banco") {
-		$('#banco').val(selectedItem['Cod_banco'] + ' - '+ selectedItem['Banco']);		
-	}
-	if (selectedItem.inputId == "nome_resp") {
-		$('#matricula_resp').val(selectedItem["colleagueId"]);
-	    $('#nome_resp').val(selectedItem["colleagueName"]);	
-	}	
-}
-
-function numerarLinha(){
-	$("div[id*=numero_despesa]").remove();
-	$('#tb_despesa').find('tr').each(function(indice){
-		indice--;
-		$(this).find("td:first").prepend("<div class='row' id='numero_despesa'>" +
-											"<div class='col-xs-12' align='left'>" +
-												"<label  >" +
-												"Despesa nº " + ("00" + indice).substr(-3) + 
-												"</label>" +
-											"</div>" +
-										"</div>");	       
-	});	
-}
-
-
-//adiciona linha a tabela
-function addLinha(tabela){
-	row = wdkAddChild(tabela);
-	
-	$("#tipo_despesa___" + row).on('change', function(e) {
-		var thisRow = $(this).attr('id').replace("tipo_despesa___", '');
-		if ($(this).val() == 'outros' ) $("#ccontabil___" + thisRow).val('').removeAttr('readOnly');
-		else $("#ccontabil___" + thisRow).val($(this).val()).attr("readOnly", true);		
-	}).trigger('click');
-	
-	
-	//atribui formatação numerica ao input text e seta o valor inicial 0.00
-	setMoneyClass($("#vl_despesa___" + row));
-	$("#data_despesa___" + row).attr("readOnly", true);
-	
-	$("#desc_despesa___" + row).on('keyup input keypress keydown change', function(e) {
+	$("textarea").unbind().on('keyup input keypress keydown change', function(e) {
 		var tamanhoMin =  $(this).attr('rows') * $(this).css('line-height').replace(/[^0-9\.]+/g, '');
 		$(this).css({'height': 'auto'});
 		var novoTamanho = this.scrollHeight + parseFloat($(this).css("borderTopWidth")) + parseFloat($(this).css("borderBottomWidth"));
@@ -148,78 +29,421 @@ function addLinha(tabela){
 		'overflow':'hidden', 
 		'resize':'none'
 	}).delay(0).show(0, function() {
-		$(this).trigger('keyup');				
-    });	
+		var el = $(this);
+		setTimeout(function () {
+			el.trigger('keyup');
+		}, 100);		
+	});
 	
-	//inicia campo como calendario
+	$('#origem_desp').unbind().on('change', function(e) {
+		if ($(this).val() == 'cart_corp') $('.origem').show();
+		else $('.origem').hide();
+	}).trigger('change');
+	
+	
+	$(".tipo_despesa").unbind().on('change', function(e) {
+		var thisRow = $(this).attr("name").substring($(this).attr("name").lastIndexOf("_") + 1);
+		if ($(this).val() == 'outros' ) $("#ccontabil___" + thisRow).val('').removeAttr('readOnly');
+		else $("#ccontabil___" + thisRow).val($(this).val()).attr("readOnly", true);		
+	}).trigger('change');
+	
+	var informaKm = $('#tb_quilometragem').find('tbody').find('tr').length;
+	if ( informaKm > 1) $(".informaKm").show();
+	else $(".informaKm").hide();
+	
+	if ( informaKm == 2 && $("#placa").attr("readonly") != "readonly"){
+		FLUIGC.message.alert({
+		    message: "<strong>Informe quilometragem somente caso tenha utilizado veiculo proprio.</br>" +
+		    		"Para veiculos da CASP, não prencher este campos</strong>",
+		    title: 'ATENÇÃO!!!',
+		    label: 'OK'
+		});		
+	}
+	
+	
 	FLUIGC.calendar($(".date"), {
-		pickDate: true,	    
-		defaultDate: dataAtual,
+		pickDate: true,
+	    defaultDate: new Date(),
 		showToday: true,
 	    language: 'pt-br'
 	});
 	
-	numerarLinha();
+	$("#banco_acerto").unbind().on('change', function(e) {
+		switch($(this).val()) {
+		    case '001':
+		    	$("#agencia").val('3362-6');
+		    	$("#conta_cor").val('2168-7');
+		        break;
+		    case '237':
+		    	$("#agencia").val('0453-7');
+		    	$("#conta_cor").val('2735-9');
+		        break;
+		    case '033':
+		    	$("#agencia").val('0029');
+		    	$("#conta_cor").val('013.000023-2');
+		        break;
+		    case '341':
+		    	$("#agencia").val('0014');
+		    	$("#conta_cor").val('2730-4');
+		        break;
+		}	
+	}).trigger('change');
+	
+	
+	$('#btZoomColab').unbind().click(function() {
+		var param = {"datasetId" : "colleague", "limit" : "0", 
+				 "filterFields" : ["active", "true"]};
+		
+		var thisModal = FLUIGC.modal({
+		   title: 'Lista de Colaboradores',
+		   content: '<div id="postEmb"></div>',
+		   id: 'fluig-modal',
+		   actions: [{
+		       'label': 'Fechar',
+		       'autoClose': true
+		   }]
+		}, function(err, data) {			
+			var thisTable = FLUIGC.datatable('#postEmb', {
+			    dataRequest: {
+			        url: '/api/public/ecm/dataset/search',
+			        options: {
+			            contentType:"application/json",
+			            dataType: 'json',
+			            method: 'POST',
+			            data: JSON.stringify(param),
+			            crossDomain: true,
+			            cache: false
+			        },
+			        root: 'content'
+			    },
+			    renderContent: ['colleagueId', 'colleagueName'], 
+			    header: [{'title': 'Matricula', 'size': 'col-sm-2'},
+			             {'title': 'Nome', 'size': 'col-sm-5'}],
+			    multiSelect: false,
+			    search: {
+			        enabled: true,
+			        searchAreaStyle: 'col-md-9',
+			        onSearch: function(response) {
+			        	var param2 = {"datasetId" : "colleague", "limit" : "0", 
+								"filterFields" : ["active", "true"], 
+								"searchField" : "colleagueName", "searchValue" : response };
+			        	$.ajax({
+							  type: 'POST',
+							  contentType: 'application/json',
+							  dataType: 'json',
+							  url: '/api/public/ecm/dataset/search',
+							  data: JSON.stringify(param2),
+							  success: function(data) {
+								  thisTable.reload(data.content);
+							  }
+							});
+			        }
+			    },
+			    scroll: {
+			        target: '#postEmb',
+			        enabled: true			        
+		       },
+			    tableStyle: 'table-striped'
+			}).on('dblclick', function(ev) {
+				var index = thisTable.selectedRows()[0];
+			    var selected = thisTable.getRow(index);
+			    $("#matricula_user").val(selected.colleagueId);
+			    $("#nome_resp").val(selected.colleagueName);
+			    thisModal.remove();					    
+			});
+		});
+		$(".modal-body").css("max-height" , window.innerHeight/2 + 'px');	
+	});
+	
+	
+	$('.listCcusto').unbind().click(function() {
+		var thisRow = $(this).closest('div').find('input').attr("id").split('___')[1];
+		if(isNaN(thisRow)) thisRow = "1";
+		
+		var thisModal = FLUIGC.modal({
+		    title: 'Lista de Centros de Custos',
+		    content: '<div id="postEmb"></div>',
+		    id: 'fluig-modal',
+		    actions: [{
+		        'label': 'Fechar',
+		        'autoClose': true
+		    }]
+		}, function(err, data) {			
+			var thisTable = FLUIGC.datatable('#postEmb', {
+			    dataRequest: {
+			        url: '/api/public/ecm/dataset/search',
+			        options: {
+			            contentType:"application/json",
+			            dataType: 'json',
+			            method: 'POST',
+			            data: JSON.stringify({"datasetId" : "TOTVSCentroDeCusto","limit" : "0"}),
+			            crossDomain: true,
+			            cache: false
+			        },
+			        root: 'content'
+			    },
+			    renderContent: ['cod_ccusto', 'descricao'], 
+			    header: [{'title': 'Cod.'},
+			             {'title': 'Descição'}],
+			    multiSelect: false,
+			    search: {
+			        enabled: true,
+			        onSearch: function(response) {
+			        	$.ajax({
+							  type: 'POST',
+							  contentType: 'application/json',
+							  dataType: 'json',
+							  url: '/api/public/ecm/dataset/search',
+							  data: JSON.stringify({"datasetId" : "TOTVSCentroDeCusto","limit" : "0", "searchField" : "descricao", "searchValue" : response }),
+							  success: function(data) {
+								  thisTable.reload(data.content);
+							  }
+							});
+			        }
+			    },
+			    scroll: {
+			        target: '#postEmb',
+			        enabled: true			        
+		        },
+			    tableStyle: 'table-striped'
+			}).on('dblclick', function(ev) {
+				var index = thisTable.selectedRows()[0];
+			    var selected = thisTable.getRow(index);	
+			    $('#ccusto___' + thisRow).val(selected.cod_ccusto + " - " + selected.descricao);
+			    thisModal.remove();					    
+			});
+		});
+		$(".modal-body").css("max-height" , window.innerHeight/2 + 'px');
+	});
+	
+	$('.listaCidade').unbind().click(function() {
+		var origem = $(this).hasClass('origem');
+		var thisRow = $(this).closest('div').find('input').attr("id").split('___')[1];
+		if(isNaN(thisRow)) thisRow = "1";
+		
+		var thisModal = FLUIGC.modal({
+		    title: 'Lista de Cidades',
+		    content: '<div id="postTabela"></div>',
+		    id: 'fluig-modal',
+		    size: 'large',
+		    actions: [{
+		        'label': 'Fechar',
+		        'autoClose': true
+		    }]
+		}, function(err, data) {			
+			var thisTable = FLUIGC.datatable('#postTabela', {
+			    dataRequest: {
+			        url: '/api/public/ecm/dataset/search',
+			        options: {
+			            contentType:"application/json",
+			            dataType: 'json',
+			            method: 'POST',
+			            data: JSON.stringify({"datasetId" : "TOTVSCidadeEstado","limit" : "0"}),
+			            crossDomain: true,
+			            cache: false
+			        },
+			        root: 'content'
+			    },
+			    renderContent: ['cidade', 'estado'], 
+			    header: [{'title': 'Cidade', 'size': 'col-sm-5'},
+			             {'title': 'Estado', 'size': 'col-sm-3'}],
+			    multiSelect: false,
+			    search: {
+			        enabled: true,
+			        onSearch: function(response) {
+			        	$.ajax({
+							  type: 'POST',
+							  contentType: 'application/json',
+							  dataType: 'json',
+							  url: '/api/public/ecm/dataset/search',
+							  data: JSON.stringify({"datasetId" : "TOTVSCidadeEstado","limit" : "0", "searchField" : "cidade", "searchValue" : response }),
+							  success: function(data) {
+								  thisTable.reload(data.content);
+							  }
+							});
+			        }
+			    },
+			    scroll: {
+			        target: '#postTabela',
+			        enabled: true			        
+		        },
+			    tableStyle: 'table-striped'
+			}).on('dblclick', function(ev) {
+				var index = thisTable.selectedRows()[0];
+			    var selected = thisTable.getRow(index);				    
+			    if (origem) $('#cidade_origem___' + thisRow).val(selected.cidade + " - " + selected.estado);
+			    else $('#cidade_destino___' + thisRow).val(selected.cidade + " - " + selected.estado);
+			    thisModal.remove();					    
+			});
+		});
+		$(".modal-body").css("max-height" , window.innerHeight/2 + 'px');
+	});
+	
+	$('#listBancos').unbind().click(function() {
+		var thisModal = FLUIGC.modal({
+		    title: 'Lista de Bancos FEBRABAN',
+		    content: '<div id="postEmb"></div>',
+		    id: 'fluig-modal',
+		    actions: [{
+		        'label': 'Fechar',
+		        'autoClose': true
+		    }]
+		}, function(err, data) {			
+			var thisTable = FLUIGC.datatable('#postEmb', {
+			    dataRequest: {
+			        url: '/api/public/ecm/dataset/search',
+			        options: {
+			            contentType:"application/json",
+			            dataType: 'json',
+			            method: 'POST',
+			            data: JSON.stringify({"datasetId" : "bancosWebservice","limit" : "0"}),
+			            crossDomain: true,
+			            cache: false
+			        },
+			        root: 'content'
+			    },
+			    renderContent: ['Cod_banco', 'Banco'], 
+			    header: [{'title': 'Cod.'},
+			             {'title': 'Descrição'}],
+			    multiSelect: false,
+			    search: {
+			        enabled: true,
+			        onSearch: function(response) {
+			        	$.ajax({
+							  type: 'POST',
+							  contentType: 'application/json',
+							  dataType: 'json',
+							  url: '/api/public/ecm/dataset/search',
+							  data: JSON.stringify({"datasetId" : "bancosWebservice","limit" : "0", "searchField" : "Banco", "searchValue" : response }),
+							  success: function(data) {
+								  thisTable.reload(data.content);
+							  }
+							});
+			        }
+			    },
+			    scroll: {
+			        target: '#postEmb',
+			        enabled: true			        
+		        },
+			    tableStyle: 'table-striped'
+			}).on('dblclick', function(ev) {
+				thisModal.remove();	
+				var index = thisTable.selectedRows()[0];
+			    var selected = thisTable.getRow(index);	
+			    $('#banco').val(selected.Cod_banco + " - " + selected.Banco);
+			    $('#conta_cor').val("");
+			    $('#agencia').focus().val("");
+			});
+		});
+		$(".modal-body").css("max-height" , window.innerHeight/2 + 'px');
+	});
+	
+	$('#cpf_cnpj').unbind()
+				  .mask('0000.000.000-00', {reverse: true})
+				  .on('blur', function() {
+						if(!isCPFValid($(this).val())){
+							FLUIGC.message.alert({
+							    message: "<strong>Informe um CPF ou CNPJ válidos:</strong><br/>",
+							    title: 'CPF / CNPJ inválido',
+							    label: 'OK'
+							}, function(el, ev) {
+								setTimeout(function() {
+									$('#cpf_cnpj').focus().val("");
+								}, 100);
+							});
+						} 
+					});
+	
+	somatorio();
+	
 	
 }
-//atribui formatação numerica ao input text e seta o valor inicial 0.00 
-//necessario quando carregar o formulario e quando adicionar linha na tabela
-function setMoneyClass(elemento){
-	elemento.mask('000.000.000,00', {reverse: true})
-		.on('focusin', function(){$(this).select();})
-		.on('blur', function(){
-			if ($(this).val() == '') $(this).val('0,00')
-			else if ($(this).val().substring($(this).val().lastIndexOf(",")).length <= 2) $(this).val($(this).val() + ',00');
-	}).trigger('blur')
-	  .on("keyup", function(e){
-		soma = 0.00;
-		//somar despesas
-		$('input[id^=vl_despesa___').each(function(i){
-			soma += parseFloat($(this).val().replace(/[^0-9\,]+/g,"").replace(",",".")) ?  parseFloat($(this).val().replace(/[^0-9\,]+/g,"").replace(",",".")) : 0.00;
-		});
-		$('#vl_tot_despesa').val(soma.toFixed(2).replace(".", ",").replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1."));
-		
-		//somar despesas com km
-		soma += parseFloat($("#vl_km_devido").val().replace(/[^0-9\,]+/g,"").replace(",",".")) ?  parseFloat($("#vl_km_devido").val().replace(/[^0-9\,]+/g,"").replace(",",".")) : 0.00;
-		$('#vl_tot_geral').val(soma.toFixed(2).replace(".", ",").replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1."));
-		
-		//subtrair adinatamento
-		soma -= parseFloat($("#vl_prestacao").val().replace(/[^0-9\,]+/g,"").replace(",",".")) ?  parseFloat($("#vl_prestacao").val().replace(/[^0-9\,]+/g,"").replace(",",".")) : 0.00;
-		$('#vl_tot_dev').val(Math.abs(soma).toFixed(2).replace(".", ",").replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1."));	
-		
-		
-		
-		$('#acerto').text("Diferença");
-		$('#div_banco_acerto').hide();
-		$('#acerto_colab').hide();
-		$('#quemReembolsa').val("ninguem");		
-		if (soma < 0) {
-			$('#acerto').text("À devolver a CASP");
-			if($('#moeda:checked').val() == "real") {
-				$('#div_banco_acerto').show();
-				$('#acerto_colab').hide();
-				$('#quemReembolsa').val("user");
-			}
-		} else if (soma > 0){
-			$('#acerto').text("À receber da CASP");
-			if($('#moeda:checked').val() == "real") {
-				$('#div_banco_acerto').hide();
-				$('#acerto_colab').show();
-				$('#quemReembolsa').val("casp");
-			}
-		} 
-			
-			
+
+function numerarLinhas(){
+	$(".numeracao").remove();
+	$('#tb_despesa').find('tr').each(function(indice){
+		indice--;
+		$(this).find("td:first").prepend("<div class='row numeracao'>" +
+											"<div class='col-xs-12' align='left'>" +
+												"<label  >" +
+												"Desp.: " + ("00" + indice).substr(-3) + 
+												"</label>" +
+											"</div>" +
+										"</div>");	       
+	});	
+	$('#tb_quilometragem').find('tr').each(function(indice){
+		indice--;
+		$(this).find("td:first").prepend("<div class='row numeracao'>" +
+											"<div class='col-xs-12' align='left'>" +
+												"<label  >" +
+												"Km.: " + ("00" + indice).substr(-3) + 
+												"</label>" +
+											"</div>" +
+										"</div>");	       
 	});
+}
+
+//adiciona linha a tabela
+function addLinha(tabela){
+	row = wdkAddChild(tabela);
+	loadElementos();
 }
 
 function fnCustomDelete(oElement){
     var tr = $(oElement).closest('tr');
-    tr.remove(); 
-    $("#km_ini").trigger('keyup');
-    numerarLinha();
+    tr.remove();
+    somatorio();
+    numerarLinhas();
 }
 
+
+function somatorio(){
+	var acumulado = 0.0; 
+	var valor;
+	
+	$('.despesa').each(function() {
+		valor = parseFloat($(this).val().replace(/[^\d\,\-]/g, "").replace(",","."));
+		if (!isNaN(valor)) acumulado += valor;
+	});
+	$("#vl_tot_despesa").val(acumulado.toFixed(2)).mask('000.000.000,00', {reverse: true});
+	
+	var KMacumulado = 0; 
+	$('.quilometragem').each(function() {
+		valor = parseFloat($(this).val().replace(/[^\d\,\-]/g, "").replace(",","."));
+		if (!isNaN(valor)) KMacumulado += valor;
+	});	
+	$("#km_total").val(KMacumulado.toFixed(0)).mask('000.000.000', {reverse: true});
+	
+	KMacumulado *= 0.86
+	$("#vl_km_devido").val((KMacumulado).toFixed(2)).mask('000.000.000,00', {reverse: true});
+	
+	acumulado += KMacumulado;	
+	$("#vl_tot_geral").val(acumulado.toFixed(2)).mask('000.000.000,00', {reverse: true});
+	
+	valor = parseFloat($("#vl_prestacao").val().replace(/[^\d\,\-]/g, "").replace(",","."));
+	if (isNaN(valor)) valor = 0;
+	
+	acumulado -= valor;	
+	$("#vl_tot_dev").val((acumulado).toFixed(2)).mask('000.000.000,00', {reverse: true});
+	
+	$('.acerto').hide();
+	if (acumulado < 0){
+		$('.acerto').show();
+		$('.casp').show();
+		$('.usuario').hide();		
+		$('#agencia').unbind().attr("readOnly", true);
+		$('#conta_cor').unbind().attr("readOnly", true);		
+	} else if (acumulado > 0){
+		$('.acerto').show();
+		$('.casp').hide();
+		$('.usuario').show();
+		if ($("#placa").attr("readonly") != "readonly"){
+			$('#agencia').unbind().removeAttr('readOnly').mask('000.000.000', {reverse: true});
+			$('#conta_cor').unbind().removeAttr('readOnly').mask('000.000.000-0', {reverse: true});
+		}
+	}
+	
+}
 
 
 //prencimento e ativação dos campos
@@ -228,9 +452,7 @@ function ativaPreencheCampos(modeView, numState, matricula, processo) {
 	process = processo;
 	blockAll();
 	
-	$("#bnt_resumo").css('pointer-events', 'all');
 	if(modeView == "ADD" || modeView == "MOD"){
-		anexos = getAnexos(process);
 		
 		var filter = new Object();
 		filter["colleaguePK.colleagueId"] = matricula;
@@ -238,168 +460,121 @@ function ativaPreencheCampos(modeView, numState, matricula, processo) {
 	
 		var usuario = colaborador[0].colleagueName;
 		var ramal = colaborador[0].extensionNr;	
-		var data = getData();
-		var hora = getHora();	
+		var dataAtual = new Date();
+		
+		var data = ("0" + dataAtual.getDate()).substr(-2) + "/" + ("0" + (dataAtual.getMonth() + 1)).substr(-2) + "/" + dataAtual.getFullYear();
+		var hora = ("0" + dataAtual.getHours()).substr(-2) + ":" + ("0" + (dataAtual.getMinutes())).substr(-2);	
 		
 		if (numState == 0 || numState == 4){
-			showElemento($("#emissao"));
+			showElemento($("#emissao"));	
 			
 			$("#data_sol").val(data);
 			$("#hora_sol").val(hora);
 			
-			$('#matricula_solic').attr("readOnly", true).val(matricula);
-			$('#user_solic').attr("readOnly", true).val(usuario);
-			$("#data_solic").attr("readOnly", true).val(ramal);	
+			$('#matricula_solic').val(matricula);
+			$('#user_solic').val(usuario);
+			$("#data_solic").val(ramal);
 			
-			var filterGroup = new Object();
-			filterGroup["colleagueGroupPK.groupId"] = 'iniRDV';
-			filterGroup["colleagueGroupPK.colleagueId"] = matricula;
-			var grupos = getDatasetValues('colleagueGroup', filterGroup);
-			if (!grupos[0]) {
-				$('#matricula_resp').val(matricula);
-				$('#nome_resp').attr("readOnly", true).val(usuario);
-				$('#origem_desp').css('pointer-events', 'none').val("vale");
-			};
+			$('#matricula_user').val(matricula);
+			$('#nome_resp').val(usuario);
 			
-			setTimeout(function() {
+			setTimeout(function () {
 				FLUIGC.message.alert({
-				    message: "<strong>O valor à ser informado não é o total de suas despesas!!<br/>" +
-				    		"O valor refere-se total da fatura no caso de cartão corporativo ou do adiantamento no caso de vales solicitados a tesouraria!</strong>",
-				    title: 'ATENÇÃO!!',
+				    message: "<strong>O valor à ser informado no referido campo, não é o total de suas despesas, " +
+				    		 "mas ao total da fatura no caso de cartão corporativo ou do adiantamento no " +
+				    		 "caso de vales solicitados a tesouraria!</strong>",
+				    title: 'ATENÇÃO!!!',
 				    label: 'OK'
-				});
-			}, 1000);
+				});	
+			}, 2000);
 			
+			$(':radio[id="prenchimento"]').change(function() {	
+				if ($(this).filter(':checked').val()){
+					if($(this).filter(':checked').val() == 'solic'){
+						showElemento($("#pn_prest_contas"));
+						$('#matricula_orc').val(matricula);
+						$('#user_orc').val(usuario);
+						$("#data_orc").val(ramal);
+						
+						if ( $('#tb_quilometragem').find('tbody').find('tr').length == 2){
+							FLUIGC.message.alert({
+							    message: "<strong>Informe quilometragem somente caso tenha utilizado veiculo proprio.</br>" +
+							    		"Para veiculos da CASP, não prencher este campos</strong>",
+							    title: 'ATENÇÃO!!!',
+							    label: 'OK'
+							});		
+						}
+					}
+					else $('#pn_prest_contas').hide();
+				}
+			}).trigger('change');
 		}
 		
-		
 		if (numState == 5){
-			if ($('#data_sol').val() == ""){
-				$('#matricula_solic').attr("readOnly", true).val(matricula);
-				$('#user_solic').attr("readOnly", true).val(usuario);
-				$("#data_solic").attr("readOnly", true).val(ramal);
-				$("#possui_cartao").css('pointer-events', 'all');
-				
-				var c1 = DatasetFactory.createConstraint("processHistoryPK.processInstanceId", processo, processo, ConstraintType.MUST);
-			    var c2 = DatasetFactory.createConstraint("previousMovementSequence", 0, 0, ConstraintType.MUST);
-			    var constraints   = new Array(c1, c2);
-			    var dataset = DatasetFactory.getDataset("processHistory", null, constraints, null);
-			    var dataAtual = new Date(dataset.values[0]['movementDate']);
-			    var today = ("0" + dataAtual.getDate()).substr(-2) + "/" + ("0" + (dataAtual.getMonth() + 1)).substr(-2) + "/" + dataAtual.getFullYear();
-			    $("#data_sol").val(today);
-				$("#hora_sol").val(dataset.values[0]['movementHour'].substr(0,5));
-			}
+			showElemento($("#pn_prest_contas"));
+			$('#matricula_orc').val(matricula);
+			$('#user_orc').val(usuario);
+			$("#data_orc").val(ramal);
 			
-			showElemento($("#pn_prest_contas"));			
-			$("#num_processo").val(processo);
 			
-			$('#matricula_orc').attr("readOnly", true).val(matricula);
-			$('#user_orc').attr("readOnly", true).val(usuario);
-			$("#data_orc").attr("readOnly", true).val(data);
-					
-			
-			$("#matricula_aprovador").val(getAprovador($('#matricula_resp').val()));
-			
-			$("#vl_tot_despesa").attr("readOnly", true);
-			$("#vl_km_devido").attr("readOnly", true);
-			$("#vl_tot_geral").attr("readOnly", true);
-			$("#vl_tot_dev").attr("readOnly", true);
-			
-			$("#agencia_acerto").attr("readOnly", true);
-			$("#conta_cor_acerto").attr("readOnly", true);
-			
-			$("select[id*='tipo_despesa___']").each(function(i) {
-				$(this).on('click', function(e) {
-					var row = $(this).attr('id').substr($(this).attr('id').lastIndexOf("___") + 3);
-					if ($(this).val() == 'outros' ) $("#ccontabil___" + row).removeAttr('readOnly');
-					else $("#ccontabil___" + row).val($(this).val()).attr("readOnly", true);				
-				}).trigger('click');
-			});
 		}
 		
 		if (numState == 9){
-			showElemento($("#pn_aprov_contabil"));			
-			$("#num_processo").val(processo);
+			showElemento($("#aprovadores"));
+			$('#user_aprov_contabil').val(usuario);
+			$("#data_aprov_contabil").val(data);	
 			
-			$('#matricula_aprov_contabil').attr("readOnly", true).val(matricula);
-			$('#user_aprov_contabil').attr("readOnly", true).val(usuario);
-			$("#data_aprov_contabil").attr("readOnly", true).val(data);
+			$("#aprov_imediato").css('pointer-events', 'none');
+			$("#desc_aprov_imediato").attr("readOnly", true);
+			$("#aprov_dir_fin").css('pointer-events', 'none');
+			$("#desc_aprov_dir_fin").attr("readOnly", true);
+			
 		}
+		
 		if (numState == 15){
-			showElemento($("#pn_aprov_imediato"));			
-			$("#num_processo").val(processo);
+			showElemento($("#aprovadores"));
+			$('#user_aprov_imediato').val(usuario);
+			$("#data_aprov_imediato").val(data);
 			
-			$('#matricula_aprov_imediato').attr("readOnly", true).val(matricula);
-			$('#user_aprov_imediato').attr("readOnly", true).val(usuario);
-			$("#data_aprov_imediato").attr("readOnly", true).val(data);
+			$("#aprov_contabil").css('pointer-events', 'none');
+			$("#desc_aprov_contabil").attr("readOnly", true);
+			$("#aprov_dir_fin").css('pointer-events', 'none');
+			$("#desc_aprov_dir_fin").attr("readOnly", true);
 		}
 		
 		if (numState == 21){
-			showElemento($("#pn_aprov_dir_fin"));			
-			$("#num_processo").val(processo);
+			showElemento($("#aprovadores"));
+			$('#user_aprov_dir_fin').val(usuario);
+			$("#data_aprov_dir_fin").val(data);
 			
-			$('#matricula_aprov_dir_fin').attr("readOnly", true).val(matricula);
-			$('#user_aprov_dir_fin').attr("readOnly", true).val(usuario);
-			$("#data_aprov_dir_fin").attr("readOnly", true).val(data);
-		}
-		if (numState == 27){
-			showElemento($("#pn_rembolsa"));			
-			$("#num_processo").val(processo);
-			
-			$('#matricula_rembolsa').attr("readOnly", true).val(matricula);
-			$('#user_rembolsa').attr("readOnly", true).val(usuario);
-			$("#data_rembolsa").attr("readOnly", true).val(data);
+			$("#aprov_contabil").css('pointer-events', 'none');
+			$("#desc_aprov_contabil").attr("readOnly", true);
+			$("#aprov_imediato").css('pointer-events', 'none');
+			$("#desc_aprov_imediato").attr("readOnly", true);
 		}
 		
-		if (numState == 36){
-			showElemento($("#pn_user_reembolsa"));			
-			$("#num_processo").val(processo);
-			
-			$('#matricula_rembolsa_user').attr("readOnly", true).val(matricula);
-			$('#user_rembolsa_user').attr("readOnly", true).val(usuario);
-			$("#data_rembolsa_user").attr("readOnly", true).val(data);
+		if (numState == 27){
+			showElemento($("#pn_rembolsa"));
+			$('#matricula_rembolsa').val(matricula);
+			$('#user_rembolsa').val(usuario);
+			$("#data_rembolsa").val(data);				
 		}
+		
 		
 	}	
-}
-
-function gerarResumo(){	 
-	            
-	window.open("http://fluig.casp.com.br/webdeskreport/frameset?__id=idownloadFrame&__report=file:///%2Ftmp%2Fecm%2Freports%2F5190%2F1001%2FresumoRDV418101447773619956.rptdesign&param_1="+ process + "&__masterpage=true&__format=html&__cID=1", '_blank');
-}
-
-//obter a quantidade de anexos atual
-function getAnexos(process) {	
-	var c1 = DatasetFactory.createConstraint("processAttachmentPK.processInstanceId", process, process, ConstraintType.MUST);
-    var constraints   = new Array(c1);
-    //Busca o dataset
-    var dataset = DatasetFactory.getDataset("processAttachment", null, constraints, null);
-    return dataset.values.length;
-}
-
-//obter a quantidade de vezes que passou pela atividade
-function getInteracoes(process, passo) {	
-	var c1 = DatasetFactory.createConstraint("processHistoryPK.processInstanceId", process, process, ConstraintType.MUST);
-    var c2 = DatasetFactory.createConstraint("stateSequence", passo, passo, ConstraintType.MUST);
-    var constraints   = new Array(c1, c2);
-    //Busca o dataset
-    var dataset = DatasetFactory.getDataset("processHistory", null, constraints, null);
-    return dataset.values.length;
-}
-
-//obter a quantidade de vezes que passou pela atividade
-function getAprovador(matr) {	
-	var c1 = DatasetFactory.createConstraint("USER_CODE", matr, matr, ConstraintType.MUST);
-    var constraints   = new Array(c1);
-	var dataset = DatasetFactory.getDataset("aprovadores", null, constraints, null);
-	return dataset.values[0].DATA_VALUE ? dataset.values[0].DATA_VALUE : ''; 
 }
 
 //exibe um panel
 function showElemento(elemento){	
 	elemento.show()
 			.css('pointer-events', 'all')
-			.find('input[type=text], input[type=zoom], textarea').removeAttr('readOnly');
+			.find('input[type=text], input[type=zoom], textarea').each(function(i) {
+				if (!$(this).hasClass('readonly')) $(this).removeAttr('readOnly');
+			});
+	elemento.find('.table').find("tr").each(function(){
+				$(this).find("td:first").show();
+			})
+	elemento.find('.divAddButton').show();
 	
 	setTimeout(function () {
 		var offset = elemento.offset().top; 
@@ -407,7 +582,8 @@ function showElemento(elemento){
 	}, 1000);
 }
 //bloqueia todos os panels para edição 
-function blockAll() {
+//bloqueia todos os panels para edição 
+function blockAll(modeView) {
 	$('html, body').animate({ scrollTop: 0 }, 5);
 	$('.panel').each(function(i) {
 		if ($(this).attr('id') != null) {			
@@ -422,128 +598,48 @@ function blockAll() {
 						}
 					});
 		}
+		if(modeView == "ADD" || modeView == "MOD"){
+			$(this).find('.table').find("tr").each(function(){
+				   $(this).find("td:first").hide();
+			});
+		}
+		$(this).find('.divAddButton').hide();
 	});
 }
 
-//validação dos campos
-var beforeSendValidate = function(numState){
-	var message = "";
-	
-	if (numState == 0 || numState == 4){
-		
-		if ($('#origem_desp').val() == "sol_viagem") message += "<br/>- Não é possivel RDV de solicitação de viagem de forma manual!;";
-		
-		if ($('#nome_resp').val() == "") message += "<br/>- Informe o responsavel pelo RDV;";
-		if (parseFloat($("#vl_prestacao").val().replace(/[^0-9\,]+/g,"").replace(",","."))  == 0 && $('#origem_desp').val() == "cart_corp") message += "<br/>- Informe o valor do RDV;";	
-		if ($('#desc_emissao').val() == "") message += "<br/>- Informe o motivo do RDV;";
-	}
-	
-	
-	if (numState == 5){	
-		if($('#possui_cartao').val() == 'nao') {
-			if($("#matricula_aprovador").val() == "")  message += "<br/>- Solicite o cadastro de aprovador ao Depto de TI;";
-			
-			if($("select[id*='tipo_despesa___']").length == 0){
-				if($('#placa').val() == '') message += "<br/>- Informe a placa do veiculo;";
-				if(parseFloat($('#km_ini').val().replace(/[^0-9\,]+/g,"").replace(",",".")) == 0.00) message += "<br/>- Informe a kilometragem percorrida do veiculo;";	
-			} else if (getInteracoes(process, numState) <= 1 && anexos >= getAnexos(process)) message += "<br/>- É necessario anexar os comprovantes de despesa;";
-			
-			
-			$("select[id*='tipo_despesa___']").each(function(i) {
-				if ($(this).closest('tr').attr('style') != "display:none"){
-					if($(this).val() == null) message += "<br/>- Informe o tipo da despesa na linha " + $(this).closest('tr').index();
-					if($(this).val() == 'outros'){
-						var row = $(this).attr('id').substr($(this).attr('id').lastIndexOf("___") + 3);
-						if($('#desc_despesa___' + row).val() == '') message += "<br/>- Informe a descrição da despesa na linha " + $(this).closest('tr').index();
-						$(this).focus();
-					}
-				}
-			});
-			$("input[id^='ccontabil___']").each(function(i) {
-				if ($(this).closest('tr').attr('style') != "display:none" && $(this).val() == ""){
-					message += "<br/>- Informe a conta contábil na linha " + $(this).closest('tr').index();
-					$(this).focus();
-				}
-			});
-			if ($('#origem_desp').val() == "cart_corp")
-				$("select[id*='desp_cart___']").each(function(i) {
-					if ($(this).closest('tr').attr('style') != "display:none" && ($(this).val() == null || $(this).val() == '')){
-						message += "<br/>- Informe a origem da despesa na linha " + $(this).closest('tr').index();
-						$(this).focus();
-					}
-				});
-			$("input[id^='local_despesa___']").each(function(i) {
-				if ($(this).closest('tr').attr('style') != "display:none" && $(this).val() == ""){
-					message += "<br/>- Informe o local da despesa na linha " + $(this).closest('tr').index();
-					$(this).focus();
-				}
-			});		
-			$("input[id^='ccusto___']").each(function(i) {
-				if ($(this).val() == "") message += "<br/>- Informe o centro de custo ou pedido da despesa na linha " + $(this).closest('tr').index();
-				$(this).focus();
-			});
-			
-			$("input[id^='vl_despesa___']").each(function(i) {
-				if ($(this).closest('tr').attr('style') != "display:none" && parseFloat($(this).val().replace(/[^0-9\,]+/g,"").replace(",",".")) == 0.00){
-					message += "<br/>- Informe o valor da despesa na linha " + $(this).closest('tr').index();
-					$(this).focus();
-				}
-			});
-			
-			$("input[id^='desc_despesa___']").each(function(i) {
-				if ($(this).closest('tr').attr('style') != "display:none" && $(this).val() == ""){
-					message += "<br/>- Descreva a despesa na linha " + $(this).closest('tr').index();
-					$(this).focus();
-				}
-			});	
-			
-			if ($('#quemReembolsa').val() == "casp"){
-				if ($('#cpf_cnpj').val() == "") message += "<br/>- Informe o CPF / CNPJ para reembolso;";
-				if ($('#banco').val() == "") message += "<br/>- Informe o banco para reembolso;";
-				if ($('#agencia').val() == "") message += "<br/>- Informe o agencia para reembolso;";
-				if ($('#conta_cor').val() == "") message += "<br/>- Informe o conta corrente para reembolso;";
-			}		
-		}			
-	}
-	
-	if (numState == 9){
-		if ($("#desc_aprov_contabil").val() == '') message += "<br/>- Informe motivo da aprovação / rejeição;";
-	}
-	if (numState == 15){
-		if ($("#desc_aprov_imediato").val() == '') message += "<br/>- Informe motivo da aprovação / rejeição;";
-	}
-	if (numState == 21){
-		if ($("#desc_aprov_dir_fin").val() == '') message += "<br/>- Informe motivo da aprovação / rejeição";
-	}
-	if (numState == 27){
-		if ($("#desc_rembolsa").val() == '') message += "<br/>- Informe motivo da aprovação / rejeição";
-		if ($('#aprov_finaceira:checked').val() == "sim" && $('#quemReembolsa').val() == "casp"){
-			if (getInteracoes(process, numState) <= 1 && 
-				anexos >= getAnexos(process)){
-						 message += "<br/>- É necessario anexar os comprovantes de reembolso;";
-			}
-			var vl_reembolso = parseFloat($("#vl_rembolsa").val().replace(/[^0-9\,]+/g,"").replace(",","."));
-			var vl_devolucao = parseFloat($("#vl_tot_dev").val().replace(/[^0-9\,]+/g,"").replace(",","."));
-			if (vl_reembolso  == 0 && vl_devolucao != 0) message += "<br/>- Informe o valor do reembolso;";
-			if (vl_reembolso  > vl_devolucao ) message += "<br/>- Não é possivel devolver valor superior ao calculado;";
-			
-			var difValor = "\n O valor entregue é diferente do valor socilitado!";
-			$('#desc_rembolsa').val($('#desc_rembolsa').val().replace(difValor, ""));
-			if (vl_reembolso != vl_devolucao) $('#desc_rembolsa').val( $('#desc_rembolsa').val()  + difValor);
-			
-		}
-	}
-	
-	if (message != ""){
-		FLUIGC.message.alert({
-		    message: "<strong>Os campos abaixo são de preencimento obrigatório:</strong><br/>" + message,
-		    title: 'CAMPOS OBRIGATÓRIOS',
-		    label: 'OK'
-		});
-		return false;		
-	}
-	
-	
-	
+var isCPFValid = function(cpf) {	
+	cpf = cpf.replace(/[^\d]+/g,'');    
+    if(cpf == '') return false; 
+    // Elimina CPFs invalidos conhecidos    
+    if (cpf.length != 11 || 
+        cpf == "00000000000" || 
+        cpf == "11111111111" || 
+        cpf == "22222222222" || 
+        cpf == "33333333333" || 
+        cpf == "44444444444" || 
+        cpf == "55555555555" || 
+        cpf == "66666666666" || 
+        cpf == "77777777777" || 
+        cpf == "88888888888" || 
+        cpf == "99999999999")
+            return false;       
+    // Valida 1o digito 
+    add = 0;    
+    for (i=0; i < 9; i ++)       
+        add += parseInt(cpf.charAt(i)) * (10 - i);  
+        rev = 11 - (add % 11);  
+        if (rev == 10 || rev == 11)     
+            rev = 0;    
+        if (rev != parseInt(cpf.charAt(9)))     
+            return false;       
+    // Valida 2o digito 
+    add = 0;    
+    for (i = 0; i < 10; i ++)        
+        add += parseInt(cpf.charAt(i)) * (11 - i);  
+    rev = 11 - (add % 11);  
+    if (rev == 10 || rev == 11) 
+        rev = 0;    
+    if (rev != parseInt(cpf.charAt(10)))
+        return false;       
+    return true;
 }
-var beforeMovementOptions = beforeSendValidate;
