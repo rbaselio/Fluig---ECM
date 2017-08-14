@@ -5,6 +5,8 @@ function loadElementos(){
 	$("#agencia").mask("000000000", {reverse: true});
 	$("#conta_cor").mask("000000000-0", {reverse: true});
 	
+	$(".numerico").mask("000.000.000", {reverse: true});
+	
 	//atribui formatação numerica ao input text e seta o valor inicial 0.00
 	$(".money").mask('000.000.000,00', {reverse: true})
 			.on('blur', function(){
@@ -17,6 +19,13 @@ function loadElementos(){
 		pickDate: true,
 	    minDate :  new Date(dataAtual.getTime()),
 		defaultDate: new Date(dataAtual.getTime() + (1 * 24 * 60 * 60 * 1000)),
+		showToday: true,
+	    language: 'pt-br'
+	});
+	
+	FLUIGC.calendar($(".dateFull"), {
+		pickDate: true,
+	    defaultDate: new Date(dataAtual.getTime() + (1 * 24 * 60 * 60 * 1000)),
 		showToday: true,
 	    language: 'pt-br'
 	});
@@ -81,6 +90,71 @@ function loadElementos(){
 			    $("#matricula_user").val(selected.colleagueId);
 			    $("#solicitante").val(selected.colleagueName);	
 			    $("#ramal").val("");			    
+			    thisModal.remove();					    
+			});
+		});
+		$(".modal-body").css("max-height" , window.innerHeight/2 + 'px');	
+	});
+	
+	$('#btZoomColabTotvs').click(function() {	
+		var param = {"datasetId" : "TOTVSColaboradores", "limit" : "0", 
+			 	 	"filterFields" : ["ativo", "true"]};
+		
+		var thisModal = FLUIGC.modal({
+		   title: 'Lista de Colaboradores',
+		   content: '<div id="postEmb"></div>',
+		   id: 'fluig-modal',
+		   actions: [{
+		       'label': 'Fechar',
+		       'autoClose': true
+		   }]
+		}, function(err, data) {			
+			var thisTable = FLUIGC.datatable('#postEmb', {
+			    dataRequest: {
+			        url: '/api/public/ecm/dataset/search',
+			        options: {
+			            contentType:"application/json",
+			            dataType: 'json',
+			            method: 'POST',
+			            data: JSON.stringify(param),
+			            crossDomain: true,
+			            cache: false
+			        },
+			        root: 'content'
+			    },
+			    renderContent: ['matricula', 'nome'], 
+			    header: [{'title': 'Matricula', 'size': 'col-sm-2'},
+			             {'title': 'Nome', 'size': 'col-sm-5'}],
+			    multiSelect: false,
+			    search: {
+			        enabled: true,
+			        searchAreaStyle: 'col-md-9',
+			        onSearch: function(response) {
+			        	var param2 = {"datasetId" : "TOTVSColaboradores", "limit" : "0", 
+	 							"filterFields" : ["ativo", "true"], 
+	 							"searchField" : "nome", "searchValue" : response };
+			        	$.ajax({
+							  type: 'POST',
+							  contentType: 'application/json',
+							  dataType: 'json',
+							  url: '/api/public/ecm/dataset/search',
+							  data: JSON.stringify(param2),
+							  success: function(data) {
+								  thisTable.reload(data.content);
+							  }
+							});
+			        }
+			    },
+			    scroll: {
+			        target: '#postEmb',
+			        enabled: true			        
+		       },
+			    tableStyle: 'table-striped'
+			}).on('dblclick', function(ev) {
+				var index = thisTable.selectedRows()[0];
+			    var selected = thisTable.getRow(index);
+			    $("#matricula_motorista").val(selected.matricula);
+			    $("#motorista").val(selected.nome);	
 			    thisModal.remove();					    
 			});
 		});
@@ -489,9 +563,6 @@ function ativaPreencheCampos(modeView, numState, matricula, WKNumProces, documen
 	
 	blockAll();	
 	
-	//$('#recibo').css('pointer-events', 'all');
-	//$('#myTab a:first').tab('show');
-	
 	if(modeView == "ADD" || modeView == "MOD"){	
 		
 		var filter = new Object();
@@ -553,9 +624,6 @@ function ativaPreencheCampos(modeView, numState, matricula, WKNumProces, documen
 			$('#matricula_entrega').val(matricula);
 			$('#user_entrega').val(usuario);
 			$("#data_entrega").val(data);
-			
-			
-			
 		}
 		
 		if (numState == 12){
@@ -610,6 +678,13 @@ function ativaPreencheCampos(modeView, numState, matricula, WKNumProces, documen
 			$("#entrega_verba").hide();			
 		}
 		
+		if (numState == 139) {
+			showElemento($("#registro_veiculo"));
+			$('#matricula_portaria').val(matricula);
+			$('#user_portaria').val(usuario);
+			$("#data_portaria").val(data);					
+		}
+		
 		
 		if (numState == 26) {
 			
@@ -638,7 +713,7 @@ function ativaPreencheCampos(modeView, numState, matricula, WKNumProces, documen
 
 //posiciona o tela de acordo com a posição do elemento
 //habilita elementos do panel para edição
-function showElemento(elemento){	
+function showElemento(elemento){
 	elemento.show()
 			.css('pointer-events', 'all')
 			.find('input[type=text], input[type=zoom], textarea').each(function(i) {
@@ -665,7 +740,7 @@ function blockAll(modeView) {
 					.attr("readOnly", true)
 					.css('pointer-events', 'all')
 					.each(function(){
-						if ($(this).val() != "" && parseFloat($(this).val().replace(/[^0-9\,]+/g,"").replace(",",".")) != 0.00) {
+						if ($(this).val() != "" && $(this).hasClass('validaShow')) {
 							$(this).closest('.panel').show();
 						}
 					});

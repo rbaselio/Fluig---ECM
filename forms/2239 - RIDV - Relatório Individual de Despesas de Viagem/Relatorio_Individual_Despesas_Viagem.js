@@ -41,12 +41,6 @@ function loadElementos(){
 	}).trigger('change');
 	
 	
-	$(".tipo_despesa").unbind().on('change', function(e) {
-		var thisRow = $(this).attr("name").substring($(this).attr("name").lastIndexOf("_") + 1);
-		if ($(this).val() == 'outros' ) $("#ccontabil___" + thisRow).val('').removeAttr('readOnly');
-		else $("#ccontabil___" + thisRow).val($(this).val()).attr("readOnly", true);		
-	}).trigger('change');
-	
 	var informaKm = $('#tb_quilometragem').find('tbody').find('tr').length;
 	if ( informaKm > 1) $(".informaKm").show();
 	else $(".informaKm").hide();
@@ -488,13 +482,19 @@ function ativaPreencheCampos(modeView, numState, matricula, processo) {
 				});	
 			}, 2000);
 			
-			$(':radio[id="prenchimento"]').change(function() {	
+			$(':radio[id="prenchimento"]').change(function() {
 				if ($(this).filter(':checked').val()){
 					if($(this).filter(':checked').val() == 'solic'){
 						showElemento($("#pn_prest_contas"));
 						$('#matricula_orc').val(matricula);
 						$('#user_orc').val(usuario);
 						$("#data_orc").val(ramal);
+						
+						$(".tipo_despesa").unbind().on('change', function(e) {
+							var thisRow = $(this).attr("name").substring($(this).attr("name").lastIndexOf("_") + 1);
+							if ($(this).val() == 'outros' ) $("#ccontabil___" + thisRow).val('').removeAttr('readOnly');
+							else $("#ccontabil___" + thisRow).val($(this).val()).attr("readOnly", true);		
+						}).trigger('change');
 						
 						if ( $('#tb_quilometragem').find('tbody').find('tr').length == 2){
 							FLUIGC.message.alert({
@@ -516,6 +516,11 @@ function ativaPreencheCampos(modeView, numState, matricula, processo) {
 			$('#user_orc').val(usuario);
 			$("#data_orc").val(ramal);
 			
+			$(".tipo_despesa").unbind().on('change', function(e) {
+				var thisRow = $(this).attr("name").substring($(this).attr("name").lastIndexOf("_") + 1);
+				if ($(this).val() == 'outros' ) $("#ccontabil___" + thisRow).val('').removeAttr('readOnly');
+				else $("#ccontabil___" + thisRow).val($(this).val()).attr("readOnly", true);		
+			}).trigger('change');
 			
 		}
 		
