@@ -17,6 +17,10 @@ function validateForm(form){
 			if (form.getValue("desc_emissao") == '') message += "<br/>- Descreva o problema;";		
 		}
 		
+		if (numState == 2){
+			if (form.getValue('pre_aprov') == "nao" && form.getValue("obser_preAnal") == '') message += "<br/>- Informe motivo da rejeição;";
+		}
+		
 		if (numState == 4){
 			if (form.getValue("desc_aval_manut") == '') message += "<br/>- Informe a situação encontrada";
 			
