@@ -562,6 +562,7 @@ function ativaPreencheCampos(modeView, numState, matricula, WKNumProces, documen
 	thisProcesso = WKNumProces;
 	
 	blockAll();	
+	$('#recibo').css('pointer-events', 'all');
 	
 	if(modeView == "ADD" || modeView == "MOD"){	
 		

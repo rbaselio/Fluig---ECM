@@ -1,7 +1,17 @@
-var row, anexos, matr, process, soma;
+var row, anexos, matr, process, soma,task;
 
 //comportamento do form
 function loadElementos(){
+	
+	
+	if (task = 4 || task == 5){
+		$(".tipo_despesa").unbind().on('change', function(e) {
+			var thisRow = $(this).attr("name").substring($(this).attr("name").lastIndexOf("_") + 1);
+			if ($(this).val() == 'outros' ) $("#ccontabil___" + thisRow).val('').removeAttr('readOnly');
+			else $("#ccontabil___" + thisRow).val($(this).val()).attr("readOnly", true);		
+		}).trigger('change');
+	}
+	
 	
 	$('.money').unbind().mask('000.000.000,00', {reverse: true})
 				.on('blur', function(){
@@ -211,7 +221,7 @@ function loadElementos(){
 	});
 	
 	$('.listaCidade').unbind().click(function() {
-		var origem = $(this).hasClass('origem');
+		var origem = $(this).hasClass('cid_origem');
 		var thisRow = $(this).closest('div').find('input').attr("id").split('___')[1];
 		if(isNaN(thisRow)) thisRow = "1";
 		
@@ -455,6 +465,7 @@ function ativaPreencheCampos(modeView, numState, matricula, processo) {
 		var usuario = colaborador[0].colleagueName;
 		var ramal = colaborador[0].extensionNr;	
 		var dataAtual = new Date();
+		task = numState;
 		
 		var data = ("0" + dataAtual.getDate()).substr(-2) + "/" + ("0" + (dataAtual.getMonth() + 1)).substr(-2) + "/" + dataAtual.getFullYear();
 		var hora = ("0" + dataAtual.getHours()).substr(-2) + ":" + ("0" + (dataAtual.getMinutes())).substr(-2);	
@@ -470,7 +481,8 @@ function ativaPreencheCampos(modeView, numState, matricula, processo) {
 			$("#data_solic").val(ramal);
 			
 			$('#matricula_user').val(matricula);
-			$('#nome_resp').val(usuario);
+			$('#nome_resp').val(usuario);		
+			
 			
 			setTimeout(function () {
 				FLUIGC.message.alert({
@@ -490,11 +502,7 @@ function ativaPreencheCampos(modeView, numState, matricula, processo) {
 						$('#user_orc').val(usuario);
 						$("#data_orc").val(ramal);
 						
-						$(".tipo_despesa").unbind().on('change', function(e) {
-							var thisRow = $(this).attr("name").substring($(this).attr("name").lastIndexOf("_") + 1);
-							if ($(this).val() == 'outros' ) $("#ccontabil___" + thisRow).val('').removeAttr('readOnly');
-							else $("#ccontabil___" + thisRow).val($(this).val()).attr("readOnly", true);		
-						}).trigger('change');
+						
 						
 						if ( $('#tb_quilometragem').find('tbody').find('tr').length == 2){
 							FLUIGC.message.alert({

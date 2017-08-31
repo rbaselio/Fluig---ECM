@@ -16,7 +16,7 @@ function validateForm(form){
 			if (form.getValue("desc_emissao") == "") message += "<br/>- Descreva o motivo do RDV;";	
 		}		
 		
-		if (form.getValue("prenchimento") == 'solic' || numState == 5){
+		if ((numState == 4 && form.getValue("prenchimento") == 'solic') || numState == 5){
 			
 			var indexes = form.getChildrenIndexes("tb_despesa");
 			if (indexes.length == 0) message += "<br/>- Informe ao menos uma despesa;";	

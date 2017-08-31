@@ -569,6 +569,7 @@
 	PROCES_WORKFLOW.NUM_PROCES,
     IF (PROCES_WORKFLOW.LOG_ATIV, "EM ANDAMENTO", "FINALIZADO") AS _STATUS,
     DATE_FORMAT(PROCES_WORKFLOW.start_Date,'%d/%m/%Y') as DAT_ABERT,
+    
     ML001056.nrPedCli,
     ML001056.nomeCliente,
 
@@ -586,27 +587,33 @@
 	ML001056.pagto as pagto_efetuado,
 	ML001056.data_pagto,
 	ML001056.obs1 as coment_lancto
-                                    
-
+ 
     
-from PROCES_WORKFLOW
+from PROCES_WORKFLOW 
 
 INNER JOIN anexo_proces ON
-	(PROCES_WORKFLOW.COD_EMPRESA = PROCES_WORKFLOW.COD_EMPRESA AND
-	 PROCES_WORKFLOW.NUM_PROCES >= ? and PROCES_WORKFLOW.NUM_PROCES <= ? and
-	 PROCES_WORKFLOW.COD_DEF_PROCES = 'LNF' AND
-	 (PROCES_WORKFLOW.LOG_ATIV = case ? when 0 then false
+		anexo_proces.COD_EMPRESA = proces_workflow.COD_EMPRESA and
+		anexo_proces.NUM_PROCES = PROCES_WORKFLOW.NUM_PROCES and
+        anexo_proces.NUM_SEQ_ANEXO = anexo_proces.NUM_SEQ_ANEXO
+    
+iNNER jOIN  documento ON
+	documento.COD_EMPRESA = anexo_proces.COD_EMPRESA and
+	documento.NR_DOCUMENTO = anexo_proces.NR_DOCUMENTO and
+	documento.NR_VERSAO = anexo_proces.NR_VERSAO 
+ 
+ iNNER jOIN  ML001056 ON
+	documento.COD_REG_LISTA = ML001056.Id     
+
+ where
+	PROCES_WORKFLOW.COD_EMPRESA = PROCES_WORKFLOW.COD_EMPRESA AND
+	PROCES_WORKFLOW.NUM_PROCES >= ? and PROCES_WORKFLOW.NUM_PROCES <= ? and
+	PROCES_WORKFLOW.COD_DEF_PROCES like '%LNF%' AND
+	(PROCES_WORKFLOW.LOG_ATIV = case ? when 0 then false
 										when 1 then true
 										when 2 then PROCES_WORKFLOW.LOG_ATIV
-										end ) and
-	PROCES_WORKFLOW.start_Date  >= STR_TO_DATE(?, '%d/%m/%Y') and 
-	PROCES_WORKFLOW.start_Date  <= STR_TO_DATE(?, '%d/%m/%Y') and
-	anexo_proces.NUM_PROCES = PROCES_WORKFLOW.NUM_PROCES)
-    
-    
- iNNER jOIN  ML001056 ON
-	anexo_proces.NR_DOCUMENTO = ML001056.documentid and
-	anexo_proces.NR_VERSAO = ML001056.version]]></xml-property>
+										end ) 
+	and PROCES_WORKFLOW.start_Date  >= STR_TO_DATE(?, '%d/%m/%Y') 
+	and PROCES_WORKFLOW.start_Date  <= STR_TO_DATE(?, '%d/%m/%Y') ]]></xml-property>
             <xml-property name="designerValues"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
 <model:DesignValues xmlns:design="http://www.eclipse.org/datatools/connectivity/oda/design" xmlns:model="http://www.eclipse.org/birt/report/model/adapter/odaModel">
   <Version>2.0</Version>
