@@ -22,7 +22,7 @@ function validateForm(form){
 			
 			if (form.getValue("uf_emitente") != "EX"){
 				if (form.getValue("cep_emitente") == "") message += "<br/>- CEP do destino;";
-				else if (!validaCEP(form.getValue("cep_emitente"))) message += "<br/>- CEP não consta na base dos Correios";
+				//else if (!validaCEP(form.getValue("cep_emitente"))) message += "<br/>- CEP não consta na base dos Correios";
 				
 				if (form.getValue("cnpj_emitente") == "") message += "<br/>- CPF / CNPJ;";
 				if (form.getValue("insc_emitente") == "") message += "<br/>- Inscrisão Estadual;";

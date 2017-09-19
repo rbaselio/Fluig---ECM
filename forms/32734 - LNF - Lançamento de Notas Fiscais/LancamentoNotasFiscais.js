@@ -2,6 +2,12 @@ var row, anexos, matr, process, isMobile, token;
 
 function loadElementos(){
 	$("#nrPedCli").mask("000.000.000", {reverse: true});
+	$("#vlDisp").mask('000.000.000,00', {reverse: true})
+				.on('blur', function(){
+					if ($(this).val() == '') $(this).val('0,00')
+					else if ($(this).val().substring($(this).val().lastIndexOf(",")).length <= 2) $(this).val($(this).val() + ',00');
+			}).trigger('blur');
+	
 	$("#vlDocto").mask('000.000.000,00', {reverse: true})
 				.on('blur', function(){
 					if ($(this).val() == '') $(this).val('0,00')

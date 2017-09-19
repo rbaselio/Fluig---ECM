@@ -133,7 +133,24 @@ function setTimeFinal(elemento){
 function somaHoras() {	
 	var diferenca = 0;
 	$("#tempo_manut").val("00:00");
-	$("input[id^='tempo_rep_aval___']").each(function(i) {
+	
+	$("input[id^='data_ini_aval___']").each(function(i) {
+		var aux = $(this).closest('tr').find("input").eq(1).attr('id').indexOf('___');
+		var thisRow = $(this).closest('tr').find('input').attr('id').substring(aux + 3);
+		
+		var dt_inicio = $("#data_ini_aval___" + thisRow).val().split("/");
+		var hora_inicio = $("#hora_ini_aval___" + thisRow).val().split(":");		
+		var dataInicio = new Date(dt_inicio[2], dt_inicio[1] - 1, dt_inicio[0], hora_inicio[0], hora_inicio[1], '00')
+		
+		var dt_final = $("#data_fim_aval___" + thisRow).val().split("/");
+		var hora_final = $("#hora_fim_aval___" + thisRow).val().split(":");		
+		var dataFinal = new Date(dt_final[2], dt_final[1] - 1, dt_final[0], hora_final[0], hora_final[1], '00')
+		
+		diferenca += (dataFinal - dataInicio);
+		
+	});
+	
+	$("input[id^='data_ini_manut___']").each(function(i) {
 		var aux = $(this).closest('tr').find("input").eq(1).attr('id').indexOf('___');
 		var thisRow = $(this).closest('tr').find('input').attr('id').substring(aux + 3);
 		

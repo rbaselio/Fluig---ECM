@@ -180,6 +180,12 @@
                     <text-property name="heading">VL_KM</text-property>
                 </structure>
                 <structure>
+                    <property name="columnName">vl_tot_geral</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">DESPESAS_GERAL</text-property>
+                    <text-property name="heading">DESPESAS_GERAL</text-property>
+                </structure>
+                <structure>
                     <property name="columnName">TOTAL_GERAL</property>
                     <property name="analysis">dimension</property>
                     <text-property name="displayName">TOTAL_GERAL</text-property>
@@ -297,6 +303,11 @@
                     </structure>
                     <structure>
                         <property name="position">20</property>
+                        <property name="name">vl_tot_geral</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">21</property>
                         <property name="name">TOTAL_GERAL</property>
                         <property name="dataType">string</property>
                     </structure>
@@ -439,6 +450,13 @@
                 </structure>
                 <structure>
                     <property name="position">20</property>
+                    <property name="name">vl_tot_geral</property>
+                    <property name="nativeName">vl_tot_geral</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">21</property>
                     <property name="name">TOTAL_GERAL</property>
                     <property name="nativeName">vl_tot_dev</property>
                     <property name="dataType">string</property>
@@ -481,6 +499,8 @@
     ml001019.km_ini AS KM_PER,
 	ml001019.vl_km_devido AS VL_KM,
 	
+    ml001019.vl_tot_geral as DESPESAS_GERAL,
+    
     ml001019.vl_tot_dev AS TOTAL_GERAL
     
 from  PROCES_WORKFLOW 
@@ -2607,18 +2627,26 @@ left jOIN  ml001020 ON
         <grid id="661">
             <property name="whiteSpace">nowrap</property>
             <property name="pageBreakInside">avoid</property>
-            <column id="662"/>
+            <column id="662">
+                <property name="width">3cm</property>
+            </column>
             <column id="663"/>
-            <column id="664"/>
+            <column id="664">
+                <property name="width">3cm</property>
+            </column>
             <column id="665"/>
-            <column id="666"/>
+            <column id="666">
+                <property name="width">3cm</property>
+            </column>
             <column id="667"/>
-            <column id="668"/>
+            <column id="668">
+                <property name="width">3cm</property>
+            </column>
             <column id="669">
                 <property name="width">1.375in</property>
             </column>
             <column id="671">
-                <property name="width">1.1041666666666667in</property>
+                <property name="width">3cm</property>
             </column>
             <row id="847">
                 <cell id="848">
@@ -2777,32 +2805,16 @@ left jOIN  ml001020 ON
                     <property name="borderTopStyle">solid</property>
                     <property name="borderTopWidth">thin</property>
                     <property name="textAlign">center</property>
-                    <text id="709">
-                        <property name="fontWeight">bold</property>
-                        <property name="contentType">auto</property>
-                        <text-property name="content"><![CDATA[Km Percorrido:]]></text-property>
-                    </text>
-                </cell>
-                <cell id="674">
-                    <property name="borderBottomStyle">solid</property>
-                    <property name="borderBottomWidth">thin</property>
-                    <property name="borderLeftStyle">solid</property>
-                    <property name="borderLeftWidth">thin</property>
-                    <property name="borderRightStyle">solid</property>
-                    <property name="borderRightWidth">thin</property>
-                    <property name="borderTopStyle">solid</property>
-                    <property name="borderTopWidth">thin</property>
-                    <property name="textAlign">center</property>
                     <text id="710">
                         <property name="fontWeight">bold</property>
                         <property name="contentType">auto</property>
                         <text-property name="content"><![CDATA[Vl. KM:]]></text-property>
                     </text>
                 </cell>
-                <cell id="675">
+                <cell id="674">
                     <property name="textAlign">center</property>
                 </cell>
-                <cell id="676">
+                <cell id="675">
                     <property name="borderBottomStyle">solid</property>
                     <property name="borderBottomWidth">thin</property>
                     <property name="borderLeftStyle">solid</property>
@@ -2818,10 +2830,29 @@ left jOIN  ml001020 ON
                         <text-property name="content"><![CDATA[Total Despesas:]]></text-property>
                     </text>
                 </cell>
-                <cell id="677">
+                <cell id="676">
                     <property name="textAlign">center</property>
                 </cell>
+                <cell id="677">
+                    <property name="borderBottomStyle">solid</property>
+                    <property name="borderBottomWidth">thin</property>
+                    <property name="borderLeftStyle">solid</property>
+                    <property name="borderLeftWidth">thin</property>
+                    <property name="borderRightStyle">solid</property>
+                    <property name="borderRightWidth">thin</property>
+                    <property name="borderTopStyle">solid</property>
+                    <property name="borderTopWidth">thin</property>
+                    <property name="textAlign">center</property>
+                    <text id="901">
+                        <property name="fontWeight">bold</property>
+                        <property name="contentType">auto</property>
+                        <text-property name="content"><![CDATA[Total Geral:]]></text-property>
+                    </text>
+                </cell>
                 <cell id="678">
+                    <property name="textAlign">center</property>
+                </cell>
+                <cell id="679">
                     <property name="borderBottomStyle">solid</property>
                     <property name="borderBottomWidth">thin</property>
                     <property name="borderLeftStyle">solid</property>
@@ -2835,13 +2866,13 @@ left jOIN  ml001020 ON
                         <property name="fontWeight">bold</property>
                         <property name="textAlign">center</property>
                         <property name="contentType">auto</property>
-                        <text-property name="content"><![CDATA[Adiantamento / Fatura]]></text-property>
+                        <text-property name="content"><![CDATA[Adiantamento]]></text-property>
                     </text>
                 </cell>
-                <cell id="679">
+                <cell id="680">
                     <property name="textAlign">center</property>
                 </cell>
-                <cell id="680">
+                <cell id="682">
                     <property name="borderBottomStyle">solid</property>
                     <property name="borderBottomWidth">thin</property>
                     <property name="borderLeftStyle">solid</property>
@@ -2857,9 +2888,6 @@ left jOIN  ml001020 ON
                         <text-property name="content"><![CDATA[Total Devido / Reembolso]]></text-property>
                     </text>
                 </cell>
-                <cell id="682">
-                    <property name="textAlign">center</property>
-                </cell>
             </row>
             <row id="683">
                 <cell id="684">
@@ -2871,29 +2899,7 @@ left jOIN  ml001020 ON
                     <property name="borderRightWidth">thin</property>
                     <property name="borderTopStyle">solid</property>
                     <property name="borderTopWidth">thin</property>
-                    <data id="881">
-                        <property name="textAlign">center</property>
-                        <property name="dataSet">Data Set</property>
-                        <list-property name="boundDataColumns">
-                            <structure>
-                                <property name="name">KM_PER</property>
-                                <text-property name="displayName">KM_PER</text-property>
-                                <expression name="expression" type="javascript">dataSetRow["KM_PER"]</expression>
-                                <property name="dataType">string</property>
-                            </structure>
-                        </list-property>
-                        <property name="resultSetColumn">KM_PER</property>
-                    </data>
-                </cell>
-                <cell id="685">
-                    <property name="borderBottomStyle">solid</property>
-                    <property name="borderBottomWidth">thin</property>
-                    <property name="borderLeftStyle">solid</property>
-                    <property name="borderLeftWidth">thin</property>
-                    <property name="borderRightStyle">solid</property>
-                    <property name="borderRightWidth">thin</property>
-                    <property name="borderTopStyle">solid</property>
-                    <property name="borderTopWidth">thin</property>
+                    <property name="textAlign">center</property>
                     <data id="882">
                         <property name="textAlign">right</property>
                         <property name="dataSet">Data Set</property>
@@ -2908,8 +2914,10 @@ left jOIN  ml001020 ON
                         <property name="resultSetColumn">VL_KM</property>
                     </data>
                 </cell>
-                <cell id="686"/>
-                <cell id="687">
+                <cell id="685">
+                    <property name="textAlign">center</property>
+                </cell>
+                <cell id="686">
                     <property name="borderBottomStyle">solid</property>
                     <property name="borderBottomWidth">thin</property>
                     <property name="borderLeftStyle">solid</property>
@@ -2918,6 +2926,7 @@ left jOIN  ml001020 ON
                     <property name="borderRightWidth">thin</property>
                     <property name="borderTopStyle">solid</property>
                     <property name="borderTopWidth">thin</property>
+                    <property name="textAlign">center</property>
                     <data id="883">
                         <property name="textAlign">right</property>
                         <property name="dataSet">Data Set</property>
@@ -2932,8 +2941,10 @@ left jOIN  ml001020 ON
                         <property name="resultSetColumn">TOTAL_DESP</property>
                     </data>
                 </cell>
-                <cell id="688"/>
-                <cell id="689">
+                <cell id="687">
+                    <property name="textAlign">center</property>
+                </cell>
+                <cell id="688">
                     <property name="borderBottomStyle">solid</property>
                     <property name="borderBottomWidth">thin</property>
                     <property name="borderLeftStyle">solid</property>
@@ -2942,6 +2953,33 @@ left jOIN  ml001020 ON
                     <property name="borderRightWidth">thin</property>
                     <property name="borderTopStyle">solid</property>
                     <property name="borderTopWidth">thin</property>
+                    <property name="textAlign">center</property>
+                    <data id="900">
+                        <property name="dataSet">Data Set</property>
+                        <list-property name="boundDataColumns">
+                            <structure>
+                                <property name="name">vl_tot_geral</property>
+                                <text-property name="displayName">DESPESAS_GERAL</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["vl_tot_geral"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                        </list-property>
+                        <property name="resultSetColumn">vl_tot_geral</property>
+                    </data>
+                </cell>
+                <cell id="689">
+                    <property name="textAlign">center</property>
+                </cell>
+                <cell id="690">
+                    <property name="borderBottomStyle">solid</property>
+                    <property name="borderBottomWidth">thin</property>
+                    <property name="borderLeftStyle">solid</property>
+                    <property name="borderLeftWidth">thin</property>
+                    <property name="borderRightStyle">solid</property>
+                    <property name="borderRightWidth">thin</property>
+                    <property name="borderTopStyle">solid</property>
+                    <property name="borderTopWidth">thin</property>
+                    <property name="textAlign">center</property>
                     <data id="884">
                         <property name="textAlign">right</property>
                         <property name="dataSet">Data Set</property>
@@ -2956,8 +2994,10 @@ left jOIN  ml001020 ON
                         <property name="resultSetColumn">ADIAN</property>
                     </data>
                 </cell>
-                <cell id="690"/>
                 <cell id="691">
+                    <property name="textAlign">center</property>
+                </cell>
+                <cell id="693">
                     <property name="borderBottomStyle">solid</property>
                     <property name="borderBottomWidth">thin</property>
                     <property name="borderLeftStyle">solid</property>
@@ -2966,6 +3006,7 @@ left jOIN  ml001020 ON
                     <property name="borderRightWidth">thin</property>
                     <property name="borderTopStyle">solid</property>
                     <property name="borderTopWidth">thin</property>
+                    <property name="textAlign">center</property>
                     <data id="885">
                         <property name="textAlign">right</property>
                         <property name="dataSet">Data Set</property>
@@ -2980,7 +3021,6 @@ left jOIN  ml001020 ON
                         <property name="resultSetColumn">TOTAL_GERAL</property>
                     </data>
                 </cell>
-                <cell id="693"/>
             </row>
             <row id="694">
                 <cell id="695">
@@ -2992,8 +3032,12 @@ left jOIN  ml001020 ON
                     <property name="borderRightWidth">thin</property>
                     <property name="borderTopStyle">solid</property>
                     <property name="borderTopWidth">thin</property>
+                    <property name="textAlign">center</property>
                 </cell>
                 <cell id="696">
+                    <property name="textAlign">center</property>
+                </cell>
+                <cell id="697">
                     <property name="borderBottomStyle">solid</property>
                     <property name="borderBottomWidth">thin</property>
                     <property name="borderLeftStyle">solid</property>
@@ -3002,9 +3046,12 @@ left jOIN  ml001020 ON
                     <property name="borderRightWidth">thin</property>
                     <property name="borderTopStyle">solid</property>
                     <property name="borderTopWidth">thin</property>
+                    <property name="textAlign">center</property>
                 </cell>
-                <cell id="697"/>
                 <cell id="698">
+                    <property name="textAlign">center</property>
+                </cell>
+                <cell id="699">
                     <property name="borderBottomStyle">solid</property>
                     <property name="borderBottomWidth">thin</property>
                     <property name="borderLeftStyle">solid</property>
@@ -3013,9 +3060,12 @@ left jOIN  ml001020 ON
                     <property name="borderRightWidth">thin</property>
                     <property name="borderTopStyle">solid</property>
                     <property name="borderTopWidth">thin</property>
+                    <property name="textAlign">center</property>
                 </cell>
-                <cell id="699"/>
                 <cell id="700">
+                    <property name="textAlign">center</property>
+                </cell>
+                <cell id="701">
                     <property name="borderBottomStyle">solid</property>
                     <property name="borderBottomWidth">thin</property>
                     <property name="borderLeftStyle">solid</property>
@@ -3024,9 +3074,12 @@ left jOIN  ml001020 ON
                     <property name="borderRightWidth">thin</property>
                     <property name="borderTopStyle">solid</property>
                     <property name="borderTopWidth">thin</property>
+                    <property name="textAlign">center</property>
                 </cell>
-                <cell id="701"/>
                 <cell id="702">
+                    <property name="textAlign">center</property>
+                </cell>
+                <cell id="704">
                     <property name="borderBottomStyle">solid</property>
                     <property name="borderBottomWidth">thin</property>
                     <property name="borderLeftStyle">solid</property>
@@ -3035,8 +3088,8 @@ left jOIN  ml001020 ON
                     <property name="borderRightWidth">thin</property>
                     <property name="borderTopStyle">solid</property>
                     <property name="borderTopWidth">thin</property>
+                    <property name="textAlign">center</property>
                 </cell>
-                <cell id="704"/>
             </row>
         </grid>
     </body>

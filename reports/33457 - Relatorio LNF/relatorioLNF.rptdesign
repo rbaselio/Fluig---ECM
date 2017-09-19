@@ -248,6 +248,12 @@
                     <text-property name="heading">vlDocto</text-property>
                 </structure>
                 <structure>
+                    <property name="columnName">vlDisp</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">vlDisp</text-property>
+                    <text-property name="heading">vlDisp</text-property>
+                </structure>
+                <structure>
                     <property name="columnName">nomeEmit</property>
                     <property name="analysis">dimension</property>
                     <text-property name="displayName">nomeEmit</text-property>
@@ -401,36 +407,41 @@
                     </structure>
                     <structure>
                         <property name="position">12</property>
-                        <property name="name">nomeEmit</property>
+                        <property name="name">vlDisp</property>
                         <property name="dataType">string</property>
                     </structure>
                     <structure>
                         <property name="position">13</property>
-                        <property name="name">DoctoAux</property>
+                        <property name="name">nomeEmit</property>
                         <property name="dataType">string</property>
                     </structure>
                     <structure>
                         <property name="position">14</property>
-                        <property name="name">obs2</property>
+                        <property name="name">DoctoAux</property>
                         <property name="dataType">string</property>
                     </structure>
                     <structure>
                         <property name="position">15</property>
-                        <property name="name">prazo_pagto</property>
+                        <property name="name">obs2</property>
                         <property name="dataType">string</property>
                     </structure>
                     <structure>
                         <property name="position">16</property>
-                        <property name="name">pagto</property>
+                        <property name="name">prazo_pagto</property>
                         <property name="dataType">string</property>
                     </structure>
                     <structure>
                         <property name="position">17</property>
-                        <property name="name">data_pagto</property>
+                        <property name="name">pagto</property>
                         <property name="dataType">string</property>
                     </structure>
                     <structure>
                         <property name="position">18</property>
+                        <property name="name">data_pagto</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">19</property>
                         <property name="name">obs1</property>
                         <property name="dataType">string</property>
                     </structure>
@@ -517,48 +528,55 @@
                 </structure>
                 <structure>
                     <property name="position">12</property>
+                    <property name="name">vlDisp</property>
+                    <property name="nativeName">vlDisp</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">13</property>
                     <property name="name">nomeEmit</property>
                     <property name="nativeName">nomeEmit</property>
                     <property name="dataType">string</property>
                     <property name="nativeDataType">12</property>
                 </structure>
                 <structure>
-                    <property name="position">13</property>
+                    <property name="position">14</property>
                     <property name="name">DoctoAux</property>
                     <property name="nativeName">DoctoAux</property>
                     <property name="dataType">string</property>
                     <property name="nativeDataType">12</property>
                 </structure>
                 <structure>
-                    <property name="position">14</property>
+                    <property name="position">15</property>
                     <property name="name">obs2</property>
                     <property name="nativeName">obs2</property>
                     <property name="dataType">string</property>
                     <property name="nativeDataType">12</property>
                 </structure>
                 <structure>
-                    <property name="position">15</property>
+                    <property name="position">16</property>
                     <property name="name">prazo_pagto</property>
                     <property name="nativeName">prazo_pagto</property>
                     <property name="dataType">string</property>
                     <property name="nativeDataType">12</property>
                 </structure>
                 <structure>
-                    <property name="position">16</property>
+                    <property name="position">17</property>
                     <property name="name">pagto</property>
                     <property name="nativeName">pagto</property>
                     <property name="dataType">string</property>
                     <property name="nativeDataType">12</property>
                 </structure>
                 <structure>
-                    <property name="position">17</property>
+                    <property name="position">18</property>
                     <property name="name">data_pagto</property>
                     <property name="nativeName">data_pagto</property>
                     <property name="dataType">string</property>
                     <property name="nativeDataType">12</property>
                 </structure>
                 <structure>
-                    <property name="position">18</property>
+                    <property name="position">19</property>
                     <property name="name">obs1</property>
                     <property name="nativeName">obs1</property>
                     <property name="dataType">string</property>
@@ -579,7 +597,9 @@
 	ML001056.data_emissao,
 	
     ML001056.nrDocto,
-	concat(if(tpLanc = 'credito', '','-'), ML001056.vlDocto) as vlDocto,
+	concat('-', ML001056.vlDocto) as vlDocto,
+    ML001056.vlDisp,
+
 	ML001056.nomeEmit,
 	ML001056.DoctoAux,
 	ML001056.obs2 as obsLacnto,
@@ -1292,6 +1312,12 @@ iNNER jOIN  documento ON
                     <expression name="expression" type="javascript">dataSetRow["obs1"]</expression>
                     <property name="dataType">string</property>
                 </structure>
+                <structure>
+                    <property name="name">vlDisp</property>
+                    <text-property name="displayName">vlDisp</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["vlDisp"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
             </list-property>
             <column id="616">
                 <property name="textAlign">center</property>
@@ -1409,7 +1435,7 @@ iNNER jOIN  documento ON
                     </cell>
                     <cell id="553">
                         <label id="738">
-                            <text-property name="text">Tipo Lanç.</text-property>
+                            <text-property name="text">Valor Disponível</text-property>
                         </label>
                     </cell>
                     <cell id="555">
@@ -1509,8 +1535,8 @@ iNNER jOIN  documento ON
                         </data>
                     </cell>
                     <cell id="584">
-                        <data id="739">
-                            <property name="resultSetColumn">tpLanc</property>
+                        <data id="787">
+                            <property name="resultSetColumn">vlDisp</property>
                         </data>
                     </cell>
                     <cell id="586">
