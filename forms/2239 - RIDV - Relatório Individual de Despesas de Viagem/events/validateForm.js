@@ -19,7 +19,8 @@ function validateForm(form){
 		if ((numState == 4 && form.getValue("prenchimento") == 'solic') || numState == 5){
 			
 			var indexes = form.getChildrenIndexes("tb_despesa");
-			if (indexes.length == 0) message += "<br/>- Informe ao menos uma despesa;";	
+			var indexes2 = form.getChildrenIndexes("tb_quilometragem");
+			if (indexes.length == 0 && indexes2.length == 0) message += "<br/>- Informe ao menos uma despesa ou quilometragem;";	
 			for (var i = 0; i < indexes.length; i++) {
 		    	if (form.getValue("data_despesa___" + indexes[i]) == "") message += message += "<br/>- Informe a data da despesa na linha " + ( i + 1);
 				if (form.getValue("tipo_despesa___" + indexes[i]) == "") message += "<br/>- Informe o tipo da despesa na linha " + ( i + 1);
@@ -31,13 +32,13 @@ function validateForm(form){
 				if (form.getValue("desc_despesa___" + indexes[i]) == "") message += "<br/>- Descreva a despesa na linha " + ( i + 1);
 			}
 			
-			indexes = form.getChildrenIndexes("tb_quilometragem");
-			for (var i = 0; i < indexes.length; i++) {
-		    	if (form.getValue("cidade_origem___" + indexes[i]) == "") message += message += "<br/>- Informe a cidade de origem na linha " + ( i + 1);
-				if (form.getValue("cidade_destino___" + indexes[i]) == "") message += "<br/>- Informe a cidade de destino na linha " + ( i + 1);
-				if (form.getValue("km_ini___" + indexes[i]) == "" || form.getValue("vl_despesa___" + indexes[i]) == "0") message += "<br/>- Informe a Km na linha " + ( i + 1);
+			indexes2 = form.getChildrenIndexes("tb_quilometragem");
+			for (var i = 0; i < indexes2.length; i++) {
+		    	if (form.getValue("cidade_origem___" + indexes2[i]) == "") message += message += "<br/>- Informe a cidade de origem na linha " + ( i + 1);
+				if (form.getValue("cidade_destino___" + indexes2[i]) == "") message += "<br/>- Informe a cidade de destino na linha " + ( i + 1);
+				if (form.getValue("km_ini___" + indexes2[i]) == "" || form.getValue("vl_despesa___" + indexes2[i]) == "0") message += "<br/>- Informe a Km na linha " + ( i + 1);
 			}
-			if (form.getValue("placa") == "" && indexes.length > 0) message += "<br/>- Informe a placa do veiculo;";
+			if (form.getValue("placa") == "" && indexes2.length > 0) message += "<br/>- Informe a placa do veiculo;";
 			
 			
 			var vl_adiant = parseFloat(form.getValue("vl_prestacao").replace(".","").replace(",","."));

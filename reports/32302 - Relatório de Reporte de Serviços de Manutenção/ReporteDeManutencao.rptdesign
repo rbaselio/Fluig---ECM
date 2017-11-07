@@ -73,6 +73,12 @@
                     <text-property name="heading">NUM_PROCES</text-property>
                 </structure>
                 <structure>
+                    <property name="columnName">COD_DEF_PROCES</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">COD_DEF_PROCES</text-property>
+                    <text-property name="heading">COD_DEF_PROCES</text-property>
+                </structure>
+                <structure>
                     <property name="columnName">Data_Inicial</property>
                     <property name="analysis">dimension</property>
                     <text-property name="displayName">Data_Inicial</text-property>
@@ -91,16 +97,16 @@
                     <text-property name="heading">Tempo_total</text-property>
                 </structure>
                 <structure>
-                    <property name="columnName">NUM_SEQ_ESTADO</property>
-                    <property name="analysis">measure</property>
-                    <text-property name="displayName">NUM_SEQ_ESTADO</text-property>
-                    <text-property name="heading">NUM_SEQ_ESTADO</text-property>
-                </structure>
-                <structure>
                     <property name="columnName">loc_atual</property>
                     <property name="analysis">dimension</property>
                     <text-property name="displayName">loc_atual</text-property>
                     <text-property name="heading">loc_atual</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">NUM_SEQ</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">NUM_SEQ</text-property>
+                    <text-property name="heading">NUM_SEQ</text-property>
                 </structure>
                 <structure>
                     <property name="columnName">resp_atual</property>
@@ -160,23 +166,23 @@
                     </structure>
                     <structure>
                         <property name="position">2</property>
-                        <property name="name">Data_Inicial</property>
+                        <property name="name">COD_DEF_PROCES</property>
                         <property name="dataType">string</property>
                     </structure>
                     <structure>
                         <property name="position">3</property>
-                        <property name="name">Data_Final</property>
+                        <property name="name">Data_Inicial</property>
                         <property name="dataType">string</property>
                     </structure>
                     <structure>
                         <property name="position">4</property>
-                        <property name="name">Tempo_total</property>
-                        <property name="dataType">decimal</property>
+                        <property name="name">Data_Final</property>
+                        <property name="dataType">string</property>
                     </structure>
                     <structure>
                         <property name="position">5</property>
-                        <property name="name">NUM_SEQ_ESTADO</property>
-                        <property name="dataType">integer</property>
+                        <property name="name">Tempo_total</property>
+                        <property name="dataType">decimal</property>
                     </structure>
                     <structure>
                         <property name="position">6</property>
@@ -185,6 +191,11 @@
                     </structure>
                     <structure>
                         <property name="position">7</property>
+                        <property name="name">NUM_SEQ</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">8</property>
                         <property name="name">resp_atual</property>
                         <property name="dataType">string</property>
                     </structure>
@@ -201,31 +212,31 @@
                 </structure>
                 <structure>
                     <property name="position">2</property>
+                    <property name="name">COD_DEF_PROCES</property>
+                    <property name="nativeName">COD_DEF_PROCES</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">3</property>
                     <property name="name">Data_Inicial</property>
                     <property name="nativeName">Data_Inicial</property>
                     <property name="dataType">string</property>
                     <property name="nativeDataType">12</property>
                 </structure>
                 <structure>
-                    <property name="position">3</property>
+                    <property name="position">4</property>
                     <property name="name">Data_Final</property>
                     <property name="nativeName">Data_Final</property>
                     <property name="dataType">string</property>
                     <property name="nativeDataType">12</property>
                 </structure>
                 <structure>
-                    <property name="position">4</property>
+                    <property name="position">5</property>
                     <property name="name">Tempo_total</property>
                     <property name="nativeName">Tempo_total</property>
                     <property name="dataType">decimal</property>
                     <property name="nativeDataType">-5</property>
-                </structure>
-                <structure>
-                    <property name="position">5</property>
-                    <property name="name">NUM_SEQ_ESTADO</property>
-                    <property name="nativeName">NUM_SEQ_ESTADO</property>
-                    <property name="dataType">integer</property>
-                    <property name="nativeDataType">4</property>
                 </structure>
                 <structure>
                     <property name="position">6</property>
@@ -236,6 +247,13 @@
                 </structure>
                 <structure>
                     <property name="position">7</property>
+                    <property name="name">NUM_SEQ</property>
+                    <property name="nativeName">NUM_SEQ</property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
+                </structure>
+                <structure>
+                    <property name="position">8</property>
                     <property name="name">resp_atual</property>
                     <property name="nativeName">resp_atual</property>
                     <property name="dataType">string</property>
@@ -243,128 +261,150 @@
                 </structure>
             </list-property>
             <xml-property name="queryText"><![CDATA[SELECT * FROM(
-	select distinct 
-		PROCES_WORKFLOW.NUM_PROCES,
 
-		concat(ML001035.data_ini_aval, ' ', ML001035.hora_ini_aval) as Data_Inicial,
-        concat(ML001035.data_fim_aval, ' ', ML001035.hora_fim_aval) as Data_Final,
+		select  distinct
+	
+			anexo_proces.NUM_PROCES,
+            PROCES_WORKFLOW.COD_DEF_PROCES,
+			concat(ML001029.data_ini_manut, ' ', ML001029.hora_ini_manut) as Data_Inicial,
+			concat(ML001029.data_fim_manut, ' ', ML001029.hora_fim_manut) as Data_Final,
+			
+			if (data_fim_manut = "", 0,
+			
+			TIMESTAMPDIFF(MINUTE, 
+							 STR_TO_DATE(concat(ML001029.data_ini_manut, ' ', ML001029.hora_ini_manut), '%d/%m/%Y %H:%i'),
+							 STR_TO_DATE(concat(ML001029.data_fim_manut, ' ', ML001029.hora_fim_manut), '%d/%m/%Y %H:%i')                      
+			)) as Tempo_total,
+			
+			
+			 ESTADO_PROCES.NOM_ESTADO as loc_atual,
+             ESTADO_PROCES.NUM_SEQ,              
+			 fdn_user.FULL_NAME as resp_atual
+
+		from ML001029 
         
-        if (data_fim_aval = "", 0,
+		iNNER jOIN  documento ON
+			documento.COD_EMPRESA = ML001029.companyid and
+			ML001029.masterid  = ML001029.masterid and
+			documento.NR_DOCUMENTO = ML001029.documentid and
+			documento.NR_VERSAO = ML001029.version and
+            
+            STR_TO_DATE(ML001029.data_ini_manut, '%d/%m/%Y') >= STR_TO_DATE(?, '%d/%m/%Y') and 
+			STR_TO_DATE(ML001029.data_ini_manut, '%d/%m/%Y') <= STR_TO_DATE(?, '%d/%m/%Y')  
+            
+		
+		iNNER jOIN  anexo_proces ON
+			anexo_proces.COD_EMPRESA = documento.COD_EMPRESA and
+            anexo_proces.NUM_PROCES = anexo_proces.NUM_PROCES and
+			anexo_proces.NR_DOCUMENTO = documento.NR_DOCUMENTO and
+			anexo_proces.NR_VERSAO = documento.NR_VERSAO
+            
+		INNER JOIN PROCES_WORKFLOW ON
+			PROCES_WORKFLOW.COD_EMPRESA  = anexo_proces.COD_EMPRESA and
+			PROCES_WORKFLOW.NUM_PROCES   =  anexo_proces.NUM_PROCES and
+            PROCES_WORKFLOW.COD_DEF_PROCES = 'ssm' and
+			PROCES_WORKFLOW.LOG_ATIV     = PROCES_WORKFLOW.LOG_ATIV  
+            
+		iNNER jOIN  ESTADO_PROCES ON
+			(ESTADO_PROCES.COD_EMPRESA = PROCES_WORKFLOW.COD_EMPRESA AND
+			ESTADO_PROCES.COD_DEF_PROCES = PROCES_WORKFLOW.COD_DEF_PROCES AND
+			ESTADO_PROCES.NUM_VERS = PROCES_WORKFLOW.NUM_VERS and  
+			ESTADO_PROCES.NUM_SEQ = 20) 
+            
+		 inner join HISTOR_PROCES on
+			HISTOR_PROCES.COD_EMPRESA 	= anexo_proces.COD_EMPRESA AND
+			HISTOR_PROCES.NUM_PROCES 	= anexo_proces.NUM_PROCES and 
+			HISTOR_PROCES.NUM_SEQ_MOVTO	= HISTOR_PROCES.NUM_SEQ_MOVTO and
+			HISTOR_PROCES.NUM_SEQ_ESTADO = ESTADO_PROCES.NUM_SEQ   
+		
         
-        TIMESTAMPDIFF(MINUTE, 
-						 STR_TO_DATE(concat(ML001035.data_ini_aval, ' ', ML001035.hora_ini_aval), '%d/%m/%Y %H:%i'),
-						 STR_TO_DATE(concat(ML001035.data_fim_aval, ' ', ML001035.hora_fim_aval), '%d/%m/%Y %H:%i')                      
-        )) as Tempo_total,
+		inner join tar_proces on
+			tar_proces.COD_EMPRESA 	= PROCES_WORKFLOW.COD_EMPRESA AND
+			tar_proces.NUM_PROCES 	= PROCES_WORKFLOW.NUM_PROCES and 
+			tar_proces.NUM_SEQ_MOVTO = HISTOR_PROCES.NUM_SEQ_MOVTO  and
+			tar_proces.NUM_SEQ_TRANSF = tar_proces.NUM_SEQ_TRANSF and
+			tar_proces.CD_MATRICULA = tar_proces.CD_MATRICULA 
+				
+			
+		left oUTER jOIN  fdn_usertenant as userResp ON
+			(userResp.USER_CODE = TAR_PROCES.CD_MATRICULA)
+			
+		left oUTER jOIN  fdn_user ON   
+			(userResp.USER_ID = fdn_user.USER_ID) 
+            
+union
+
+select  distinct
+	
+			anexo_proces.NUM_PROCES,
+            PROCES_WORKFLOW.COD_DEF_PROCES,
+			concat(ML001035.data_ini_aval, ' ', ML001035.hora_ini_aval) as Data_Inicial,
+			concat(ML001035.data_fim_aval, ' ', ML001035.hora_fim_aval) as Data_Final,
+			
+			if (data_fim_aval = "", 0,
+			
+			TIMESTAMPDIFF(MINUTE, 
+							 STR_TO_DATE(concat(ML001035.data_ini_aval, ' ', ML001035.hora_ini_aval), '%d/%m/%Y %H:%i'),
+							 STR_TO_DATE(concat(ML001035.data_fim_aval, ' ', ML001035.hora_fim_aval), '%d/%m/%Y %H:%i')                      
+			)) as Tempo_total,
+			
+			
+			 ESTADO_PROCES.NOM_ESTADO as loc_atual,
+             ESTADO_PROCES.NUM_SEQ,              
+			 fdn_user.FULL_NAME as resp_atual
+
+		from ML001035 
         
-		HISTOR_PROCES.NUM_SEQ_ESTADO,
-		ESTADO_PROCES.NOM_ESTADO as loc_atual,
-		fdn_user.FULL_NAME as resp_atual
-
-	from ML001035 
-
-	INNER jOIN  anexo_proces ON
-
-		STR_TO_DATE(ML001035.data_ini_aval, '%d/%m/%Y') >= STR_TO_DATE(?, '%d/%m/%Y') and 
-		STR_TO_DATE(ML001035.data_ini_aval, '%d/%m/%Y') <= STR_TO_DATE(?, '%d/%m/%Y')  and
-
-		ML001035.companyid 	= anexo_proces.COD_EMPRESA  and
-		ML001035.masterid 	= ML001035.masterid and
-		ML001035.documentid = anexo_proces.NR_DOCUMENTO and
-		ML001035.version 	= anexo_proces.NR_VERSAO
+		iNNER jOIN  documento ON
+			documento.COD_EMPRESA = ML001035.companyid and
+			ML001035.masterid  = ML001035.masterid and
+			documento.NR_DOCUMENTO = ML001035.documentid and
+			documento.NR_VERSAO = ML001035.version and
+            
+            STR_TO_DATE(ML001035.data_ini_aval, '%d/%m/%Y') >= STR_TO_DATE(?, '%d/%m/%Y') and 
+			STR_TO_DATE(ML001035.data_ini_aval, '%d/%m/%Y') <= STR_TO_DATE(?, '%d/%m/%Y')  
+            
 		
-	inner join HISTOR_PROCES on
-		HISTOR_PROCES.COD_EMPRESA 	= anexo_proces.COD_EMPRESA AND
-		HISTOR_PROCES.NUM_PROCES 	= anexo_proces.NUM_PROCES and 
-		HISTOR_PROCES.NUM_SEQ_MOVTO	= HISTOR_PROCES.NUM_SEQ_MOVTO and
-		HISTOR_PROCES.NUM_SEQ_ESTADO = 4 
+		iNNER jOIN  anexo_proces ON
+			anexo_proces.COD_EMPRESA = documento.COD_EMPRESA and
+            anexo_proces.NUM_PROCES = anexo_proces.NUM_PROCES and
+			anexo_proces.NR_DOCUMENTO = documento.NR_DOCUMENTO and
+			anexo_proces.NR_VERSAO = documento.NR_VERSAO
+            
+		INNER JOIN PROCES_WORKFLOW ON
+			PROCES_WORKFLOW.COD_EMPRESA  = anexo_proces.COD_EMPRESA and
+			PROCES_WORKFLOW.NUM_PROCES   =  anexo_proces.NUM_PROCES and
+            PROCES_WORKFLOW.COD_DEF_PROCES = 'ssm' and
+			PROCES_WORKFLOW.LOG_ATIV     = PROCES_WORKFLOW.LOG_ATIV  
+            
+		iNNER jOIN  ESTADO_PROCES ON
+			(ESTADO_PROCES.COD_EMPRESA = PROCES_WORKFLOW.COD_EMPRESA AND
+			ESTADO_PROCES.COD_DEF_PROCES = PROCES_WORKFLOW.COD_DEF_PROCES AND
+			ESTADO_PROCES.NUM_VERS = PROCES_WORKFLOW.NUM_VERS and  
+			ESTADO_PROCES.NUM_SEQ = 4) 
+            
+		 inner join HISTOR_PROCES on
+			HISTOR_PROCES.COD_EMPRESA 	= anexo_proces.COD_EMPRESA AND
+			HISTOR_PROCES.NUM_PROCES 	= anexo_proces.NUM_PROCES and 
+			HISTOR_PROCES.NUM_SEQ_MOVTO	= HISTOR_PROCES.NUM_SEQ_MOVTO and
+			HISTOR_PROCES.NUM_SEQ_ESTADO = ESTADO_PROCES.NUM_SEQ   
 		
-	INNER JOIN PROCES_WORKFLOW ON
-		PROCES_WORKFLOW.COD_EMPRESA  = anexo_proces.COD_EMPRESA and
-		PROCES_WORKFLOW.NUM_PROCES   =  anexo_proces.NUM_PROCES and
-		PROCES_WORKFLOW.LOG_ATIV     = PROCES_WORKFLOW.LOG_ATIV 
-		
-	inner join tar_proces on
-		tar_proces.COD_EMPRESA 	= PROCES_WORKFLOW.COD_EMPRESA AND
-		tar_proces.NUM_PROCES 	= PROCES_WORKFLOW.NUM_PROCES and 
-		tar_proces.NUM_SEQ_MOVTO = HISTOR_PROCES.NUM_SEQ_MOVTO  and
-		tar_proces.NUM_SEQ_TRANSF = tar_proces.NUM_SEQ_TRANSF and
-		tar_proces.CD_MATRICULA = tar_proces.CD_MATRICULA  
-		
-	iNNER jOIN  ESTADO_PROCES ON
-		(ESTADO_PROCES.COD_EMPRESA = PROCES_WORKFLOW.COD_EMPRESA AND
-		ESTADO_PROCES.COD_DEF_PROCES = PROCES_WORKFLOW.COD_DEF_PROCES AND
-		ESTADO_PROCES.NUM_VERS = PROCES_WORKFLOW.NUM_VERS and  
-		ESTADO_PROCES.NUM_SEQ = HISTOR_PROCES.NUM_SEQ_ESTADO )  
-		
-	left oUTER jOIN  fdn_usertenant as userResp ON
-		(userResp.USER_CODE = TAR_PROCES.CD_MATRICULA)
-		
-	left oUTER jOIN  fdn_user ON   
-		(userResp.USER_ID = fdn_user.USER_ID)      
-		
-	union
-
-	select distinct 
-
-		PROCES_WORKFLOW.NUM_PROCES,
         
-        concat(ML001029.data_ini_manut, ' ', ML001029.hora_ini_manut) as Data_Inicial,
-        concat(ML001029.data_fim_manut, ' ', ML001029.hora_fim_manut) as Data_Final,
-        
-         if (data_ini_manut = "", 0,        
-        TIMESTAMPDIFF(MINUTE, 
-						STR_TO_DATE(concat(ML001029.data_ini_manut, ' ', ML001029.hora_ini_manut), '%d/%m/%Y %H:%i'),
-						 STR_TO_DATE(concat(ML001029.data_fim_manut, ' ', ML001029.hora_fim_manut), '%d/%m/%Y %H:%i')             
-        )) as Tempo_total,        
+		inner join tar_proces on
+			tar_proces.COD_EMPRESA 	= PROCES_WORKFLOW.COD_EMPRESA AND
+			tar_proces.NUM_PROCES 	= PROCES_WORKFLOW.NUM_PROCES and 
+			tar_proces.NUM_SEQ_MOVTO = HISTOR_PROCES.NUM_SEQ_MOVTO  and
+			tar_proces.NUM_SEQ_TRANSF = tar_proces.NUM_SEQ_TRANSF and
+			tar_proces.CD_MATRICULA = tar_proces.CD_MATRICULA 
+				
+			
+		left oUTER jOIN  fdn_usertenant as userResp ON
+			(userResp.USER_CODE = TAR_PROCES.CD_MATRICULA)
+			
+		left oUTER jOIN  fdn_user ON   
+			(userResp.USER_ID = fdn_user.USER_ID) 
 
-		HISTOR_PROCES.NUM_SEQ_ESTADO,
-		ESTADO_PROCES.NOM_ESTADO as loc_atual,
-		fdn_user.FULL_NAME as resp_atual
-
-	from ML001029 
-
-	INNER jOIN  anexo_proces ON
-
-		STR_TO_DATE(ML001029.data_ini_manut, '%d/%m/%Y') >= STR_TO_DATE(?, '%d/%m/%Y') and 
-		STR_TO_DATE(ML001029.data_ini_manut, '%d/%m/%Y') <= STR_TO_DATE(?, '%d/%m/%Y')  and
-		ML001029.companyid 	= anexo_proces.COD_EMPRESA  and
-		ML001029.masterid 	= ML001029.masterid and
-		ML001029.documentid = anexo_proces.NR_DOCUMENTO and
-		ML001029.version 	= anexo_proces.NR_VERSAO
-		
-	inner join HISTOR_PROCES on
-		HISTOR_PROCES.COD_EMPRESA 	= anexo_proces.COD_EMPRESA AND
-		HISTOR_PROCES.NUM_PROCES 	= anexo_proces.NUM_PROCES and 
-		HISTOR_PROCES.NUM_SEQ_MOVTO	= HISTOR_PROCES.NUM_SEQ_MOVTO and
-		HISTOR_PROCES.NUM_SEQ_ESTADO = 20 
-		
-	INNER JOIN PROCES_WORKFLOW ON
-		PROCES_WORKFLOW.COD_EMPRESA  = anexo_proces.COD_EMPRESA and
-		PROCES_WORKFLOW.NUM_PROCES   =  anexo_proces.NUM_PROCES and
-		PROCES_WORKFLOW.LOG_ATIV     = PROCES_WORKFLOW.LOG_ATIV 
-		
-	inner join tar_proces on
-		tar_proces.COD_EMPRESA 	= PROCES_WORKFLOW.COD_EMPRESA AND
-		tar_proces.NUM_PROCES 	= PROCES_WORKFLOW.NUM_PROCES and 
-		tar_proces.NUM_SEQ_MOVTO = HISTOR_PROCES.NUM_SEQ_MOVTO  and
-		tar_proces.NUM_SEQ_TRANSF = tar_proces.NUM_SEQ_TRANSF and
-		tar_proces.CD_MATRICULA = tar_proces.CD_MATRICULA  
-		
-	iNNER jOIN  ESTADO_PROCES ON
-		(ESTADO_PROCES.COD_EMPRESA = PROCES_WORKFLOW.COD_EMPRESA AND
-		ESTADO_PROCES.COD_DEF_PROCES = PROCES_WORKFLOW.COD_DEF_PROCES AND
-		ESTADO_PROCES.NUM_VERS = PROCES_WORKFLOW.NUM_VERS and  
-		ESTADO_PROCES.NUM_SEQ = HISTOR_PROCES.NUM_SEQ_ESTADO )  
-		
-	left oUTER jOIN  fdn_usertenant as userResp ON
-		(userResp.USER_CODE = TAR_PROCES.CD_MATRICULA)
-		
-	left oUTER jOIN  fdn_user ON   
-		(userResp.USER_ID = fdn_user.USER_ID) 
-
-) AS TESTE order by resp_atual, NUM_PROCES, Data_Inicial
- 
-]]></xml-property>
+) AS TESTE where tempo_total > 0 order by resp_atual, NUM_PROCES, Data_Inicial]]></xml-property>
             <xml-property name="designerValues"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
 <model:DesignValues xmlns:design="http://www.eclipse.org/datatools/connectivity/oda/design" xmlns:model="http://www.eclipse.org/birt/report/model/adapter/odaModel">
   <Version>2.0</Version>

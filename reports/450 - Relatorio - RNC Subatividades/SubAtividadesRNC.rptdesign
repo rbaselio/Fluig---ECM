@@ -352,7 +352,7 @@
                     <structure>
                         <property name="position">15</property>
                         <property name="name">HORA_ABERT</property>
-                        <property name="dataType">time</property>
+                        <property name="dataType">string</property>
                     </structure>
                 </list-property>
             </structure>
@@ -460,8 +460,8 @@
                     <property name="position">15</property>
                     <property name="name">HORA_ABERT</property>
                     <property name="nativeName">HORA_ABERT</property>
-                    <property name="dataType">time</property>
-                    <property name="nativeDataType">92</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
                 </structure>
             </list-property>
             <xml-property name="queryText"><![CDATA[SELECT 
@@ -537,19 +537,23 @@
 					FICHA.COD_CAMPO = "user_exec")
         ) AS RESPONSAVEL,  
         
-        IF(proces_workflow.LOG_ATIV, date_format(ativ_atual.DAT_FIM_PRAZ, '%d/%m/%Y'), 
-			(select FICHA.COD_VALOR
-				from FICHA 
-				where FICHA.COD_EMPRESA = ANEXO_PROCES.COD_EMPRESA AND
-					FICHA.NR_FICHA = ANEXO_PROCES.NR_DOCUMENTO and
-					FICHA.NR_VERSAO = ANEXO_PROCES.NR_VERSAO AND
-					FICHA.COD_VALOR is not null and
-					FICHA.COD_TABELA = "principal" AND
-					FICHA.COD_CAMPO = "data_exec")        
-        ) AS DAT_FIM_PRAZ,
+         IF(proces_workflow.LOG_ATIV, 
+			if (ativ_atual.DEADLINE IS NOT NULL,         
+				date_format(ativ_atual.DEADLINE, '%d/%m/%Y'), 
+				(select FICHA.COD_VALOR
+					from FICHA 
+					where FICHA.COD_EMPRESA = ANEXO_PROCES.COD_EMPRESA AND
+						FICHA.NR_FICHA = ANEXO_PROCES.NR_DOCUMENTO and
+						FICHA.NR_VERSAO = ANEXO_PROCES.NR_VERSAO AND
+						FICHA.COD_VALOR is not null and
+						FICHA.COD_TABELA = "principal" AND
+						FICHA.COD_CAMPO = "data_exec") 
+         ), null) AS DAT_FIM_PRAZ,         
+        
         IF(proces_workflow.LOG_ATIV, SEC_TO_TIME(ativ_atual.NUM_HORA_FIM_PRAZ), NULL) AS NUM_HORA_FIM_PRAZ,
-        date_format(ativ_inicial.DAT_CONCLUS_TAR, '%d/%m/%Y') AS DAT_ABERT, 
-        SEC_TO_TIME(ativ_inicial.NUM_HORA_CONCLUS_TAR) AS HORA_ABERT
+        date_format(proces_workflow.START_DATE, '%d/%m/%Y') AS DAT_ABERT, 
+        time_format(proces_workflow.START_DATE, '%H:%i:%s') AS HORA_ABERT
+        
        
     FROM
         ((((((proces_workflow

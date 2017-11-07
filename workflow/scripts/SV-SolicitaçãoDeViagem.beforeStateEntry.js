@@ -23,6 +23,7 @@ function beforeStateEntry(sequenceId){
 		hpForm.put("origem_desp", "sol_viagem");
 		hpForm.put("moeda", hAPI.getCardValue("moeda"));
 		hpForm.put("vl_prestacao", hAPI.getCardValue("vl_fornec"));
+		hpForm.put("prenchimento", "resp");
 		
 		hpForm.put("matricula_user", hAPI.getCardValue("matricula_user"));
 		hpForm.put("nome_resp", hAPI.getCardValue("solicitante"));
@@ -35,9 +36,9 @@ function beforeStateEntry(sequenceId){
 		hpForm.put("cpf_cnpj", hAPI.getCardValue("cpf_cnpj"));
 		hpForm.put("banco", hAPI.getCardValue("banco"));
 		hpForm.put("agencia", hAPI.getCardValue("agencia"));
-		hpForm.put("conta_cor", hAPI.getCardValue("conta_cor"));			
+		hpForm.put("conta_cor", hAPI.getCardValue("conta_cor"));
 		
-		//var resposta = hAPI.startProcess("RDV", 58, userList, "Iniciado pela solicitação de viagem nr.: " + numProcesso, true, hpForm, false);
+		var resposta = hAPI.startProcess("RDV", 75, userList, "Iniciado pela solicitação de viagem nr.: " + numProcesso, false, hpForm, true);
 		hAPI.setCardValue("desc_entregue", hAPI.getCardValue("desc_entregue") + "\n\nIniciado processo de RDV nr.: " + resposta.get("iProcess"));
 	}
 	

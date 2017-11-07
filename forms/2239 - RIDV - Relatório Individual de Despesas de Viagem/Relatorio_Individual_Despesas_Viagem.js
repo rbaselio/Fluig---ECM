@@ -541,6 +541,7 @@ function ativaPreencheCampos(modeView, numState, matricula, processo) {
 			$("#desc_aprov_imediato").attr("readOnly", true);
 			$("#aprov_dir_fin").css('pointer-events', 'none');
 			$("#desc_aprov_dir_fin").attr("readOnly", true);
+			$(".tipo_despesa").css('pointer-events', 'all').removeAttr('readOnly');
 			
 		}
 		
